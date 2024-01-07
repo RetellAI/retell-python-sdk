@@ -5,77 +5,7 @@ from .sdkconfiguration import SDKConfiguration
 from retellclient import utils
 from retellclient.models import components, errors, operations
 from typing import Callable, Dict, List, Optional, Union
-import asyncio
-import websockets
-import json
-import numpy as np
-from typing import List, Callable, Dict
-
-class EventEmitter:
-    def __init__(self):
-        self.callbacks: Dict[str, List[Callable]] = {}
-
-    def on(self, event: str, callback: Callable):
-        if event not in self.callbacks:
-            self.callbacks[event] = []
-        self.callbacks[event].append(callback)
-
-    def emit(self, event: str, *args):
-        if event in self.callbacks:
-            for callback in self.callbacks[event]:
-                callback(*args)
-
-class LiveClient(EventEmitter):
-    def __init__(self, api_key: str, agent_id: str, sample_rate: int,
-                 agent_prompt_params: List[Dict], base_endpoint: str):
-        super().__init__()
-        self.endpoint = (f"{base_endpoint}/create-web-call?api_key={api_key}"
-                    f"&agent_id={agent_id}&sample_rate={sample_rate}")
-        for param in agent_prompt_params:
-            self.endpoint += f"&agent_prompt_params={json.dumps(param)}"
-            
-    async def connect(self):
-        self.ws = await websockets.connect(self.endpoint)
-    
-    async def wait_for_ready(self):
-        try:
-            await self.connect()
-            async for message in self.ws:
-                data = json.loads(message)
-                if data['status'] == 'ready':
-                    print(data)
-                    asyncio.ensure_future(self.receive_audio())
-                    break
-        except Exception as e:
-            self.emit('error', e)
-            
-    async def receive_audio(self):
-        try:
-            async for message in self.ws:
-                self.emit('audio', message)
-        except websockets.ConnectionClosedOK:
-            self.emit('close')
-            print("Connection closed properly.")
-        except websockets.ConnectionClosedError as e:
-            self.emit('error', e)
-            print("Connection closed with error:", e)
-        except Exception as e:
-            print('error', e)
-            self.emit('error', e)
-                     
-    async def send(self, audio):
-        if self.ws.open:
-            await self.ws.send(audio)
-
-    async def close(self):
-        await self.ws.close()
-
-def convert_pcm16_to_float32(array: np.ndarray) -> np.ndarray:
-    return np.frombuffer(array, dtype=np.int16).astype(np.float32) / np.iinfo(np.int16).max
-
-def convert_float32_to_pcm16(array: np.ndarray) -> np.ndarray:
-    return (array * np.iinfo(np.int16).max).astype(np.int16).tobytes()
-
+from .websocket import LiveClient
 
 class RetellClient:
 
@@ -117,8 +47,29 @@ class RetellClient:
        
         
     
-    
-    
+    async def create_web_call(self, params: operations.CreateWebCallParams, on_audio_callback: Callable, 
+                              on_error_callback: Optional[Callable] = None, on_close_callback: Optional[Callable] = None) -> None:
+        """Starts a web call with the provided parameters.
+        
+        :param params: Parameters of web call, including agent_id, sample rate, and agent_prompt_params
+        :type params: operations.CreateWebCallParams
+        :param on_audio_callback: Handler for websocket audio, audio is PCM 16 bytes.
+        :type on_audio_callback: Callable
+        :param on_error_callback: Optional handler for websocket error.
+        :type on_error_callback: Optional[Callable]
+        :param on_close_callback: Optional handler for websocket close.
+        :type on_close_callback: Optional[Callable]
+        """
+        client = LiveClient(self.sdk_configuration.security.api_key, params.agent_id,
+                        params.sample_rate, params.agent_prompt_params, "wss://api.re-tell.ai")
+        client.on('audio', on_audio_callback)
+        if on_error_callback:
+            client.on('error', on_error_callback)
+        if on_close_callback:
+            client.on('close', on_close_callback)
+        await client.wait_for_ready()
+        return client
+        
     
     def create_agent(self, request: operations.CreateAgentRequestBody) -> operations.CreateAgentResponse:
         r"""Create a new agent"""

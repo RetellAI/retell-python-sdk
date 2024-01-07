@@ -18,11 +18,41 @@ pip install retell-sdk
 
 <!-- Start SDK Example Usage [usage] -->
 
-## SDK Example Usage
+## SDK Usage
 
-### Create a new voice AI agent
+### Client Initialization
+
+```python
+import retellclient
+
+s = retellclient.RetellClient(
+    api_key="YOUR_API_KEY",
+)
+```
+
+### Available Operations
+
+- [create_agent](#create_agent) - Create a new agent
+- [create_phone_call](#create_phone_call) - Initiate an outbound phone call.
+- [create_web_call](#create_web_call) - Initiate an outbound phone call.
+- [create_phone_number](#create_phone_number) - Create a new phone number
+- [delete_agent](#delete_agent) - Delete an existing agent
+- [delete_phone_number](#delete_phone_number) - Delete a specific phone number
+- [get_agent](#get_agent) - Retrieve details of a specific agent
+- [get_call](#get_call) - Retrieve details of a specific call
+- [get_phone_number](#get_phone_number) - Retrieve info about a specific number
+- [list_agents](#list_agents) - List all agents
+- [list_calls](#list_calls) - Retrieve call details
+- [list_phone_numbers](#list_phone_numbers) - List all purchased and active
+  phone numbers
+- [update_agent](#update_agent) - Update an existing agent
+- [update_phone_agent](#update_phone_agent) - Update an existing phone number
+
+## create_agent
 
 Create a new agent
+
+### Example Usage
 
 ```python
 import retellclient
@@ -50,9 +80,31 @@ if res.agent is not None:
     pass
 ```
 
-### Create an outbound phone call
+### Parameters
+
+| Parameter | Type                                                                                  | Required           | Description                                |
+| --------- | ------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------ |
+| `request` | [operations.CreateAgentRequestBody](docs/models/operations/createagentrequestbody.md) | :heavy_check_mark: | The request object to use for the request. |
+
+### Response
+
+**[operations.CreateAgentResponse](docs/models/operations/createagentresponse.md)**
+
+### Errors
+
+| Error Object                              | Status Code | Content Type     |
+| ----------------------------------------- | ----------- | ---------------- |
+| errors.CreateAgentResponseBody            | 400         | application/json |
+| errors.CreateAgentResponseResponseBody    | 401         | application/json |
+| errors.CreateAgentResponse422ResponseBody | 422         | application/json |
+| errors.CreateAgentResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                           | 400-600     | _/_              |
+
+## create_phone_call
 
 Initiate an outbound phone call.
+
+### Example Usage
 
 ```python
 import retellclient
@@ -82,9 +134,39 @@ if res.object is not None:
     pass
 ```
 
-### Create a new phone number
+### Parameters
 
-Create a new phone number
+| Parameter | Type                                                                                          | Required           | Description                                |
+| --------- | --------------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------ |
+| `request` | [operations.CreatePhoneCallRequestBody](docs/models/operations/createphonecallrequestbody.md) | :heavy_check_mark: | The request object to use for the request. |
+
+### Response
+
+**[operations.CreatePhoneCallResponse](docs/models/operations/createphonecallresponse.md)**
+
+### Errors
+
+| Error Object                                  | Status Code | Content Type     |
+| --------------------------------------------- | ----------- | ---------------- |
+| errors.CreatePhoneCallResponseBody            | 400         | application/json |
+| errors.CreatePhoneCallResponseResponseBody    | 401         | application/json |
+| errors.CreatePhoneCallResponse402ResponseBody | 402         | application/json |
+| errors.CreatePhoneCallResponse422ResponseBody | 422         | application/json |
+| errors.CreatePhoneCallResponse429ResponseBody | 429         | application/json |
+| errors.CreatePhoneCallResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                               | 400-600     | _/_              |
+
+## create_web_call
+
+Initiate an web call. Check [example.py](src/web_call_example.py) for example of
+creating a web call using microphone as input. Please note that denoising and
+echo removal is not performed.
+
+## create_phone_number
+
+Create a new phone number.
+
+### Example Usage
 
 ```python
 import retellclient
@@ -106,9 +188,32 @@ if res.phone_number is not None:
     pass
 ```
 
-### Delete an existing agent
+### Parameters
+
+| Parameter | Type                                                                                              | Required           | Description                                |
+| --------- | ------------------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------ |
+| `request` | [operations.CreatePhoneNumberRequestBody](docs/models/operations/createphonenumberrequestbody.md) | :heavy_check_mark: | The request object to use for the request. |
+
+### Response
+
+**[operations.CreatePhoneNumberResponse](docs/models/operations/createphonenumberresponse.md)**
+
+### Errors
+
+| Error Object                                    | Status Code | Content Type     |
+| ----------------------------------------------- | ----------- | ---------------- |
+| errors.CreatePhoneNumberResponseBody            | 400         | application/json |
+| errors.CreatePhoneNumberResponseResponseBody    | 401         | application/json |
+| errors.CreatePhoneNumberResponse402ResponseBody | 402         | application/json |
+| errors.CreatePhoneNumberResponse422ResponseBody | 422         | application/json |
+| errors.CreatePhoneNumberResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                                 | 400-600     | _/_              |
+
+## delete_agent
 
 Delete an existing agent
+
+### Example Usage
 
 ```python
 import retellclient
@@ -126,9 +231,31 @@ if res.status_code == 200:
     pass
 ```
 
-### Delete a specific phone number
+### Parameters
+
+| Parameter  | Type  | Required           | Description                           | Example                          |
+| ---------- | ----- | ------------------ | ------------------------------------- | -------------------------------- |
+| `agent_id` | _str_ | :heavy_check_mark: | Unique id of the agent to be deleted. | oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD |
+
+### Response
+
+**[operations.DeleteAgentResponse](docs/models/operations/deleteagentresponse.md)**
+
+### Errors
+
+| Error Object                              | Status Code | Content Type     |
+| ----------------------------------------- | ----------- | ---------------- |
+| errors.DeleteAgentResponseBody            | 400         | application/json |
+| errors.DeleteAgentResponseResponseBody    | 401         | application/json |
+| errors.DeleteAgentResponse422ResponseBody | 422         | application/json |
+| errors.DeleteAgentResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                           | 400-600     | _/_              |
+
+## delete_phone_number
 
 Delete a specific phone number
+
+### Example Usage
 
 ```python
 import retellclient
@@ -146,9 +273,31 @@ if res.status_code == 200:
     pass
 ```
 
-### Retrieve details of an agent
+### Parameters
+
+| Parameter      | Type  | Required           | Description                             |
+| -------------- | ----- | ------------------ | --------------------------------------- |
+| `phone_number` | _str_ | :heavy_check_mark: | Phone number to delete in E.164 format. |
+
+### Response
+
+**[operations.DeletePhoneNumberResponse](docs/models/operations/deletephonenumberresponse.md)**
+
+### Errors
+
+| Error Object                                    | Status Code | Content Type     |
+| ----------------------------------------------- | ----------- | ---------------- |
+| errors.DeletePhoneNumberResponseBody            | 400         | application/json |
+| errors.DeletePhoneNumberResponseResponseBody    | 401         | application/json |
+| errors.DeletePhoneNumberResponse422ResponseBody | 422         | application/json |
+| errors.DeletePhoneNumberResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                                 | 400-600     | _/_              |
+
+## get_agent
 
 Retrieve details of a specific agent
+
+### Example Usage
 
 ```python
 import retellclient
@@ -166,9 +315,31 @@ if res.agent is not None:
     pass
 ```
 
-### Retrieve a on-going or finished call
+### Parameters
+
+| Parameter  | Type  | Required           | Description                             | Example                          |
+| ---------- | ----- | ------------------ | --------------------------------------- | -------------------------------- |
+| `agent_id` | _str_ | :heavy_check_mark: | Unique id of the agent to be retrieved. | 16b980523634a6dc504898cda492e939 |
+
+### Response
+
+**[operations.GetAgentResponse](docs/models/operations/getagentresponse.md)**
+
+### Errors
+
+| Error Object                           | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| errors.GetAgentResponseBody            | 400         | application/json |
+| errors.GetAgentResponseResponseBody    | 401         | application/json |
+| errors.GetAgentResponse422ResponseBody | 422         | application/json |
+| errors.GetAgentResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                        | 400-600     | _/_              |
+
+## get_call
 
 Retrieve details of a specific call
+
+### Example Usage
 
 ```python
 import retellclient
@@ -186,9 +357,31 @@ if res.call_detail is not None:
     pass
 ```
 
-### Retrieve info about a specific number
+### Parameters
+
+| Parameter | Type  | Required           | Description                               | Example                          |
+| --------- | ----- | ------------------ | ----------------------------------------- | -------------------------------- |
+| `call_id` | _str_ | :heavy_check_mark: | The call id to retrieve call history for. | 119c3f8e47135a29e65947eeb34cf12d |
+
+### Response
+
+**[operations.GetCallResponse](docs/models/operations/getcallresponse.md)**
+
+### Errors
+
+| Error Object                          | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| errors.GetCallResponseBody            | 400         | application/json |
+| errors.GetCallResponseResponseBody    | 401         | application/json |
+| errors.GetCallResponse422ResponseBody | 422         | application/json |
+| errors.GetCallResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                       | 400-600     | _/_              |
+
+## get_phone_number
 
 Retrieve info about a specific number
+
+### Example Usage
 
 ```python
 import retellclient
@@ -206,9 +399,31 @@ if res.phone_number is not None:
     pass
 ```
 
-### List all agents
+### Parameters
+
+| Parameter      | Type  | Required           | Description                                                | Example      |
+| -------------- | ----- | ------------------ | ---------------------------------------------------------- | ------------ |
+| `phone_number` | _str_ | :heavy_check_mark: | Phone number in E.164 format to retreive more information. | +14159095857 |
+
+### Response
+
+**[operations.GetPhoneNumberResponse](docs/models/operations/getphonenumberresponse.md)**
+
+### Errors
+
+| Error Object                                 | Status Code | Content Type     |
+| -------------------------------------------- | ----------- | ---------------- |
+| errors.GetPhoneNumberResponseBody            | 400         | application/json |
+| errors.GetPhoneNumberResponseResponseBody    | 401         | application/json |
+| errors.GetPhoneNumberResponse422ResponseBody | 422         | application/json |
+| errors.GetPhoneNumberResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                              | 400-600     | _/_              |
+
+## list_agents
 
 List all agents
+
+### Example Usage
 
 ```python
 import retellclient
@@ -225,9 +440,23 @@ if res.classes is not None:
     pass
 ```
 
-### List all web or phone calls
+### Response
+
+**[operations.ListAgentsResponse](docs/models/operations/listagentsresponse.md)**
+
+### Errors
+
+| Error Object                          | Status Code | Content Type     |
+| ------------------------------------- | ----------- | ---------------- |
+| errors.ListAgentsResponseBody         | 401         | application/json |
+| errors.ListAgentsResponseResponseBody | 500         | application/json |
+| errors.SDKError                       | 400-600     | _/_              |
+
+## list_calls
 
 Retrieve call details
+
+### Example Usage
 
 ```python
 import retellclient
@@ -257,9 +486,32 @@ if res.classes is not None:
     pass
 ```
 
-### List all purchased and active phone numbers
+### Parameters
+
+| Parameter         | Type                                                                            | Required           | Description                                                                                                  |
+| ----------------- | ------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `filter_criteria` | [Optional[operations.FilterCriteria]](docs/models/operations/filtercriteria.md) | :heavy_minus_sign: | N/A                                                                                                          |
+| `limit`           | _Optional[int]_                                                                 | :heavy_minus_sign: | Limit the number of calls returned.                                                                          |
+| `sort_order`      | [Optional[operations.SortOrder]](docs/models/operations/sortorder.md)           | :heavy_minus_sign: | The calls will be sorted by `start_timestamp`, whether to return the calls in ascending or descending order. |
+
+### Response
+
+**[operations.ListCallsResponse](docs/models/operations/listcallsresponse.md)**
+
+### Errors
+
+| Error Object                            | Status Code | Content Type     |
+| --------------------------------------- | ----------- | ---------------- |
+| errors.ListCallsResponseBody            | 400         | application/json |
+| errors.ListCallsResponseResponseBody    | 401         | application/json |
+| errors.ListCallsResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                         | 400-600     | _/_              |
+
+## list_phone_numbers
 
 List all purchased and active phone numbers
+
+### Example Usage
 
 ```python
 import retellclient
@@ -276,9 +528,24 @@ if res.classes is not None:
     pass
 ```
 
-### Update an existing agent
+### Response
+
+**[operations.ListPhoneNumbersResponse](docs/models/operations/listphonenumbersresponse.md)**
+
+### Errors
+
+| Error Object                                   | Status Code | Content Type     |
+| ---------------------------------------------- | ----------- | ---------------- |
+| errors.ListPhoneNumbersResponseBody            | 400         | application/json |
+| errors.ListPhoneNumbersResponseResponseBody    | 401         | application/json |
+| errors.ListPhoneNumbersResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                                | 400-600     | _/_              |
+
+## update_agent
 
 Update an existing agent
+
+### Example Usage
 
 ```python
 import retellclient
@@ -305,9 +572,32 @@ if res.agent is not None:
     pass
 ```
 
-### Update an existing phone number
+### Parameters
+
+| Parameter                      | Type                                                                                      | Required           | Description                           | Example                          |
+| ------------------------------ | ----------------------------------------------------------------------------------------- | ------------------ | ------------------------------------- | -------------------------------- |
+| `agent_no_default_no_required` | [components.AgentNoDefaultNoRequired](docs/models/components/agentnodefaultnorequired.md) | :heavy_check_mark: | N/A                                   |                                  |
+| `agent_id`                     | _str_                                                                                     | :heavy_check_mark: | Unique id of the agent to be updated. | 16b980523634a6dc504898cda492e939 |
+
+### Response
+
+**[operations.UpdateAgentResponse](docs/models/operations/updateagentresponse.md)**
+
+### Errors
+
+| Error Object                              | Status Code | Content Type     |
+| ----------------------------------------- | ----------- | ---------------- |
+| errors.UpdateAgentResponseBody            | 400         | application/json |
+| errors.UpdateAgentResponseResponseBody    | 401         | application/json |
+| errors.UpdateAgentResponse422ResponseBody | 422         | application/json |
+| errors.UpdateAgentResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                           | 400-600     | _/_              |
+
+## update_phone_agent
 
 Update an existing phone number
+
+### Example Usage
 
 ```python
 import retellclient
@@ -327,234 +617,23 @@ if res.phone_number is not None:
     pass
 ```
 
-<!-- End SDK Example Usage [usage] -->
+### Parameters
 
-<!-- Start Available Resources and Operations [operations] -->
+| Parameter      | Type                                                                                            | Required           | Description                                             | Example      |
+| -------------- | ----------------------------------------------------------------------------------------------- | ------------------ | ------------------------------------------------------- | ------------ |
+| `request_body` | [operations.UpdatePhoneAgentRequestBody](docs/models/operations/updatephoneagentrequestbody.md) | :heavy_check_mark: | N/A                                                     |              |
+| `phone_number` | _str_                                                                                           | :heavy_check_mark: | Phone number in E.164 format that require agent update. | +14159095857 |
 
-## Available Resources and Operations
+### Response
 
-### [RetellClient SDK](docs/sdks/retellclient/README.md)
+**[operations.UpdatePhoneAgentResponse](docs/models/operations/updatephoneagentresponse.md)**
 
-- [create_agent](docs/sdks/retellclient/README.md#create_agent) - Create a new agent
-- [create_phone_call](docs/sdks/retellclient/README.md#create_phone_call) - Initiate an outbound phone call.
-- [create_phone_number](docs/sdks/retellclient/README.md#create_phone_number) - Create a new phone number
-- [delete_agent](docs/sdks/retellclient/README.md#delete_agent) - Delete an existing agent
-- [delete_phone_number](docs/sdks/retellclient/README.md#delete_phone_number) - Delete a specific phone number
-- [get_agent](docs/sdks/retellclient/README.md#get_agent) - Retrieve details of a specific agent
-- [get_call](docs/sdks/retellclient/README.md#get_call) - Retrieve details of a specific call
-- [get_phone_number](docs/sdks/retellclient/README.md#get_phone_number) - Retrieve info about a specific number
-- [list_agents](docs/sdks/retellclient/README.md#list_agents) - List all agents
-- [list_calls](docs/sdks/retellclient/README.md#list_calls) - Retrieve call details
-- [list_phone_numbers](docs/sdks/retellclient/README.md#list_phone_numbers) - List all purchased and active phone numbers
-- [update_agent](docs/sdks/retellclient/README.md#update_agent) - Update an existing agent
-- [update_phone_agent](docs/sdks/retellclient/README.md#update_phone_agent) - Update an existing phone number
-<!-- End Available Resources and Operations [operations] -->
+### Errors
 
-<!-- Start Error Handling [errors] -->
-
-## Error Handling
-
-Handling errors in this SDK should largely match your expectations. All operations return a response object or raise an error. If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
-
-| Error Object                              | Status Code | Content Type     |
-| ----------------------------------------- | ----------- | ---------------- |
-| errors.CreateAgentResponseBody            | 400         | application/json |
-| errors.CreateAgentResponseResponseBody    | 401         | application/json |
-| errors.CreateAgentResponse422ResponseBody | 422         | application/json |
-| errors.CreateAgentResponse500ResponseBody | 500         | application/json |
-| errors.SDKError                           | 400-600     | _/_              |
-
-### Example
-
-```python
-import retellclient
-from retellclient.models import operations
-
-s = retellclient.RetellClient(
-    api_key="YOUR_API_KEY",
-)
-
-req = operations.CreateAgentRequestBody(
-    agent_name='Jarvis',
-    begin_message='Hello there, how can I help you?',
-    enable_begin_message=True,
-    enable_end_call=True,
-    enable_end_message=False,
-    end_message='Hope you have a good day, goodbye.',
-    prompt='You are a marketing assistant. You help come up with creative content ideas and content like marketing emails, blog posts, tweets, ad copy and product descriptions. You respond concisely, with filler words in it.',
-    voice_id='elevenlabs-xxcrwXReTKMHWjqi7Q27',
-)
-
-res = None
-try:
-    res = s.create_agent(req)
-except errors.CreateAgentResponseBody as e:
-    print(e)  # handle exception
-    raise(e)
-except errors.CreateAgentResponseResponseBody as e:
-    print(e)  # handle exception
-    raise(e)
-except errors.CreateAgentResponse422ResponseBody as e:
-    print(e)  # handle exception
-    raise(e)
-except errors.CreateAgentResponse500ResponseBody as e:
-    print(e)  # handle exception
-    raise(e)
-except errors.SDKError as e:
-    print(e)  # handle exception
-    raise(e)
-
-if res.agent is not None:
-    # handle response
-    pass
-```
-
-<!-- End Error Handling [errors] -->
-
-<!-- Start Server Selection [server] -->
-
-## Server Selection
-
-### Select Server by Index
-
-You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| #   | Server                   | Variables |
-| --- | ------------------------ | --------- |
-| 0   | `https://api.re-tell.ai` | None      |
-
-#### Example
-
-```python
-import retellclient
-from retellclient.models import operations
-
-s = retellclient.RetellClient(
-    server_idx=0,
-    api_key="YOUR_API_KEY",
-)
-
-req = operations.CreateAgentRequestBody(
-    agent_name='Jarvis',
-    begin_message='Hello there, how can I help you?',
-    enable_begin_message=True,
-    enable_end_call=True,
-    enable_end_message=False,
-    end_message='Hope you have a good day, goodbye.',
-    prompt='You are a marketing assistant. You help come up with creative content ideas and content like marketing emails, blog posts, tweets, ad copy and product descriptions. You respond concisely, with filler words in it.',
-    voice_id='elevenlabs-xxcrwXReTKMHWjqi7Q27',
-)
-
-res = s.create_agent(req)
-
-if res.agent is not None:
-    # handle response
-    pass
-```
-
-### Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
-
-```python
-import retellclient
-from retellclient.models import operations
-
-s = retellclient.RetellClient(
-    server_url="https://api.re-tell.ai",
-    api_key="YOUR_API_KEY",
-)
-
-req = operations.CreateAgentRequestBody(
-    agent_name='Jarvis',
-    begin_message='Hello there, how can I help you?',
-    enable_begin_message=True,
-    enable_end_call=True,
-    enable_end_message=False,
-    end_message='Hope you have a good day, goodbye.',
-    prompt='You are a marketing assistant. You help come up with creative content ideas and content like marketing emails, blog posts, tweets, ad copy and product descriptions. You respond concisely, with filler words in it.',
-    voice_id='elevenlabs-xxcrwXReTKMHWjqi7Q27',
-)
-
-res = s.create_agent(req)
-
-if res.agent is not None:
-    # handle response
-    pass
-```
-
-<!-- End Server Selection [server] -->
-
-<!-- Start Custom HTTP Client [http-client] -->
-
-## Custom HTTP Client
-
-The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library. In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
-
-For example, you could specify a header for every request that this sdk makes as follows:
-
-```python
-import retellclient
-import requests
-
-http_client = requests.Session()
-http_client.headers.update({'x-custom-header': 'someValue'})
-s = retellclient.RetellClient(client: http_client)
-```
-
-<!-- End Custom HTTP Client [http-client] -->
-
-<!-- Start Authentication [security] -->
-
-## Authentication
-
-### Per-Client Security Schemes
-
-This SDK supports the following security scheme globally:
-
-| Name      | Type | Scheme      |
-| --------- | ---- | ----------- |
-| `api_key` | http | HTTP Bearer |
-
-To authenticate with the API the `api_key` parameter must be set when initializing the SDK client instance. For example:
-
-```python
-import retellclient
-from retellclient.models import operations
-
-s = retellclient.RetellClient(
-    api_key="YOUR_API_KEY",
-)
-
-req = operations.CreateAgentRequestBody(
-    agent_name='Jarvis',
-    begin_message='Hello there, how can I help you?',
-    enable_begin_message=True,
-    enable_end_call=True,
-    enable_end_message=False,
-    end_message='Hope you have a good day, goodbye.',
-    prompt='You are a marketing assistant. You help come up with creative content ideas and content like marketing emails, blog posts, tweets, ad copy and product descriptions. You respond concisely, with filler words in it.',
-    voice_id='elevenlabs-xxcrwXReTKMHWjqi7Q27',
-)
-
-res = s.create_agent(req)
-
-if res.agent is not None:
-    # handle response
-    pass
-```
-
-<!-- End Authentication [security] -->
-
-# Development
-
-## Maturity
-
-This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning usage
-to a specific package version. This way, you can install the same version each time without breaking changes unless you are intentionally
-looking for the latest version.
-
-## Contributions
-
-While we value open-source contributions to this SDK, this library is generated programmatically.
-Feel free to open a PR or a Github issue as a proof of concept and we'll do our best to include it in a future release!
+| Error Object                                   | Status Code | Content Type     |
+| ---------------------------------------------- | ----------- | ---------------- |
+| errors.UpdatePhoneAgentResponseBody            | 400         | application/json |
+| errors.UpdatePhoneAgentResponseResponseBody    | 401         | application/json |
+| errors.UpdatePhoneAgentResponse422ResponseBody | 422         | application/json |
+| errors.UpdatePhoneAgentResponse500ResponseBody | 500         | application/json |
+| errors.SDKError                                | 400-600     | _/_              |
