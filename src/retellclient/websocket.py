@@ -32,6 +32,7 @@ class LiveClient(EventEmitter):
         self.endpoint += "&agent_prompt_params=" + urllib.parse.quote(json.dumps(param_list))
                 
     async def wait_for_ready(self):
+        except_raised = False
         try:
             self.ws = await websockets.connect(self.endpoint)
             async for message in self.ws:
@@ -42,9 +43,15 @@ class LiveClient(EventEmitter):
                     return
                 else:
                     self.ws.close()
-                    self.emit('error', "event other than ready received first")
+                    raise Exception("Event other than ready received first")
         except Exception as e:
-            self.emit('error', e)
+            if hasattr(self, "ws") and self.ws.open:
+                self.ws.close()
+            except_raised = True
+            raise Exception(e)
+        finally:
+            if hasattr(self, "ws") and self.ws.closed and not except_raised:
+                raise Exception("Websocket closed before ready")
             
     async def __receive_audio(self):
         try:
