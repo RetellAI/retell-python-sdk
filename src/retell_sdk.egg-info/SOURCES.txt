@@ -9,6 +9,7 @@ src/retell_sdk.egg-info/top_level.txt
 src/retellclient/__init__.py
 src/retellclient/sdk.py
 src/retellclient/sdkconfiguration.py
+src/retellclient/websocket.py
 src/retellclient/models/__init__.py
 src/retellclient/models/components/__init__.py
 src/retellclient/models/components/agent.py
@@ -37,6 +38,7 @@ src/retellclient/models/operations/__init__.py
 src/retellclient/models/operations/createagent.py
 src/retellclient/models/operations/createphonecall.py
 src/retellclient/models/operations/createphonenumber.py
+src/retellclient/models/operations/createwebcall.py
 src/retellclient/models/operations/deleteagent.py
 src/retellclient/models/operations/deletephonenumber.py
 src/retellclient/models/operations/getagent.py
