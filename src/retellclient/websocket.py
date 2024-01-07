@@ -50,12 +50,12 @@ class LiveClient(EventEmitter):
         try:
             async for message in self.ws:
                 self.emit('audio', message)
-        except websockets.ConnectionClosedOK:
-            self.emit('close')
         except websockets.ConnectionClosedError as e:
             self.emit('error', e)
         except Exception as e:
             self.emit('error', e)
+        finally:
+            self.emit('close')
                      
     async def send(self, audio: bytes):
         if hasattr(self, "ws") and self.ws.open:

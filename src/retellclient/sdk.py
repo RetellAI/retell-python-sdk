@@ -47,26 +47,14 @@ class RetellClient:
        
         
     
-    async def create_web_call(self, params: operations.CreateWebCallParams, on_audio_callback: Callable, 
-                              on_error_callback: Optional[Callable] = None, on_close_callback: Optional[Callable] = None) -> None:
+    async def create_web_call(self, params: operations.CreateWebCallParams) -> None:
         """Starts a web call with the provided parameters.
         
         :param params: Parameters of web call, including agent_id, sample rate, and agent_prompt_params
         :type params: operations.CreateWebCallParams
-        :param on_audio_callback: Handler for websocket audio, audio is PCM 16 bytes.
-        :type on_audio_callback: Callable
-        :param on_error_callback: Optional handler for websocket error.
-        :type on_error_callback: Optional[Callable]
-        :param on_close_callback: Optional handler for websocket close.
-        :type on_close_callback: Optional[Callable]
         """
         client = LiveClient(self.sdk_configuration.security.api_key, params.agent_id,
                         params.sample_rate, params.agent_prompt_params, "wss://api.re-tell.ai")
-        client.on('audio', on_audio_callback)
-        if on_error_callback:
-            client.on('error', on_error_callback)
-        if on_close_callback:
-            client.on('close', on_close_callback)
         await client.wait_for_ready()
         return client
         

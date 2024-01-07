@@ -7,7 +7,7 @@ from retellclient.models import components, operations
 api_key = "YOUR_API_KEY"
 agent_id = "YOUR_AGENT_ID"
 sample_rate = 24000
-
+close_audio = False
 
 class AudioModule:
     def __init__(self):
@@ -52,11 +52,7 @@ class AudioModule:
 
 
 async def main():
-    audio_module = AudioModule()
-
-    def on_audio_received(message):
-        audio_module.play_audio(message)
-
+    global close_audio
     # Initialize your LiveClient with appropriate parameters
     client = RetellClient(api_key = api_key)
     params = operations.CreateWebCallParams(
@@ -68,18 +64,30 @@ async def main():
             value='Adam',
         ),
     ])
-    live_client = await client.create_web_call(params=params,on_audio_callback=on_audio_received)
+    live_client = await client.create_web_call(params=params)
 
-    try:
-        while True:
-            # Check for new audio chunk and send it
-            audio_chunk = audio_module.get_audio_chunk()
-            if audio_chunk:
-                await live_client.send(audio_chunk)
-            await asyncio.sleep(0) # Yield control to allow other async operations
-    except KeyboardInterrupt:
-        await live_client.close()
+    audio_module = AudioModule()
+
+    def on_audio_received(message):
+        audio_module.play_audio(message)
+    def on_error_received(message):
+        print("error", message)
+    def on_close_received():
+        global close_audio
+        print("websocket closed")
         audio_module.close()
+        close_audio = True
+
+    live_client.on("audio", on_audio_received)
+    live_client.on("error", on_error_received)
+    live_client.on("close", on_close_received)
+
+    while not close_audio:
+        # Check for new audio chunk and send it
+        audio_chunk = audio_module.get_audio_chunk()
+        if audio_chunk:
+            await live_client.send(audio_chunk)
+        await asyncio.sleep(0) # Yield control to allow other async operations
 
 
 if __name__ == "__main__":
