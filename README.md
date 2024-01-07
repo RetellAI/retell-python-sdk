@@ -70,7 +70,7 @@ req = operations.CreateAgentRequestBody(
     enable_end_message=False,
     end_message='Hope you have a good day, goodbye.',
     prompt='You are a marketing assistant. You help come up with creative content ideas and content like marketing emails, blog posts, tweets, ad copy and product descriptions. You respond concisely, with filler words in it.',
-    voice_id='elevenlabs-xxcrwXReTKMHWjqi7Q27',
+    voice_id='11labs-Ryan',
 )
 
 res = s.create_agent(req)
@@ -604,7 +604,7 @@ res = s.update_agent(agent_no_default_no_required=components.AgentNoDefaultNoReq
     enable_end_message=False,
     end_message='Hope you have a good day, goodbye.',
     prompt='You are a marketing assistant. You help come up with creative content ideas and content like marketing emails, blog posts, tweets, ad copy and product descriptions. You respond concisely, with filler words in it.',
-    voice_id='elevenlabs-xxcrwXReTKMHWjqi7Q27',
+    voice_id='11labs-Ryan',
 ), agent_id='16b980523634a6dc504898cda492e939')
 
 if res.agent is not None:
