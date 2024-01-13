@@ -4,17 +4,28 @@ from __future__ import annotations
 import dataclasses
 import requests as requests_http
 from ...models.components import agent as components_agent
-from ...models.components import agentnodefaultnorequired as components_agentnodefaultnorequired
-from typing import Optional
+from dataclasses_json import Undefined, dataclass_json
+from typing import Optional, Union
+from retellclient import utils
 
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class UpdateAgentRequestBody:
+    voice_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('voice_id'), 'exclude': lambda f: f is None }})
+    r"""Unique voice id used for the agent. Find list of available voices in documentation."""
+    agent_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agent_name'), 'exclude': lambda f: f is None }})
+    r"""The name of the agent. Only used for your own reference."""
+    llm_setting: Optional[Union[components_agent.RetellLlmSetting, components_agent.CustomLlmSetting]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('llm_setting'), 'exclude': lambda f: f is None }})
+    r"""Determines how to generate the response in the call. Currently supports using our in-house LLM response system or your own custom response generation system."""
+    interaction_setting: Optional[components_agent.InteractionSettingRequest] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('interaction_setting'), 'exclude': lambda f: f is None }})
+    r"""Setting combination that controls interaction flow, like begin and end logic."""
 
 @dataclasses.dataclass
 class UpdateAgentRequest:
     agent_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'agent_id', 'style': 'simple', 'explode': False }})
     r"""Unique id of the agent to be updated."""
-    agent_no_default_no_required: components_agentnodefaultnorequired.AgentNoDefaultNoRequired = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
-    
-
+    request_body: UpdateAgentRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
 
 
 @dataclasses.dataclass

@@ -28,7 +28,7 @@ class PhoneNumber:
 class CreatePhoneCallRequestBody:
     phone_number: PhoneNumber = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('phone_number') }})
     agent_prompt_params: Optional[List[components_agentpromptparams.AgentPromptParams]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agent_prompt_params'), 'exclude': lambda f: f is None }})
-    r"""Supply values to your agent prompt parameters. If the given key value cannot match any param in prompt, it would have have any effect. Learn more about [Agent Prompt Parameters](/features/agent-prompt-parameter)."""
+    r"""Supply values to your agent prompt parameters. If the given key value cannot match any param in prompt, it would have have any effect."""
     
 
 
@@ -74,7 +74,7 @@ class CreatePhoneCallResponse:
     r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    object: Optional[CreatePhoneCallResponseBody] = dataclasses.field(default=None)
+    call_detail: Optional[CreatePhoneCallResponseBody] = dataclasses.field(default=None)
     r"""Successfully retrieved an agent."""
     
 

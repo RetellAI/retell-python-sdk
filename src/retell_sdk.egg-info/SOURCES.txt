@@ -13,7 +13,6 @@ src/retellclient/websocket.py
 src/retellclient/models/__init__.py
 src/retellclient/models/components/__init__.py
 src/retellclient/models/components/agent.py
-src/retellclient/models/components/agentnodefaultnorequired.py
 src/retellclient/models/components/agentpromptparams.py
 src/retellclient/models/components/calldetail.py
 src/retellclient/models/components/callphonenumber.py

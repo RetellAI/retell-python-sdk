@@ -64,7 +64,7 @@ async def main():
             value='Adam',
         ),
     ])
-    live_client = await client.create_web_call(params=params)
+    live_client = await client.create_web_call(params)
 
     audio_module = AudioModule()
 

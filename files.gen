@@ -26,7 +26,6 @@ src/retellclient/models/components/callphonenumber.py
 src/retellclient/models/components/agentpromptparams.py
 src/retellclient/models/components/phonenumber.py
 src/retellclient/models/components/calldetail.py
-src/retellclient/models/components/agentnodefaultnorequired.py
 src/retellclient/models/components/security.py
 src/retellclient/models/errors/createagent.py
 src/retellclient/models/errors/createphonecall.py

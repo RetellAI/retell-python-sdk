@@ -15,7 +15,7 @@ class ListAgentsResponse:
     r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    classes: Optional[List[components_agent.Agent]] = dataclasses.field(default=None)
+    agents: Optional[List[components_agent.Agent]] = dataclasses.field(default=None)
     r"""Successfully retrieved all agents."""
     
 

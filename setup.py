@@ -10,7 +10,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="retell-sdk",
-    version="0.0.4",
+    version="0.0.5",
     author="Retell AI",
     description="Retell AI provides voice AI tools",
     long_description=long_description,

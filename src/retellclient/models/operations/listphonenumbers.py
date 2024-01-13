@@ -15,7 +15,7 @@ class ListPhoneNumbersResponse:
     r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
-    classes: Optional[List[components_phonenumber.PhoneNumber]] = dataclasses.field(default=None)
+    phone_numbers: Optional[List[components_phonenumber.PhoneNumber]] = dataclasses.field(default=None)
     r"""Successfully retrieved all phone number objects."""
     
 

@@ -6,6 +6,9 @@ from retellclient import utils
 from retellclient.models import components, errors, operations
 from typing import Callable, Dict, List, Optional, Union
 from .websocket import LiveClient
+import urllib.parse
+import json
+from dataclasses import asdict
 
 class RetellClient:
 
@@ -151,7 +154,7 @@ class RetellClient:
         if http_res.status_code == 201:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.CreatePhoneCallResponseBody])
-                res.object = out
+                res.call_detail = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 400:
@@ -609,7 +612,7 @@ class RetellClient:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[components.Agent]])
-                res.classes = out
+                res.agents = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
@@ -644,6 +647,12 @@ class RetellClient:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/list-calls'
+        # Special handling of filter criteria, it expects an object
+        if request.filter_criteria is not None:
+            filter_criteria_dict = asdict(request.filter_criteria)
+            filter_criteria_dict = {k: v for k, v in filter_criteria_dict.items() if v is not None}
+            url += "?filter_criteria="+urllib.parse.quote(json.dumps(filter_criteria_dict))
+            request.filter_criteria = None
         headers = {}
         query_params = utils.get_query_params(operations.ListCallsRequest, request)
         headers['Accept'] = 'application/json'
@@ -662,7 +671,7 @@ class RetellClient:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[components.CallDetail]])
-                res.classes = out
+                res.calls = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 400:
@@ -715,7 +724,7 @@ class RetellClient:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[List[components.PhoneNumber]])
-                res.classes = out
+                res.phone_numbers = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 400:
@@ -746,10 +755,10 @@ class RetellClient:
 
     
     
-    def update_agent(self, agent_no_default_no_required: components.AgentNoDefaultNoRequired, agent_id: str) -> operations.UpdateAgentResponse:
+    def update_agent(self, request_body: operations.UpdateAgentRequestBody, agent_id: str) -> operations.UpdateAgentResponse:
         r"""Update an existing agent"""
         request = operations.UpdateAgentRequest(
-            agent_no_default_no_required=agent_no_default_no_required,
+            request_body=request_body,
             agent_id=agent_id,
         )
         
@@ -757,7 +766,7 @@ class RetellClient:
         
         url = utils.generate_url(operations.UpdateAgentRequest, base_url, '/update-agent/{agent_id}', request)
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "agent_no_default_no_required", False, False, 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:

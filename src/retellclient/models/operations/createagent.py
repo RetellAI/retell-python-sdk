@@ -6,28 +6,20 @@ import requests as requests_http
 from ...models.components import agent as components_agent
 from dataclasses_json import Undefined, dataclass_json
 from retellclient import utils
-from typing import Optional
+from typing import Optional, Union
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateAgentRequestBody:
-    prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
-    r"""The prompt agent will follow. Check out [Prompt Best Practices](/features/prompt). Can use `${YOUR_PARAM_NAME}` to represent dynamic data that would get injected at each call. Learn more about [Agent Prompt Parameters](/features/prompt#prompt-parameters)."""
     voice_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('voice_id') }})
     r"""Unique voice id used for the agent. Find list of available voices and their characteristics in [Voices](/features/voices)."""
     agent_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agent_name'), 'exclude': lambda f: f is None }})
     r"""The name of the agent. Only used for your own reference."""
-    begin_message: Optional[str] = dataclasses.field(default='Hi there, how can I help you?', metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('begin_message'), 'exclude': lambda f: f is None }})
-    r"""Pre-defined message for agent to say in the begining of call. Only used when `enable_begin_message` is true. When empty, agent would wait for user to talk first."""
-    enable_begin_message: Optional[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enable_begin_message'), 'exclude': lambda f: f is None }})
-    r"""Theasdaasdasdaasd"""
-    enable_end_call: Optional[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enable_end_call'), 'exclude': lambda f: f is None }})
-    r"""Whether the agent can end a call. If false, the agent would never end a call."""
-    enable_end_message: Optional[bool] = dataclasses.field(default=False, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enable_end_message'), 'exclude': lambda f: f is None }})
-    r"""Whether the agent attempts to end the call with a pre-defined message. When this is false, the agent might still be the last one speaking in the call, but the massage can be dynamic."""
-    end_message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('end_message'), 'exclude': lambda f: f is None }})
-    r"""Pre-defined message for agent to say when agent ends the call. Only used when `enable_end_call` and `enable_end_message` is true. If you wish for agent to hang up without saying anything, set this to empty string."""
+    llm_setting: Union[components_agent.RetellLlmSetting, components_agent.CustomLlmSetting] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('llm_setting') }})
+    r"""Determines how to generate the response in the call. Currently supports using our in-house LLM response system or your own custom response generation system."""
+    interaction_setting: Optional[components_agent.InteractionSettingResponse] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('interaction_setting'), 'exclude': lambda f: f is None }})
+    r"""Setting combination that controls interaction flow, like begin and end logic."""
     
 
 
