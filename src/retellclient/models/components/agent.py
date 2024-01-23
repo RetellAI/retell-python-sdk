@@ -4,30 +4,30 @@ from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from retellclient import utils
-from typing import Optional, Literal, Union
+from typing import Dict, List, Optional, Literal, Union
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class FunctionParameters:
     type: Literal["object"] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
-    r""""The type of parameters is object.""""
-    required: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('required'), 'exclude': lambda f: f is None }})
-    r""""Defines what properties are required for the parameters.""""
+    r"""The type of parameters is object."""
     properties: Dict[str, any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('properties') }})
-    r""""Key-value pairs object where each key is the name of a property and each value is a schema used to validate that property.""""
+    r"""Key-value pairs object where each key is the name of a property and each value is a schema used to validate that property."""
+    required: Optional[List[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('required'), 'exclude': lambda f: f is None }})
+    r"""Defines what properties are required for the parameters."""
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class Function:
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
-    r""""Link to the url where the function call parameters would sent to as a json body. Most likely your server endpoint you expose for this function."""
-    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
-    r""""A description of what the function does, used by the model to choose when and how to call the function. Recommended to populate this for better results.""""
+    r"""Link to the url where the function call parameters would sent to as a json body. Most likely your server endpoint you expose for this function."""
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    r""""The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64.""""
+    r"""The name of the function to be called. Must be a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64."""
+    description: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description'), 'exclude': lambda f: f is None }})
+    r"""A description of what the function does, used by the model to choose when and how to call the function. Recommended to populate this for better results."""
     parameters: Optional[FunctionParameters] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('parameters'), 'exclude': lambda f: f is None }})
-    r""""The parameters the functions accepts, described as a JSON Schema object for type object. """"
+    r"""The parameters the functions accepts, described as a JSON Schema object for type object. """
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
@@ -91,4 +91,6 @@ class Agent:
     r"""Last modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available."""
     agent_name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('agent_name'), 'exclude': lambda f: f is None }})
     r"""The name of the agent. Only used for your own reference."""
+    functions: Optional[List[Function]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('functions'), 'exclude': lambda f: f is None }})
+    r"""Functions are the actions that the agent can perform, like booking appointments, retriving information, etc."""
 
