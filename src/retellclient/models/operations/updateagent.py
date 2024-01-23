@@ -20,6 +20,8 @@ class UpdateAgentRequestBody:
     r"""Determines how to generate the response in the call. Currently supports using our in-house LLM response system or your own custom response generation system."""
     interaction_setting: Optional[components_agent.InteractionSettingRequest] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('interaction_setting'), 'exclude': lambda f: f is None }})
     r"""Setting combination that controls interaction flow, like begin and end logic."""
+    functions: Optional[List[Function]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('functions'), 'exclude': lambda f: f is None }})
+    r"""Functions are the actions that the agent can perform, like booking appointments, retriving information, etc. By setting this field, either OpenAI's function calling feature or your own custom LLM's logic would determine when the function shall get called, and our server would make the call."""
 
 @dataclasses.dataclass
 class UpdateAgentRequest:
