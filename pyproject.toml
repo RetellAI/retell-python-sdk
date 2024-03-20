@@ -1,5 +1,5 @@
 [project]
-name = "toddlzt"
+name = "retell-sdk"
 version = "0.0.1-alpha.0"
 description = "The official Python library for the Retell AI API"
 readme = "README.md"
@@ -39,8 +39,8 @@ classifiers = [
 
 
 [project.urls]
-Homepage = "https://github.com/stainless-sdks/toddlzt-python"
-Repository = "https://github.com/stainless-sdks/toddlzt-python"
+Homepage = "https://github.com/stainless-sdks/retell-sdk-python"
+Repository = "https://github.com/stainless-sdks/retell-sdk-python"
 
 
 

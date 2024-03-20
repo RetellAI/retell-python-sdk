@@ -1,6 +1,6 @@
 # Retell AI Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/toddlzt.svg)](https://pypi.org/project/toddlzt/)
+[![PyPI version](https://img.shields.io/pypi/v/retell-sdk.svg)](https://pypi.org/project/retell-sdk/)
 
 The Retell AI Python library provides convenient access to the Retell AI REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
@@ -14,7 +14,7 @@ The REST API documentation can be found [on www.retellai.com](https://www.retell
 
 ```sh
 # install from PyPI
-pip install --pre toddlzt
+pip install --pre retell-sdk
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ from retell_ai import RetellAI
 
 client = RetellAI(
     # This is the default and can be omitted
-    api_key=os.environ.get("TODDLZT_API_KEY"),
+    api_key=os.environ.get("RETELL_API_KEY"),
 )
 
 agent_create_response = client.agents.create(
@@ -39,7 +39,7 @@ print(agent_create_response.agent_id)
 
 While you can provide an `api_key` keyword argument,
 we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `TODDLZT_API_KEY="My API Key"` to your `.env` file
+to add `RETELL_API_KEY="My API Key"` to your `.env` file
 so that your API Key is not stored in source control.
 
 ## Async usage
@@ -53,7 +53,7 @@ from retell_ai import AsyncRetellAI
 
 client = AsyncRetellAI(
     # This is the default and can be omitted
-    api_key=os.environ.get("TODDLZT_API_KEY"),
+    api_key=os.environ.get("RETELL_API_KEY"),
 )
 
 
@@ -278,7 +278,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/toddlzt-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/retell-sdk-python/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
