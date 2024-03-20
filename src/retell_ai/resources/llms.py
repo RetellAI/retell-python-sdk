@@ -31,17 +31,17 @@ from .._base_client import (
     make_request_options,
 )
 
-__all__ = ["Llm", "AsyncLlm"]
+__all__ = ["Llms", "AsyncLlms"]
 
 
-class Llm(SyncAPIResource):
+class Llms(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> LlmWithRawResponse:
-        return LlmWithRawResponse(self)
+    def with_raw_response(self) -> LlmsWithRawResponse:
+        return LlmsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> LlmWithStreamingResponse:
-        return LlmWithStreamingResponse(self)
+    def with_streaming_response(self) -> LlmsWithStreamingResponse:
+        return LlmsWithStreamingResponse(self)
 
     def create(
         self,
@@ -243,14 +243,14 @@ class Llm(SyncAPIResource):
         )
 
 
-class AsyncLlm(AsyncAPIResource):
+class AsyncLlms(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncLlmWithRawResponse:
-        return AsyncLlmWithRawResponse(self)
+    def with_raw_response(self) -> AsyncLlmsWithRawResponse:
+        return AsyncLlmsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncLlmWithStreamingResponse:
-        return AsyncLlmWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncLlmsWithStreamingResponse:
+        return AsyncLlmsWithStreamingResponse(self)
 
     async def create(
         self,
@@ -452,85 +452,85 @@ class AsyncLlm(AsyncAPIResource):
         )
 
 
-class LlmWithRawResponse:
-    def __init__(self, llm: Llm) -> None:
-        self._llm = llm
+class LlmsWithRawResponse:
+    def __init__(self, llms: Llms) -> None:
+        self._llms = llms
 
         self.create = to_raw_response_wrapper(
-            llm.create,
+            llms.create,
         )
         self.retrieve = to_raw_response_wrapper(
-            llm.retrieve,
+            llms.retrieve,
         )
         self.update = to_raw_response_wrapper(
-            llm.update,
+            llms.update,
         )
         self.list = to_raw_response_wrapper(
-            llm.list,
+            llms.list,
         )
         self.delete = to_raw_response_wrapper(
-            llm.delete,
+            llms.delete,
         )
 
 
-class AsyncLlmWithRawResponse:
-    def __init__(self, llm: AsyncLlm) -> None:
-        self._llm = llm
+class AsyncLlmsWithRawResponse:
+    def __init__(self, llms: AsyncLlms) -> None:
+        self._llms = llms
 
         self.create = async_to_raw_response_wrapper(
-            llm.create,
+            llms.create,
         )
         self.retrieve = async_to_raw_response_wrapper(
-            llm.retrieve,
+            llms.retrieve,
         )
         self.update = async_to_raw_response_wrapper(
-            llm.update,
+            llms.update,
         )
         self.list = async_to_raw_response_wrapper(
-            llm.list,
+            llms.list,
         )
         self.delete = async_to_raw_response_wrapper(
-            llm.delete,
+            llms.delete,
         )
 
 
-class LlmWithStreamingResponse:
-    def __init__(self, llm: Llm) -> None:
-        self._llm = llm
+class LlmsWithStreamingResponse:
+    def __init__(self, llms: Llms) -> None:
+        self._llms = llms
 
         self.create = to_streamed_response_wrapper(
-            llm.create,
+            llms.create,
         )
         self.retrieve = to_streamed_response_wrapper(
-            llm.retrieve,
+            llms.retrieve,
         )
         self.update = to_streamed_response_wrapper(
-            llm.update,
+            llms.update,
         )
         self.list = to_streamed_response_wrapper(
-            llm.list,
+            llms.list,
         )
         self.delete = to_streamed_response_wrapper(
-            llm.delete,
+            llms.delete,
         )
 
 
-class AsyncLlmWithStreamingResponse:
-    def __init__(self, llm: AsyncLlm) -> None:
-        self._llm = llm
+class AsyncLlmsWithStreamingResponse:
+    def __init__(self, llms: AsyncLlms) -> None:
+        self._llms = llms
 
         self.create = async_to_streamed_response_wrapper(
-            llm.create,
+            llms.create,
         )
         self.retrieve = async_to_streamed_response_wrapper(
-            llm.retrieve,
+            llms.retrieve,
         )
         self.update = async_to_streamed_response_wrapper(
-            llm.update,
+            llms.update,
         )
         self.list = async_to_streamed_response_wrapper(
-            llm.list,
+            llms.list,
         )
         self.delete = async_to_streamed_response_wrapper(
-            llm.delete,
+            llms.delete,
         )
