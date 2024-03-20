@@ -2,7 +2,7 @@ from typing import Iterator, AsyncIterator
 
 import pytest
 
-from toddlzt._streaming import SSEDecoder
+from retell_ai._streaming import SSEDecoder
 
 
 @pytest.mark.asyncio

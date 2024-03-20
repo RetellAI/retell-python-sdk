@@ -7,14 +7,14 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 
 import pytest
 
-from toddlzt import Toddlzt, AsyncToddlzt
+from retell_ai import RetellAI, AsyncRetellAI
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("toddlzt").setLevel(logging.DEBUG)
+logging.getLogger("retell_ai").setLevel(logging.DEBUG)
 
 
 @pytest.fixture(scope="session")
@@ -30,20 +30,20 @@ api_key = "My API Key"
 
 
 @pytest.fixture(scope="session")
-def client(request: FixtureRequest) -> Iterator[Toddlzt]:
+def client(request: FixtureRequest) -> Iterator[RetellAI]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    with Toddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
+    with RetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
         yield client
 
 
 @pytest.fixture(scope="session")
-async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncToddlzt]:
+async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncRetellAI]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    async with AsyncToddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
+    async with AsyncRetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
         yield client

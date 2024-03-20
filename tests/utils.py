@@ -8,15 +8,17 @@ from typing import Any, TypeVar, Iterator, cast
 from datetime import date, datetime
 from typing_extensions import Literal, get_args, get_origin, assert_type
 
-from toddlzt._types import NoneType
-from toddlzt._utils import (
+from retell_ai._types import NoneType
+from retell_ai._utils import (
     is_dict,
     is_list,
     is_list_type,
     is_union_type,
+    extract_type_arg,
+    is_annotated_type,
 )
-from toddlzt._compat import PYDANTIC_V2, field_outer_type, get_model_fields
-from toddlzt._models import BaseModel
+from retell_ai._compat import PYDANTIC_V2, field_outer_type, get_model_fields
+from retell_ai._models import BaseModel
 
 BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
 
@@ -49,6 +51,10 @@ def assert_matches_type(
     path: list[str],
     allow_none: bool = False,
 ) -> None:
+    # unwrap `Annotated[T, ...]` -> `T`
+    if is_annotated_type(type_):
+        type_ = extract_type_arg(type_, 0)
+
     if allow_none and value is None:
         return
 

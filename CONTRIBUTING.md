@@ -32,7 +32,7 @@ $ pip install -r requirements-dev.lock
 ## Modifying/Adding code
 
 Most of the SDK is generated code, and any modified code will be overridden on the next generation. The
-`src/toddlzt/lib/` and `examples/` directories are exceptions and will never be overridden.
+`src/retell_ai/lib/` and `examples/` directories are exceptions and will never be overridden.
 
 ## Adding and running examples
 
@@ -59,7 +59,7 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```bash
-pip install git+ssh://git@github.com:stainless-sdks/toddlzt-python.git
+pip install git+ssh://git@github.com/stainless-sdks/toddlzt-python.git
 ```
 
 Alternatively, you can build from source and install the wheel file:
@@ -82,11 +82,11 @@ pip install ./path-to-wheel-file.whl
 
 ## Running tests
 
-Most tests will require you to [setup a mock server](https://github.com/stoplightio/prism) against the OpenAPI spec to run the tests.
+Most tests require you to [set up a mock server](https://github.com/stoplightio/prism) against the OpenAPI spec to run the tests.
 
 ```bash
 # you will need npm installed
-npx prism path/to/your/openapi.yml
+npx prism mock path/to/your/openapi.yml
 ```
 
 ```bash
@@ -117,7 +117,7 @@ the changes aren't made through the automated pipeline, you may want to make rel
 
 ### Publish with a GitHub workflow
 
-You can release to package managers by using [the `Publish PyPI` GitHub action](https://www.github.com/stainless-sdks/toddlzt-python/actions/workflows/publish-pypi.yml). This will require a setup organization or repository secret to be set up.
+You can release to package managers by using [the `Publish PyPI` GitHub action](https://www.github.com/stainless-sdks/toddlzt-python/actions/workflows/publish-pypi.yml). This requires a setup organization or repository secret to be set up.
 
 ### Publish manually
 

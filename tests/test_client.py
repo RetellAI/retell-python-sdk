@@ -1,4 +1,4 @@
-# File generated from our OpenAPI spec by Stainless.
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from __future__ import annotations
 
@@ -16,12 +16,12 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from toddlzt import Toddlzt, AsyncToddlzt, APIResponseValidationError
-from toddlzt._client import Toddlzt, AsyncToddlzt
-from toddlzt._models import BaseModel, FinalRequestOptions
-from toddlzt._constants import RAW_RESPONSE_HEADER
-from toddlzt._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
-from toddlzt._base_client import (
+from retell_ai import RetellAI, AsyncRetellAI, APIResponseValidationError
+from retell_ai._client import RetellAI, AsyncRetellAI
+from retell_ai._models import BaseModel, FinalRequestOptions
+from retell_ai._constants import RAW_RESPONSE_HEADER
+from retell_ai._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from retell_ai._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
     BaseClient,
@@ -44,7 +44,7 @@ def _low_retry_timeout(*_args: Any, **_kwargs: Any) -> float:
     return 0.1
 
 
-def _get_open_connections(client: Toddlzt | AsyncToddlzt) -> int:
+def _get_open_connections(client: RetellAI | AsyncRetellAI) -> int:
     transport = client._client._transport
     assert isinstance(transport, httpx.HTTPTransport) or isinstance(transport, httpx.AsyncHTTPTransport)
 
@@ -52,8 +52,8 @@ def _get_open_connections(client: Toddlzt | AsyncToddlzt) -> int:
     return len(pool._requests)
 
 
-class TestToddlzt:
-    client = Toddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+class TestRetellAI:
+    client = RetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response(self, respx_mock: MockRouter) -> None:
@@ -100,7 +100,7 @@ class TestToddlzt:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = Toddlzt(
+        client = RetellAI(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         assert client.default_headers["X-Foo"] == "bar"
@@ -134,7 +134,7 @@ class TestToddlzt:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = Toddlzt(
+        client = RetellAI(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -225,10 +225,10 @@ class TestToddlzt:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "toddlzt/_legacy_response.py",
-                        "toddlzt/_response.py",
+                        "retell_ai/_legacy_response.py",
+                        "retell_ai/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "toddlzt/_compat.py",
+                        "retell_ai/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -259,7 +259,9 @@ class TestToddlzt:
         assert timeout == httpx.Timeout(100.0)
 
     def test_client_timeout_option(self) -> None:
-        client = Toddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True, timeout=httpx.Timeout(0))
+        client = RetellAI(
+            base_url=base_url, api_key=api_key, _strict_response_validation=True, timeout=httpx.Timeout(0)
+        )
 
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
@@ -268,7 +270,7 @@ class TestToddlzt:
     def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         with httpx.Client(timeout=None) as http_client:
-            client = Toddlzt(
+            client = RetellAI(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -278,7 +280,7 @@ class TestToddlzt:
 
         # no timeout given to the httpx client should not use the httpx default
         with httpx.Client() as http_client:
-            client = Toddlzt(
+            client = RetellAI(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -288,7 +290,7 @@ class TestToddlzt:
 
         # explicitly passing the default timeout currently results in it being ignored
         with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = Toddlzt(
+            client = RetellAI(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -296,15 +298,25 @@ class TestToddlzt:
             timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
             assert timeout == DEFAULT_TIMEOUT  # our default
 
+    async def test_invalid_http_client(self) -> None:
+        with pytest.raises(TypeError, match="Invalid `http_client` arg"):
+            async with httpx.AsyncClient() as http_client:
+                RetellAI(
+                    base_url=base_url,
+                    api_key=api_key,
+                    _strict_response_validation=True,
+                    http_client=cast(Any, http_client),
+                )
+
     def test_default_headers_option(self) -> None:
-        client = Toddlzt(
+        client = RetellAI(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = Toddlzt(
+        client2 = RetellAI(
             base_url=base_url,
             api_key=api_key,
             _strict_response_validation=True,
@@ -318,7 +330,7 @@ class TestToddlzt:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_default_query_option(self) -> None:
-        client = Toddlzt(
+        client = RetellAI(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -432,7 +444,7 @@ class TestToddlzt:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, client: Toddlzt) -> None:
+    def test_multipart_repeating_array(self, client: RetellAI) -> None:
         request = client._build_request(
             FinalRequestOptions.construct(
                 method="get",
@@ -519,7 +531,7 @@ class TestToddlzt:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = Toddlzt(base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True)
+        client = RetellAI(base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True)
         assert client.base_url == "https://example.com/from_init/"
 
         client.base_url = "https://example.com/from_setter"  # type: ignore[assignment]
@@ -527,15 +539,15 @@ class TestToddlzt:
         assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
-        with update_env(TODDLZT_BASE_URL="http://localhost:5000/from/env"):
-            client = Toddlzt(api_key=api_key, _strict_response_validation=True)
+        with update_env(RETELL_AI_BASE_URL="http://localhost:5000/from/env"):
+            client = RetellAI(api_key=api_key, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            Toddlzt(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
-            Toddlzt(
+            RetellAI(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
+            RetellAI(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -544,7 +556,7 @@ class TestToddlzt:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: Toddlzt) -> None:
+    def test_base_url_trailing_slash(self, client: RetellAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -557,8 +569,8 @@ class TestToddlzt:
     @pytest.mark.parametrize(
         "client",
         [
-            Toddlzt(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
-            Toddlzt(
+            RetellAI(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
+            RetellAI(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -567,7 +579,7 @@ class TestToddlzt:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: Toddlzt) -> None:
+    def test_base_url_no_trailing_slash(self, client: RetellAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -580,8 +592,8 @@ class TestToddlzt:
     @pytest.mark.parametrize(
         "client",
         [
-            Toddlzt(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
-            Toddlzt(
+            RetellAI(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
+            RetellAI(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -590,7 +602,7 @@ class TestToddlzt:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: Toddlzt) -> None:
+    def test_absolute_request_url(self, client: RetellAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -601,7 +613,7 @@ class TestToddlzt:
         assert request.url == "https://myapi.com/foo"
 
     def test_copied_client_does_not_close_http(self) -> None:
-        client = Toddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = RetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -612,7 +624,7 @@ class TestToddlzt:
         assert not client.is_closed()
 
     def test_client_context_manager(self) -> None:
-        client = Toddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = RetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -638,12 +650,12 @@ class TestToddlzt:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = Toddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        strict_client = RetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
-        client = Toddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+        client = RetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=False)
 
         response = client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -670,14 +682,14 @@ class TestToddlzt:
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = Toddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = RetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("toddlzt._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("retell_ai._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/create-agent").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -685,14 +697,14 @@ class TestToddlzt:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Ryan")),
+                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("toddlzt._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("retell_ai._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/create-agent").mock(return_value=httpx.Response(500))
@@ -700,7 +712,7 @@ class TestToddlzt:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Ryan")),
+                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -708,8 +720,8 @@ class TestToddlzt:
         assert _get_open_connections(self.client) == 0
 
 
-class TestAsyncToddlzt:
-    client = AsyncToddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+class TestAsyncRetellAI:
+    client = AsyncRetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
@@ -758,7 +770,7 @@ class TestAsyncToddlzt:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = AsyncToddlzt(
+        client = AsyncRetellAI(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         assert client.default_headers["X-Foo"] == "bar"
@@ -792,7 +804,7 @@ class TestAsyncToddlzt:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = AsyncToddlzt(
+        client = AsyncRetellAI(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -883,10 +895,10 @@ class TestAsyncToddlzt:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "toddlzt/_legacy_response.py",
-                        "toddlzt/_response.py",
+                        "retell_ai/_legacy_response.py",
+                        "retell_ai/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "toddlzt/_compat.py",
+                        "retell_ai/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -917,7 +929,7 @@ class TestAsyncToddlzt:
         assert timeout == httpx.Timeout(100.0)
 
     async def test_client_timeout_option(self) -> None:
-        client = AsyncToddlzt(
+        client = AsyncRetellAI(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, timeout=httpx.Timeout(0)
         )
 
@@ -928,7 +940,7 @@ class TestAsyncToddlzt:
     async def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         async with httpx.AsyncClient(timeout=None) as http_client:
-            client = AsyncToddlzt(
+            client = AsyncRetellAI(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -938,7 +950,7 @@ class TestAsyncToddlzt:
 
         # no timeout given to the httpx client should not use the httpx default
         async with httpx.AsyncClient() as http_client:
-            client = AsyncToddlzt(
+            client = AsyncRetellAI(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -948,7 +960,7 @@ class TestAsyncToddlzt:
 
         # explicitly passing the default timeout currently results in it being ignored
         async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = AsyncToddlzt(
+            client = AsyncRetellAI(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -956,15 +968,25 @@ class TestAsyncToddlzt:
             timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
             assert timeout == DEFAULT_TIMEOUT  # our default
 
+    def test_invalid_http_client(self) -> None:
+        with pytest.raises(TypeError, match="Invalid `http_client` arg"):
+            with httpx.Client() as http_client:
+                AsyncRetellAI(
+                    base_url=base_url,
+                    api_key=api_key,
+                    _strict_response_validation=True,
+                    http_client=cast(Any, http_client),
+                )
+
     def test_default_headers_option(self) -> None:
-        client = AsyncToddlzt(
+        client = AsyncRetellAI(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = AsyncToddlzt(
+        client2 = AsyncRetellAI(
             base_url=base_url,
             api_key=api_key,
             _strict_response_validation=True,
@@ -978,7 +1000,7 @@ class TestAsyncToddlzt:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_default_query_option(self) -> None:
-        client = AsyncToddlzt(
+        client = AsyncRetellAI(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -1092,7 +1114,7 @@ class TestAsyncToddlzt:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, async_client: AsyncToddlzt) -> None:
+    def test_multipart_repeating_array(self, async_client: AsyncRetellAI) -> None:
         request = async_client._build_request(
             FinalRequestOptions.construct(
                 method="get",
@@ -1179,7 +1201,7 @@ class TestAsyncToddlzt:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = AsyncToddlzt(
+        client = AsyncRetellAI(
             base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -1189,17 +1211,17 @@ class TestAsyncToddlzt:
         assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
-        with update_env(TODDLZT_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncToddlzt(api_key=api_key, _strict_response_validation=True)
+        with update_env(RETELL_AI_BASE_URL="http://localhost:5000/from/env"):
+            client = AsyncRetellAI(api_key=api_key, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncToddlzt(
+            AsyncRetellAI(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncToddlzt(
+            AsyncRetellAI(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1208,7 +1230,7 @@ class TestAsyncToddlzt:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: AsyncToddlzt) -> None:
+    def test_base_url_trailing_slash(self, client: AsyncRetellAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1221,10 +1243,10 @@ class TestAsyncToddlzt:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncToddlzt(
+            AsyncRetellAI(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncToddlzt(
+            AsyncRetellAI(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1233,7 +1255,7 @@ class TestAsyncToddlzt:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: AsyncToddlzt) -> None:
+    def test_base_url_no_trailing_slash(self, client: AsyncRetellAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1246,10 +1268,10 @@ class TestAsyncToddlzt:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncToddlzt(
+            AsyncRetellAI(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncToddlzt(
+            AsyncRetellAI(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1258,7 +1280,7 @@ class TestAsyncToddlzt:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: AsyncToddlzt) -> None:
+    def test_absolute_request_url(self, client: AsyncRetellAI) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1269,7 +1291,7 @@ class TestAsyncToddlzt:
         assert request.url == "https://myapi.com/foo"
 
     async def test_copied_client_does_not_close_http(self) -> None:
-        client = AsyncToddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncRetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -1281,7 +1303,7 @@ class TestAsyncToddlzt:
         assert not client.is_closed()
 
     async def test_client_context_manager(self) -> None:
-        client = AsyncToddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncRetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         async with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -1309,12 +1331,12 @@ class TestAsyncToddlzt:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = AsyncToddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        strict_client = AsyncRetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
-        client = AsyncToddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+        client = AsyncRetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=False)
 
         response = await client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -1342,14 +1364,14 @@ class TestAsyncToddlzt:
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     @pytest.mark.asyncio
     async def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = AsyncToddlzt(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncRetellAI(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("toddlzt._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("retell_ai._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/create-agent").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -1357,14 +1379,14 @@ class TestAsyncToddlzt:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Ryan")),
+                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("toddlzt._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("retell_ai._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/create-agent").mock(return_value=httpx.Response(500))
@@ -1372,7 +1394,7 @@ class TestAsyncToddlzt:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Ryan")),
+                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )

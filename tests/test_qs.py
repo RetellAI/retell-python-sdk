@@ -4,7 +4,7 @@ from urllib.parse import unquote
 
 import pytest
 
-from toddlzt._qs import Querystring, stringify
+from retell_ai._qs import Querystring, stringify
 
 
 def test_empty() -> None:
