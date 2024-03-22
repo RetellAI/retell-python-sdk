@@ -8,7 +8,7 @@ from pydantic import Field as FieldInfo
 from .._models import BaseModel
 
 __all__ = [
-    "LlmUpdateResponse",
+    "RetellLlmCreateResponse",
     "GeneralTool",
     "GeneralToolEndCallTool",
     "GeneralToolTransferCallTool",
@@ -151,12 +151,12 @@ class State(BaseModel):
     tools: Optional[List[StateTool]] = None
 
 
-class LlmUpdateResponse(BaseModel):
+class RetellLlmCreateResponse(BaseModel):
+    general_prompt: str
+    """General prompt used in every state."""
+
     begin_message: Optional[str] = None
     """Optional first phrase said by the agent."""
-
-    general_prompt: Optional[str] = None
-    """General prompt used in every state."""
 
     general_tools: Optional[List[GeneralTool]] = None
     """Optional array of tools used in every state."""

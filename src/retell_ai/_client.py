@@ -46,9 +46,10 @@ __all__ = [
 
 
 class RetellAI(SyncAPIClient):
+    register_calls: resources.RegisterCalls
     calls: resources.Calls
     agents: resources.Agents
-    llms: resources.Llms
+    retell_llms: resources.RetellLlms
     with_raw_response: RetellAIWithRawResponse
     with_streaming_response: RetellAIWithStreamedResponse
 
@@ -104,9 +105,10 @@ class RetellAI(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
+        self.register_calls = resources.RegisterCalls(self)
         self.calls = resources.Calls(self)
         self.agents = resources.Agents(self)
-        self.llms = resources.Llms(self)
+        self.retell_llms = resources.RetellLlms(self)
         self.with_raw_response = RetellAIWithRawResponse(self)
         self.with_streaming_response = RetellAIWithStreamedResponse(self)
 
@@ -216,9 +218,10 @@ class RetellAI(SyncAPIClient):
 
 
 class AsyncRetellAI(AsyncAPIClient):
+    register_calls: resources.AsyncRegisterCalls
     calls: resources.AsyncCalls
     agents: resources.AsyncAgents
-    llms: resources.AsyncLlms
+    retell_llms: resources.AsyncRetellLlms
     with_raw_response: AsyncRetellAIWithRawResponse
     with_streaming_response: AsyncRetellAIWithStreamedResponse
 
@@ -274,9 +277,10 @@ class AsyncRetellAI(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
+        self.register_calls = resources.AsyncRegisterCalls(self)
         self.calls = resources.AsyncCalls(self)
         self.agents = resources.AsyncAgents(self)
-        self.llms = resources.AsyncLlms(self)
+        self.retell_llms = resources.AsyncRetellLlms(self)
         self.with_raw_response = AsyncRetellAIWithRawResponse(self)
         self.with_streaming_response = AsyncRetellAIWithStreamedResponse(self)
 
@@ -387,30 +391,34 @@ class AsyncRetellAI(AsyncAPIClient):
 
 class RetellAIWithRawResponse:
     def __init__(self, client: RetellAI) -> None:
+        self.register_calls = resources.RegisterCallsWithRawResponse(client.register_calls)
         self.calls = resources.CallsWithRawResponse(client.calls)
         self.agents = resources.AgentsWithRawResponse(client.agents)
-        self.llms = resources.LlmsWithRawResponse(client.llms)
+        self.retell_llms = resources.RetellLlmsWithRawResponse(client.retell_llms)
 
 
 class AsyncRetellAIWithRawResponse:
     def __init__(self, client: AsyncRetellAI) -> None:
+        self.register_calls = resources.AsyncRegisterCallsWithRawResponse(client.register_calls)
         self.calls = resources.AsyncCallsWithRawResponse(client.calls)
         self.agents = resources.AsyncAgentsWithRawResponse(client.agents)
-        self.llms = resources.AsyncLlmsWithRawResponse(client.llms)
+        self.retell_llms = resources.AsyncRetellLlmsWithRawResponse(client.retell_llms)
 
 
 class RetellAIWithStreamedResponse:
     def __init__(self, client: RetellAI) -> None:
+        self.register_calls = resources.RegisterCallsWithStreamingResponse(client.register_calls)
         self.calls = resources.CallsWithStreamingResponse(client.calls)
         self.agents = resources.AgentsWithStreamingResponse(client.agents)
-        self.llms = resources.LlmsWithStreamingResponse(client.llms)
+        self.retell_llms = resources.RetellLlmsWithStreamingResponse(client.retell_llms)
 
 
 class AsyncRetellAIWithStreamedResponse:
     def __init__(self, client: AsyncRetellAI) -> None:
+        self.register_calls = resources.AsyncRegisterCallsWithStreamingResponse(client.register_calls)
         self.calls = resources.AsyncCallsWithStreamingResponse(client.calls)
         self.agents = resources.AsyncAgentsWithStreamingResponse(client.agents)
-        self.llms = resources.AsyncLlmsWithStreamingResponse(client.llms)
+        self.retell_llms = resources.AsyncRetellLlmsWithStreamingResponse(client.retell_llms)
 
 
 Client = RetellAI

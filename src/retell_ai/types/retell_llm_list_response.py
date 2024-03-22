@@ -8,24 +8,25 @@ from pydantic import Field as FieldInfo
 from .._models import BaseModel
 
 __all__ = [
-    "LlmRetrieveResponse",
-    "GeneralTool",
-    "GeneralToolEndCallTool",
-    "GeneralToolTransferCallTool",
-    "GeneralToolCustomTool",
-    "GeneralToolCustomToolParameters",
-    "State",
-    "StateEdge",
-    "StateEdgeParameters",
-    "StateTool",
-    "StateToolEndCallTool",
-    "StateToolTransferCallTool",
-    "StateToolCustomTool",
-    "StateToolCustomToolParameters",
+    "RetellLlmListResponse",
+    "RetellLlmListResponseItem",
+    "RetellLlmListResponseItemGeneralTool",
+    "RetellLlmListResponseItemGeneralToolEndCallTool",
+    "RetellLlmListResponseItemGeneralToolTransferCallTool",
+    "RetellLlmListResponseItemGeneralToolCustomTool",
+    "RetellLlmListResponseItemGeneralToolCustomToolParameters",
+    "RetellLlmListResponseItemState",
+    "RetellLlmListResponseItemStateEdge",
+    "RetellLlmListResponseItemStateEdgeParameters",
+    "RetellLlmListResponseItemStateTool",
+    "RetellLlmListResponseItemStateToolEndCallTool",
+    "RetellLlmListResponseItemStateToolTransferCallTool",
+    "RetellLlmListResponseItemStateToolCustomTool",
+    "RetellLlmListResponseItemStateToolCustomToolParameters",
 ]
 
 
-class GeneralToolEndCallTool(BaseModel):
+class RetellLlmListResponseItemGeneralToolEndCallTool(BaseModel):
     description: Optional[str] = None
 
     name: Optional[Literal["end_call"]] = None
@@ -33,7 +34,7 @@ class GeneralToolEndCallTool(BaseModel):
     type: Optional[Literal["pre_defined"]] = None
 
 
-class GeneralToolTransferCallTool(BaseModel):
+class RetellLlmListResponseItemGeneralToolTransferCallTool(BaseModel):
     description: Optional[str] = None
 
     name: Optional[Literal["transfer_call"]] = None
@@ -43,7 +44,7 @@ class GeneralToolTransferCallTool(BaseModel):
     type: Optional[Literal["pre_defined"]] = None
 
 
-class GeneralToolCustomToolParameters(BaseModel):
+class RetellLlmListResponseItemGeneralToolCustomToolParameters(BaseModel):
     properties: Optional[Dict[str, object]] = None
 
     required: Optional[List[str]] = None
@@ -51,7 +52,7 @@ class GeneralToolCustomToolParameters(BaseModel):
     type: Optional[Literal["object"]] = None
 
 
-class GeneralToolCustomTool(BaseModel):
+class RetellLlmListResponseItemGeneralToolCustomTool(BaseModel):
     description: Optional[str] = None
 
     execution_message_description: Optional[str] = None
@@ -60,7 +61,7 @@ class GeneralToolCustomTool(BaseModel):
 
     name: Optional[str] = None
 
-    parameters: Optional[GeneralToolCustomToolParameters] = None
+    parameters: Optional[RetellLlmListResponseItemGeneralToolCustomToolParameters] = None
 
     speak_after_execution: Optional[bool] = None
 
@@ -71,10 +72,14 @@ class GeneralToolCustomTool(BaseModel):
     url: Optional[str] = None
 
 
-GeneralTool = Union[GeneralToolEndCallTool, GeneralToolTransferCallTool, GeneralToolCustomTool]
+RetellLlmListResponseItemGeneralTool = Union[
+    RetellLlmListResponseItemGeneralToolEndCallTool,
+    RetellLlmListResponseItemGeneralToolTransferCallTool,
+    RetellLlmListResponseItemGeneralToolCustomTool,
+]
 
 
-class StateEdgeParameters(BaseModel):
+class RetellLlmListResponseItemStateEdgeParameters(BaseModel):
     properties: Optional[Dict[str, object]] = None
 
     required: Optional[List[str]] = None
@@ -82,17 +87,17 @@ class StateEdgeParameters(BaseModel):
     type: Optional[Literal["object"]] = None
 
 
-class StateEdge(BaseModel):
+class RetellLlmListResponseItemStateEdge(BaseModel):
     description: Optional[str] = None
 
     destination_state_name: Optional[str] = FieldInfo(alias="destinationStateName", default=None)
 
-    parameters: Optional[StateEdgeParameters] = None
+    parameters: Optional[RetellLlmListResponseItemStateEdgeParameters] = None
 
     speak_during_transition: Optional[bool] = FieldInfo(alias="speakDuringTransition", default=None)
 
 
-class StateToolEndCallTool(BaseModel):
+class RetellLlmListResponseItemStateToolEndCallTool(BaseModel):
     description: Optional[str] = None
 
     name: Optional[Literal["end_call"]] = None
@@ -100,7 +105,7 @@ class StateToolEndCallTool(BaseModel):
     type: Optional[Literal["pre_defined"]] = None
 
 
-class StateToolTransferCallTool(BaseModel):
+class RetellLlmListResponseItemStateToolTransferCallTool(BaseModel):
     description: Optional[str] = None
 
     name: Optional[Literal["transfer_call"]] = None
@@ -110,7 +115,7 @@ class StateToolTransferCallTool(BaseModel):
     type: Optional[Literal["pre_defined"]] = None
 
 
-class StateToolCustomToolParameters(BaseModel):
+class RetellLlmListResponseItemStateToolCustomToolParameters(BaseModel):
     properties: Optional[Dict[str, object]] = None
 
     required: Optional[List[str]] = None
@@ -118,7 +123,7 @@ class StateToolCustomToolParameters(BaseModel):
     type: Optional[Literal["object"]] = None
 
 
-class StateToolCustomTool(BaseModel):
+class RetellLlmListResponseItemStateToolCustomTool(BaseModel):
     description: Optional[str] = None
 
     execution_message_description: Optional[str] = None
@@ -127,7 +132,7 @@ class StateToolCustomTool(BaseModel):
 
     name: Optional[str] = None
 
-    parameters: Optional[StateToolCustomToolParameters] = None
+    parameters: Optional[RetellLlmListResponseItemStateToolCustomToolParameters] = None
 
     speak_after_execution: Optional[bool] = None
 
@@ -138,27 +143,31 @@ class StateToolCustomTool(BaseModel):
     url: Optional[str] = None
 
 
-StateTool = Union[StateToolEndCallTool, StateToolTransferCallTool, StateToolCustomTool]
+RetellLlmListResponseItemStateTool = Union[
+    RetellLlmListResponseItemStateToolEndCallTool,
+    RetellLlmListResponseItemStateToolTransferCallTool,
+    RetellLlmListResponseItemStateToolCustomTool,
+]
 
 
-class State(BaseModel):
-    edges: Optional[List[StateEdge]] = None
+class RetellLlmListResponseItemState(BaseModel):
+    edges: Optional[List[RetellLlmListResponseItemStateEdge]] = None
 
     name: Optional[str] = None
 
     state_prompt: Optional[str] = None
 
-    tools: Optional[List[StateTool]] = None
+    tools: Optional[List[RetellLlmListResponseItemStateTool]] = None
 
 
-class LlmRetrieveResponse(BaseModel):
+class RetellLlmListResponseItem(BaseModel):
+    general_prompt: str
+    """General prompt used in every state."""
+
     begin_message: Optional[str] = None
     """Optional first phrase said by the agent."""
 
-    general_prompt: Optional[str] = None
-    """General prompt used in every state."""
-
-    general_tools: Optional[List[GeneralTool]] = None
+    general_tools: Optional[List[RetellLlmListResponseItemGeneralTool]] = None
     """Optional array of tools used in every state."""
 
     last_modification_timestamp: Optional[int] = None
@@ -173,5 +182,8 @@ class LlmRetrieveResponse(BaseModel):
     starting_state: Optional[str] = None
     """Optional identifier of the starting state."""
 
-    states: Optional[List[State]] = None
+    states: Optional[List[RetellLlmListResponseItemState]] = None
     """Optional array of states for the agent."""
+
+
+RetellLlmListResponse = List[RetellLlmListResponseItem]

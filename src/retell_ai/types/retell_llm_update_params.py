@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
 __all__ = [
-    "LlmCreateParams",
+    "RetellLlmUpdateParams",
     "GeneralTool",
     "GeneralToolEndCallTool",
     "GeneralToolTransferCallTool",
@@ -25,12 +25,12 @@ __all__ = [
 ]
 
 
-class LlmCreateParams(TypedDict, total=False):
+class RetellLlmUpdateParams(TypedDict, total=False):
+    general_prompt: Required[str]
+    """General prompt used in every state."""
+
     begin_message: str
     """Optional first phrase said by the agent."""
-
-    general_prompt: str
-    """General prompt used in every state."""
 
     general_tools: Iterable[GeneralTool]
     """Optional array of tools used in every state."""

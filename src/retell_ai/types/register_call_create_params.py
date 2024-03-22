@@ -1,18 +1,20 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from __future__ import annotations
 
-from .._models import BaseModel
+from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["CallListResponse", "CallListResponseItem"]
+__all__ = ["RegisterCallCreateParams"]
 
 
-class CallListResponseItem(BaseModel):
-    agent_id: str
-    """Corresponding agent id of this call."""
+class RegisterCallCreateParams(TypedDict, total=False):
+    agent_id: Required[str]
+    """Unique id of agent used for the call.
 
-    audio_encoding: Literal["s16le", "mulaw"]
+    Your agent would contain the LLM Websocket url used for this call.
+    """
+
+    audio_encoding: Required[Literal["s16le", "mulaw"]]
     """The audio encoding of the call. The following formats are supported:
 
     - `s16le` 16 bit linear PCM audio, the native format for web audio capture and
@@ -22,7 +24,7 @@ class CallListResponseItem(BaseModel):
       by Twilio.
     """
 
-    audio_websocket_protocol: Literal["web", "twilio"]
+    audio_websocket_protocol: Required[Literal["web", "twilio"]]
     """
     Where the audio websocket would connect from would determine the format /
     protocol of websocket messages, and would determine how our server read audio
@@ -37,26 +39,7 @@ class CallListResponseItem(BaseModel):
       audio websocket url to Twilio.
     """
 
-    call_id: str
-    """Unique id of the call.
-
-    Used to identify in LLM websocket and used to authenticate in audio websocket.
-    """
-
-    call_status: Literal["registered", "ongoing", "ended", "error"]
-    """Status of call.
-
-    - `registered`: Call id issued, ready to make a call using this id.
-
-    - `ongoing`: Call connected and ongoing.
-
-    - `ended`: The underlying websocket has ended for the call. Either user or agent
-      hanged up, or call transferred.
-
-    - `error`: Call encountered error.
-    """
-
-    sample_rate: int
+    sample_rate: Required[int]
     """
     Sample rate of the conversation, the input and output audio bytes will all
     conform to this rate. Check the audio source, audio format, and voice used for
@@ -71,17 +54,14 @@ class CallListResponseItem(BaseModel):
       - deepgram voices: 8000, 16000, 24000, 32000, 48000.
     """
 
-    start_timestamp: int
-    """Begin timestamp (milliseconds since epoch) of the call."""
-
-    end_call_after_silence_ms: Optional[int] = None
+    end_call_after_silence_ms: int
     """If users stay silent for a period, end the call.
 
     By default, it is set to 600,000 ms (10 min). The minimum value allowed is
     10,000 ms (10 s).
     """
 
-    from_number: Optional[str] = None
+    from_number: str
     """The caller number.
 
     This field is storage purpose only, set this if you want the call object to
@@ -89,7 +69,7 @@ class CallListResponseItem(BaseModel):
     connect to your LLM websocket server, you can then get it from the call object.
     """
 
-    metadata: Optional[object] = None
+    metadata: object
     """An abtriary object for storage purpose only.
 
     You can put anything here like your own id for the call, twilio SID, internal
@@ -97,13 +77,10 @@ class CallListResponseItem(BaseModel):
     server, you can then get it from the call object.
     """
 
-    to_number: Optional[str] = None
+    to_number: str
     """The callee number.
 
     This field is storage purpose only, set this if you want the call object to
     contain it so that it's easier to reference it. Not used for processing, when we
     connect to your LLM websocket server, you can then get it from the call object.
     """
-
-
-CallListResponse = List[CallListResponseItem]

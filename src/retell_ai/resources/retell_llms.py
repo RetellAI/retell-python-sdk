@@ -7,12 +7,12 @@ from typing import Iterable
 import httpx
 
 from ..types import (
-    LlmListResponse,
-    LlmCreateResponse,
-    LlmUpdateResponse,
-    LlmRetrieveResponse,
-    llm_create_params,
-    llm_update_params,
+    RetellLlmListResponse,
+    RetellLlmCreateResponse,
+    RetellLlmUpdateResponse,
+    RetellLlmRetrieveResponse,
+    retell_llm_create_params,
+    retell_llm_update_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
@@ -31,40 +31,40 @@ from .._base_client import (
     make_request_options,
 )
 
-__all__ = ["Llms", "AsyncLlms"]
+__all__ = ["RetellLlms", "AsyncRetellLlms"]
 
 
-class Llms(SyncAPIResource):
+class RetellLlms(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> LlmsWithRawResponse:
-        return LlmsWithRawResponse(self)
+    def with_raw_response(self) -> RetellLlmsWithRawResponse:
+        return RetellLlmsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> LlmsWithStreamingResponse:
-        return LlmsWithStreamingResponse(self)
+    def with_streaming_response(self) -> RetellLlmsWithStreamingResponse:
+        return RetellLlmsWithStreamingResponse(self)
 
     def create(
         self,
         *,
+        general_prompt: str,
         begin_message: str | NotGiven = NOT_GIVEN,
-        general_prompt: str | NotGiven = NOT_GIVEN,
-        general_tools: Iterable[llm_create_params.GeneralTool] | NotGiven = NOT_GIVEN,
+        general_tools: Iterable[retell_llm_create_params.GeneralTool] | NotGiven = NOT_GIVEN,
         starting_state: str | NotGiven = NOT_GIVEN,
-        states: Iterable[llm_create_params.State] | NotGiven = NOT_GIVEN,
+        states: Iterable[retell_llm_create_params.State] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmCreateResponse:
+    ) -> RetellLlmCreateResponse:
         """
         Create a new Retell LLM
 
         Args:
-          begin_message: Optional first phrase said by the agent.
-
           general_prompt: General prompt used in every state.
+
+          begin_message: Optional first phrase said by the agent.
 
           general_tools: Optional array of tools used in every state.
 
@@ -84,18 +84,18 @@ class Llms(SyncAPIResource):
             "/create-retell-llm",
             body=maybe_transform(
                 {
-                    "begin_message": begin_message,
                     "general_prompt": general_prompt,
+                    "begin_message": begin_message,
                     "general_tools": general_tools,
                     "starting_state": starting_state,
                     "states": states,
                 },
-                llm_create_params.LlmCreateParams,
+                retell_llm_create_params.RetellLlmCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmCreateResponse,
+            cast_to=RetellLlmCreateResponse,
         )
 
     def retrieve(
@@ -108,7 +108,7 @@ class Llms(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmRetrieveResponse:
+    ) -> RetellLlmRetrieveResponse:
         """
         Retrieve details of a specific Retell LLM
 
@@ -128,32 +128,32 @@ class Llms(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmRetrieveResponse,
+            cast_to=RetellLlmRetrieveResponse,
         )
 
     def update(
         self,
         llm_id: str,
         *,
+        general_prompt: str,
         begin_message: str | NotGiven = NOT_GIVEN,
-        general_prompt: str | NotGiven = NOT_GIVEN,
-        general_tools: Iterable[llm_update_params.GeneralTool] | NotGiven = NOT_GIVEN,
+        general_tools: Iterable[retell_llm_update_params.GeneralTool] | NotGiven = NOT_GIVEN,
         starting_state: str | NotGiven = NOT_GIVEN,
-        states: Iterable[llm_update_params.State] | NotGiven = NOT_GIVEN,
+        states: Iterable[retell_llm_update_params.State] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmUpdateResponse:
+    ) -> RetellLlmUpdateResponse:
         """
         Update an existing Retell LLM
 
         Args:
-          begin_message: Optional first phrase said by the agent.
-
           general_prompt: General prompt used in every state.
+
+          begin_message: Optional first phrase said by the agent.
 
           general_tools: Optional array of tools used in every state.
 
@@ -175,18 +175,18 @@ class Llms(SyncAPIResource):
             f"/update-retell-llm/{llm_id}",
             body=maybe_transform(
                 {
-                    "begin_message": begin_message,
                     "general_prompt": general_prompt,
+                    "begin_message": begin_message,
                     "general_tools": general_tools,
                     "starting_state": starting_state,
                     "states": states,
                 },
-                llm_update_params.LlmUpdateParams,
+                retell_llm_update_params.RetellLlmUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmUpdateResponse,
+            cast_to=RetellLlmUpdateResponse,
         )
 
     def list(
@@ -198,14 +198,14 @@ class Llms(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmListResponse:
+    ) -> RetellLlmListResponse:
         """List all retell LLM"""
         return self._get(
             "/list-retell-llm",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmListResponse,
+            cast_to=RetellLlmListResponse,
         )
 
     def delete(
@@ -243,37 +243,37 @@ class Llms(SyncAPIResource):
         )
 
 
-class AsyncLlms(AsyncAPIResource):
+class AsyncRetellLlms(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncLlmsWithRawResponse:
-        return AsyncLlmsWithRawResponse(self)
+    def with_raw_response(self) -> AsyncRetellLlmsWithRawResponse:
+        return AsyncRetellLlmsWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncLlmsWithStreamingResponse:
-        return AsyncLlmsWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncRetellLlmsWithStreamingResponse:
+        return AsyncRetellLlmsWithStreamingResponse(self)
 
     async def create(
         self,
         *,
+        general_prompt: str,
         begin_message: str | NotGiven = NOT_GIVEN,
-        general_prompt: str | NotGiven = NOT_GIVEN,
-        general_tools: Iterable[llm_create_params.GeneralTool] | NotGiven = NOT_GIVEN,
+        general_tools: Iterable[retell_llm_create_params.GeneralTool] | NotGiven = NOT_GIVEN,
         starting_state: str | NotGiven = NOT_GIVEN,
-        states: Iterable[llm_create_params.State] | NotGiven = NOT_GIVEN,
+        states: Iterable[retell_llm_create_params.State] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmCreateResponse:
+    ) -> RetellLlmCreateResponse:
         """
         Create a new Retell LLM
 
         Args:
-          begin_message: Optional first phrase said by the agent.
-
           general_prompt: General prompt used in every state.
+
+          begin_message: Optional first phrase said by the agent.
 
           general_tools: Optional array of tools used in every state.
 
@@ -293,18 +293,18 @@ class AsyncLlms(AsyncAPIResource):
             "/create-retell-llm",
             body=await async_maybe_transform(
                 {
-                    "begin_message": begin_message,
                     "general_prompt": general_prompt,
+                    "begin_message": begin_message,
                     "general_tools": general_tools,
                     "starting_state": starting_state,
                     "states": states,
                 },
-                llm_create_params.LlmCreateParams,
+                retell_llm_create_params.RetellLlmCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmCreateResponse,
+            cast_to=RetellLlmCreateResponse,
         )
 
     async def retrieve(
@@ -317,7 +317,7 @@ class AsyncLlms(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmRetrieveResponse:
+    ) -> RetellLlmRetrieveResponse:
         """
         Retrieve details of a specific Retell LLM
 
@@ -337,32 +337,32 @@ class AsyncLlms(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmRetrieveResponse,
+            cast_to=RetellLlmRetrieveResponse,
         )
 
     async def update(
         self,
         llm_id: str,
         *,
+        general_prompt: str,
         begin_message: str | NotGiven = NOT_GIVEN,
-        general_prompt: str | NotGiven = NOT_GIVEN,
-        general_tools: Iterable[llm_update_params.GeneralTool] | NotGiven = NOT_GIVEN,
+        general_tools: Iterable[retell_llm_update_params.GeneralTool] | NotGiven = NOT_GIVEN,
         starting_state: str | NotGiven = NOT_GIVEN,
-        states: Iterable[llm_update_params.State] | NotGiven = NOT_GIVEN,
+        states: Iterable[retell_llm_update_params.State] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmUpdateResponse:
+    ) -> RetellLlmUpdateResponse:
         """
         Update an existing Retell LLM
 
         Args:
-          begin_message: Optional first phrase said by the agent.
-
           general_prompt: General prompt used in every state.
+
+          begin_message: Optional first phrase said by the agent.
 
           general_tools: Optional array of tools used in every state.
 
@@ -384,18 +384,18 @@ class AsyncLlms(AsyncAPIResource):
             f"/update-retell-llm/{llm_id}",
             body=await async_maybe_transform(
                 {
-                    "begin_message": begin_message,
                     "general_prompt": general_prompt,
+                    "begin_message": begin_message,
                     "general_tools": general_tools,
                     "starting_state": starting_state,
                     "states": states,
                 },
-                llm_update_params.LlmUpdateParams,
+                retell_llm_update_params.RetellLlmUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmUpdateResponse,
+            cast_to=RetellLlmUpdateResponse,
         )
 
     async def list(
@@ -407,14 +407,14 @@ class AsyncLlms(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmListResponse:
+    ) -> RetellLlmListResponse:
         """List all retell LLM"""
         return await self._get(
             "/list-retell-llm",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmListResponse,
+            cast_to=RetellLlmListResponse,
         )
 
     async def delete(
@@ -452,85 +452,85 @@ class AsyncLlms(AsyncAPIResource):
         )
 
 
-class LlmsWithRawResponse:
-    def __init__(self, llms: Llms) -> None:
-        self._llms = llms
+class RetellLlmsWithRawResponse:
+    def __init__(self, retell_llms: RetellLlms) -> None:
+        self._retell_llms = retell_llms
 
         self.create = to_raw_response_wrapper(
-            llms.create,
+            retell_llms.create,
         )
         self.retrieve = to_raw_response_wrapper(
-            llms.retrieve,
+            retell_llms.retrieve,
         )
         self.update = to_raw_response_wrapper(
-            llms.update,
+            retell_llms.update,
         )
         self.list = to_raw_response_wrapper(
-            llms.list,
+            retell_llms.list,
         )
         self.delete = to_raw_response_wrapper(
-            llms.delete,
+            retell_llms.delete,
         )
 
 
-class AsyncLlmsWithRawResponse:
-    def __init__(self, llms: AsyncLlms) -> None:
-        self._llms = llms
+class AsyncRetellLlmsWithRawResponse:
+    def __init__(self, retell_llms: AsyncRetellLlms) -> None:
+        self._retell_llms = retell_llms
 
         self.create = async_to_raw_response_wrapper(
-            llms.create,
+            retell_llms.create,
         )
         self.retrieve = async_to_raw_response_wrapper(
-            llms.retrieve,
+            retell_llms.retrieve,
         )
         self.update = async_to_raw_response_wrapper(
-            llms.update,
+            retell_llms.update,
         )
         self.list = async_to_raw_response_wrapper(
-            llms.list,
+            retell_llms.list,
         )
         self.delete = async_to_raw_response_wrapper(
-            llms.delete,
+            retell_llms.delete,
         )
 
 
-class LlmsWithStreamingResponse:
-    def __init__(self, llms: Llms) -> None:
-        self._llms = llms
+class RetellLlmsWithStreamingResponse:
+    def __init__(self, retell_llms: RetellLlms) -> None:
+        self._retell_llms = retell_llms
 
         self.create = to_streamed_response_wrapper(
-            llms.create,
+            retell_llms.create,
         )
         self.retrieve = to_streamed_response_wrapper(
-            llms.retrieve,
+            retell_llms.retrieve,
         )
         self.update = to_streamed_response_wrapper(
-            llms.update,
+            retell_llms.update,
         )
         self.list = to_streamed_response_wrapper(
-            llms.list,
+            retell_llms.list,
         )
         self.delete = to_streamed_response_wrapper(
-            llms.delete,
+            retell_llms.delete,
         )
 
 
-class AsyncLlmsWithStreamingResponse:
-    def __init__(self, llms: AsyncLlms) -> None:
-        self._llms = llms
+class AsyncRetellLlmsWithStreamingResponse:
+    def __init__(self, retell_llms: AsyncRetellLlms) -> None:
+        self._retell_llms = retell_llms
 
         self.create = async_to_streamed_response_wrapper(
-            llms.create,
+            retell_llms.create,
         )
         self.retrieve = async_to_streamed_response_wrapper(
-            llms.retrieve,
+            retell_llms.retrieve,
         )
         self.update = async_to_streamed_response_wrapper(
-            llms.update,
+            retell_llms.update,
         )
         self.list = async_to_streamed_response_wrapper(
-            llms.list,
+            retell_llms.list,
         )
         self.delete = async_to_streamed_response_wrapper(
-            llms.delete,
+            retell_llms.delete,
         )

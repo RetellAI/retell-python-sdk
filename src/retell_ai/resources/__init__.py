@@ -1,13 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .llms import (
-    Llms,
-    AsyncLlms,
-    LlmsWithRawResponse,
-    AsyncLlmsWithRawResponse,
-    LlmsWithStreamingResponse,
-    AsyncLlmsWithStreamingResponse,
-)
 from .calls import (
     Calls,
     AsyncCalls,
@@ -24,8 +16,30 @@ from .agents import (
     AgentsWithStreamingResponse,
     AsyncAgentsWithStreamingResponse,
 )
+from .retell_llms import (
+    RetellLlms,
+    AsyncRetellLlms,
+    RetellLlmsWithRawResponse,
+    AsyncRetellLlmsWithRawResponse,
+    RetellLlmsWithStreamingResponse,
+    AsyncRetellLlmsWithStreamingResponse,
+)
+from .register_calls import (
+    RegisterCalls,
+    AsyncRegisterCalls,
+    RegisterCallsWithRawResponse,
+    AsyncRegisterCallsWithRawResponse,
+    RegisterCallsWithStreamingResponse,
+    AsyncRegisterCallsWithStreamingResponse,
+)
 
 __all__ = [
+    "RegisterCalls",
+    "AsyncRegisterCalls",
+    "RegisterCallsWithRawResponse",
+    "AsyncRegisterCallsWithRawResponse",
+    "RegisterCallsWithStreamingResponse",
+    "AsyncRegisterCallsWithStreamingResponse",
     "Calls",
     "AsyncCalls",
     "CallsWithRawResponse",
@@ -38,10 +52,10 @@ __all__ = [
     "AsyncAgentsWithRawResponse",
     "AgentsWithStreamingResponse",
     "AsyncAgentsWithStreamingResponse",
-    "Llms",
-    "AsyncLlms",
-    "LlmsWithRawResponse",
-    "AsyncLlmsWithRawResponse",
-    "LlmsWithStreamingResponse",
-    "AsyncLlmsWithStreamingResponse",
+    "RetellLlms",
+    "AsyncRetellLlms",
+    "RetellLlmsWithRawResponse",
+    "AsyncRetellLlmsWithRawResponse",
+    "RetellLlmsWithStreamingResponse",
+    "AsyncRetellLlmsWithStreamingResponse",
 ]
