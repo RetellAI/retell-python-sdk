@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from retell_ai._utils import PropertyInfo
-from retell_ai._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from retell_ai._models import BaseModel, construct_type
+from retell_sdk._utils import PropertyInfo
+from retell_sdk._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from retell_sdk._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):

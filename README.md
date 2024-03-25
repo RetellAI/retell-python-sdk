@@ -1,8 +1,8 @@
-# Retell AI Python API library
+# Retell Sdk Python API library
 
 [![PyPI version](https://img.shields.io/pypi/v/retell-sdk.svg)](https://pypi.org/project/retell-sdk/)
 
-The Retell AI Python library provides convenient access to the Retell AI REST API from any Python 3.7+
+The Retell Sdk Python library provides convenient access to the Retell Sdk REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -25,15 +25,15 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from retell_ai import RetellAI
+from retell_sdk import RetellSdk
 
-client = RetellAI(
+client = RetellSdk(
     # This is the default and can be omitted
-    api_key=os.environ.get("RETELL_API_KEY"),
+    api_key=os.environ.get("TODDLZT_API_KEY"),
 )
 
-agent_create_response = client.agents.create(
-    llm_websocket_url="wss://your-websocket-endpoint",
+agent_create_response = client.agent.create(
+    llm_type="retell-llm",
     voice_id="11labs-Adrian",
 )
 print(agent_create_response.agent_id)
@@ -41,27 +41,27 @@ print(agent_create_response.agent_id)
 
 While you can provide an `api_key` keyword argument,
 we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `RETELL_API_KEY="My API Key"` to your `.env` file
+to add `TODDLZT_API_KEY="My API Key"` to your `.env` file
 so that your API Key is not stored in source control.
 
 ## Async usage
 
-Simply import `AsyncRetellAI` instead of `RetellAI` and use `await` with each API call:
+Simply import `AsyncRetellSdk` instead of `RetellSdk` and use `await` with each API call:
 
 ```python
 import os
 import asyncio
-from retell_ai import AsyncRetellAI
+from retell_sdk import AsyncRetellSdk
 
-client = AsyncRetellAI(
+client = AsyncRetellSdk(
     # This is the default and can be omitted
-    api_key=os.environ.get("RETELL_API_KEY"),
+    api_key=os.environ.get("TODDLZT_API_KEY"),
 )
 
 
 async def main() -> None:
-    agent_create_response = await client.agents.create(
-        llm_websocket_url="wss://your-websocket-endpoint",
+    agent_create_response = await client.agent.create(
+        llm_type="retell-llm",
         voice_id="11labs-Adrian",
     )
     print(agent_create_response.agent_id)
@@ -83,30 +83,30 @@ Typed requests and responses provide autocomplete and documentation within your 
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `retell_ai.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `retell_sdk.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `retell_ai.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `retell_sdk.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `retell_ai.APIError`.
+All errors inherit from `retell_sdk.APIError`.
 
 ```python
-import retell_ai
-from retell_ai import RetellAI
+import retell_sdk
+from retell_sdk import RetellSdk
 
-client = RetellAI()
+client = RetellSdk()
 
 try:
-    client.agents.create(
-        llm_websocket_url="wss://your-websocket-endpoint",
+    client.agent.create(
+        llm_type="retell-llm",
         voice_id="11labs-Adrian",
     )
-except retell_ai.APIConnectionError as e:
+except retell_sdk.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except retell_ai.RateLimitError as e:
+except retell_sdk.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except retell_ai.APIStatusError as e:
+except retell_sdk.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -134,17 +134,17 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from retell_ai import RetellAI
+from retell_sdk import RetellSdk
 
 # Configure the default for all requests:
-client = RetellAI(
+client = RetellSdk(
     # default is 2
     max_retries=0,
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).agents.create(
-    llm_websocket_url="wss://your-websocket-endpoint",
+client.with_options(max_retries=5).agent.create(
+    llm_type="retell-llm",
     voice_id="11labs-Adrian",
 )
 ```
@@ -155,22 +155,22 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from retell_ai import RetellAI
+from retell_sdk import RetellSdk
 
 # Configure the default for all requests:
-client = RetellAI(
+client = RetellSdk(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
 # More granular control:
-client = RetellAI(
+client = RetellSdk(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).agents.create(
-    llm_websocket_url="wss://your-websocket-endpoint",
+client.with_options(timeout=5 * 1000).agent.create(
+    llm_type="retell-llm",
     voice_id="11labs-Adrian",
 )
 ```
@@ -185,10 +185,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `RETELL_AI_LOG` to `debug`.
+You can enable logging by setting the environment variable `RETELL_SDK_LOG` to `debug`.
 
 ```shell
-$ export RETELL_AI_LOG=debug
+$ export RETELL_SDK_LOG=debug
 ```
 
 ### How to tell whether `None` means `null` or missing
@@ -208,22 +208,22 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from retell_ai import RetellAI
+from retell_sdk import RetellSdk
 
-client = RetellAI()
-response = client.agents.with_raw_response.create(
-    llm_websocket_url="wss://your-websocket-endpoint",
+client = RetellSdk()
+response = client.agent.with_raw_response.create(
+    llm_type="retell-llm",
     voice_id="11labs-Adrian",
 )
 print(response.headers.get('X-My-Header'))
 
-agent = response.parse()  # get the object that `agents.create()` would have returned
+agent = response.parse()  # get the object that `agent.create()` would have returned
 print(agent.agent_id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/tree/main/src/retell_ai/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/stainless-sdks/tree/main/src/retell_sdk/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/tree/main/src/retell_ai/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/tree/main/src/retell_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -232,8 +232,8 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.agents.with_streaming_response.create(
-    llm_websocket_url="wss://your-websocket-endpoint",
+with client.agent.with_streaming_response.create(
+    llm_type="retell-llm",
     voice_id="11labs-Adrian",
 ) as response:
     print(response.headers.get("X-My-Header"))
@@ -289,10 +289,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from retell_ai import RetellAI
+from retell_sdk import RetellSdk
 
-client = RetellAI(
-    # Or use the `RETELL_AI_BASE_URL` env var
+client = RetellSdk(
+    # Or use the `RETELL_SDK_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=httpx.Client(
         proxies="http://my.test.proxy.example.com",

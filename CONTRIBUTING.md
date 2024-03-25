@@ -32,7 +32,7 @@ $ pip install -r requirements-dev.lock
 ## Modifying/Adding code
 
 Most of the SDK is generated code, and any modified code will be overridden on the next generation. The
-`src/retell_ai/lib/` and `examples/` directories are exceptions and will never be overridden.
+`src/retell_sdk/lib/` and `examples/` directories are exceptions and will never be overridden.
 
 ## Adding and running examples
 
@@ -121,5 +121,5 @@ You can release to package managers by using [the `Publish PyPI` GitHub action](
 
 ### Publish manually
 
-If you need to manually release a package, you can run the `bin/publish-pypi` script with an `PYPI_TOKEN` set on
+If you need to manually release a package, you can run the `bin/publish-pypi` script with a `PYPI_TOKEN` set on
 the environment.

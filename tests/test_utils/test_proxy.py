@@ -2,7 +2,7 @@ import operator
 from typing import Any
 from typing_extensions import override
 
-from retell_ai._utils import LazyProxy
+from retell_sdk._utils import LazyProxy
 
 
 class RecursiveLazyProxy(LazyProxy[Any]):

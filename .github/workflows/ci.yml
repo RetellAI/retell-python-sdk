@@ -38,4 +38,4 @@ jobs:
 
       - name: Ensure importable
         run: |
-          rye run python -c 'import retell_ai'
+          rye run python -c 'import retell_sdk'

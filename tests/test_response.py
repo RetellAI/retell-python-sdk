@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from retell_ai import RetellAI, BaseModel, AsyncRetellAI
-from retell_ai._response import (
+from retell_sdk import BaseModel, RetellSdk, AsyncRetellSdk
+from retell_sdk._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from retell_ai._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from retell_ai._streaming import Stream
-from retell_ai._base_client import FinalRequestOptions
+from retell_sdk._streaming import Stream
+from retell_sdk._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]):
@@ -40,7 +40,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'retell_ai._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'retell_sdk._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -60,7 +60,7 @@ class PydanticModel(pydantic.BaseModel):
     ...
 
 
-def test_response_parse_mismatched_basemodel(client: RetellAI) -> None:
+def test_response_parse_mismatched_basemodel(client: RetellSdk) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -72,13 +72,13 @@ def test_response_parse_mismatched_basemodel(client: RetellAI) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from retell_ai import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from retell_sdk import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_mismatched_basemodel(async_client: AsyncRetellAI) -> None:
+async def test_async_response_parse_mismatched_basemodel(async_client: AsyncRetellSdk) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -90,12 +90,12 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncRete
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from retell_ai import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from retell_sdk import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 
 
-def test_response_parse_custom_stream(client: RetellAI) -> None:
+def test_response_parse_custom_stream(client: RetellSdk) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=client,
@@ -110,7 +110,7 @@ def test_response_parse_custom_stream(client: RetellAI) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_stream(async_client: AsyncRetellAI) -> None:
+async def test_async_response_parse_custom_stream(async_client: AsyncRetellSdk) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=b"foo"),
         client=async_client,
@@ -129,7 +129,7 @@ class CustomModel(BaseModel):
     bar: int
 
 
-def test_response_parse_custom_model(client: RetellAI) -> None:
+def test_response_parse_custom_model(client: RetellSdk) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -145,7 +145,7 @@ def test_response_parse_custom_model(client: RetellAI) -> None:
 
 
 @pytest.mark.asyncio
-async def test_async_response_parse_custom_model(async_client: AsyncRetellAI) -> None:
+async def test_async_response_parse_custom_model(async_client: AsyncRetellSdk) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
@@ -160,7 +160,7 @@ async def test_async_response_parse_custom_model(async_client: AsyncRetellAI) ->
     assert obj.bar == 2
 
 
-def test_response_parse_annotated_type(client: RetellAI) -> None:
+def test_response_parse_annotated_type(client: RetellSdk) -> None:
     response = APIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=client,
@@ -177,7 +177,7 @@ def test_response_parse_annotated_type(client: RetellAI) -> None:
     assert obj.bar == 2
 
 
-async def test_async_response_parse_annotated_type(async_client: AsyncRetellAI) -> None:
+async def test_async_response_parse_annotated_type(async_client: AsyncRetellSdk) -> None:
     response = AsyncAPIResponse(
         raw=httpx.Response(200, content=json.dumps({"foo": "hello!", "bar": 2})),
         client=async_client,
