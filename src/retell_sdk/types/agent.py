@@ -11,19 +11,6 @@ __all__ = ["Agent"]
 
 
 class Agent(BaseModel):
-    llm_websocket_url: str
-    """
-    The URL we will establish LLM websocket for getting response, usually your
-    server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-    request format (sent from us) and response format (send to us).
-    """
-
-    voice_id: str
-    """Unique voice id used for the agent.
-
-    Find list of available voices and their preview in Dashboard.
-    """
-
     agent_name: Optional[str] = None
     """The name of the agent. Only used for your own reference."""
 
@@ -96,6 +83,13 @@ class Agent(BaseModel):
     - `deepgram voices`: supports English(en)
     """
 
+    llm_websocket_url: Optional[str] = None
+    """
+    The URL we will establish LLM websocket for getting response, usually your
+    server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
+    request format (sent from us) and response format (send to us).
+    """
+
     opt_out_sensitive_data_storage: Optional[bool] = FieldInfo(alias="optOutSensitiveDataStorage", default=None)
     """Disable transcripts and recordings storage for enhanced privacy.
 
@@ -108,6 +102,12 @@ class Agent(BaseModel):
     Value ranging from [0,1]. Lower value means less responsive agent (wait more,
     respond slower), while higher value means faster exchanges (respond when it
     can). If unset, default value 1 will apply.
+    """
+
+    voice_id: Optional[str] = None
+    """Unique voice id used for the agent.
+
+    Find list of available voices and their preview in Dashboard.
     """
 
     voice_speed: Optional[float] = None
