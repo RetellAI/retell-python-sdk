@@ -11,6 +11,15 @@ __all__ = ["Agent"]
 
 
 class Agent(BaseModel):
+    agent_id: str
+    """Unique id of agent."""
+
+    last_modification_timestamp: int
+    """Last modification timestamp (milliseconds since epoch).
+
+    Either the time of last update or creation if no updates available.
+    """
+
     llm_websocket_url: str
     """
     The URL we will establish LLM websocket for getting response, usually your
