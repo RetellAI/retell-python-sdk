@@ -11,6 +11,9 @@ __all__ = ["Agent"]
 
 
 class Agent(BaseModel):
+    agent_id: Optional[str] = None
+    """Unique id of agent."""
+
     agent_name: Optional[str] = None
     """The name of the agent. Only used for your own reference."""
 
@@ -81,6 +84,12 @@ class Agent(BaseModel):
       Portuguese(pt), Japanese(ja)
 
     - `deepgram voices`: supports English(en)
+    """
+
+    last_modification_timestamp: Optional[int] = None
+    """Last modification timestamp (milliseconds since epoch).
+
+    Either the time of last update or creation if no updates available.
     """
 
     llm_websocket_url: Optional[str] = None
