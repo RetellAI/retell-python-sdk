@@ -105,6 +105,8 @@ class Agent(BaseModel):
     Access transcripts securely via webhooks.
     """
 
+    required: Optional[object] = None
+
     responsiveness: Optional[float] = None
     """Controls how responsive is the agent.
 

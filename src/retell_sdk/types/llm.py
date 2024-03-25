@@ -492,6 +492,23 @@ class Llm(BaseModel):
     - Tools of LLM (no state) = general tools
     """
 
+    last_modification_timestamp: Optional[int] = None
+    """Last modification timestamp (milliseconds since epoch).
+
+    Either the time of last update or creation if no updates available.
+    """
+
+    llm_id: Optional[str] = None
+    """Unique id of Retell LLM."""
+
+    llm_websocket_url: Optional[str] = None
+    """The LLM Websocket URL constructed from unique id of Retell LLM.
+
+    Used in agent API to create / update agent.
+    """
+
+    required: Optional[object] = None
+
     starting_state: Optional[str] = None
     """Name of the starting state. Required if states is not empty."""
 
