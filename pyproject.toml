@@ -39,8 +39,8 @@ classifiers = [
 
 
 [project.urls]
-Homepage = "https://github.com/stainless-sdks/retell-sdk-python"
-Repository = "https://github.com/stainless-sdks/retell-sdk-python"
+Homepage = "https://github.com/stainless-sdks/https://github.com/RetellAI/retell-python-sdk"
+Repository = "https://github.com/stainless-sdks/https://github.com/RetellAI/retell-python-sdk"
 
 
 
