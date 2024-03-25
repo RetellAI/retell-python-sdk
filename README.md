@@ -36,7 +36,7 @@ agent = client.agent.create(
     llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
 )
-print(agent.agent_id)
+print(agent.voice_id)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -64,7 +64,7 @@ async def main() -> None:
         llm_websocket_url="wss://your-websocket-endpoint",
         voice_id="11labs-Adrian",
     )
-    print(agent.agent_id)
+    print(agent.voice_id)
 
 
 asyncio.run(main())
@@ -218,7 +218,7 @@ response = client.agent.with_raw_response.create(
 print(response.headers.get('X-My-Header'))
 
 agent = response.parse()  # get the object that `agent.create()` would have returned
-print(agent.agent_id)
+print(agent.voice_id)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/tree/main/src/retell_sdk/_response.py) object.

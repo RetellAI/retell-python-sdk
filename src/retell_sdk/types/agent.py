@@ -11,9 +11,6 @@ __all__ = ["Agent"]
 
 
 class Agent(BaseModel):
-    agent_id: str
-    """Unique id of agent."""
-
     llm_websocket_url: str
     """
     The URL we will establish LLM websocket for getting response, usually your
@@ -97,12 +94,6 @@ class Agent(BaseModel):
       Portuguese(pt), Japanese(ja)
 
     - `deepgram voices`: supports English(en)
-    """
-
-    last_modification_timestamp: Optional[int] = None
-    """Last modification timestamp (milliseconds since epoch).
-
-    Either the time of last update or creation if no updates available.
     """
 
     opt_out_sensitive_data_storage: Optional[bool] = FieldInfo(alias="optOutSensitiveDataStorage", default=None)
