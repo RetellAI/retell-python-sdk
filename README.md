@@ -29,7 +29,7 @@ from retell_sdk import RetellSdk
 
 client = RetellSdk(
     # This is the default and can be omitted
-    api_key=os.environ.get("TODDLZT_API_KEY"),
+    api_key=os.environ.get("RETELL_API_KEY"),
 )
 
 agent_create_response = client.agent.create(
@@ -41,7 +41,7 @@ print(agent_create_response.agent_id)
 
 While you can provide an `api_key` keyword argument,
 we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `TODDLZT_API_KEY="My API Key"` to your `.env` file
+to add `RETELL_API_KEY="My API Key"` to your `.env` file
 so that your API Key is not stored in source control.
 
 ## Async usage
@@ -55,7 +55,7 @@ from retell_sdk import AsyncRetellSdk
 
 client = AsyncRetellSdk(
     # This is the default and can be omitted
-    api_key=os.environ.get("TODDLZT_API_KEY"),
+    api_key=os.environ.get("RETELL_API_KEY"),
 )
 
 

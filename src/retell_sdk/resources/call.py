@@ -8,10 +8,10 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    CallDetail,
     CallListResponse,
     CallCreateResponse,
     CallRegisterResponse,
-    CallRetrieveResponse,
     call_list_params,
     call_create_params,
     call_register_params,
@@ -101,7 +101,7 @@ class Call(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallRetrieveResponse:
+    ) -> CallDetail:
         """
         Retrieve details of a specific call
 
@@ -121,7 +121,7 @@ class Call(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CallRetrieveResponse,
+            cast_to=CallDetail,
         )
 
     def list(
@@ -348,7 +348,7 @@ class AsyncCall(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallRetrieveResponse:
+    ) -> CallDetail:
         """
         Retrieve details of a specific call
 
@@ -368,7 +368,7 @@ class AsyncCall(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CallRetrieveResponse,
+            cast_to=CallDetail,
         )
 
     async def list(

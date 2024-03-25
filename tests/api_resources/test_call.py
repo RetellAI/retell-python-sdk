@@ -10,10 +10,10 @@ import pytest
 from retell_sdk import RetellSdk, AsyncRetellSdk
 from tests.utils import assert_matches_type
 from retell_sdk.types import (
+    CallDetail,
     CallListResponse,
     CallCreateResponse,
     CallRegisterResponse,
-    CallRetrieveResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -79,7 +79,7 @@ class TestCall:
         call = client.call.retrieve(
             "119c3f8e47135a29e65947eeb34cf12d",
         )
-        assert_matches_type(CallRetrieveResponse, call, path=["response"])
+        assert_matches_type(CallDetail, call, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: RetellSdk) -> None:
@@ -90,7 +90,7 @@ class TestCall:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         call = response.parse()
-        assert_matches_type(CallRetrieveResponse, call, path=["response"])
+        assert_matches_type(CallDetail, call, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: RetellSdk) -> None:
@@ -101,7 +101,7 @@ class TestCall:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             call = response.parse()
-            assert_matches_type(CallRetrieveResponse, call, path=["response"])
+            assert_matches_type(CallDetail, call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -268,7 +268,7 @@ class TestAsyncCall:
         call = await async_client.call.retrieve(
             "119c3f8e47135a29e65947eeb34cf12d",
         )
-        assert_matches_type(CallRetrieveResponse, call, path=["response"])
+        assert_matches_type(CallDetail, call, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetellSdk) -> None:
@@ -279,7 +279,7 @@ class TestAsyncCall:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         call = await response.parse()
-        assert_matches_type(CallRetrieveResponse, call, path=["response"])
+        assert_matches_type(CallDetail, call, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetellSdk) -> None:
@@ -290,7 +290,7 @@ class TestAsyncCall:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             call = await response.parse()
-            assert_matches_type(CallRetrieveResponse, call, path=["response"])
+            assert_matches_type(CallDetail, call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

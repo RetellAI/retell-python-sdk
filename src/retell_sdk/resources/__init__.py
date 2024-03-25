@@ -25,12 +25,12 @@ from .agent import (
     AsyncAgentWithStreamingResponse,
 )
 from .phone_number import (
-    PhoneNumber,
-    AsyncPhoneNumber,
-    PhoneNumberWithRawResponse,
-    AsyncPhoneNumberWithRawResponse,
-    PhoneNumberWithStreamingResponse,
-    AsyncPhoneNumberWithStreamingResponse,
+    PhoneNumberResource,
+    AsyncPhoneNumberResource,
+    PhoneNumberResourceWithRawResponse,
+    AsyncPhoneNumberResourceWithRawResponse,
+    PhoneNumberResourceWithStreamingResponse,
+    AsyncPhoneNumberResourceWithStreamingResponse,
 )
 
 __all__ = [
@@ -40,12 +40,12 @@ __all__ = [
     "AsyncCallWithRawResponse",
     "CallWithStreamingResponse",
     "AsyncCallWithStreamingResponse",
-    "PhoneNumber",
-    "AsyncPhoneNumber",
-    "PhoneNumberWithRawResponse",
-    "AsyncPhoneNumberWithRawResponse",
-    "PhoneNumberWithStreamingResponse",
-    "AsyncPhoneNumberWithStreamingResponse",
+    "PhoneNumberResource",
+    "AsyncPhoneNumberResource",
+    "PhoneNumberResourceWithRawResponse",
+    "AsyncPhoneNumberResourceWithRawResponse",
+    "PhoneNumberResourceWithStreamingResponse",
+    "AsyncPhoneNumberResourceWithStreamingResponse",
     "Agent",
     "AsyncAgent",
     "AgentWithRawResponse",

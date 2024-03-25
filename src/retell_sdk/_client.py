@@ -47,7 +47,7 @@ __all__ = [
 
 class RetellSdk(SyncAPIClient):
     call: resources.Call
-    phone_number: resources.PhoneNumber
+    phone_number: resources.PhoneNumberResource
     agent: resources.Agent
     llm: resources.Llm
     with_raw_response: RetellSdkWithRawResponse
@@ -79,13 +79,13 @@ class RetellSdk(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous retell-sdk client instance.
 
-        This automatically infers the `api_key` argument from the `TODDLZT_API_KEY` environment variable if it is not provided.
+        This automatically infers the `api_key` argument from the `RETELL_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
-            api_key = os.environ.get("TODDLZT_API_KEY")
+            api_key = os.environ.get("RETELL_API_KEY")
         if api_key is None:
             raise RetellSdkError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the TODDLZT_API_KEY environment variable"
+                "The api_key client option must be set either by passing api_key to the client or by setting the RETELL_API_KEY environment variable"
             )
         self.api_key = api_key
 
@@ -106,7 +106,7 @@ class RetellSdk(SyncAPIClient):
         )
 
         self.call = resources.Call(self)
-        self.phone_number = resources.PhoneNumber(self)
+        self.phone_number = resources.PhoneNumberResource(self)
         self.agent = resources.Agent(self)
         self.llm = resources.Llm(self)
         self.with_raw_response = RetellSdkWithRawResponse(self)
@@ -219,7 +219,7 @@ class RetellSdk(SyncAPIClient):
 
 class AsyncRetellSdk(AsyncAPIClient):
     call: resources.AsyncCall
-    phone_number: resources.AsyncPhoneNumber
+    phone_number: resources.AsyncPhoneNumberResource
     agent: resources.AsyncAgent
     llm: resources.AsyncLlm
     with_raw_response: AsyncRetellSdkWithRawResponse
@@ -251,13 +251,13 @@ class AsyncRetellSdk(AsyncAPIClient):
     ) -> None:
         """Construct a new async retell-sdk client instance.
 
-        This automatically infers the `api_key` argument from the `TODDLZT_API_KEY` environment variable if it is not provided.
+        This automatically infers the `api_key` argument from the `RETELL_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
-            api_key = os.environ.get("TODDLZT_API_KEY")
+            api_key = os.environ.get("RETELL_API_KEY")
         if api_key is None:
             raise RetellSdkError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the TODDLZT_API_KEY environment variable"
+                "The api_key client option must be set either by passing api_key to the client or by setting the RETELL_API_KEY environment variable"
             )
         self.api_key = api_key
 
@@ -278,7 +278,7 @@ class AsyncRetellSdk(AsyncAPIClient):
         )
 
         self.call = resources.AsyncCall(self)
-        self.phone_number = resources.AsyncPhoneNumber(self)
+        self.phone_number = resources.AsyncPhoneNumberResource(self)
         self.agent = resources.AsyncAgent(self)
         self.llm = resources.AsyncLlm(self)
         self.with_raw_response = AsyncRetellSdkWithRawResponse(self)
@@ -392,7 +392,7 @@ class AsyncRetellSdk(AsyncAPIClient):
 class RetellSdkWithRawResponse:
     def __init__(self, client: RetellSdk) -> None:
         self.call = resources.CallWithRawResponse(client.call)
-        self.phone_number = resources.PhoneNumberWithRawResponse(client.phone_number)
+        self.phone_number = resources.PhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = resources.AgentWithRawResponse(client.agent)
         self.llm = resources.LlmWithRawResponse(client.llm)
 
@@ -400,7 +400,7 @@ class RetellSdkWithRawResponse:
 class AsyncRetellSdkWithRawResponse:
     def __init__(self, client: AsyncRetellSdk) -> None:
         self.call = resources.AsyncCallWithRawResponse(client.call)
-        self.phone_number = resources.AsyncPhoneNumberWithRawResponse(client.phone_number)
+        self.phone_number = resources.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = resources.AsyncAgentWithRawResponse(client.agent)
         self.llm = resources.AsyncLlmWithRawResponse(client.llm)
 
@@ -408,7 +408,7 @@ class AsyncRetellSdkWithRawResponse:
 class RetellSdkWithStreamedResponse:
     def __init__(self, client: RetellSdk) -> None:
         self.call = resources.CallWithStreamingResponse(client.call)
-        self.phone_number = resources.PhoneNumberWithStreamingResponse(client.phone_number)
+        self.phone_number = resources.PhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = resources.AgentWithStreamingResponse(client.agent)
         self.llm = resources.LlmWithStreamingResponse(client.llm)
 
@@ -416,7 +416,7 @@ class RetellSdkWithStreamedResponse:
 class AsyncRetellSdkWithStreamedResponse:
     def __init__(self, client: AsyncRetellSdk) -> None:
         self.call = resources.AsyncCallWithStreamingResponse(client.call)
-        self.phone_number = resources.AsyncPhoneNumberWithStreamingResponse(client.phone_number)
+        self.phone_number = resources.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = resources.AsyncAgentWithStreamingResponse(client.agent)
         self.llm = resources.AsyncLlmWithStreamingResponse(client.llm)
 

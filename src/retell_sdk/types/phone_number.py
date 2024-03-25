@@ -2,10 +2,10 @@
 
 from .._models import BaseModel
 
-__all__ = ["PhoneNumberUpdateResponse"]
+__all__ = ["PhoneNumber"]
 
 
-class PhoneNumberUpdateResponse(BaseModel):
+class PhoneNumber(BaseModel):
     agent_id: str
 
     area_code: int
