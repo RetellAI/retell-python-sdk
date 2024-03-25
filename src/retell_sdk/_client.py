@@ -47,9 +47,9 @@ __all__ = [
 
 class RetellSdk(SyncAPIClient):
     call: resources.Call
-    phone_number: resources.PhoneNumberResource
-    agent: resources.AgentResource
-    llm: resources.LlmResource
+    phone_number: resources.PhoneNumber
+    agent: resources.Agent
+    llm: resources.Llm
     with_raw_response: RetellSdkWithRawResponse
     with_streaming_response: RetellSdkWithStreamedResponse
 
@@ -106,9 +106,9 @@ class RetellSdk(SyncAPIClient):
         )
 
         self.call = resources.Call(self)
-        self.phone_number = resources.PhoneNumberResource(self)
-        self.agent = resources.AgentResource(self)
-        self.llm = resources.LlmResource(self)
+        self.phone_number = resources.PhoneNumber(self)
+        self.agent = resources.Agent(self)
+        self.llm = resources.Llm(self)
         self.with_raw_response = RetellSdkWithRawResponse(self)
         self.with_streaming_response = RetellSdkWithStreamedResponse(self)
 
@@ -219,9 +219,9 @@ class RetellSdk(SyncAPIClient):
 
 class AsyncRetellSdk(AsyncAPIClient):
     call: resources.AsyncCall
-    phone_number: resources.AsyncPhoneNumberResource
-    agent: resources.AsyncAgentResource
-    llm: resources.AsyncLlmResource
+    phone_number: resources.AsyncPhoneNumber
+    agent: resources.AsyncAgent
+    llm: resources.AsyncLlm
     with_raw_response: AsyncRetellSdkWithRawResponse
     with_streaming_response: AsyncRetellSdkWithStreamedResponse
 
@@ -278,9 +278,9 @@ class AsyncRetellSdk(AsyncAPIClient):
         )
 
         self.call = resources.AsyncCall(self)
-        self.phone_number = resources.AsyncPhoneNumberResource(self)
-        self.agent = resources.AsyncAgentResource(self)
-        self.llm = resources.AsyncLlmResource(self)
+        self.phone_number = resources.AsyncPhoneNumber(self)
+        self.agent = resources.AsyncAgent(self)
+        self.llm = resources.AsyncLlm(self)
         self.with_raw_response = AsyncRetellSdkWithRawResponse(self)
         self.with_streaming_response = AsyncRetellSdkWithStreamedResponse(self)
 
@@ -392,33 +392,33 @@ class AsyncRetellSdk(AsyncAPIClient):
 class RetellSdkWithRawResponse:
     def __init__(self, client: RetellSdk) -> None:
         self.call = resources.CallWithRawResponse(client.call)
-        self.phone_number = resources.PhoneNumberResourceWithRawResponse(client.phone_number)
-        self.agent = resources.AgentResourceWithRawResponse(client.agent)
-        self.llm = resources.LlmResourceWithRawResponse(client.llm)
+        self.phone_number = resources.PhoneNumberWithRawResponse(client.phone_number)
+        self.agent = resources.AgentWithRawResponse(client.agent)
+        self.llm = resources.LlmWithRawResponse(client.llm)
 
 
 class AsyncRetellSdkWithRawResponse:
     def __init__(self, client: AsyncRetellSdk) -> None:
         self.call = resources.AsyncCallWithRawResponse(client.call)
-        self.phone_number = resources.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
-        self.agent = resources.AsyncAgentResourceWithRawResponse(client.agent)
-        self.llm = resources.AsyncLlmResourceWithRawResponse(client.llm)
+        self.phone_number = resources.AsyncPhoneNumberWithRawResponse(client.phone_number)
+        self.agent = resources.AsyncAgentWithRawResponse(client.agent)
+        self.llm = resources.AsyncLlmWithRawResponse(client.llm)
 
 
 class RetellSdkWithStreamedResponse:
     def __init__(self, client: RetellSdk) -> None:
         self.call = resources.CallWithStreamingResponse(client.call)
-        self.phone_number = resources.PhoneNumberResourceWithStreamingResponse(client.phone_number)
-        self.agent = resources.AgentResourceWithStreamingResponse(client.agent)
-        self.llm = resources.LlmResourceWithStreamingResponse(client.llm)
+        self.phone_number = resources.PhoneNumberWithStreamingResponse(client.phone_number)
+        self.agent = resources.AgentWithStreamingResponse(client.agent)
+        self.llm = resources.LlmWithStreamingResponse(client.llm)
 
 
 class AsyncRetellSdkWithStreamedResponse:
     def __init__(self, client: AsyncRetellSdk) -> None:
         self.call = resources.AsyncCallWithStreamingResponse(client.call)
-        self.phone_number = resources.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
-        self.agent = resources.AsyncAgentResourceWithStreamingResponse(client.agent)
-        self.llm = resources.AsyncLlmResourceWithStreamingResponse(client.llm)
+        self.phone_number = resources.AsyncPhoneNumberWithStreamingResponse(client.phone_number)
+        self.agent = resources.AsyncAgentWithStreamingResponse(client.agent)
+        self.llm = resources.AsyncLlmWithStreamingResponse(client.llm)
 
 
 Client = RetellSdk

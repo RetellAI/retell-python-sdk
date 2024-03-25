@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import (
-    PhoneNumber,
+    PhoneNumberResponse,
     PhoneNumberListResponse,
     phone_number_create_params,
     phone_number_update_params,
@@ -27,17 +27,17 @@ from .._base_client import (
     make_request_options,
 )
 
-__all__ = ["PhoneNumberResource", "AsyncPhoneNumberResource"]
+__all__ = ["PhoneNumber", "AsyncPhoneNumber"]
 
 
-class PhoneNumberResource(SyncAPIResource):
+class PhoneNumber(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> PhoneNumberResourceWithRawResponse:
-        return PhoneNumberResourceWithRawResponse(self)
+    def with_raw_response(self) -> PhoneNumberWithRawResponse:
+        return PhoneNumberWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> PhoneNumberResourceWithStreamingResponse:
-        return PhoneNumberResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> PhoneNumberWithStreamingResponse:
+        return PhoneNumberWithStreamingResponse(self)
 
     def create(
         self,
@@ -50,7 +50,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PhoneNumber:
+    ) -> PhoneNumberResponse:
         """
         Buy a new phone number & Bind an agent
 
@@ -81,7 +81,7 @@ class PhoneNumberResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PhoneNumber,
+            cast_to=PhoneNumberResponse,
         )
 
     def retrieve(
@@ -94,7 +94,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PhoneNumber:
+    ) -> PhoneNumberResponse:
         """
         Retrieve details of a specific phone number
 
@@ -114,7 +114,7 @@ class PhoneNumberResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PhoneNumber,
+            cast_to=PhoneNumberResponse,
         )
 
     def update(
@@ -128,7 +128,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PhoneNumber:
+    ) -> PhoneNumberResponse:
         """
         Update an existing Retell LLM
 
@@ -152,7 +152,7 @@ class PhoneNumberResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PhoneNumber,
+            cast_to=PhoneNumberResponse,
         )
 
     def list(
@@ -209,14 +209,14 @@ class PhoneNumberResource(SyncAPIResource):
         )
 
 
-class AsyncPhoneNumberResource(AsyncAPIResource):
+class AsyncPhoneNumber(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncPhoneNumberResourceWithRawResponse:
-        return AsyncPhoneNumberResourceWithRawResponse(self)
+    def with_raw_response(self) -> AsyncPhoneNumberWithRawResponse:
+        return AsyncPhoneNumberWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncPhoneNumberResourceWithStreamingResponse:
-        return AsyncPhoneNumberResourceWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncPhoneNumberWithStreamingResponse:
+        return AsyncPhoneNumberWithStreamingResponse(self)
 
     async def create(
         self,
@@ -229,7 +229,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PhoneNumber:
+    ) -> PhoneNumberResponse:
         """
         Buy a new phone number & Bind an agent
 
@@ -260,7 +260,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PhoneNumber,
+            cast_to=PhoneNumberResponse,
         )
 
     async def retrieve(
@@ -273,7 +273,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PhoneNumber:
+    ) -> PhoneNumberResponse:
         """
         Retrieve details of a specific phone number
 
@@ -293,7 +293,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PhoneNumber,
+            cast_to=PhoneNumberResponse,
         )
 
     async def update(
@@ -307,7 +307,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PhoneNumber:
+    ) -> PhoneNumberResponse:
         """
         Update an existing Retell LLM
 
@@ -333,7 +333,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PhoneNumber,
+            cast_to=PhoneNumberResponse,
         )
 
     async def list(
@@ -390,8 +390,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         )
 
 
-class PhoneNumberResourceWithRawResponse:
-    def __init__(self, phone_number: PhoneNumberResource) -> None:
+class PhoneNumberWithRawResponse:
+    def __init__(self, phone_number: PhoneNumber) -> None:
         self._phone_number = phone_number
 
         self.create = to_raw_response_wrapper(
@@ -411,8 +411,8 @@ class PhoneNumberResourceWithRawResponse:
         )
 
 
-class AsyncPhoneNumberResourceWithRawResponse:
-    def __init__(self, phone_number: AsyncPhoneNumberResource) -> None:
+class AsyncPhoneNumberWithRawResponse:
+    def __init__(self, phone_number: AsyncPhoneNumber) -> None:
         self._phone_number = phone_number
 
         self.create = async_to_raw_response_wrapper(
@@ -432,8 +432,8 @@ class AsyncPhoneNumberResourceWithRawResponse:
         )
 
 
-class PhoneNumberResourceWithStreamingResponse:
-    def __init__(self, phone_number: PhoneNumberResource) -> None:
+class PhoneNumberWithStreamingResponse:
+    def __init__(self, phone_number: PhoneNumber) -> None:
         self._phone_number = phone_number
 
         self.create = to_streamed_response_wrapper(
@@ -453,8 +453,8 @@ class PhoneNumberResourceWithStreamingResponse:
         )
 
 
-class AsyncPhoneNumberResourceWithStreamingResponse:
-    def __init__(self, phone_number: AsyncPhoneNumberResource) -> None:
+class AsyncPhoneNumberWithStreamingResponse:
+    def __init__(self, phone_number: AsyncPhoneNumber) -> None:
         self._phone_number = phone_number
 
         self.create = async_to_streamed_response_wrapper(

@@ -7,10 +7,10 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["Agent"]
+__all__ = ["AgentResponse"]
 
 
-class Agent(BaseModel):
+class AgentResponse(BaseModel):
     agent_id: str
     """Unique id of agent."""
 

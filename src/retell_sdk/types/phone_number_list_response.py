@@ -2,8 +2,8 @@
 
 from typing import List
 
-from .phone_number import PhoneNumber
+from .phone_number_response import PhoneNumberResponse
 
 __all__ = ["PhoneNumberListResponse"]
 
-PhoneNumberListResponse = List[PhoneNumber]
+PhoneNumberListResponse = List[PhoneNumberResponse]

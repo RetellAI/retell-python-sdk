@@ -2,8 +2,8 @@
 
 from typing import List
 
-from .llm import Llm
+from .llm_response import LlmResponse
 
 __all__ = ["LlmListResponse"]
 
-LlmListResponse = List[Llm]
+LlmListResponse = List[LlmResponse]

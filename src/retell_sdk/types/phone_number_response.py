@@ -2,10 +2,10 @@
 
 from .._models import BaseModel
 
-__all__ = ["PhoneNumber"]
+__all__ = ["PhoneNumberResponse"]
 
 
-class PhoneNumber(BaseModel):
+class PhoneNumberResponse(BaseModel):
     agent_id: str
     """Unique id of agent to bind to newly obtained number.
 

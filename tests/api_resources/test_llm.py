@@ -9,7 +9,7 @@ import pytest
 
 from retell_sdk import RetellSdk, AsyncRetellSdk
 from tests.utils import assert_matches_type
-from retell_sdk.types import Llm, LlmListResponse
+from retell_sdk.types import LlmResponse, LlmListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,7 +20,7 @@ class TestLlm:
     @parametrize
     def test_method_create(self, client: RetellSdk) -> None:
         llm = client.llm.create()
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: RetellSdk) -> None:
@@ -108,7 +108,7 @@ class TestLlm:
                 },
             ],
         )
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: RetellSdk) -> None:
@@ -117,7 +117,7 @@ class TestLlm:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         llm = response.parse()
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: RetellSdk) -> None:
@@ -126,7 +126,7 @@ class TestLlm:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             llm = response.parse()
-            assert_matches_type(Llm, llm, path=["response"])
+            assert_matches_type(LlmResponse, llm, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -135,7 +135,7 @@ class TestLlm:
         llm = client.llm.retrieve(
             "16b980523634a6dc504898cda492e939",
         )
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: RetellSdk) -> None:
@@ -146,7 +146,7 @@ class TestLlm:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         llm = response.parse()
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: RetellSdk) -> None:
@@ -157,7 +157,7 @@ class TestLlm:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             llm = response.parse()
-            assert_matches_type(Llm, llm, path=["response"])
+            assert_matches_type(LlmResponse, llm, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -173,7 +173,7 @@ class TestLlm:
         llm = client.llm.update(
             "16b980523634a6dc504898cda492e939",
         )
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: RetellSdk) -> None:
@@ -262,7 +262,7 @@ class TestLlm:
                 },
             ],
         )
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: RetellSdk) -> None:
@@ -273,7 +273,7 @@ class TestLlm:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         llm = response.parse()
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: RetellSdk) -> None:
@@ -284,7 +284,7 @@ class TestLlm:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             llm = response.parse()
-            assert_matches_type(Llm, llm, path=["response"])
+            assert_matches_type(LlmResponse, llm, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -365,7 +365,7 @@ class TestAsyncLlm:
     @parametrize
     async def test_method_create(self, async_client: AsyncRetellSdk) -> None:
         llm = await async_client.llm.create()
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetellSdk) -> None:
@@ -453,7 +453,7 @@ class TestAsyncLlm:
                 },
             ],
         )
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncRetellSdk) -> None:
@@ -462,7 +462,7 @@ class TestAsyncLlm:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         llm = await response.parse()
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncRetellSdk) -> None:
@@ -471,7 +471,7 @@ class TestAsyncLlm:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             llm = await response.parse()
-            assert_matches_type(Llm, llm, path=["response"])
+            assert_matches_type(LlmResponse, llm, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -480,7 +480,7 @@ class TestAsyncLlm:
         llm = await async_client.llm.retrieve(
             "16b980523634a6dc504898cda492e939",
         )
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetellSdk) -> None:
@@ -491,7 +491,7 @@ class TestAsyncLlm:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         llm = await response.parse()
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetellSdk) -> None:
@@ -502,7 +502,7 @@ class TestAsyncLlm:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             llm = await response.parse()
-            assert_matches_type(Llm, llm, path=["response"])
+            assert_matches_type(LlmResponse, llm, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -518,7 +518,7 @@ class TestAsyncLlm:
         llm = await async_client.llm.update(
             "16b980523634a6dc504898cda492e939",
         )
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncRetellSdk) -> None:
@@ -607,7 +607,7 @@ class TestAsyncLlm:
                 },
             ],
         )
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncRetellSdk) -> None:
@@ -618,7 +618,7 @@ class TestAsyncLlm:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         llm = await response.parse()
-        assert_matches_type(Llm, llm, path=["response"])
+        assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncRetellSdk) -> None:
@@ -629,7 +629,7 @@ class TestAsyncLlm:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             llm = await response.parse()
-            assert_matches_type(Llm, llm, path=["response"])
+            assert_matches_type(LlmResponse, llm, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

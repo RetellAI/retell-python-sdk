@@ -32,11 +32,11 @@ client = RetellSdk(
     api_key=os.environ.get("RETELL_API_KEY"),
 )
 
-agent = client.agent.create(
+agent_response = client.agent.create(
     llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
 )
-print(agent.agent_id)
+print(agent_response.agent_id)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -60,11 +60,11 @@ client = AsyncRetellSdk(
 
 
 async def main() -> None:
-    agent = await client.agent.create(
+    agent_response = await client.agent.create(
         llm_websocket_url="wss://your-websocket-endpoint",
         voice_id="11labs-Adrian",
     )
-    print(agent.agent_id)
+    print(agent_response.agent_id)
 
 
 asyncio.run(main())

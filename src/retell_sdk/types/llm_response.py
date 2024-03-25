@@ -6,7 +6,7 @@ from typing_extensions import Literal
 from .._models import BaseModel
 
 __all__ = [
-    "Llm",
+    "LlmResponse",
     "GeneralTool",
     "GeneralToolEndCallTool",
     "GeneralToolTransferCallTool",
@@ -463,7 +463,7 @@ class State(BaseModel):
     """
 
 
-class Llm(BaseModel):
+class LlmResponse(BaseModel):
     last_modification_timestamp: int
     """Last modification timestamp (milliseconds since epoch).
 

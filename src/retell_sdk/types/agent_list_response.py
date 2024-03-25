@@ -2,8 +2,8 @@
 
 from typing import List
 
-from .agent import Agent
+from .agent_response import AgentResponse
 
 __all__ = ["AgentListResponse"]
 
-AgentListResponse = List[Agent]
+AgentListResponse = List[AgentResponse]
