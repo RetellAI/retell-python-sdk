@@ -7,6 +7,7 @@ from typing import Iterable
 import httpx
 
 from ..types import (
+    LlmListResponse,
     LlmCreateResponse,
     LlmUpdateResponse,
     LlmRetrieveResponse,
@@ -218,6 +219,25 @@ class Llm(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=LlmUpdateResponse,
+        )
+
+    def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> LlmListResponse:
+        """List all retell LLM"""
+        return self._get(
+            "/list-retell-llms",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=LlmListResponse,
         )
 
     def delete(
@@ -442,6 +462,25 @@ class AsyncLlm(AsyncAPIResource):
             cast_to=LlmUpdateResponse,
         )
 
+    async def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> LlmListResponse:
+        """List all retell LLM"""
+        return await self._get(
+            "/list-retell-llms",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=LlmListResponse,
+        )
+
     async def delete(
         self,
         llm_id: str,
@@ -490,6 +529,9 @@ class LlmWithRawResponse:
         self.update = to_raw_response_wrapper(
             llm.update,
         )
+        self.list = to_raw_response_wrapper(
+            llm.list,
+        )
         self.delete = to_raw_response_wrapper(
             llm.delete,
         )
@@ -507,6 +549,9 @@ class AsyncLlmWithRawResponse:
         )
         self.update = async_to_raw_response_wrapper(
             llm.update,
+        )
+        self.list = async_to_raw_response_wrapper(
+            llm.list,
         )
         self.delete = async_to_raw_response_wrapper(
             llm.delete,
@@ -526,6 +571,9 @@ class LlmWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             llm.update,
         )
+        self.list = to_streamed_response_wrapper(
+            llm.list,
+        )
         self.delete = to_streamed_response_wrapper(
             llm.delete,
         )
@@ -543,6 +591,9 @@ class AsyncLlmWithStreamingResponse:
         )
         self.update = async_to_streamed_response_wrapper(
             llm.update,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            llm.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             llm.delete,
