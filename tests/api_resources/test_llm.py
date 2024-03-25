@@ -10,7 +10,6 @@ import pytest
 from retell_sdk import RetellSdk, AsyncRetellSdk
 from tests.utils import assert_matches_type
 from retell_sdk.types import (
-    LlmListResponse,
     LlmCreateResponse,
     LlmUpdateResponse,
     LlmRetrieveResponse,
@@ -30,83 +29,44 @@ class TestLlm:
     @parametrize
     def test_method_create_with_all_params(self, client: RetellSdk) -> None:
         llm = client.llm.create(
-            begin_message="string",
-            general_prompt="string",
+            begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
+            general_prompt="You are ...",
             general_tools=[
                 {
                     "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
-                {
-                    "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
-                {
-                    "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
+                    "name": "end_call",
+                    "description": "End the call with user only when user explicitly requests it.",
+                }
             ],
-            starting_state="string",
+            starting_state="information_collection",
             states=[
                 {
-                    "name": "string",
-                    "state_prompt": "string",
+                    "name": "information_collection",
+                    "state_prompt": "You will follow the steps below to collect information...",
                     "edges": [
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "appointment_booking",
+                            "description": "Transition to book an appointment if the user is due for an annual checkup based on the last checkup time collected.",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
+                            "speak_during_transition": False,
+                        }
                     ],
                     "tools": [
                         {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
+                            "type": "transfer_call",
+                            "name": "transfer_to_support",
+                            "description": "Transfer to the support team when user seems angry or explicitly requests a human agent",
+                            "number": "16175551212",
+                        }
                     ],
                 },
                 {
-                    "name": "string",
-                    "state_prompt": "string",
+                    "name": "appointment_booking",
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
                             "destination_state_name": "string",
@@ -141,73 +101,13 @@ class TestLlm:
                     ],
                     "tools": [
                         {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                    ],
-                },
-                {
-                    "name": "string",
-                    "state_prompt": "string",
-                    "edges": [
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                    ],
-                    "tools": [
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
+                            "type": "book_appointment_cal",
+                            "name": "book_appointment",
+                            "description": "Book an annual check up when user provided name, email, phone number, and have selected a time.",
+                            "cal_api_key": "cal_live_xxxxxxxxxxxx",
+                            "event_type_id": 60444,
+                            "timezone": "America/Los_Angeles",
+                        }
                     ],
                 },
             ],
@@ -283,83 +183,44 @@ class TestLlm:
     def test_method_update_with_all_params(self, client: RetellSdk) -> None:
         llm = client.llm.update(
             "16b980523634a6dc504898cda492e939",
-            begin_message="string",
-            general_prompt="string",
+            begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
+            general_prompt="You are ...",
             general_tools=[
                 {
                     "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
-                {
-                    "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
-                {
-                    "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
+                    "name": "end_call",
+                    "description": "End the call with user only when user explicitly requests it.",
+                }
             ],
-            starting_state="string",
+            starting_state="information_collection",
             states=[
                 {
-                    "name": "string",
-                    "state_prompt": "string",
+                    "name": "information_collection",
+                    "state_prompt": "You will follow the steps below to collect information...",
                     "edges": [
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "appointment_booking",
+                            "description": "Transition to book an appointment if the user is due for an annual checkup based on the last checkup time collected.",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
+                            "speak_during_transition": False,
+                        }
                     ],
                     "tools": [
                         {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
+                            "type": "transfer_call",
+                            "name": "transfer_to_support",
+                            "description": "Transfer to the support team when user seems angry or explicitly requests a human agent",
+                            "number": "16175551212",
+                        }
                     ],
                 },
                 {
-                    "name": "string",
-                    "state_prompt": "string",
+                    "name": "appointment_booking",
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
                             "destination_state_name": "string",
@@ -394,73 +255,13 @@ class TestLlm:
                     ],
                     "tools": [
                         {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                    ],
-                },
-                {
-                    "name": "string",
-                    "state_prompt": "string",
-                    "edges": [
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                    ],
-                    "tools": [
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
+                            "type": "book_appointment_cal",
+                            "name": "book_appointment",
+                            "description": "Book an annual check up when user provided name, email, phone number, and have selected a time.",
+                            "cal_api_key": "cal_live_xxxxxxxxxxxx",
+                            "event_type_id": 60444,
+                            "timezone": "America/Los_Angeles",
+                        }
                     ],
                 },
             ],
@@ -497,31 +298,6 @@ class TestLlm:
             client.llm.with_raw_response.update(
                 "",
             )
-
-    @parametrize
-    def test_method_list(self, client: RetellSdk) -> None:
-        llm = client.llm.list()
-        assert_matches_type(LlmListResponse, llm, path=["response"])
-
-    @parametrize
-    def test_raw_response_list(self, client: RetellSdk) -> None:
-        response = client.llm.with_raw_response.list()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        llm = response.parse()
-        assert_matches_type(LlmListResponse, llm, path=["response"])
-
-    @parametrize
-    def test_streaming_response_list(self, client: RetellSdk) -> None:
-        with client.llm.with_streaming_response.list() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            llm = response.parse()
-            assert_matches_type(LlmListResponse, llm, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_delete(self, client: RetellSdk) -> None:
@@ -573,83 +349,44 @@ class TestAsyncLlm:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetellSdk) -> None:
         llm = await async_client.llm.create(
-            begin_message="string",
-            general_prompt="string",
+            begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
+            general_prompt="You are ...",
             general_tools=[
                 {
                     "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
-                {
-                    "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
-                {
-                    "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
+                    "name": "end_call",
+                    "description": "End the call with user only when user explicitly requests it.",
+                }
             ],
-            starting_state="string",
+            starting_state="information_collection",
             states=[
                 {
-                    "name": "string",
-                    "state_prompt": "string",
+                    "name": "information_collection",
+                    "state_prompt": "You will follow the steps below to collect information...",
                     "edges": [
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "appointment_booking",
+                            "description": "Transition to book an appointment if the user is due for an annual checkup based on the last checkup time collected.",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
+                            "speak_during_transition": False,
+                        }
                     ],
                     "tools": [
                         {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
+                            "type": "transfer_call",
+                            "name": "transfer_to_support",
+                            "description": "Transfer to the support team when user seems angry or explicitly requests a human agent",
+                            "number": "16175551212",
+                        }
                     ],
                 },
                 {
-                    "name": "string",
-                    "state_prompt": "string",
+                    "name": "appointment_booking",
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
                             "destination_state_name": "string",
@@ -684,73 +421,13 @@ class TestAsyncLlm:
                     ],
                     "tools": [
                         {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                    ],
-                },
-                {
-                    "name": "string",
-                    "state_prompt": "string",
-                    "edges": [
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                    ],
-                    "tools": [
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
+                            "type": "book_appointment_cal",
+                            "name": "book_appointment",
+                            "description": "Book an annual check up when user provided name, email, phone number, and have selected a time.",
+                            "cal_api_key": "cal_live_xxxxxxxxxxxx",
+                            "event_type_id": 60444,
+                            "timezone": "America/Los_Angeles",
+                        }
                     ],
                 },
             ],
@@ -826,83 +503,44 @@ class TestAsyncLlm:
     async def test_method_update_with_all_params(self, async_client: AsyncRetellSdk) -> None:
         llm = await async_client.llm.update(
             "16b980523634a6dc504898cda492e939",
-            begin_message="string",
-            general_prompt="string",
+            begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
+            general_prompt="You are ...",
             general_tools=[
                 {
                     "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
-                {
-                    "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
-                {
-                    "type": "end_call",
-                    "name": "string",
-                    "description": "string",
-                },
+                    "name": "end_call",
+                    "description": "End the call with user only when user explicitly requests it.",
+                }
             ],
-            starting_state="string",
+            starting_state="information_collection",
             states=[
                 {
-                    "name": "string",
-                    "state_prompt": "string",
+                    "name": "information_collection",
+                    "state_prompt": "You will follow the steps below to collect information...",
                     "edges": [
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "appointment_booking",
+                            "description": "Transition to book an appointment if the user is due for an annual checkup based on the last checkup time collected.",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
+                            "speak_during_transition": False,
+                        }
                     ],
                     "tools": [
                         {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
+                            "type": "transfer_call",
+                            "name": "transfer_to_support",
+                            "description": "Transfer to the support team when user seems angry or explicitly requests a human agent",
+                            "number": "16175551212",
+                        }
                     ],
                 },
                 {
-                    "name": "string",
-                    "state_prompt": "string",
+                    "name": "appointment_booking",
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
                             "destination_state_name": "string",
@@ -937,73 +575,13 @@ class TestAsyncLlm:
                     ],
                     "tools": [
                         {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                    ],
-                },
-                {
-                    "name": "string",
-                    "state_prompt": "string",
-                    "edges": [
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                        {
-                            "destination_state_name": "string",
-                            "description": "string",
-                            "parameters": {
-                                "type": "object",
-                                "properties": {"foo": {}},
-                                "required": ["string", "string", "string"],
-                            },
-                            "speak_during_transition": True,
-                        },
-                    ],
-                    "tools": [
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
-                        {
-                            "type": "end_call",
-                            "name": "string",
-                            "description": "string",
-                        },
+                            "type": "book_appointment_cal",
+                            "name": "book_appointment",
+                            "description": "Book an annual check up when user provided name, email, phone number, and have selected a time.",
+                            "cal_api_key": "cal_live_xxxxxxxxxxxx",
+                            "event_type_id": 60444,
+                            "timezone": "America/Los_Angeles",
+                        }
                     ],
                 },
             ],
@@ -1040,31 +618,6 @@ class TestAsyncLlm:
             await async_client.llm.with_raw_response.update(
                 "",
             )
-
-    @parametrize
-    async def test_method_list(self, async_client: AsyncRetellSdk) -> None:
-        llm = await async_client.llm.list()
-        assert_matches_type(LlmListResponse, llm, path=["response"])
-
-    @parametrize
-    async def test_raw_response_list(self, async_client: AsyncRetellSdk) -> None:
-        response = await async_client.llm.with_raw_response.list()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        llm = await response.parse()
-        assert_matches_type(LlmListResponse, llm, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncRetellSdk) -> None:
-        async with async_client.llm.with_streaming_response.list() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            llm = await response.parse()
-            assert_matches_type(LlmListResponse, llm, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_delete(self, async_client: AsyncRetellSdk) -> None:

@@ -33,7 +33,7 @@ client = RetellSdk(
 )
 
 agent = client.agent.create(
-    llm_type="retell-llm",
+    llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
 )
 print(agent.voice_id)
@@ -61,7 +61,7 @@ client = AsyncRetellSdk(
 
 async def main() -> None:
     agent = await client.agent.create(
-        llm_type="retell-llm",
+        llm_websocket_url="wss://your-websocket-endpoint",
         voice_id="11labs-Adrian",
     )
     print(agent.voice_id)
@@ -98,7 +98,7 @@ client = RetellSdk()
 
 try:
     client.agent.create(
-        llm_type="retell-llm",
+        llm_websocket_url="wss://your-websocket-endpoint",
         voice_id="11labs-Adrian",
     )
 except retell_sdk.APIConnectionError as e:
@@ -144,7 +144,7 @@ client = RetellSdk(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).agent.create(
-    llm_type="retell-llm",
+    llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
 )
 ```
@@ -170,7 +170,7 @@ client = RetellSdk(
 
 # Override per-request:
 client.with_options(timeout=5 * 1000).agent.create(
-    llm_type="retell-llm",
+    llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
 )
 ```
@@ -212,7 +212,7 @@ from retell_sdk import RetellSdk
 
 client = RetellSdk()
 response = client.agent.with_raw_response.create(
-    llm_type="retell-llm",
+    llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
 )
 print(response.headers.get('X-My-Header'))
@@ -233,7 +233,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.agent.with_streaming_response.create(
-    llm_type="retell-llm",
+    llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
 ) as response:
     print(response.headers.get("X-My-Header"))

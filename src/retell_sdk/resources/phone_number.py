@@ -4,12 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import (
-    PhoneNumber,
-    PhoneNumberListResponse,
-    phone_number_create_params,
-    phone_number_update_params,
-)
+from ..types import PhoneNumber, phone_number_create_params, phone_number_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -43,7 +38,7 @@ class PhoneNumberResource(SyncAPIResource):
         self,
         *,
         agent_id: str,
-        area_code: str | NotGiven = NOT_GIVEN,
+        area_code: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -51,15 +46,15 @@ class PhoneNumberResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> PhoneNumber:
-        """Buy a new phone number
+        """
+        Buy a new phone number & Bind an agent
 
         Args:
-          agent_id: Unique id of agent used for the call.
+          agent_id: Unique id of agent to bind to newly obtained number. The number will
+              automatically use the agent when doing inbound / outbound calls.
 
-        Your agent would contain the LLM Websocket
-              url used for this call.
-
-          area_code: Area code of the number
+          area_code: Area code of the number to obtain. Format is a 3 digit integer. Currently only
+              supports US area code.
 
           extra_headers: Send extra headers
 
@@ -133,7 +128,8 @@ class PhoneNumberResource(SyncAPIResource):
         Update an existing Retell LLM
 
         Args:
-          agent_id: update agent used when a call connects.
+          agent_id: Unique id of agent to bind to number. The number will automatically use the
+              agent when doing inbound / outbound calls.
 
           extra_headers: Send extra headers
 
@@ -152,25 +148,6 @@ class PhoneNumberResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=PhoneNumber,
-        )
-
-    def list(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PhoneNumberListResponse:
-        """List all phone numbers"""
-        return self._get(
-            "/list-phone-number",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PhoneNumberListResponse,
         )
 
     def delete(
@@ -221,7 +198,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         self,
         *,
         agent_id: str,
-        area_code: str | NotGiven = NOT_GIVEN,
+        area_code: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -229,15 +206,15 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> PhoneNumber:
-        """Buy a new phone number
+        """
+        Buy a new phone number & Bind an agent
 
         Args:
-          agent_id: Unique id of agent used for the call.
+          agent_id: Unique id of agent to bind to newly obtained number. The number will
+              automatically use the agent when doing inbound / outbound calls.
 
-        Your agent would contain the LLM Websocket
-              url used for this call.
-
-          area_code: Area code of the number
+          area_code: Area code of the number to obtain. Format is a 3 digit integer. Currently only
+              supports US area code.
 
           extra_headers: Send extra headers
 
@@ -311,7 +288,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         Update an existing Retell LLM
 
         Args:
-          agent_id: update agent used when a call connects.
+          agent_id: Unique id of agent to bind to number. The number will automatically use the
+              agent when doing inbound / outbound calls.
 
           extra_headers: Send extra headers
 
@@ -332,25 +310,6 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=PhoneNumber,
-        )
-
-    async def list(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PhoneNumberListResponse:
-        """List all phone numbers"""
-        return await self._get(
-            "/list-phone-number",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PhoneNumberListResponse,
         )
 
     async def delete(
@@ -401,9 +360,6 @@ class PhoneNumberResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             phone_number.update,
         )
-        self.list = to_raw_response_wrapper(
-            phone_number.list,
-        )
         self.delete = to_raw_response_wrapper(
             phone_number.delete,
         )
@@ -421,9 +377,6 @@ class AsyncPhoneNumberResourceWithRawResponse:
         )
         self.update = async_to_raw_response_wrapper(
             phone_number.update,
-        )
-        self.list = async_to_raw_response_wrapper(
-            phone_number.list,
         )
         self.delete = async_to_raw_response_wrapper(
             phone_number.delete,
@@ -443,9 +396,6 @@ class PhoneNumberResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             phone_number.update,
         )
-        self.list = to_streamed_response_wrapper(
-            phone_number.list,
-        )
         self.delete = to_streamed_response_wrapper(
             phone_number.delete,
         )
@@ -463,9 +413,6 @@ class AsyncPhoneNumberResourceWithStreamingResponse:
         )
         self.update = async_to_streamed_response_wrapper(
             phone_number.update,
-        )
-        self.list = async_to_streamed_response_wrapper(
-            phone_number.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             phone_number.delete,

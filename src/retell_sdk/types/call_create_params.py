@@ -12,13 +12,16 @@ class CallCreateParams(TypedDict, total=False):
     phone_number: Required[PhoneNumber]
 
     override_agent_id: str
-    """Unique id of agent used for the call.
+    """For this particular call, override the agent used with this agent id.
 
-    Your agent would contain the LLM Websocket url used for this call.
+    This does not bind the agent to this number, this is for one time override.
     """
 
     retell_llm_dynamic_variables: Dict[str, object]
-    """Add optional dynamic variables that injects into your Retell LLM prompt."""
+    """
+    Add optional dynamic variables in key value pairs of string that injects into
+    your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+    """
 
 
 _PhoneNumberReservedKeywords = TypedDict(
@@ -32,4 +35,4 @@ _PhoneNumberReservedKeywords = TypedDict(
 
 class PhoneNumber(_PhoneNumberReservedKeywords, total=False):
     to: Required[str]
-    """To your customer number"""
+    """The number you want to call, in BCP 47 format."""

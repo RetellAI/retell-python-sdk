@@ -697,7 +697,7 @@ class TestRetellSdk:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_type="retell-llm", voice_id="11labs-Adrian")),
+                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -712,7 +712,7 @@ class TestRetellSdk:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_type="retell-llm", voice_id="11labs-Adrian")),
+                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1379,7 +1379,7 @@ class TestAsyncRetellSdk:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_type="retell-llm", voice_id="11labs-Adrian")),
+                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1394,7 +1394,7 @@ class TestAsyncRetellSdk:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_type="retell-llm", voice_id="11labs-Adrian")),
+                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )

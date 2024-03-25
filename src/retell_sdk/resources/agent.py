@@ -40,7 +40,7 @@ class AgentResource(SyncAPIResource):
     def create(
         self,
         *,
-        llm_type: Literal["retell-llm", "custom-llm"],
+        llm_websocket_url: str,
         voice_id: str,
         agent_name: str | NotGiven = NOT_GIVEN,
         ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
@@ -50,10 +50,8 @@ class AgentResource(SyncAPIResource):
         format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
-        llm_websocket_url: str | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
-        retell_llm_id: str | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
         webhook_url: str | NotGiven = NOT_GIVEN,
@@ -68,8 +66,9 @@ class AgentResource(SyncAPIResource):
         Create a new agent
 
         Args:
-          llm_type: If using retell-llm, add retell_llm_id by calling create-retell-llm API. If
-              using custom LLM, specific a llm_websocket_url.
+          llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
+              server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
+              request format (sent from us) and response format (send to us).
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -127,10 +126,6 @@ class AgentResource(SyncAPIResource):
 
               - `deepgram voices`: supports English(en)
 
-          llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
-              server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-              request format (sent from us) and response format (send to us).
-
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
               transcripts securely via webhooks.
 
@@ -138,8 +133,6 @@ class AgentResource(SyncAPIResource):
               means less responsive agent (wait more, respond slower), while higher value
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
-
-          retell_llm_id: Get your retell_llm_id from create-retell-llm API.
 
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
@@ -167,7 +160,7 @@ class AgentResource(SyncAPIResource):
             "/create-agent",
             body=maybe_transform(
                 {
-                    "llm_type": llm_type,
+                    "llm_websocket_url": llm_websocket_url,
                     "voice_id": voice_id,
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
@@ -175,10 +168,8 @@ class AgentResource(SyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "format_text": format_text,
                     "language": language,
-                    "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "responsiveness": responsiveness,
-                    "retell_llm_id": retell_llm_id,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
                     "webhook_url": webhook_url,
@@ -236,11 +227,9 @@ class AgentResource(SyncAPIResource):
         format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
-        llm_type: Literal["retell-llm", "custom-llm"] | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
-        retell_llm_id: str | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
@@ -310,9 +299,6 @@ class AgentResource(SyncAPIResource):
 
               - `deepgram voices`: supports English(en)
 
-          llm_type: If using retell-llm, add retell_llm_id by calling create-retell-llm API. If
-              using custom LLM, specific a llm_websocket_url.
-
           llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
               request format (sent from us) and response format (send to us).
@@ -324,8 +310,6 @@ class AgentResource(SyncAPIResource):
               means less responsive agent (wait more, respond slower), while higher value
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
-
-          retell_llm_id: Get your retell_llm_id from create-retell-llm API.
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -364,11 +348,9 @@ class AgentResource(SyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "format_text": format_text,
                     "language": language,
-                    "llm_type": llm_type,
                     "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "responsiveness": responsiveness,
-                    "retell_llm_id": retell_llm_id,
                     "voice_id": voice_id,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -448,7 +430,7 @@ class AsyncAgentResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        llm_type: Literal["retell-llm", "custom-llm"],
+        llm_websocket_url: str,
         voice_id: str,
         agent_name: str | NotGiven = NOT_GIVEN,
         ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
@@ -458,10 +440,8 @@ class AsyncAgentResource(AsyncAPIResource):
         format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
-        llm_websocket_url: str | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
-        retell_llm_id: str | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
         webhook_url: str | NotGiven = NOT_GIVEN,
@@ -476,8 +456,9 @@ class AsyncAgentResource(AsyncAPIResource):
         Create a new agent
 
         Args:
-          llm_type: If using retell-llm, add retell_llm_id by calling create-retell-llm API. If
-              using custom LLM, specific a llm_websocket_url.
+          llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
+              server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
+              request format (sent from us) and response format (send to us).
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -535,10 +516,6 @@ class AsyncAgentResource(AsyncAPIResource):
 
               - `deepgram voices`: supports English(en)
 
-          llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
-              server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-              request format (sent from us) and response format (send to us).
-
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
               transcripts securely via webhooks.
 
@@ -546,8 +523,6 @@ class AsyncAgentResource(AsyncAPIResource):
               means less responsive agent (wait more, respond slower), while higher value
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
-
-          retell_llm_id: Get your retell_llm_id from create-retell-llm API.
 
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
@@ -575,7 +550,7 @@ class AsyncAgentResource(AsyncAPIResource):
             "/create-agent",
             body=await async_maybe_transform(
                 {
-                    "llm_type": llm_type,
+                    "llm_websocket_url": llm_websocket_url,
                     "voice_id": voice_id,
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
@@ -583,10 +558,8 @@ class AsyncAgentResource(AsyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "format_text": format_text,
                     "language": language,
-                    "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "responsiveness": responsiveness,
-                    "retell_llm_id": retell_llm_id,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
                     "webhook_url": webhook_url,
@@ -644,11 +617,9 @@ class AsyncAgentResource(AsyncAPIResource):
         format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
-        llm_type: Literal["retell-llm", "custom-llm"] | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
-        retell_llm_id: str | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
@@ -718,9 +689,6 @@ class AsyncAgentResource(AsyncAPIResource):
 
               - `deepgram voices`: supports English(en)
 
-          llm_type: If using retell-llm, add retell_llm_id by calling create-retell-llm API. If
-              using custom LLM, specific a llm_websocket_url.
-
           llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
               request format (sent from us) and response format (send to us).
@@ -732,8 +700,6 @@ class AsyncAgentResource(AsyncAPIResource):
               means less responsive agent (wait more, respond slower), while higher value
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
-
-          retell_llm_id: Get your retell_llm_id from create-retell-llm API.
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -772,11 +738,9 @@ class AsyncAgentResource(AsyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "format_text": format_text,
                     "language": language,
-                    "llm_type": llm_type,
                     "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "responsiveness": responsiveness,
-                    "retell_llm_id": retell_llm_id,
                     "voice_id": voice_id,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,

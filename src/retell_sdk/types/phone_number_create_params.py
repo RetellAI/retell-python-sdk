@@ -9,10 +9,13 @@ __all__ = ["PhoneNumberCreateParams"]
 
 class PhoneNumberCreateParams(TypedDict, total=False):
     agent_id: Required[str]
-    """Unique id of agent used for the call.
+    """Unique id of agent to bind to newly obtained number.
 
-    Your agent would contain the LLM Websocket url used for this call.
+    The number will automatically use the agent when doing inbound / outbound calls.
     """
 
-    area_code: str
-    """Area code of the number"""
+    area_code: int
+    """Area code of the number to obtain.
+
+    Format is a 3 digit integer. Currently only supports US area code.
+    """

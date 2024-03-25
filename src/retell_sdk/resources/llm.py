@@ -7,7 +7,6 @@ from typing import Iterable
 import httpx
 
 from ..types import (
-    LlmListResponse,
     LlmCreateResponse,
     LlmUpdateResponse,
     LlmRetrieveResponse,
@@ -62,15 +61,31 @@ class Llm(SyncAPIResource):
         Create a new Retell LLM
 
         Args:
-          begin_message: Optional first phrase said by the agent.
+          begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
+              generate a message. If set to "", agent will wait for user to speak first.
 
-          general_prompt: General prompt used in every state.
+          general_prompt: General prompt that's appended to system prompt no matter what state the agent
+              is in.
 
-          general_tools: Optional array of tools used in every state.
+              - System prompt (with state) = general prompt + state prompt.
 
-          starting_state: Optional identifier of the starting state.
+              - System prompt (no state) = general prompt.
 
-          states: Optional array of states.
+          general_tools: A list of tools the model may call (to get external knowledge, call API, etc).
+              You can select from some common predefined tools like end call, transfer call,
+              etc; or you can create your own custom tool (last option) for the LLM to use.
+
+              - Tools of LLM (with state) = general tools + state tools + state transitions
+
+              - Tools of LLM (no state) = general tools
+
+          starting_state: Name of the starting state. Required if states is not empty.
+
+          states: States of the LLM. This is to help reduce prompt length and tool choices when
+              the call can be broken into distinct states. With shorter prompts and less
+              tools, the LLM can better focus and follow the rules, minimizing hallucination.
+              If this field is not set, the agent would only have general prompt and general
+              tools (essentially one state).
 
           extra_headers: Send extra headers
 
@@ -151,15 +166,31 @@ class Llm(SyncAPIResource):
         Update an existing Retell LLM
 
         Args:
-          begin_message: Optional first phrase said by the agent.
+          begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
+              generate a message. If set to "", agent will wait for user to speak first.
 
-          general_prompt: General prompt used in every state.
+          general_prompt: General prompt that's appended to system prompt no matter what state the agent
+              is in.
 
-          general_tools: Optional array of tools used in every state.
+              - System prompt (with state) = general prompt + state prompt.
 
-          starting_state: Optional identifier of the starting state.
+              - System prompt (no state) = general prompt.
 
-          states: Optional array of states.
+          general_tools: A list of tools the model may call (to get external knowledge, call API, etc).
+              You can select from some common predefined tools like end call, transfer call,
+              etc; or you can create your own custom tool (last option) for the LLM to use.
+
+              - Tools of LLM (with state) = general tools + state tools + state transitions
+
+              - Tools of LLM (no state) = general tools
+
+          starting_state: Name of the starting state. Required if states is not empty.
+
+          states: States of the LLM. This is to help reduce prompt length and tool choices when
+              the call can be broken into distinct states. With shorter prompts and less
+              tools, the LLM can better focus and follow the rules, minimizing hallucination.
+              If this field is not set, the agent would only have general prompt and general
+              tools (essentially one state).
 
           extra_headers: Send extra headers
 
@@ -187,25 +218,6 @@ class Llm(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=LlmUpdateResponse,
-        )
-
-    def list(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmListResponse:
-        """List all retell LLM"""
-        return self._get(
-            "/list-retell-llm",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=LlmListResponse,
         )
 
     def delete(
@@ -271,15 +283,31 @@ class AsyncLlm(AsyncAPIResource):
         Create a new Retell LLM
 
         Args:
-          begin_message: Optional first phrase said by the agent.
+          begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
+              generate a message. If set to "", agent will wait for user to speak first.
 
-          general_prompt: General prompt used in every state.
+          general_prompt: General prompt that's appended to system prompt no matter what state the agent
+              is in.
 
-          general_tools: Optional array of tools used in every state.
+              - System prompt (with state) = general prompt + state prompt.
 
-          starting_state: Optional identifier of the starting state.
+              - System prompt (no state) = general prompt.
 
-          states: Optional array of states.
+          general_tools: A list of tools the model may call (to get external knowledge, call API, etc).
+              You can select from some common predefined tools like end call, transfer call,
+              etc; or you can create your own custom tool (last option) for the LLM to use.
+
+              - Tools of LLM (with state) = general tools + state tools + state transitions
+
+              - Tools of LLM (no state) = general tools
+
+          starting_state: Name of the starting state. Required if states is not empty.
+
+          states: States of the LLM. This is to help reduce prompt length and tool choices when
+              the call can be broken into distinct states. With shorter prompts and less
+              tools, the LLM can better focus and follow the rules, minimizing hallucination.
+              If this field is not set, the agent would only have general prompt and general
+              tools (essentially one state).
 
           extra_headers: Send extra headers
 
@@ -360,15 +388,31 @@ class AsyncLlm(AsyncAPIResource):
         Update an existing Retell LLM
 
         Args:
-          begin_message: Optional first phrase said by the agent.
+          begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
+              generate a message. If set to "", agent will wait for user to speak first.
 
-          general_prompt: General prompt used in every state.
+          general_prompt: General prompt that's appended to system prompt no matter what state the agent
+              is in.
 
-          general_tools: Optional array of tools used in every state.
+              - System prompt (with state) = general prompt + state prompt.
 
-          starting_state: Optional identifier of the starting state.
+              - System prompt (no state) = general prompt.
 
-          states: Optional array of states.
+          general_tools: A list of tools the model may call (to get external knowledge, call API, etc).
+              You can select from some common predefined tools like end call, transfer call,
+              etc; or you can create your own custom tool (last option) for the LLM to use.
+
+              - Tools of LLM (with state) = general tools + state tools + state transitions
+
+              - Tools of LLM (no state) = general tools
+
+          starting_state: Name of the starting state. Required if states is not empty.
+
+          states: States of the LLM. This is to help reduce prompt length and tool choices when
+              the call can be broken into distinct states. With shorter prompts and less
+              tools, the LLM can better focus and follow the rules, minimizing hallucination.
+              If this field is not set, the agent would only have general prompt and general
+              tools (essentially one state).
 
           extra_headers: Send extra headers
 
@@ -396,25 +440,6 @@ class AsyncLlm(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=LlmUpdateResponse,
-        )
-
-    async def list(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmListResponse:
-        """List all retell LLM"""
-        return await self._get(
-            "/list-retell-llm",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=LlmListResponse,
         )
 
     async def delete(
@@ -465,9 +490,6 @@ class LlmWithRawResponse:
         self.update = to_raw_response_wrapper(
             llm.update,
         )
-        self.list = to_raw_response_wrapper(
-            llm.list,
-        )
         self.delete = to_raw_response_wrapper(
             llm.delete,
         )
@@ -485,9 +507,6 @@ class AsyncLlmWithRawResponse:
         )
         self.update = async_to_raw_response_wrapper(
             llm.update,
-        )
-        self.list = async_to_raw_response_wrapper(
-            llm.list,
         )
         self.delete = async_to_raw_response_wrapper(
             llm.delete,
@@ -507,9 +526,6 @@ class LlmWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             llm.update,
         )
-        self.list = to_streamed_response_wrapper(
-            llm.list,
-        )
         self.delete = to_streamed_response_wrapper(
             llm.delete,
         )
@@ -527,9 +543,6 @@ class AsyncLlmWithStreamingResponse:
         )
         self.update = async_to_streamed_response_wrapper(
             llm.update,
-        )
-        self.list = async_to_streamed_response_wrapper(
-            llm.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             llm.delete,

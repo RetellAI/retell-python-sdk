@@ -9,4 +9,7 @@ __all__ = ["PhoneNumberUpdateParams"]
 
 class PhoneNumberUpdateParams(TypedDict, total=False):
     agent_id: Required[str]
-    """update agent used when a call connects."""
+    """Unique id of agent to bind to number.
+
+    The number will automatically use the agent when doing inbound / outbound calls.
+    """

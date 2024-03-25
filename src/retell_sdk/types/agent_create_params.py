@@ -11,10 +11,11 @@ __all__ = ["AgentCreateParams"]
 
 
 class AgentCreateParams(TypedDict, total=False):
-    llm_type: Required[Literal["retell-llm", "custom-llm"]]
-    """If using retell-llm, add retell_llm_id by calling create-retell-llm API.
-
-    If using custom LLM, specific a llm_websocket_url.
+    llm_websocket_url: Required[str]
+    """
+    The URL we will establish LLM websocket for getting response, usually your
+    server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
+    request format (sent from us) and response format (send to us).
     """
 
     voice_id: Required[str]
@@ -91,13 +92,6 @@ class AgentCreateParams(TypedDict, total=False):
     - `deepgram voices`: supports English(en)
     """
 
-    llm_websocket_url: str
-    """
-    The URL we will establish LLM websocket for getting response, usually your
-    server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-    request format (sent from us) and response format (send to us).
-    """
-
     opt_out_sensitive_data_storage: Annotated[bool, PropertyInfo(alias="optOutSensitiveDataStorage")]
     """Disable transcripts and recordings storage for enhanced privacy.
 
@@ -111,9 +105,6 @@ class AgentCreateParams(TypedDict, total=False):
     respond slower), while higher value means faster exchanges (respond when it
     can). If unset, default value 1 will apply.
     """
-
-    retell_llm_id: str
-    """Get your retell_llm_id from create-retell-llm API."""
 
     voice_speed: float
     """Controls speed of voice.

@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import Dict, Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -95,6 +95,12 @@ class CallDetail(BaseModel):
     You can put anything here like your own id for the call, twilio SID, internal
     customer id. Not used for processing, when we connect to your LLM websocket
     server, you can then get it from the call object.
+    """
+
+    retell_llm_dynamic_variables: Optional[Dict[str, object]] = None
+    """
+    Add optional dynamic variables in key value pairs of string that injects into
+    your Retell LLM prompt and tool description. Only applicable for Retell LLM.
     """
 
     to_number: Optional[str] = None

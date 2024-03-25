@@ -79,12 +79,6 @@ class AgentUpdateParams(TypedDict, total=False):
     - `deepgram voices`: supports English(en)
     """
 
-    llm_type: Literal["retell-llm", "custom-llm"]
-    """If using retell-llm, add retell_llm_id by calling create-retell-llm API.
-
-    If using custom LLM, specific a llm_websocket_url.
-    """
-
     llm_websocket_url: str
     """
     The URL we will establish LLM websocket for getting response, usually your
@@ -105,9 +99,6 @@ class AgentUpdateParams(TypedDict, total=False):
     respond slower), while higher value means faster exchanges (respond when it
     can). If unset, default value 1 will apply.
     """
-
-    retell_llm_id: str
-    """Get your retell_llm_id from create-retell-llm API."""
 
     voice_id: str
     """Unique voice id used for the agent.

@@ -9,10 +9,7 @@ import pytest
 
 from retell_sdk import RetellSdk, AsyncRetellSdk
 from tests.utils import assert_matches_type
-from retell_sdk.types import (
-    PhoneNumber,
-    PhoneNumberListResponse,
-)
+from retell_sdk.types import PhoneNumber
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -31,7 +28,7 @@ class TestPhoneNumber:
     def test_method_create_with_all_params(self, client: RetellSdk) -> None:
         phone_number = client.phone_number.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
-            area_code="string",
+            area_code=415,
         )
         assert_matches_type(PhoneNumber, phone_number, path=["response"])
 
@@ -140,31 +137,6 @@ class TestPhoneNumber:
             )
 
     @parametrize
-    def test_method_list(self, client: RetellSdk) -> None:
-        phone_number = client.phone_number.list()
-        assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
-
-    @parametrize
-    def test_raw_response_list(self, client: RetellSdk) -> None:
-        response = client.phone_number.with_raw_response.list()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        phone_number = response.parse()
-        assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
-
-    @parametrize
-    def test_streaming_response_list(self, client: RetellSdk) -> None:
-        with client.phone_number.with_streaming_response.list() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            phone_number = response.parse()
-            assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
     def test_method_delete(self, client: RetellSdk) -> None:
         phone_number = client.phone_number.delete(
             "string",
@@ -217,7 +189,7 @@ class TestAsyncPhoneNumber:
     async def test_method_create_with_all_params(self, async_client: AsyncRetellSdk) -> None:
         phone_number = await async_client.phone_number.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
-            area_code="string",
+            area_code=415,
         )
         assert_matches_type(PhoneNumber, phone_number, path=["response"])
 
@@ -324,31 +296,6 @@ class TestAsyncPhoneNumber:
                 "",
                 agent_id="string",
             )
-
-    @parametrize
-    async def test_method_list(self, async_client: AsyncRetellSdk) -> None:
-        phone_number = await async_client.phone_number.list()
-        assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
-
-    @parametrize
-    async def test_raw_response_list(self, async_client: AsyncRetellSdk) -> None:
-        response = await async_client.phone_number.with_raw_response.list()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        phone_number = await response.parse()
-        assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncRetellSdk) -> None:
-        async with async_client.phone_number.with_streaming_response.list() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            phone_number = await response.parse()
-            assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_delete(self, async_client: AsyncRetellSdk) -> None:

@@ -40,7 +40,7 @@ class TestCall:
                 "to": "string",
             },
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
-            retell_llm_dynamic_variables={"foo": {}},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(CallCreateResponse, call, path=["response"])
 
@@ -172,7 +172,7 @@ class TestCall:
             end_call_after_silence_ms=600000,
             from_number="string",
             metadata={},
-            retell_llm_dynamic_variables={"foo": {}},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
             to_number="string",
         )
         assert_matches_type(CallRegisterResponse, call, path=["response"])
@@ -229,7 +229,7 @@ class TestAsyncCall:
                 "to": "string",
             },
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
-            retell_llm_dynamic_variables={"foo": {}},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(CallCreateResponse, call, path=["response"])
 
@@ -361,7 +361,7 @@ class TestAsyncCall:
             end_call_after_silence_ms=600000,
             from_number="string",
             metadata={},
-            retell_llm_dynamic_variables={"foo": {}},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
             to_number="string",
         )
         assert_matches_type(CallRegisterResponse, call, path=["response"])

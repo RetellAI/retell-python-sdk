@@ -20,7 +20,7 @@ class TestAgent:
     @parametrize
     def test_method_create(self, client: RetellSdk) -> None:
         agent = client.agent.create(
-            llm_type="retell-llm",
+            llm_websocket_url="wss://your-websocket-endpoint",
             voice_id="11labs-Adrian",
         )
         assert_matches_type(Agent, agent, path=["response"])
@@ -28,7 +28,7 @@ class TestAgent:
     @parametrize
     def test_method_create_with_all_params(self, client: RetellSdk) -> None:
         agent = client.agent.create(
-            llm_type="retell-llm",
+            llm_websocket_url="wss://your-websocket-endpoint",
             voice_id="11labs-Adrian",
             agent_name="Jarvis",
             ambient_sound="coffee-shop",
@@ -36,10 +36,8 @@ class TestAgent:
             enable_backchannel=True,
             format_text=True,
             language="en-US",
-            llm_websocket_url="wss://your-websocket-endpoint",
             opt_out_sensitive_data_storage=True,
             responsiveness=1,
-            retell_llm_id="string",
             voice_speed=1,
             voice_temperature=1,
             webhook_url="https://webhook-url-here",
@@ -49,7 +47,7 @@ class TestAgent:
     @parametrize
     def test_raw_response_create(self, client: RetellSdk) -> None:
         response = client.agent.with_raw_response.create(
-            llm_type="retell-llm",
+            llm_websocket_url="wss://your-websocket-endpoint",
             voice_id="11labs-Adrian",
         )
 
@@ -61,7 +59,7 @@ class TestAgent:
     @parametrize
     def test_streaming_response_create(self, client: RetellSdk) -> None:
         with client.agent.with_streaming_response.create(
-            llm_type="retell-llm",
+            llm_websocket_url="wss://your-websocket-endpoint",
             voice_id="11labs-Adrian",
         ) as response:
             assert not response.is_closed
@@ -127,11 +125,9 @@ class TestAgent:
             enable_backchannel=True,
             format_text=True,
             language="en-US",
-            llm_type="retell-llm",
             llm_websocket_url="wss://your-websocket-endpoint",
             opt_out_sensitive_data_storage=True,
             responsiveness=1,
-            retell_llm_id="string",
             voice_id="11labs-Adrian",
             voice_speed=1,
             voice_temperature=1,
@@ -240,7 +236,7 @@ class TestAsyncAgent:
     @parametrize
     async def test_method_create(self, async_client: AsyncRetellSdk) -> None:
         agent = await async_client.agent.create(
-            llm_type="retell-llm",
+            llm_websocket_url="wss://your-websocket-endpoint",
             voice_id="11labs-Adrian",
         )
         assert_matches_type(Agent, agent, path=["response"])
@@ -248,7 +244,7 @@ class TestAsyncAgent:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetellSdk) -> None:
         agent = await async_client.agent.create(
-            llm_type="retell-llm",
+            llm_websocket_url="wss://your-websocket-endpoint",
             voice_id="11labs-Adrian",
             agent_name="Jarvis",
             ambient_sound="coffee-shop",
@@ -256,10 +252,8 @@ class TestAsyncAgent:
             enable_backchannel=True,
             format_text=True,
             language="en-US",
-            llm_websocket_url="wss://your-websocket-endpoint",
             opt_out_sensitive_data_storage=True,
             responsiveness=1,
-            retell_llm_id="string",
             voice_speed=1,
             voice_temperature=1,
             webhook_url="https://webhook-url-here",
@@ -269,7 +263,7 @@ class TestAsyncAgent:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncRetellSdk) -> None:
         response = await async_client.agent.with_raw_response.create(
-            llm_type="retell-llm",
+            llm_websocket_url="wss://your-websocket-endpoint",
             voice_id="11labs-Adrian",
         )
 
@@ -281,7 +275,7 @@ class TestAsyncAgent:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncRetellSdk) -> None:
         async with async_client.agent.with_streaming_response.create(
-            llm_type="retell-llm",
+            llm_websocket_url="wss://your-websocket-endpoint",
             voice_id="11labs-Adrian",
         ) as response:
             assert not response.is_closed
@@ -347,11 +341,9 @@ class TestAsyncAgent:
             enable_backchannel=True,
             format_text=True,
             language="en-US",
-            llm_type="retell-llm",
             llm_websocket_url="wss://your-websocket-endpoint",
             opt_out_sensitive_data_storage=True,
             responsiveness=1,
-            retell_llm_id="string",
             voice_id="11labs-Adrian",
             voice_speed=1,
             voice_temperature=1,

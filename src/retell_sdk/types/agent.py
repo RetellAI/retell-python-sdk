@@ -96,12 +96,6 @@ class Agent(BaseModel):
     - `deepgram voices`: supports English(en)
     """
 
-    llm_type: Optional[Literal["retell-llm", "custom-llm"]] = None
-    """If using retell-llm, add retell_llm_id by calling create-retell-llm API.
-
-    If using custom LLM, specific a llm_websocket_url.
-    """
-
     opt_out_sensitive_data_storage: Optional[bool] = FieldInfo(alias="optOutSensitiveDataStorage", default=None)
     """Disable transcripts and recordings storage for enhanced privacy.
 
@@ -115,9 +109,6 @@ class Agent(BaseModel):
     respond slower), while higher value means faster exchanges (respond when it
     can). If unset, default value 1 will apply.
     """
-
-    retell_llm_id: Optional[str] = None
-    """Get your retell_llm_id from create-retell-llm API."""
 
     voice_speed: Optional[float] = None
     """Controls speed of voice.

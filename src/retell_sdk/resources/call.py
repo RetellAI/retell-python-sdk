@@ -62,10 +62,11 @@ class Call(SyncAPIResource):
         Create a new phone call
 
         Args:
-          override_agent_id: Unique id of agent used for the call. Your agent would contain the LLM Websocket
-              url used for this call.
+          override_agent_id: For this particular call, override the agent used with this agent id. This does
+              not bind the agent to this number, this is for one time override.
 
-          retell_llm_dynamic_variables: Add optional dynamic variables that injects into your Retell LLM prompt.
+          retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
+              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
 
           extra_headers: Send extra headers
 
@@ -245,7 +246,8 @@ class Call(SyncAPIResource):
               when we connect to your LLM websocket server, you can then get it from the call
               object.
 
-          retell_llm_dynamic_variables: Add optional dynamic variables that injects into your Retell LLM prompt.
+          retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
+              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
 
           to_number: The callee number. This field is storage purpose only, set this if you want the
               call object to contain it so that it's easier to reference it. Not used for
@@ -309,10 +311,11 @@ class AsyncCall(AsyncAPIResource):
         Create a new phone call
 
         Args:
-          override_agent_id: Unique id of agent used for the call. Your agent would contain the LLM Websocket
-              url used for this call.
+          override_agent_id: For this particular call, override the agent used with this agent id. This does
+              not bind the agent to this number, this is for one time override.
 
-          retell_llm_dynamic_variables: Add optional dynamic variables that injects into your Retell LLM prompt.
+          retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
+              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
 
           extra_headers: Send extra headers
 
@@ -492,7 +495,8 @@ class AsyncCall(AsyncAPIResource):
               when we connect to your LLM websocket server, you can then get it from the call
               object.
 
-          retell_llm_dynamic_variables: Add optional dynamic variables that injects into your Retell LLM prompt.
+          retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
+              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
 
           to_number: The callee number. This field is storage purpose only, set this if you want the
               call object to contain it so that it's easier to reference it. Not used for
