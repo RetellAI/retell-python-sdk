@@ -6,14 +6,7 @@ from typing import Iterable
 
 import httpx
 
-from ..types import (
-    LlmListResponse,
-    LlmCreateResponse,
-    LlmUpdateResponse,
-    LlmRetrieveResponse,
-    llm_create_params,
-    llm_update_params,
-)
+from ..types import Llm, LlmListResponse, llm_create_params, llm_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -31,17 +24,17 @@ from .._base_client import (
     make_request_options,
 )
 
-__all__ = ["Llm", "AsyncLlm"]
+__all__ = ["LlmResource", "AsyncLlmResource"]
 
 
-class Llm(SyncAPIResource):
+class LlmResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> LlmWithRawResponse:
-        return LlmWithRawResponse(self)
+    def with_raw_response(self) -> LlmResourceWithRawResponse:
+        return LlmResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> LlmWithStreamingResponse:
-        return LlmWithStreamingResponse(self)
+    def with_streaming_response(self) -> LlmResourceWithStreamingResponse:
+        return LlmResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -57,7 +50,7 @@ class Llm(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmCreateResponse:
+    ) -> Llm:
         """
         Create a new Retell LLM
 
@@ -111,7 +104,7 @@ class Llm(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmCreateResponse,
+            cast_to=Llm,
         )
 
     def retrieve(
@@ -124,7 +117,7 @@ class Llm(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmRetrieveResponse:
+    ) -> Llm:
         """
         Retrieve details of a specific Retell LLM
 
@@ -144,7 +137,7 @@ class Llm(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmRetrieveResponse,
+            cast_to=Llm,
         )
 
     def update(
@@ -162,7 +155,7 @@ class Llm(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmUpdateResponse:
+    ) -> Llm:
         """
         Update an existing Retell LLM
 
@@ -218,7 +211,7 @@ class Llm(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmUpdateResponse,
+            cast_to=Llm,
         )
 
     def list(
@@ -275,14 +268,14 @@ class Llm(SyncAPIResource):
         )
 
 
-class AsyncLlm(AsyncAPIResource):
+class AsyncLlmResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncLlmWithRawResponse:
-        return AsyncLlmWithRawResponse(self)
+    def with_raw_response(self) -> AsyncLlmResourceWithRawResponse:
+        return AsyncLlmResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncLlmWithStreamingResponse:
-        return AsyncLlmWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncLlmResourceWithStreamingResponse:
+        return AsyncLlmResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -298,7 +291,7 @@ class AsyncLlm(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmCreateResponse:
+    ) -> Llm:
         """
         Create a new Retell LLM
 
@@ -352,7 +345,7 @@ class AsyncLlm(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmCreateResponse,
+            cast_to=Llm,
         )
 
     async def retrieve(
@@ -365,7 +358,7 @@ class AsyncLlm(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmRetrieveResponse:
+    ) -> Llm:
         """
         Retrieve details of a specific Retell LLM
 
@@ -385,7 +378,7 @@ class AsyncLlm(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmRetrieveResponse,
+            cast_to=Llm,
         )
 
     async def update(
@@ -403,7 +396,7 @@ class AsyncLlm(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LlmUpdateResponse:
+    ) -> Llm:
         """
         Update an existing Retell LLM
 
@@ -459,7 +452,7 @@ class AsyncLlm(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LlmUpdateResponse,
+            cast_to=Llm,
         )
 
     async def list(
@@ -516,8 +509,8 @@ class AsyncLlm(AsyncAPIResource):
         )
 
 
-class LlmWithRawResponse:
-    def __init__(self, llm: Llm) -> None:
+class LlmResourceWithRawResponse:
+    def __init__(self, llm: LlmResource) -> None:
         self._llm = llm
 
         self.create = to_raw_response_wrapper(
@@ -537,8 +530,8 @@ class LlmWithRawResponse:
         )
 
 
-class AsyncLlmWithRawResponse:
-    def __init__(self, llm: AsyncLlm) -> None:
+class AsyncLlmResourceWithRawResponse:
+    def __init__(self, llm: AsyncLlmResource) -> None:
         self._llm = llm
 
         self.create = async_to_raw_response_wrapper(
@@ -558,8 +551,8 @@ class AsyncLlmWithRawResponse:
         )
 
 
-class LlmWithStreamingResponse:
-    def __init__(self, llm: Llm) -> None:
+class LlmResourceWithStreamingResponse:
+    def __init__(self, llm: LlmResource) -> None:
         self._llm = llm
 
         self.create = to_streamed_response_wrapper(
@@ -579,8 +572,8 @@ class LlmWithStreamingResponse:
         )
 
 
-class AsyncLlmWithStreamingResponse:
-    def __init__(self, llm: AsyncLlm) -> None:
+class AsyncLlmResourceWithStreamingResponse:
+    def __init__(self, llm: AsyncLlmResource) -> None:
         self._llm = llm
 
         self.create = async_to_streamed_response_wrapper(

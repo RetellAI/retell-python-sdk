@@ -49,7 +49,7 @@ class RetellSdk(SyncAPIClient):
     call: resources.Call
     phone_number: resources.PhoneNumberResource
     agent: resources.AgentResource
-    llm: resources.Llm
+    llm: resources.LlmResource
     with_raw_response: RetellSdkWithRawResponse
     with_streaming_response: RetellSdkWithStreamedResponse
 
@@ -108,7 +108,7 @@ class RetellSdk(SyncAPIClient):
         self.call = resources.Call(self)
         self.phone_number = resources.PhoneNumberResource(self)
         self.agent = resources.AgentResource(self)
-        self.llm = resources.Llm(self)
+        self.llm = resources.LlmResource(self)
         self.with_raw_response = RetellSdkWithRawResponse(self)
         self.with_streaming_response = RetellSdkWithStreamedResponse(self)
 
@@ -221,7 +221,7 @@ class AsyncRetellSdk(AsyncAPIClient):
     call: resources.AsyncCall
     phone_number: resources.AsyncPhoneNumberResource
     agent: resources.AsyncAgentResource
-    llm: resources.AsyncLlm
+    llm: resources.AsyncLlmResource
     with_raw_response: AsyncRetellSdkWithRawResponse
     with_streaming_response: AsyncRetellSdkWithStreamedResponse
 
@@ -280,7 +280,7 @@ class AsyncRetellSdk(AsyncAPIClient):
         self.call = resources.AsyncCall(self)
         self.phone_number = resources.AsyncPhoneNumberResource(self)
         self.agent = resources.AsyncAgentResource(self)
-        self.llm = resources.AsyncLlm(self)
+        self.llm = resources.AsyncLlmResource(self)
         self.with_raw_response = AsyncRetellSdkWithRawResponse(self)
         self.with_streaming_response = AsyncRetellSdkWithStreamedResponse(self)
 
@@ -394,7 +394,7 @@ class RetellSdkWithRawResponse:
         self.call = resources.CallWithRawResponse(client.call)
         self.phone_number = resources.PhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = resources.AgentResourceWithRawResponse(client.agent)
-        self.llm = resources.LlmWithRawResponse(client.llm)
+        self.llm = resources.LlmResourceWithRawResponse(client.llm)
 
 
 class AsyncRetellSdkWithRawResponse:
@@ -402,7 +402,7 @@ class AsyncRetellSdkWithRawResponse:
         self.call = resources.AsyncCallWithRawResponse(client.call)
         self.phone_number = resources.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = resources.AsyncAgentResourceWithRawResponse(client.agent)
-        self.llm = resources.AsyncLlmWithRawResponse(client.llm)
+        self.llm = resources.AsyncLlmResourceWithRawResponse(client.llm)
 
 
 class RetellSdkWithStreamedResponse:
@@ -410,7 +410,7 @@ class RetellSdkWithStreamedResponse:
         self.call = resources.CallWithStreamingResponse(client.call)
         self.phone_number = resources.PhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = resources.AgentResourceWithStreamingResponse(client.agent)
-        self.llm = resources.LlmWithStreamingResponse(client.llm)
+        self.llm = resources.LlmResourceWithStreamingResponse(client.llm)
 
 
 class AsyncRetellSdkWithStreamedResponse:
@@ -418,7 +418,7 @@ class AsyncRetellSdkWithStreamedResponse:
         self.call = resources.AsyncCallWithStreamingResponse(client.call)
         self.phone_number = resources.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = resources.AsyncAgentResourceWithStreamingResponse(client.agent)
-        self.llm = resources.AsyncLlmWithStreamingResponse(client.llm)
+        self.llm = resources.AsyncLlmResourceWithStreamingResponse(client.llm)
 
 
 Client = RetellSdk

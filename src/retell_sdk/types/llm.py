@@ -6,7 +6,7 @@ from typing_extensions import Literal
 from .._models import BaseModel
 
 __all__ = [
-    "LlmRetrieveResponse",
+    "Llm",
     "GeneralTool",
     "GeneralToolEndCallTool",
     "GeneralToolTransferCallTool",
@@ -463,7 +463,7 @@ class State(BaseModel):
     """
 
 
-class LlmRetrieveResponse(BaseModel):
+class Llm(BaseModel):
     begin_message: Optional[str] = None
     """First utterance said by the agent in the call.
 
@@ -490,21 +490,6 @@ class LlmRetrieveResponse(BaseModel):
     - Tools of LLM (with state) = general tools + state tools + state transitions
 
     - Tools of LLM (no state) = general tools
-    """
-
-    last_modification_timestamp: Optional[int] = None
-    """Last modification timestamp (milliseconds since epoch).
-
-    Either the time of last update or creation if no updates available.
-    """
-
-    llm_id: Optional[str] = None
-    """Unique id of Retell LLM."""
-
-    llm_websocket_url: Optional[str] = None
-    """The LLM Websocket URL constructed from unique id of Retell LLM.
-
-    Used in agent API to create / update agent.
     """
 
     starting_state: Optional[str] = None

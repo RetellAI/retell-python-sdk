@@ -1,12 +1,12 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from .llm import (
-    Llm,
-    AsyncLlm,
-    LlmWithRawResponse,
-    AsyncLlmWithRawResponse,
-    LlmWithStreamingResponse,
-    AsyncLlmWithStreamingResponse,
+    LlmResource,
+    AsyncLlmResource,
+    LlmResourceWithRawResponse,
+    AsyncLlmResourceWithRawResponse,
+    LlmResourceWithStreamingResponse,
+    AsyncLlmResourceWithStreamingResponse,
 )
 from .call import (
     Call,
@@ -52,10 +52,10 @@ __all__ = [
     "AsyncAgentResourceWithRawResponse",
     "AgentResourceWithStreamingResponse",
     "AsyncAgentResourceWithStreamingResponse",
-    "Llm",
-    "AsyncLlm",
-    "LlmWithRawResponse",
-    "AsyncLlmWithRawResponse",
-    "LlmWithStreamingResponse",
-    "AsyncLlmWithStreamingResponse",
+    "LlmResource",
+    "AsyncLlmResource",
+    "LlmResourceWithRawResponse",
+    "AsyncLlmResourceWithRawResponse",
+    "LlmResourceWithStreamingResponse",
+    "AsyncLlmResourceWithStreamingResponse",
 ]
