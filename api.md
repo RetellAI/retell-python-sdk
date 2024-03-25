@@ -29,24 +29,19 @@ Methods:
 - <code title="get /list-phone-number">client.phone_number.<a href="./src/retell_sdk/resources/phone_number.py">list</a>() -> <a href="./src/retell_sdk/types/phone_number_list_response.py">PhoneNumberListResponse</a></code>
 - <code title="delete /delete-phone-number/{phone_number}">client.phone_number.<a href="./src/retell_sdk/resources/phone_number.py">delete</a>(phone_number) -> None</code>
 
-# Agent
+# AgentResource
 
 Types:
 
 ```python
-from retell_sdk.types import (
-    AgentCreateResponse,
-    AgentRetrieveResponse,
-    AgentUpdateResponse,
-    AgentListResponse,
-)
+from retell_sdk.types import Agent, AgentListResponse
 ```
 
 Methods:
 
-- <code title="post /create-agent">client.agent.<a href="./src/retell_sdk/resources/agent.py">create</a>(\*\*<a href="src/retell_sdk/types/agent_create_params.py">params</a>) -> <a href="./src/retell_sdk/types/agent_create_response.py">AgentCreateResponse</a></code>
-- <code title="get /get-agent/{agent_id}">client.agent.<a href="./src/retell_sdk/resources/agent.py">retrieve</a>(agent_id) -> <a href="./src/retell_sdk/types/agent_retrieve_response.py">AgentRetrieveResponse</a></code>
-- <code title="patch /update-agent/{agent_id}">client.agent.<a href="./src/retell_sdk/resources/agent.py">update</a>(agent_id, \*\*<a href="src/retell_sdk/types/agent_update_params.py">params</a>) -> <a href="./src/retell_sdk/types/agent_update_response.py">AgentUpdateResponse</a></code>
+- <code title="post /create-agent">client.agent.<a href="./src/retell_sdk/resources/agent.py">create</a>(\*\*<a href="src/retell_sdk/types/agent_create_params.py">params</a>) -> <a href="./src/retell_sdk/types/agent.py">Agent</a></code>
+- <code title="get /get-agent/{agent_id}">client.agent.<a href="./src/retell_sdk/resources/agent.py">retrieve</a>(agent_id) -> <a href="./src/retell_sdk/types/agent.py">Agent</a></code>
+- <code title="patch /update-agent/{agent_id}">client.agent.<a href="./src/retell_sdk/resources/agent.py">update</a>(agent_id, \*\*<a href="src/retell_sdk/types/agent_update_params.py">params</a>) -> <a href="./src/retell_sdk/types/agent.py">Agent</a></code>
 - <code title="get /list-agents">client.agent.<a href="./src/retell_sdk/resources/agent.py">list</a>() -> <a href="./src/retell_sdk/types/agent_list_response.py">AgentListResponse</a></code>
 - <code title="delete /delete-agent/{agent_id}">client.agent.<a href="./src/retell_sdk/resources/agent.py">delete</a>(agent_id) -> None</code>
 

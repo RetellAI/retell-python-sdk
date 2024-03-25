@@ -9,12 +9,7 @@ import pytest
 
 from retell_sdk import RetellSdk, AsyncRetellSdk
 from tests.utils import assert_matches_type
-from retell_sdk.types import (
-    AgentListResponse,
-    AgentCreateResponse,
-    AgentUpdateResponse,
-    AgentRetrieveResponse,
-)
+from retell_sdk.types import Agent, AgentListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -28,7 +23,7 @@ class TestAgent:
             llm_type="retell-llm",
             voice_id="11labs-Adrian",
         )
-        assert_matches_type(AgentCreateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: RetellSdk) -> None:
@@ -49,7 +44,7 @@ class TestAgent:
             voice_temperature=1,
             webhook_url="https://webhook-url-here",
         )
-        assert_matches_type(AgentCreateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: RetellSdk) -> None:
@@ -61,7 +56,7 @@ class TestAgent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = response.parse()
-        assert_matches_type(AgentCreateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     def test_streaming_response_create(self, client: RetellSdk) -> None:
@@ -73,7 +68,7 @@ class TestAgent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = response.parse()
-            assert_matches_type(AgentCreateResponse, agent, path=["response"])
+            assert_matches_type(Agent, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -82,7 +77,7 @@ class TestAgent:
         agent = client.agent.retrieve(
             "16b980523634a6dc504898cda492e939",
         )
-        assert_matches_type(AgentRetrieveResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: RetellSdk) -> None:
@@ -93,7 +88,7 @@ class TestAgent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = response.parse()
-        assert_matches_type(AgentRetrieveResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: RetellSdk) -> None:
@@ -104,7 +99,7 @@ class TestAgent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = response.parse()
-            assert_matches_type(AgentRetrieveResponse, agent, path=["response"])
+            assert_matches_type(Agent, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -120,7 +115,7 @@ class TestAgent:
         agent = client.agent.update(
             "16b980523634a6dc504898cda492e939",
         )
-        assert_matches_type(AgentUpdateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: RetellSdk) -> None:
@@ -142,7 +137,7 @@ class TestAgent:
             voice_temperature=1,
             webhook_url="https://webhook-url-here",
         )
-        assert_matches_type(AgentUpdateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: RetellSdk) -> None:
@@ -153,7 +148,7 @@ class TestAgent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = response.parse()
-        assert_matches_type(AgentUpdateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     def test_streaming_response_update(self, client: RetellSdk) -> None:
@@ -164,7 +159,7 @@ class TestAgent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = response.parse()
-            assert_matches_type(AgentUpdateResponse, agent, path=["response"])
+            assert_matches_type(Agent, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -248,7 +243,7 @@ class TestAsyncAgent:
             llm_type="retell-llm",
             voice_id="11labs-Adrian",
         )
-        assert_matches_type(AgentCreateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetellSdk) -> None:
@@ -269,7 +264,7 @@ class TestAsyncAgent:
             voice_temperature=1,
             webhook_url="https://webhook-url-here",
         )
-        assert_matches_type(AgentCreateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncRetellSdk) -> None:
@@ -281,7 +276,7 @@ class TestAsyncAgent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = await response.parse()
-        assert_matches_type(AgentCreateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncRetellSdk) -> None:
@@ -293,7 +288,7 @@ class TestAsyncAgent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = await response.parse()
-            assert_matches_type(AgentCreateResponse, agent, path=["response"])
+            assert_matches_type(Agent, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -302,7 +297,7 @@ class TestAsyncAgent:
         agent = await async_client.agent.retrieve(
             "16b980523634a6dc504898cda492e939",
         )
-        assert_matches_type(AgentRetrieveResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetellSdk) -> None:
@@ -313,7 +308,7 @@ class TestAsyncAgent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = await response.parse()
-        assert_matches_type(AgentRetrieveResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetellSdk) -> None:
@@ -324,7 +319,7 @@ class TestAsyncAgent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = await response.parse()
-            assert_matches_type(AgentRetrieveResponse, agent, path=["response"])
+            assert_matches_type(Agent, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -340,7 +335,7 @@ class TestAsyncAgent:
         agent = await async_client.agent.update(
             "16b980523634a6dc504898cda492e939",
         )
-        assert_matches_type(AgentUpdateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncRetellSdk) -> None:
@@ -362,7 +357,7 @@ class TestAsyncAgent:
             voice_temperature=1,
             webhook_url="https://webhook-url-here",
         )
-        assert_matches_type(AgentUpdateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncRetellSdk) -> None:
@@ -373,7 +368,7 @@ class TestAsyncAgent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = await response.parse()
-        assert_matches_type(AgentUpdateResponse, agent, path=["response"])
+        assert_matches_type(Agent, agent, path=["response"])
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncRetellSdk) -> None:
@@ -384,7 +379,7 @@ class TestAsyncAgent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = await response.parse()
-            assert_matches_type(AgentUpdateResponse, agent, path=["response"])
+            assert_matches_type(Agent, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

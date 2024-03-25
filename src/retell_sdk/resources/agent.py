@@ -7,14 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import (
-    AgentListResponse,
-    AgentCreateResponse,
-    AgentUpdateResponse,
-    AgentRetrieveResponse,
-    agent_create_params,
-    agent_update_params,
-)
+from ..types import Agent, AgentListResponse, agent_create_params, agent_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -32,17 +25,17 @@ from .._base_client import (
     make_request_options,
 )
 
-__all__ = ["Agent", "AsyncAgent"]
+__all__ = ["AgentResource", "AsyncAgentResource"]
 
 
-class Agent(SyncAPIResource):
+class AgentResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AgentWithRawResponse:
-        return AgentWithRawResponse(self)
+    def with_raw_response(self) -> AgentResourceWithRawResponse:
+        return AgentResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AgentWithStreamingResponse:
-        return AgentWithStreamingResponse(self)
+    def with_streaming_response(self) -> AgentResourceWithStreamingResponse:
+        return AgentResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -70,7 +63,7 @@ class Agent(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AgentCreateResponse:
+    ) -> Agent:
         """
         Create a new agent
 
@@ -195,7 +188,7 @@ class Agent(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AgentCreateResponse,
+            cast_to=Agent,
         )
 
     def retrieve(
@@ -208,7 +201,7 @@ class Agent(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AgentRetrieveResponse:
+    ) -> Agent:
         """
         Retrieve details of a specific agent
 
@@ -228,7 +221,7 @@ class Agent(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AgentRetrieveResponse,
+            cast_to=Agent,
         )
 
     def update(
@@ -258,7 +251,7 @@ class Agent(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AgentUpdateResponse:
+    ) -> Agent:
         """Update an existing agent
 
         Args:
@@ -386,7 +379,7 @@ class Agent(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AgentUpdateResponse,
+            cast_to=Agent,
         )
 
     def list(
@@ -443,14 +436,14 @@ class Agent(SyncAPIResource):
         )
 
 
-class AsyncAgent(AsyncAPIResource):
+class AsyncAgentResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncAgentWithRawResponse:
-        return AsyncAgentWithRawResponse(self)
+    def with_raw_response(self) -> AsyncAgentResourceWithRawResponse:
+        return AsyncAgentResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncAgentWithStreamingResponse:
-        return AsyncAgentWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncAgentResourceWithStreamingResponse:
+        return AsyncAgentResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -478,7 +471,7 @@ class AsyncAgent(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AgentCreateResponse:
+    ) -> Agent:
         """
         Create a new agent
 
@@ -603,7 +596,7 @@ class AsyncAgent(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AgentCreateResponse,
+            cast_to=Agent,
         )
 
     async def retrieve(
@@ -616,7 +609,7 @@ class AsyncAgent(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AgentRetrieveResponse:
+    ) -> Agent:
         """
         Retrieve details of a specific agent
 
@@ -636,7 +629,7 @@ class AsyncAgent(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AgentRetrieveResponse,
+            cast_to=Agent,
         )
 
     async def update(
@@ -666,7 +659,7 @@ class AsyncAgent(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AgentUpdateResponse:
+    ) -> Agent:
         """Update an existing agent
 
         Args:
@@ -794,7 +787,7 @@ class AsyncAgent(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AgentUpdateResponse,
+            cast_to=Agent,
         )
 
     async def list(
@@ -851,8 +844,8 @@ class AsyncAgent(AsyncAPIResource):
         )
 
 
-class AgentWithRawResponse:
-    def __init__(self, agent: Agent) -> None:
+class AgentResourceWithRawResponse:
+    def __init__(self, agent: AgentResource) -> None:
         self._agent = agent
 
         self.create = to_raw_response_wrapper(
@@ -872,8 +865,8 @@ class AgentWithRawResponse:
         )
 
 
-class AsyncAgentWithRawResponse:
-    def __init__(self, agent: AsyncAgent) -> None:
+class AsyncAgentResourceWithRawResponse:
+    def __init__(self, agent: AsyncAgentResource) -> None:
         self._agent = agent
 
         self.create = async_to_raw_response_wrapper(
@@ -893,8 +886,8 @@ class AsyncAgentWithRawResponse:
         )
 
 
-class AgentWithStreamingResponse:
-    def __init__(self, agent: Agent) -> None:
+class AgentResourceWithStreamingResponse:
+    def __init__(self, agent: AgentResource) -> None:
         self._agent = agent
 
         self.create = to_streamed_response_wrapper(
@@ -914,8 +907,8 @@ class AgentWithStreamingResponse:
         )
 
 
-class AsyncAgentWithStreamingResponse:
-    def __init__(self, agent: AsyncAgent) -> None:
+class AsyncAgentResourceWithStreamingResponse:
+    def __init__(self, agent: AsyncAgentResource) -> None:
         self._agent = agent
 
         self.create = async_to_streamed_response_wrapper(

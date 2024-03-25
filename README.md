@@ -32,11 +32,11 @@ client = RetellSdk(
     api_key=os.environ.get("RETELL_API_KEY"),
 )
 
-agent_create_response = client.agent.create(
+agent = client.agent.create(
     llm_type="retell-llm",
     voice_id="11labs-Adrian",
 )
-print(agent_create_response.agent_id)
+print(agent.voice_id)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -60,11 +60,11 @@ client = AsyncRetellSdk(
 
 
 async def main() -> None:
-    agent_create_response = await client.agent.create(
+    agent = await client.agent.create(
         llm_type="retell-llm",
         voice_id="11labs-Adrian",
     )
-    print(agent_create_response.agent_id)
+    print(agent.voice_id)
 
 
 asyncio.run(main())
@@ -218,7 +218,7 @@ response = client.agent.with_raw_response.create(
 print(response.headers.get('X-My-Header'))
 
 agent = response.parse()  # get the object that `agent.create()` would have returned
-print(agent.agent_id)
+print(agent.voice_id)
 ```
 
 These methods return an [`APIResponse`](https://github.com/stainless-sdks/tree/main/src/retell_sdk/_response.py) object.

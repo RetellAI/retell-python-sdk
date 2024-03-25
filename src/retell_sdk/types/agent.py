@@ -7,12 +7,22 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["AgentUpdateResponse"]
+__all__ = ["Agent"]
 
 
-class AgentUpdateResponse(BaseModel):
-    agent_id: Optional[str] = None
-    """Unique id of agent."""
+class Agent(BaseModel):
+    llm_websocket_url: str
+    """
+    The URL we will establish LLM websocket for getting response, usually your
+    server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
+    request format (sent from us) and response format (send to us).
+    """
+
+    voice_id: str
+    """Unique voice id used for the agent.
+
+    Find list of available voices and their preview in Dashboard.
+    """
 
     agent_name: Optional[str] = None
     """The name of the agent. Only used for your own reference."""
@@ -86,23 +96,10 @@ class AgentUpdateResponse(BaseModel):
     - `deepgram voices`: supports English(en)
     """
 
-    last_modification_timestamp: Optional[int] = None
-    """Last modification timestamp (milliseconds since epoch).
-
-    Either the time of last update or creation if no updates available.
-    """
-
     llm_type: Optional[Literal["retell-llm", "custom-llm"]] = None
     """If using retell-llm, add retell_llm_id by calling create-retell-llm API.
 
     If using custom LLM, specific a llm_websocket_url.
-    """
-
-    llm_websocket_url: Optional[str] = None
-    """
-    The URL we will establish LLM websocket for getting response, usually your
-    server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-    request format (sent from us) and response format (send to us).
     """
 
     opt_out_sensitive_data_storage: Optional[bool] = FieldInfo(alias="optOutSensitiveDataStorage", default=None)
@@ -121,12 +118,6 @@ class AgentUpdateResponse(BaseModel):
 
     retell_llm_id: Optional[str] = None
     """Get your retell_llm_id from create-retell-llm API."""
-
-    voice_id: Optional[str] = None
-    """Unique voice id used for the agent.
-
-    Find list of available voices and their preview in Dashboard.
-    """
 
     voice_speed: Optional[float] = None
     """Controls speed of voice.
