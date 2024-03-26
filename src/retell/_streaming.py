@@ -12,7 +12,7 @@ import httpx
 from ._utils import extract_type_var_from_base
 
 if TYPE_CHECKING:
-    from ._client import RetellSdk, AsyncRetellSdk
+    from ._client import Retell, AsyncRetell
 
 
 _T = TypeVar("_T")
@@ -30,7 +30,7 @@ class Stream(Generic[_T]):
         *,
         cast_to: type[_T],
         response: httpx.Response,
-        client: RetellSdk,
+        client: Retell,
     ) -> None:
         self.response = response
         self._cast_to = cast_to
@@ -96,7 +96,7 @@ class AsyncStream(Generic[_T]):
         *,
         cast_to: type[_T],
         response: httpx.Response,
-        client: AsyncRetellSdk,
+        client: AsyncRetell,
     ) -> None:
         self.response = response
         self._cast_to = cast_to

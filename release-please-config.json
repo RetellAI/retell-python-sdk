@@ -61,6 +61,6 @@
   ],
   "release-type": "python",
   "extra-files": [
-    "src/retell_sdk/_version.py"
+    "src/retell/_version.py"
   ]
 }

@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class RetellSdkError(Exception):
+class RetellError(Exception):
     pass
 
 
-class APIError(RetellSdkError):
+class APIError(RetellError):
     message: str
     request: httpx.Request
 

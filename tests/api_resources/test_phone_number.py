@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from retell_sdk import RetellSdk, AsyncRetellSdk
+from retell import Retell, AsyncRetell
 from tests.utils import assert_matches_type
-from retell_sdk.types import (
+from retell.types import (
     PhoneNumberResponse,
     PhoneNumberListResponse,
 )
@@ -21,14 +21,14 @@ class TestPhoneNumber:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_create(self, client: RetellSdk) -> None:
+    def test_method_create(self, client: Retell) -> None:
         phone_number = client.phone_number.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    def test_method_create_with_all_params(self, client: RetellSdk) -> None:
+    def test_method_create_with_all_params(self, client: Retell) -> None:
         phone_number = client.phone_number.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             area_code=415,
@@ -36,7 +36,7 @@ class TestPhoneNumber:
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    def test_raw_response_create(self, client: RetellSdk) -> None:
+    def test_raw_response_create(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
@@ -47,7 +47,7 @@ class TestPhoneNumber:
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    def test_streaming_response_create(self, client: RetellSdk) -> None:
+    def test_streaming_response_create(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         ) as response:
@@ -60,14 +60,14 @@ class TestPhoneNumber:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_retrieve(self, client: RetellSdk) -> None:
+    def test_method_retrieve(self, client: Retell) -> None:
         phone_number = client.phone_number.retrieve(
             "string",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    def test_raw_response_retrieve(self, client: RetellSdk) -> None:
+    def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.retrieve(
             "string",
         )
@@ -78,7 +78,7 @@ class TestPhoneNumber:
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    def test_streaming_response_retrieve(self, client: RetellSdk) -> None:
+    def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.retrieve(
             "string",
         ) as response:
@@ -91,14 +91,14 @@ class TestPhoneNumber:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_retrieve(self, client: RetellSdk) -> None:
+    def test_path_params_retrieve(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
             client.phone_number.with_raw_response.retrieve(
                 "",
             )
 
     @parametrize
-    def test_method_update(self, client: RetellSdk) -> None:
+    def test_method_update(self, client: Retell) -> None:
         phone_number = client.phone_number.update(
             "string",
             agent_id="string",
@@ -106,7 +106,7 @@ class TestPhoneNumber:
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    def test_raw_response_update(self, client: RetellSdk) -> None:
+    def test_raw_response_update(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.update(
             "string",
             agent_id="string",
@@ -118,7 +118,7 @@ class TestPhoneNumber:
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    def test_streaming_response_update(self, client: RetellSdk) -> None:
+    def test_streaming_response_update(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.update(
             "string",
             agent_id="string",
@@ -132,7 +132,7 @@ class TestPhoneNumber:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_update(self, client: RetellSdk) -> None:
+    def test_path_params_update(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
             client.phone_number.with_raw_response.update(
                 "",
@@ -140,12 +140,12 @@ class TestPhoneNumber:
             )
 
     @parametrize
-    def test_method_list(self, client: RetellSdk) -> None:
+    def test_method_list(self, client: Retell) -> None:
         phone_number = client.phone_number.list()
         assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
 
     @parametrize
-    def test_raw_response_list(self, client: RetellSdk) -> None:
+    def test_raw_response_list(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.list()
 
         assert response.is_closed is True
@@ -154,7 +154,7 @@ class TestPhoneNumber:
         assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
 
     @parametrize
-    def test_streaming_response_list(self, client: RetellSdk) -> None:
+    def test_streaming_response_list(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -165,14 +165,14 @@ class TestPhoneNumber:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_delete(self, client: RetellSdk) -> None:
+    def test_method_delete(self, client: Retell) -> None:
         phone_number = client.phone_number.delete(
             "string",
         )
         assert phone_number is None
 
     @parametrize
-    def test_raw_response_delete(self, client: RetellSdk) -> None:
+    def test_raw_response_delete(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.delete(
             "string",
         )
@@ -183,7 +183,7 @@ class TestPhoneNumber:
         assert phone_number is None
 
     @parametrize
-    def test_streaming_response_delete(self, client: RetellSdk) -> None:
+    def test_streaming_response_delete(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.delete(
             "string",
         ) as response:
@@ -196,7 +196,7 @@ class TestPhoneNumber:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_delete(self, client: RetellSdk) -> None:
+    def test_path_params_delete(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
             client.phone_number.with_raw_response.delete(
                 "",
@@ -207,14 +207,14 @@ class TestAsyncPhoneNumber:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_create(self, async_client: AsyncRetellSdk) -> None:
+    async def test_method_create(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    async def test_method_create_with_all_params(self, async_client: AsyncRetellSdk) -> None:
+    async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             area_code=415,
@@ -222,7 +222,7 @@ class TestAsyncPhoneNumber:
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    async def test_raw_response_create(self, async_client: AsyncRetellSdk) -> None:
+    async def test_raw_response_create(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
@@ -233,7 +233,7 @@ class TestAsyncPhoneNumber:
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create(self, async_client: AsyncRetellSdk) -> None:
+    async def test_streaming_response_create(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         ) as response:
@@ -246,14 +246,14 @@ class TestAsyncPhoneNumber:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncRetellSdk) -> None:
+    async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.retrieve(
             "string",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncRetellSdk) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.retrieve(
             "string",
         )
@@ -264,7 +264,7 @@ class TestAsyncPhoneNumber:
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncRetellSdk) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.retrieve(
             "string",
         ) as response:
@@ -277,14 +277,14 @@ class TestAsyncPhoneNumber:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_retrieve(self, async_client: AsyncRetellSdk) -> None:
+    async def test_path_params_retrieve(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
             await async_client.phone_number.with_raw_response.retrieve(
                 "",
             )
 
     @parametrize
-    async def test_method_update(self, async_client: AsyncRetellSdk) -> None:
+    async def test_method_update(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.update(
             "string",
             agent_id="string",
@@ -292,7 +292,7 @@ class TestAsyncPhoneNumber:
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncRetellSdk) -> None:
+    async def test_raw_response_update(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.update(
             "string",
             agent_id="string",
@@ -304,7 +304,7 @@ class TestAsyncPhoneNumber:
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncRetellSdk) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.update(
             "string",
             agent_id="string",
@@ -318,7 +318,7 @@ class TestAsyncPhoneNumber:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_update(self, async_client: AsyncRetellSdk) -> None:
+    async def test_path_params_update(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
             await async_client.phone_number.with_raw_response.update(
                 "",
@@ -326,12 +326,12 @@ class TestAsyncPhoneNumber:
             )
 
     @parametrize
-    async def test_method_list(self, async_client: AsyncRetellSdk) -> None:
+    async def test_method_list(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.list()
         assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncRetellSdk) -> None:
+    async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.list()
 
         assert response.is_closed is True
@@ -340,7 +340,7 @@ class TestAsyncPhoneNumber:
         assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncRetellSdk) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -351,14 +351,14 @@ class TestAsyncPhoneNumber:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_delete(self, async_client: AsyncRetellSdk) -> None:
+    async def test_method_delete(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.delete(
             "string",
         )
         assert phone_number is None
 
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncRetellSdk) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.delete(
             "string",
         )
@@ -369,7 +369,7 @@ class TestAsyncPhoneNumber:
         assert phone_number is None
 
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncRetellSdk) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.delete(
             "string",
         ) as response:
@@ -382,7 +382,7 @@ class TestAsyncPhoneNumber:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_delete(self, async_client: AsyncRetellSdk) -> None:
+    async def test_path_params_delete(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
             await async_client.phone_number.with_raw_response.delete(
                 "",

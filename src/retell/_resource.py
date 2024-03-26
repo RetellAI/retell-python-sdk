@@ -8,13 +8,13 @@ from typing import TYPE_CHECKING
 import anyio
 
 if TYPE_CHECKING:
-    from ._client import RetellSdk, AsyncRetellSdk
+    from ._client import Retell, AsyncRetell
 
 
 class SyncAPIResource:
-    _client: RetellSdk
+    _client: Retell
 
-    def __init__(self, client: RetellSdk) -> None:
+    def __init__(self, client: Retell) -> None:
         self._client = client
         self._get = client.get
         self._post = client.post
@@ -28,9 +28,9 @@ class SyncAPIResource:
 
 
 class AsyncAPIResource:
-    _client: AsyncRetellSdk
+    _client: AsyncRetell
 
-    def __init__(self, client: AsyncRetellSdk) -> None:
+    def __init__(self, client: AsyncRetell) -> None:
         self._client = client
         self._get = client.get
         self._post = client.post
