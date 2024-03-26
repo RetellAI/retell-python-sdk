@@ -4,7 +4,7 @@ warnings=()
 errors=()
 
 if [ -z "${PYPI_TOKEN}" ]; then
-  warnings+=("The RETELL_SDK_PYPI_TOKEN secret has not been set. Please set it in either this repository's secrets or your organization secrets.")
+  warnings+=("The RETELL_PYPI_TOKEN secret has not been set. Please set it in either this repository's secrets or your organization secrets.")
 fi
 
 lenWarnings=${#warnings[@]}

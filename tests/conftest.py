@@ -7,14 +7,14 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 
 import pytest
 
-from retell_sdk import RetellSdk, AsyncRetellSdk
+from retell import Retell, AsyncRetell
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("retell_sdk").setLevel(logging.DEBUG)
+logging.getLogger("retell").setLevel(logging.DEBUG)
 
 
 @pytest.fixture(scope="session")
@@ -30,20 +30,20 @@ api_key = "My API Key"
 
 
 @pytest.fixture(scope="session")
-def client(request: FixtureRequest) -> Iterator[RetellSdk]:
+def client(request: FixtureRequest) -> Iterator[Retell]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    with RetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
+    with Retell(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
         yield client
 
 
 @pytest.fixture(scope="session")
-async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncRetellSdk]:
+async def async_client(request: FixtureRequest) -> AsyncIterator[AsyncRetell]:
     strict = getattr(request, "param", True)
     if not isinstance(strict, bool):
         raise TypeError(f"Unexpected fixture parameter type {type(strict)}, expected {bool}")
 
-    async with AsyncRetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
+    async with AsyncRetell(base_url=base_url, api_key=api_key, _strict_response_validation=strict) as client:
         yield client
