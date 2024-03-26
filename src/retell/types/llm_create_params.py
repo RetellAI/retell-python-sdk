@@ -36,9 +36,7 @@ class LlmCreateParams(TypedDict, total=False):
     """
 
     general_prompt: str
-    """
-    General prompt that's appended to system prompt no matter what state the agent
-    is in.
+    """General prompt appended to system prompt no matter what state the agent is in.
 
     - System prompt (with state) = general prompt + state prompt.
 

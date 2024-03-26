@@ -58,8 +58,7 @@ class Llm(SyncAPIResource):
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
 
-          general_prompt: General prompt that's appended to system prompt no matter what state the agent
-              is in.
+          general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
               - System prompt (with state) = general prompt + state prompt.
 
@@ -163,8 +162,7 @@ class Llm(SyncAPIResource):
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
 
-          general_prompt: General prompt that's appended to system prompt no matter what state the agent
-              is in.
+          general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
               - System prompt (with state) = general prompt + state prompt.
 
@@ -299,8 +297,7 @@ class AsyncLlm(AsyncAPIResource):
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
 
-          general_prompt: General prompt that's appended to system prompt no matter what state the agent
-              is in.
+          general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
               - System prompt (with state) = general prompt + state prompt.
 
@@ -404,8 +401,7 @@ class AsyncLlm(AsyncAPIResource):
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
 
-          general_prompt: General prompt that's appended to system prompt no matter what state the agent
-              is in.
+          general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
               - System prompt (with state) = general prompt + state prompt.
 
