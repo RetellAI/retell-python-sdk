@@ -59,7 +59,7 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```bash
-pip install git+ssh://git@github.com/RetellAI/https://github.com/RetellAI/retell-python-sdk.git
+pip install git+ssh://git@github.com/RetellAI/retell-python-sdk.git
 ```
 
 Alternatively, you can build from source and install the wheel file:
@@ -117,7 +117,7 @@ the changes aren't made through the automated pipeline, you may want to make rel
 
 ### Publish with a GitHub workflow
 
-You can release to package managers by using [the `Publish PyPI` GitHub action](https://www.github.com/RetellAI/https://github.com/RetellAI/retell-python-sdk/actions/workflows/publish-pypi.yml). This requires a setup organization or repository secret to be set up.
+You can release to package managers by using [the `Publish PyPI` GitHub action](https://www.github.com/RetellAI/retell-python-sdk/actions/workflows/publish-pypi.yml). This requires a setup organization or repository secret to be set up.
 
 ### Publish manually
 
