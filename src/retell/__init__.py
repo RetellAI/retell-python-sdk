@@ -3,27 +3,17 @@
 from . import types
 from ._types import NOT_GIVEN, NoneType, NotGiven, Transport, ProxiesTypes
 from ._utils import file_from_path
-from ._client import (
-    Client,
-    Stream,
-    Timeout,
-    RetellSdk,
-    Transport,
-    AsyncClient,
-    AsyncStream,
-    AsyncRetellSdk,
-    RequestOptions,
-)
+from ._client import Client, Retell, Stream, Timeout, Transport, AsyncClient, AsyncRetell, AsyncStream, RequestOptions
 from ._models import BaseModel
 from ._version import __title__, __version__
 from ._response import APIResponse as APIResponse, AsyncAPIResponse as AsyncAPIResponse
 from ._exceptions import (
     APIError,
+    RetellError,
     ConflictError,
     NotFoundError,
     APIStatusError,
     RateLimitError,
-    RetellSdkError,
     APITimeoutError,
     BadRequestError,
     APIConnectionError,
@@ -44,7 +34,7 @@ __all__ = [
     "ProxiesTypes",
     "NotGiven",
     "NOT_GIVEN",
-    "RetellSdkError",
+    "RetellError",
     "APIError",
     "APIStatusError",
     "APITimeoutError",
@@ -64,8 +54,8 @@ __all__ = [
     "AsyncClient",
     "Stream",
     "AsyncStream",
-    "RetellSdk",
-    "AsyncRetellSdk",
+    "Retell",
+    "AsyncRetell",
     "file_from_path",
     "BaseModel",
 ]
@@ -75,12 +65,12 @@ _setup_logging()
 # Update the __module__ attribute for exported symbols so that
 # error messages point to this module instead of the module
 # it was originally defined in, e.g.
-# retell_sdk._exceptions.NotFoundError -> retell_sdk.NotFoundError
+# retell._exceptions.NotFoundError -> retell.NotFoundError
 __locals = locals()
 for __name in __all__:
     if not __name.startswith("__"):
         try:
-            __locals[__name].__module__ = "retell_sdk"
+            __locals[__name].__module__ = "retell"
         except (TypeError, AttributeError):
             # Some of our exported symbols are builtins which we can't set attributes for.
             pass

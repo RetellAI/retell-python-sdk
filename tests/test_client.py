@@ -16,17 +16,12 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from retell_sdk import RetellSdk, AsyncRetellSdk, APIResponseValidationError
-from retell_sdk._client import RetellSdk, AsyncRetellSdk
-from retell_sdk._models import BaseModel, FinalRequestOptions
-from retell_sdk._constants import RAW_RESPONSE_HEADER
-from retell_sdk._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
-from retell_sdk._base_client import (
-    DEFAULT_TIMEOUT,
-    HTTPX_DEFAULT_TIMEOUT,
-    BaseClient,
-    make_request_options,
-)
+from retell import Retell, AsyncRetell, APIResponseValidationError
+from retell._client import Retell, AsyncRetell
+from retell._models import BaseModel, FinalRequestOptions
+from retell._constants import RAW_RESPONSE_HEADER
+from retell._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from retell._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
 
 from .utils import update_env
 
@@ -44,7 +39,7 @@ def _low_retry_timeout(*_args: Any, **_kwargs: Any) -> float:
     return 0.1
 
 
-def _get_open_connections(client: RetellSdk | AsyncRetellSdk) -> int:
+def _get_open_connections(client: Retell | AsyncRetell) -> int:
     transport = client._client._transport
     assert isinstance(transport, httpx.HTTPTransport) or isinstance(transport, httpx.AsyncHTTPTransport)
 
@@ -52,8 +47,8 @@ def _get_open_connections(client: RetellSdk | AsyncRetellSdk) -> int:
     return len(pool._requests)
 
 
-class TestRetellSdk:
-    client = RetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+class TestRetell:
+    client = Retell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response(self, respx_mock: MockRouter) -> None:
@@ -100,7 +95,7 @@ class TestRetellSdk:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = RetellSdk(
+        client = Retell(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         assert client.default_headers["X-Foo"] == "bar"
@@ -134,7 +129,7 @@ class TestRetellSdk:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = RetellSdk(
+        client = Retell(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -225,10 +220,10 @@ class TestRetellSdk:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "retell_sdk/_legacy_response.py",
-                        "retell_sdk/_response.py",
+                        "retell/_legacy_response.py",
+                        "retell/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "retell_sdk/_compat.py",
+                        "retell/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -259,9 +254,7 @@ class TestRetellSdk:
         assert timeout == httpx.Timeout(100.0)
 
     def test_client_timeout_option(self) -> None:
-        client = RetellSdk(
-            base_url=base_url, api_key=api_key, _strict_response_validation=True, timeout=httpx.Timeout(0)
-        )
+        client = Retell(base_url=base_url, api_key=api_key, _strict_response_validation=True, timeout=httpx.Timeout(0))
 
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         timeout = httpx.Timeout(**request.extensions["timeout"])  # type: ignore
@@ -270,7 +263,7 @@ class TestRetellSdk:
     def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         with httpx.Client(timeout=None) as http_client:
-            client = RetellSdk(
+            client = Retell(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -280,7 +273,7 @@ class TestRetellSdk:
 
         # no timeout given to the httpx client should not use the httpx default
         with httpx.Client() as http_client:
-            client = RetellSdk(
+            client = Retell(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -290,7 +283,7 @@ class TestRetellSdk:
 
         # explicitly passing the default timeout currently results in it being ignored
         with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = RetellSdk(
+            client = Retell(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -301,7 +294,7 @@ class TestRetellSdk:
     async def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             async with httpx.AsyncClient() as http_client:
-                RetellSdk(
+                Retell(
                     base_url=base_url,
                     api_key=api_key,
                     _strict_response_validation=True,
@@ -309,14 +302,14 @@ class TestRetellSdk:
                 )
 
     def test_default_headers_option(self) -> None:
-        client = RetellSdk(
+        client = Retell(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = RetellSdk(
+        client2 = Retell(
             base_url=base_url,
             api_key=api_key,
             _strict_response_validation=True,
@@ -330,7 +323,7 @@ class TestRetellSdk:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_default_query_option(self) -> None:
-        client = RetellSdk(
+        client = Retell(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -444,7 +437,7 @@ class TestRetellSdk:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, client: RetellSdk) -> None:
+    def test_multipart_repeating_array(self, client: Retell) -> None:
         request = client._build_request(
             FinalRequestOptions.construct(
                 method="get",
@@ -531,7 +524,7 @@ class TestRetellSdk:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = RetellSdk(base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True)
+        client = Retell(base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True)
         assert client.base_url == "https://example.com/from_init/"
 
         client.base_url = "https://example.com/from_setter"  # type: ignore[assignment]
@@ -539,15 +532,15 @@ class TestRetellSdk:
         assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
-        with update_env(RETELL_SDK_BASE_URL="http://localhost:5000/from/env"):
-            client = RetellSdk(api_key=api_key, _strict_response_validation=True)
+        with update_env(RETELL_BASE_URL="http://localhost:5000/from/env"):
+            client = Retell(api_key=api_key, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            RetellSdk(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
-            RetellSdk(
+            Retell(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
+            Retell(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -556,7 +549,7 @@ class TestRetellSdk:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: RetellSdk) -> None:
+    def test_base_url_trailing_slash(self, client: Retell) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -569,8 +562,8 @@ class TestRetellSdk:
     @pytest.mark.parametrize(
         "client",
         [
-            RetellSdk(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
-            RetellSdk(
+            Retell(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
+            Retell(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -579,7 +572,7 @@ class TestRetellSdk:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: RetellSdk) -> None:
+    def test_base_url_no_trailing_slash(self, client: Retell) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -592,8 +585,8 @@ class TestRetellSdk:
     @pytest.mark.parametrize(
         "client",
         [
-            RetellSdk(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
-            RetellSdk(
+            Retell(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
+            Retell(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -602,7 +595,7 @@ class TestRetellSdk:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: RetellSdk) -> None:
+    def test_absolute_request_url(self, client: Retell) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -613,7 +606,7 @@ class TestRetellSdk:
         assert request.url == "https://myapi.com/foo"
 
     def test_copied_client_does_not_close_http(self) -> None:
-        client = RetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = Retell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -624,7 +617,7 @@ class TestRetellSdk:
         assert not client.is_closed()
 
     def test_client_context_manager(self) -> None:
-        client = RetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = Retell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -650,12 +643,12 @@ class TestRetellSdk:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = RetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        strict_client = Retell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
-        client = RetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+        client = Retell(base_url=base_url, api_key=api_key, _strict_response_validation=False)
 
         response = client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -682,14 +675,14 @@ class TestRetellSdk:
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = RetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = Retell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("retell_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("retell._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/create-agent").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -704,7 +697,7 @@ class TestRetellSdk:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("retell_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("retell._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/create-agent").mock(return_value=httpx.Response(500))
@@ -720,8 +713,8 @@ class TestRetellSdk:
         assert _get_open_connections(self.client) == 0
 
 
-class TestAsyncRetellSdk:
-    client = AsyncRetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+class TestAsyncRetell:
+    client = AsyncRetell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
@@ -770,7 +763,7 @@ class TestAsyncRetellSdk:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = AsyncRetellSdk(
+        client = AsyncRetell(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         assert client.default_headers["X-Foo"] == "bar"
@@ -804,7 +797,7 @@ class TestAsyncRetellSdk:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = AsyncRetellSdk(
+        client = AsyncRetell(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -895,10 +888,10 @@ class TestAsyncRetellSdk:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "retell_sdk/_legacy_response.py",
-                        "retell_sdk/_response.py",
+                        "retell/_legacy_response.py",
+                        "retell/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "retell_sdk/_compat.py",
+                        "retell/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -929,7 +922,7 @@ class TestAsyncRetellSdk:
         assert timeout == httpx.Timeout(100.0)
 
     async def test_client_timeout_option(self) -> None:
-        client = AsyncRetellSdk(
+        client = AsyncRetell(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, timeout=httpx.Timeout(0)
         )
 
@@ -940,7 +933,7 @@ class TestAsyncRetellSdk:
     async def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         async with httpx.AsyncClient(timeout=None) as http_client:
-            client = AsyncRetellSdk(
+            client = AsyncRetell(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -950,7 +943,7 @@ class TestAsyncRetellSdk:
 
         # no timeout given to the httpx client should not use the httpx default
         async with httpx.AsyncClient() as http_client:
-            client = AsyncRetellSdk(
+            client = AsyncRetell(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -960,7 +953,7 @@ class TestAsyncRetellSdk:
 
         # explicitly passing the default timeout currently results in it being ignored
         async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = AsyncRetellSdk(
+            client = AsyncRetell(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -971,7 +964,7 @@ class TestAsyncRetellSdk:
     def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             with httpx.Client() as http_client:
-                AsyncRetellSdk(
+                AsyncRetell(
                     base_url=base_url,
                     api_key=api_key,
                     _strict_response_validation=True,
@@ -979,14 +972,14 @@ class TestAsyncRetellSdk:
                 )
 
     def test_default_headers_option(self) -> None:
-        client = AsyncRetellSdk(
+        client = AsyncRetell(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = AsyncRetellSdk(
+        client2 = AsyncRetell(
             base_url=base_url,
             api_key=api_key,
             _strict_response_validation=True,
@@ -1000,7 +993,7 @@ class TestAsyncRetellSdk:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_default_query_option(self) -> None:
-        client = AsyncRetellSdk(
+        client = AsyncRetell(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -1114,7 +1107,7 @@ class TestAsyncRetellSdk:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, async_client: AsyncRetellSdk) -> None:
+    def test_multipart_repeating_array(self, async_client: AsyncRetell) -> None:
         request = async_client._build_request(
             FinalRequestOptions.construct(
                 method="get",
@@ -1201,7 +1194,7 @@ class TestAsyncRetellSdk:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = AsyncRetellSdk(
+        client = AsyncRetell(
             base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -1211,17 +1204,17 @@ class TestAsyncRetellSdk:
         assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
-        with update_env(RETELL_SDK_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncRetellSdk(api_key=api_key, _strict_response_validation=True)
+        with update_env(RETELL_BASE_URL="http://localhost:5000/from/env"):
+            client = AsyncRetell(api_key=api_key, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncRetellSdk(
+            AsyncRetell(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncRetellSdk(
+            AsyncRetell(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1230,7 +1223,7 @@ class TestAsyncRetellSdk:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: AsyncRetellSdk) -> None:
+    def test_base_url_trailing_slash(self, client: AsyncRetell) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1243,10 +1236,10 @@ class TestAsyncRetellSdk:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncRetellSdk(
+            AsyncRetell(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncRetellSdk(
+            AsyncRetell(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1255,7 +1248,7 @@ class TestAsyncRetellSdk:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: AsyncRetellSdk) -> None:
+    def test_base_url_no_trailing_slash(self, client: AsyncRetell) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1268,10 +1261,10 @@ class TestAsyncRetellSdk:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncRetellSdk(
+            AsyncRetell(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncRetellSdk(
+            AsyncRetell(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1280,7 +1273,7 @@ class TestAsyncRetellSdk:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: AsyncRetellSdk) -> None:
+    def test_absolute_request_url(self, client: AsyncRetell) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1291,7 +1284,7 @@ class TestAsyncRetellSdk:
         assert request.url == "https://myapi.com/foo"
 
     async def test_copied_client_does_not_close_http(self) -> None:
-        client = AsyncRetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncRetell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -1303,7 +1296,7 @@ class TestAsyncRetellSdk:
         assert not client.is_closed()
 
     async def test_client_context_manager(self) -> None:
-        client = AsyncRetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncRetell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         async with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -1331,12 +1324,12 @@ class TestAsyncRetellSdk:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = AsyncRetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        strict_client = AsyncRetell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
-        client = AsyncRetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+        client = AsyncRetell(base_url=base_url, api_key=api_key, _strict_response_validation=False)
 
         response = await client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -1364,14 +1357,14 @@ class TestAsyncRetellSdk:
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     @pytest.mark.asyncio
     async def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = AsyncRetellSdk(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncRetell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("retell_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("retell._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/create-agent").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -1386,7 +1379,7 @@ class TestAsyncRetellSdk:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("retell_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("retell._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/create-agent").mock(return_value=httpx.Response(500))

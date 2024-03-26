@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError, RetellSdkError
+from ._exceptions import RetellError, APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -38,20 +38,20 @@ __all__ = [
     "ProxiesTypes",
     "RequestOptions",
     "resources",
-    "RetellSdk",
-    "AsyncRetellSdk",
+    "Retell",
+    "AsyncRetell",
     "Client",
     "AsyncClient",
 ]
 
 
-class RetellSdk(SyncAPIClient):
+class Retell(SyncAPIClient):
     call: resources.Call
     phone_number: resources.PhoneNumber
     agent: resources.Agent
     llm: resources.Llm
-    with_raw_response: RetellSdkWithRawResponse
-    with_streaming_response: RetellSdkWithStreamedResponse
+    with_raw_response: RetellWithRawResponse
+    with_streaming_response: RetellWithStreamedResponse
 
     # client options
     api_key: str
@@ -77,20 +77,20 @@ class RetellSdk(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous retell-sdk client instance.
+        """Construct a new synchronous retell client instance.
 
         This automatically infers the `api_key` argument from the `RETELL_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("RETELL_API_KEY")
         if api_key is None:
-            raise RetellSdkError(
+            raise RetellError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the RETELL_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("RETELL_SDK_BASE_URL")
+            base_url = os.environ.get("RETELL_BASE_URL")
         if base_url is None:
             base_url = f"https://api.retellai.com"
 
@@ -109,8 +109,8 @@ class RetellSdk(SyncAPIClient):
         self.phone_number = resources.PhoneNumber(self)
         self.agent = resources.Agent(self)
         self.llm = resources.Llm(self)
-        self.with_raw_response = RetellSdkWithRawResponse(self)
-        self.with_streaming_response = RetellSdkWithStreamedResponse(self)
+        self.with_raw_response = RetellWithRawResponse(self)
+        self.with_streaming_response = RetellWithStreamedResponse(self)
 
     @property
     @override
@@ -217,13 +217,13 @@ class RetellSdk(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncRetellSdk(AsyncAPIClient):
+class AsyncRetell(AsyncAPIClient):
     call: resources.AsyncCall
     phone_number: resources.AsyncPhoneNumber
     agent: resources.AsyncAgent
     llm: resources.AsyncLlm
-    with_raw_response: AsyncRetellSdkWithRawResponse
-    with_streaming_response: AsyncRetellSdkWithStreamedResponse
+    with_raw_response: AsyncRetellWithRawResponse
+    with_streaming_response: AsyncRetellWithStreamedResponse
 
     # client options
     api_key: str
@@ -249,20 +249,20 @@ class AsyncRetellSdk(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async retell-sdk client instance.
+        """Construct a new async retell client instance.
 
         This automatically infers the `api_key` argument from the `RETELL_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("RETELL_API_KEY")
         if api_key is None:
-            raise RetellSdkError(
+            raise RetellError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the RETELL_API_KEY environment variable"
             )
         self.api_key = api_key
 
         if base_url is None:
-            base_url = os.environ.get("RETELL_SDK_BASE_URL")
+            base_url = os.environ.get("RETELL_BASE_URL")
         if base_url is None:
             base_url = f"https://api.retellai.com"
 
@@ -281,8 +281,8 @@ class AsyncRetellSdk(AsyncAPIClient):
         self.phone_number = resources.AsyncPhoneNumber(self)
         self.agent = resources.AsyncAgent(self)
         self.llm = resources.AsyncLlm(self)
-        self.with_raw_response = AsyncRetellSdkWithRawResponse(self)
-        self.with_streaming_response = AsyncRetellSdkWithStreamedResponse(self)
+        self.with_raw_response = AsyncRetellWithRawResponse(self)
+        self.with_streaming_response = AsyncRetellWithStreamedResponse(self)
 
     @property
     @override
@@ -389,38 +389,38 @@ class AsyncRetellSdk(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class RetellSdkWithRawResponse:
-    def __init__(self, client: RetellSdk) -> None:
+class RetellWithRawResponse:
+    def __init__(self, client: Retell) -> None:
         self.call = resources.CallWithRawResponse(client.call)
         self.phone_number = resources.PhoneNumberWithRawResponse(client.phone_number)
         self.agent = resources.AgentWithRawResponse(client.agent)
         self.llm = resources.LlmWithRawResponse(client.llm)
 
 
-class AsyncRetellSdkWithRawResponse:
-    def __init__(self, client: AsyncRetellSdk) -> None:
+class AsyncRetellWithRawResponse:
+    def __init__(self, client: AsyncRetell) -> None:
         self.call = resources.AsyncCallWithRawResponse(client.call)
         self.phone_number = resources.AsyncPhoneNumberWithRawResponse(client.phone_number)
         self.agent = resources.AsyncAgentWithRawResponse(client.agent)
         self.llm = resources.AsyncLlmWithRawResponse(client.llm)
 
 
-class RetellSdkWithStreamedResponse:
-    def __init__(self, client: RetellSdk) -> None:
+class RetellWithStreamedResponse:
+    def __init__(self, client: Retell) -> None:
         self.call = resources.CallWithStreamingResponse(client.call)
         self.phone_number = resources.PhoneNumberWithStreamingResponse(client.phone_number)
         self.agent = resources.AgentWithStreamingResponse(client.agent)
         self.llm = resources.LlmWithStreamingResponse(client.llm)
 
 
-class AsyncRetellSdkWithStreamedResponse:
-    def __init__(self, client: AsyncRetellSdk) -> None:
+class AsyncRetellWithStreamedResponse:
+    def __init__(self, client: AsyncRetell) -> None:
         self.call = resources.AsyncCallWithStreamingResponse(client.call)
         self.phone_number = resources.AsyncPhoneNumberWithStreamingResponse(client.phone_number)
         self.agent = resources.AsyncAgentWithStreamingResponse(client.agent)
         self.llm = resources.AsyncLlmWithStreamingResponse(client.llm)
 
 
-Client = RetellSdk
+Client = Retell
 
-AsyncClient = AsyncRetellSdk
+AsyncClient = AsyncRetell

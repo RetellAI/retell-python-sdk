@@ -4,7 +4,7 @@ from urllib.parse import unquote
 
 import pytest
 
-from retell_sdk._qs import Querystring, stringify
+from retell._qs import Querystring, stringify
 
 
 def test_empty() -> None:

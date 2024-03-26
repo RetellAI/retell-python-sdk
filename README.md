@@ -1,8 +1,8 @@
-# Retell Sdk Python API library
+# Retell Python API library
 
 [![PyPI version](https://img.shields.io/pypi/v/retell-sdk.svg)](https://pypi.org/project/retell-sdk/)
 
-The Retell Sdk Python library provides convenient access to the Retell Sdk REST API from any Python 3.7+
+The Retell Python library provides convenient access to the Retell REST API from any Python 3.7+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -25,9 +25,9 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from retell_sdk import RetellSdk
+from retell import Retell
 
-client = RetellSdk(
+client = Retell(
     # This is the default and can be omitted
     api_key=os.environ.get("RETELL_API_KEY"),
 )
@@ -46,14 +46,14 @@ so that your API Key is not stored in source control.
 
 ## Async usage
 
-Simply import `AsyncRetellSdk` instead of `RetellSdk` and use `await` with each API call:
+Simply import `AsyncRetell` instead of `Retell` and use `await` with each API call:
 
 ```python
 import os
 import asyncio
-from retell_sdk import AsyncRetellSdk
+from retell import AsyncRetell
 
-client = AsyncRetellSdk(
+client = AsyncRetell(
     # This is the default and can be omitted
     api_key=os.environ.get("RETELL_API_KEY"),
 )
@@ -83,30 +83,30 @@ Typed requests and responses provide autocomplete and documentation within your 
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `retell_sdk.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `retell.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `retell_sdk.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `retell.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `retell_sdk.APIError`.
+All errors inherit from `retell.APIError`.
 
 ```python
-import retell_sdk
-from retell_sdk import RetellSdk
+import retell
+from retell import Retell
 
-client = RetellSdk()
+client = Retell()
 
 try:
     client.agent.create(
         llm_websocket_url="wss://your-websocket-endpoint",
         voice_id="11labs-Adrian",
     )
-except retell_sdk.APIConnectionError as e:
+except retell.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except retell_sdk.RateLimitError as e:
+except retell.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except retell_sdk.APIStatusError as e:
+except retell.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -134,10 +134,10 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from retell_sdk import RetellSdk
+from retell import Retell
 
 # Configure the default for all requests:
-client = RetellSdk(
+client = Retell(
     # default is 2
     max_retries=0,
 )
@@ -155,16 +155,16 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from retell_sdk import RetellSdk
+from retell import Retell
 
 # Configure the default for all requests:
-client = RetellSdk(
+client = Retell(
     # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
 # More granular control:
-client = RetellSdk(
+client = Retell(
     timeout=httpx.Timeout(60.0, read=5.0, write=10.0, connect=2.0),
 )
 
@@ -185,10 +185,10 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `RETELL_SDK_LOG` to `debug`.
+You can enable logging by setting the environment variable `RETELL_LOG` to `debug`.
 
 ```shell
-$ export RETELL_SDK_LOG=debug
+$ export RETELL_LOG=debug
 ```
 
 ### How to tell whether `None` means `null` or missing
@@ -208,9 +208,9 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from retell_sdk import RetellSdk
+from retell import Retell
 
-client = RetellSdk()
+client = Retell()
 response = client.agent.with_raw_response.create(
     llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
@@ -221,9 +221,9 @@ agent = response.parse()  # get the object that `agent.create()` would have retu
 print(agent.agent_id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/RetellAI/retell-python-sdk/tree/main/src/retell_sdk/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/RetellAI/retell-python-sdk/tree/main/src/retell/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/RetellAI/retell-python-sdk/tree/main/src/retell_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/RetellAI/retell-python-sdk/tree/main/src/retell/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -289,10 +289,10 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from retell_sdk import RetellSdk
+from retell import Retell
 
-client = RetellSdk(
-    # Or use the `RETELL_SDK_BASE_URL` env var
+client = Retell(
+    # Or use the `RETELL_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=httpx.Client(
         proxies="http://my.test.proxy.example.com",
