@@ -3,8 +3,6 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
-from pydantic import Field as FieldInfo
-
 from .._models import BaseModel
 
 __all__ = ["AgentResponse"]
@@ -36,9 +34,7 @@ class AgentResponse(BaseModel):
     agent_name: Optional[str] = None
     """The name of the agent. Only used for your own reference."""
 
-    ambient_sound: Optional[
-        Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
-    ] = None
+    ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]] = None
     """
     If set, will add ambient environment sound to the call to make experience more
     realistic. Currently supports the following options:
@@ -56,7 +52,7 @@ class AgentResponse(BaseModel):
     - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-    Set to string `null` to remove ambient sound from this agent.
+    Set to `null` to remove ambient sound from this agent.
     """
 
     boosted_keywords: Optional[List[str]] = None
@@ -96,6 +92,8 @@ class AgentResponse(BaseModel):
     English, yet text-to-speech output will be in standard English. If
     dialect-specific text-to-speech is required, please contact us for support.
 
+    If unset, will use default value `en-US`.
+
     - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
       Portuguese(pt)
 
@@ -105,7 +103,7 @@ class AgentResponse(BaseModel):
     - `deepgram voices`: supports English(en)
     """
 
-    opt_out_sensitive_data_storage: Optional[bool] = FieldInfo(alias="optOutSensitiveDataStorage", default=None)
+    opt_out_sensitive_data_storage: Optional[bool] = None
     """Disable transcripts and recordings storage for enhanced privacy.
 
     Access transcripts securely via webhooks.
@@ -139,6 +137,6 @@ class AgentResponse(BaseModel):
 
     See what events it would get at [webhook doc](/features/webhook). If set, will
     binds webhook events for this agent to the specified url, and will ignore the
-    account level webhook for this agent. Set to string `null` to remove webhook url
-    from this agent.
+    account level webhook for this agent. Set to `null` to remove webhook url from
+    this agent.
     """

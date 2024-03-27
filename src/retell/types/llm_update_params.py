@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable
+from typing import Dict, List, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
@@ -28,14 +28,14 @@ __all__ = [
 
 
 class LlmUpdateParams(TypedDict, total=False):
-    begin_message: str
+    begin_message: Optional[str]
     """First utterance said by the agent in the call.
 
     If not set, LLM will dynamically generate a message. If set to "", agent will
     wait for user to speak first.
     """
 
-    general_prompt: str
+    general_prompt: Optional[str]
     """General prompt appended to system prompt no matter what state the agent is in.
 
     - System prompt (with state) = general prompt + state prompt.
@@ -43,7 +43,7 @@ class LlmUpdateParams(TypedDict, total=False):
     - System prompt (no state) = general prompt.
     """
 
-    general_tools: Iterable[GeneralTool]
+    general_tools: Optional[Iterable[GeneralTool]]
     """A list of tools the model may call (to get external knowledge, call API, etc).
 
     You can select from some common predefined tools like end call, transfer call,
@@ -54,10 +54,10 @@ class LlmUpdateParams(TypedDict, total=False):
     - Tools of LLM (no state) = general tools
     """
 
-    starting_state: str
+    starting_state: Optional[str]
     """Name of the starting state. Required if states is not empty."""
 
-    states: Iterable[State]
+    states: Optional[Iterable[State]]
     """States of the LLM.
 
     This is to help reduce prompt length and tool choices when the call can be

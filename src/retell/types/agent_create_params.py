@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import Literal, Required, Annotated, TypedDict
-
-from .._utils import PropertyInfo
+from typing import List, Optional
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["AgentCreateParams"]
 
@@ -24,10 +22,10 @@ class AgentCreateParams(TypedDict, total=False):
     Find list of available voices and their preview in Dashboard.
     """
 
-    agent_name: str
+    agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
 
-    ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
+    ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
     """
     If set, will add ambient environment sound to the call to make experience more
     realistic. Currently supports the following options:
@@ -45,17 +43,17 @@ class AgentCreateParams(TypedDict, total=False):
     - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-    Set to string `null` to remove ambient sound from this agent.
+    Set to `null` to remove ambient sound from this agent.
     """
 
-    boosted_keywords: List[str]
+    boosted_keywords: Optional[List[str]]
     """
     Provide a customized list of keywords to bias the transcriber model, so that
     these words are more likely to get transcribed. Commonly used for names, brands,
     street, etc.
     """
 
-    enable_backchannel: bool
+    enable_backchannel: Optional[bool]
     """
     Controls whether the agent would backchannel (agent interjects the speaker with
     phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
@@ -63,7 +61,7 @@ class AgentCreateParams(TypedDict, total=False):
     will not backchannel.
     """
 
-    format_text: bool
+    format_text: Optional[bool]
     """Whether to format the transcribed text with inverse text normalization.
 
     It transforms the spoken form of text into written form for entities like phone
@@ -72,7 +70,9 @@ class AgentCreateParams(TypedDict, total=False):
     is true.
     """
 
-    language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+    language: Optional[
+        Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+    ]
     """`Beta feature, use with caution.`
 
     This setting specifies the agent's operational language, including base language
@@ -83,6 +83,8 @@ class AgentCreateParams(TypedDict, total=False):
     English, yet text-to-speech output will be in standard English. If
     dialect-specific text-to-speech is required, please contact us for support.
 
+    If unset, will use default value `en-US`.
+
     - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
       Portuguese(pt)
 
@@ -92,13 +94,13 @@ class AgentCreateParams(TypedDict, total=False):
     - `deepgram voices`: supports English(en)
     """
 
-    opt_out_sensitive_data_storage: Annotated[bool, PropertyInfo(alias="optOutSensitiveDataStorage")]
+    opt_out_sensitive_data_storage: Optional[bool]
     """Disable transcripts and recordings storage for enhanced privacy.
 
     Access transcripts securely via webhooks.
     """
 
-    responsiveness: float
+    responsiveness: Optional[float]
     """Controls how responsive is the agent.
 
     Value ranging from [0,1]. Lower value means less responsive agent (wait more,
@@ -106,14 +108,14 @@ class AgentCreateParams(TypedDict, total=False):
     can). If unset, default value 1 will apply.
     """
 
-    voice_speed: float
+    voice_speed: Optional[float]
     """Controls speed of voice.
 
     Value ranging from [0.5,2]. Lower value means slower speech, while higher value
     means faster speech rate. If unset, default value 1 will apply.
     """
 
-    voice_temperature: float
+    voice_temperature: Optional[float]
     """Controls how stable the voice is.
 
     Value ranging from [0,2]. Lower value means more stable, and higher value means
@@ -121,11 +123,11 @@ class AgentCreateParams(TypedDict, total=False):
     voices. If unset, default value 1 will apply.
     """
 
-    webhook_url: str
+    webhook_url: Optional[str]
     """The webhook for agent to listen to call events.
 
     See what events it would get at [webhook doc](/features/webhook). If set, will
     binds webhook events for this agent to the specified url, and will ignore the
-    account level webhook for this agent. Set to string `null` to remove webhook url
-    from this agent.
+    account level webhook for this agent. Set to `null` to remove webhook url from
+    this agent.
     """
