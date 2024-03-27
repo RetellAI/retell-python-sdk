@@ -26,7 +26,7 @@ from retell._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClie
 from .utils import update_env
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "YOUR_RETELL_API_KEY"
+api_key = "RETELL_API_KEY"
 
 
 def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
@@ -74,9 +74,9 @@ class TestRetell:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
-        copied = self.client.copy(api_key="another YOUR_RETELL_API_KEY")
-        assert copied.api_key == "another YOUR_RETELL_API_KEY"
-        assert self.client.api_key == "YOUR_RETELL_API_KEY"
+        copied = self.client.copy(api_key="another RETELL_API_KEY")
+        assert copied.api_key == "another RETELL_API_KEY"
+        assert self.client.api_key == "RETELL_API_KEY"
 
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
@@ -742,9 +742,9 @@ class TestAsyncRetell:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
-        copied = self.client.copy(api_key="another YOUR_RETELL_API_KEY")
-        assert copied.api_key == "another YOUR_RETELL_API_KEY"
-        assert self.client.api_key == "YOUR_RETELL_API_KEY"
+        copied = self.client.copy(api_key="another RETELL_API_KEY")
+        assert copied.api_key == "another RETELL_API_KEY"
+        assert self.client.api_key == "RETELL_API_KEY"
 
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
