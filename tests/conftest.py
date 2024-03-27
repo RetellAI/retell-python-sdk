@@ -26,7 +26,7 @@ def event_loop() -> Iterator[asyncio.AbstractEventLoop]:
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
-api_key = "RETELL_API_KEY"
+api_key = "YOUR_RETELL_API_KEY"
 
 
 @pytest.fixture(scope="session")
