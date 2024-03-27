@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CallRetrieveResponse", "E2eLatency", "TranscriptObject", "TranscriptObjectWord"]
+__all__ = ["CallResponse", "E2eLatency", "TranscriptObject", "TranscriptObjectWord"]
 
 
 class E2eLatency(BaseModel):
@@ -66,7 +66,7 @@ class TranscriptObject(BaseModel):
     """
 
 
-class CallRetrieveResponse(BaseModel):
+class CallResponse(BaseModel):
     agent_id: str
     """Corresponding agent id of this call."""
 
