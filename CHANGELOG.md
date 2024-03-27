@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.1.0 (2024-03-27)
+
+Full Changelog: [v3.0.0...v3.1.0](https://github.com/RetellAI/retell-python-sdk/compare/v3.0.0...v3.1.0)
+
+### Features
+
+* **api:** update via SDK Studio ([#26](https://github.com/RetellAI/retell-python-sdk/issues/26)) ([0130013](https://github.com/RetellAI/retell-python-sdk/commit/0130013d9360370b2a83ffdbb142185e26944ddd))
+
 ## 3.0.0 (2024-03-26)
 
 Full Changelog: [v0.1.0-alpha.5...v3.0.0](https://github.com/RetellAI/retell-python-sdk/compare/v0.1.0-alpha.5...v3.0.0)
