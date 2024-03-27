@@ -25,7 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import RetellError, APIStatusError
+from ._exceptions import APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -59,7 +59,7 @@ class Retell(SyncAPIClient):
     def __init__(
         self,
         *,
-        api_key: str | None = None,
+        api_key: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -77,16 +77,7 @@ class Retell(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous retell client instance.
-
-        This automatically infers the `api_key` argument from the `ORG_AUTH_TOKEN` environment variable if it is not provided.
-        """
-        if api_key is None:
-            api_key = os.environ.get("ORG_AUTH_TOKEN")
-        if api_key is None:
-            raise RetellError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the ORG_AUTH_TOKEN environment variable"
-            )
+        """Construct a new synchronous retell client instance."""
         self.api_key = api_key
 
         if base_url is None:
@@ -231,7 +222,7 @@ class AsyncRetell(AsyncAPIClient):
     def __init__(
         self,
         *,
-        api_key: str | None = None,
+        api_key: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -249,16 +240,7 @@ class AsyncRetell(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async retell client instance.
-
-        This automatically infers the `api_key` argument from the `ORG_AUTH_TOKEN` environment variable if it is not provided.
-        """
-        if api_key is None:
-            api_key = os.environ.get("ORG_AUTH_TOKEN")
-        if api_key is None:
-            raise RetellError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the ORG_AUTH_TOKEN environment variable"
-            )
+        """Construct a new async retell client instance."""
         self.api_key = api_key
 
         if base_url is None:
