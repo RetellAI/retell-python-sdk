@@ -40,7 +40,7 @@ class AgentUpdateParams(TypedDict, total=False):
     street, etc.
     """
 
-    enable_backchannel: Optional[bool]
+    enable_backchannel: bool
     """
     Controls whether the agent would backchannel (agent interjects the speaker with
     phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
@@ -48,7 +48,7 @@ class AgentUpdateParams(TypedDict, total=False):
     will not backchannel.
     """
 
-    format_text: Optional[bool]
+    format_text: bool
     """Whether to format the transcribed text with inverse text normalization.
 
     It transforms the spoken form of text into written form for entities like phone
@@ -57,9 +57,7 @@ class AgentUpdateParams(TypedDict, total=False):
     is true.
     """
 
-    language: Optional[
-        Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
-    ]
+    language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
     """`Beta feature, use with caution.`
 
     This setting specifies the agent's operational language, including base language
@@ -88,13 +86,14 @@ class AgentUpdateParams(TypedDict, total=False):
     request format (sent from us) and response format (send to us).
     """
 
-    opt_out_sensitive_data_storage: Optional[bool]
+    opt_out_sensitive_data_storage: bool
     """Disable transcripts and recordings storage for enhanced privacy.
 
-    Access transcripts securely via webhooks.
+    Access transcripts securely via webhooks. If not set, default value of false
+    will apply.
     """
 
-    responsiveness: Optional[float]
+    responsiveness: float
     """Controls how responsive is the agent.
 
     Value ranging from [0,1]. Lower value means less responsive agent (wait more,
@@ -108,14 +107,14 @@ class AgentUpdateParams(TypedDict, total=False):
     Find list of available voices and their preview in Dashboard.
     """
 
-    voice_speed: Optional[float]
+    voice_speed: float
     """Controls speed of voice.
 
     Value ranging from [0.5,2]. Lower value means slower speech, while higher value
     means faster speech rate. If unset, default value 1 will apply.
     """
 
-    voice_temperature: Optional[float]
+    voice_temperature: float
     """Controls how stable the voice is.
 
     Value ranging from [0,2]. Lower value means more stable, and higher value means

@@ -106,7 +106,8 @@ class AgentResponse(BaseModel):
     opt_out_sensitive_data_storage: Optional[bool] = None
     """Disable transcripts and recordings storage for enhanced privacy.
 
-    Access transcripts securely via webhooks.
+    Access transcripts securely via webhooks. If not set, default value of false
+    will apply.
     """
 
     responsiveness: Optional[float] = None
