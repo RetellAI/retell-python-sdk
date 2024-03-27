@@ -16,7 +16,7 @@ The REST API documentation can be found [on docs.retellai.com](https://docs.rete
 
 ```sh
 # install from PyPI
-pip install --pre retell-sdk
+pip install retell-sdk
 ```
 
 ## Usage
