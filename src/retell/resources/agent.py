@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -42,10 +42,10 @@ class Agent(SyncAPIResource):
         *,
         llm_websocket_url: str,
         voice_id: str,
-        agent_name: str | NotGiven = NOT_GIVEN,
-        ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
+        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
-        boosted_keywords: List[str] | NotGiven = NOT_GIVEN,
+        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
@@ -54,7 +54,7 @@ class Agent(SyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
-        webhook_url: str | NotGiven = NOT_GIVEN,
+        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -91,7 +91,7 @@ class Agent(SyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to string `null` to remove ambient sound from this agent.
+              Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -118,6 +118,8 @@ class Agent(SyncAPIResource):
               English, yet text-to-speech output will be in standard English. If
               dialect-specific text-to-speech is required, please contact us for support.
 
+              If unset, will use default value `en-US`.
+
               - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
                 Portuguese(pt)
 
@@ -127,7 +129,8 @@ class Agent(SyncAPIResource):
               - `deepgram voices`: supports English(en)
 
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks.
+              transcripts securely via webhooks. If not set, default value of false will
+              apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -146,7 +149,7 @@ class Agent(SyncAPIResource):
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
-              agent. Set to string `null` to remove webhook url from this agent.
+              agent. Set to `null` to remove webhook url from this agent.
 
           extra_headers: Send extra headers
 
@@ -219,10 +222,10 @@ class Agent(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        agent_name: str | NotGiven = NOT_GIVEN,
-        ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
+        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
-        boosted_keywords: List[str] | NotGiven = NOT_GIVEN,
+        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
@@ -233,7 +236,7 @@ class Agent(SyncAPIResource):
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
-        webhook_url: str | NotGiven = NOT_GIVEN,
+        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -264,7 +267,7 @@ class Agent(SyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to string `null` to remove ambient sound from this agent.
+              Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -291,6 +294,8 @@ class Agent(SyncAPIResource):
               English, yet text-to-speech output will be in standard English. If
               dialect-specific text-to-speech is required, please contact us for support.
 
+              If unset, will use default value `en-US`.
+
               - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
                 Portuguese(pt)
 
@@ -304,7 +309,8 @@ class Agent(SyncAPIResource):
               request format (sent from us) and response format (send to us).
 
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks.
+              transcripts securely via webhooks. If not set, default value of false will
+              apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -326,7 +332,7 @@ class Agent(SyncAPIResource):
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
-              agent. Set to string `null` to remove webhook url from this agent.
+              agent. Set to `null` to remove webhook url from this agent.
 
           extra_headers: Send extra headers
 
@@ -432,10 +438,10 @@ class AsyncAgent(AsyncAPIResource):
         *,
         llm_websocket_url: str,
         voice_id: str,
-        agent_name: str | NotGiven = NOT_GIVEN,
-        ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
+        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
-        boosted_keywords: List[str] | NotGiven = NOT_GIVEN,
+        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
@@ -444,7 +450,7 @@ class AsyncAgent(AsyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
-        webhook_url: str | NotGiven = NOT_GIVEN,
+        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -481,7 +487,7 @@ class AsyncAgent(AsyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to string `null` to remove ambient sound from this agent.
+              Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -508,6 +514,8 @@ class AsyncAgent(AsyncAPIResource):
               English, yet text-to-speech output will be in standard English. If
               dialect-specific text-to-speech is required, please contact us for support.
 
+              If unset, will use default value `en-US`.
+
               - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
                 Portuguese(pt)
 
@@ -517,7 +525,8 @@ class AsyncAgent(AsyncAPIResource):
               - `deepgram voices`: supports English(en)
 
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks.
+              transcripts securely via webhooks. If not set, default value of false will
+              apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -536,7 +545,7 @@ class AsyncAgent(AsyncAPIResource):
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
-              agent. Set to string `null` to remove webhook url from this agent.
+              agent. Set to `null` to remove webhook url from this agent.
 
           extra_headers: Send extra headers
 
@@ -609,10 +618,10 @@ class AsyncAgent(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        agent_name: str | NotGiven = NOT_GIVEN,
-        ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
+        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
-        boosted_keywords: List[str] | NotGiven = NOT_GIVEN,
+        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
@@ -623,7 +632,7 @@ class AsyncAgent(AsyncAPIResource):
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
-        webhook_url: str | NotGiven = NOT_GIVEN,
+        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -654,7 +663,7 @@ class AsyncAgent(AsyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to string `null` to remove ambient sound from this agent.
+              Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -681,6 +690,8 @@ class AsyncAgent(AsyncAPIResource):
               English, yet text-to-speech output will be in standard English. If
               dialect-specific text-to-speech is required, please contact us for support.
 
+              If unset, will use default value `en-US`.
+
               - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
                 Portuguese(pt)
 
@@ -694,7 +705,8 @@ class AsyncAgent(AsyncAPIResource):
               request format (sent from us) and response format (send to us).
 
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks.
+              transcripts securely via webhooks. If not set, default value of false will
+              apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -716,7 +728,7 @@ class AsyncAgent(AsyncAPIResource):
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
-              agent. Set to string `null` to remove webhook url from this agent.
+              agent. Set to `null` to remove webhook url from this agent.
 
           extra_headers: Send extra headers
 

@@ -6,8 +6,6 @@ The Retell Python library provides convenient access to the Retell REST API from
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
-
 ## Documentation
 
 The REST API documentation can be found [on docs.retellai.com](https://docs.retellai.com/). The full API of this library can be found in [api.md](api.md).
@@ -16,7 +14,7 @@ The REST API documentation can be found [on docs.retellai.com](https://docs.rete
 
 ```sh
 # install from PyPI
-pip install --pre retell-sdk
+pip install retell-sdk
 ```
 
 ## Usage
@@ -24,12 +22,10 @@ pip install --pre retell-sdk
 The full API of this library can be found in [api.md](api.md).
 
 ```python
-import os
 from retell import Retell
 
 client = Retell(
-    # This is the default and can be omitted
-    api_key=os.environ.get("RETELL_API_KEY"),
+    api_key="YOUR_RETELL_API_KEY",
 )
 
 agent_response = client.agent.create(
@@ -39,23 +35,16 @@ agent_response = client.agent.create(
 print(agent_response.agent_id)
 ```
 
-While you can provide an `api_key` keyword argument,
-we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `RETELL_API_KEY="My API Key"` to your `.env` file
-so that your API Key is not stored in source control.
-
 ## Async usage
 
 Simply import `AsyncRetell` instead of `Retell` and use `await` with each API call:
 
 ```python
-import os
 import asyncio
 from retell import AsyncRetell
 
 client = AsyncRetell(
-    # This is the default and can be omitted
-    api_key=os.environ.get("RETELL_API_KEY"),
+    api_key="YOUR_RETELL_API_KEY",
 )
 
 

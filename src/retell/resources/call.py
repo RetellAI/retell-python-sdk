@@ -8,10 +8,9 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    CallResponse,
     CallListResponse,
-    CallCreateResponse,
-    CallDetailResponse,
-    CallRegisterResponse,
+    RegisterCallResponse,
     call_list_params,
     call_create_params,
     call_register_params,
@@ -48,7 +47,8 @@ class Call(SyncAPIResource):
     def create(
         self,
         *,
-        phone_number: call_create_params.PhoneNumber,
+        from_number: str,
+        to_number: str,
         override_agent_id: str | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -57,11 +57,15 @@ class Call(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallCreateResponse:
+    ) -> RegisterCallResponse:
         """
         Create a new phone call
 
         Args:
+          from_number: The number you own in BCP 47 format.
+
+          to_number: The number you want to call, in BCP 47 format.
+
           override_agent_id: For this particular call, override the agent used with this agent id. This does
               not bind the agent to this number, this is for one time override.
 
@@ -80,7 +84,8 @@ class Call(SyncAPIResource):
             "/create-phone-call",
             body=maybe_transform(
                 {
-                    "phone_number": phone_number,
+                    "from_number": from_number,
+                    "to_number": to_number,
                     "override_agent_id": override_agent_id,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
@@ -89,7 +94,7 @@ class Call(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CallCreateResponse,
+            cast_to=RegisterCallResponse,
         )
 
     def retrieve(
@@ -102,7 +107,7 @@ class Call(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallDetailResponse:
+    ) -> CallResponse:
         """
         Retrieve details of a specific call
 
@@ -122,7 +127,7 @@ class Call(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CallDetailResponse,
+            cast_to=CallResponse,
         )
 
     def list(
@@ -192,7 +197,7 @@ class Call(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallRegisterResponse:
+    ) -> RegisterCallResponse:
         """
         Register Call To Get CallId To Establish Connection
 
@@ -281,7 +286,7 @@ class Call(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CallRegisterResponse,
+            cast_to=RegisterCallResponse,
         )
 
 
@@ -297,7 +302,8 @@ class AsyncCall(AsyncAPIResource):
     async def create(
         self,
         *,
-        phone_number: call_create_params.PhoneNumber,
+        from_number: str,
+        to_number: str,
         override_agent_id: str | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -306,11 +312,15 @@ class AsyncCall(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallCreateResponse:
+    ) -> RegisterCallResponse:
         """
         Create a new phone call
 
         Args:
+          from_number: The number you own in BCP 47 format.
+
+          to_number: The number you want to call, in BCP 47 format.
+
           override_agent_id: For this particular call, override the agent used with this agent id. This does
               not bind the agent to this number, this is for one time override.
 
@@ -329,7 +339,8 @@ class AsyncCall(AsyncAPIResource):
             "/create-phone-call",
             body=await async_maybe_transform(
                 {
-                    "phone_number": phone_number,
+                    "from_number": from_number,
+                    "to_number": to_number,
                     "override_agent_id": override_agent_id,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
@@ -338,7 +349,7 @@ class AsyncCall(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CallCreateResponse,
+            cast_to=RegisterCallResponse,
         )
 
     async def retrieve(
@@ -351,7 +362,7 @@ class AsyncCall(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallDetailResponse:
+    ) -> CallResponse:
         """
         Retrieve details of a specific call
 
@@ -371,7 +382,7 @@ class AsyncCall(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CallDetailResponse,
+            cast_to=CallResponse,
         )
 
     async def list(
@@ -441,7 +452,7 @@ class AsyncCall(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallRegisterResponse:
+    ) -> RegisterCallResponse:
         """
         Register Call To Get CallId To Establish Connection
 
@@ -530,7 +541,7 @@ class AsyncCall(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CallRegisterResponse,
+            cast_to=RegisterCallResponse,
         )
 
 

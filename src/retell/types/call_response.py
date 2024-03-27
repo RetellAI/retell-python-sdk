@@ -1,14 +1,72 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CallRegisterResponse"]
+__all__ = ["CallResponse", "E2eLatency", "TranscriptObject", "TranscriptObjectWord"]
 
 
-class CallRegisterResponse(BaseModel):
+class E2eLatency(BaseModel):
+    max: Optional[float] = None
+    """Maximum end to end latency in the call."""
+
+    min: Optional[float] = None
+    """Minimum end to end latency in the call."""
+
+    num: Optional[float] = None
+    """Number of turn change.
+
+    We track latency every time turn change between user and agent.
+    """
+
+    p50: Optional[float] = None
+    """50 percentile of end to end latency."""
+
+    p90: Optional[float] = None
+    """90 percentile of end to end latency."""
+
+    p95: Optional[float] = None
+    """95 percentile of end to end latency."""
+
+    p99: Optional[float] = None
+    """99 percentile of end to end latency."""
+
+
+class TranscriptObjectWord(BaseModel):
+    end: Optional[float] = None
+    """End time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    start: Optional[float] = None
+    """Start time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    word: Optional[str] = None
+    """Word transcript (with punctuation if applicable)."""
+
+
+class TranscriptObject(BaseModel):
+    content: str
+    """Transcript of the utterances."""
+
+    role: Literal["agent", "user"]
+    """Documents whether this utterance is spoken by agent or user."""
+
+    words: List[TranscriptObjectWord]
+    """Array of words in the utternace with the word timestamp.
+
+    Useful for understanding what word was spoken at what time. Note that the word
+    timestamp is not guranteed to be accurate, it's more like an approximation.
+    """
+
+
+class CallResponse(BaseModel):
     agent_id: str
     """Corresponding agent id of this call."""
 
@@ -74,11 +132,24 @@ class CallRegisterResponse(BaseModel):
     start_timestamp: int
     """Begin timestamp (milliseconds since epoch) of the call."""
 
+    e2e_latency: Optional[E2eLatency] = None
+    """
+    End to end latency (from user stops talking to agent start talking) tracking of
+    the call, available after call ends. This latency does not account for the
+    network trip time from Retell server to user frontend.
+    """
+
     end_call_after_silence_ms: Optional[int] = None
     """If users stay silent for a period, end the call.
 
     By default, it is set to 600,000 ms (10 min). The minimum value allowed is
     10,000 ms (10 s).
+    """
+
+    end_timestamp: Optional[int] = None
+    """End timestamp (milliseconds since epoch) of the call.
+
+    Available after call ends.
     """
 
     from_number: Optional[str] = None
@@ -97,6 +168,16 @@ class CallRegisterResponse(BaseModel):
     server, you can then get it from the call object.
     """
 
+    public_log_url: Optional[str] = None
+    """
+    Public log of the call, containing details about all the requests and responses
+    received in LLM WebSocket, latency tracking for each turntaking, helpful for
+    debugging and tracing. Available after call ends.
+    """
+
+    recording_url: Optional[str] = None
+    """Recording of the call. Available after call ends."""
+
     retell_llm_dynamic_variables: Optional[Dict[str, object]] = None
     """
     Add optional dynamic variables in key value pairs of string that injects into
@@ -109,4 +190,13 @@ class CallRegisterResponse(BaseModel):
     This field is storage purpose only, set this if you want the call object to
     contain it so that it's easier to reference it. Not used for processing, when we
     connect to your LLM websocket server, you can then get it from the call object.
+    """
+
+    transcript: Optional[str] = None
+    """Transcription of the call. Available after call ends."""
+
+    transcript_object: Optional[List[TranscriptObject]] = None
+    """Transcript of the call in the format of a list of utterance, with timestamp.
+
+    Available after call ends.
     """

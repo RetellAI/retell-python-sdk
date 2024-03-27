@@ -2,19 +2,17 @@
 
 from __future__ import annotations
 
-from typing import List
-from typing_extensions import Literal, Annotated, TypedDict
-
-from .._utils import PropertyInfo
+from typing import List, Optional
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["AgentUpdateParams"]
 
 
 class AgentUpdateParams(TypedDict, total=False):
-    agent_name: str
+    agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
 
-    ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
+    ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
     """
     If set, will add ambient environment sound to the call to make experience more
     realistic. Currently supports the following options:
@@ -32,10 +30,10 @@ class AgentUpdateParams(TypedDict, total=False):
     - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-    Set to string `null` to remove ambient sound from this agent.
+    Set to `null` to remove ambient sound from this agent.
     """
 
-    boosted_keywords: List[str]
+    boosted_keywords: Optional[List[str]]
     """
     Provide a customized list of keywords to bias the transcriber model, so that
     these words are more likely to get transcribed. Commonly used for names, brands,
@@ -70,6 +68,8 @@ class AgentUpdateParams(TypedDict, total=False):
     English, yet text-to-speech output will be in standard English. If
     dialect-specific text-to-speech is required, please contact us for support.
 
+    If unset, will use default value `en-US`.
+
     - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
       Portuguese(pt)
 
@@ -86,10 +86,11 @@ class AgentUpdateParams(TypedDict, total=False):
     request format (sent from us) and response format (send to us).
     """
 
-    opt_out_sensitive_data_storage: Annotated[bool, PropertyInfo(alias="optOutSensitiveDataStorage")]
+    opt_out_sensitive_data_storage: bool
     """Disable transcripts and recordings storage for enhanced privacy.
 
-    Access transcripts securely via webhooks.
+    Access transcripts securely via webhooks. If not set, default value of false
+    will apply.
     """
 
     responsiveness: float
@@ -121,11 +122,11 @@ class AgentUpdateParams(TypedDict, total=False):
     voices. If unset, default value 1 will apply.
     """
 
-    webhook_url: str
+    webhook_url: Optional[str]
     """The webhook for agent to listen to call events.
 
     See what events it would get at [webhook doc](/features/webhook). If set, will
     binds webhook events for this agent to the specified url, and will ignore the
-    account level webhook for this agent. Set to string `null` to remove webhook url
-    from this agent.
+    account level webhook for this agent. Set to `null` to remove webhook url from
+    this agent.
     """
