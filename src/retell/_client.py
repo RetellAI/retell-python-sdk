@@ -54,12 +54,10 @@ class Retell(SyncAPIClient):
     with_streaming_response: RetellWithStreamedResponse
 
     # client options
-    api_key: str
 
     def __init__(
         self,
         *,
-        api_key: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -78,8 +76,6 @@ class Retell(SyncAPIClient):
         _strict_response_validation: bool = False,
     ) -> None:
         """Construct a new synchronous retell client instance."""
-        self.api_key = api_key
-
         if base_url is None:
             base_url = os.environ.get("RETELL_BASE_URL")
         if base_url is None:
@@ -110,12 +106,6 @@ class Retell(SyncAPIClient):
 
     @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        api_key = self.api_key
-        return {"Authorization": f"Bearer {api_key}"}
-
-    @property
-    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -126,7 +116,6 @@ class Retell(SyncAPIClient):
     def copy(
         self,
         *,
-        api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -160,7 +149,6 @@ class Retell(SyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
-            api_key=api_key or self.api_key,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -217,12 +205,10 @@ class AsyncRetell(AsyncAPIClient):
     with_streaming_response: AsyncRetellWithStreamedResponse
 
     # client options
-    api_key: str
 
     def __init__(
         self,
         *,
-        api_key: str,
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -241,8 +227,6 @@ class AsyncRetell(AsyncAPIClient):
         _strict_response_validation: bool = False,
     ) -> None:
         """Construct a new async retell client instance."""
-        self.api_key = api_key
-
         if base_url is None:
             base_url = os.environ.get("RETELL_BASE_URL")
         if base_url is None:
@@ -273,12 +257,6 @@ class AsyncRetell(AsyncAPIClient):
 
     @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        api_key = self.api_key
-        return {"Authorization": f"Bearer {api_key}"}
-
-    @property
-    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -289,7 +267,6 @@ class AsyncRetell(AsyncAPIClient):
     def copy(
         self,
         *,
-        api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -323,7 +300,6 @@ class AsyncRetell(AsyncAPIClient):
 
         http_client = http_client or self._client
         return self.__class__(
-            api_key=api_key or self.api_key,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
