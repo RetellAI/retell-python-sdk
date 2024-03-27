@@ -2,8 +2,8 @@
 
 from typing import List
 
-from .call_detail_response import CallDetailResponse
+from .call_response import CallResponse
 
 __all__ = ["CallListResponse"]
 
-CallListResponse = List[CallDetailResponse]
+CallListResponse = List[CallResponse]
