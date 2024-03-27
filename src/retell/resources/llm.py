@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable
+from typing import Iterable, Optional
 
 import httpx
 
@@ -39,11 +39,11 @@ class Llm(SyncAPIResource):
     def create(
         self,
         *,
-        begin_message: str | NotGiven = NOT_GIVEN,
-        general_prompt: str | NotGiven = NOT_GIVEN,
-        general_tools: Iterable[llm_create_params.GeneralTool] | NotGiven = NOT_GIVEN,
-        starting_state: str | NotGiven = NOT_GIVEN,
-        states: Iterable[llm_create_params.State] | NotGiven = NOT_GIVEN,
+        begin_message: Optional[str] | NotGiven = NOT_GIVEN,
+        general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
+        general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        starting_state: Optional[str] | NotGiven = NOT_GIVEN,
+        states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -143,11 +143,11 @@ class Llm(SyncAPIResource):
         self,
         llm_id: str,
         *,
-        begin_message: str | NotGiven = NOT_GIVEN,
-        general_prompt: str | NotGiven = NOT_GIVEN,
-        general_tools: Iterable[llm_update_params.GeneralTool] | NotGiven = NOT_GIVEN,
-        starting_state: str | NotGiven = NOT_GIVEN,
-        states: Iterable[llm_update_params.State] | NotGiven = NOT_GIVEN,
+        begin_message: Optional[str] | NotGiven = NOT_GIVEN,
+        general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
+        general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        starting_state: Optional[str] | NotGiven = NOT_GIVEN,
+        states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -278,11 +278,11 @@ class AsyncLlm(AsyncAPIResource):
     async def create(
         self,
         *,
-        begin_message: str | NotGiven = NOT_GIVEN,
-        general_prompt: str | NotGiven = NOT_GIVEN,
-        general_tools: Iterable[llm_create_params.GeneralTool] | NotGiven = NOT_GIVEN,
-        starting_state: str | NotGiven = NOT_GIVEN,
-        states: Iterable[llm_create_params.State] | NotGiven = NOT_GIVEN,
+        begin_message: Optional[str] | NotGiven = NOT_GIVEN,
+        general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
+        general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        starting_state: Optional[str] | NotGiven = NOT_GIVEN,
+        states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -382,11 +382,11 @@ class AsyncLlm(AsyncAPIResource):
         self,
         llm_id: str,
         *,
-        begin_message: str | NotGiven = NOT_GIVEN,
-        general_prompt: str | NotGiven = NOT_GIVEN,
-        general_tools: Iterable[llm_update_params.GeneralTool] | NotGiven = NOT_GIVEN,
-        starting_state: str | NotGiven = NOT_GIVEN,
-        states: Iterable[llm_update_params.State] | NotGiven = NOT_GIVEN,
+        begin_message: Optional[str] | NotGiven = NOT_GIVEN,
+        general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
+        general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        starting_state: Optional[str] | NotGiven = NOT_GIVEN,
+        states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

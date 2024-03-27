@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -42,19 +42,21 @@ class Agent(SyncAPIResource):
         *,
         llm_websocket_url: str,
         voice_id: str,
-        agent_name: str | NotGiven = NOT_GIVEN,
-        ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
+        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
-        boosted_keywords: List[str] | NotGiven = NOT_GIVEN,
-        enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        format_text: bool | NotGiven = NOT_GIVEN,
-        language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        enable_backchannel: Optional[bool] | NotGiven = NOT_GIVEN,
+        format_text: Optional[bool] | NotGiven = NOT_GIVEN,
+        language: Optional[
+            Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+        ]
         | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
-        responsiveness: float | NotGiven = NOT_GIVEN,
-        voice_speed: float | NotGiven = NOT_GIVEN,
-        voice_temperature: float | NotGiven = NOT_GIVEN,
-        webhook_url: str | NotGiven = NOT_GIVEN,
+        opt_out_sensitive_data_storage: Optional[bool] | NotGiven = NOT_GIVEN,
+        responsiveness: Optional[float] | NotGiven = NOT_GIVEN,
+        voice_speed: Optional[float] | NotGiven = NOT_GIVEN,
+        voice_temperature: Optional[float] | NotGiven = NOT_GIVEN,
+        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -91,7 +93,7 @@ class Agent(SyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to string `null` to remove ambient sound from this agent.
+              Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -117,6 +119,8 @@ class Agent(SyncAPIResource):
               For instance, selecting `en-GB` optimizes speech recognition for British
               English, yet text-to-speech output will be in standard English. If
               dialect-specific text-to-speech is required, please contact us for support.
+
+              If unset, will use default value `en-US`.
 
               - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
                 Portuguese(pt)
@@ -146,7 +150,7 @@ class Agent(SyncAPIResource):
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
-              agent. Set to string `null` to remove webhook url from this agent.
+              agent. Set to `null` to remove webhook url from this agent.
 
           extra_headers: Send extra headers
 
@@ -219,21 +223,23 @@ class Agent(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        agent_name: str | NotGiven = NOT_GIVEN,
-        ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
+        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
-        boosted_keywords: List[str] | NotGiven = NOT_GIVEN,
-        enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        format_text: bool | NotGiven = NOT_GIVEN,
-        language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        enable_backchannel: Optional[bool] | NotGiven = NOT_GIVEN,
+        format_text: Optional[bool] | NotGiven = NOT_GIVEN,
+        language: Optional[
+            Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+        ]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
-        responsiveness: float | NotGiven = NOT_GIVEN,
+        opt_out_sensitive_data_storage: Optional[bool] | NotGiven = NOT_GIVEN,
+        responsiveness: Optional[float] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
-        voice_speed: float | NotGiven = NOT_GIVEN,
-        voice_temperature: float | NotGiven = NOT_GIVEN,
-        webhook_url: str | NotGiven = NOT_GIVEN,
+        voice_speed: Optional[float] | NotGiven = NOT_GIVEN,
+        voice_temperature: Optional[float] | NotGiven = NOT_GIVEN,
+        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -264,7 +270,7 @@ class Agent(SyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to string `null` to remove ambient sound from this agent.
+              Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -290,6 +296,8 @@ class Agent(SyncAPIResource):
               For instance, selecting `en-GB` optimizes speech recognition for British
               English, yet text-to-speech output will be in standard English. If
               dialect-specific text-to-speech is required, please contact us for support.
+
+              If unset, will use default value `en-US`.
 
               - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
                 Portuguese(pt)
@@ -326,7 +334,7 @@ class Agent(SyncAPIResource):
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
-              agent. Set to string `null` to remove webhook url from this agent.
+              agent. Set to `null` to remove webhook url from this agent.
 
           extra_headers: Send extra headers
 
@@ -432,19 +440,21 @@ class AsyncAgent(AsyncAPIResource):
         *,
         llm_websocket_url: str,
         voice_id: str,
-        agent_name: str | NotGiven = NOT_GIVEN,
-        ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
+        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
-        boosted_keywords: List[str] | NotGiven = NOT_GIVEN,
-        enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        format_text: bool | NotGiven = NOT_GIVEN,
-        language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        enable_backchannel: Optional[bool] | NotGiven = NOT_GIVEN,
+        format_text: Optional[bool] | NotGiven = NOT_GIVEN,
+        language: Optional[
+            Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+        ]
         | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
-        responsiveness: float | NotGiven = NOT_GIVEN,
-        voice_speed: float | NotGiven = NOT_GIVEN,
-        voice_temperature: float | NotGiven = NOT_GIVEN,
-        webhook_url: str | NotGiven = NOT_GIVEN,
+        opt_out_sensitive_data_storage: Optional[bool] | NotGiven = NOT_GIVEN,
+        responsiveness: Optional[float] | NotGiven = NOT_GIVEN,
+        voice_speed: Optional[float] | NotGiven = NOT_GIVEN,
+        voice_temperature: Optional[float] | NotGiven = NOT_GIVEN,
+        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -481,7 +491,7 @@ class AsyncAgent(AsyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to string `null` to remove ambient sound from this agent.
+              Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -507,6 +517,8 @@ class AsyncAgent(AsyncAPIResource):
               For instance, selecting `en-GB` optimizes speech recognition for British
               English, yet text-to-speech output will be in standard English. If
               dialect-specific text-to-speech is required, please contact us for support.
+
+              If unset, will use default value `en-US`.
 
               - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
                 Portuguese(pt)
@@ -536,7 +548,7 @@ class AsyncAgent(AsyncAPIResource):
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
-              agent. Set to string `null` to remove webhook url from this agent.
+              agent. Set to `null` to remove webhook url from this agent.
 
           extra_headers: Send extra headers
 
@@ -609,21 +621,23 @@ class AsyncAgent(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        agent_name: str | NotGiven = NOT_GIVEN,
-        ambient_sound: Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "null"]
+        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
-        boosted_keywords: List[str] | NotGiven = NOT_GIVEN,
-        enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        format_text: bool | NotGiven = NOT_GIVEN,
-        language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        enable_backchannel: Optional[bool] | NotGiven = NOT_GIVEN,
+        format_text: Optional[bool] | NotGiven = NOT_GIVEN,
+        language: Optional[
+            Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+        ]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
-        responsiveness: float | NotGiven = NOT_GIVEN,
+        opt_out_sensitive_data_storage: Optional[bool] | NotGiven = NOT_GIVEN,
+        responsiveness: Optional[float] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
-        voice_speed: float | NotGiven = NOT_GIVEN,
-        voice_temperature: float | NotGiven = NOT_GIVEN,
-        webhook_url: str | NotGiven = NOT_GIVEN,
+        voice_speed: Optional[float] | NotGiven = NOT_GIVEN,
+        voice_temperature: Optional[float] | NotGiven = NOT_GIVEN,
+        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -654,7 +668,7 @@ class AsyncAgent(AsyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to string `null` to remove ambient sound from this agent.
+              Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -680,6 +694,8 @@ class AsyncAgent(AsyncAPIResource):
               For instance, selecting `en-GB` optimizes speech recognition for British
               English, yet text-to-speech output will be in standard English. If
               dialect-specific text-to-speech is required, please contact us for support.
+
+              If unset, will use default value `en-US`.
 
               - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
                 Portuguese(pt)
@@ -716,7 +732,7 @@ class AsyncAgent(AsyncAPIResource):
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
-              agent. Set to string `null` to remove webhook url from this agent.
+              agent. Set to `null` to remove webhook url from this agent.
 
           extra_headers: Send extra headers
 
