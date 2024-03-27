@@ -5,10 +5,10 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CallDetailResponse"]
+__all__ = ["CallResponse"]
 
 
-class CallDetailResponse(BaseModel):
+class CallResponse(BaseModel):
     agent_id: str
     """Corresponding agent id of this call."""
 
