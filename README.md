@@ -25,7 +25,7 @@ The full API of this library can be found in [api.md](api.md).
 from retell import Retell
 
 client = Retell(
-    api_key="RETELL_API_KEY",
+    api_key="YOUR_RETELL_API_KEY",
 )
 
 agent_response = client.agent.create(
@@ -44,7 +44,7 @@ import asyncio
 from retell import AsyncRetell
 
 client = AsyncRetell(
-    api_key="RETELL_API_KEY",
+    api_key="YOUR_RETELL_API_KEY",
 )
 
 
