@@ -46,16 +46,14 @@ class Agent(SyncAPIResource):
         ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        enable_backchannel: Optional[bool] | NotGiven = NOT_GIVEN,
-        format_text: Optional[bool] | NotGiven = NOT_GIVEN,
-        language: Optional[
-            Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
-        ]
+        enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        format_text: bool | NotGiven = NOT_GIVEN,
+        language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: Optional[bool] | NotGiven = NOT_GIVEN,
-        responsiveness: Optional[float] | NotGiven = NOT_GIVEN,
-        voice_speed: Optional[float] | NotGiven = NOT_GIVEN,
-        voice_temperature: Optional[float] | NotGiven = NOT_GIVEN,
+        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        responsiveness: float | NotGiven = NOT_GIVEN,
+        voice_speed: float | NotGiven = NOT_GIVEN,
+        voice_temperature: float | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -131,7 +129,8 @@ class Agent(SyncAPIResource):
               - `deepgram voices`: supports English(en)
 
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks.
+              transcripts securely via webhooks. If not set, default value of false will
+              apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -227,18 +226,16 @@ class Agent(SyncAPIResource):
         ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        enable_backchannel: Optional[bool] | NotGiven = NOT_GIVEN,
-        format_text: Optional[bool] | NotGiven = NOT_GIVEN,
-        language: Optional[
-            Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
-        ]
+        enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        format_text: bool | NotGiven = NOT_GIVEN,
+        language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: Optional[bool] | NotGiven = NOT_GIVEN,
-        responsiveness: Optional[float] | NotGiven = NOT_GIVEN,
+        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        responsiveness: float | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
-        voice_speed: Optional[float] | NotGiven = NOT_GIVEN,
-        voice_temperature: Optional[float] | NotGiven = NOT_GIVEN,
+        voice_speed: float | NotGiven = NOT_GIVEN,
+        voice_temperature: float | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -312,7 +309,8 @@ class Agent(SyncAPIResource):
               request format (sent from us) and response format (send to us).
 
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks.
+              transcripts securely via webhooks. If not set, default value of false will
+              apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -444,16 +442,14 @@ class AsyncAgent(AsyncAPIResource):
         ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        enable_backchannel: Optional[bool] | NotGiven = NOT_GIVEN,
-        format_text: Optional[bool] | NotGiven = NOT_GIVEN,
-        language: Optional[
-            Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
-        ]
+        enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        format_text: bool | NotGiven = NOT_GIVEN,
+        language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: Optional[bool] | NotGiven = NOT_GIVEN,
-        responsiveness: Optional[float] | NotGiven = NOT_GIVEN,
-        voice_speed: Optional[float] | NotGiven = NOT_GIVEN,
-        voice_temperature: Optional[float] | NotGiven = NOT_GIVEN,
+        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        responsiveness: float | NotGiven = NOT_GIVEN,
+        voice_speed: float | NotGiven = NOT_GIVEN,
+        voice_temperature: float | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -529,7 +525,8 @@ class AsyncAgent(AsyncAPIResource):
               - `deepgram voices`: supports English(en)
 
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks.
+              transcripts securely via webhooks. If not set, default value of false will
+              apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -625,18 +622,16 @@ class AsyncAgent(AsyncAPIResource):
         ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        enable_backchannel: Optional[bool] | NotGiven = NOT_GIVEN,
-        format_text: Optional[bool] | NotGiven = NOT_GIVEN,
-        language: Optional[
-            Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
-        ]
+        enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        format_text: bool | NotGiven = NOT_GIVEN,
+        language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: Optional[bool] | NotGiven = NOT_GIVEN,
-        responsiveness: Optional[float] | NotGiven = NOT_GIVEN,
+        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        responsiveness: float | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
-        voice_speed: Optional[float] | NotGiven = NOT_GIVEN,
-        voice_temperature: Optional[float] | NotGiven = NOT_GIVEN,
+        voice_speed: float | NotGiven = NOT_GIVEN,
+        voice_temperature: float | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -710,7 +705,8 @@ class AsyncAgent(AsyncAPIResource):
               request format (sent from us) and response format (send to us).
 
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks.
+              transcripts securely via webhooks. If not set, default value of false will
+              apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
