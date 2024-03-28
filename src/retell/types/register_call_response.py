@@ -71,9 +71,6 @@ class RegisterCallResponse(BaseModel):
       - deepgram voices: 8000, 16000, 24000, 32000, 48000.
     """
 
-    start_timestamp: int
-    """Begin timestamp (milliseconds since epoch) of the call."""
-
     end_call_after_silence_ms: Optional[int] = None
     """If users stay silent for a period, end the call.
 
