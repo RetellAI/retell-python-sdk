@@ -129,9 +129,6 @@ class CallResponse(BaseModel):
       - deepgram voices: 8000, 16000, 24000, 32000, 48000.
     """
 
-    start_timestamp: int
-    """Begin timestamp (milliseconds since epoch) of the call."""
-
     e2e_latency: Optional[E2eLatency] = None
     """
     End to end latency (from user stops talking to agent start talking) tracking of
@@ -182,6 +179,12 @@ class CallResponse(BaseModel):
     """
     Add optional dynamic variables in key value pairs of string that injects into
     your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+    """
+
+    start_timestamp: Optional[int] = None
+    """Begin timestamp (milliseconds since epoch) of the call.
+
+    Available after call starts.
     """
 
     to_number: Optional[str] = None
