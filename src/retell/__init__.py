@@ -7,6 +7,7 @@ from ._client import Client, Retell, Stream, Timeout, Transport, AsyncClient, As
 from ._models import BaseModel
 from ._version import __title__, __version__
 from ._response import APIResponse as APIResponse, AsyncAPIResponse as AsyncAPIResponse
+from ._constants import DEFAULT_TIMEOUT, DEFAULT_MAX_RETRIES, DEFAULT_CONNECTION_LIMITS
 from ._exceptions import (
     APIError,
     RetellError,
@@ -58,6 +59,9 @@ __all__ = [
     "AsyncRetell",
     "file_from_path",
     "BaseModel",
+    "DEFAULT_TIMEOUT",
+    "DEFAULT_MAX_RETRIES",
+    "DEFAULT_CONNECTION_LIMITS",
 ]
 
 _setup_logging()
