@@ -239,16 +239,6 @@ class StateEdge(BaseModel):
     free to reference it inside the prompt.
     """
 
-    speak_during_transition: bool
-    """
-    After the state transitions, the agent would speak based on the new prompt and
-    tools in the new state. This bit here controls whether to speak a transition
-    sentence during the transition (so agent would say sentences like "Let's move on
-    to the next section to help you set up an acount.", and state transitions, and
-    agent continue to speak.). Usually this is not necessary, and is recommended to
-    set to false to avoid LLM repeating itself during and after transition.
-    """
-
     parameters: Optional[StateEdgeParameters] = None
     """Describes what parameters you want to extract out when the transition changes.
 
