@@ -48,7 +48,6 @@ class TestLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": False,
                         }
                     ],
                     "tools": [
@@ -72,7 +71,6 @@ class TestLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                         {
                             "destination_state_name": "string",
@@ -82,7 +80,6 @@ class TestLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                         {
                             "destination_state_name": "string",
@@ -92,7 +89,6 @@ class TestLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                     ],
                     "tools": [
@@ -202,7 +198,6 @@ class TestLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": False,
                         }
                     ],
                     "tools": [
@@ -226,7 +221,6 @@ class TestLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                         {
                             "destination_state_name": "string",
@@ -236,7 +230,6 @@ class TestLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                         {
                             "destination_state_name": "string",
@@ -246,7 +239,6 @@ class TestLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                     ],
                     "tools": [
@@ -393,7 +385,6 @@ class TestAsyncLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": False,
                         }
                     ],
                     "tools": [
@@ -417,7 +408,6 @@ class TestAsyncLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                         {
                             "destination_state_name": "string",
@@ -427,7 +417,6 @@ class TestAsyncLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                         {
                             "destination_state_name": "string",
@@ -437,7 +426,6 @@ class TestAsyncLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                     ],
                     "tools": [
@@ -547,7 +535,6 @@ class TestAsyncLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": False,
                         }
                     ],
                     "tools": [
@@ -571,7 +558,6 @@ class TestAsyncLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                         {
                             "destination_state_name": "string",
@@ -581,7 +567,6 @@ class TestAsyncLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                         {
                             "destination_state_name": "string",
@@ -591,7 +576,6 @@ class TestAsyncLlm:
                                 "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
-                            "speak_during_transition": True,
                         },
                     ],
                     "tools": [
