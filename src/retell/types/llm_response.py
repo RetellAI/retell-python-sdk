@@ -32,7 +32,8 @@ class GeneralToolEndCallTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["end_call"]
@@ -78,7 +79,8 @@ class GeneralToolCheckAvailabilityCalTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["check_availability_cal"]
@@ -111,7 +113,8 @@ class GeneralToolBookAppointmentCalTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["book_appointment_cal"]
@@ -154,7 +157,8 @@ class GeneralToolCustomTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     speak_after_execution: bool
@@ -255,7 +259,8 @@ class StateToolEndCallTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["end_call"]
@@ -301,7 +306,8 @@ class StateToolCheckAvailabilityCalTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["check_availability_cal"]
@@ -334,7 +340,8 @@ class StateToolBookAppointmentCalTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["book_appointment_cal"]
@@ -377,7 +384,8 @@ class StateToolCustomTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     speak_after_execution: bool
@@ -431,7 +439,11 @@ StateTool = Union[
 
 class State(BaseModel):
     name: str
-    """Name of the state, must be unique for each state."""
+    """Name of the state, must be unique for each state.
+
+    Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a
+    maximum length of 64 (no space allowed).
+    """
 
     edges: Optional[List[StateEdge]] = None
     """Edges of the state define how and what state can be reached from this state."""
