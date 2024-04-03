@@ -73,7 +73,8 @@ class GeneralToolEndCallTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["end_call"]]
@@ -119,7 +120,8 @@ class GeneralToolCheckAvailabilityCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["check_availability_cal"]]
@@ -152,7 +154,8 @@ class GeneralToolBookAppointmentCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["book_appointment_cal"]]
@@ -195,7 +198,8 @@ class GeneralToolCustomTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     speak_after_execution: Required[bool]
@@ -296,7 +300,8 @@ class StateToolEndCallTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["end_call"]]
@@ -342,7 +347,8 @@ class StateToolCheckAvailabilityCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["check_availability_cal"]]
@@ -375,7 +381,8 @@ class StateToolBookAppointmentCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions).
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["book_appointment_cal"]]
@@ -418,7 +425,8 @@ class StateToolCustomTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     speak_after_execution: Required[bool]
@@ -472,7 +480,11 @@ StateTool = Union[
 
 class State(TypedDict, total=False):
     name: Required[str]
-    """Name of the state, must be unique for each state."""
+    """Name of the state, must be unique for each state.
+
+    Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a
+    maximum length of 64 (no space allowed).
+    """
 
     edges: Iterable[StateEdge]
     """Edges of the state define how and what state can be reached from this state."""
