@@ -507,6 +507,13 @@ class LlmResponse(BaseModel):
     - Tools of LLM (no state) = general tools
     """
 
+    inbound_dynamic_variables_webhook_url: Optional[str] = None
+    """
+    For inbound phone calls with Retell numbers, if this webhook is set, will POST
+    to it to retrieve dynamic variables to use for the call. Without this, there's
+    no way to pass dynamic variables to inbound calls of Retell numbers.
+    """
+
     starting_state: Optional[str] = None
     """Name of the starting state. Required if states is not empty."""
 
