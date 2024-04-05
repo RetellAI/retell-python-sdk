@@ -47,7 +47,6 @@ class Agent(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
@@ -101,12 +100,6 @@ class Agent(SyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
-
-          format_text: Whether to format the transcribed text with inverse text normalization. It
-              transforms the spoken form of text into written form for entities like phone
-              number, email address, street address, etc. For example, "february fourth twenty
-              twenty two" can be converted into "february 4th 2022". If not set, the default
-              is true.
 
           language: `Beta feature, use with caution.`
 
@@ -169,7 +162,6 @@ class Agent(SyncAPIResource):
                     "ambient_sound": ambient_sound,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
-                    "format_text": format_text,
                     "language": language,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "responsiveness": responsiveness,
@@ -227,7 +219,6 @@ class Agent(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
@@ -277,12 +268,6 @@ class Agent(SyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
-
-          format_text: Whether to format the transcribed text with inverse text normalization. It
-              transforms the spoken form of text into written form for entities like phone
-              number, email address, street address, etc. For example, "february fourth twenty
-              twenty two" can be converted into "february 4th 2022". If not set, the default
-              is true.
 
           language: `Beta feature, use with caution.`
 
@@ -352,7 +337,6 @@ class Agent(SyncAPIResource):
                     "ambient_sound": ambient_sound,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
-                    "format_text": format_text,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
@@ -443,7 +427,6 @@ class AsyncAgent(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
@@ -497,12 +480,6 @@ class AsyncAgent(AsyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
-
-          format_text: Whether to format the transcribed text with inverse text normalization. It
-              transforms the spoken form of text into written form for entities like phone
-              number, email address, street address, etc. For example, "february fourth twenty
-              twenty two" can be converted into "february 4th 2022". If not set, the default
-              is true.
 
           language: `Beta feature, use with caution.`
 
@@ -565,7 +542,6 @@ class AsyncAgent(AsyncAPIResource):
                     "ambient_sound": ambient_sound,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
-                    "format_text": format_text,
                     "language": language,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "responsiveness": responsiveness,
@@ -623,7 +599,6 @@ class AsyncAgent(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        format_text: bool | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
@@ -673,12 +648,6 @@ class AsyncAgent(AsyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
-
-          format_text: Whether to format the transcribed text with inverse text normalization. It
-              transforms the spoken form of text into written form for entities like phone
-              number, email address, street address, etc. For example, "february fourth twenty
-              twenty two" can be converted into "february 4th 2022". If not set, the default
-              is true.
 
           language: `Beta feature, use with caution.`
 
@@ -748,7 +717,6 @@ class AsyncAgent(AsyncAPIResource):
                     "ambient_sound": ambient_sound,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
-                    "format_text": format_text,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,

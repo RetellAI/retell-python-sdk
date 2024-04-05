@@ -42,6 +42,7 @@ class Llm(SyncAPIResource):
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -72,6 +73,10 @@ class Llm(SyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
+          inbound_dynamic_variables_webhook_url: For inbound phone calls with Retell numbers, if this webhook is set, will POST
+              to it to retrieve dynamic variables to use for the call. Without this, there's
+              no way to pass dynamic variables to inbound calls of Retell numbers.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -95,6 +100,7 @@ class Llm(SyncAPIResource):
                     "begin_message": begin_message,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -146,6 +152,7 @@ class Llm(SyncAPIResource):
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -176,6 +183,10 @@ class Llm(SyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
+          inbound_dynamic_variables_webhook_url: For inbound phone calls with Retell numbers, if this webhook is set, will POST
+              to it to retrieve dynamic variables to use for the call. Without this, there's
+              no way to pass dynamic variables to inbound calls of Retell numbers.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -201,6 +212,7 @@ class Llm(SyncAPIResource):
                     "begin_message": begin_message,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -281,6 +293,7 @@ class AsyncLlm(AsyncAPIResource):
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -311,6 +324,10 @@ class AsyncLlm(AsyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
+          inbound_dynamic_variables_webhook_url: For inbound phone calls with Retell numbers, if this webhook is set, will POST
+              to it to retrieve dynamic variables to use for the call. Without this, there's
+              no way to pass dynamic variables to inbound calls of Retell numbers.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -334,6 +351,7 @@ class AsyncLlm(AsyncAPIResource):
                     "begin_message": begin_message,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -385,6 +403,7 @@ class AsyncLlm(AsyncAPIResource):
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -415,6 +434,10 @@ class AsyncLlm(AsyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
+          inbound_dynamic_variables_webhook_url: For inbound phone calls with Retell numbers, if this webhook is set, will POST
+              to it to retrieve dynamic variables to use for the call. Without this, there's
+              no way to pass dynamic variables to inbound calls of Retell numbers.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -440,6 +463,7 @@ class AsyncLlm(AsyncAPIResource):
                     "begin_message": begin_message,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "starting_state": starting_state,
                     "states": states,
                 },
