@@ -61,15 +61,6 @@ class AgentCreateParams(TypedDict, total=False):
     will not backchannel.
     """
 
-    format_text: bool
-    """Whether to format the transcribed text with inverse text normalization.
-
-    It transforms the spoken form of text into written form for entities like phone
-    number, email address, street address, etc. For example, "february fourth twenty
-    twenty two" can be converted into "february 4th 2022". If not set, the default
-    is true.
-    """
-
     language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
     """`Beta feature, use with caution.`
 

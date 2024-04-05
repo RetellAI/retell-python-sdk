@@ -34,6 +34,7 @@ class TestLlm:
                     "description": "End the call with user only when user explicitly requests it.",
                 }
             ],
+            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             starting_state="information_collection",
             states=[
                 {
@@ -184,6 +185,7 @@ class TestLlm:
                     "description": "End the call with user only when user explicitly requests it.",
                 }
             ],
+            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             starting_state="information_collection",
             states=[
                 {
@@ -371,6 +373,7 @@ class TestAsyncLlm:
                     "description": "End the call with user only when user explicitly requests it.",
                 }
             ],
+            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             starting_state="information_collection",
             states=[
                 {
@@ -521,6 +524,7 @@ class TestAsyncLlm:
                     "description": "End the call with user only when user explicitly requests it.",
                 }
             ],
+            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             starting_state="information_collection",
             states=[
                 {
