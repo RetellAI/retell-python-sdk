@@ -87,7 +87,10 @@ class GeneralToolEndCallTool(TypedDict, total=False):
     type: Required[Literal["end_call"]]
 
     description: str
-    """Describes when to end the call."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
 
 class GeneralToolTransferCallTool(TypedDict, total=False):
@@ -107,7 +110,10 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
     type: Required[Literal["transfer_call"]]
 
     description: str
-    """Describes when to transfer the call."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
 
 class GeneralToolCheckAvailabilityCalTool(TypedDict, total=False):
@@ -134,7 +140,10 @@ class GeneralToolCheckAvailabilityCalTool(TypedDict, total=False):
     type: Required[Literal["check_availability_cal"]]
 
     description: str
-    """Describes when to check availability."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
     timezone: str
     """
@@ -168,7 +177,10 @@ class GeneralToolBookAppointmentCalTool(TypedDict, total=False):
     type: Required[Literal["book_appointment_cal"]]
 
     description: str
-    """Describes when to book the appointment."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
     timezone: str
     """
@@ -228,8 +240,8 @@ class GeneralToolCustomTool(TypedDict, total=False):
 
     url: Required[str]
     """
-    The URL we will post the function name and arguments to get a result for the
-    function. Usually this is your server.
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
     """
 
     execution_message_description: str
@@ -314,7 +326,10 @@ class StateToolEndCallTool(TypedDict, total=False):
     type: Required[Literal["end_call"]]
 
     description: str
-    """Describes when to end the call."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
 
 class StateToolTransferCallTool(TypedDict, total=False):
@@ -334,7 +349,10 @@ class StateToolTransferCallTool(TypedDict, total=False):
     type: Required[Literal["transfer_call"]]
 
     description: str
-    """Describes when to transfer the call."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
 
 class StateToolCheckAvailabilityCalTool(TypedDict, total=False):
@@ -361,7 +379,10 @@ class StateToolCheckAvailabilityCalTool(TypedDict, total=False):
     type: Required[Literal["check_availability_cal"]]
 
     description: str
-    """Describes when to check availability."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
     timezone: str
     """
@@ -395,7 +416,10 @@ class StateToolBookAppointmentCalTool(TypedDict, total=False):
     type: Required[Literal["book_appointment_cal"]]
 
     description: str
-    """Describes when to book the appointment."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
     timezone: str
     """
@@ -455,8 +479,8 @@ class StateToolCustomTool(TypedDict, total=False):
 
     url: Required[str]
     """
-    The URL we will post the function name and arguments to get a result for the
-    function. Usually this is your server.
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
     """
 
     execution_message_description: str
