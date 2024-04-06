@@ -31,7 +31,7 @@ class TestLlm:
                 {
                     "type": "end_call",
                     "name": "end_call",
-                    "description": "End the call with user only when user explicitly requests it.",
+                    "description": "End the call with user.",
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
@@ -43,7 +43,7 @@ class TestLlm:
                     "edges": [
                         {
                             "destination_state_name": "appointment_booking",
-                            "description": "Transition to book an appointment if the user is due for an annual checkup based on the last checkup time collected.",
+                            "description": "Transition to book an appointment.",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -55,7 +55,7 @@ class TestLlm:
                         {
                             "type": "transfer_call",
                             "name": "transfer_to_support",
-                            "description": "Transfer to the support team when user seems angry or explicitly requests a human agent",
+                            "description": "Transfer to the support team.",
                             "number": "16175551212",
                         }
                     ],
@@ -96,7 +96,7 @@ class TestLlm:
                         {
                             "type": "book_appointment_cal",
                             "name": "book_appointment",
-                            "description": "Book an annual check up when user provided name, email, phone number, and have selected a time.",
+                            "description": "Book an annual check up.",
                             "cal_api_key": "cal_live_xxxxxxxxxxxx",
                             "event_type_id": 60444,
                             "timezone": "America/Los_Angeles",
@@ -182,7 +182,7 @@ class TestLlm:
                 {
                     "type": "end_call",
                     "name": "end_call",
-                    "description": "End the call with user only when user explicitly requests it.",
+                    "description": "End the call with user.",
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
@@ -194,7 +194,7 @@ class TestLlm:
                     "edges": [
                         {
                             "destination_state_name": "appointment_booking",
-                            "description": "Transition to book an appointment if the user is due for an annual checkup based on the last checkup time collected.",
+                            "description": "Transition to book an appointment.",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -206,7 +206,7 @@ class TestLlm:
                         {
                             "type": "transfer_call",
                             "name": "transfer_to_support",
-                            "description": "Transfer to the support team when user seems angry or explicitly requests a human agent",
+                            "description": "Transfer to the support team.",
                             "number": "16175551212",
                         }
                     ],
@@ -247,7 +247,7 @@ class TestLlm:
                         {
                             "type": "book_appointment_cal",
                             "name": "book_appointment",
-                            "description": "Book an annual check up when user provided name, email, phone number, and have selected a time.",
+                            "description": "Book an annual check up.",
                             "cal_api_key": "cal_live_xxxxxxxxxxxx",
                             "event_type_id": 60444,
                             "timezone": "America/Los_Angeles",
@@ -370,7 +370,7 @@ class TestAsyncLlm:
                 {
                     "type": "end_call",
                     "name": "end_call",
-                    "description": "End the call with user only when user explicitly requests it.",
+                    "description": "End the call with user.",
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
@@ -382,7 +382,7 @@ class TestAsyncLlm:
                     "edges": [
                         {
                             "destination_state_name": "appointment_booking",
-                            "description": "Transition to book an appointment if the user is due for an annual checkup based on the last checkup time collected.",
+                            "description": "Transition to book an appointment.",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -394,7 +394,7 @@ class TestAsyncLlm:
                         {
                             "type": "transfer_call",
                             "name": "transfer_to_support",
-                            "description": "Transfer to the support team when user seems angry or explicitly requests a human agent",
+                            "description": "Transfer to the support team.",
                             "number": "16175551212",
                         }
                     ],
@@ -435,7 +435,7 @@ class TestAsyncLlm:
                         {
                             "type": "book_appointment_cal",
                             "name": "book_appointment",
-                            "description": "Book an annual check up when user provided name, email, phone number, and have selected a time.",
+                            "description": "Book an annual check up.",
                             "cal_api_key": "cal_live_xxxxxxxxxxxx",
                             "event_type_id": 60444,
                             "timezone": "America/Los_Angeles",
@@ -521,7 +521,7 @@ class TestAsyncLlm:
                 {
                     "type": "end_call",
                     "name": "end_call",
-                    "description": "End the call with user only when user explicitly requests it.",
+                    "description": "End the call with user.",
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
@@ -533,7 +533,7 @@ class TestAsyncLlm:
                     "edges": [
                         {
                             "destination_state_name": "appointment_booking",
-                            "description": "Transition to book an appointment if the user is due for an annual checkup based on the last checkup time collected.",
+                            "description": "Transition to book an appointment.",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -545,7 +545,7 @@ class TestAsyncLlm:
                         {
                             "type": "transfer_call",
                             "name": "transfer_to_support",
-                            "description": "Transfer to the support team when user seems angry or explicitly requests a human agent",
+                            "description": "Transfer to the support team.",
                             "number": "16175551212",
                         }
                     ],
@@ -586,7 +586,7 @@ class TestAsyncLlm:
                         {
                             "type": "book_appointment_cal",
                             "name": "book_appointment",
-                            "description": "Book an annual check up when user provided name, email, phone number, and have selected a time.",
+                            "description": "Book an annual check up.",
                             "cal_api_key": "cal_live_xxxxxxxxxxxx",
                             "event_type_id": 60444,
                             "timezone": "America/Los_Angeles",

@@ -39,7 +39,10 @@ class GeneralToolEndCallTool(BaseModel):
     type: Literal["end_call"]
 
     description: Optional[str] = None
-    """Describes when to end the call."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
 
 class GeneralToolTransferCallTool(BaseModel):
@@ -59,7 +62,10 @@ class GeneralToolTransferCallTool(BaseModel):
     type: Literal["transfer_call"]
 
     description: Optional[str] = None
-    """Describes when to transfer the call."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
 
 class GeneralToolCheckAvailabilityCalTool(BaseModel):
@@ -86,7 +92,10 @@ class GeneralToolCheckAvailabilityCalTool(BaseModel):
     type: Literal["check_availability_cal"]
 
     description: Optional[str] = None
-    """Describes when to check availability."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
     timezone: Optional[str] = None
     """
@@ -120,7 +129,10 @@ class GeneralToolBookAppointmentCalTool(BaseModel):
     type: Literal["book_appointment_cal"]
 
     description: Optional[str] = None
-    """Describes when to book the appointment."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
     timezone: Optional[str] = None
     """
@@ -180,8 +192,8 @@ class GeneralToolCustomTool(BaseModel):
 
     url: str
     """
-    The URL we will post the function name and arguments to get a result for the
-    function. Usually this is your server.
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
     """
 
     execution_message_description: Optional[str] = None
@@ -266,7 +278,10 @@ class StateToolEndCallTool(BaseModel):
     type: Literal["end_call"]
 
     description: Optional[str] = None
-    """Describes when to end the call."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
 
 class StateToolTransferCallTool(BaseModel):
@@ -286,7 +301,10 @@ class StateToolTransferCallTool(BaseModel):
     type: Literal["transfer_call"]
 
     description: Optional[str] = None
-    """Describes when to transfer the call."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
 
 class StateToolCheckAvailabilityCalTool(BaseModel):
@@ -313,7 +331,10 @@ class StateToolCheckAvailabilityCalTool(BaseModel):
     type: Literal["check_availability_cal"]
 
     description: Optional[str] = None
-    """Describes when to check availability."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
     timezone: Optional[str] = None
     """
@@ -347,7 +368,10 @@ class StateToolBookAppointmentCalTool(BaseModel):
     type: Literal["book_appointment_cal"]
 
     description: Optional[str] = None
-    """Describes when to book the appointment."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
     timezone: Optional[str] = None
     """
@@ -407,8 +431,8 @@ class StateToolCustomTool(BaseModel):
 
     url: str
     """
-    The URL we will post the function name and arguments to get a result for the
-    function. Usually this is your server.
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
     """
 
     execution_message_description: Optional[str] = None
