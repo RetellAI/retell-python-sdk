@@ -28,8 +28,11 @@ client = Retell(
     api_key="YOUR_RETELL_API_KEY",
 )
 
-llm_response = client.llm.create()
-print(llm_response.llm_id)
+agent_response = client.agent.create(
+    llm_websocket_url="wss://your-websocket-endpoint",
+    voice_id="11labs-Adrian",
+)
+print(agent_response.agent_id)
 ```
 
 ## Async usage
@@ -46,8 +49,11 @@ client = AsyncRetell(
 
 
 async def main() -> None:
-    llm_response = await client.llm.create()
-    print(llm_response.llm_id)
+    agent_response = await client.agent.create(
+        llm_websocket_url="wss://your-websocket-endpoint",
+        voice_id="11labs-Adrian",
+    )
+    print(agent_response.agent_id)
 
 
 asyncio.run(main())
