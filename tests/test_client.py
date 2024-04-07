@@ -26,7 +26,7 @@ from retell._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClie
 from .utils import update_env
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
-api_key = "YOUR_RETELL_API_KEY"
+api_key = "RETELL_API_KEY"
 
 
 def _get_params(client: BaseClient[Any, Any]) -> dict[str, str]:
@@ -74,9 +74,9 @@ class TestRetell:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
-        copied = self.client.copy(api_key="another YOUR_RETELL_API_KEY")
-        assert copied.api_key == "another YOUR_RETELL_API_KEY"
-        assert self.client.api_key == "YOUR_RETELL_API_KEY"
+        copied = self.client.copy(api_key="another RETELL_API_KEY")
+        assert copied.api_key == "another RETELL_API_KEY"
+        assert self.client.api_key == "RETELL_API_KEY"
 
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
@@ -321,6 +321,11 @@ class TestRetell:
         request = client2._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "stainless"
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
+
+    def test_validate_headers(self) -> None:
+        client = Retell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("Authorization") == f"Bearer {api_key}"
 
     def test_default_query_option(self) -> None:
         client = Retell(
@@ -694,7 +699,14 @@ class TestRetell:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
+                body=cast(
+                    object,
+                    dict(
+                        llm_websocket_url="llm-websocket-url from retell.llm.create()",
+                        voice_id="11labs-Adrian",
+                        agent_name="Ryan",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -709,7 +721,14 @@ class TestRetell:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
+                body=cast(
+                    object,
+                    dict(
+                        llm_websocket_url="llm-websocket-url from retell.llm.create()",
+                        voice_id="11labs-Adrian",
+                        agent_name="Ryan",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -746,9 +765,9 @@ class TestAsyncRetell:
         copied = self.client.copy()
         assert id(copied) != id(self.client)
 
-        copied = self.client.copy(api_key="another YOUR_RETELL_API_KEY")
-        assert copied.api_key == "another YOUR_RETELL_API_KEY"
-        assert self.client.api_key == "YOUR_RETELL_API_KEY"
+        copied = self.client.copy(api_key="another RETELL_API_KEY")
+        assert copied.api_key == "another RETELL_API_KEY"
+        assert self.client.api_key == "RETELL_API_KEY"
 
     def test_copy_default_options(self) -> None:
         # options that have a default are overridden correctly
@@ -995,6 +1014,11 @@ class TestAsyncRetell:
         request = client2._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "stainless"
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
+
+    def test_validate_headers(self) -> None:
+        client = AsyncRetell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("Authorization") == f"Bearer {api_key}"
 
     def test_default_query_option(self) -> None:
         client = AsyncRetell(
@@ -1382,7 +1406,14 @@ class TestAsyncRetell:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
+                body=cast(
+                    object,
+                    dict(
+                        llm_websocket_url="llm-websocket-url from retell.llm.create()",
+                        voice_id="11labs-Adrian",
+                        agent_name="Ryan",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1397,7 +1428,14 @@ class TestAsyncRetell:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
+                body=cast(
+                    object,
+                    dict(
+                        llm_websocket_url="llm-websocket-url from retell.llm.create()",
+                        voice_id="11labs-Adrian",
+                        agent_name="Ryan",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
