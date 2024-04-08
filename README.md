@@ -25,39 +25,14 @@ The full API of this library can be found in [api.md](api.md).
 from retell import Retell
 
 client = Retell(
-    api_key="RETELL_API_KEY",
+    api_key="YOUR_RETELL_API_KEY",
 )
 
-llm_response = client.llm.create(
-    begin_message="Hi, I'm your virtual weather assistant, how can I help you?",
-    general_prompt="You are a friendly agent that helps people retrieves weather information.",
-    general_tools=[
-        {
-            "type": "end_call",
-            "name": "end_call",
-            "description": "End the call with user only when user explicitly requests it.",
-        },
-        {
-            "type": "custom",
-            "name": "get_weather",
-            "description": "Get the current weather, called when user is asking whether of a specific city.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "city": {
-                        "type": "string",
-                        "description": "The city for which the weather is to be fetched.",
-                    }
-                },
-                "required": ["city"],
-            },
-            "speak_during_execution": True,
-            "speak_after_execution": True,
-            "url": "http://your-server-url-here/get_weawther",
-        },
-    ],
+agent_response = client.agent.create(
+    llm_websocket_url="wss://your-websocket-endpoint",
+    voice_id="11labs-Adrian",
 )
-print(llm_response.llm_websocket_url)
+print(agent_response.agent_id)
 ```
 
 ## Async usage
@@ -69,41 +44,16 @@ import asyncio
 from retell import AsyncRetell
 
 client = AsyncRetell(
-    api_key="RETELL_API_KEY",
+    api_key="YOUR_RETELL_API_KEY",
 )
 
 
 async def main() -> None:
-    llm_response = await client.llm.create(
-        begin_message="Hi, I'm your virtual weather assistant, how can I help you?",
-        general_prompt="You are a friendly agent that helps people retrieves weather information.",
-        general_tools=[
-            {
-                "type": "end_call",
-                "name": "end_call",
-                "description": "End the call with user only when user explicitly requests it.",
-            },
-            {
-                "type": "custom",
-                "name": "get_weather",
-                "description": "Get the current weather, called when user is asking whether of a specific city.",
-                "parameters": {
-                    "type": "object",
-                    "properties": {
-                        "city": {
-                            "type": "string",
-                            "description": "The city for which the weather is to be fetched.",
-                        }
-                    },
-                    "required": ["city"],
-                },
-                "speak_during_execution": True,
-                "speak_after_execution": True,
-                "url": "http://your-server-url-here/get_weawther",
-            },
-        ],
+    agent_response = await client.agent.create(
+        llm_websocket_url="wss://your-websocket-endpoint",
+        voice_id="11labs-Adrian",
     )
-    print(llm_response.llm_websocket_url)
+    print(agent_response.agent_id)
 
 
 asyncio.run(main())
@@ -137,9 +87,8 @@ client = Retell()
 
 try:
     client.agent.create(
-        llm_websocket_url="llm-websocket-url from retell.llm.create()",
+        llm_websocket_url="wss://your-websocket-endpoint",
         voice_id="11labs-Adrian",
-        agent_name="Ryan",
     )
 except retell.APIConnectionError as e:
     print("The server could not be reached")
@@ -184,9 +133,8 @@ client = Retell(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).agent.create(
-    llm_websocket_url="llm-websocket-url from retell.llm.create()",
+    llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
-    agent_name="Ryan",
 )
 ```
 
@@ -211,9 +159,8 @@ client = Retell(
 
 # Override per-request:
 client.with_options(timeout=5 * 1000).agent.create(
-    llm_websocket_url="llm-websocket-url from retell.llm.create()",
+    llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
-    agent_name="Ryan",
 )
 ```
 
@@ -254,9 +201,8 @@ from retell import Retell
 
 client = Retell()
 response = client.agent.with_raw_response.create(
-    llm_websocket_url="llm-websocket-url from retell.llm.create()",
+    llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
-    agent_name="Ryan",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -276,9 +222,8 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.agent.with_streaming_response.create(
-    llm_websocket_url="llm-websocket-url from retell.llm.create()",
+    llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
-    agent_name="Ryan",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
