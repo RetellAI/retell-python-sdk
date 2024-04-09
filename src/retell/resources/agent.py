@@ -47,6 +47,7 @@ class Agent(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
@@ -90,7 +91,9 @@ class Agent(SyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to `null` to remove ambient sound from this agent.
+              - `static-noise`: Constant static noise.
+                [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
+                Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -100,6 +103,12 @@ class Agent(SyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
+              [0,1]. Lower value means it will take longer / more words for user to interrupt
+              agent, while higher value means it's easier for user to interrupt agent. If
+              unset, default value 1 will apply. When this is set to 0, agent would never be
+              interrupted.
 
           language: `Beta feature, use with caution.`
 
@@ -162,6 +171,7 @@ class Agent(SyncAPIResource):
                     "ambient_sound": ambient_sound,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "responsiveness": responsiveness,
@@ -219,6 +229,7 @@ class Agent(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
@@ -258,7 +269,9 @@ class Agent(SyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to `null` to remove ambient sound from this agent.
+              - `static-noise`: Constant static noise.
+                [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
+                Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -268,6 +281,12 @@ class Agent(SyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
+              [0,1]. Lower value means it will take longer / more words for user to interrupt
+              agent, while higher value means it's easier for user to interrupt agent. If
+              unset, default value 1 will apply. When this is set to 0, agent would never be
+              interrupted.
 
           language: `Beta feature, use with caution.`
 
@@ -337,6 +356,7 @@ class Agent(SyncAPIResource):
                     "ambient_sound": ambient_sound,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
@@ -427,6 +447,7 @@ class AsyncAgent(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
@@ -470,7 +491,9 @@ class AsyncAgent(AsyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to `null` to remove ambient sound from this agent.
+              - `static-noise`: Constant static noise.
+                [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
+                Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -480,6 +503,12 @@ class AsyncAgent(AsyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
+              [0,1]. Lower value means it will take longer / more words for user to interrupt
+              agent, while higher value means it's easier for user to interrupt agent. If
+              unset, default value 1 will apply. When this is set to 0, agent would never be
+              interrupted.
 
           language: `Beta feature, use with caution.`
 
@@ -542,6 +571,7 @@ class AsyncAgent(AsyncAPIResource):
                     "ambient_sound": ambient_sound,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "responsiveness": responsiveness,
@@ -599,6 +629,7 @@ class AsyncAgent(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
@@ -638,7 +669,9 @@ class AsyncAgent(AsyncAPIResource):
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-              Set to `null` to remove ambient sound from this agent.
+              - `static-noise`: Constant static noise.
+                [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
+                Set to `null` to remove ambient sound from this agent.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -648,6 +681,12 @@ class AsyncAgent(AsyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
+              [0,1]. Lower value means it will take longer / more words for user to interrupt
+              agent, while higher value means it's easier for user to interrupt agent. If
+              unset, default value 1 will apply. When this is set to 0, agent would never be
+              interrupted.
 
           language: `Beta feature, use with caution.`
 
@@ -717,6 +756,7 @@ class AsyncAgent(AsyncAPIResource):
                     "ambient_sound": ambient_sound,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,

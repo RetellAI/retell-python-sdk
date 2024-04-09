@@ -52,7 +52,9 @@ class AgentResponse(BaseModel):
     - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
 
-    Set to `null` to remove ambient sound from this agent.
+    - `static-noise`: Constant static noise.
+      [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
+      Set to `null` to remove ambient sound from this agent.
     """
 
     boosted_keywords: Optional[List[str]] = None
@@ -68,6 +70,15 @@ class AgentResponse(BaseModel):
     phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
     when enabled tends to show up more in longer user utterances. If not set, agent
     will not backchannel.
+    """
+
+    interruption_sensitivity: Optional[float] = None
+    """Controls how sensitive the agent is to user interruptions.
+
+    Value ranging from [0,1]. Lower value means it will take longer / more words for
+    user to interrupt agent, while higher value means it's easier for user to
+    interrupt agent. If unset, default value 1 will apply. When this is set to 0,
+    agent would never be interrupted.
     """
 
     language: Optional[
