@@ -12,7 +12,9 @@ class AgentUpdateParams(TypedDict, total=False):
     agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
 
-    ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
+    ambient_sound: Optional[
+        Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+    ]
     """
     If set, will add ambient environment sound to the call to make experience more
     realistic. Currently supports the following options:

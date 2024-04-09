@@ -43,7 +43,9 @@ class Agent(SyncAPIResource):
         llm_websocket_url: str,
         voice_id: str,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
-        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
+        ambient_sound: Optional[
+            Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+        ]
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
@@ -225,7 +227,9 @@ class Agent(SyncAPIResource):
         agent_id: str,
         *,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
-        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
+        ambient_sound: Optional[
+            Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+        ]
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
@@ -443,7 +447,9 @@ class AsyncAgent(AsyncAPIResource):
         llm_websocket_url: str,
         voice_id: str,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
-        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
+        ambient_sound: Optional[
+            Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+        ]
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
@@ -625,7 +631,9 @@ class AsyncAgent(AsyncAPIResource):
         agent_id: str,
         *,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
-        ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]]
+        ambient_sound: Optional[
+            Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+        ]
         | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
