@@ -34,7 +34,9 @@ class AgentResponse(BaseModel):
     agent_name: Optional[str] = None
     """The name of the agent. Only used for your own reference."""
 
-    ambient_sound: Optional[Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor"]] = None
+    ambient_sound: Optional[
+        Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+    ] = None
     """
     If set, will add ambient environment sound to the call to make experience more
     realistic. Currently supports the following options:
