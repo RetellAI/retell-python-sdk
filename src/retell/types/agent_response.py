@@ -56,7 +56,8 @@ class AgentResponse(BaseModel):
 
     - `static-noise`: Constant static noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
-      Set to `null` to remove ambient sound from this agent.
+
+    Set to `null` to remove ambient sound from this agent.
     """
 
     boosted_keywords: Optional[List[str]] = None
