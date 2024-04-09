@@ -1,5 +1,24 @@
 # Changelog
 
+## 3.5.0 (2024-04-09)
+
+Full Changelog: [v3.4.0...v3.5.0](https://github.com/RetellAI/retell-python-sdk/compare/v3.4.0...v3.5.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#40](https://github.com/RetellAI/retell-python-sdk/issues/40)) ([a03bf90](https://github.com/RetellAI/retell-python-sdk/commit/a03bf90f56a00f6eab16cd00e2b4421baf0afcdf))
+* **api:** OpenAPI spec update via Stainless API ([#41](https://github.com/RetellAI/retell-python-sdk/issues/41)) ([c2cf74c](https://github.com/RetellAI/retell-python-sdk/commit/c2cf74c755453d0261044ad53b6bbec56ad648f6))
+* **api:** OpenAPI spec update via Stainless API ([#43](https://github.com/RetellAI/retell-python-sdk/issues/43)) ([15d48bc](https://github.com/RetellAI/retell-python-sdk/commit/15d48bc7f60f3cd19a260feac4653d00962c0dc3))
+* **api:** OpenAPI spec update via Stainless API ([#45](https://github.com/RetellAI/retell-python-sdk/issues/45)) ([5b1dd2e](https://github.com/RetellAI/retell-python-sdk/commit/5b1dd2e5f84e4b9941f09f29e7290e79edc4bc94))
+* **api:** OpenAPI spec update via Stainless API ([#47](https://github.com/RetellAI/retell-python-sdk/issues/47)) ([f9de6a2](https://github.com/RetellAI/retell-python-sdk/commit/f9de6a26081ead079bddb0e849ccbe1c3f79713b))
+* **api:** OpenAPI spec update via Stainless API ([#48](https://github.com/RetellAI/retell-python-sdk/issues/48)) ([679b14d](https://github.com/RetellAI/retell-python-sdk/commit/679b14de819fdde12c87eac7325620a6de1add39))
+* **api:** OpenAPI spec update via Stainless API ([#49](https://github.com/RetellAI/retell-python-sdk/issues/49)) ([f6946bb](https://github.com/RetellAI/retell-python-sdk/commit/f6946bb3ebea62631153e59e9657b26b3a912b35))
+* **api:** OpenAPI spec update via Stainless API ([#50](https://github.com/RetellAI/retell-python-sdk/issues/50)) ([bb493f3](https://github.com/RetellAI/retell-python-sdk/commit/bb493f3584ffa972bf61e1bc68e5ba27123baf09))
+* **api:** update via SDK Studio ([#38](https://github.com/RetellAI/retell-python-sdk/issues/38)) ([ae81995](https://github.com/RetellAI/retell-python-sdk/commit/ae81995d2e60df916798bb5912165b231206b03b))
+* **api:** update via SDK Studio ([#42](https://github.com/RetellAI/retell-python-sdk/issues/42)) ([edbc78a](https://github.com/RetellAI/retell-python-sdk/commit/edbc78a33640b823010d5fd7e8e252d98207a00e))
+* **api:** update via SDK Studio ([#44](https://github.com/RetellAI/retell-python-sdk/issues/44)) ([4ae3374](https://github.com/RetellAI/retell-python-sdk/commit/4ae337497e4c6fed1799aa69819d57a63d59e63a))
+* **api:** update via SDK Studio ([#46](https://github.com/RetellAI/retell-python-sdk/issues/46)) ([7e9f13d](https://github.com/RetellAI/retell-python-sdk/commit/7e9f13d5e0b1e621fb809d5607450294951fdd39))
+
 ## 3.4.0 (2024-04-05)
 
 Full Changelog: [v3.3.0...v3.4.0](https://github.com/RetellAI/retell-python-sdk/compare/v3.3.0...v3.4.0)
