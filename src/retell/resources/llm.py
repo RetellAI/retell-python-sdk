@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Iterable, Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -43,6 +44,7 @@ class Llm(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-3.5-turbo", "gpt-4-turbo"] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -77,6 +79,8 @@ class Llm(SyncAPIResource):
               to it to retrieve dynamic variables to use for the call. Without this, there's
               no way to pass dynamic variables to inbound calls of Retell numbers.
 
+          model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -101,6 +105,7 @@ class Llm(SyncAPIResource):
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
+                    "model": model,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -153,6 +158,7 @@ class Llm(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-3.5-turbo", "gpt-4-turbo"] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -187,6 +193,8 @@ class Llm(SyncAPIResource):
               to it to retrieve dynamic variables to use for the call. Without this, there's
               no way to pass dynamic variables to inbound calls of Retell numbers.
 
+          model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -213,6 +221,7 @@ class Llm(SyncAPIResource):
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
+                    "model": model,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -294,6 +303,7 @@ class AsyncLlm(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-3.5-turbo", "gpt-4-turbo"] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -328,6 +338,8 @@ class AsyncLlm(AsyncAPIResource):
               to it to retrieve dynamic variables to use for the call. Without this, there's
               no way to pass dynamic variables to inbound calls of Retell numbers.
 
+          model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -352,6 +364,7 @@ class AsyncLlm(AsyncAPIResource):
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
+                    "model": model,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -404,6 +417,7 @@ class AsyncLlm(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-3.5-turbo", "gpt-4-turbo"] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -438,6 +452,8 @@ class AsyncLlm(AsyncAPIResource):
               to it to retrieve dynamic variables to use for the call. Without this, there's
               no way to pass dynamic variables to inbound calls of Retell numbers.
 
+          model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -464,6 +480,7 @@ class AsyncLlm(AsyncAPIResource):
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
+                    "model": model,
                     "starting_state": starting_state,
                     "states": states,
                 },
