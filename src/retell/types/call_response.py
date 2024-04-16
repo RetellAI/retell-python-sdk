@@ -5,33 +5,83 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CallResponse", "E2eLatency", "TranscriptObject", "TranscriptObjectWord"]
+__all__ = [
+    "CallResponse",
+    "E2eLatency",
+    "LlmLatency",
+    "LlmWebsocketNetworkRttLatency",
+    "TranscriptObject",
+    "TranscriptObjectWord",
+]
 
 
 class E2eLatency(BaseModel):
     max: Optional[float] = None
-    """Maximum end to end latency in the call."""
+    """Maximum latency in the call, measured in milliseconds."""
 
     min: Optional[float] = None
-    """Minimum end to end latency in the call."""
+    """Minimum latency in the call, measured in milliseconds."""
 
     num: Optional[float] = None
-    """Number of turn change.
-
-    We track latency every time turn change between user and agent.
-    """
+    """Number of data points (number of times latency is tracked)."""
 
     p50: Optional[float] = None
-    """50 percentile of end to end latency."""
+    """50 percentile of latency, measured in milliseconds."""
 
     p90: Optional[float] = None
-    """90 percentile of end to end latency."""
+    """90 percentile of latency, measured in milliseconds."""
 
     p95: Optional[float] = None
-    """95 percentile of end to end latency."""
+    """95 percentile of latency, measured in milliseconds."""
 
     p99: Optional[float] = None
-    """99 percentile of end to end latency."""
+    """99 percentile of latency, measured in milliseconds."""
+
+
+class LlmLatency(BaseModel):
+    max: Optional[float] = None
+    """Maximum latency in the call, measured in milliseconds."""
+
+    min: Optional[float] = None
+    """Minimum latency in the call, measured in milliseconds."""
+
+    num: Optional[float] = None
+    """Number of data points (number of times latency is tracked)."""
+
+    p50: Optional[float] = None
+    """50 percentile of latency, measured in milliseconds."""
+
+    p90: Optional[float] = None
+    """90 percentile of latency, measured in milliseconds."""
+
+    p95: Optional[float] = None
+    """95 percentile of latency, measured in milliseconds."""
+
+    p99: Optional[float] = None
+    """99 percentile of latency, measured in milliseconds."""
+
+
+class LlmWebsocketNetworkRttLatency(BaseModel):
+    max: Optional[float] = None
+    """Maximum latency in the call, measured in milliseconds."""
+
+    min: Optional[float] = None
+    """Minimum latency in the call, measured in milliseconds."""
+
+    num: Optional[float] = None
+    """Number of data points (number of times latency is tracked)."""
+
+    p50: Optional[float] = None
+    """50 percentile of latency, measured in milliseconds."""
+
+    p90: Optional[float] = None
+    """90 percentile of latency, measured in milliseconds."""
+
+    p95: Optional[float] = None
+    """95 percentile of latency, measured in milliseconds."""
+
+    p99: Optional[float] = None
+    """99 percentile of latency, measured in milliseconds."""
 
 
 class TranscriptObjectWord(BaseModel):
@@ -133,7 +183,8 @@ class CallResponse(BaseModel):
     """
     End to end latency (from user stops talking to agent start talking) tracking of
     the call, available after call ends. This latency does not account for the
-    network trip time from Retell server to user frontend.
+    network trip time from Retell server to user frontend. The latency is tracked
+    every time turn change between user and agent.
     """
 
     end_call_after_silence_ms: Optional[int] = None
@@ -155,6 +206,20 @@ class CallResponse(BaseModel):
     This field is storage purpose only, set this if you want the call object to
     contain it so that it's easier to reference it. Not used for processing, when we
     connect to your LLM websocket server, you can then get it from the call object.
+    """
+
+    llm_latency: Optional[LlmLatency] = None
+    """
+    LLM latency (from issue of LLM call to first token received) tracking of the
+    call, available after call ends. When using custom LLM. this latency includes
+    LLM websocket roundtrip time between user server and Retell server.
+    """
+
+    llm_websocket_network_rtt_latency: Optional[LlmWebsocketNetworkRttLatency] = None
+    """
+    LLM websocket roundtrip latency (between user server and Retell server) tracking
+    of the call, available after call ends. Only populated for calls using custom
+    LLM.
     """
 
     metadata: Optional[object] = None
