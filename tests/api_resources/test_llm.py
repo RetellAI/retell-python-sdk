@@ -35,6 +35,7 @@ class TestLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
+            model="gpt-3.5-turbo",
             starting_state="information_collection",
             states=[
                 {
@@ -186,6 +187,7 @@ class TestLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
+            model="gpt-3.5-turbo",
             starting_state="information_collection",
             states=[
                 {
@@ -374,6 +376,7 @@ class TestAsyncLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
+            model="gpt-3.5-turbo",
             starting_state="information_collection",
             states=[
                 {
@@ -525,6 +528,7 @@ class TestAsyncLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
+            model="gpt-3.5-turbo",
             starting_state="information_collection",
             states=[
                 {
