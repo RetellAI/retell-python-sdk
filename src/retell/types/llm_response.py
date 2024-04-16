@@ -538,6 +538,9 @@ class LlmResponse(BaseModel):
     no way to pass dynamic variables to inbound calls of Retell numbers.
     """
 
+    model: Optional[Literal["gpt-3.5-turbo", "gpt-4-turbo"]] = None
+    """Select the underlying LLM. If not set, would default to gpt-3.5-turbo."""
+
     starting_state: Optional[str] = None
     """Name of the starting state. Required if states is not empty."""
 
