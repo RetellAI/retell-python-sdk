@@ -85,7 +85,7 @@ class AgentResponse(BaseModel):
     """
 
     language: Optional[
-        Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+        Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"]
     ] = None
     """`Beta feature, use with caution.`
 
