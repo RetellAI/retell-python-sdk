@@ -24,9 +24,7 @@ The full API of this library can be found in [api.md](api.md).
 ```python
 from retell import Retell
 
-client = Retell(
-    api_key="YOUR_RETELL_API_KEY",
-)
+client = Retell()
 
 agent_response = client.agent.create(
     llm_websocket_url="wss://your-websocket-endpoint",
@@ -43,9 +41,7 @@ Simply import `AsyncRetell` instead of `Retell` and use `await` with each API ca
 import asyncio
 from retell import AsyncRetell
 
-client = AsyncRetell(
-    api_key="YOUR_RETELL_API_KEY",
-)
+client = AsyncRetell()
 
 
 async def main() -> None:

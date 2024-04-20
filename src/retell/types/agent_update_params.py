@@ -62,7 +62,9 @@ class AgentUpdateParams(TypedDict, total=False):
     agent would never be interrupted.
     """
 
-    language: Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR"]
+    language: Literal[
+        "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
+    ]
     """`Beta feature, use with caution.`
 
     This setting specifies the agent's operational language, including base language
