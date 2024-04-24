@@ -7,12 +7,38 @@ from .._models import BaseModel
 
 __all__ = [
     "CallResponse",
+    "ConversationEval",
     "E2eLatency",
     "LlmLatency",
     "LlmWebsocketNetworkRttLatency",
     "TranscriptObject",
     "TranscriptObjectWord",
 ]
+
+
+class ConversationEval(BaseModel):
+    agent_task_completion: Optional[Literal["Completed", "Incomplete", "Partial"]] = None
+    """
+    Evaluate agent task completion status, whether the agent has completed his task.
+    """
+
+    agent_task_completion_reason: Optional[str] = None
+    """Reason for the agent task completion status."""
+
+    agnet_sentiment: Optional[Literal["Aggressive", "Friendly", "Neutral"]] = None
+    """Sentiment of the agent in the conversation."""
+
+    conversation_completion: Optional[Literal["Completed", "Incomplete", "Partial"]] = None
+    """Evaluate whether the conversation ended normally or was cut off."""
+
+    conversation_completion_reason: Optional[str] = None
+    """Reason for the conversation completion status."""
+
+    conversation_summary: Optional[str] = None
+    """A high level summary of the conversation conversation."""
+
+    user_sentiment: Optional[Literal["Frustrated", "Positive", "Neutral"]] = None
+    """Sentiment of the user in the conversation."""
 
 
 class E2eLatency(BaseModel):
@@ -179,6 +205,40 @@ class CallResponse(BaseModel):
       - deepgram voices: 8000, 16000, 24000, 32000, 48000.
     """
 
+    conversation_eval: Optional[ConversationEval] = None
+    """Post conversation evaluation of the call.
+
+    Including information such as sentiment, intent, call completion status and
+    other metrics. Available after call ends. Subscribe to "call_analyzed" webhook
+    event type to receive it once ready.
+    """
+
+    disconnection_reason: Optional[
+        Literal[
+            "user_hangup",
+            "agent_hangup",
+            "call_transfer",
+            "inactivity",
+            "machine_detected",
+            "concurrency_limit_reached",
+            "error_llm_websocket_open",
+            "error_llm_websocket_lost_connection",
+            "error_llm_websocket_runtime",
+            "error_llm_websocket_corrupt_payload",
+            "error_frontend_corrupted_payload",
+            "error_twilio",
+            "error_no_audio_received",
+            "error_asr",
+            "error_retell",
+            "error_unknown",
+        ]
+    ] = None
+    """The reason for the disconnection of the call.
+
+    Debug using explanation in docs based on the reason code. Please reachout to
+    Retell team having trouble understanding the reason.
+    """
+
     e2e_latency: Optional[E2eLatency] = None
     """
     End to end latency (from user stops talking to agent start talking) tracking of
@@ -267,4 +327,11 @@ class CallResponse(BaseModel):
     """Transcript of the call in the format of a list of utterance, with timestamp.
 
     Available after call ends.
+    """
+
+    transcript_with_tool_calls: Optional[List[object]] = None
+    """Transcript of the call weaved with tool call invocation and results.
+
+    It precisely captures when (at what utterance, which word) the tool was invoked
+    and what was the result. Available after call ends.
     """
