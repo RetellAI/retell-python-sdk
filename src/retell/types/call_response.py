@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -13,6 +13,11 @@ __all__ = [
     "LlmWebsocketNetworkRttLatency",
     "TranscriptObject",
     "TranscriptObjectWord",
+    "TranscriptWithToolCall",
+    "TranscriptWithToolCallUtterance",
+    "TranscriptWithToolCallUtteranceWord",
+    "TranscriptWithToolCallToolCallInvocationUtterance",
+    "TranscriptWithToolCallToolCallResultUtterance",
 ]
 
 
@@ -140,6 +145,70 @@ class TranscriptObject(BaseModel):
     Useful for understanding what word was spoken at what time. Note that the word
     timestamp is not guranteed to be accurate, it's more like an approximation.
     """
+
+
+class TranscriptWithToolCallUtteranceWord(BaseModel):
+    end: Optional[float] = None
+    """End time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    start: Optional[float] = None
+    """Start time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    word: Optional[str] = None
+    """Word transcript (with punctuation if applicable)."""
+
+
+class TranscriptWithToolCallUtterance(BaseModel):
+    content: str
+    """Transcript of the utterances."""
+
+    role: Literal["agent", "user"]
+    """Documents whether this utterance is spoken by agent or user."""
+
+    words: List[TranscriptWithToolCallUtteranceWord]
+    """Array of words in the utternace with the word timestamp.
+
+    Useful for understanding what word was spoken at what time. Note that the word
+    timestamp is not guranteed to be accurate, it's more like an approximation.
+    """
+
+
+class TranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+
+class TranscriptWithToolCallToolCallResultUtterance(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    role: Literal["tool_call_result"]
+    """This is result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+
+TranscriptWithToolCall = Union[
+    TranscriptWithToolCallUtterance,
+    TranscriptWithToolCallToolCallInvocationUtterance,
+    TranscriptWithToolCallToolCallResultUtterance,
+]
 
 
 class CallResponse(BaseModel):
@@ -329,7 +398,7 @@ class CallResponse(BaseModel):
     Available after call ends.
     """
 
-    transcript_with_tool_calls: Optional[List[object]] = None
+    transcript_with_tool_calls: Optional[List[TranscriptWithToolCall]] = None
     """Transcript of the call weaved with tool call invocation and results.
 
     It precisely captures when (at what utterance, which word) the tool was invoked
