@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from .llm_response import LlmResponse as LlmResponse
-from .call_response import CallResponse as CallResponse
 from .agent_response import AgentResponse as AgentResponse
 from .call_list_params import CallListParams as CallListParams
 from .llm_create_params import LlmCreateParams as LlmCreateParams
