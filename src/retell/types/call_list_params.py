@@ -14,6 +14,12 @@ class CallListParams(TypedDict, total=False):
     limit: int
     """Limit the number of calls returned."""
 
+    pagination_key: str
+    """The pagination call id to continue fetching the next page of calls.
+
+    If not set, will start from the beginning.
+    """
+
     sort_order: Literal["ascending", "descending"]
     """
     The calls will be sorted by `start_timestamp`, whether to return the calls in
