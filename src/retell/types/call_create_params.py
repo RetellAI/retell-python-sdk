@@ -15,6 +15,12 @@ class CallCreateParams(TypedDict, total=False):
     to_number: Required[str]
     """The number you want to call, in BCP 47 format."""
 
+    drop_call_if_machine_detected: bool
+    """If set, will drop the call if machine (voicemail, IVR) is detected.
+
+    If not set, default value of false will apply.
+    """
+
     override_agent_id: str
     """For this particular call, override the agent used with this agent id.
 

@@ -45,6 +45,7 @@ class CallResource(SyncAPIResource):
         *,
         from_number: str,
         to_number: str,
+        drop_call_if_machine_detected: bool | NotGiven = NOT_GIVEN,
         override_agent_id: str | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -61,6 +62,9 @@ class CallResource(SyncAPIResource):
           from_number: The number you own in BCP 47 format.
 
           to_number: The number you want to call, in BCP 47 format.
+
+          drop_call_if_machine_detected: If set, will drop the call if machine (voicemail, IVR) is detected. If not set,
+              default value of false will apply.
 
           override_agent_id: For this particular call, override the agent used with this agent id. This does
               not bind the agent to this number, this is for one time override.
@@ -82,6 +86,7 @@ class CallResource(SyncAPIResource):
                 {
                     "from_number": from_number,
                     "to_number": to_number,
+                    "drop_call_if_machine_detected": drop_call_if_machine_detected,
                     "override_agent_id": override_agent_id,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
@@ -305,6 +310,7 @@ class AsyncCallResource(AsyncAPIResource):
         *,
         from_number: str,
         to_number: str,
+        drop_call_if_machine_detected: bool | NotGiven = NOT_GIVEN,
         override_agent_id: str | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -321,6 +327,9 @@ class AsyncCallResource(AsyncAPIResource):
           from_number: The number you own in BCP 47 format.
 
           to_number: The number you want to call, in BCP 47 format.
+
+          drop_call_if_machine_detected: If set, will drop the call if machine (voicemail, IVR) is detected. If not set,
+              default value of false will apply.
 
           override_agent_id: For this particular call, override the agent used with this agent id. This does
               not bind the agent to this number, this is for one time override.
@@ -342,6 +351,7 @@ class AsyncCallResource(AsyncAPIResource):
                 {
                     "from_number": from_number,
                     "to_number": to_number,
+                    "drop_call_if_machine_detected": drop_call_if_machine_detected,
                     "override_agent_id": override_agent_id,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
