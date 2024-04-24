@@ -24,7 +24,6 @@ from .._response import (
 from .._base_client import (
     make_request_options,
 )
-from ..types.call_response import CallResponse
 from ..types.call_list_response import CallListResponse
 from ..types.register_call_response import RegisterCallResponse
 
@@ -103,7 +102,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallResponse:
+    ) -> RegisterCallResponse:
         """
         Retrieve details of a specific call
 
@@ -123,7 +122,7 @@ class CallResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CallResponse,
+            cast_to=RegisterCallResponse,
         )
 
     def list(
@@ -363,7 +362,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallResponse:
+    ) -> RegisterCallResponse:
         """
         Retrieve details of a specific call
 
@@ -383,7 +382,7 @@ class AsyncCallResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CallResponse,
+            cast_to=RegisterCallResponse,
         )
 
     async def list(
