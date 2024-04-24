@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import LlmResponse, LlmListResponse, llm_create_params, llm_update_params
+from ..types import llm_create_params, llm_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -24,18 +24,20 @@ from .._response import (
 from .._base_client import (
     make_request_options,
 )
+from ..types.llm_response import LlmResponse
+from ..types.llm_list_response import LlmListResponse
 
-__all__ = ["Llm", "AsyncLlm"]
+__all__ = ["LlmResource", "AsyncLlmResource"]
 
 
-class Llm(SyncAPIResource):
+class LlmResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> LlmWithRawResponse:
-        return LlmWithRawResponse(self)
+    def with_raw_response(self) -> LlmResourceWithRawResponse:
+        return LlmResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> LlmWithStreamingResponse:
-        return LlmWithStreamingResponse(self)
+    def with_streaming_response(self) -> LlmResourceWithStreamingResponse:
+        return LlmResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -287,14 +289,14 @@ class Llm(SyncAPIResource):
         )
 
 
-class AsyncLlm(AsyncAPIResource):
+class AsyncLlmResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncLlmWithRawResponse:
-        return AsyncLlmWithRawResponse(self)
+    def with_raw_response(self) -> AsyncLlmResourceWithRawResponse:
+        return AsyncLlmResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncLlmWithStreamingResponse:
-        return AsyncLlmWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncLlmResourceWithStreamingResponse:
+        return AsyncLlmResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -546,8 +548,8 @@ class AsyncLlm(AsyncAPIResource):
         )
 
 
-class LlmWithRawResponse:
-    def __init__(self, llm: Llm) -> None:
+class LlmResourceWithRawResponse:
+    def __init__(self, llm: LlmResource) -> None:
         self._llm = llm
 
         self.create = to_raw_response_wrapper(
@@ -567,8 +569,8 @@ class LlmWithRawResponse:
         )
 
 
-class AsyncLlmWithRawResponse:
-    def __init__(self, llm: AsyncLlm) -> None:
+class AsyncLlmResourceWithRawResponse:
+    def __init__(self, llm: AsyncLlmResource) -> None:
         self._llm = llm
 
         self.create = async_to_raw_response_wrapper(
@@ -588,8 +590,8 @@ class AsyncLlmWithRawResponse:
         )
 
 
-class LlmWithStreamingResponse:
-    def __init__(self, llm: Llm) -> None:
+class LlmResourceWithStreamingResponse:
+    def __init__(self, llm: LlmResource) -> None:
         self._llm = llm
 
         self.create = to_streamed_response_wrapper(
@@ -609,8 +611,8 @@ class LlmWithStreamingResponse:
         )
 
 
-class AsyncLlmWithStreamingResponse:
-    def __init__(self, llm: AsyncLlm) -> None:
+class AsyncLlmResourceWithStreamingResponse:
+    def __init__(self, llm: AsyncLlmResource) -> None:
         self._llm = llm
 
         self.create = async_to_streamed_response_wrapper(

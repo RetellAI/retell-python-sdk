@@ -9,11 +9,9 @@ import pytest
 
 from retell import Retell, AsyncRetell
 from tests.utils import assert_matches_type
-from retell.types import (
-    CallResponse,
-    CallListResponse,
-    RegisterCallResponse,
-)
+from retell.types.call_response import CallResponse
+from retell.types.call_list_response import CallListResponse
+from retell.types.register_call_response import RegisterCallResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

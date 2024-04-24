@@ -4,12 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import (
-    PhoneNumberResponse,
-    PhoneNumberListResponse,
-    phone_number_create_params,
-    phone_number_update_params,
-)
+from ..types import phone_number_create_params, phone_number_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -26,18 +21,20 @@ from .._response import (
 from .._base_client import (
     make_request_options,
 )
+from ..types.phone_number_response import PhoneNumberResponse
+from ..types.phone_number_list_response import PhoneNumberListResponse
 
-__all__ = ["PhoneNumber", "AsyncPhoneNumber"]
+__all__ = ["PhoneNumberResource", "AsyncPhoneNumberResource"]
 
 
-class PhoneNumber(SyncAPIResource):
+class PhoneNumberResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> PhoneNumberWithRawResponse:
-        return PhoneNumberWithRawResponse(self)
+    def with_raw_response(self) -> PhoneNumberResourceWithRawResponse:
+        return PhoneNumberResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> PhoneNumberWithStreamingResponse:
-        return PhoneNumberWithStreamingResponse(self)
+    def with_streaming_response(self) -> PhoneNumberResourceWithStreamingResponse:
+        return PhoneNumberResourceWithStreamingResponse(self)
 
     def create(
         self,
@@ -209,14 +206,14 @@ class PhoneNumber(SyncAPIResource):
         )
 
 
-class AsyncPhoneNumber(AsyncAPIResource):
+class AsyncPhoneNumberResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncPhoneNumberWithRawResponse:
-        return AsyncPhoneNumberWithRawResponse(self)
+    def with_raw_response(self) -> AsyncPhoneNumberResourceWithRawResponse:
+        return AsyncPhoneNumberResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncPhoneNumberWithStreamingResponse:
-        return AsyncPhoneNumberWithStreamingResponse(self)
+    def with_streaming_response(self) -> AsyncPhoneNumberResourceWithStreamingResponse:
+        return AsyncPhoneNumberResourceWithStreamingResponse(self)
 
     async def create(
         self,
@@ -390,8 +387,8 @@ class AsyncPhoneNumber(AsyncAPIResource):
         )
 
 
-class PhoneNumberWithRawResponse:
-    def __init__(self, phone_number: PhoneNumber) -> None:
+class PhoneNumberResourceWithRawResponse:
+    def __init__(self, phone_number: PhoneNumberResource) -> None:
         self._phone_number = phone_number
 
         self.create = to_raw_response_wrapper(
@@ -411,8 +408,8 @@ class PhoneNumberWithRawResponse:
         )
 
 
-class AsyncPhoneNumberWithRawResponse:
-    def __init__(self, phone_number: AsyncPhoneNumber) -> None:
+class AsyncPhoneNumberResourceWithRawResponse:
+    def __init__(self, phone_number: AsyncPhoneNumberResource) -> None:
         self._phone_number = phone_number
 
         self.create = async_to_raw_response_wrapper(
@@ -432,8 +429,8 @@ class AsyncPhoneNumberWithRawResponse:
         )
 
 
-class PhoneNumberWithStreamingResponse:
-    def __init__(self, phone_number: PhoneNumber) -> None:
+class PhoneNumberResourceWithStreamingResponse:
+    def __init__(self, phone_number: PhoneNumberResource) -> None:
         self._phone_number = phone_number
 
         self.create = to_streamed_response_wrapper(
@@ -453,8 +450,8 @@ class PhoneNumberWithStreamingResponse:
         )
 
 
-class AsyncPhoneNumberWithStreamingResponse:
-    def __init__(self, phone_number: AsyncPhoneNumber) -> None:
+class AsyncPhoneNumberResourceWithStreamingResponse:
+    def __init__(self, phone_number: AsyncPhoneNumberResource) -> None:
         self._phone_number = phone_number
 
         self.create = async_to_streamed_response_wrapper(
