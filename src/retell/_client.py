@@ -55,13 +55,11 @@ class Retell(SyncAPIClient):
 
     # client options
     api_key: str
-    retell_sdk_version: str | None
 
     def __init__(
         self,
         *,
         api_key: str,
-        retell_sdk_version: str | None = "v3",
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -83,10 +81,6 @@ class Retell(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous retell client instance."""
         self.api_key = api_key
-
-        if retell_sdk_version is None:
-            retell_sdk_version = "v3"
-        self.retell_sdk_version = retell_sdk_version
 
         if base_url is None:
             base_url = os.environ.get("RETELL_BASE_URL")
@@ -128,7 +122,6 @@ class Retell(SyncAPIClient):
         return {
             **super().default_headers,
             "X-Stainless-Async": "false",
-            "X-Retell-Version": self.retell_sdk_version if self.retell_sdk_version is not None else Omit(),
             **self._custom_headers,
         }
 
@@ -136,7 +129,6 @@ class Retell(SyncAPIClient):
         self,
         *,
         api_key: str | None = None,
-        retell_sdk_version: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -171,7 +163,6 @@ class Retell(SyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             api_key=api_key or self.api_key,
-            retell_sdk_version=retell_sdk_version or self.retell_sdk_version,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -229,13 +220,11 @@ class AsyncRetell(AsyncAPIClient):
 
     # client options
     api_key: str
-    retell_sdk_version: str | None
 
     def __init__(
         self,
         *,
         api_key: str,
-        retell_sdk_version: str | None = "v3",
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -257,10 +246,6 @@ class AsyncRetell(AsyncAPIClient):
     ) -> None:
         """Construct a new async retell client instance."""
         self.api_key = api_key
-
-        if retell_sdk_version is None:
-            retell_sdk_version = "v3"
-        self.retell_sdk_version = retell_sdk_version
 
         if base_url is None:
             base_url = os.environ.get("RETELL_BASE_URL")
@@ -302,7 +287,6 @@ class AsyncRetell(AsyncAPIClient):
         return {
             **super().default_headers,
             "X-Stainless-Async": f"async:{get_async_library()}",
-            "X-Retell-Version": self.retell_sdk_version if self.retell_sdk_version is not None else Omit(),
             **self._custom_headers,
         }
 
@@ -310,7 +294,6 @@ class AsyncRetell(AsyncAPIClient):
         self,
         *,
         api_key: str | None = None,
-        retell_sdk_version: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -345,7 +328,6 @@ class AsyncRetell(AsyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             api_key=api_key or self.api_key,
-            retell_sdk_version=retell_sdk_version or self.retell_sdk_version,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
