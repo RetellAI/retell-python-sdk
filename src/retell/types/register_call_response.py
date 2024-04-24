@@ -71,6 +71,12 @@ class RegisterCallResponse(BaseModel):
       - deepgram voices: 8000, 16000, 24000, 32000, 48000.
     """
 
+    drop_call_if_machine_detected: Optional[bool] = None
+    """If set, will drop the call if machine (voicemail, IVR) is detected.
+
+    If not set, default value of false will apply.
+    """
+
     end_call_after_silence_ms: Optional[int] = None
     """If users stay silent for a period, end the call.
 
