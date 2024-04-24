@@ -32,6 +32,7 @@ class TestCall:
         call = client.call.create(
             from_number="string",
             to_number="string",
+            drop_call_if_machine_detected=True,
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
@@ -214,6 +215,7 @@ class TestAsyncCall:
         call = await async_client.call.create(
             from_number="string",
             to_number="string",
+            drop_call_if_machine_detected=True,
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
