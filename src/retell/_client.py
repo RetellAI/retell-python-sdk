@@ -46,20 +46,22 @@ __all__ = [
 
 
 class Retell(SyncAPIClient):
-    call: resources.Call
-    phone_number: resources.PhoneNumber
-    agent: resources.Agent
-    llm: resources.Llm
+    call: resources.CallResource
+    phone_number: resources.PhoneNumberResource
+    agent: resources.AgentResource
+    llm: resources.LlmResource
     with_raw_response: RetellWithRawResponse
     with_streaming_response: RetellWithStreamedResponse
 
     # client options
     api_key: str
+    retell_sdk_version: str | None
 
     def __init__(
         self,
         *,
         api_key: str,
+        retell_sdk_version: str | None = "v3",
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -82,6 +84,10 @@ class Retell(SyncAPIClient):
         """Construct a new synchronous retell client instance."""
         self.api_key = api_key
 
+        if retell_sdk_version is None:
+            retell_sdk_version = "v3"
+        self.retell_sdk_version = retell_sdk_version
+
         if base_url is None:
             base_url = os.environ.get("RETELL_BASE_URL")
         if base_url is None:
@@ -98,10 +104,10 @@ class Retell(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.call = resources.Call(self)
-        self.phone_number = resources.PhoneNumber(self)
-        self.agent = resources.Agent(self)
-        self.llm = resources.Llm(self)
+        self.call = resources.CallResource(self)
+        self.phone_number = resources.PhoneNumberResource(self)
+        self.agent = resources.AgentResource(self)
+        self.llm = resources.LlmResource(self)
         self.with_raw_response = RetellWithRawResponse(self)
         self.with_streaming_response = RetellWithStreamedResponse(self)
 
@@ -122,6 +128,7 @@ class Retell(SyncAPIClient):
         return {
             **super().default_headers,
             "X-Stainless-Async": "false",
+            "X-Retell-Version": self.retell_sdk_version if self.retell_sdk_version is not None else Omit(),
             **self._custom_headers,
         }
 
@@ -129,6 +136,7 @@ class Retell(SyncAPIClient):
         self,
         *,
         api_key: str | None = None,
+        retell_sdk_version: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.Client | None = None,
@@ -163,6 +171,7 @@ class Retell(SyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             api_key=api_key or self.api_key,
+            retell_sdk_version=retell_sdk_version or self.retell_sdk_version,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -211,20 +220,22 @@ class Retell(SyncAPIClient):
 
 
 class AsyncRetell(AsyncAPIClient):
-    call: resources.AsyncCall
-    phone_number: resources.AsyncPhoneNumber
-    agent: resources.AsyncAgent
-    llm: resources.AsyncLlm
+    call: resources.AsyncCallResource
+    phone_number: resources.AsyncPhoneNumberResource
+    agent: resources.AsyncAgentResource
+    llm: resources.AsyncLlmResource
     with_raw_response: AsyncRetellWithRawResponse
     with_streaming_response: AsyncRetellWithStreamedResponse
 
     # client options
     api_key: str
+    retell_sdk_version: str | None
 
     def __init__(
         self,
         *,
         api_key: str,
+        retell_sdk_version: str | None = "v3",
         base_url: str | httpx.URL | None = None,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -247,6 +258,10 @@ class AsyncRetell(AsyncAPIClient):
         """Construct a new async retell client instance."""
         self.api_key = api_key
 
+        if retell_sdk_version is None:
+            retell_sdk_version = "v3"
+        self.retell_sdk_version = retell_sdk_version
+
         if base_url is None:
             base_url = os.environ.get("RETELL_BASE_URL")
         if base_url is None:
@@ -263,10 +278,10 @@ class AsyncRetell(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.call = resources.AsyncCall(self)
-        self.phone_number = resources.AsyncPhoneNumber(self)
-        self.agent = resources.AsyncAgent(self)
-        self.llm = resources.AsyncLlm(self)
+        self.call = resources.AsyncCallResource(self)
+        self.phone_number = resources.AsyncPhoneNumberResource(self)
+        self.agent = resources.AsyncAgentResource(self)
+        self.llm = resources.AsyncLlmResource(self)
         self.with_raw_response = AsyncRetellWithRawResponse(self)
         self.with_streaming_response = AsyncRetellWithStreamedResponse(self)
 
@@ -287,6 +302,7 @@ class AsyncRetell(AsyncAPIClient):
         return {
             **super().default_headers,
             "X-Stainless-Async": f"async:{get_async_library()}",
+            "X-Retell-Version": self.retell_sdk_version if self.retell_sdk_version is not None else Omit(),
             **self._custom_headers,
         }
 
@@ -294,6 +310,7 @@ class AsyncRetell(AsyncAPIClient):
         self,
         *,
         api_key: str | None = None,
+        retell_sdk_version: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
         http_client: httpx.AsyncClient | None = None,
@@ -328,6 +345,7 @@ class AsyncRetell(AsyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             api_key=api_key or self.api_key,
+            retell_sdk_version=retell_sdk_version or self.retell_sdk_version,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -377,34 +395,34 @@ class AsyncRetell(AsyncAPIClient):
 
 class RetellWithRawResponse:
     def __init__(self, client: Retell) -> None:
-        self.call = resources.CallWithRawResponse(client.call)
-        self.phone_number = resources.PhoneNumberWithRawResponse(client.phone_number)
-        self.agent = resources.AgentWithRawResponse(client.agent)
-        self.llm = resources.LlmWithRawResponse(client.llm)
+        self.call = resources.CallResourceWithRawResponse(client.call)
+        self.phone_number = resources.PhoneNumberResourceWithRawResponse(client.phone_number)
+        self.agent = resources.AgentResourceWithRawResponse(client.agent)
+        self.llm = resources.LlmResourceWithRawResponse(client.llm)
 
 
 class AsyncRetellWithRawResponse:
     def __init__(self, client: AsyncRetell) -> None:
-        self.call = resources.AsyncCallWithRawResponse(client.call)
-        self.phone_number = resources.AsyncPhoneNumberWithRawResponse(client.phone_number)
-        self.agent = resources.AsyncAgentWithRawResponse(client.agent)
-        self.llm = resources.AsyncLlmWithRawResponse(client.llm)
+        self.call = resources.AsyncCallResourceWithRawResponse(client.call)
+        self.phone_number = resources.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
+        self.agent = resources.AsyncAgentResourceWithRawResponse(client.agent)
+        self.llm = resources.AsyncLlmResourceWithRawResponse(client.llm)
 
 
 class RetellWithStreamedResponse:
     def __init__(self, client: Retell) -> None:
-        self.call = resources.CallWithStreamingResponse(client.call)
-        self.phone_number = resources.PhoneNumberWithStreamingResponse(client.phone_number)
-        self.agent = resources.AgentWithStreamingResponse(client.agent)
-        self.llm = resources.LlmWithStreamingResponse(client.llm)
+        self.call = resources.CallResourceWithStreamingResponse(client.call)
+        self.phone_number = resources.PhoneNumberResourceWithStreamingResponse(client.phone_number)
+        self.agent = resources.AgentResourceWithStreamingResponse(client.agent)
+        self.llm = resources.LlmResourceWithStreamingResponse(client.llm)
 
 
 class AsyncRetellWithStreamedResponse:
     def __init__(self, client: AsyncRetell) -> None:
-        self.call = resources.AsyncCallWithStreamingResponse(client.call)
-        self.phone_number = resources.AsyncPhoneNumberWithStreamingResponse(client.phone_number)
-        self.agent = resources.AsyncAgentWithStreamingResponse(client.agent)
-        self.llm = resources.AsyncLlmWithStreamingResponse(client.llm)
+        self.call = resources.AsyncCallResourceWithStreamingResponse(client.call)
+        self.phone_number = resources.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
+        self.agent = resources.AsyncAgentResourceWithStreamingResponse(client.agent)
+        self.llm = resources.AsyncLlmResourceWithStreamingResponse(client.llm)
 
 
 Client = Retell

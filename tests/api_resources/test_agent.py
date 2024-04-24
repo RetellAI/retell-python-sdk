@@ -9,7 +9,8 @@ import pytest
 
 from retell import Retell, AsyncRetell
 from tests.utils import assert_matches_type
-from retell.types import AgentResponse, AgentListResponse
+from retell.types.agent_response import AgentResponse
+from retell.types.agent_list_response import AgentListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
