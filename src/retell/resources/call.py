@@ -131,6 +131,7 @@ class CallResource(SyncAPIResource):
         *,
         filter_criteria: call_list_params.FilterCriteria | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        pagination_key: str | NotGiven = NOT_GIVEN,
         sort_order: Literal["ascending", "descending"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -144,6 +145,9 @@ class CallResource(SyncAPIResource):
 
         Args:
           limit: Limit the number of calls returned.
+
+          pagination_key: The pagination call id to continue fetching the next page of calls. If not set,
+              will start from the beginning.
 
           sort_order: The calls will be sorted by `start_timestamp`, whether to return the calls in
               ascending or descending order.
@@ -167,6 +171,7 @@ class CallResource(SyncAPIResource):
                     {
                         "filter_criteria": filter_criteria,
                         "limit": limit,
+                        "pagination_key": pagination_key,
                         "sort_order": sort_order,
                     },
                     call_list_params.CallListParams,
@@ -386,6 +391,7 @@ class AsyncCallResource(AsyncAPIResource):
         *,
         filter_criteria: call_list_params.FilterCriteria | NotGiven = NOT_GIVEN,
         limit: int | NotGiven = NOT_GIVEN,
+        pagination_key: str | NotGiven = NOT_GIVEN,
         sort_order: Literal["ascending", "descending"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -399,6 +405,9 @@ class AsyncCallResource(AsyncAPIResource):
 
         Args:
           limit: Limit the number of calls returned.
+
+          pagination_key: The pagination call id to continue fetching the next page of calls. If not set,
+              will start from the beginning.
 
           sort_order: The calls will be sorted by `start_timestamp`, whether to return the calls in
               ascending or descending order.
@@ -422,6 +431,7 @@ class AsyncCallResource(AsyncAPIResource):
                     {
                         "filter_criteria": filter_criteria,
                         "limit": limit,
+                        "pagination_key": pagination_key,
                         "sort_order": sort_order,
                     },
                     call_list_params.CallListParams,
