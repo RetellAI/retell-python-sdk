@@ -31,7 +31,7 @@ class CallResponseConversationEval(BaseModel):
     agent_task_completion_reason: Optional[str] = None
     """Reason for the agent task completion status."""
 
-    agnet_sentiment: Optional[Literal["Aggressive", "Friendly", "Neutral"]] = None
+    agnet_sentiment: Optional[Literal["Negative", "Positive", "Neutral"]] = None
     """Sentiment of the agent in the conversation."""
 
     conversation_completion: Optional[Literal["Completed", "Incomplete", "Partial"]] = None
@@ -43,7 +43,7 @@ class CallResponseConversationEval(BaseModel):
     conversation_summary: Optional[str] = None
     """A high level summary of the conversation conversation."""
 
-    user_sentiment: Optional[Literal["Frustrated", "Positive", "Neutral"]] = None
+    user_sentiment: Optional[Literal["Negative", "Positive", "Neutral"]] = None
     """Sentiment of the user in the conversation."""
 
 
@@ -214,11 +214,14 @@ CallResponseTranscriptWithToolCall = Union[
 
 class CallResponse(RegisterCallResponse):
     conversation_eval: Optional[CallResponseConversationEval] = None
-    """Post conversation evaluation of the call.
+    """BETA feature, schema might change, might not always be populated.
 
-    Including information such as sentiment, intent, call completion status and
-    other metrics. Available after call ends. Subscribe to "call_analyzed" webhook
-    event type to receive it once ready.
+    Please do not rely on schema for post processing.
+
+    Post conversation evaluation of the call. Including information such as
+    sentiment, intent, call completion status and other metrics. Available after
+    call ends. Subscribe to `call_analyzed` webhook event type to receive it once
+    ready.
     """
 
     disconnection_reason: Optional[
