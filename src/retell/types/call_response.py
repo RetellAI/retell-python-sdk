@@ -214,14 +214,12 @@ CallResponseTranscriptWithToolCall = Union[
 
 class CallResponse(RegisterCallResponse):
     conversation_eval: Optional[CallResponseConversationEval] = None
-    """BETA feature, schema might change, might not always be populated.
+    """- BETA feature, schema might change, might not always be populated.
 
-    Please do not rely on this object schema for post processing.
-
-    Post conversation evaluation of the call. Including information such as
-    sentiment, intent, call completion status and other metrics. Available after
-    call ends. Subscribe to `call_analyzed` webhook event type to receive it once
-    ready.
+    Please do not rely on this object schema for post processing. Post conversation
+    evaluation of the call. Including information such as sentiment, intent, call
+    completion status and other metrics. Available after call ends. Subscribe to
+    `call_analyzed` webhook event type to receive it once ready.
     """
 
     disconnection_reason: Optional[
