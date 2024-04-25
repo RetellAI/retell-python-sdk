@@ -216,7 +216,7 @@ class CallResponse(RegisterCallResponse):
     conversation_eval: Optional[CallResponseConversationEval] = None
     """BETA feature, schema might change, might not always be populated.
 
-    Please do not rely on schema for post processing.
+    Please do not rely on this object schema for post processing.
 
     Post conversation evaluation of the call. Including information such as
     sentiment, intent, call completion status and other metrics. Available after
