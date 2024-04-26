@@ -252,10 +252,10 @@ class CallResource(SyncAPIResource):
               processing, when we connect to your LLM websocket server, you can then get it
               from the call object.
 
-          metadata: An abtriary object for storage purpose only. You can put anything here like your
-              own id for the call, twilio SID, internal customer id. Not used for processing,
-              when we connect to your LLM websocket server, you can then get it from the call
-              object.
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your own id for the call, twilio SID, internal customer id. Not used for
+              processing, when we connect to your LLM websocket server, you can then get it
+              from the call object.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
               your Retell LLM prompt and tool description. Only applicable for Retell LLM.
@@ -517,10 +517,10 @@ class AsyncCallResource(AsyncAPIResource):
               processing, when we connect to your LLM websocket server, you can then get it
               from the call object.
 
-          metadata: An abtriary object for storage purpose only. You can put anything here like your
-              own id for the call, twilio SID, internal customer id. Not used for processing,
-              when we connect to your LLM websocket server, you can then get it from the call
-              object.
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your own id for the call, twilio SID, internal customer id. Not used for
+              processing, when we connect to your LLM websocket server, you can then get it
+              from the call object.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
               your Retell LLM prompt and tool description. Only applicable for Retell LLM.

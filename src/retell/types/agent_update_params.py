@@ -38,6 +38,25 @@ class AgentUpdateParams(TypedDict, total=False):
     Set to `null` to remove ambient sound from this agent.
     """
 
+    backchannel_frequency: float
+    """Only applicable when enable_backchannel is true.
+
+    Controls how often the agent would backchannel when a backchannel is possible.
+    Value ranging from [0,1]. Lower value means less frequent backchannel, while
+    higher value means more frequent backchannel. If unset, default value 0.8 will
+    apply.
+    """
+
+    backchannel_words: List[str]
+    """Only applicable when enable_backchannel is true.
+
+    A list of words that the agent would use as backchannel. If not set, default
+    backchannel words will apply. Check out
+    [backchannel default words](/agent/interaction-configuration#backchannel) for
+    more details. Note that certain voices do not work too well with certain words,
+    so it's recommended to expeirment before adding any words.
+    """
+
     boosted_keywords: Optional[List[str]]
     """
     Provide a customized list of keywords to bias the transcriber model, so that
@@ -65,25 +84,10 @@ class AgentUpdateParams(TypedDict, total=False):
     language: Literal[
         "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
     ]
-    """`Beta feature, use with caution.`
-
-    This setting specifies the agent's operational language, including base language
-    and dialect. Speech recognition considers both elements, but text-to-speech
-    currently only recognizes the base language.
+    """Specifies what language (and dialect) the speech recognition will operate in.
 
     For instance, selecting `en-GB` optimizes speech recognition for British
-    English, yet text-to-speech output will be in standard English. If
-    dialect-specific text-to-speech is required, please contact us for support.
-
-    If unset, will use default value `en-US`.
-
-    - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
-      Portuguese(pt)
-
-    - `openAI voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
-      Portuguese(pt), Japanese(ja)
-
-    - `deepgram voices`: supports English(en)
+    English. If unset, will use default value `en-US`.
     """
 
     llm_websocket_url: str
@@ -98,6 +102,20 @@ class AgentUpdateParams(TypedDict, total=False):
 
     Access transcripts securely via webhooks. If not set, default value of false
     will apply.
+    """
+
+    reminder_max_count: int
+    """
+    If set, controls how many times agent would remind user when user is
+    unresponsive. Must be a non negative integer. If unset, default value of 1 will
+    apply (remind once). Set to 0 to disable agent from reminding.
+    """
+
+    reminder_trigger_ms: float
+    """
+    If set (in milliseconds), will trigger a reminder to the agent to speak if the
+    user has been silent for the specified duration after some agent speech. Must be
+    a positive number. If unset, default value of 10000 ms (10 s) will apply.
     """
 
     responsiveness: float
