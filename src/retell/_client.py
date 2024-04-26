@@ -7,6 +7,7 @@ from typing import Any, Union, Mapping
 from typing_extensions import Self, override
 
 import httpx
+from lib.webhook_auth import verify  # type: ignore
 
 from . import resources, _exceptions
 from ._qs import Querystring
@@ -31,8 +32,6 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-
-from lib.webhook_auth import verify
 
 __all__ = [
     "Timeout",
@@ -106,8 +105,8 @@ class Retell(SyncAPIClient):
         self.llm = resources.LlmResource(self)
         self.with_raw_response = RetellWithRawResponse(self)
         self.with_streaming_response = RetellWithStreamedResponse(self)
-        
-        self.verify = verify
+
+        self.verify = verify  # type: ignore
 
     @property
     @override
