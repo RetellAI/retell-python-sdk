@@ -8,7 +8,7 @@ from .register_call_response import RegisterCallResponse
 
 __all__ = [
     "CallResponse",
-    "CallResponseConversationEval",
+    "CallResponseCallAnalysis",
     "CallResponseE2eLatency",
     "CallResponseLlmLatency",
     "CallResponseLlmWebsocketNetworkRttLatency",
@@ -22,29 +22,29 @@ __all__ = [
 ]
 
 
-class CallResponseConversationEval(BaseModel):
-    agent_task_completion: Optional[Literal["Completed", "Incomplete", "Partial"]] = None
+class CallResponseCallAnalysis(BaseModel):
+    agent_sentiment: Optional[Literal["Negative", "Positive", "Neutral"]] = None
+    """Sentiment of the agent in the call."""
+
+    agent_task_completion_rating: Optional[Literal["Complete", "Incomplete", "Partial"]] = None
     """
     Evaluate agent task completion status, whether the agent has completed his task.
     """
 
-    agent_task_completion_reason: Optional[str] = None
+    agent_task_completion_rating_reason: Optional[str] = None
     """Reason for the agent task completion status."""
 
-    agnet_sentiment: Optional[Literal["Aggressive", "Friendly", "Neutral"]] = None
-    """Sentiment of the agent in the conversation."""
+    call_completion_rating: Optional[Literal["Complete", "Incomplete", "Partial"]] = None
+    """Evaluate whether the call ended normally or was cut off."""
 
-    conversation_completion: Optional[Literal["Completed", "Incomplete", "Partial"]] = None
-    """Evaluate whether the conversation ended normally or was cut off."""
+    call_completion_rating_reason: Optional[str] = None
+    """Reason for the call completion status."""
 
-    conversation_completion_reason: Optional[str] = None
-    """Reason for the conversation completion status."""
+    call_summary: Optional[str] = None
+    """A high level summary of the call."""
 
-    conversation_summary: Optional[str] = None
-    """A high level summary of the conversation conversation."""
-
-    user_sentiment: Optional[Literal["Frustrated", "Positive", "Neutral"]] = None
-    """Sentiment of the user in the conversation."""
+    user_sentiment: Optional[Literal["Negative", "Positive", "Neutral"]] = None
+    """Sentiment of the user in the call."""
 
 
 class CallResponseE2eLatency(BaseModel):
@@ -141,10 +141,10 @@ class CallResponseTranscriptObject(BaseModel):
     """Documents whether this utterance is spoken by agent or user."""
 
     words: List[CallResponseTranscriptObjectWord]
-    """Array of words in the utternace with the word timestamp.
+    """Array of words in the utterance with the word timestamp.
 
     Useful for understanding what word was spoken at what time. Note that the word
-    timestamp is not guranteed to be accurate, it's more like an approximation.
+    timestamp is not guaranteed to be accurate, it's more like an approximation.
     """
 
 
@@ -173,10 +173,10 @@ class CallResponseTranscriptWithToolCallUtterance(BaseModel):
     """Documents whether this utterance is spoken by agent or user."""
 
     words: List[CallResponseTranscriptWithToolCallUtteranceWord]
-    """Array of words in the utternace with the word timestamp.
+    """Array of words in the utterance with the word timestamp.
 
     Useful for understanding what word was spoken at what time. Note that the word
-    timestamp is not guranteed to be accurate, it's more like an approximation.
+    timestamp is not guaranteed to be accurate, it's more like an approximation.
     """
 
 
@@ -213,12 +213,13 @@ CallResponseTranscriptWithToolCall = Union[
 
 
 class CallResponse(RegisterCallResponse):
-    conversation_eval: Optional[CallResponseConversationEval] = None
-    """Post conversation evaluation of the call.
+    call_analysis: Optional[CallResponseCallAnalysis] = None
+    """- BETA feature, schema might change, might not always be populated.
 
-    Including information such as sentiment, intent, call completion status and
-    other metrics. Available after call ends. Subscribe to "call_analyzed" webhook
-    event type to receive it once ready.
+    Please do not rely on this object schema for post processing. Post conversation
+    evaluation of the call. Including information such as sentiment, intent, call
+    completion status and other metrics. Available after call ends. Subscribe to
+    `call_analyzed` webhook event type to receive it once ready.
     """
 
     disconnection_reason: Optional[
