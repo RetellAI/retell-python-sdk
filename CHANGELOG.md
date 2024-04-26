@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.11.0 (2024-04-26)
+
+Full Changelog: [v3.10.0...v3.11.0](https://github.com/RetellAI/retell-python-sdk/compare/v3.10.0...v3.11.0)
+
+### Features
+
+* add package" ([45b5c3d](https://github.com/RetellAI/retell-python-sdk/commit/45b5c3d2d9ae9a78a5ae8b36b2d306551738176a))
+* compile errors ([8a885a2](https://github.com/RetellAI/retell-python-sdk/commit/8a885a231b24cb01a170a9ed3f69ebbdde496459))
+* webhook security ([b5fa4bd](https://github.com/RetellAI/retell-python-sdk/commit/b5fa4bdf9d9bc76b80394de405f1925ba1d8113d))
+
 ## 3.10.0 (2024-04-26)
 
 Full Changelog: [v3.9.0...v3.10.0](https://github.com/RetellAI/retell-python-sdk/compare/v3.9.0...v3.10.0)
