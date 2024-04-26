@@ -32,6 +32,8 @@ from ._base_client import (
     AsyncAPIClient,
 )
 
+from lib.webhook_auth import verify
+
 __all__ = [
     "Timeout",
     "Transport",
@@ -104,6 +106,8 @@ class Retell(SyncAPIClient):
         self.llm = resources.LlmResource(self)
         self.with_raw_response = RetellWithRawResponse(self)
         self.with_streaming_response = RetellWithStreamedResponse(self)
+        
+        self.verify = verify
 
     @property
     @override
