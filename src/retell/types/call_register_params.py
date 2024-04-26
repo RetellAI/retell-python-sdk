@@ -71,7 +71,7 @@ class CallRegisterParams(TypedDict, total=False):
     """
 
     metadata: object
-    """An abtriary object for storage purpose only.
+    """An arbitrary object for storage purpose only.
 
     You can put anything here like your own id for the call, twilio SID, internal
     customer id. Not used for processing, when we connect to your LLM websocket
