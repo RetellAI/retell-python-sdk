@@ -49,6 +49,8 @@ class AgentResource(SyncAPIResource):
             Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
         ]
         | NotGiven = NOT_GIVEN,
+        backchannel_frequency: float | NotGiven = NOT_GIVEN,
+        backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -57,6 +59,8 @@ class AgentResource(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        reminder_max_count: int | NotGiven = NOT_GIVEN,
+        reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
@@ -102,6 +106,18 @@ class AgentResource(SyncAPIResource):
 
               Set to `null` to remove ambient sound from this agent.
 
+          backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
+              would backchannel when a backchannel is possible. Value ranging from [0,1].
+              Lower value means less frequent backchannel, while higher value means more
+              frequent backchannel. If unset, default value 0.8 will apply.
+
+          backchannel_words: Only applicable when enable_backchannel is true. A list of words that the agent
+              would use as backchannel. If not set, default backchannel words will apply.
+              Check out
+              [backchannel default words](/agent/interaction-configuration#backchannel) for
+              more details. Note that certain voices do not work too well with certain words,
+              so it's recommended to expeirment before adding any words.
+
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
@@ -117,29 +133,21 @@ class AgentResource(SyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
-          language: `Beta feature, use with caution.`
-
-              This setting specifies the agent's operational language, including base language
-              and dialect. Speech recognition considers both elements, but text-to-speech
-              currently only recognizes the base language.
-
+          language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
-              English, yet text-to-speech output will be in standard English. If
-              dialect-specific text-to-speech is required, please contact us for support.
-
-              If unset, will use default value `en-US`.
-
-              - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
-                Portuguese(pt)
-
-              - `openAI voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
-                Portuguese(pt), Japanese(ja)
-
-              - `deepgram voices`: supports English(en)
+              English. If unset, will use default value `en-US`.
 
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
               transcripts securely via webhooks. If not set, default value of false will
               apply.
+
+          reminder_max_count: If set, controls how many times agent would remind user when user is
+              unresponsive. Must be a non negative integer. If unset, default value of 1 will
+              apply (remind once). Set to 0 to disable agent from reminding.
+
+          reminder_trigger_ms: If set (in milliseconds), will trigger a reminder to the agent to speak if the
+              user has been silent for the specified duration after some agent speech. Must be
+              a positive number. If unset, default value of 10000 ms (10 s) will apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -176,11 +184,15 @@ class AgentResource(SyncAPIResource):
                     "voice_id": voice_id,
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
+                    "backchannel_frequency": backchannel_frequency,
+                    "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "reminder_max_count": reminder_max_count,
+                    "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -236,6 +248,8 @@ class AgentResource(SyncAPIResource):
             Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
         ]
         | NotGiven = NOT_GIVEN,
+        backchannel_frequency: float | NotGiven = NOT_GIVEN,
+        backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -245,6 +259,8 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        reminder_max_count: int | NotGiven = NOT_GIVEN,
+        reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
@@ -285,6 +301,18 @@ class AgentResource(SyncAPIResource):
 
               Set to `null` to remove ambient sound from this agent.
 
+          backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
+              would backchannel when a backchannel is possible. Value ranging from [0,1].
+              Lower value means less frequent backchannel, while higher value means more
+              frequent backchannel. If unset, default value 0.8 will apply.
+
+          backchannel_words: Only applicable when enable_backchannel is true. A list of words that the agent
+              would use as backchannel. If not set, default backchannel words will apply.
+              Check out
+              [backchannel default words](/agent/interaction-configuration#backchannel) for
+              more details. Note that certain voices do not work too well with certain words,
+              so it's recommended to expeirment before adding any words.
+
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
@@ -300,25 +328,9 @@ class AgentResource(SyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
-          language: `Beta feature, use with caution.`
-
-              This setting specifies the agent's operational language, including base language
-              and dialect. Speech recognition considers both elements, but text-to-speech
-              currently only recognizes the base language.
-
+          language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
-              English, yet text-to-speech output will be in standard English. If
-              dialect-specific text-to-speech is required, please contact us for support.
-
-              If unset, will use default value `en-US`.
-
-              - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
-                Portuguese(pt)
-
-              - `openAI voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
-                Portuguese(pt), Japanese(ja)
-
-              - `deepgram voices`: supports English(en)
+              English. If unset, will use default value `en-US`.
 
           llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
@@ -327,6 +339,14 @@ class AgentResource(SyncAPIResource):
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
               transcripts securely via webhooks. If not set, default value of false will
               apply.
+
+          reminder_max_count: If set, controls how many times agent would remind user when user is
+              unresponsive. Must be a non negative integer. If unset, default value of 1 will
+              apply (remind once). Set to 0 to disable agent from reminding.
+
+          reminder_trigger_ms: If set (in milliseconds), will trigger a reminder to the agent to speak if the
+              user has been silent for the specified duration after some agent speech. Must be
+              a positive number. If unset, default value of 10000 ms (10 s) will apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -366,12 +386,16 @@ class AgentResource(SyncAPIResource):
                 {
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
+                    "backchannel_frequency": backchannel_frequency,
+                    "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "reminder_max_count": reminder_max_count,
+                    "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
                     "voice_id": voice_id,
                     "voice_speed": voice_speed,
@@ -459,6 +483,8 @@ class AsyncAgentResource(AsyncAPIResource):
             Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
         ]
         | NotGiven = NOT_GIVEN,
+        backchannel_frequency: float | NotGiven = NOT_GIVEN,
+        backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -467,6 +493,8 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        reminder_max_count: int | NotGiven = NOT_GIVEN,
+        reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
@@ -512,6 +540,18 @@ class AsyncAgentResource(AsyncAPIResource):
 
               Set to `null` to remove ambient sound from this agent.
 
+          backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
+              would backchannel when a backchannel is possible. Value ranging from [0,1].
+              Lower value means less frequent backchannel, while higher value means more
+              frequent backchannel. If unset, default value 0.8 will apply.
+
+          backchannel_words: Only applicable when enable_backchannel is true. A list of words that the agent
+              would use as backchannel. If not set, default backchannel words will apply.
+              Check out
+              [backchannel default words](/agent/interaction-configuration#backchannel) for
+              more details. Note that certain voices do not work too well with certain words,
+              so it's recommended to expeirment before adding any words.
+
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
@@ -527,29 +567,21 @@ class AsyncAgentResource(AsyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
-          language: `Beta feature, use with caution.`
-
-              This setting specifies the agent's operational language, including base language
-              and dialect. Speech recognition considers both elements, but text-to-speech
-              currently only recognizes the base language.
-
+          language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
-              English, yet text-to-speech output will be in standard English. If
-              dialect-specific text-to-speech is required, please contact us for support.
-
-              If unset, will use default value `en-US`.
-
-              - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
-                Portuguese(pt)
-
-              - `openAI voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
-                Portuguese(pt), Japanese(ja)
-
-              - `deepgram voices`: supports English(en)
+              English. If unset, will use default value `en-US`.
 
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
               transcripts securely via webhooks. If not set, default value of false will
               apply.
+
+          reminder_max_count: If set, controls how many times agent would remind user when user is
+              unresponsive. Must be a non negative integer. If unset, default value of 1 will
+              apply (remind once). Set to 0 to disable agent from reminding.
+
+          reminder_trigger_ms: If set (in milliseconds), will trigger a reminder to the agent to speak if the
+              user has been silent for the specified duration after some agent speech. Must be
+              a positive number. If unset, default value of 10000 ms (10 s) will apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -586,11 +618,15 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voice_id": voice_id,
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
+                    "backchannel_frequency": backchannel_frequency,
+                    "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "reminder_max_count": reminder_max_count,
+                    "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -646,6 +682,8 @@ class AsyncAgentResource(AsyncAPIResource):
             Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
         ]
         | NotGiven = NOT_GIVEN,
+        backchannel_frequency: float | NotGiven = NOT_GIVEN,
+        backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -655,6 +693,8 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        reminder_max_count: int | NotGiven = NOT_GIVEN,
+        reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
@@ -695,6 +735,18 @@ class AsyncAgentResource(AsyncAPIResource):
 
               Set to `null` to remove ambient sound from this agent.
 
+          backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
+              would backchannel when a backchannel is possible. Value ranging from [0,1].
+              Lower value means less frequent backchannel, while higher value means more
+              frequent backchannel. If unset, default value 0.8 will apply.
+
+          backchannel_words: Only applicable when enable_backchannel is true. A list of words that the agent
+              would use as backchannel. If not set, default backchannel words will apply.
+              Check out
+              [backchannel default words](/agent/interaction-configuration#backchannel) for
+              more details. Note that certain voices do not work too well with certain words,
+              so it's recommended to expeirment before adding any words.
+
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
@@ -710,25 +762,9 @@ class AsyncAgentResource(AsyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
-          language: `Beta feature, use with caution.`
-
-              This setting specifies the agent's operational language, including base language
-              and dialect. Speech recognition considers both elements, but text-to-speech
-              currently only recognizes the base language.
-
+          language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
-              English, yet text-to-speech output will be in standard English. If
-              dialect-specific text-to-speech is required, please contact us for support.
-
-              If unset, will use default value `en-US`.
-
-              - `11lab voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
-                Portuguese(pt)
-
-              - `openAI voices`: supports English(en), German(de), Spanish(es), Hindi(hi),
-                Portuguese(pt), Japanese(ja)
-
-              - `deepgram voices`: supports English(en)
+              English. If unset, will use default value `en-US`.
 
           llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
@@ -737,6 +773,14 @@ class AsyncAgentResource(AsyncAPIResource):
           opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
               transcripts securely via webhooks. If not set, default value of false will
               apply.
+
+          reminder_max_count: If set, controls how many times agent would remind user when user is
+              unresponsive. Must be a non negative integer. If unset, default value of 1 will
+              apply (remind once). Set to 0 to disable agent from reminding.
+
+          reminder_trigger_ms: If set (in milliseconds), will trigger a reminder to the agent to speak if the
+              user has been silent for the specified duration after some agent speech. Must be
+              a positive number. If unset, default value of 10000 ms (10 s) will apply.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -776,12 +820,16 @@ class AsyncAgentResource(AsyncAPIResource):
                 {
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
+                    "backchannel_frequency": backchannel_frequency,
+                    "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "reminder_max_count": reminder_max_count,
+                    "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
                     "voice_id": voice_id,
                     "voice_speed": voice_speed,
