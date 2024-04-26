@@ -41,4 +41,3 @@ typing-extensions==4.8.0
     # via pydantic
     # via pydantic-core
     # via retell-sdk
-cryptography==42.0.5
