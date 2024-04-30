@@ -17,7 +17,6 @@ from respx import MockRouter
 from pydantic import ValidationError
 
 from retell import Retell, AsyncRetell, APIResponseValidationError
-from retell._client import Retell, AsyncRetell
 from retell._models import BaseModel, FinalRequestOptions
 from retell._constants import RAW_RESPONSE_HEADER
 from retell._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
