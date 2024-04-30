@@ -98,10 +98,10 @@ class AgentUpdateParams(TypedDict, total=False):
     """
 
     opt_out_sensitive_data_storage: bool
-    """Disable transcripts and recordings storage for enhanced privacy.
-
-    Access transcripts securely via webhooks. If not set, default value of false
-    will apply.
+    """
+    Whether this agent opts out of sensitive data storage like transcript,
+    recording, logging. These data can still be accessed securely via webhooks. If
+    not set, default value of false will apply.
     """
 
     reminder_max_count: int
