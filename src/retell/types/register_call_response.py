@@ -100,6 +100,12 @@ class RegisterCallResponse(BaseModel):
     server, you can then get it from the call object.
     """
 
+    opt_out_sensitive_data_storage: Optional[bool] = None
+    """
+    Whether this call opts out of sensitive data storage like transcript, recording,
+    logging.
+    """
+
     retell_llm_dynamic_variables: Optional[Dict[str, object]] = None
     """
     Add optional dynamic variables in key value pairs of string that injects into
