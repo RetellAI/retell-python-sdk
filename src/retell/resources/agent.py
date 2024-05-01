@@ -137,9 +137,9 @@ class AgentResource(SyncAPIResource):
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`.
 
-          opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks. If not set, default value of false will
-              apply.
+          opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
+              recording, logging. These data can still be accessed securely via webhooks. If
+              not set, default value of false will apply.
 
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
@@ -336,9 +336,9 @@ class AgentResource(SyncAPIResource):
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
               request format (sent from us) and response format (send to us).
 
-          opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks. If not set, default value of false will
-              apply.
+          opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
+              recording, logging. These data can still be accessed securely via webhooks. If
+              not set, default value of false will apply.
 
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
@@ -571,9 +571,9 @@ class AsyncAgentResource(AsyncAPIResource):
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`.
 
-          opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks. If not set, default value of false will
-              apply.
+          opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
+              recording, logging. These data can still be accessed securely via webhooks. If
+              not set, default value of false will apply.
 
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
@@ -770,9 +770,9 @@ class AsyncAgentResource(AsyncAPIResource):
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
               request format (sent from us) and response format (send to us).
 
-          opt_out_sensitive_data_storage: Disable transcripts and recordings storage for enhanced privacy. Access
-              transcripts securely via webhooks. If not set, default value of false will
-              apply.
+          opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
+              recording, logging. These data can still be accessed securely via webhooks. If
+              not set, default value of false will apply.
 
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will

@@ -9,7 +9,7 @@ from .register_call_response import RegisterCallResponse
 __all__ = [
     "CallResponse",
     "CallResponseCallAnalysis",
-    "CallResponseE2eLatency",
+    "CallResponseE2ELatency",
     "CallResponseLlmLatency",
     "CallResponseLlmWebsocketNetworkRttLatency",
     "CallResponseTranscriptObject",
@@ -47,7 +47,7 @@ class CallResponseCallAnalysis(BaseModel):
     """Sentiment of the user in the call."""
 
 
-class CallResponseE2eLatency(BaseModel):
+class CallResponseE2ELatency(BaseModel):
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -230,6 +230,9 @@ class CallResponse(RegisterCallResponse):
             "inactivity",
             "machine_detected",
             "concurrency_limit_reached",
+            "dial_busy",
+            "dial_failed",
+            "dial_no_answer",
             "error_llm_websocket_open",
             "error_llm_websocket_lost_connection",
             "error_llm_websocket_runtime",
@@ -244,11 +247,11 @@ class CallResponse(RegisterCallResponse):
     ] = None
     """The reason for the disconnection of the call.
 
-    Debug using explanation in docs based on the reason code. Please reachout to
-    Retell team having trouble understanding the reason.
+    Read details desciption about reasons listed here at
+    [Disconnection Reason Doc](/get-started/debug-guide#disconnection-reason).
     """
 
-    e2e_latency: Optional[CallResponseE2eLatency] = None
+    e2e_latency: Optional[CallResponseE2ELatency] = None
     """
     End to end latency (from user stops talking to agent start talking) tracking of
     the call, available after call ends. This latency does not account for the

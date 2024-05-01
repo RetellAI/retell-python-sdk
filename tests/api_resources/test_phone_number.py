@@ -9,8 +9,10 @@ import pytest
 
 from retell import Retell, AsyncRetell
 from tests.utils import assert_matches_type
-from retell.types.phone_number_response import PhoneNumberResponse
-from retell.types.phone_number_list_response import PhoneNumberListResponse
+from retell.types import (
+    PhoneNumberResponse,
+    PhoneNumberListResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -60,14 +62,14 @@ class TestPhoneNumber:
     @parametrize
     def test_method_retrieve(self, client: Retell) -> None:
         phone_number = client.phone_number.retrieve(
-            "string",
+            "+14157774444",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.retrieve(
-            "string",
+            "+14157774444",
         )
 
         assert response.is_closed is True
@@ -78,7 +80,7 @@ class TestPhoneNumber:
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.retrieve(
-            "string",
+            "+14157774444",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -98,7 +100,7 @@ class TestPhoneNumber:
     @parametrize
     def test_method_update(self, client: Retell) -> None:
         phone_number = client.phone_number.update(
-            "string",
+            "+14157774444",
             agent_id="string",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
@@ -106,7 +108,7 @@ class TestPhoneNumber:
     @parametrize
     def test_raw_response_update(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.update(
-            "string",
+            "+14157774444",
             agent_id="string",
         )
 
@@ -118,7 +120,7 @@ class TestPhoneNumber:
     @parametrize
     def test_streaming_response_update(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.update(
-            "string",
+            "+14157774444",
             agent_id="string",
         ) as response:
             assert not response.is_closed
@@ -165,14 +167,14 @@ class TestPhoneNumber:
     @parametrize
     def test_method_delete(self, client: Retell) -> None:
         phone_number = client.phone_number.delete(
-            "string",
+            "+14157774444",
         )
         assert phone_number is None
 
     @parametrize
     def test_raw_response_delete(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.delete(
-            "string",
+            "+14157774444",
         )
 
         assert response.is_closed is True
@@ -183,7 +185,7 @@ class TestPhoneNumber:
     @parametrize
     def test_streaming_response_delete(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.delete(
-            "string",
+            "+14157774444",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -246,14 +248,14 @@ class TestAsyncPhoneNumber:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.retrieve(
-            "string",
+            "+14157774444",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.retrieve(
-            "string",
+            "+14157774444",
         )
 
         assert response.is_closed is True
@@ -264,7 +266,7 @@ class TestAsyncPhoneNumber:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.retrieve(
-            "string",
+            "+14157774444",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -284,7 +286,7 @@ class TestAsyncPhoneNumber:
     @parametrize
     async def test_method_update(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.update(
-            "string",
+            "+14157774444",
             agent_id="string",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
@@ -292,7 +294,7 @@ class TestAsyncPhoneNumber:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.update(
-            "string",
+            "+14157774444",
             agent_id="string",
         )
 
@@ -304,7 +306,7 @@ class TestAsyncPhoneNumber:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.update(
-            "string",
+            "+14157774444",
             agent_id="string",
         ) as response:
             assert not response.is_closed
@@ -351,14 +353,14 @@ class TestAsyncPhoneNumber:
     @parametrize
     async def test_method_delete(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.delete(
-            "string",
+            "+14157774444",
         )
         assert phone_number is None
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.delete(
-            "string",
+            "+14157774444",
         )
 
         assert response.is_closed is True
@@ -369,7 +371,7 @@ class TestAsyncPhoneNumber:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.delete(
-            "string",
+            "+14157774444",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
