@@ -158,7 +158,7 @@ client = Retell(
 )
 
 # Override per-request:
-client.with_options(timeout=5 * 1000).agent.create(
+client.with_options(timeout=5.0).agent.create(
     llm_websocket_url="wss://your-websocket-endpoint",
     voice_id="11labs-Adrian",
 )

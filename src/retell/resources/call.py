@@ -59,9 +59,9 @@ class CallResource(SyncAPIResource):
         Create a new phone call
 
         Args:
-          from_number: The number you own in BCP 47 format.
+          from_number: The number you own in E.164 format.
 
-          to_number: The number you want to call, in BCP 47 format.
+          to_number: The number you want to call, in E.164 format.
 
           drop_call_if_machine_detected: If set, will drop the call if machine (voicemail, IVR) is detected. If not set,
               default value of false will apply.
@@ -324,9 +324,9 @@ class AsyncCallResource(AsyncAPIResource):
         Create a new phone call
 
         Args:
-          from_number: The number you own in BCP 47 format.
+          from_number: The number you own in E.164 format.
 
-          to_number: The number you want to call, in BCP 47 format.
+          to_number: The number you want to call, in E.164 format.
 
           drop_call_if_machine_detected: If set, will drop the call if machine (voicemail, IVR) is detected. If not set,
               default value of false will apply.
