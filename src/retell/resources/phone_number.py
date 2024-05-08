@@ -127,7 +127,7 @@ class PhoneNumberResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> PhoneNumberResponse:
         """
-        Update an existing Retell LLM
+        Update agent bound to a purchased phone number
 
         Args:
           agent_id: Unique id of agent to bind to number. The number will automatically use the
@@ -306,7 +306,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> PhoneNumberResponse:
         """
-        Update an existing Retell LLM
+        Update agent bound to a purchased phone number
 
         Args:
           agent_id: Unique id of agent to bind to number. The number will automatically use the
