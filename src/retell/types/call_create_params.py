@@ -10,10 +10,10 @@ __all__ = ["CallCreateParams"]
 
 class CallCreateParams(TypedDict, total=False):
     from_number: Required[str]
-    """The number you own in BCP 47 format."""
+    """The number you own in E.164 format."""
 
     to_number: Required[str]
-    """The number you want to call, in BCP 47 format."""
+    """The number you want to call, in E.164 format."""
 
     drop_call_if_machine_detected: bool
     """If set, will drop the call if machine (voicemail, IVR) is detected.
