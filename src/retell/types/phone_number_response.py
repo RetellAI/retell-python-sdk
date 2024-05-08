@@ -28,8 +28,8 @@ class PhoneNumberResponse(BaseModel):
 
     phone_number: str
     """
-    BCP 47 format of the number (+country code, then number with no space, no
-    special characters), used as the unique identifier for phone number APIs.
+    E.164 format of the number (+country code, then number with no space, no special
+    characters), used as the unique identifier for phone number APIs.
     """
 
     phone_number_pretty: str

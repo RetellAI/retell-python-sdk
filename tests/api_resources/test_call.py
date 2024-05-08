@@ -24,16 +24,16 @@ class TestCall:
     @parametrize
     def test_method_create(self, client: Retell) -> None:
         call = client.call.create(
-            from_number="string",
-            to_number="string",
+            from_number="+14157774444",
+            to_number="+12137774445",
         )
         assert_matches_type(RegisterCallResponse, call, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Retell) -> None:
         call = client.call.create(
-            from_number="string",
-            to_number="string",
+            from_number="+14157774444",
+            to_number="+12137774445",
             drop_call_if_machine_detected=True,
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
@@ -43,8 +43,8 @@ class TestCall:
     @parametrize
     def test_raw_response_create(self, client: Retell) -> None:
         response = client.call.with_raw_response.create(
-            from_number="string",
-            to_number="string",
+            from_number="+14157774444",
+            to_number="+12137774445",
         )
 
         assert response.is_closed is True
@@ -55,8 +55,8 @@ class TestCall:
     @parametrize
     def test_streaming_response_create(self, client: Retell) -> None:
         with client.call.with_streaming_response.create(
-            from_number="string",
-            to_number="string",
+            from_number="+14157774444",
+            to_number="+12137774445",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -163,10 +163,10 @@ class TestCall:
             audio_websocket_protocol="twilio",
             sample_rate=24000,
             end_call_after_silence_ms=600000,
-            from_number="string",
+            from_number="+12137771234",
             metadata={},
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
-            to_number="string",
+            to_number="+12137771235",
         )
         assert_matches_type(RegisterCallResponse, call, path=["response"])
 
@@ -207,16 +207,16 @@ class TestAsyncCall:
     @parametrize
     async def test_method_create(self, async_client: AsyncRetell) -> None:
         call = await async_client.call.create(
-            from_number="string",
-            to_number="string",
+            from_number="+14157774444",
+            to_number="+12137774445",
         )
         assert_matches_type(RegisterCallResponse, call, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         call = await async_client.call.create(
-            from_number="string",
-            to_number="string",
+            from_number="+14157774444",
+            to_number="+12137774445",
             drop_call_if_machine_detected=True,
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
@@ -226,8 +226,8 @@ class TestAsyncCall:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncRetell) -> None:
         response = await async_client.call.with_raw_response.create(
-            from_number="string",
-            to_number="string",
+            from_number="+14157774444",
+            to_number="+12137774445",
         )
 
         assert response.is_closed is True
@@ -238,8 +238,8 @@ class TestAsyncCall:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncRetell) -> None:
         async with async_client.call.with_streaming_response.create(
-            from_number="string",
-            to_number="string",
+            from_number="+14157774444",
+            to_number="+12137774445",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -346,10 +346,10 @@ class TestAsyncCall:
             audio_websocket_protocol="twilio",
             sample_rate=24000,
             end_call_after_silence_ms=600000,
-            from_number="string",
+            from_number="+12137771234",
             metadata={},
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
-            to_number="string",
+            to_number="+12137771235",
         )
         assert_matches_type(RegisterCallResponse, call, path=["response"])
 
