@@ -39,6 +39,23 @@ class TestAgent:
             interruption_sensitivity=1,
             language="en-US",
             opt_out_sensitive_data_storage=True,
+            pronunciation_dictionary=[
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+            ],
             reminder_max_count=2,
             reminder_trigger_ms=10000,
             responsiveness=1,
@@ -133,6 +150,23 @@ class TestAgent:
             language="en-US",
             llm_websocket_url="wss://your-websocket-endpoint",
             opt_out_sensitive_data_storage=True,
+            pronunciation_dictionary=[
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+            ],
             reminder_max_count=2,
             reminder_trigger_ms=10000,
             responsiveness=1,
@@ -263,6 +297,23 @@ class TestAsyncAgent:
             interruption_sensitivity=1,
             language="en-US",
             opt_out_sensitive_data_storage=True,
+            pronunciation_dictionary=[
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+            ],
             reminder_max_count=2,
             reminder_trigger_ms=10000,
             responsiveness=1,
@@ -357,6 +408,23 @@ class TestAsyncAgent:
             language="en-US",
             llm_websocket_url="wss://your-websocket-endpoint",
             opt_out_sensitive_data_storage=True,
+            pronunciation_dictionary=[
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+                {
+                    "word": "actually",
+                    "alphabet": "ipa",
+                    "phoneme": "ˈæktʃuəli",
+                },
+            ],
             reminder_max_count=2,
             reminder_trigger_ms=10000,
             responsiveness=1,
