@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Iterable, Optional
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["AgentCreateParams"]
+__all__ = ["AgentCreateParams", "PronunciationDictionary"]
 
 
 class AgentCreateParams(TypedDict, total=False):
@@ -110,6 +110,13 @@ class AgentCreateParams(TypedDict, total=False):
     not set, default value of false will apply.
     """
 
+    pronunciation_dictionary: Optional[Iterable[PronunciationDictionary]]
+    """
+    A list of words / phrases and their pronunciation to be used to guide the audio
+    synthesize for consistent pronunciation. Currently only supported for English &
+    11labs voices. Set to null to remove pronunciation dictionary from this agent.
+    """
+
     reminder_max_count: int
     """
     If set, controls how many times agent would remind user when user is
@@ -155,3 +162,14 @@ class AgentCreateParams(TypedDict, total=False):
     account level webhook for this agent. Set to `null` to remove webhook url from
     this agent.
     """
+
+
+class PronunciationDictionary(TypedDict, total=False):
+    alphabet: Literal["ipa", "cmu"]
+    """The phonetic alphabet to be used for pronunciation."""
+
+    phoneme: str
+    """Pronunciation of the word in the format of a IPA / CMU pronunciation."""
+
+    word: str
+    """The string of word / phrase to be annotated with pronunciation."""
