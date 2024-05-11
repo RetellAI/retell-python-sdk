@@ -9,13 +9,13 @@ __all__ = ["AgentResponse", "PronunciationDictionary"]
 
 
 class PronunciationDictionary(BaseModel):
-    alphabet: Optional[Literal["ipa", "cmu"]] = None
+    alphabet: Literal["ipa", "cmu"]
     """The phonetic alphabet to be used for pronunciation."""
 
-    phoneme: Optional[str] = None
+    phoneme: str
     """Pronunciation of the word in the format of a IPA / CMU pronunciation."""
 
-    word: Optional[str] = None
+    word: str
     """The string of word / phrase to be annotated with pronunciation."""
 
 
