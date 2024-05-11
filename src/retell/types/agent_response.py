@@ -5,7 +5,18 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["AgentResponse"]
+__all__ = ["AgentResponse", "PronunciationDictionary"]
+
+
+class PronunciationDictionary(BaseModel):
+    alphabet: Optional[Literal["ipa", "cmu"]] = None
+    """The phonetic alphabet to be used for pronunciation."""
+
+    phoneme: Optional[str] = None
+    """Pronunciation of the word in the format of a IPA / CMU pronunciation."""
+
+    word: Optional[str] = None
+    """The string of word / phrase to be annotated with pronunciation."""
 
 
 class AgentResponse(BaseModel):
@@ -117,6 +128,13 @@ class AgentResponse(BaseModel):
     Whether this agent opts out of sensitive data storage like transcript,
     recording, logging. These data can still be accessed securely via webhooks. If
     not set, default value of false will apply.
+    """
+
+    pronunciation_dictionary: Optional[List[PronunciationDictionary]] = None
+    """
+    A list of words / phrases and their pronunciation to be used to guide the audio
+    synthesize for consistent pronunciation. Currently only supported for English &
+    11labs voices. Set to null to remove pronunciation dictionary from this agent.
     """
 
     reminder_max_count: Optional[int] = None

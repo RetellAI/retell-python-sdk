@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -59,6 +59,8 @@ class AgentResource(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]]
+        | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
@@ -141,6 +143,10 @@ class AgentResource(SyncAPIResource):
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
 
+          pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
+              synthesize for consistent pronunciation. Currently only supported for English &
+              11labs voices. Set to null to remove pronunciation dictionary from this agent.
+
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
               apply (remind once). Set to 0 to disable agent from reminding.
@@ -191,6 +197,7 @@ class AgentResource(SyncAPIResource):
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
@@ -259,6 +266,8 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]]
+        | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
@@ -340,6 +349,10 @@ class AgentResource(SyncAPIResource):
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
 
+          pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
+              synthesize for consistent pronunciation. Currently only supported for English &
+              11labs voices. Set to null to remove pronunciation dictionary from this agent.
+
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
               apply (remind once). Set to 0 to disable agent from reminding.
@@ -394,6 +407,7 @@ class AgentResource(SyncAPIResource):
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
@@ -493,6 +507,8 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]]
+        | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
@@ -575,6 +591,10 @@ class AsyncAgentResource(AsyncAPIResource):
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
 
+          pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
+              synthesize for consistent pronunciation. Currently only supported for English &
+              11labs voices. Set to null to remove pronunciation dictionary from this agent.
+
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
               apply (remind once). Set to 0 to disable agent from reminding.
@@ -625,6 +645,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
@@ -693,6 +714,8 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]]
+        | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
@@ -774,6 +797,10 @@ class AsyncAgentResource(AsyncAPIResource):
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
 
+          pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
+              synthesize for consistent pronunciation. Currently only supported for English &
+              11labs voices. Set to null to remove pronunciation dictionary from this agent.
+
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
               apply (remind once). Set to 0 to disable agent from reminding.
@@ -828,6 +855,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
