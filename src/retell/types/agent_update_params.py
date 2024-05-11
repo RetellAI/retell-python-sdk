@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import List, Iterable, Optional
-from typing_extensions import Literal, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["AgentUpdateParams", "PronunciationDictionary"]
 
@@ -165,11 +165,11 @@ class AgentUpdateParams(TypedDict, total=False):
 
 
 class PronunciationDictionary(TypedDict, total=False):
-    alphabet: Literal["ipa", "cmu"]
+    alphabet: Required[Literal["ipa", "cmu"]]
     """The phonetic alphabet to be used for pronunciation."""
 
-    phoneme: str
+    phoneme: Required[str]
     """Pronunciation of the word in the format of a IPA / CMU pronunciation."""
 
-    word: str
+    word: Required[str]
     """The string of word / phrase to be annotated with pronunciation."""
