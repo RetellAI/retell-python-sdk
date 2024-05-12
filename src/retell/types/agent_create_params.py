@@ -103,6 +103,17 @@ class AgentCreateParams(TypedDict, total=False):
     English. If unset, will use default value `en-US`.
     """
 
+    normalize_for_speech: bool
+    """
+    If set to true, will normalize the some part of text (number, currency, date,
+    etc) to spoken to its spoken form for more consistent speech synthesis
+    (sometimes the voice synthesize system itself might read these wrong with the
+    raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
+    2024 for the $24.12 payment" to "Call my number two one three seven one one two
+    three four two on july fifth, twenty twenty four for the twenty four dollars
+    twelve cents payment" before starting audio generation.
+    """
+
     opt_out_sensitive_data_storage: bool
     """
     Whether this agent opts out of sensitive data storage like transcript,
