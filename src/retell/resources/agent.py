@@ -58,6 +58,7 @@ class AgentResource(SyncAPIResource):
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
         ]
         | NotGiven = NOT_GIVEN,
+        normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
@@ -139,6 +140,14 @@ class AgentResource(SyncAPIResource):
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`.
 
+          normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
+              etc) to spoken to its spoken form for more consistent speech synthesis
+              (sometimes the voice synthesize system itself might read these wrong with the
+              raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
+              2024 for the $24.12 payment" to "Call my number two one three seven one one two
+              three four two on july fifth, twenty twenty four for the twenty four dollars
+              twelve cents payment" before starting audio generation.
+
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
@@ -196,6 +205,7 @@ class AgentResource(SyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
+                    "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
@@ -265,6 +275,7 @@ class AgentResource(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
+        normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
@@ -345,6 +356,14 @@ class AgentResource(SyncAPIResource):
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
               request format (sent from us) and response format (send to us).
 
+          normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
+              etc) to spoken to its spoken form for more consistent speech synthesis
+              (sometimes the voice synthesize system itself might read these wrong with the
+              raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
+              2024 for the $24.12 payment" to "Call my number two one three seven one one two
+              three four two on july fifth, twenty twenty four for the twenty four dollars
+              twelve cents payment" before starting audio generation.
+
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
@@ -406,6 +425,7 @@ class AgentResource(SyncAPIResource):
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
+                    "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
@@ -506,6 +526,7 @@ class AsyncAgentResource(AsyncAPIResource):
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
         ]
         | NotGiven = NOT_GIVEN,
+        normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
@@ -587,6 +608,14 @@ class AsyncAgentResource(AsyncAPIResource):
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`.
 
+          normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
+              etc) to spoken to its spoken form for more consistent speech synthesis
+              (sometimes the voice synthesize system itself might read these wrong with the
+              raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
+              2024 for the $24.12 payment" to "Call my number two one three seven one one two
+              three four two on july fifth, twenty twenty four for the twenty four dollars
+              twelve cents payment" before starting audio generation.
+
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
@@ -644,6 +673,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
+                    "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
@@ -713,6 +743,7 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
+        normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
@@ -793,6 +824,14 @@ class AsyncAgentResource(AsyncAPIResource):
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
               request format (sent from us) and response format (send to us).
 
+          normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
+              etc) to spoken to its spoken form for more consistent speech synthesis
+              (sometimes the voice synthesize system itself might read these wrong with the
+              raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
+              2024 for the $24.12 payment" to "Call my number two one three seven one one two
+              three four two on july fifth, twenty twenty four for the twenty four dollars
+              twelve cents payment" before starting audio generation.
+
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
@@ -854,6 +893,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
+                    "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
