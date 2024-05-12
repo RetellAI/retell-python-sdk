@@ -38,6 +38,7 @@ class TestAgent:
             enable_backchannel=True,
             interruption_sensitivity=1,
             language="en-US",
+            normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
             pronunciation_dictionary=[
                 {
@@ -149,6 +150,7 @@ class TestAgent:
             interruption_sensitivity=1,
             language="en-US",
             llm_websocket_url="wss://your-websocket-endpoint",
+            normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
             pronunciation_dictionary=[
                 {
@@ -296,6 +298,7 @@ class TestAsyncAgent:
             enable_backchannel=True,
             interruption_sensitivity=1,
             language="en-US",
+            normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
             pronunciation_dictionary=[
                 {
@@ -407,6 +410,7 @@ class TestAsyncAgent:
             interruption_sensitivity=1,
             language="en-US",
             llm_websocket_url="wss://your-websocket-endpoint",
+            normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
             pronunciation_dictionary=[
                 {
