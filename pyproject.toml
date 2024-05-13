@@ -1,6 +1,6 @@
 [project]
 name = "retell-sdk"
-version = "3.13.0"
+version = "3.14.0"
 description = "The official Python library for the retell API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -15,7 +15,7 @@ dependencies = [
     "distro>=1.7.0, <2",
     "sniffio",
     "cached-property; python_version < '3.8'",
-
+    "cryptography>=42.0.5",
 ]
 requires-python = ">= 3.7"
 classifiers = [
