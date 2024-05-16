@@ -31,6 +31,7 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+from .lib.webhook_auth import verify  # type: ignore
 
 __all__ = [
     "Timeout",
@@ -104,6 +105,8 @@ class Retell(SyncAPIClient):
         self.llm = resources.LlmResource(self)
         self.with_raw_response = RetellWithRawResponse(self)
         self.with_streaming_response = RetellWithStreamedResponse(self)
+
+        self.verify = verify  # type: ignore
 
     @property
     @override
