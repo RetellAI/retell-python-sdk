@@ -105,6 +105,13 @@ class AgentResponse(BaseModel):
     will not backchannel.
     """
 
+    end_call_after_silence_ms: Optional[int] = None
+    """If users stay silent for a period after agent speech, end the call.
+
+    The minimum value allowed is 10,000 ms (10 s). By default, this is set to 600000
+    (10 min).
+    """
+
     interruption_sensitivity: Optional[float] = None
     """Controls how sensitive the agent is to user interruptions.
 
