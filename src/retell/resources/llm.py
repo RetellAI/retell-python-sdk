@@ -46,7 +46,8 @@ class LlmResource(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "claude-3-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "claude-3-sonnet", "claude-3-haiku"]
+        | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -160,7 +161,8 @@ class LlmResource(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "claude-3-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "claude-3-sonnet", "claude-3-haiku"]
+        | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -305,7 +307,8 @@ class AsyncLlmResource(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "claude-3-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "claude-3-sonnet", "claude-3-haiku"]
+        | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -419,7 +422,8 @@ class AsyncLlmResource(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "claude-3-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "claude-3-sonnet", "claude-3-haiku"]
+        | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
