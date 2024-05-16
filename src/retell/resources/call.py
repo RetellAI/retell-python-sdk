@@ -244,8 +244,9 @@ class CallResource(SyncAPIResource):
 
                 - deepgram voices: 8000, 16000, 24000, 32000, 48000.
 
-          end_call_after_silence_ms: If users stay silent for a period, end the call. By default, it is set to
-              600,000 ms (10 min). The minimum value allowed is 10,000 ms (10 s).
+          end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
+              value allowed is 10,000 ms (10 s). This value, if set, would overwrite the agent
+              level end_call_after_silence_ms parameter.
 
           from_number: The caller number. This field is storage purpose only, set this if you want the
               call object to contain it so that it's easier to reference it. Not used for
@@ -509,8 +510,9 @@ class AsyncCallResource(AsyncAPIResource):
 
                 - deepgram voices: 8000, 16000, 24000, 32000, 48000.
 
-          end_call_after_silence_ms: If users stay silent for a period, end the call. By default, it is set to
-              600,000 ms (10 min). The minimum value allowed is 10,000 ms (10 s).
+          end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
+              value allowed is 10,000 ms (10 s). This value, if set, would overwrite the agent
+              level end_call_after_silence_ms parameter.
 
           from_number: The caller number. This field is storage purpose only, set this if you want the
               call object to contain it so that it's easier to reference it. Not used for

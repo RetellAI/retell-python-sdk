@@ -78,10 +78,10 @@ class RegisterCallResponse(BaseModel):
     """
 
     end_call_after_silence_ms: Optional[int] = None
-    """If users stay silent for a period, end the call.
+    """If users stay silent for a period after agent speech, end the call.
 
-    By default, it is set to 600,000 ms (10 min). The minimum value allowed is
-    10,000 ms (10 s).
+    The minimum value allowed is 10,000 ms (10 s). This value, if set, would
+    overwrite the agent level end_call_after_silence_ms parameter.
     """
 
     from_number: Optional[str] = None
