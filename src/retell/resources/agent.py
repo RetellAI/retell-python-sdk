@@ -53,6 +53,7 @@ class AgentResource(SyncAPIResource):
         backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
@@ -130,6 +131,9 @@ class AgentResource(SyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
+              value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
+
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
               agent, while higher value means it's easier for user to interrupt agent. If
@@ -203,6 +207,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "end_call_after_silence_ms": end_call_after_silence_ms,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "normalize_for_speech": normalize_for_speech,
@@ -269,6 +274,7 @@ class AgentResource(SyncAPIResource):
         backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
@@ -341,6 +347,9 @@ class AgentResource(SyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
+              value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -422,6 +431,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "end_call_after_silence_ms": end_call_after_silence_ms,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
@@ -521,6 +531,7 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
@@ -598,6 +609,9 @@ class AsyncAgentResource(AsyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
+              value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
+
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
               agent, while higher value means it's easier for user to interrupt agent. If
@@ -671,6 +685,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "end_call_after_silence_ms": end_call_after_silence_ms,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "normalize_for_speech": normalize_for_speech,
@@ -737,6 +752,7 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
@@ -809,6 +825,9 @@ class AsyncAgentResource(AsyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
+              value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -890,6 +909,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "end_call_after_silence_ms": end_call_after_silence_ms,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
