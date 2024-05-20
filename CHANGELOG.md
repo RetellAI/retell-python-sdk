@@ -1,5 +1,19 @@
 # Changelog
 
+## 3.15.0 (2024-05-20)
+
+Full Changelog: [v3.14.0...v3.15.0](https://github.com/RetellAI/retell-python-sdk/compare/v3.14.0...v3.15.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#87](https://github.com/RetellAI/retell-python-sdk/issues/87)) ([4869186](https://github.com/RetellAI/retell-python-sdk/commit/4869186ef68f3da1246dc6302ec959f065118a21))
+* **api:** OpenAPI spec update via Stainless API ([#89](https://github.com/RetellAI/retell-python-sdk/issues/89)) ([49bd112](https://github.com/RetellAI/retell-python-sdk/commit/49bd1129cc05f6c6c113b933510d597038cc8ceb))
+
+
+### Bug Fixes
+
+* **client:** correct array format for query strings ([069cc04](https://github.com/RetellAI/retell-python-sdk/commit/069cc047958ba69cb5afac7a6dd197391b3801bd))
+
 ## 3.14.0 (2024-05-12)
 
 Full Changelog: [v3.13.0...v3.14.0](https://github.com/RetellAI/retell-python-sdk/compare/v3.13.0...v3.14.0)
