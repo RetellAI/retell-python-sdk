@@ -108,7 +108,7 @@ class Retell(SyncAPIClient):
     @property
     @override
     def qs(self) -> Querystring:
-        return Querystring(array_format="brackets")
+        return Querystring(array_format="comma")
 
     @property
     @override
@@ -273,7 +273,7 @@ class AsyncRetell(AsyncAPIClient):
     @property
     @override
     def qs(self) -> Querystring:
-        return Querystring(array_format="brackets")
+        return Querystring(array_format="comma")
 
     @property
     @override
