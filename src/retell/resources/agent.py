@@ -112,6 +112,9 @@ class AgentResource(SyncAPIResource):
               - `static-noise`: Constant static noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
 
+              - `call-center`: Call center work noise.
+                [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
+
               Set to `null` to remove ambient sound from this agent.
 
           ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
@@ -344,6 +347,9 @@ class AgentResource(SyncAPIResource):
 
               - `static-noise`: Constant static noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
+
+              - `call-center`: Call center work noise.
+                [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
 
               Set to `null` to remove ambient sound from this agent.
 
@@ -622,6 +628,9 @@ class AsyncAgentResource(AsyncAPIResource):
               - `static-noise`: Constant static noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
 
+              - `call-center`: Call center work noise.
+                [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
+
               Set to `null` to remove ambient sound from this agent.
 
           ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
@@ -854,6 +863,9 @@ class AsyncAgentResource(AsyncAPIResource):
 
               - `static-noise`: Constant static noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
+
+              - `call-center`: Call center work noise.
+                [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
 
               Set to `null` to remove ambient sound from this agent.
 
