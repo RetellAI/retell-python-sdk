@@ -46,14 +46,18 @@ class AgentResource(SyncAPIResource):
         voice_id: str,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
-            Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+            Literal[
+                "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
+            ]
         ]
         | NotGiven = NOT_GIVEN,
+        ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
         backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
+        fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
@@ -110,6 +114,10 @@ class AgentResource(SyncAPIResource):
 
               Set to `null` to remove ambient sound from this agent.
 
+          ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
+              Lower value means quieter ambient sound, while higher value means louder ambient
+              sound. If unset, default value 1 will apply.
+
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -133,6 +141,12 @@ class AgentResource(SyncAPIResource):
 
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
+
+          fallback_voice_ids: When TTS provide is experiencing outages, we would use fallback voices listed
+              here for the agent. Voice id and the fallback voice ids must be from different
+              TTS providers. The system would go through the list in order, if the first one
+              in the list is also having outage, it would use the next one. Set to null to
+              remove fallback for the agent.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -203,11 +217,13 @@ class AgentResource(SyncAPIResource):
                     "voice_id": voice_id,
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
+                    "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
+                    "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "normalize_for_speech": normalize_for_speech,
@@ -267,14 +283,18 @@ class AgentResource(SyncAPIResource):
         *,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
-            Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+            Literal[
+                "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
+            ]
         ]
         | NotGiven = NOT_GIVEN,
+        ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
         backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
+        fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
@@ -327,6 +347,10 @@ class AgentResource(SyncAPIResource):
 
               Set to `null` to remove ambient sound from this agent.
 
+          ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
+              Lower value means quieter ambient sound, while higher value means louder ambient
+              sound. If unset, default value 1 will apply.
+
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -350,6 +374,12 @@ class AgentResource(SyncAPIResource):
 
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
+
+          fallback_voice_ids: When TTS provide is experiencing outages, we would use fallback voices listed
+              here for the agent. Voice id and the fallback voice ids must be from different
+              TTS providers. The system would go through the list in order, if the first one
+              in the list is also having outage, it would use the next one. Set to null to
+              remove fallback for the agent.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -427,11 +457,13 @@ class AgentResource(SyncAPIResource):
                 {
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
+                    "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
+                    "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
@@ -524,14 +556,18 @@ class AsyncAgentResource(AsyncAPIResource):
         voice_id: str,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
-            Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+            Literal[
+                "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
+            ]
         ]
         | NotGiven = NOT_GIVEN,
+        ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
         backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
+        fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
@@ -588,6 +624,10 @@ class AsyncAgentResource(AsyncAPIResource):
 
               Set to `null` to remove ambient sound from this agent.
 
+          ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
+              Lower value means quieter ambient sound, while higher value means louder ambient
+              sound. If unset, default value 1 will apply.
+
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -611,6 +651,12 @@ class AsyncAgentResource(AsyncAPIResource):
 
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
+
+          fallback_voice_ids: When TTS provide is experiencing outages, we would use fallback voices listed
+              here for the agent. Voice id and the fallback voice ids must be from different
+              TTS providers. The system would go through the list in order, if the first one
+              in the list is also having outage, it would use the next one. Set to null to
+              remove fallback for the agent.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -681,11 +727,13 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voice_id": voice_id,
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
+                    "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
+                    "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "normalize_for_speech": normalize_for_speech,
@@ -745,14 +793,18 @@ class AsyncAgentResource(AsyncAPIResource):
         *,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
-            Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+            Literal[
+                "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
+            ]
         ]
         | NotGiven = NOT_GIVEN,
+        ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
         backchannel_words: List[str] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
+        fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
@@ -805,6 +857,10 @@ class AsyncAgentResource(AsyncAPIResource):
 
               Set to `null` to remove ambient sound from this agent.
 
+          ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
+              Lower value means quieter ambient sound, while higher value means louder ambient
+              sound. If unset, default value 1 will apply.
+
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -828,6 +884,12 @@ class AsyncAgentResource(AsyncAPIResource):
 
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
+
+          fallback_voice_ids: When TTS provide is experiencing outages, we would use fallback voices listed
+              here for the agent. Voice id and the fallback voice ids must be from different
+              TTS providers. The system would go through the list in order, if the first one
+              in the list is also having outage, it would use the next one. Set to null to
+              remove fallback for the agent.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -905,11 +967,13 @@ class AsyncAgentResource(AsyncAPIResource):
                 {
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
+                    "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
+                    "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
