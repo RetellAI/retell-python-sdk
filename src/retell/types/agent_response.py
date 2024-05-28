@@ -46,7 +46,7 @@ class AgentResponse(BaseModel):
     """The name of the agent. Only used for your own reference."""
 
     ambient_sound: Optional[
-        Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise"]
+        Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"]
     ] = None
     """
     If set, will add ambient environment sound to the call to make experience more
@@ -69,6 +69,13 @@ class AgentResponse(BaseModel):
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
 
     Set to `null` to remove ambient sound from this agent.
+    """
+
+    ambient_sound_volume: Optional[float] = None
+    """If set, will control the volume of the ambient sound.
+
+    Value ranging from [0,2]. Lower value means quieter ambient sound, while higher
+    value means louder ambient sound. If unset, default value 1 will apply.
     """
 
     backchannel_frequency: Optional[float] = None
@@ -110,6 +117,15 @@ class AgentResponse(BaseModel):
 
     The minimum value allowed is 10,000 ms (10 s). By default, this is set to 600000
     (10 min).
+    """
+
+    fallback_voice_ids: Optional[List[str]] = None
+    """
+    When TTS provide is experiencing outages, we would use fallback voices listed
+    here for the agent. Voice id and the fallback voice ids must be from different
+    TTS providers. The system would go through the list in order, if the first one
+    in the list is also having outage, it would use the next one. Set to null to
+    remove fallback for the agent.
     """
 
     interruption_sensitivity: Optional[float] = None
