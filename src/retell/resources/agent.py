@@ -142,11 +142,11 @@ class AgentResource(SyncAPIResource):
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
-          fallback_voice_ids: When TTS provide is experiencing outages, we would use fallback voices listed
-              here for the agent. Voice id and the fallback voice ids must be from different
-              TTS providers. The system would go through the list in order, if the first one
-              in the list is also having outage, it would use the next one. Set to null to
-              remove fallback for the agent.
+          fallback_voice_ids: When TTS provider for the selected voice is experiencing outages, we would use
+              fallback voices listed here for the agent. Voice id and the fallback voice ids
+              must be from different TTS providers. The system would go through the list in
+              order, if the first one in the list is also having outage, it would use the next
+              one. Set to null to remove voice fallback for the agent.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -375,11 +375,11 @@ class AgentResource(SyncAPIResource):
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
-          fallback_voice_ids: When TTS provide is experiencing outages, we would use fallback voices listed
-              here for the agent. Voice id and the fallback voice ids must be from different
-              TTS providers. The system would go through the list in order, if the first one
-              in the list is also having outage, it would use the next one. Set to null to
-              remove fallback for the agent.
+          fallback_voice_ids: When TTS provider for the selected voice is experiencing outages, we would use
+              fallback voices listed here for the agent. Voice id and the fallback voice ids
+              must be from different TTS providers. The system would go through the list in
+              order, if the first one in the list is also having outage, it would use the next
+              one. Set to null to remove voice fallback for the agent.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -652,11 +652,11 @@ class AsyncAgentResource(AsyncAPIResource):
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
-          fallback_voice_ids: When TTS provide is experiencing outages, we would use fallback voices listed
-              here for the agent. Voice id and the fallback voice ids must be from different
-              TTS providers. The system would go through the list in order, if the first one
-              in the list is also having outage, it would use the next one. Set to null to
-              remove fallback for the agent.
+          fallback_voice_ids: When TTS provider for the selected voice is experiencing outages, we would use
+              fallback voices listed here for the agent. Voice id and the fallback voice ids
+              must be from different TTS providers. The system would go through the list in
+              order, if the first one in the list is also having outage, it would use the next
+              one. Set to null to remove voice fallback for the agent.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -885,11 +885,11 @@ class AsyncAgentResource(AsyncAPIResource):
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
-          fallback_voice_ids: When TTS provide is experiencing outages, we would use fallback voices listed
-              here for the agent. Voice id and the fallback voice ids must be from different
-              TTS providers. The system would go through the list in order, if the first one
-              in the list is also having outage, it would use the next one. Set to null to
-              remove fallback for the agent.
+          fallback_voice_ids: When TTS provider for the selected voice is experiencing outages, we would use
+              fallback voices listed here for the agent. Voice id and the fallback voice ids
+              must be from different TTS providers. The system would go through the list in
+              order, if the first one in the list is also having outage, it would use the next
+              one. Set to null to remove voice fallback for the agent.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
