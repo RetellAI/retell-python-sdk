@@ -48,6 +48,9 @@ class AgentCreateParams(TypedDict, total=False):
     - `static-noise`: Constant static noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
 
+    - `call-center`: Call center work noise.
+      [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
+
     Set to `null` to remove ambient sound from this agent.
     """
 
