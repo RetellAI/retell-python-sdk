@@ -15,9 +15,11 @@ class CallListParams(TypedDict, total=False):
     """Limit the number of calls returned."""
 
     pagination_key: str
-    """The pagination call id to continue fetching the next page of calls.
+    """The pagination key to continue fetching the next page of calls.
 
-    If not set, will start from the beginning.
+    Pagination key is represented by a call id here, and it's exclusive (not
+    included in the fetched calls). The last call id from the list calls is usually
+    used as pagination key here. If not set, will start from the beginning.
     """
 
     sort_order: Literal["ascending", "descending"]

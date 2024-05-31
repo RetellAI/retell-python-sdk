@@ -151,8 +151,10 @@ class CallResource(SyncAPIResource):
         Args:
           limit: Limit the number of calls returned.
 
-          pagination_key: The pagination call id to continue fetching the next page of calls. If not set,
-              will start from the beginning.
+          pagination_key: The pagination key to continue fetching the next page of calls. Pagination key
+              is represented by a call id here, and it's exclusive (not included in the
+              fetched calls). The last call id from the list calls is usually used as
+              pagination key here. If not set, will start from the beginning.
 
           sort_order: The calls will be sorted by `start_timestamp`, whether to return the calls in
               ascending or descending order.
@@ -417,8 +419,10 @@ class AsyncCallResource(AsyncAPIResource):
         Args:
           limit: Limit the number of calls returned.
 
-          pagination_key: The pagination call id to continue fetching the next page of calls. If not set,
-              will start from the beginning.
+          pagination_key: The pagination key to continue fetching the next page of calls. Pagination key
+              is represented by a call id here, and it's exclusive (not included in the
+              fetched calls). The last call id from the list calls is usually used as
+              pagination key here. If not set, will start from the beginning.
 
           sort_order: The calls will be sorted by `start_timestamp`, whether to return the calls in
               ascending or descending order.
