@@ -14,6 +14,7 @@ from .call_list_response import CallListResponse as CallListResponse
 from .agent_create_params import AgentCreateParams as AgentCreateParams
 from .agent_list_response import AgentListResponse as AgentListResponse
 from .agent_update_params import AgentUpdateParams as AgentUpdateParams
+from .voice_list_response import VoiceListResponse as VoiceListResponse
 from .call_register_params import CallRegisterParams as CallRegisterParams
 from .phone_number_response import PhoneNumberResponse as PhoneNumberResponse
 from .register_call_response import RegisterCallResponse as RegisterCallResponse

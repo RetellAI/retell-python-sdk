@@ -60,3 +60,16 @@ Methods:
 - <code title="patch /update-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">update</a>(llm_id, \*\*<a href="src/retell/types/llm_update_params.py">params</a>) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
 - <code title="get /list-retell-llms">client.llm.<a href="./src/retell/resources/llm.py">list</a>() -> <a href="./src/retell/types/llm_list_response.py">LlmListResponse</a></code>
 - <code title="delete /delete-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">delete</a>(llm_id) -> None</code>
+
+# Voice
+
+Types:
+
+```python
+from retell.types import VoiceResponse, VoiceListResponse
+```
+
+Methods:
+
+- <code title="get /get-phone-number/{phone_number}">client.voice.<a href="./src/retell/resources/voice.py">retrieve</a>(phone_number) -> <a href="./src/retell/types/phone_number_response.py">PhoneNumberResponse</a></code>
+- <code title="get /list-phone-numbers">client.voice.<a href="./src/retell/resources/voice.py">list</a>() -> <a href="./src/retell/types/voice_list_response.py">VoiceListResponse</a></code>
