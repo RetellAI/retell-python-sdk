@@ -51,7 +51,6 @@ class Retell(SyncAPIClient):
     phone_number: resources.PhoneNumberResource
     agent: resources.AgentResource
     llm: resources.LlmResource
-    voice: resources.VoiceResource
     with_raw_response: RetellWithRawResponse
     with_streaming_response: RetellWithStreamedResponse
 
@@ -104,7 +103,6 @@ class Retell(SyncAPIClient):
         self.phone_number = resources.PhoneNumberResource(self)
         self.agent = resources.AgentResource(self)
         self.llm = resources.LlmResource(self)
-        self.voice = resources.VoiceResource(self)
         self.with_raw_response = RetellWithRawResponse(self)
         self.with_streaming_response = RetellWithStreamedResponse(self)
 
@@ -220,7 +218,6 @@ class AsyncRetell(AsyncAPIClient):
     phone_number: resources.AsyncPhoneNumberResource
     agent: resources.AsyncAgentResource
     llm: resources.AsyncLlmResource
-    voice: resources.AsyncVoiceResource
     with_raw_response: AsyncRetellWithRawResponse
     with_streaming_response: AsyncRetellWithStreamedResponse
 
@@ -273,7 +270,6 @@ class AsyncRetell(AsyncAPIClient):
         self.phone_number = resources.AsyncPhoneNumberResource(self)
         self.agent = resources.AsyncAgentResource(self)
         self.llm = resources.AsyncLlmResource(self)
-        self.voice = resources.AsyncVoiceResource(self)
         self.with_raw_response = AsyncRetellWithRawResponse(self)
         self.with_streaming_response = AsyncRetellWithStreamedResponse(self)
 
@@ -388,7 +384,6 @@ class RetellWithRawResponse:
         self.phone_number = resources.PhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = resources.AgentResourceWithRawResponse(client.agent)
         self.llm = resources.LlmResourceWithRawResponse(client.llm)
-        self.voice = resources.VoiceResourceWithRawResponse(client.voice)
 
 
 class AsyncRetellWithRawResponse:
@@ -397,7 +392,6 @@ class AsyncRetellWithRawResponse:
         self.phone_number = resources.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = resources.AsyncAgentResourceWithRawResponse(client.agent)
         self.llm = resources.AsyncLlmResourceWithRawResponse(client.llm)
-        self.voice = resources.AsyncVoiceResourceWithRawResponse(client.voice)
 
 
 class RetellWithStreamedResponse:
@@ -406,7 +400,6 @@ class RetellWithStreamedResponse:
         self.phone_number = resources.PhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = resources.AgentResourceWithStreamingResponse(client.agent)
         self.llm = resources.LlmResourceWithStreamingResponse(client.llm)
-        self.voice = resources.VoiceResourceWithStreamingResponse(client.voice)
 
 
 class AsyncRetellWithStreamedResponse:
@@ -415,7 +408,6 @@ class AsyncRetellWithStreamedResponse:
         self.phone_number = resources.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = resources.AsyncAgentResourceWithStreamingResponse(client.agent)
         self.llm = resources.AsyncLlmResourceWithStreamingResponse(client.llm)
-        self.voice = resources.AsyncVoiceResourceWithStreamingResponse(client.voice)
 
 
 Client = Retell
