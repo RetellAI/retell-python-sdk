@@ -24,14 +24,6 @@ from .agent import (
     AgentResourceWithStreamingResponse,
     AsyncAgentResourceWithStreamingResponse,
 )
-from .voice import (
-    VoiceResource,
-    AsyncVoiceResource,
-    VoiceResourceWithRawResponse,
-    AsyncVoiceResourceWithRawResponse,
-    VoiceResourceWithStreamingResponse,
-    AsyncVoiceResourceWithStreamingResponse,
-)
 from .phone_number import (
     PhoneNumberResource,
     AsyncPhoneNumberResource,
@@ -66,10 +58,4 @@ __all__ = [
     "AsyncLlmResourceWithRawResponse",
     "LlmResourceWithStreamingResponse",
     "AsyncLlmResourceWithStreamingResponse",
-    "VoiceResource",
-    "AsyncVoiceResource",
-    "VoiceResourceWithRawResponse",
-    "AsyncVoiceResourceWithRawResponse",
-    "VoiceResourceWithStreamingResponse",
-    "AsyncVoiceResourceWithStreamingResponse",
 ]
