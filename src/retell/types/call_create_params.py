@@ -21,6 +21,14 @@ class CallCreateParams(TypedDict, total=False):
     If not set, default value of false will apply.
     """
 
+    metadata: object
+    """An arbitrary object for storage purpose only.
+
+    You can put anything here like your internal customer id associated with the
+    call. Not used for processing. You can later get this field from the call
+    object.
+    """
+
     override_agent_id: str
     """For this particular call, override the agent used with this agent id.
 

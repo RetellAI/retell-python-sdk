@@ -71,6 +71,9 @@ class RegisterCallResponse(BaseModel):
       - deepgram voices: 8000, 16000, 24000, 32000, 48000.
     """
 
+    direction: Optional[Literal["inbound", "outbound"]] = None
+    """Direction of the phone call. Not populated for web call."""
+
     drop_call_if_machine_detected: Optional[bool] = None
     """If set, will drop the call if machine (voicemail, IVR) is detected.
 
@@ -85,19 +88,14 @@ class RegisterCallResponse(BaseModel):
     """
 
     from_number: Optional[str] = None
-    """The caller number.
-
-    This field is storage purpose only, set this if you want the call object to
-    contain it so that it's easier to reference it. Not used for processing, when we
-    connect to your LLM websocket server, you can then get it from the call object.
-    """
+    """The caller number."""
 
     metadata: Optional[object] = None
-    """An abtriary object for storage purpose only.
+    """An arbitrary object for storage purpose only.
 
-    You can put anything here like your own id for the call, twilio SID, internal
-    customer id. Not used for processing, when we connect to your LLM websocket
-    server, you can then get it from the call object.
+    You can put anything here like your internal customer id associated with the
+    call. Not used for processing. You can later get this field from the call
+    object.
     """
 
     opt_out_sensitive_data_storage: Optional[bool] = None
@@ -113,9 +111,4 @@ class RegisterCallResponse(BaseModel):
     """
 
     to_number: Optional[str] = None
-    """The callee number.
-
-    This field is storage purpose only, set this if you want the call object to
-    contain it so that it's easier to reference it. Not used for processing, when we
-    connect to your LLM websocket server, you can then get it from the call object.
-    """
+    """The callee number."""
