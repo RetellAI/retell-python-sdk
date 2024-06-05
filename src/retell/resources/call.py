@@ -46,6 +46,7 @@ class CallResource(SyncAPIResource):
         from_number: str,
         to_number: str,
         drop_call_if_machine_detected: bool | NotGiven = NOT_GIVEN,
+        metadata: object | NotGiven = NOT_GIVEN,
         override_agent_id: str | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -65,6 +66,10 @@ class CallResource(SyncAPIResource):
 
           drop_call_if_machine_detected: If set, will drop the call if machine (voicemail, IVR) is detected. If not set,
               default value of false will apply.
+
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the call. Not used for processing. You
+              can later get this field from the call object.
 
           override_agent_id: For this particular call, override the agent used with this agent id. This does
               not bind the agent to this number, this is for one time override.
@@ -87,6 +92,7 @@ class CallResource(SyncAPIResource):
                     "from_number": from_number,
                     "to_number": to_number,
                     "drop_call_if_machine_detected": drop_call_if_machine_detected,
+                    "metadata": metadata,
                     "override_agent_id": override_agent_id,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
@@ -194,6 +200,7 @@ class CallResource(SyncAPIResource):
         audio_encoding: Literal["s16le", "mulaw"],
         audio_websocket_protocol: Literal["web", "twilio"],
         sample_rate: int,
+        direction: Literal["inbound", "outbound"] | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         from_number: str | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
@@ -246,27 +253,28 @@ class CallResource(SyncAPIResource):
 
                 - deepgram voices: 8000, 16000, 24000, 32000, 48000.
 
+          direction: Direction of the phone call. Not populated for web call. When you are using
+              custom Twilio, we don't have this information, so you would need to specify this
+              field if you want this information in the call history.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). This value, if set, would overwrite the agent
               level end_call_after_silence_ms parameter.
 
-          from_number: The caller number. This field is storage purpose only, set this if you want the
-              call object to contain it so that it's easier to reference it. Not used for
-              processing, when we connect to your LLM websocket server, you can then get it
-              from the call object.
+          from_number: The caller number. When you are using custom Twilio, we don't have this
+              information, so you would need to specify this field if you want this
+              information in the call history.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
-              your own id for the call, twilio SID, internal customer id. Not used for
-              processing, when we connect to your LLM websocket server, you can then get it
-              from the call object.
+              your internal customer id associated with the call. Not used for processing. You
+              can later get this field from the call object.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
               your Retell LLM prompt and tool description. Only applicable for Retell LLM.
 
-          to_number: The callee number. This field is storage purpose only, set this if you want the
-              call object to contain it so that it's easier to reference it. Not used for
-              processing, when we connect to your LLM websocket server, you can then get it
-              from the call object.
+          to_number: The callee number. When you are using custom Twilio, we don't have this
+              information, so you would need to specify this field if you want this
+              information in the call history.
 
           extra_headers: Send extra headers
 
@@ -284,6 +292,7 @@ class CallResource(SyncAPIResource):
                     "audio_encoding": audio_encoding,
                     "audio_websocket_protocol": audio_websocket_protocol,
                     "sample_rate": sample_rate,
+                    "direction": direction,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "from_number": from_number,
                     "metadata": metadata,
@@ -314,6 +323,7 @@ class AsyncCallResource(AsyncAPIResource):
         from_number: str,
         to_number: str,
         drop_call_if_machine_detected: bool | NotGiven = NOT_GIVEN,
+        metadata: object | NotGiven = NOT_GIVEN,
         override_agent_id: str | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -333,6 +343,10 @@ class AsyncCallResource(AsyncAPIResource):
 
           drop_call_if_machine_detected: If set, will drop the call if machine (voicemail, IVR) is detected. If not set,
               default value of false will apply.
+
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the call. Not used for processing. You
+              can later get this field from the call object.
 
           override_agent_id: For this particular call, override the agent used with this agent id. This does
               not bind the agent to this number, this is for one time override.
@@ -355,6 +369,7 @@ class AsyncCallResource(AsyncAPIResource):
                     "from_number": from_number,
                     "to_number": to_number,
                     "drop_call_if_machine_detected": drop_call_if_machine_detected,
+                    "metadata": metadata,
                     "override_agent_id": override_agent_id,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
@@ -462,6 +477,7 @@ class AsyncCallResource(AsyncAPIResource):
         audio_encoding: Literal["s16le", "mulaw"],
         audio_websocket_protocol: Literal["web", "twilio"],
         sample_rate: int,
+        direction: Literal["inbound", "outbound"] | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         from_number: str | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
@@ -514,27 +530,28 @@ class AsyncCallResource(AsyncAPIResource):
 
                 - deepgram voices: 8000, 16000, 24000, 32000, 48000.
 
+          direction: Direction of the phone call. Not populated for web call. When you are using
+              custom Twilio, we don't have this information, so you would need to specify this
+              field if you want this information in the call history.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). This value, if set, would overwrite the agent
               level end_call_after_silence_ms parameter.
 
-          from_number: The caller number. This field is storage purpose only, set this if you want the
-              call object to contain it so that it's easier to reference it. Not used for
-              processing, when we connect to your LLM websocket server, you can then get it
-              from the call object.
+          from_number: The caller number. When you are using custom Twilio, we don't have this
+              information, so you would need to specify this field if you want this
+              information in the call history.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
-              your own id for the call, twilio SID, internal customer id. Not used for
-              processing, when we connect to your LLM websocket server, you can then get it
-              from the call object.
+              your internal customer id associated with the call. Not used for processing. You
+              can later get this field from the call object.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
               your Retell LLM prompt and tool description. Only applicable for Retell LLM.
 
-          to_number: The callee number. This field is storage purpose only, set this if you want the
-              call object to contain it so that it's easier to reference it. Not used for
-              processing, when we connect to your LLM websocket server, you can then get it
-              from the call object.
+          to_number: The callee number. When you are using custom Twilio, we don't have this
+              information, so you would need to specify this field if you want this
+              information in the call history.
 
           extra_headers: Send extra headers
 
@@ -552,6 +569,7 @@ class AsyncCallResource(AsyncAPIResource):
                     "audio_encoding": audio_encoding,
                     "audio_websocket_protocol": audio_websocket_protocol,
                     "sample_rate": sample_rate,
+                    "direction": direction,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "from_number": from_number,
                     "metadata": metadata,
