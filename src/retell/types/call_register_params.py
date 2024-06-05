@@ -55,6 +55,14 @@ class CallRegisterParams(TypedDict, total=False):
       - deepgram voices: 8000, 16000, 24000, 32000, 48000.
     """
 
+    direction: Literal["inbound", "outbound"]
+    """Direction of the phone call.
+
+    Not populated for web call. When you are using custom Twilio, we don't have this
+    information, so you would need to specify this field if you want this
+    information in the call history.
+    """
+
     end_call_after_silence_ms: int
     """If users stay silent for a period after agent speech, end the call.
 
@@ -65,17 +73,16 @@ class CallRegisterParams(TypedDict, total=False):
     from_number: str
     """The caller number.
 
-    This field is storage purpose only, set this if you want the call object to
-    contain it so that it's easier to reference it. Not used for processing, when we
-    connect to your LLM websocket server, you can then get it from the call object.
+    When you are using custom Twilio, we don't have this information, so you would
+    need to specify this field if you want this information in the call history.
     """
 
     metadata: object
     """An arbitrary object for storage purpose only.
 
-    You can put anything here like your own id for the call, twilio SID, internal
-    customer id. Not used for processing, when we connect to your LLM websocket
-    server, you can then get it from the call object.
+    You can put anything here like your internal customer id associated with the
+    call. Not used for processing. You can later get this field from the call
+    object.
     """
 
     retell_llm_dynamic_variables: Dict[str, object]
@@ -87,7 +94,6 @@ class CallRegisterParams(TypedDict, total=False):
     to_number: str
     """The callee number.
 
-    This field is storage purpose only, set this if you want the call object to
-    contain it so that it's easier to reference it. Not used for processing, when we
-    connect to your LLM websocket server, you can then get it from the call object.
+    When you are using custom Twilio, we don't have this information, so you would
+    need to specify this field if you want this information in the call history.
     """
