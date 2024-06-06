@@ -9,7 +9,7 @@ import pytest
 
 from retell import Retell, AsyncRetell
 from tests.utils import assert_matches_type
-from retell.types import VoiceListResponse, VoiceRetrieveResponse
+from retell.types import LlmResponse, VoiceListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -22,7 +22,7 @@ class TestVoice:
         voice = client.voice.retrieve(
             "11labs-Adrian",
         )
-        assert_matches_type(VoiceRetrieveResponse, voice, path=["response"])
+        assert_matches_type(LlmResponse, voice, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
@@ -33,7 +33,7 @@ class TestVoice:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         voice = response.parse()
-        assert_matches_type(VoiceRetrieveResponse, voice, path=["response"])
+        assert_matches_type(LlmResponse, voice, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
@@ -44,7 +44,7 @@ class TestVoice:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             voice = response.parse()
-            assert_matches_type(VoiceRetrieveResponse, voice, path=["response"])
+            assert_matches_type(LlmResponse, voice, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -89,7 +89,7 @@ class TestAsyncVoice:
         voice = await async_client.voice.retrieve(
             "11labs-Adrian",
         )
-        assert_matches_type(VoiceRetrieveResponse, voice, path=["response"])
+        assert_matches_type(LlmResponse, voice, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
@@ -100,7 +100,7 @@ class TestAsyncVoice:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         voice = await response.parse()
-        assert_matches_type(VoiceRetrieveResponse, voice, path=["response"])
+        assert_matches_type(LlmResponse, voice, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
@@ -111,7 +111,7 @@ class TestAsyncVoice:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             voice = await response.parse()
-            assert_matches_type(VoiceRetrieveResponse, voice, path=["response"])
+            assert_matches_type(LlmResponse, voice, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
