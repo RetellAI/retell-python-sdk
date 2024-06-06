@@ -66,10 +66,10 @@ Methods:
 Types:
 
 ```python
-from retell.types import LlmResponse, VoiceListResponse
+from retell.types import VoiceResponse, VoiceListResponse
 ```
 
 Methods:
 
-- <code title="get /get-voice/{voice_id}">client.voice.<a href="./src/retell/resources/voice.py">retrieve</a>(voice_id) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
+- <code title="get /get-voice/{voice_id}">client.voice.<a href="./src/retell/resources/voice.py">retrieve</a>(voice_id) -> <a href="./src/retell/types/voice_response.py">VoiceResponse</a></code>
 - <code title="get /list-voices">client.voice.<a href="./src/retell/resources/voice.py">list</a>() -> <a href="./src/retell/types/voice_list_response.py">VoiceListResponse</a></code>
