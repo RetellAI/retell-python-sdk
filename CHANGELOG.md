@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.18.0 (2024-06-06)
+
+Full Changelog: [v3.17.0...v3.18.0](https://github.com/RetellAI/retell-python-sdk/compare/v3.17.0...v3.18.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#108](https://github.com/RetellAI/retell-python-sdk/issues/108)) ([73424e3](https://github.com/RetellAI/retell-python-sdk/commit/73424e38af207759d9fe06ba5b8331084fe0383e))
+* **api:** OpenAPI spec update via Stainless API ([#110](https://github.com/RetellAI/retell-python-sdk/issues/110)) ([a905225](https://github.com/RetellAI/retell-python-sdk/commit/a9052251dee723affde699de25005ef7938cd5e6))
+* **api:** OpenAPI spec update via Stainless API ([#111](https://github.com/RetellAI/retell-python-sdk/issues/111)) ([4243ead](https://github.com/RetellAI/retell-python-sdk/commit/4243ead63925b997a780892b961a5e19b64d80bb))
+* **api:** OpenAPI spec update via Stainless API ([#112](https://github.com/RetellAI/retell-python-sdk/issues/112)) ([3ad4a2d](https://github.com/RetellAI/retell-python-sdk/commit/3ad4a2dd30b0d1582c04a2231e7b61fcf01128c3))
+* **api:** OpenAPI spec update via Stainless API ([#113](https://github.com/RetellAI/retell-python-sdk/issues/113)) ([d0d0ef2](https://github.com/RetellAI/retell-python-sdk/commit/d0d0ef23ba863e18a6c92c3851a0e8ca2e4c4180))
+* **api:** OpenAPI spec update via Stainless API ([#114](https://github.com/RetellAI/retell-python-sdk/issues/114)) ([f479ed8](https://github.com/RetellAI/retell-python-sdk/commit/f479ed89c8c8e98cbbf12dc8fced478b5f79adb2))
+* **api:** OpenAPI spec update via Stainless API ([#115](https://github.com/RetellAI/retell-python-sdk/issues/115)) ([f382379](https://github.com/RetellAI/retell-python-sdk/commit/f3823799fd1ac35fb93d0fad5bbd25ac1ba93e43))
+* **api:** OpenAPI spec update via Stainless API ([#116](https://github.com/RetellAI/retell-python-sdk/issues/116)) ([38aa122](https://github.com/RetellAI/retell-python-sdk/commit/38aa1222809618eed1c40a0dc1191792b83ddce1))
+
 ## 3.17.0 (2024-06-02)
 
 Full Changelog: [v3.16.0...v3.17.0](https://github.com/RetellAI/retell-python-sdk/compare/v3.16.0...v3.17.0)
