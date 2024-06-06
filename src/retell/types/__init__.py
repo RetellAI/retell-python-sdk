@@ -18,7 +18,6 @@ from .voice_list_response import VoiceListResponse as VoiceListResponse
 from .call_register_params import CallRegisterParams as CallRegisterParams
 from .phone_number_response import PhoneNumberResponse as PhoneNumberResponse
 from .register_call_response import RegisterCallResponse as RegisterCallResponse
-from .voice_retrieve_response import VoiceRetrieveResponse as VoiceRetrieveResponse
 from .phone_number_create_params import PhoneNumberCreateParams as PhoneNumberCreateParams
 from .phone_number_list_response import PhoneNumberListResponse as PhoneNumberListResponse
 from .phone_number_update_params import PhoneNumberUpdateParams as PhoneNumberUpdateParams

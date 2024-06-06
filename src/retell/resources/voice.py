@@ -16,8 +16,8 @@ from .._response import (
 from .._base_client import (
     make_request_options,
 )
+from ..types.llm_response import LlmResponse
 from ..types.voice_list_response import VoiceListResponse
-from ..types.voice_retrieve_response import VoiceRetrieveResponse
 
 __all__ = ["VoiceResource", "AsyncVoiceResource"]
 
@@ -41,7 +41,7 @@ class VoiceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> VoiceRetrieveResponse:
+    ) -> LlmResponse:
         """
         Retrieve details of a specific voice
 
@@ -61,7 +61,7 @@ class VoiceResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=VoiceRetrieveResponse,
+            cast_to=LlmResponse,
         )
 
     def list(
@@ -103,7 +103,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> VoiceRetrieveResponse:
+    ) -> LlmResponse:
         """
         Retrieve details of a specific voice
 
@@ -123,7 +123,7 @@ class AsyncVoiceResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=VoiceRetrieveResponse,
+            cast_to=LlmResponse,
         )
 
     async def list(
