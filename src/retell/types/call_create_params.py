@@ -5,14 +5,20 @@ from __future__ import annotations
 from typing import Dict
 from typing_extensions import Required, TypedDict
 
-__all__ = ["CallCreateWebCallParams"]
+__all__ = ["CallCreateParams"]
 
 
-class CallCreateWebCallParams(TypedDict, total=False):
-    agent_id: Required[str]
-    """Unique id of agent used for the call.
+class CallCreateParams(TypedDict, total=False):
+    from_number: Required[str]
+    """The number you own in E.164 format."""
 
-    Your agent would contain the LLM Websocket url used for this call.
+    to_number: Required[str]
+    """The number you want to call, in E.164 format."""
+
+    drop_call_if_machine_detected: bool
+    """If set, will drop the call if machine (voicemail, IVR) is detected.
+
+    If not set, default value of false will apply.
     """
 
     metadata: object
@@ -21,6 +27,12 @@ class CallCreateWebCallParams(TypedDict, total=False):
     You can put anything here like your internal customer id associated with the
     call. Not used for processing. You can later get this field from the call
     object.
+    """
+
+    override_agent_id: str
+    """For this particular call, override the agent used with this agent id.
+
+    This does not bind the agent to this number, this is for one time override.
     """
 
     retell_llm_dynamic_variables: Dict[str, object]

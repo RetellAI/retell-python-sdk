@@ -5,10 +5,10 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["VoiceResponse"]
+__all__ = ["VoiceRetrieveResponse"]
 
 
-class VoiceResponse(BaseModel):
+class VoiceRetrieveResponse(BaseModel):
     gender: Literal["male", "female"]
     """Gender of voice."""
 
