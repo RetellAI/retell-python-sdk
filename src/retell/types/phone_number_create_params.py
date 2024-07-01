@@ -2,30 +2,20 @@
 
 from __future__ import annotations
 
-from typing import Optional
-from typing_extensions import TypedDict
+from typing_extensions import Required, TypedDict
 
 __all__ = ["PhoneNumberCreateParams"]
 
 
 class PhoneNumberCreateParams(TypedDict, total=False):
+    agent_id: Required[str]
+    """Unique id of agent to bind to newly obtained number.
+
+    The number will automatically use the agent when doing inbound / outbound calls.
+    """
+
     area_code: int
     """Area code of the number to obtain.
 
     Format is a 3 digit integer. Currently only supports US area code.
-    """
-
-    inbound_agent_id: Optional[str]
-    """Unique id of agent to bind to the number.
-
-    The number will automatically use the agent when receiving inbound calls. If
-    null, this number would not accept inbound call.
-    """
-
-    outbound_agent_id: Optional[str]
-    """Unique id of agent to bind to the number.
-
-    The number will automatically use the agent when conducting outbound calls. If
-    null, this number would not be able to initiate outbound call without agent id
-    override.
     """
