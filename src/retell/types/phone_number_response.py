@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+
 
 from .._models import BaseModel
 
@@ -8,6 +8,12 @@ __all__ = ["PhoneNumberResponse"]
 
 
 class PhoneNumberResponse(BaseModel):
+    agent_id: str
+    """Unique id of agent to bind to newly obtained number.
+
+    The number will automatically use the agent when doing inbound / outbound calls.
+    """
+
     area_code: int
     """Area code of the number to obtain.
 
@@ -28,18 +34,3 @@ class PhoneNumberResponse(BaseModel):
 
     phone_number_pretty: str
     """Pretty printed phone number, provided for your reference."""
-
-    inbound_agent_id: Optional[str] = None
-    """Unique id of agent to bind to the number.
-
-    The number will automatically use the agent when receiving inbound calls. If
-    null, this number would not accept inbound call.
-    """
-
-    outbound_agent_id: Optional[str] = None
-    """Unique id of agent to bind to the number.
-
-    The number will automatically use the agent when conducting outbound calls. If
-    null, this number would not be able to initiate outbound call without agent id
-    override.
-    """
