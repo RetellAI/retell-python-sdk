@@ -10,9 +10,9 @@ import pytest
 from retell import Retell, AsyncRetell
 from tests.utils import assert_matches_type
 from retell.types import (
-    CallDetail,
-    PhoneCallDetail,
+    CallResponse,
     CallListResponse,
+    PhoneCallResponse,
     CallCreateWebCallResponse,
 )
 
@@ -27,7 +27,7 @@ class TestCall:
         call = client.call.retrieve(
             "119c3f8e47135a29e65947eeb34cf12d",
         )
-        assert_matches_type(CallDetail, call, path=["response"])
+        assert_matches_type(CallResponse, call, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
@@ -38,7 +38,7 @@ class TestCall:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         call = response.parse()
-        assert_matches_type(CallDetail, call, path=["response"])
+        assert_matches_type(CallResponse, call, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
@@ -49,7 +49,7 @@ class TestCall:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             call = response.parse()
-            assert_matches_type(CallDetail, call, path=["response"])
+            assert_matches_type(CallResponse, call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -107,7 +107,7 @@ class TestCall:
             from_number="+14157774444",
             to_number="+12137774445",
         )
-        assert_matches_type(PhoneCallDetail, call, path=["response"])
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
 
     @parametrize
     def test_method_create_phone_call_with_all_params(self, client: Retell) -> None:
@@ -118,7 +118,7 @@ class TestCall:
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
-        assert_matches_type(PhoneCallDetail, call, path=["response"])
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
 
     @parametrize
     def test_raw_response_create_phone_call(self, client: Retell) -> None:
@@ -130,7 +130,7 @@ class TestCall:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         call = response.parse()
-        assert_matches_type(PhoneCallDetail, call, path=["response"])
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
 
     @parametrize
     def test_streaming_response_create_phone_call(self, client: Retell) -> None:
@@ -142,7 +142,7 @@ class TestCall:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             call = response.parse()
-            assert_matches_type(PhoneCallDetail, call, path=["response"])
+            assert_matches_type(PhoneCallResponse, call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -195,7 +195,7 @@ class TestAsyncCall:
         call = await async_client.call.retrieve(
             "119c3f8e47135a29e65947eeb34cf12d",
         )
-        assert_matches_type(CallDetail, call, path=["response"])
+        assert_matches_type(CallResponse, call, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
@@ -206,7 +206,7 @@ class TestAsyncCall:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         call = await response.parse()
-        assert_matches_type(CallDetail, call, path=["response"])
+        assert_matches_type(CallResponse, call, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
@@ -217,7 +217,7 @@ class TestAsyncCall:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             call = await response.parse()
-            assert_matches_type(CallDetail, call, path=["response"])
+            assert_matches_type(CallResponse, call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -275,7 +275,7 @@ class TestAsyncCall:
             from_number="+14157774444",
             to_number="+12137774445",
         )
-        assert_matches_type(PhoneCallDetail, call, path=["response"])
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
 
     @parametrize
     async def test_method_create_phone_call_with_all_params(self, async_client: AsyncRetell) -> None:
@@ -286,7 +286,7 @@ class TestAsyncCall:
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
-        assert_matches_type(PhoneCallDetail, call, path=["response"])
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
 
     @parametrize
     async def test_raw_response_create_phone_call(self, async_client: AsyncRetell) -> None:
@@ -298,7 +298,7 @@ class TestAsyncCall:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         call = await response.parse()
-        assert_matches_type(PhoneCallDetail, call, path=["response"])
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_phone_call(self, async_client: AsyncRetell) -> None:
@@ -310,7 +310,7 @@ class TestAsyncCall:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             call = await response.parse()
-            assert_matches_type(PhoneCallDetail, call, path=["response"])
+            assert_matches_type(PhoneCallResponse, call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
