@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Optional
+
 import httpx
 
 from ..types import phone_number_create_params, phone_number_update_params
@@ -39,8 +41,9 @@ class PhoneNumberResource(SyncAPIResource):
     def create(
         self,
         *,
-        agent_id: str,
         area_code: int | NotGiven = NOT_GIVEN,
+        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -52,11 +55,16 @@ class PhoneNumberResource(SyncAPIResource):
         Buy a new phone number & Bind an agent
 
         Args:
-          agent_id: Unique id of agent to bind to newly obtained number. The number will
-              automatically use the agent when doing inbound / outbound calls.
-
           area_code: Area code of the number to obtain. Format is a 3 digit integer. Currently only
               supports US area code.
+
+          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when receiving inbound calls. If null, this number would not accept
+              inbound call.
+
+          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when conducting outbound calls. If null, this number would not be able to
+              initiate outbound call without agent id override.
 
           extra_headers: Send extra headers
 
@@ -70,8 +78,9 @@ class PhoneNumberResource(SyncAPIResource):
             "/create-phone-number",
             body=maybe_transform(
                 {
-                    "agent_id": agent_id,
                     "area_code": area_code,
+                    "inbound_agent_id": inbound_agent_id,
+                    "outbound_agent_id": outbound_agent_id,
                 },
                 phone_number_create_params.PhoneNumberCreateParams,
             ),
@@ -118,7 +127,8 @@ class PhoneNumberResource(SyncAPIResource):
         self,
         phone_number: str,
         *,
-        agent_id: str,
+        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -130,8 +140,13 @@ class PhoneNumberResource(SyncAPIResource):
         Update agent bound to a purchased phone number
 
         Args:
-          agent_id: Unique id of agent to bind to number. The number will automatically use the
-              agent when doing inbound / outbound calls.
+          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when receiving inbound calls. If set to null, this number would not accept
+              inbound call.
+
+          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when conducting outbound calls. If set to null, this number would not be
+              able to initiate outbound call without agent id override.
 
           extra_headers: Send extra headers
 
@@ -145,7 +160,13 @@ class PhoneNumberResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `phone_number` but received {phone_number!r}")
         return self._patch(
             f"/update-phone-number/{phone_number}",
-            body=maybe_transform({"agent_id": agent_id}, phone_number_update_params.PhoneNumberUpdateParams),
+            body=maybe_transform(
+                {
+                    "inbound_agent_id": inbound_agent_id,
+                    "outbound_agent_id": outbound_agent_id,
+                },
+                phone_number_update_params.PhoneNumberUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -218,8 +239,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        agent_id: str,
         area_code: int | NotGiven = NOT_GIVEN,
+        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -231,11 +253,16 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         Buy a new phone number & Bind an agent
 
         Args:
-          agent_id: Unique id of agent to bind to newly obtained number. The number will
-              automatically use the agent when doing inbound / outbound calls.
-
           area_code: Area code of the number to obtain. Format is a 3 digit integer. Currently only
               supports US area code.
+
+          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when receiving inbound calls. If null, this number would not accept
+              inbound call.
+
+          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when conducting outbound calls. If null, this number would not be able to
+              initiate outbound call without agent id override.
 
           extra_headers: Send extra headers
 
@@ -249,8 +276,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             "/create-phone-number",
             body=await async_maybe_transform(
                 {
-                    "agent_id": agent_id,
                     "area_code": area_code,
+                    "inbound_agent_id": inbound_agent_id,
+                    "outbound_agent_id": outbound_agent_id,
                 },
                 phone_number_create_params.PhoneNumberCreateParams,
             ),
@@ -297,7 +325,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         self,
         phone_number: str,
         *,
-        agent_id: str,
+        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -309,8 +338,13 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         Update agent bound to a purchased phone number
 
         Args:
-          agent_id: Unique id of agent to bind to number. The number will automatically use the
-              agent when doing inbound / outbound calls.
+          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when receiving inbound calls. If set to null, this number would not accept
+              inbound call.
+
+          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when conducting outbound calls. If set to null, this number would not be
+              able to initiate outbound call without agent id override.
 
           extra_headers: Send extra headers
 
@@ -325,7 +359,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         return await self._patch(
             f"/update-phone-number/{phone_number}",
             body=await async_maybe_transform(
-                {"agent_id": agent_id}, phone_number_update_params.PhoneNumberUpdateParams
+                {
+                    "inbound_agent_id": inbound_agent_id,
+                    "outbound_agent_id": outbound_agent_id,
+                },
+                phone_number_update_params.PhoneNumberUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
