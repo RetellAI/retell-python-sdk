@@ -57,10 +57,12 @@ class PhoneNumberResource(SyncAPIResource):
               supports US area code.
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls.
+              agent when receiving inbound calls. If unset, this number would not accept
+              inbound call.
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls.
+              agent when conducting outbound calls. If unset, this number would not be able to
+              initiate inbound call without agent id override.
 
           extra_headers: Send extra headers
 
@@ -137,10 +139,12 @@ class PhoneNumberResource(SyncAPIResource):
 
         Args:
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls.
+              agent when receiving inbound calls. If unset, this number would not accept
+              inbound call.
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls.
+              agent when conducting outbound calls. If unset, this number would not be able to
+              initiate inbound call without agent id override.
 
           extra_headers: Send extra headers
 
@@ -251,10 +255,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               supports US area code.
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls.
+              agent when receiving inbound calls. If unset, this number would not accept
+              inbound call.
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls.
+              agent when conducting outbound calls. If unset, this number would not be able to
+              initiate inbound call without agent id override.
 
           extra_headers: Send extra headers
 
@@ -331,10 +337,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
         Args:
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls.
+              agent when receiving inbound calls. If unset, this number would not accept
+              inbound call.
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls.
+              agent when conducting outbound calls. If unset, this number would not be able to
+              initiate inbound call without agent id override.
 
           extra_headers: Send extra headers
 
