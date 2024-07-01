@@ -33,13 +33,13 @@ class PhoneNumberResponse(BaseModel):
     """Unique id of agent to bind to the number.
 
     The number will automatically use the agent when receiving inbound calls. If
-    unset, this number would not accept inbound call.
+    null, this number would not accept inbound call.
     """
 
     outbound_agent_id: Optional[str] = None
     """Unique id of agent to bind to the number.
 
     The number will automatically use the agent when conducting outbound calls. If
-    unset, this number would not be able to initiate inbound call without agent id
+    null, this number would not be able to initiate outbound call without agent id
     override.
     """
