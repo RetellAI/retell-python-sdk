@@ -25,6 +25,6 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     """Unique id of agent to bind to the number.
 
     The number will automatically use the agent when conducting outbound calls. If
-    unset, this number would not be able to initiate inbound call without agent id
+    unset, this number would not be able to initiate outbound call without agent id
     override.
     """

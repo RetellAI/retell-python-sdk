@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Optional
+
 import httpx
 
 from ..types import phone_number_create_params, phone_number_update_params
@@ -62,7 +64,7 @@ class PhoneNumberResource(SyncAPIResource):
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If unset, this number would not be able to
-              initiate inbound call without agent id override.
+              initiate outbound call without agent id override.
 
           extra_headers: Send extra headers
 
@@ -125,8 +127,8 @@ class PhoneNumberResource(SyncAPIResource):
         self,
         phone_number: str,
         *,
-        inbound_agent_id: str | NotGiven = NOT_GIVEN,
-        outbound_agent_id: str | NotGiven = NOT_GIVEN,
+        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,12 +141,12 @@ class PhoneNumberResource(SyncAPIResource):
 
         Args:
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls. If unset, this number would not accept
+              agent when receiving inbound calls. If set to null, this number would not accept
               inbound call.
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls. If unset, this number would not be able to
-              initiate inbound call without agent id override.
+              agent when conducting outbound calls. If set to null, this number would not be
+              able to initiate outbound call without agent id override.
 
           extra_headers: Send extra headers
 
@@ -260,7 +262,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If unset, this number would not be able to
-              initiate inbound call without agent id override.
+              initiate outbound call without agent id override.
 
           extra_headers: Send extra headers
 
@@ -323,8 +325,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         self,
         phone_number: str,
         *,
-        inbound_agent_id: str | NotGiven = NOT_GIVEN,
-        outbound_agent_id: str | NotGiven = NOT_GIVEN,
+        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -337,12 +339,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
         Args:
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls. If unset, this number would not accept
+              agent when receiving inbound calls. If set to null, this number would not accept
               inbound call.
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls. If unset, this number would not be able to
-              initiate inbound call without agent id override.
+              agent when conducting outbound calls. If set to null, this number would not be
+              able to initiate outbound call without agent id override.
 
           extra_headers: Send extra headers
 
