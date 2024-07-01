@@ -4,9 +4,9 @@ from typing import Dict, Union, Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
-from .phone_call_detail import PhoneCallDetail
+from .phone_call_response import PhoneCallResponse
 
-__all__ = ["CallDetail", "V2WebCallResponse"]
+__all__ = ["CallResponse", "V2WebCallResponse"]
 
 
 class V2WebCallResponse(BaseModel):
@@ -69,4 +69,4 @@ class V2WebCallResponse(BaseModel):
     """
 
 
-CallDetail = Union[V2WebCallResponse, PhoneCallDetail]
+CallResponse = Union[V2WebCallResponse, PhoneCallResponse]

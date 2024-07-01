@@ -24,9 +24,9 @@ from .._response import (
 from .._base_client import (
     make_request_options,
 )
-from ..types.call_detail import CallDetail
-from ..types.phone_call_detail import PhoneCallDetail
+from ..types.call_response import CallResponse
 from ..types.call_list_response import CallListResponse
+from ..types.phone_call_response import PhoneCallResponse
 from ..types.call_create_web_call_response import CallCreateWebCallResponse
 
 __all__ = ["CallResource", "AsyncCallResource"]
@@ -51,7 +51,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallDetail:
+    ) -> CallResponse:
         """
         Retrieve details of a specific call
 
@@ -67,13 +67,13 @@ class CallResource(SyncAPIResource):
         if not call_id:
             raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
         return cast(
-            CallDetail,
+            CallResponse,
             self._get(
                 f"/v2/get-call/{call_id}",
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
-                cast_to=cast(Any, CallDetail),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 
@@ -147,7 +147,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PhoneCallDetail:
+    ) -> PhoneCallResponse:
         """
         Create a new outbound phone call
 
@@ -190,7 +190,7 @@ class CallResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PhoneCallDetail,
+            cast_to=PhoneCallResponse,
         )
 
     def create_web_call(
@@ -265,7 +265,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallDetail:
+    ) -> CallResponse:
         """
         Retrieve details of a specific call
 
@@ -281,13 +281,13 @@ class AsyncCallResource(AsyncAPIResource):
         if not call_id:
             raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
         return cast(
-            CallDetail,
+            CallResponse,
             await self._get(
                 f"/v2/get-call/{call_id}",
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
-                cast_to=cast(Any, CallDetail),  # Union types cannot be passed in as arguments in the type system
+                cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
             ),
         )
 
@@ -361,7 +361,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> PhoneCallDetail:
+    ) -> PhoneCallResponse:
         """
         Create a new outbound phone call
 
@@ -404,7 +404,7 @@ class AsyncCallResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=PhoneCallDetail,
+            cast_to=PhoneCallResponse,
         )
 
     async def create_web_call(
