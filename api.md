@@ -3,20 +3,15 @@
 Types:
 
 ```python
-from retell.types import (
-    CallResponse,
-    PhoneCallResponse,
-    CallListResponse,
-    CallCreateWebCallResponse,
-)
+from retell.types import CallResponse, RegisterCallResponse, CallListResponse
 ```
 
 Methods:
 
-- <code title="get /v2/get-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">retrieve</a>(call_id) -> <a href="./src/retell/types/call_response.py">CallResponse</a></code>
-- <code title="get /v2/list-calls">client.call.<a href="./src/retell/resources/call.py">list</a>(\*\*<a href="src/retell/types/call_list_params.py">params</a>) -> <a href="./src/retell/types/call_list_response.py">CallListResponse</a></code>
-- <code title="post /v2/create-phone-call">client.call.<a href="./src/retell/resources/call.py">create_phone_call</a>(\*\*<a href="src/retell/types/call_create_phone_call_params.py">params</a>) -> <a href="./src/retell/types/phone_call_response.py">PhoneCallResponse</a></code>
-- <code title="post /v2/create-web-call">client.call.<a href="./src/retell/resources/call.py">create_web_call</a>(\*\*<a href="src/retell/types/call_create_web_call_params.py">params</a>) -> <a href="./src/retell/types/call_create_web_call_response.py">CallCreateWebCallResponse</a></code>
+- <code title="post /create-phone-call">client.call.<a href="./src/retell/resources/call.py">create</a>(\*\*<a href="src/retell/types/call_create_params.py">params</a>) -> <a href="./src/retell/types/register_call_response.py">RegisterCallResponse</a></code>
+- <code title="get /get-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">retrieve</a>(call_id) -> <a href="./src/retell/types/call_response.py">CallResponse</a></code>
+- <code title="get /list-calls">client.call.<a href="./src/retell/resources/call.py">list</a>(\*\*<a href="src/retell/types/call_list_params.py">params</a>) -> <a href="./src/retell/types/call_list_response.py">CallListResponse</a></code>
+- <code title="post /register-call">client.call.<a href="./src/retell/resources/call.py">register</a>(\*\*<a href="src/retell/types/call_register_params.py">params</a>) -> <a href="./src/retell/types/register_call_response.py">RegisterCallResponse</a></code>
 
 # PhoneNumber
 
@@ -71,10 +66,10 @@ Methods:
 Types:
 
 ```python
-from retell.types import VoiceResponse, VoiceListResponse
+from retell.types import VoiceRetrieveResponse, VoiceListResponse
 ```
 
 Methods:
 
-- <code title="get /get-voice/{voice_id}">client.voice.<a href="./src/retell/resources/voice.py">retrieve</a>(voice_id) -> <a href="./src/retell/types/voice_response.py">VoiceResponse</a></code>
+- <code title="get /get-voice/{voice_id}">client.voice.<a href="./src/retell/resources/voice.py">retrieve</a>(voice_id) -> <a href="./src/retell/types/voice_retrieve_response.py">VoiceRetrieveResponse</a></code>
 - <code title="get /list-voices">client.voice.<a href="./src/retell/resources/voice.py">list</a>() -> <a href="./src/retell/types/voice_list_response.py">VoiceListResponse</a></code>

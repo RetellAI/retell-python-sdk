@@ -1,9 +1,34 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List
+from typing import List, Optional
+from typing_extensions import Literal
 
-from .voice_response import VoiceResponse
+from .._models import BaseModel
 
-__all__ = ["VoiceListResponse"]
+__all__ = ["VoiceListResponse", "VoiceListResponseItem"]
 
-VoiceListResponse = List[VoiceResponse]
+
+class VoiceListResponseItem(BaseModel):
+    gender: Literal["male", "female"]
+    """Gender of voice."""
+
+    provider: Literal["elevenlabs", "openai", "deepgram"]
+    """Indicates the provider of voice."""
+
+    voice_id: str
+    """Unique id for the voice."""
+
+    voice_name: str
+    """Name of the voice."""
+
+    accent: Optional[str] = None
+    """Accent annotation of the voice."""
+
+    age: Optional[str] = None
+    """Age annotation of the voice."""
+
+    preview_audio_url: Optional[str] = None
+    """URL to the preview audio of the voice."""
+
+
+VoiceListResponse = List[VoiceListResponseItem]
