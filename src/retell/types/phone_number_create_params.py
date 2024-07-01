@@ -17,11 +17,14 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     inbound_agent_id: str
     """Unique id of agent to bind to the number.
 
-    The number will automatically use the agent when receiving inbound calls.
+    The number will automatically use the agent when receiving inbound calls. If
+    unset, this number would not accept inbound call.
     """
 
     outbound_agent_id: str
     """Unique id of agent to bind to the number.
 
-    The number will automatically use the agent when conducting outbound calls.
+    The number will automatically use the agent when conducting outbound calls. If
+    unset, this number would not be able to initiate inbound call without agent id
+    override.
     """
