@@ -2,14 +2,24 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing import Optional
+from typing_extensions import TypedDict
 
 __all__ = ["PhoneNumberUpdateParams"]
 
 
 class PhoneNumberUpdateParams(TypedDict, total=False):
-    agent_id: Required[str]
-    """Unique id of agent to bind to number.
+    inbound_agent_id: Optional[str]
+    """Unique id of agent to bind to the number.
 
-    The number will automatically use the agent when doing inbound / outbound calls.
+    The number will automatically use the agent when receiving inbound calls. If set
+    to null, this number would not accept inbound call.
+    """
+
+    outbound_agent_id: Optional[str]
+    """Unique id of agent to bind to the number.
+
+    The number will automatically use the agent when conducting outbound calls. If
+    set to null, this number would not be able to initiate outbound call without
+    agent id override.
     """

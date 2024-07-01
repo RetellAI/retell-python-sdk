@@ -61,7 +61,7 @@ class LlmUpdateParams(TypedDict, total=False):
     no way to pass dynamic variables to inbound calls of Retell numbers.
     """
 
-    model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "claude-3-sonnet", "claude-3-haiku"]
+    model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "claude-3.5-sonnet", "claude-3-haiku"]
     """Select the underlying LLM. If not set, would default to gpt-3.5-turbo."""
 
     starting_state: Optional[str]
