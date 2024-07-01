@@ -113,22 +113,19 @@ class CallResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._post(
             "/v2/list-calls",
+            body=maybe_transform(
+                {
+                    "filter_criteria": filter_criteria,
+                    "limit": limit,
+                    "pagination_key": pagination_key,
+                    "sort_order": sort_order,
+                },
+                call_list_params.CallListParams,
+            ),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "filter_criteria": filter_criteria,
-                        "limit": limit,
-                        "pagination_key": pagination_key,
-                        "sort_order": sort_order,
-                    },
-                    call_list_params.CallListParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CallListResponse,
         )
@@ -327,22 +324,19 @@ class AsyncCallResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return await self._post(
             "/v2/list-calls",
+            body=await async_maybe_transform(
+                {
+                    "filter_criteria": filter_criteria,
+                    "limit": limit,
+                    "pagination_key": pagination_key,
+                    "sort_order": sort_order,
+                },
+                call_list_params.CallListParams,
+            ),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "filter_criteria": filter_criteria,
-                        "limit": limit,
-                        "pagination_key": pagination_key,
-                        "sort_order": sort_order,
-                    },
-                    call_list_params.CallListParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CallListResponse,
         )
