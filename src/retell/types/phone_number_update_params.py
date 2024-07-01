@@ -2,14 +2,20 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import TypedDict
 
 __all__ = ["PhoneNumberUpdateParams"]
 
 
 class PhoneNumberUpdateParams(TypedDict, total=False):
-    agent_id: Required[str]
-    """Unique id of agent to bind to number.
+    inbound_agent_id: str
+    """Unique id of agent to bind to the number.
 
-    The number will automatically use the agent when doing inbound / outbound calls.
+    The number will automatically use the agent when receiving inbound calls.
+    """
+
+    outbound_agent_id: str
+    """Unique id of agent to bind to the number.
+
+    The number will automatically use the agent when conducting outbound calls.
     """
