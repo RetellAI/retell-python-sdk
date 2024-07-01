@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import TypedDict
 
 __all__ = ["PhoneNumberCreateParams"]
@@ -14,17 +15,17 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     Format is a 3 digit integer. Currently only supports US area code.
     """
 
-    inbound_agent_id: str
+    inbound_agent_id: Optional[str]
     """Unique id of agent to bind to the number.
 
     The number will automatically use the agent when receiving inbound calls. If
-    unset, this number would not accept inbound call.
+    null, this number would not accept inbound call.
     """
 
-    outbound_agent_id: str
+    outbound_agent_id: Optional[str]
     """Unique id of agent to bind to the number.
 
     The number will automatically use the agent when conducting outbound calls. If
-    unset, this number would not be able to initiate outbound call without agent id
+    null, this number would not be able to initiate outbound call without agent id
     override.
     """
