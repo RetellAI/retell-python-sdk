@@ -30,6 +30,7 @@ class TestPhoneNumber:
         phone_number = client.phone_number.create(
             area_code=415,
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
@@ -104,6 +105,7 @@ class TestPhoneNumber:
         phone_number = client.phone_number.update(
             "+14157774444",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
@@ -216,6 +218,7 @@ class TestAsyncPhoneNumber:
         phone_number = await async_client.phone_number.create(
             area_code=415,
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
@@ -290,6 +293,7 @@ class TestAsyncPhoneNumber:
         phone_number = await async_client.phone_number.update(
             "+14157774444",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])

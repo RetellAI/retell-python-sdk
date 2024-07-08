@@ -23,3 +23,4 @@ from .phone_number_list_response import PhoneNumberListResponse as PhoneNumberLi
 from .phone_number_update_params import PhoneNumberUpdateParams as PhoneNumberUpdateParams
 from .call_create_web_call_params import CallCreateWebCallParams as CallCreateWebCallParams
 from .call_create_phone_call_params import CallCreatePhoneCallParams as CallCreatePhoneCallParams
+from .concurrency_retrieve_response import ConcurrencyRetrieveResponse as ConcurrencyRetrieveResponse

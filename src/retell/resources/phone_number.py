@@ -43,6 +43,7 @@ class PhoneNumberResource(SyncAPIResource):
         *,
         area_code: int | NotGiven = NOT_GIVEN,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        nickname: str | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -62,6 +63,8 @@ class PhoneNumberResource(SyncAPIResource):
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
 
+          nickname: Nickname of the number. This is for your reference only.
+
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
               initiate outbound call without agent id override.
@@ -80,6 +83,7 @@ class PhoneNumberResource(SyncAPIResource):
                 {
                     "area_code": area_code,
                     "inbound_agent_id": inbound_agent_id,
+                    "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                 },
                 phone_number_create_params.PhoneNumberCreateParams,
@@ -128,6 +132,7 @@ class PhoneNumberResource(SyncAPIResource):
         phone_number: str,
         *,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        nickname: Optional[str] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -143,6 +148,8 @@ class PhoneNumberResource(SyncAPIResource):
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If set to null, this number would not accept
               inbound call.
+
+          nickname: Nickname of the number. This is for your reference only.
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If set to null, this number would not be
@@ -163,6 +170,7 @@ class PhoneNumberResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "inbound_agent_id": inbound_agent_id,
+                    "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                 },
                 phone_number_update_params.PhoneNumberUpdateParams,
@@ -241,6 +249,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         *,
         area_code: int | NotGiven = NOT_GIVEN,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        nickname: str | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -260,6 +269,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
 
+          nickname: Nickname of the number. This is for your reference only.
+
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
               initiate outbound call without agent id override.
@@ -278,6 +289,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                 {
                     "area_code": area_code,
                     "inbound_agent_id": inbound_agent_id,
+                    "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                 },
                 phone_number_create_params.PhoneNumberCreateParams,
@@ -326,6 +338,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         phone_number: str,
         *,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        nickname: Optional[str] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -341,6 +354,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If set to null, this number would not accept
               inbound call.
+
+          nickname: Nickname of the number. This is for your reference only.
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If set to null, this number would not be
@@ -361,6 +376,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "inbound_agent_id": inbound_agent_id,
+                    "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                 },
                 phone_number_update_params.PhoneNumberUpdateParams,
