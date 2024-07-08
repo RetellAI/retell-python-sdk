@@ -32,6 +32,14 @@ from .voice import (
     VoiceResourceWithStreamingResponse,
     AsyncVoiceResourceWithStreamingResponse,
 )
+from .concurrency import (
+    ConcurrencyResource,
+    AsyncConcurrencyResource,
+    ConcurrencyResourceWithRawResponse,
+    AsyncConcurrencyResourceWithRawResponse,
+    ConcurrencyResourceWithStreamingResponse,
+    AsyncConcurrencyResourceWithStreamingResponse,
+)
 from .phone_number import (
     PhoneNumberResource,
     AsyncPhoneNumberResource,
@@ -72,4 +80,10 @@ __all__ = [
     "AsyncVoiceResourceWithRawResponse",
     "VoiceResourceWithStreamingResponse",
     "AsyncVoiceResourceWithStreamingResponse",
+    "ConcurrencyResource",
+    "AsyncConcurrencyResource",
+    "ConcurrencyResourceWithRawResponse",
+    "AsyncConcurrencyResourceWithRawResponse",
+    "ConcurrencyResourceWithStreamingResponse",
+    "AsyncConcurrencyResourceWithStreamingResponse",
 ]
