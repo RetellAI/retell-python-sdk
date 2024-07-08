@@ -16,6 +16,9 @@ class PhoneNumberUpdateParams(TypedDict, total=False):
     to null, this number would not accept inbound call.
     """
 
+    nickname: Optional[str]
+    """Nickname of the number. This is for your reference only."""
+
     outbound_agent_id: Optional[str]
     """Unique id of agent to bind to the number.
 

@@ -51,6 +51,7 @@ class Retell(SyncAPIClient):
     agent: resources.AgentResource
     llm: resources.LlmResource
     voice: resources.VoiceResource
+    concurrency: resources.ConcurrencyResource
     with_raw_response: RetellWithRawResponse
     with_streaming_response: RetellWithStreamedResponse
 
@@ -104,6 +105,7 @@ class Retell(SyncAPIClient):
         self.agent = resources.AgentResource(self)
         self.llm = resources.LlmResource(self)
         self.voice = resources.VoiceResource(self)
+        self.concurrency = resources.ConcurrencyResource(self)
         self.with_raw_response = RetellWithRawResponse(self)
         self.with_streaming_response = RetellWithStreamedResponse(self)
 
@@ -218,6 +220,7 @@ class AsyncRetell(AsyncAPIClient):
     agent: resources.AsyncAgentResource
     llm: resources.AsyncLlmResource
     voice: resources.AsyncVoiceResource
+    concurrency: resources.AsyncConcurrencyResource
     with_raw_response: AsyncRetellWithRawResponse
     with_streaming_response: AsyncRetellWithStreamedResponse
 
@@ -271,6 +274,7 @@ class AsyncRetell(AsyncAPIClient):
         self.agent = resources.AsyncAgentResource(self)
         self.llm = resources.AsyncLlmResource(self)
         self.voice = resources.AsyncVoiceResource(self)
+        self.concurrency = resources.AsyncConcurrencyResource(self)
         self.with_raw_response = AsyncRetellWithRawResponse(self)
         self.with_streaming_response = AsyncRetellWithStreamedResponse(self)
 
@@ -386,6 +390,7 @@ class RetellWithRawResponse:
         self.agent = resources.AgentResourceWithRawResponse(client.agent)
         self.llm = resources.LlmResourceWithRawResponse(client.llm)
         self.voice = resources.VoiceResourceWithRawResponse(client.voice)
+        self.concurrency = resources.ConcurrencyResourceWithRawResponse(client.concurrency)
 
 
 class AsyncRetellWithRawResponse:
@@ -395,6 +400,7 @@ class AsyncRetellWithRawResponse:
         self.agent = resources.AsyncAgentResourceWithRawResponse(client.agent)
         self.llm = resources.AsyncLlmResourceWithRawResponse(client.llm)
         self.voice = resources.AsyncVoiceResourceWithRawResponse(client.voice)
+        self.concurrency = resources.AsyncConcurrencyResourceWithRawResponse(client.concurrency)
 
 
 class RetellWithStreamedResponse:
@@ -404,6 +410,7 @@ class RetellWithStreamedResponse:
         self.agent = resources.AgentResourceWithStreamingResponse(client.agent)
         self.llm = resources.LlmResourceWithStreamingResponse(client.llm)
         self.voice = resources.VoiceResourceWithStreamingResponse(client.voice)
+        self.concurrency = resources.ConcurrencyResourceWithStreamingResponse(client.concurrency)
 
 
 class AsyncRetellWithStreamedResponse:
@@ -413,6 +420,7 @@ class AsyncRetellWithStreamedResponse:
         self.agent = resources.AsyncAgentResourceWithStreamingResponse(client.agent)
         self.llm = resources.AsyncLlmResourceWithStreamingResponse(client.llm)
         self.voice = resources.AsyncVoiceResourceWithStreamingResponse(client.voice)
+        self.concurrency = resources.AsyncConcurrencyResourceWithStreamingResponse(client.concurrency)
 
 
 Client = Retell
