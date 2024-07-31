@@ -1,5 +1,22 @@
 # Changelog
 
+## 4.1.0 (2024-07-31)
+
+Full Changelog: [v4.0.0...v4.1.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.0.0...v4.1.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#140](https://github.com/RetellAI/retell-python-sdk/issues/140)) ([053c851](https://github.com/RetellAI/retell-python-sdk/commit/053c851ce2054c86260500d6a2dadb7acf010662))
+* **api:** OpenAPI spec update via Stainless API ([#146](https://github.com/RetellAI/retell-python-sdk/issues/146)) ([b867c45](https://github.com/RetellAI/retell-python-sdk/commit/b867c45c3943069f062c9746ce3263131ef280e2))
+
+
+### Chores
+
+* fix error message import example ([#144](https://github.com/RetellAI/retell-python-sdk/issues/144)) ([2efeb89](https://github.com/RetellAI/retell-python-sdk/commit/2efeb8952315d488eff27c669b89acc40ec63b26))
+* **internal:** add type construction helper ([#145](https://github.com/RetellAI/retell-python-sdk/issues/145)) ([e9af78c](https://github.com/RetellAI/retell-python-sdk/commit/e9af78c22d646621c1454ced09ec17bce586a5cc))
+* **internal:** codegen related update ([#142](https://github.com/RetellAI/retell-python-sdk/issues/142)) ([bde4f77](https://github.com/RetellAI/retell-python-sdk/commit/bde4f77d9af597a59c77c73f559511ed8ed032f8))
+* **tests:** update prism version ([#143](https://github.com/RetellAI/retell-python-sdk/issues/143)) ([b7d2019](https://github.com/RetellAI/retell-python-sdk/commit/b7d201954e451dece6d759f88e0a5b5cc59ab39e))
+
 ## 4.0.0 (2024-07-08)
 
 Full Changelog: [v3.20.0...v4.0.0](https://github.com/RetellAI/retell-python-sdk/compare/v3.20.0...v4.0.0)
