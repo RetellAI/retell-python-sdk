@@ -7,7 +7,12 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import call_list_params, call_create_web_call_params, call_create_phone_call_params
+from ..types import (
+    call_list_params,
+    call_create_web_call_params,
+    call_create_phone_call_params,
+    call_register_phone_call_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
@@ -242,6 +247,64 @@ class CallResource(SyncAPIResource):
             cast_to=WebCallResponse,
         )
 
+    def register_phone_call(
+        self,
+        *,
+        agent_id: str,
+        from_number: str | NotGiven = NOT_GIVEN,
+        metadata: object | NotGiven = NOT_GIVEN,
+        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        to_number: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> PhoneCallResponse:
+        """
+        Register a new outbound phone call for custom telephony
+
+        Args:
+          agent_id: The agent to use for the call.
+
+          from_number: The number you own in E.164 format. Stored for tracking purpose.
+
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the call. Not used for processing. You
+              can later get this field from the call object.
+
+          retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
+              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+
+          to_number: The number you want to call, in E.164 format. Stored for tracking purpose.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/v2/register-phone-call",
+            body=maybe_transform(
+                {
+                    "agent_id": agent_id,
+                    "from_number": from_number,
+                    "metadata": metadata,
+                    "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
+                    "to_number": to_number,
+                },
+                call_register_phone_call_params.CallRegisterPhoneCallParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PhoneCallResponse,
+        )
+
 
 class AsyncCallResource(AsyncAPIResource):
     @cached_property
@@ -453,6 +516,64 @@ class AsyncCallResource(AsyncAPIResource):
             cast_to=WebCallResponse,
         )
 
+    async def register_phone_call(
+        self,
+        *,
+        agent_id: str,
+        from_number: str | NotGiven = NOT_GIVEN,
+        metadata: object | NotGiven = NOT_GIVEN,
+        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        to_number: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> PhoneCallResponse:
+        """
+        Register a new outbound phone call for custom telephony
+
+        Args:
+          agent_id: The agent to use for the call.
+
+          from_number: The number you own in E.164 format. Stored for tracking purpose.
+
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the call. Not used for processing. You
+              can later get this field from the call object.
+
+          retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
+              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+
+          to_number: The number you want to call, in E.164 format. Stored for tracking purpose.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/v2/register-phone-call",
+            body=await async_maybe_transform(
+                {
+                    "agent_id": agent_id,
+                    "from_number": from_number,
+                    "metadata": metadata,
+                    "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
+                    "to_number": to_number,
+                },
+                call_register_phone_call_params.CallRegisterPhoneCallParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PhoneCallResponse,
+        )
+
 
 class CallResourceWithRawResponse:
     def __init__(self, call: CallResource) -> None:
@@ -469,6 +590,9 @@ class CallResourceWithRawResponse:
         )
         self.create_web_call = to_raw_response_wrapper(
             call.create_web_call,
+        )
+        self.register_phone_call = to_raw_response_wrapper(
+            call.register_phone_call,
         )
 
 
@@ -488,6 +612,9 @@ class AsyncCallResourceWithRawResponse:
         self.create_web_call = async_to_raw_response_wrapper(
             call.create_web_call,
         )
+        self.register_phone_call = async_to_raw_response_wrapper(
+            call.register_phone_call,
+        )
 
 
 class CallResourceWithStreamingResponse:
@@ -506,6 +633,9 @@ class CallResourceWithStreamingResponse:
         self.create_web_call = to_streamed_response_wrapper(
             call.create_web_call,
         )
+        self.register_phone_call = to_streamed_response_wrapper(
+            call.register_phone_call,
+        )
 
 
 class AsyncCallResourceWithStreamingResponse:
@@ -523,4 +653,7 @@ class AsyncCallResourceWithStreamingResponse:
         )
         self.create_web_call = async_to_streamed_response_wrapper(
             call.create_web_call,
+        )
+        self.register_phone_call = async_to_streamed_response_wrapper(
+            call.register_phone_call,
         )

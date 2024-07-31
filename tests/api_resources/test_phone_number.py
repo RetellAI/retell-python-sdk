@@ -204,6 +204,51 @@ class TestPhoneNumber:
                 "",
             )
 
+    @parametrize
+    def test_method_import(self, client: Retell) -> None:
+        phone_number = client.phone_number.import_(
+            phone_number="+14157774444",
+            termination_uri="someuri.pstn.twilio.com",
+        )
+        assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
+
+    @parametrize
+    def test_method_import_with_all_params(self, client: Retell) -> None:
+        phone_number = client.phone_number.import_(
+            phone_number="+14157774444",
+            termination_uri="someuri.pstn.twilio.com",
+            inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            nickname="Frontdesk Number",
+            outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+        assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
+
+    @parametrize
+    def test_raw_response_import(self, client: Retell) -> None:
+        response = client.phone_number.with_raw_response.import_(
+            phone_number="+14157774444",
+            termination_uri="someuri.pstn.twilio.com",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        phone_number = response.parse()
+        assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
+
+    @parametrize
+    def test_streaming_response_import(self, client: Retell) -> None:
+        with client.phone_number.with_streaming_response.import_(
+            phone_number="+14157774444",
+            termination_uri="someuri.pstn.twilio.com",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            phone_number = response.parse()
+            assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncPhoneNumber:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -391,3 +436,48 @@ class TestAsyncPhoneNumber:
             await async_client.phone_number.with_raw_response.delete(
                 "",
             )
+
+    @parametrize
+    async def test_method_import(self, async_client: AsyncRetell) -> None:
+        phone_number = await async_client.phone_number.import_(
+            phone_number="+14157774444",
+            termination_uri="someuri.pstn.twilio.com",
+        )
+        assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
+
+    @parametrize
+    async def test_method_import_with_all_params(self, async_client: AsyncRetell) -> None:
+        phone_number = await async_client.phone_number.import_(
+            phone_number="+14157774444",
+            termination_uri="someuri.pstn.twilio.com",
+            inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            nickname="Frontdesk Number",
+            outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+        assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
+
+    @parametrize
+    async def test_raw_response_import(self, async_client: AsyncRetell) -> None:
+        response = await async_client.phone_number.with_raw_response.import_(
+            phone_number="+14157774444",
+            termination_uri="someuri.pstn.twilio.com",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        phone_number = await response.parse()
+        assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_import(self, async_client: AsyncRetell) -> None:
+        async with async_client.phone_number.with_streaming_response.import_(
+            phone_number="+14157774444",
+            termination_uri="someuri.pstn.twilio.com",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            phone_number = await response.parse()
+            assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

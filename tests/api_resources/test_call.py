@@ -186,6 +186,48 @@ class TestCall:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_register_phone_call(self, client: Retell) -> None:
+        call = client.call.register_phone_call(
+            agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
+
+    @parametrize
+    def test_method_register_phone_call_with_all_params(self, client: Retell) -> None:
+        call = client.call.register_phone_call(
+            agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            from_number="+14157774444",
+            metadata={},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
+            to_number="+12137774445",
+        )
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
+
+    @parametrize
+    def test_raw_response_register_phone_call(self, client: Retell) -> None:
+        response = client.call.with_raw_response.register_phone_call(
+            agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        call = response.parse()
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
+
+    @parametrize
+    def test_streaming_response_register_phone_call(self, client: Retell) -> None:
+        with client.call.with_streaming_response.register_phone_call(
+            agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            call = response.parse()
+            assert_matches_type(PhoneCallResponse, call, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncCall:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -351,5 +393,47 @@ class TestAsyncCall:
 
             call = await response.parse()
             assert_matches_type(WebCallResponse, call, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_register_phone_call(self, async_client: AsyncRetell) -> None:
+        call = await async_client.call.register_phone_call(
+            agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
+
+    @parametrize
+    async def test_method_register_phone_call_with_all_params(self, async_client: AsyncRetell) -> None:
+        call = await async_client.call.register_phone_call(
+            agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            from_number="+14157774444",
+            metadata={},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
+            to_number="+12137774445",
+        )
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
+
+    @parametrize
+    async def test_raw_response_register_phone_call(self, async_client: AsyncRetell) -> None:
+        response = await async_client.call.with_raw_response.register_phone_call(
+            agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        call = await response.parse()
+        assert_matches_type(PhoneCallResponse, call, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_register_phone_call(self, async_client: AsyncRetell) -> None:
+        async with async_client.call.with_streaming_response.register_phone_call(
+            agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            call = await response.parse()
+            assert_matches_type(PhoneCallResponse, call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
