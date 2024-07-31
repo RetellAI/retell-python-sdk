@@ -66,8 +66,8 @@ class TestLlm:
                     "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -75,8 +75,8 @@ class TestLlm:
                             },
                         },
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -84,8 +84,8 @@ class TestLlm:
                             },
                         },
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -169,14 +169,14 @@ class TestLlm:
     @parametrize
     def test_method_update(self, client: Retell) -> None:
         llm = client.llm.update(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Retell) -> None:
         llm = client.llm.update(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             general_prompt="You are ...",
             general_tools=[
@@ -218,8 +218,8 @@ class TestLlm:
                     "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -227,8 +227,8 @@ class TestLlm:
                             },
                         },
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -236,8 +236,8 @@ class TestLlm:
                             },
                         },
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -263,7 +263,7 @@ class TestLlm:
     @parametrize
     def test_raw_response_update(self, client: Retell) -> None:
         response = client.llm.with_raw_response.update(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
         )
 
         assert response.is_closed is True
@@ -274,7 +274,7 @@ class TestLlm:
     @parametrize
     def test_streaming_response_update(self, client: Retell) -> None:
         with client.llm.with_streaming_response.update(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -288,7 +288,7 @@ class TestLlm:
     def test_path_params_update(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `llm_id` but received ''"):
             client.llm.with_raw_response.update(
-                "",
+                llm_id="",
             )
 
     @parametrize
@@ -407,8 +407,8 @@ class TestAsyncLlm:
                     "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -416,8 +416,8 @@ class TestAsyncLlm:
                             },
                         },
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -425,8 +425,8 @@ class TestAsyncLlm:
                             },
                         },
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -510,14 +510,14 @@ class TestAsyncLlm:
     @parametrize
     async def test_method_update(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.update(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.update(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             general_prompt="You are ...",
             general_tools=[
@@ -559,8 +559,8 @@ class TestAsyncLlm:
                     "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -568,8 +568,8 @@ class TestAsyncLlm:
                             },
                         },
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -577,8 +577,8 @@ class TestAsyncLlm:
                             },
                         },
                         {
-                            "destination_state_name": "string",
-                            "description": "string",
+                            "destination_state_name": "destination_state_name",
+                            "description": "description",
                             "parameters": {
                                 "type": "object",
                                 "properties": {"foo": {}},
@@ -604,7 +604,7 @@ class TestAsyncLlm:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncRetell) -> None:
         response = await async_client.llm.with_raw_response.update(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
         )
 
         assert response.is_closed is True
@@ -615,7 +615,7 @@ class TestAsyncLlm:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncRetell) -> None:
         async with async_client.llm.with_streaming_response.update(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -629,7 +629,7 @@ class TestAsyncLlm:
     async def test_path_params_update(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `llm_id` but received ''"):
             await async_client.llm.with_raw_response.update(
-                "",
+                llm_id="",
             )
 
     @parametrize

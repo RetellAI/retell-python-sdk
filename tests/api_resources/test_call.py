@@ -76,7 +76,7 @@ class TestCall:
                 "after_end_timestamp": 1703302428800,
             },
             limit=0,
-            pagination_key="string",
+            pagination_key="pagination_key",
             sort_order="ascending",
         )
         assert_matches_type(CallListResponse, call, path=["response"])
@@ -286,7 +286,7 @@ class TestAsyncCall:
                 "after_end_timestamp": 1703302428800,
             },
             limit=0,
-            pagination_key="string",
+            pagination_key="pagination_key",
             sort_order="ascending",
         )
         assert_matches_type(CallListResponse, call, path=["response"])
