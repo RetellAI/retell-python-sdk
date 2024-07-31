@@ -96,14 +96,14 @@ class TestPhoneNumber:
     @parametrize
     def test_method_update(self, client: Retell) -> None:
         phone_number = client.phone_number.update(
-            "+14157774444",
+            phone_number="+14157774444",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Retell) -> None:
         phone_number = client.phone_number.update(
-            "+14157774444",
+            phone_number="+14157774444",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
@@ -113,7 +113,7 @@ class TestPhoneNumber:
     @parametrize
     def test_raw_response_update(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.update(
-            "+14157774444",
+            phone_number="+14157774444",
         )
 
         assert response.is_closed is True
@@ -124,7 +124,7 @@ class TestPhoneNumber:
     @parametrize
     def test_streaming_response_update(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.update(
-            "+14157774444",
+            phone_number="+14157774444",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -138,7 +138,7 @@ class TestPhoneNumber:
     def test_path_params_update(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
             client.phone_number.with_raw_response.update(
-                "",
+                phone_number="",
             )
 
     @parametrize
@@ -329,14 +329,14 @@ class TestAsyncPhoneNumber:
     @parametrize
     async def test_method_update(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.update(
-            "+14157774444",
+            phone_number="+14157774444",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.update(
-            "+14157774444",
+            phone_number="+14157774444",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
@@ -346,7 +346,7 @@ class TestAsyncPhoneNumber:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.update(
-            "+14157774444",
+            phone_number="+14157774444",
         )
 
         assert response.is_closed is True
@@ -357,7 +357,7 @@ class TestAsyncPhoneNumber:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.update(
-            "+14157774444",
+            phone_number="+14157774444",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -371,7 +371,7 @@ class TestAsyncPhoneNumber:
     async def test_path_params_update(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
             await async_client.phone_number.with_raw_response.update(
-                "",
+                phone_number="",
             )
 
     @parametrize
