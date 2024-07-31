@@ -6,7 +6,7 @@ from typing import Optional
 
 import httpx
 
-from ..types import phone_number_create_params, phone_number_update_params
+from ..types import phone_number_create_params, phone_number_import_params, phone_number_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -53,7 +53,7 @@ class PhoneNumberResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> PhoneNumberResponse:
         """
-        Buy a new phone number & Bind an agent
+        Buy a new phone number & Bind agents
 
         Args:
           area_code: Area code of the number to obtain. Format is a 3 digit integer. Currently only
@@ -234,6 +234,69 @@ class PhoneNumberResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def import_(
+        self,
+        *,
+        phone_number: str,
+        termination_uri: str,
+        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        nickname: str | NotGiven = NOT_GIVEN,
+        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> PhoneNumberResponse:
+        """
+        Import a phone number from custom telephony & Bind agents
+
+        Args:
+          phone_number: The number you are trying to import in E.164 format of the number (+country
+              code, then number with no space, no special characters), used as the unique
+              identifier for phone number APIs.
+
+          termination_uri: The termination uri to uniquely identify your elastic SIP trunk. This is used
+              for outbound calls. For Twilio elastic SIP trunks it always end with
+              ".pstn.twilio.com".
+
+          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when receiving inbound calls. If null, this number would not accept
+              inbound call.
+
+          nickname: Nickname of the number. This is for your reference only.
+
+          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when conducting outbound calls. If null, this number would not be able to
+              initiate outbound call without agent id override.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/import-phone-number",
+            body=maybe_transform(
+                {
+                    "phone_number": phone_number,
+                    "termination_uri": termination_uri,
+                    "inbound_agent_id": inbound_agent_id,
+                    "nickname": nickname,
+                    "outbound_agent_id": outbound_agent_id,
+                },
+                phone_number_import_params.PhoneNumberImportParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PhoneNumberResponse,
+        )
+
 
 class AsyncPhoneNumberResource(AsyncAPIResource):
     @cached_property
@@ -259,7 +322,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> PhoneNumberResponse:
         """
-        Buy a new phone number & Bind an agent
+        Buy a new phone number & Bind agents
 
         Args:
           area_code: Area code of the number to obtain. Format is a 3 digit integer. Currently only
@@ -440,6 +503,69 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def import_(
+        self,
+        *,
+        phone_number: str,
+        termination_uri: str,
+        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        nickname: str | NotGiven = NOT_GIVEN,
+        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> PhoneNumberResponse:
+        """
+        Import a phone number from custom telephony & Bind agents
+
+        Args:
+          phone_number: The number you are trying to import in E.164 format of the number (+country
+              code, then number with no space, no special characters), used as the unique
+              identifier for phone number APIs.
+
+          termination_uri: The termination uri to uniquely identify your elastic SIP trunk. This is used
+              for outbound calls. For Twilio elastic SIP trunks it always end with
+              ".pstn.twilio.com".
+
+          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when receiving inbound calls. If null, this number would not accept
+              inbound call.
+
+          nickname: Nickname of the number. This is for your reference only.
+
+          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
+              agent when conducting outbound calls. If null, this number would not be able to
+              initiate outbound call without agent id override.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/import-phone-number",
+            body=await async_maybe_transform(
+                {
+                    "phone_number": phone_number,
+                    "termination_uri": termination_uri,
+                    "inbound_agent_id": inbound_agent_id,
+                    "nickname": nickname,
+                    "outbound_agent_id": outbound_agent_id,
+                },
+                phone_number_import_params.PhoneNumberImportParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=PhoneNumberResponse,
+        )
+
 
 class PhoneNumberResourceWithRawResponse:
     def __init__(self, phone_number: PhoneNumberResource) -> None:
@@ -459,6 +585,9 @@ class PhoneNumberResourceWithRawResponse:
         )
         self.delete = to_raw_response_wrapper(
             phone_number.delete,
+        )
+        self.import_ = to_raw_response_wrapper(
+            phone_number.import_,
         )
 
 
@@ -481,6 +610,9 @@ class AsyncPhoneNumberResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             phone_number.delete,
         )
+        self.import_ = async_to_raw_response_wrapper(
+            phone_number.import_,
+        )
 
 
 class PhoneNumberResourceWithStreamingResponse:
@@ -502,6 +634,9 @@ class PhoneNumberResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             phone_number.delete,
         )
+        self.import_ = to_streamed_response_wrapper(
+            phone_number.import_,
+        )
 
 
 class AsyncPhoneNumberResourceWithStreamingResponse:
@@ -522,4 +657,7 @@ class AsyncPhoneNumberResourceWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             phone_number.delete,
+        )
+        self.import_ = async_to_streamed_response_wrapper(
+            phone_number.import_,
         )
