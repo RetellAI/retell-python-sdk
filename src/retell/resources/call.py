@@ -249,6 +249,7 @@ class CallResource(SyncAPIResource):
         self,
         *,
         agent_id: str,
+        direction: Literal["inbound", "outbound"] | NotGiven = NOT_GIVEN,
         from_number: str | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -265,6 +266,8 @@ class CallResource(SyncAPIResource):
 
         Args:
           agent_id: The agent to use for the call.
+
+          direction: Direction of the phone call. Stored for tracking purpose.
 
           from_number: The number you own in E.164 format. Stored for tracking purpose.
 
@@ -290,6 +293,7 @@ class CallResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "agent_id": agent_id,
+                    "direction": direction,
                     "from_number": from_number,
                     "metadata": metadata,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
@@ -518,6 +522,7 @@ class AsyncCallResource(AsyncAPIResource):
         self,
         *,
         agent_id: str,
+        direction: Literal["inbound", "outbound"] | NotGiven = NOT_GIVEN,
         from_number: str | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
@@ -534,6 +539,8 @@ class AsyncCallResource(AsyncAPIResource):
 
         Args:
           agent_id: The agent to use for the call.
+
+          direction: Direction of the phone call. Stored for tracking purpose.
 
           from_number: The number you own in E.164 format. Stored for tracking purpose.
 
@@ -559,6 +566,7 @@ class AsyncCallResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "agent_id": agent_id,
+                    "direction": direction,
                     "from_number": from_number,
                     "metadata": metadata,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,

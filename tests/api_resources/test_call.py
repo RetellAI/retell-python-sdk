@@ -197,6 +197,7 @@ class TestCall:
     def test_method_register_phone_call_with_all_params(self, client: Retell) -> None:
         call = client.call.register_phone_call(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            direction="inbound",
             from_number="+14157774444",
             metadata={},
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
@@ -407,6 +408,7 @@ class TestAsyncCall:
     async def test_method_register_phone_call_with_all_params(self, async_client: AsyncRetell) -> None:
         call = await async_client.call.register_phone_call(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            direction="inbound",
             from_number="+14157774444",
             metadata={},
             retell_llm_dynamic_variables={"customer_name": "John Doe"},

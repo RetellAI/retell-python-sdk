@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["CallRegisterPhoneCallParams"]
 
@@ -11,6 +11,9 @@ __all__ = ["CallRegisterPhoneCallParams"]
 class CallRegisterPhoneCallParams(TypedDict, total=False):
     agent_id: Required[str]
     """The agent to use for the call."""
+
+    direction: Literal["inbound", "outbound"]
+    """Direction of the phone call. Stored for tracking purpose."""
 
     from_number: str
     """The number you own in E.164 format. Stored for tracking purpose."""
