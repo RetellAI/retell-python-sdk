@@ -20,9 +20,6 @@ class PhoneNumberResponse(BaseModel):
     characters), used as the unique identifier for phone number APIs.
     """
 
-    phone_number_pretty: str
-    """Pretty printed phone number, provided for your reference."""
-
     area_code: Optional[int] = None
     """Area code of the number to obtain.
 
@@ -46,3 +43,6 @@ class PhoneNumberResponse(BaseModel):
     null, this number would not be able to initiate outbound call without agent id
     override.
     """
+
+    phone_number_pretty: Optional[str] = None
+    """Pretty printed phone number, provided for your reference."""
