@@ -12,6 +12,7 @@ __all__ = [
     "GeneralToolTransferCallTool",
     "GeneralToolCheckAvailabilityCalTool",
     "GeneralToolBookAppointmentCalTool",
+    "GeneralToolPressDigitTool",
     "GeneralToolCustomTool",
     "GeneralToolCustomToolParameters",
     "State",
@@ -22,6 +23,7 @@ __all__ = [
     "StateToolTransferCallTool",
     "StateToolCheckAvailabilityCalTool",
     "StateToolBookAppointmentCalTool",
+    "StateToolPressDigitTool",
     "StateToolCustomTool",
     "StateToolCustomToolParameters",
 ]
@@ -143,6 +145,24 @@ class GeneralToolBookAppointmentCalTool(BaseModel):
     """
 
 
+class GeneralToolPressDigitTool(BaseModel):
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Literal["press_digit"]
+
+    description: Optional[str] = None
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+
 class GeneralToolCustomToolParameters(BaseModel):
     properties: Dict[str, object]
     """
@@ -218,6 +238,7 @@ GeneralTool = Union[
     GeneralToolTransferCallTool,
     GeneralToolCheckAvailabilityCalTool,
     GeneralToolBookAppointmentCalTool,
+    GeneralToolPressDigitTool,
     GeneralToolCustomTool,
 ]
 
@@ -382,6 +403,24 @@ class StateToolBookAppointmentCalTool(BaseModel):
     """
 
 
+class StateToolPressDigitTool(BaseModel):
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Literal["press_digit"]
+
+    description: Optional[str] = None
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+
 class StateToolCustomToolParameters(BaseModel):
     properties: Dict[str, object]
     """
@@ -457,6 +496,7 @@ StateTool = Union[
     StateToolTransferCallTool,
     StateToolCheckAvailabilityCalTool,
     StateToolBookAppointmentCalTool,
+    StateToolPressDigitTool,
     StateToolCustomTool,
 ]
 
