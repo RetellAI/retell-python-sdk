@@ -220,6 +220,8 @@ class TestPhoneNumber:
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            sip_trunk_auth_password="123456",
+            sip_trunk_auth_username="username",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -453,6 +455,8 @@ class TestAsyncPhoneNumber:
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            sip_trunk_auth_password="123456",
+            sip_trunk_auth_username="username",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 

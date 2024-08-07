@@ -240,6 +240,8 @@ class PhoneNumberResource(SyncAPIResource):
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        sip_trunk_auth_password: str | NotGiven = NOT_GIVEN,
+        sip_trunk_auth_username: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -269,6 +271,10 @@ class PhoneNumberResource(SyncAPIResource):
               agent when conducting outbound calls. If null, this number would not be able to
               initiate outbound call without agent id override.
 
+          sip_trunk_auth_password: The password used for authentication for the SIP trunk.
+
+          sip_trunk_auth_username: The username used for authentication for the SIP trunk.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -286,6 +292,8 @@ class PhoneNumberResource(SyncAPIResource):
                     "inbound_agent_id": inbound_agent_id,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
+                    "sip_trunk_auth_password": sip_trunk_auth_password,
+                    "sip_trunk_auth_username": sip_trunk_auth_username,
                 },
                 phone_number_import_params.PhoneNumberImportParams,
             ),
@@ -509,6 +517,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        sip_trunk_auth_password: str | NotGiven = NOT_GIVEN,
+        sip_trunk_auth_username: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -538,6 +548,10 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               agent when conducting outbound calls. If null, this number would not be able to
               initiate outbound call without agent id override.
 
+          sip_trunk_auth_password: The password used for authentication for the SIP trunk.
+
+          sip_trunk_auth_username: The username used for authentication for the SIP trunk.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -555,6 +569,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "inbound_agent_id": inbound_agent_id,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
+                    "sip_trunk_auth_password": sip_trunk_auth_password,
+                    "sip_trunk_auth_username": sip_trunk_auth_username,
                 },
                 phone_number_import_params.PhoneNumberImportParams,
             ),
