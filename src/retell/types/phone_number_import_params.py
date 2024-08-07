@@ -40,3 +40,9 @@ class PhoneNumberImportParams(TypedDict, total=False):
     null, this number would not be able to initiate outbound call without agent id
     override.
     """
+
+    sip_trunk_auth_password: str
+    """The password used for authentication for the SIP trunk."""
+
+    sip_trunk_auth_username: str
+    """The username used for authentication for the SIP trunk."""
