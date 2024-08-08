@@ -76,9 +76,9 @@ class LlmResource(SyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
-          inbound_dynamic_variables_webhook_url: For inbound phone calls with Retell numbers, if this webhook is set, will POST
-              to it to retrieve dynamic variables to use for the call. Without this, there's
-              no way to pass dynamic variables to inbound calls of Retell numbers.
+          inbound_dynamic_variables_webhook_url: For inbound phone calls, if this webhook is set, will POST to it to retrieve
+              dynamic variables to use for the call. Without this, there's no way to pass
+              dynamic variables for inbound calls.
 
           model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
 
@@ -191,9 +191,9 @@ class LlmResource(SyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
-          inbound_dynamic_variables_webhook_url: For inbound phone calls with Retell numbers, if this webhook is set, will POST
-              to it to retrieve dynamic variables to use for the call. Without this, there's
-              no way to pass dynamic variables to inbound calls of Retell numbers.
+          inbound_dynamic_variables_webhook_url: For inbound phone calls, if this webhook is set, will POST to it to retrieve
+              dynamic variables to use for the call. Without this, there's no way to pass
+              dynamic variables for inbound calls.
 
           model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
 
@@ -337,9 +337,9 @@ class AsyncLlmResource(AsyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
-          inbound_dynamic_variables_webhook_url: For inbound phone calls with Retell numbers, if this webhook is set, will POST
-              to it to retrieve dynamic variables to use for the call. Without this, there's
-              no way to pass dynamic variables to inbound calls of Retell numbers.
+          inbound_dynamic_variables_webhook_url: For inbound phone calls, if this webhook is set, will POST to it to retrieve
+              dynamic variables to use for the call. Without this, there's no way to pass
+              dynamic variables for inbound calls.
 
           model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
 
@@ -452,9 +452,9 @@ class AsyncLlmResource(AsyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
-          inbound_dynamic_variables_webhook_url: For inbound phone calls with Retell numbers, if this webhook is set, will POST
-              to it to retrieve dynamic variables to use for the call. Without this, there's
-              no way to pass dynamic variables to inbound calls of Retell numbers.
+          inbound_dynamic_variables_webhook_url: For inbound phone calls, if this webhook is set, will POST to it to retrieve
+              dynamic variables to use for the call. Without this, there's no way to pass
+              dynamic variables for inbound calls.
 
           model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
 

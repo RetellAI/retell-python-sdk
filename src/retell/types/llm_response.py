@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Dict, List, Union, Optional
-from typing_extensions import Literal
+from typing_extensions import Literal, TypeAlias
 
 from .._models import BaseModel
 
@@ -233,7 +233,7 @@ class GeneralToolCustomTool(BaseModel):
     """
 
 
-GeneralTool = Union[
+GeneralTool: TypeAlias = Union[
     GeneralToolEndCallTool,
     GeneralToolTransferCallTool,
     GeneralToolCheckAvailabilityCalTool,
@@ -491,7 +491,7 @@ class StateToolCustomTool(BaseModel):
     """
 
 
-StateTool = Union[
+StateTool: TypeAlias = Union[
     StateToolEndCallTool,
     StateToolTransferCallTool,
     StateToolCheckAvailabilityCalTool,
@@ -573,9 +573,9 @@ class LlmResponse(BaseModel):
 
     inbound_dynamic_variables_webhook_url: Optional[str] = None
     """
-    For inbound phone calls with Retell numbers, if this webhook is set, will POST
-    to it to retrieve dynamic variables to use for the call. Without this, there's
-    no way to pass dynamic variables to inbound calls of Retell numbers.
+    For inbound phone calls, if this webhook is set, will POST to it to retrieve
+    dynamic variables to use for the call. Without this, there's no way to pass
+    dynamic variables for inbound calls.
     """
 
     model: Optional[

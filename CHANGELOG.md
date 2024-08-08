@@ -1,5 +1,23 @@
 # Changelog
 
+## 4.3.0 (2024-08-08)
+
+Full Changelog: [v4.2.0...v4.3.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.2.0...v4.3.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#151](https://github.com/RetellAI/retell-python-sdk/issues/151)) ([f562aa4](https://github.com/RetellAI/retell-python-sdk/commit/f562aa4332614db8225d87f5b0089936231f0d8d))
+* **client:** add `retry_count` to raw response class ([#155](https://github.com/RetellAI/retell-python-sdk/issues/155)) ([e486f13](https://github.com/RetellAI/retell-python-sdk/commit/e486f1335037ce56a154692edf1f2ad2e21cb8ac))
+
+
+### Chores
+
+* **internal:** bump pyright ([#154](https://github.com/RetellAI/retell-python-sdk/issues/154)) ([372900e](https://github.com/RetellAI/retell-python-sdk/commit/372900ea6bd723c01b2f19d446e1bac29aca0ba9))
+* **internal:** bump ruff version ([#157](https://github.com/RetellAI/retell-python-sdk/issues/157)) ([04ebe96](https://github.com/RetellAI/retell-python-sdk/commit/04ebe968e683ef3b5c97195cd4f6ac03348c467e))
+* **internal:** test updates ([#156](https://github.com/RetellAI/retell-python-sdk/issues/156)) ([b69760f](https://github.com/RetellAI/retell-python-sdk/commit/b69760fe8a97c6ca6568fd5050e773f04f6add91))
+* **internal:** update pydantic compat helper function ([#158](https://github.com/RetellAI/retell-python-sdk/issues/158)) ([d83e081](https://github.com/RetellAI/retell-python-sdk/commit/d83e081fb5d258881c6c7fa14ed07a1be34cec78))
+* **internal:** use `TypeAlias` marker for type assignments ([#153](https://github.com/RetellAI/retell-python-sdk/issues/153)) ([32812a1](https://github.com/RetellAI/retell-python-sdk/commit/32812a121030db9e7ca335c0612ca05f26730b6c))
+
 ## 4.2.0 (2024-08-07)
 
 Full Changelog: [v4.1.0...v4.2.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.1.0...v4.2.0)

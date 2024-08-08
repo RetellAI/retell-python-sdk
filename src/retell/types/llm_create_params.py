@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
     "LlmCreateParams",
@@ -58,9 +58,9 @@ class LlmCreateParams(TypedDict, total=False):
 
     inbound_dynamic_variables_webhook_url: Optional[str]
     """
-    For inbound phone calls with Retell numbers, if this webhook is set, will POST
-    to it to retrieve dynamic variables to use for the call. Without this, there's
-    no way to pass dynamic variables to inbound calls of Retell numbers.
+    For inbound phone calls, if this webhook is set, will POST to it to retrieve
+    dynamic variables to use for the call. Without this, there's no way to pass
+    dynamic variables for inbound calls.
     """
 
     model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
@@ -284,7 +284,7 @@ class GeneralToolCustomTool(TypedDict, total=False):
     """
 
 
-GeneralTool = Union[
+GeneralTool: TypeAlias = Union[
     GeneralToolEndCallTool,
     GeneralToolTransferCallTool,
     GeneralToolCheckAvailabilityCalTool,
@@ -542,7 +542,7 @@ class StateToolCustomTool(TypedDict, total=False):
     """
 
 
-StateTool = Union[
+StateTool: TypeAlias = Union[
     StateToolEndCallTool,
     StateToolTransferCallTool,
     StateToolCheckAvailabilityCalTool,
