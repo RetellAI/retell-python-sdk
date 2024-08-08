@@ -58,9 +58,9 @@ class LlmUpdateParams(TypedDict, total=False):
 
     inbound_dynamic_variables_webhook_url: Optional[str]
     """
-    For inbound phone calls with Retell numbers, if this webhook is set, will POST
-    to it to retrieve dynamic variables to use for the call. Without this, there's
-    no way to pass dynamic variables to inbound calls of Retell numbers.
+    For inbound phone calls, if this webhook is set, will POST to it to retrieve
+    dynamic variables to use for the call. Without this, there's no way to pass
+    dynamic variables for inbound calls.
     """
 
     model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
