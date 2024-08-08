@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
     "LlmUpdateParams",
@@ -284,7 +284,7 @@ class GeneralToolCustomTool(TypedDict, total=False):
     """
 
 
-GeneralTool = Union[
+GeneralTool: TypeAlias = Union[
     GeneralToolEndCallTool,
     GeneralToolTransferCallTool,
     GeneralToolCheckAvailabilityCalTool,
@@ -542,7 +542,7 @@ class StateToolCustomTool(TypedDict, total=False):
     """
 
 
-StateTool = Union[
+StateTool: TypeAlias = Union[
     StateToolEndCallTool,
     StateToolTransferCallTool,
     StateToolCheckAvailabilityCalTool,
