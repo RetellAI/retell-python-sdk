@@ -573,9 +573,9 @@ class LlmResponse(BaseModel):
 
     inbound_dynamic_variables_webhook_url: Optional[str] = None
     """
-    For inbound phone calls with Retell numbers, if this webhook is set, will POST
-    to it to retrieve dynamic variables to use for the call. Without this, there's
-    no way to pass dynamic variables to inbound calls of Retell numbers.
+    For inbound phone calls, if this webhook is set, will POST to it to retrieve
+    dynamic variables to use for the call. Without this, there's no way to pass
+    dynamic variables for inbound calls.
     """
 
     model: Optional[
