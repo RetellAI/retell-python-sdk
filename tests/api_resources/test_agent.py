@@ -37,6 +37,7 @@ class TestAgent:
             backchannel_words=["yeah", "uh-huh"],
             boosted_keywords=["retell", "kroger"],
             enable_backchannel=True,
+            enable_voicemail_detection=True,
             end_call_after_silence_ms=600000,
             fallback_voice_ids=["openai-Alloy", "deepgram-Angus"],
             interruption_sensitivity=1,
@@ -65,6 +66,7 @@ class TestAgent:
             responsiveness=1,
             voice_speed=1,
             voice_temperature=1,
+            voicemail_message="Hi, please give us a callback.",
             webhook_url="https://webhook-url-here",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
@@ -151,6 +153,7 @@ class TestAgent:
             backchannel_words=["yeah", "uh-huh"],
             boosted_keywords=["retell", "kroger"],
             enable_backchannel=True,
+            enable_voicemail_detection=True,
             end_call_after_silence_ms=600000,
             fallback_voice_ids=["openai-Alloy", "deepgram-Angus"],
             interruption_sensitivity=1,
@@ -181,6 +184,7 @@ class TestAgent:
             voice_id="11labs-Adrian",
             voice_speed=1,
             voice_temperature=1,
+            voicemail_message="Hi, please give us a callback.",
             webhook_url="https://webhook-url-here",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
@@ -303,6 +307,7 @@ class TestAsyncAgent:
             backchannel_words=["yeah", "uh-huh"],
             boosted_keywords=["retell", "kroger"],
             enable_backchannel=True,
+            enable_voicemail_detection=True,
             end_call_after_silence_ms=600000,
             fallback_voice_ids=["openai-Alloy", "deepgram-Angus"],
             interruption_sensitivity=1,
@@ -331,6 +336,7 @@ class TestAsyncAgent:
             responsiveness=1,
             voice_speed=1,
             voice_temperature=1,
+            voicemail_message="Hi, please give us a callback.",
             webhook_url="https://webhook-url-here",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
@@ -417,6 +423,7 @@ class TestAsyncAgent:
             backchannel_words=["yeah", "uh-huh"],
             boosted_keywords=["retell", "kroger"],
             enable_backchannel=True,
+            enable_voicemail_detection=True,
             end_call_after_silence_ms=600000,
             fallback_voice_ids=["openai-Alloy", "deepgram-Angus"],
             interruption_sensitivity=1,
@@ -447,6 +454,7 @@ class TestAsyncAgent:
             voice_id="11labs-Adrian",
             voice_speed=1,
             voice_temperature=1,
+            voicemail_message="Hi, please give us a callback.",
             webhook_url="https://webhook-url-here",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
