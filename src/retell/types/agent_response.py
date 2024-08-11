@@ -115,6 +115,12 @@ class AgentResponse(BaseModel):
     will not backchannel.
     """
 
+    enable_voicemail_detection: Optional[bool] = None
+    """If set to true, will detect whether the call enters a voicemail.
+
+    Note that this feature is only available for phone calls.
+    """
+
     end_call_after_silence_ms: Optional[int] = None
     """If users stay silent for a period after agent speech, end the call.
 
@@ -209,6 +215,13 @@ class AgentResponse(BaseModel):
     Value ranging from [0,2]. Lower value means more stable, and higher value means
     more variant speech generation. Currently this setting only applies to `11labs`
     voices. If unset, default value 1 will apply.
+    """
+
+    voicemail_message: Optional[str] = None
+    """The message to be played when the call enters a voicemail.
+
+    Note that this feature is only available for phone calls. If you want to hangup
+    after hitting voicemail, set this to empty string.
     """
 
     webhook_url: Optional[str] = None

@@ -70,7 +70,7 @@ class AgentCreateParams(TypedDict, total=False):
     apply.
     """
 
-    backchannel_words: List[str]
+    backchannel_words: Optional[List[str]]
     """Only applicable when enable_backchannel is true.
 
     A list of words that the agent would use as backchannel. If not set, default
@@ -93,6 +93,12 @@ class AgentCreateParams(TypedDict, total=False):
     phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
     when enabled tends to show up more in longer user utterances. If not set, agent
     will not backchannel.
+    """
+
+    enable_voicemail_detection: bool
+    """If set to true, will detect whether the call enters a voicemail.
+
+    Note that this feature is only available for phone calls.
     """
 
     end_call_after_silence_ms: int
@@ -189,6 +195,13 @@ class AgentCreateParams(TypedDict, total=False):
     Value ranging from [0,2]. Lower value means more stable, and higher value means
     more variant speech generation. Currently this setting only applies to `11labs`
     voices. If unset, default value 1 will apply.
+    """
+
+    voicemail_message: str
+    """The message to be played when the call enters a voicemail.
+
+    Note that this feature is only available for phone calls. If you want to hangup
+    after hitting voicemail, set this to empty string.
     """
 
     webhook_url: Optional[str]

@@ -51,9 +51,10 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: List[str] | NotGiven = NOT_GIVEN,
+        backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -70,6 +71,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
+        voicemail_message: str | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -140,6 +142,9 @@ class AgentResource(SyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
+              feature is only available for phone calls.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -197,6 +202,10 @@ class AgentResource(SyncAPIResource):
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
 
+          voicemail_message: The message to be played when the call enters a voicemail. Note that this
+              feature is only available for phone calls. If you want to hangup after hitting
+              voicemail, set this to empty string.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -223,6 +232,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -235,6 +245,7 @@ class AgentResource(SyncAPIResource):
                     "responsiveness": responsiveness,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_message": voicemail_message,
                     "webhook_url": webhook_url,
                 },
                 agent_create_params.AgentCreateParams,
@@ -291,9 +302,10 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: List[str] | NotGiven = NOT_GIVEN,
+        backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -312,6 +324,7 @@ class AgentResource(SyncAPIResource):
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
+        voicemail_message: str | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -375,6 +388,9 @@ class AgentResource(SyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
+              feature is only available for phone calls.
 
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
@@ -440,6 +456,10 @@ class AgentResource(SyncAPIResource):
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
 
+          voicemail_message: The message to be played when the call enters a voicemail. Note that this
+              feature is only available for phone calls. If you want to hangup after hitting
+              voicemail, set this to empty string.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -466,6 +486,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -480,6 +501,7 @@ class AgentResource(SyncAPIResource):
                     "voice_id": voice_id,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_message": voicemail_message,
                     "webhook_url": webhook_url,
                 },
                 agent_update_params.AgentUpdateParams,
@@ -567,9 +589,10 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: List[str] | NotGiven = NOT_GIVEN,
+        backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -586,6 +609,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
+        voicemail_message: str | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -656,6 +680,9 @@ class AsyncAgentResource(AsyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
+              feature is only available for phone calls.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -713,6 +740,10 @@ class AsyncAgentResource(AsyncAPIResource):
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
 
+          voicemail_message: The message to be played when the call enters a voicemail. Note that this
+              feature is only available for phone calls. If you want to hangup after hitting
+              voicemail, set this to empty string.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -739,6 +770,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -751,6 +783,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "responsiveness": responsiveness,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_message": voicemail_message,
                     "webhook_url": webhook_url,
                 },
                 agent_create_params.AgentCreateParams,
@@ -807,9 +840,10 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: List[str] | NotGiven = NOT_GIVEN,
+        backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -828,6 +862,7 @@ class AsyncAgentResource(AsyncAPIResource):
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
+        voicemail_message: str | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -891,6 +926,9 @@ class AsyncAgentResource(AsyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
+              feature is only available for phone calls.
 
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
@@ -956,6 +994,10 @@ class AsyncAgentResource(AsyncAPIResource):
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
 
+          voicemail_message: The message to be played when the call enters a voicemail. Note that this
+              feature is only available for phone calls. If you want to hangup after hitting
+              voicemail, set this to empty string.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -982,6 +1024,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -996,6 +1039,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voice_id": voice_id,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_message": voicemail_message,
                     "webhook_url": webhook_url,
                 },
                 agent_update_params.AgentUpdateParams,
