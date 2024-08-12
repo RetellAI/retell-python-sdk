@@ -69,11 +69,11 @@ class TestCall:
     def test_method_list_with_all_params(self, client: Retell) -> None:
         call = client.call.list(
             filter_criteria={
-                "agent_id": ["oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD"],
-                "before_start_timestamp": 1703302407399,
-                "after_start_timestamp": 1703302407300,
-                "before_end_timestamp": 1703302428899,
                 "after_end_timestamp": 1703302428800,
+                "after_start_timestamp": 1703302407300,
+                "agent_id": ["oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD"],
+                "before_end_timestamp": 1703302428899,
+                "before_start_timestamp": 1703302407399,
             },
             limit=0,
             pagination_key="pagination_key",
@@ -116,7 +116,7 @@ class TestCall:
             to_number="+12137774445",
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
-            retell_llm_dynamic_variables={"customer_name": "John Doe"},
+            retell_llm_dynamic_variables={"customer_name": "bar"},
         )
         assert_matches_type(PhoneCallResponse, call, path=["response"])
 
@@ -158,7 +158,7 @@ class TestCall:
         call = client.call.create_web_call(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             metadata={},
-            retell_llm_dynamic_variables={"customer_name": "John Doe"},
+            retell_llm_dynamic_variables={"customer_name": "bar"},
         )
         assert_matches_type(WebCallResponse, call, path=["response"])
 
@@ -200,7 +200,7 @@ class TestCall:
             direction="inbound",
             from_number="+14157774444",
             metadata={},
-            retell_llm_dynamic_variables={"customer_name": "John Doe"},
+            retell_llm_dynamic_variables={"customer_name": "bar"},
             to_number="+12137774445",
         )
         assert_matches_type(PhoneCallResponse, call, path=["response"])
@@ -280,11 +280,11 @@ class TestAsyncCall:
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         call = await async_client.call.list(
             filter_criteria={
-                "agent_id": ["oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD"],
-                "before_start_timestamp": 1703302407399,
-                "after_start_timestamp": 1703302407300,
-                "before_end_timestamp": 1703302428899,
                 "after_end_timestamp": 1703302428800,
+                "after_start_timestamp": 1703302407300,
+                "agent_id": ["oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD"],
+                "before_end_timestamp": 1703302428899,
+                "before_start_timestamp": 1703302407399,
             },
             limit=0,
             pagination_key="pagination_key",
@@ -327,7 +327,7 @@ class TestAsyncCall:
             to_number="+12137774445",
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
-            retell_llm_dynamic_variables={"customer_name": "John Doe"},
+            retell_llm_dynamic_variables={"customer_name": "bar"},
         )
         assert_matches_type(PhoneCallResponse, call, path=["response"])
 
@@ -369,7 +369,7 @@ class TestAsyncCall:
         call = await async_client.call.create_web_call(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             metadata={},
-            retell_llm_dynamic_variables={"customer_name": "John Doe"},
+            retell_llm_dynamic_variables={"customer_name": "bar"},
         )
         assert_matches_type(WebCallResponse, call, path=["response"])
 
@@ -411,7 +411,7 @@ class TestAsyncCall:
             direction="inbound",
             from_number="+14157774444",
             metadata={},
-            retell_llm_dynamic_variables={"customer_name": "John Doe"},
+            retell_llm_dynamic_variables={"customer_name": "bar"},
             to_number="+12137774445",
         )
         assert_matches_type(PhoneCallResponse, call, path=["response"])

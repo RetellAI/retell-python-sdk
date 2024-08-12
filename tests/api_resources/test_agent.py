@@ -46,19 +46,19 @@ class TestAgent:
             opt_out_sensitive_data_storage=True,
             pronunciation_dictionary=[
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
             ],
             reminder_max_count=2,
@@ -164,19 +164,19 @@ class TestAgent:
             opt_out_sensitive_data_storage=True,
             pronunciation_dictionary=[
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
             ],
             reminder_max_count=2,
@@ -318,19 +318,19 @@ class TestAsyncAgent:
             opt_out_sensitive_data_storage=True,
             pronunciation_dictionary=[
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
             ],
             reminder_max_count=2,
@@ -436,19 +436,19 @@ class TestAsyncAgent:
             opt_out_sensitive_data_storage=True,
             pronunciation_dictionary=[
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
                 {
-                    "word": "actually",
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
+                    "word": "actually",
                 },
             ],
             reminder_max_count=2,

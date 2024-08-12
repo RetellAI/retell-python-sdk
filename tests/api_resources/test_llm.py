@@ -29,8 +29,8 @@ class TestLlm:
             general_prompt="You are ...",
             general_tools=[
                 {
-                    "type": "end_call",
                     "name": "end_call",
+                    "type": "end_call",
                     "description": "End the call with user.",
                 }
             ],
@@ -40,66 +40,66 @@ class TestLlm:
             states=[
                 {
                     "name": "information_collection",
-                    "state_prompt": "You will follow the steps below to collect information...",
                     "edges": [
                         {
-                            "destination_state_name": "appointment_booking",
                             "description": "Transition to book an appointment.",
+                            "destination_state_name": "appointment_booking",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         }
                     ],
+                    "state_prompt": "You will follow the steps below to collect information...",
                     "tools": [
                         {
-                            "type": "transfer_call",
                             "name": "transfer_to_support",
-                            "description": "Transfer to the support team.",
                             "number": "16175551212",
+                            "type": "transfer_call",
+                            "description": "Transfer to the support team.",
                         }
                     ],
                 },
                 {
                     "name": "appointment_booking",
-                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                     ],
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
                         {
-                            "type": "book_appointment_cal",
-                            "name": "book_appointment",
-                            "description": "Book an annual check up.",
                             "cal_api_key": "cal_live_xxxxxxxxxxxx",
                             "event_type_id": 60444,
+                            "name": "book_appointment",
+                            "type": "book_appointment_cal",
+                            "description": "Book an annual check up.",
                             "timezone": "America/Los_Angeles",
                         }
                     ],
@@ -181,8 +181,8 @@ class TestLlm:
             general_prompt="You are ...",
             general_tools=[
                 {
-                    "type": "end_call",
                     "name": "end_call",
+                    "type": "end_call",
                     "description": "End the call with user.",
                 }
             ],
@@ -192,66 +192,66 @@ class TestLlm:
             states=[
                 {
                     "name": "information_collection",
-                    "state_prompt": "You will follow the steps below to collect information...",
                     "edges": [
                         {
-                            "destination_state_name": "appointment_booking",
                             "description": "Transition to book an appointment.",
+                            "destination_state_name": "appointment_booking",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         }
                     ],
+                    "state_prompt": "You will follow the steps below to collect information...",
                     "tools": [
                         {
-                            "type": "transfer_call",
                             "name": "transfer_to_support",
-                            "description": "Transfer to the support team.",
                             "number": "16175551212",
+                            "type": "transfer_call",
+                            "description": "Transfer to the support team.",
                         }
                     ],
                 },
                 {
                     "name": "appointment_booking",
-                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                     ],
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
                         {
-                            "type": "book_appointment_cal",
-                            "name": "book_appointment",
-                            "description": "Book an annual check up.",
                             "cal_api_key": "cal_live_xxxxxxxxxxxx",
                             "event_type_id": 60444,
+                            "name": "book_appointment",
+                            "type": "book_appointment_cal",
+                            "description": "Book an annual check up.",
                             "timezone": "America/Los_Angeles",
                         }
                     ],
@@ -370,8 +370,8 @@ class TestAsyncLlm:
             general_prompt="You are ...",
             general_tools=[
                 {
-                    "type": "end_call",
                     "name": "end_call",
+                    "type": "end_call",
                     "description": "End the call with user.",
                 }
             ],
@@ -381,66 +381,66 @@ class TestAsyncLlm:
             states=[
                 {
                     "name": "information_collection",
-                    "state_prompt": "You will follow the steps below to collect information...",
                     "edges": [
                         {
-                            "destination_state_name": "appointment_booking",
                             "description": "Transition to book an appointment.",
+                            "destination_state_name": "appointment_booking",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         }
                     ],
+                    "state_prompt": "You will follow the steps below to collect information...",
                     "tools": [
                         {
-                            "type": "transfer_call",
                             "name": "transfer_to_support",
-                            "description": "Transfer to the support team.",
                             "number": "16175551212",
+                            "type": "transfer_call",
+                            "description": "Transfer to the support team.",
                         }
                     ],
                 },
                 {
                     "name": "appointment_booking",
-                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                     ],
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
                         {
-                            "type": "book_appointment_cal",
-                            "name": "book_appointment",
-                            "description": "Book an annual check up.",
                             "cal_api_key": "cal_live_xxxxxxxxxxxx",
                             "event_type_id": 60444,
+                            "name": "book_appointment",
+                            "type": "book_appointment_cal",
+                            "description": "Book an annual check up.",
                             "timezone": "America/Los_Angeles",
                         }
                     ],
@@ -522,8 +522,8 @@ class TestAsyncLlm:
             general_prompt="You are ...",
             general_tools=[
                 {
-                    "type": "end_call",
                     "name": "end_call",
+                    "type": "end_call",
                     "description": "End the call with user.",
                 }
             ],
@@ -533,66 +533,66 @@ class TestAsyncLlm:
             states=[
                 {
                     "name": "information_collection",
-                    "state_prompt": "You will follow the steps below to collect information...",
                     "edges": [
                         {
-                            "destination_state_name": "appointment_booking",
                             "description": "Transition to book an appointment.",
+                            "destination_state_name": "appointment_booking",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         }
                     ],
+                    "state_prompt": "You will follow the steps below to collect information...",
                     "tools": [
                         {
-                            "type": "transfer_call",
                             "name": "transfer_to_support",
-                            "description": "Transfer to the support team.",
                             "number": "16175551212",
+                            "type": "transfer_call",
+                            "description": "Transfer to the support team.",
                         }
                     ],
                 },
                 {
                     "name": "appointment_booking",
-                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "edges": [
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                         {
-                            "destination_state_name": "destination_state_name",
                             "description": "description",
+                            "destination_state_name": "destination_state_name",
                             "parameters": {
+                                "properties": {"foo": "bar"},
                                 "type": "object",
-                                "properties": {"foo": {}},
                                 "required": ["string", "string", "string"],
                             },
                         },
                     ],
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
                         {
-                            "type": "book_appointment_cal",
-                            "name": "book_appointment",
-                            "description": "Book an annual check up.",
                             "cal_api_key": "cal_live_xxxxxxxxxxxx",
                             "event_type_id": 60444,
+                            "name": "book_appointment",
+                            "type": "book_appointment_cal",
+                            "description": "Book an annual check up.",
                             "timezone": "America/Los_Angeles",
                         }
                     ],
