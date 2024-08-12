@@ -260,6 +260,7 @@ class PhoneCallResponse(BaseModel):
             "user_hangup",
             "agent_hangup",
             "call_transfer",
+            "voicemail_reached",
             "inactivity",
             "machine_detected",
             "concurrency_limit_reached",
