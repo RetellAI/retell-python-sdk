@@ -69,6 +69,8 @@ class AgentResource(SyncAPIResource):
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
+        voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]]
+        | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
@@ -193,6 +195,17 @@ class AgentResource(SyncAPIResource):
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
 
+          voice_model: Optionally set the voice model used for the selected voice. Currently only
+              elevenlab voices have voice model selections. Set to null to remove voice model
+              selection, and default ones will apply. Supported voice models are:
+
+              - `eleven_turbo_v2`: Fast english only model, supports pronunciation tags.
+
+              - `eleven_turbo_v2_5`: Multilingual model with lowest latency.
+
+              - `eleven_multilingual_v2`: Multilingual model with rich emotion and nice
+                accent.
+
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
               will apply.
@@ -243,6 +256,7 @@ class AgentResource(SyncAPIResource):
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
+                    "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
                     "voicemail_message": voicemail_message,
@@ -322,6 +336,8 @@ class AgentResource(SyncAPIResource):
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
+        voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]]
+        | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
@@ -447,6 +463,17 @@ class AgentResource(SyncAPIResource):
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
+          voice_model: Optionally set the voice model used for the selected voice. Currently only
+              elevenlab voices have voice model selections. Set to null to remove voice model
+              selection, and default ones will apply. Supported voice models are:
+
+              - `eleven_turbo_v2`: Fast english only model, supports pronunciation tags.
+
+              - `eleven_turbo_v2_5`: Multilingual model with lowest latency.
+
+              - `eleven_multilingual_v2`: Multilingual model with rich emotion and nice
+                accent.
+
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
               will apply.
@@ -499,6 +526,7 @@ class AgentResource(SyncAPIResource):
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
                     "voice_id": voice_id,
+                    "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
                     "voicemail_message": voicemail_message,
@@ -607,6 +635,8 @@ class AsyncAgentResource(AsyncAPIResource):
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
+        voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]]
+        | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
@@ -731,6 +761,17 @@ class AsyncAgentResource(AsyncAPIResource):
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
 
+          voice_model: Optionally set the voice model used for the selected voice. Currently only
+              elevenlab voices have voice model selections. Set to null to remove voice model
+              selection, and default ones will apply. Supported voice models are:
+
+              - `eleven_turbo_v2`: Fast english only model, supports pronunciation tags.
+
+              - `eleven_turbo_v2_5`: Multilingual model with lowest latency.
+
+              - `eleven_multilingual_v2`: Multilingual model with rich emotion and nice
+                accent.
+
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
               will apply.
@@ -781,6 +822,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
+                    "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
                     "voicemail_message": voicemail_message,
@@ -860,6 +902,8 @@ class AsyncAgentResource(AsyncAPIResource):
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
+        voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]]
+        | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
@@ -985,6 +1029,17 @@ class AsyncAgentResource(AsyncAPIResource):
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
+          voice_model: Optionally set the voice model used for the selected voice. Currently only
+              elevenlab voices have voice model selections. Set to null to remove voice model
+              selection, and default ones will apply. Supported voice models are:
+
+              - `eleven_turbo_v2`: Fast english only model, supports pronunciation tags.
+
+              - `eleven_turbo_v2_5`: Multilingual model with lowest latency.
+
+              - `eleven_multilingual_v2`: Multilingual model with rich emotion and nice
+                accent.
+
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
               will apply.
@@ -1037,6 +1092,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
                     "voice_id": voice_id,
+                    "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
                     "voicemail_message": voicemail_message,
