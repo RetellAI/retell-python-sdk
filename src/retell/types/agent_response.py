@@ -202,6 +202,21 @@ class AgentResponse(BaseModel):
     can). If unset, default value 1 will apply.
     """
 
+    voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]] = None
+    """Optionally set the voice model used for the selected voice.
+
+    Currently only elevenlab voices have voice model selections. Set to null to
+    remove voice model selection, and default ones will apply. Supported voice
+    models are:
+
+    - `eleven_turbo_v2`: Fast english only model, supports pronunciation tags.
+
+    - `eleven_turbo_v2_5`: Multilingual model with lowest latency.
+
+    - `eleven_multilingual_v2`: Multilingual model with rich emotion and nice
+      accent.
+    """
+
     voice_speed: Optional[float] = None
     """Controls speed of voice.
 
