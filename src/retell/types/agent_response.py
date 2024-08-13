@@ -147,12 +147,15 @@ class AgentResponse(BaseModel):
     """
 
     language: Optional[
-        Literal["en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"]
+        Literal[
+            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
+        ]
     ] = None
     """Specifies what language (and dialect) the speech recognition will operate in.
 
     For instance, selecting `en-GB` optimizes speech recognition for British
-    English. If unset, will use default value `en-US`.
+    English. If unset, will use default value `en-US`. Select `multi` for
+    multilingual support, currently this supports Spanish and English.
     """
 
     normalize_for_speech: Optional[bool] = None
