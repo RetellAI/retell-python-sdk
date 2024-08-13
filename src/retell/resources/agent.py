@@ -59,7 +59,7 @@ class AgentResource(SyncAPIResource):
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
-            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
+            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
         ]
         | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
@@ -164,7 +164,8 @@ class AgentResource(SyncAPIResource):
 
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
-              English. If unset, will use default value `en-US`.
+              English. If unset, will use default value `en-US`. Select `multi` for
+              multilingual support, currently this supports Spanish and English.
 
           normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
               etc) to spoken to its spoken form for more consistent speech synthesis
@@ -324,7 +325,7 @@ class AgentResource(SyncAPIResource):
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
-            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
+            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
         ]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
@@ -425,7 +426,8 @@ class AgentResource(SyncAPIResource):
 
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
-              English. If unset, will use default value `en-US`.
+              English. If unset, will use default value `en-US`. Select `multi` for
+              multilingual support, currently this supports Spanish and English.
 
           llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
@@ -625,7 +627,7 @@ class AsyncAgentResource(AsyncAPIResource):
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
-            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
+            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
         ]
         | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
@@ -730,7 +732,8 @@ class AsyncAgentResource(AsyncAPIResource):
 
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
-              English. If unset, will use default value `en-US`.
+              English. If unset, will use default value `en-US`. Select `multi` for
+              multilingual support, currently this supports Spanish and English.
 
           normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
               etc) to spoken to its spoken form for more consistent speech synthesis
@@ -890,7 +893,7 @@ class AsyncAgentResource(AsyncAPIResource):
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
-            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR"
+            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
         ]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
@@ -991,7 +994,8 @@ class AsyncAgentResource(AsyncAPIResource):
 
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
-              English. If unset, will use default value `en-US`.
+              English. If unset, will use default value `en-US`. Select `multi` for
+              multilingual support, currently this supports Spanish and English.
 
           llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
