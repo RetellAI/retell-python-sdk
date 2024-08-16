@@ -1,5 +1,34 @@
 # Changelog
 
+## 4.3.0 (2024-08-16)
+
+Full Changelog: [v4.2.0...v4.3.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.2.0...v4.3.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#151](https://github.com/RetellAI/retell-python-sdk/issues/151)) ([f562aa4](https://github.com/RetellAI/retell-python-sdk/commit/f562aa4332614db8225d87f5b0089936231f0d8d))
+* **api:** OpenAPI spec update via Stainless API ([#160](https://github.com/RetellAI/retell-python-sdk/issues/160)) ([5099f5e](https://github.com/RetellAI/retell-python-sdk/commit/5099f5e179e19633ac30e4ab2ab3a1ea7d730b8e))
+* **api:** OpenAPI spec update via Stainless API ([#164](https://github.com/RetellAI/retell-python-sdk/issues/164)) ([c43e921](https://github.com/RetellAI/retell-python-sdk/commit/c43e92118abf709554d8e27a1a5d10c4c3fbd057))
+* **api:** OpenAPI spec update via Stainless API ([#167](https://github.com/RetellAI/retell-python-sdk/issues/167)) ([de17f28](https://github.com/RetellAI/retell-python-sdk/commit/de17f28b9b7cdecd9df11f643f8c0b1f3bb25520))
+* **api:** OpenAPI spec update via Stainless API ([#168](https://github.com/RetellAI/retell-python-sdk/issues/168)) ([072caf3](https://github.com/RetellAI/retell-python-sdk/commit/072caf3f502734679146a509be73c8632678eea4))
+* **client:** add `retry_count` to raw response class ([#155](https://github.com/RetellAI/retell-python-sdk/issues/155)) ([e486f13](https://github.com/RetellAI/retell-python-sdk/commit/e486f1335037ce56a154692edf1f2ad2e21cb8ac))
+
+
+### Chores
+
+* **ci:** bump prism mock server version ([#162](https://github.com/RetellAI/retell-python-sdk/issues/162)) ([898ad43](https://github.com/RetellAI/retell-python-sdk/commit/898ad43ecb89cb1b0e96b7c64947406d375e73dc))
+* **examples:** minor formatting changes ([#166](https://github.com/RetellAI/retell-python-sdk/issues/166)) ([ce9b846](https://github.com/RetellAI/retell-python-sdk/commit/ce9b846eb6f7f0d05df795805d45530eb154f2ac))
+* **internal:** bump pyright ([#154](https://github.com/RetellAI/retell-python-sdk/issues/154)) ([372900e](https://github.com/RetellAI/retell-python-sdk/commit/372900ea6bd723c01b2f19d446e1bac29aca0ba9))
+* **internal:** bump ruff version ([#157](https://github.com/RetellAI/retell-python-sdk/issues/157)) ([04ebe96](https://github.com/RetellAI/retell-python-sdk/commit/04ebe968e683ef3b5c97195cd4f6ac03348c467e))
+* **internal:** codegen related update ([#165](https://github.com/RetellAI/retell-python-sdk/issues/165)) ([940dce4](https://github.com/RetellAI/retell-python-sdk/commit/940dce4aedb77317c3087ffa10e630106110862a))
+* **internal:** codegen related update ([#169](https://github.com/RetellAI/retell-python-sdk/issues/169)) ([5f9b799](https://github.com/RetellAI/retell-python-sdk/commit/5f9b799ec5fc1ad0ad1b7fb0cbe08899e8948b70))
+* **internal:** ensure package is importable in lint cmd ([#163](https://github.com/RetellAI/retell-python-sdk/issues/163)) ([c94cc06](https://github.com/RetellAI/retell-python-sdk/commit/c94cc068ecb0222f80ffd704232d2f0af8dff085))
+* **internal:** remove deprecated ruff config ([#161](https://github.com/RetellAI/retell-python-sdk/issues/161)) ([98cf302](https://github.com/RetellAI/retell-python-sdk/commit/98cf302621370de9b9d47c809aa2697100d63566))
+* **internal:** test updates ([#156](https://github.com/RetellAI/retell-python-sdk/issues/156)) ([b69760f](https://github.com/RetellAI/retell-python-sdk/commit/b69760fe8a97c6ca6568fd5050e773f04f6add91))
+* **internal:** update pydantic compat helper function ([#158](https://github.com/RetellAI/retell-python-sdk/issues/158)) ([d83e081](https://github.com/RetellAI/retell-python-sdk/commit/d83e081fb5d258881c6c7fa14ed07a1be34cec78))
+* **internal:** use `TypeAlias` marker for type assignments ([#153](https://github.com/RetellAI/retell-python-sdk/issues/153)) ([32812a1](https://github.com/RetellAI/retell-python-sdk/commit/32812a121030db9e7ca335c0612ca05f26730b6c))
+* **internal:** use different 32bit detection method ([#170](https://github.com/RetellAI/retell-python-sdk/issues/170)) ([e3cdc9c](https://github.com/RetellAI/retell-python-sdk/commit/e3cdc9cff36b9f22b803669baddc7ef467012db2))
+
 ## 4.2.0 (2024-08-07)
 
 Full Changelog: [v4.1.0...v4.2.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.1.0...v4.2.0)
