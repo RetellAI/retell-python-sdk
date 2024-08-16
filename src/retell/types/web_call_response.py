@@ -40,7 +40,7 @@ class CallAnalysis(BaseModel):
     in_voicemail: Optional[bool] = None
     """Whether the call is entered voicemail."""
 
-    user_sentiment: Optional[Literal["Negative", "Positive", "Neutral"]] = None
+    user_sentiment: Optional[Literal["Negative", "Positive", "Neutral", "Unknown"]] = None
     """Sentiment of the user in the call."""
 
 
@@ -242,11 +242,9 @@ class WebCallResponse(BaseModel):
     """Type of the call. Used to distinguish between web call and phone call."""
 
     call_analysis: Optional[CallAnalysis] = None
-    """- BETA feature, schema might change, might not always be populated.
-
-    Please do not rely on this object schema for post processing. Post conversation
-    evaluation of the call. Including information such as sentiment, intent, call
-    completion status and other metrics. Available after call ends. Subscribe to
+    """
+    Post call analysis that includes information such as sentiment, status, summary,
+    and custom defined data to extract. Available after call ends. Subscribe to
     `call_analyzed` webhook event type to receive it once ready.
     """
 
