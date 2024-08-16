@@ -44,6 +44,26 @@ class TestAgent:
             language="en-US",
             normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
+            post_call_analysis_data=[
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+            ],
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
@@ -162,6 +182,26 @@ class TestAgent:
             llm_websocket_url="wss://your-websocket-endpoint",
             normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
+            post_call_analysis_data=[
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+            ],
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
@@ -316,6 +356,26 @@ class TestAsyncAgent:
             language="en-US",
             normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
+            post_call_analysis_data=[
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+            ],
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
@@ -434,6 +494,26 @@ class TestAsyncAgent:
             llm_websocket_url="wss://your-websocket-endpoint",
             normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
+            post_call_analysis_data=[
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+                {
+                    "description": "The name of the customer.",
+                    "name": "customer_name",
+                    "type": "string",
+                    "examples": ["John Doe", "Jane Smith"],
+                },
+            ],
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",

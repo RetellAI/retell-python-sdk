@@ -22,25 +22,23 @@ __all__ = [
 
 
 class CallAnalysis(BaseModel):
-    agent_sentiment: Optional[Literal["Negative", "Positive", "Neutral"]] = None
-    """Sentiment of the agent in the call."""
-
-    agent_task_completion_rating: Optional[Literal["Complete", "Incomplete", "Partial"]] = None
+    call_successful: Optional[bool] = None
     """
-    Evaluate agent task completion status, whether the agent has completed his task.
+    Whether the agent seems to have a successful call with the user, where the agent
+    finishes the task, and the call was complete without being cutoff.
     """
-
-    agent_task_completion_rating_reason: Optional[str] = None
-    """Reason for the agent task completion status."""
-
-    call_completion_rating: Optional[Literal["Complete", "Incomplete", "Partial"]] = None
-    """Evaluate whether the call ended normally or was cut off."""
-
-    call_completion_rating_reason: Optional[str] = None
-    """Reason for the call completion status."""
 
     call_summary: Optional[str] = None
     """A high level summary of the call."""
+
+    custom_analysis_data: Optional[object] = None
+    """
+    Custom analysis data that was extracted based on the schema defined in agent
+    post call analysis data. Can be empty if nothing is specified.
+    """
+
+    in_voicemail: Optional[bool] = None
+    """Whether the call is entered voicemail."""
 
     user_sentiment: Optional[Literal["Negative", "Positive", "Neutral"]] = None
     """Sentiment of the user in the call."""

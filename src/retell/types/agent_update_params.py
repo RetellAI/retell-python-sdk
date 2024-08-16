@@ -2,10 +2,18 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
-from typing_extensions import Literal, Required, TypedDict
+from typing import List, Union, Iterable, Optional
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
-__all__ = ["AgentUpdateParams", "PronunciationDictionary"]
+__all__ = [
+    "AgentUpdateParams",
+    "PostCallAnalysisData",
+    "PostCallAnalysisDataStringAnalysisData",
+    "PostCallAnalysisDataEnumAnalysisData",
+    "PostCallAnalysisDataBooleanAnalysisData",
+    "PostCallAnalysisDataNumberAnalysisData",
+    "PronunciationDictionary",
+]
 
 
 class AgentUpdateParams(TypedDict, total=False):
@@ -148,6 +156,13 @@ class AgentUpdateParams(TypedDict, total=False):
     not set, default value of false will apply.
     """
 
+    post_call_analysis_data: Optional[Iterable[PostCallAnalysisData]]
+    """Post call analysis data to extract from the call.
+
+    This data will augment the pre-defined variables extracted in the call analysis.
+    This will be available after the call ends.
+    """
+
     pronunciation_dictionary: Optional[Iterable[PronunciationDictionary]]
     """
     A list of words / phrases and their pronunciation to be used to guide the audio
@@ -228,6 +243,64 @@ class AgentUpdateParams(TypedDict, total=False):
     account level webhook for this agent. Set to `null` to remove webhook url from
     this agent.
     """
+
+
+class PostCallAnalysisDataStringAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["string"]]
+    """Type of the variable to extract."""
+
+    examples: List[str]
+    """Examples of the variable value to teach model the style and syntax."""
+
+
+class PostCallAnalysisDataEnumAnalysisData(TypedDict, total=False):
+    choices: Required[List[str]]
+    """The possible values of the variable, must be non empty array."""
+
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["enum"]]
+    """Type of the variable to extract."""
+
+
+class PostCallAnalysisDataBooleanAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["boolean"]]
+    """Type of the variable to extract."""
+
+
+class PostCallAnalysisDataNumberAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["number"]]
+    """Type of the variable to extract."""
+
+
+PostCallAnalysisData: TypeAlias = Union[
+    PostCallAnalysisDataStringAnalysisData,
+    PostCallAnalysisDataEnumAnalysisData,
+    PostCallAnalysisDataBooleanAnalysisData,
+    PostCallAnalysisDataNumberAnalysisData,
+]
 
 
 class PronunciationDictionary(TypedDict, total=False):
