@@ -1,11 +1,77 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from typing import List, Union, Optional
+from typing_extensions import Literal, TypeAlias
 
 from .._models import BaseModel
 
-__all__ = ["AgentResponse", "PronunciationDictionary"]
+__all__ = [
+    "AgentResponse",
+    "PostCallAnalysisData",
+    "PostCallAnalysisDataStringAnalysisData",
+    "PostCallAnalysisDataEnumAnalysisData",
+    "PostCallAnalysisDataBooleanAnalysisData",
+    "PostCallAnalysisDataNumberAnalysisData",
+    "PronunciationDictionary",
+]
+
+
+class PostCallAnalysisDataStringAnalysisData(BaseModel):
+    description: str
+    """Description of the variable."""
+
+    name: str
+    """Name of the variable."""
+
+    type: Literal["string"]
+    """Type of the variable to extract."""
+
+    examples: Optional[List[str]] = None
+    """Examples of the variable value to teach model the style and syntax."""
+
+
+class PostCallAnalysisDataEnumAnalysisData(BaseModel):
+    choices: List[str]
+    """The possible values of the variable, must be non empty array."""
+
+    description: str
+    """Description of the variable."""
+
+    name: str
+    """Name of the variable."""
+
+    type: Literal["enum"]
+    """Type of the variable to extract."""
+
+
+class PostCallAnalysisDataBooleanAnalysisData(BaseModel):
+    description: str
+    """Description of the variable."""
+
+    name: str
+    """Name of the variable."""
+
+    type: Literal["boolean"]
+    """Type of the variable to extract."""
+
+
+class PostCallAnalysisDataNumberAnalysisData(BaseModel):
+    description: str
+    """Description of the variable."""
+
+    name: str
+    """Name of the variable."""
+
+    type: Literal["number"]
+    """Type of the variable to extract."""
+
+
+PostCallAnalysisData: TypeAlias = Union[
+    PostCallAnalysisDataStringAnalysisData,
+    PostCallAnalysisDataEnumAnalysisData,
+    PostCallAnalysisDataBooleanAnalysisData,
+    PostCallAnalysisDataNumberAnalysisData,
+]
 
 
 class PronunciationDictionary(BaseModel):
@@ -174,6 +240,13 @@ class AgentResponse(BaseModel):
     Whether this agent opts out of sensitive data storage like transcript,
     recording, logging. These data can still be accessed securely via webhooks. If
     not set, default value of false will apply.
+    """
+
+    post_call_analysis_data: Optional[List[PostCallAnalysisData]] = None
+    """Post call analysis data to extract from the call.
+
+    This data will augment the pre-defined variables extracted in the call analysis.
+    This will be available after the call ends.
     """
 
     pronunciation_dictionary: Optional[List[PronunciationDictionary]] = None
