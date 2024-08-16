@@ -64,6 +64,7 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
@@ -179,6 +180,10 @@ class AgentResource(SyncAPIResource):
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
 
+          post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
+              pre-defined variables extracted in the call analysis. This will be available
+              after the call ends.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
               11labs voices. Set to null to remove pronunciation dictionary from this agent.
@@ -253,6 +258,7 @@ class AgentResource(SyncAPIResource):
                     "language": language,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "post_call_analysis_data": post_call_analysis_data,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
@@ -331,6 +337,7 @@ class AgentResource(SyncAPIResource):
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
@@ -445,6 +452,10 @@ class AgentResource(SyncAPIResource):
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
 
+          post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
+              pre-defined variables extracted in the call analysis. This will be available
+              after the call ends.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
               11labs voices. Set to null to remove pronunciation dictionary from this agent.
@@ -523,6 +534,7 @@ class AgentResource(SyncAPIResource):
                     "llm_websocket_url": llm_websocket_url,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "post_call_analysis_data": post_call_analysis_data,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
@@ -632,6 +644,7 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
@@ -747,6 +760,10 @@ class AsyncAgentResource(AsyncAPIResource):
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
 
+          post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
+              pre-defined variables extracted in the call analysis. This will be available
+              after the call ends.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
               11labs voices. Set to null to remove pronunciation dictionary from this agent.
@@ -821,6 +838,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "language": language,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "post_call_analysis_data": post_call_analysis_data,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
@@ -899,6 +917,7 @@ class AsyncAgentResource(AsyncAPIResource):
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
@@ -1013,6 +1032,10 @@ class AsyncAgentResource(AsyncAPIResource):
               recording, logging. These data can still be accessed securely via webhooks. If
               not set, default value of false will apply.
 
+          post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
+              pre-defined variables extracted in the call analysis. This will be available
+              after the call ends.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
               11labs voices. Set to null to remove pronunciation dictionary from this agent.
@@ -1091,6 +1114,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "llm_websocket_url": llm_websocket_url,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "post_call_analysis_data": post_call_analysis_data,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
