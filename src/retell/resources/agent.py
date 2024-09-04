@@ -62,6 +62,7 @@ class AgentResource(SyncAPIResource):
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
         ]
         | NotGiven = NOT_GIVEN,
+        max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
@@ -74,6 +75,7 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
+        voicemail_detection_timeout_ms: int | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -168,6 +170,10 @@ class AgentResource(SyncAPIResource):
               English. If unset, will use default value `en-US`. Select `multi` for
               multilingual support, currently this supports Spanish and English.
 
+          max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
+              minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
+              7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
+
           normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
               etc) to spoken to its spoken form for more consistent speech synthesis
               (sometimes the voice synthesize system itself might read these wrong with the
@@ -221,6 +227,11 @@ class AgentResource(SyncAPIResource):
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
 
+          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
+              hit voicemail after a couple minutes, and keep running it will only have
+              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
+
           voicemail_message: The message to be played when the call enters a voicemail. Note that this
               feature is only available for phone calls. If you want to hangup after hitting
               voicemail, set this to empty string.
@@ -256,6 +267,7 @@ class AgentResource(SyncAPIResource):
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
+                    "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
@@ -266,6 +278,7 @@ class AgentResource(SyncAPIResource):
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
                     "voicemail_message": voicemail_message,
                     "webhook_url": webhook_url,
                 },
@@ -335,6 +348,7 @@ class AgentResource(SyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
+        max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
@@ -348,6 +362,7 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
+        voicemail_detection_timeout_ms: int | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -440,6 +455,10 @@ class AgentResource(SyncAPIResource):
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
               request format (sent from us) and response format (send to us).
 
+          max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
+              minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
+              7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
+
           normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
               etc) to spoken to its spoken form for more consistent speech synthesis
               (sometimes the voice synthesize system itself might read these wrong with the
@@ -496,6 +515,11 @@ class AgentResource(SyncAPIResource):
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
 
+          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
+              hit voicemail after a couple minutes, and keep running it will only have
+              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
+
           voicemail_message: The message to be played when the call enters a voicemail. Note that this
               feature is only available for phone calls. If you want to hangup after hitting
               voicemail, set this to empty string.
@@ -532,6 +556,7 @@ class AgentResource(SyncAPIResource):
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
+                    "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
@@ -543,6 +568,7 @@ class AgentResource(SyncAPIResource):
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
                     "voicemail_message": voicemail_message,
                     "webhook_url": webhook_url,
                 },
@@ -642,6 +668,7 @@ class AsyncAgentResource(AsyncAPIResource):
             "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
         ]
         | NotGiven = NOT_GIVEN,
+        max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
@@ -654,6 +681,7 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
+        voicemail_detection_timeout_ms: int | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -748,6 +776,10 @@ class AsyncAgentResource(AsyncAPIResource):
               English. If unset, will use default value `en-US`. Select `multi` for
               multilingual support, currently this supports Spanish and English.
 
+          max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
+              minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
+              7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
+
           normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
               etc) to spoken to its spoken form for more consistent speech synthesis
               (sometimes the voice synthesize system itself might read these wrong with the
@@ -801,6 +833,11 @@ class AsyncAgentResource(AsyncAPIResource):
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
 
+          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
+              hit voicemail after a couple minutes, and keep running it will only have
+              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
+
           voicemail_message: The message to be played when the call enters a voicemail. Note that this
               feature is only available for phone calls. If you want to hangup after hitting
               voicemail, set this to empty string.
@@ -836,6 +873,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
+                    "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
@@ -846,6 +884,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
                     "voicemail_message": voicemail_message,
                     "webhook_url": webhook_url,
                 },
@@ -915,6 +954,7 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
+        max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
@@ -928,6 +968,7 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
+        voicemail_detection_timeout_ms: int | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1020,6 +1061,10 @@ class AsyncAgentResource(AsyncAPIResource):
               server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
               request format (sent from us) and response format (send to us).
 
+          max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
+              minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
+              7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
+
           normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
               etc) to spoken to its spoken form for more consistent speech synthesis
               (sometimes the voice synthesize system itself might read these wrong with the
@@ -1076,6 +1121,11 @@ class AsyncAgentResource(AsyncAPIResource):
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
 
+          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
+              hit voicemail after a couple minutes, and keep running it will only have
+              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
+
           voicemail_message: The message to be played when the call enters a voicemail. Note that this
               feature is only available for phone calls. If you want to hangup after hitting
               voicemail, set this to empty string.
@@ -1112,6 +1162,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
                     "llm_websocket_url": llm_websocket_url,
+                    "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
@@ -1123,6 +1174,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
                     "voicemail_message": voicemail_message,
                     "webhook_url": webhook_url,
                 },
