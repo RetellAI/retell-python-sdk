@@ -44,8 +44,7 @@ class LlmResource(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
-        | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -80,7 +79,7 @@ class LlmResource(SyncAPIResource):
               dynamic variables to use for the call. Without this, there's no way to pass
               dynamic variables for inbound calls.
 
-          model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
+          model: Select the underlying LLM. If not set, would default to gpt-4o.
 
           starting_state: Name of the starting state. Required if states is not empty.
 
@@ -159,8 +158,7 @@ class LlmResource(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
-        | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -195,7 +193,7 @@ class LlmResource(SyncAPIResource):
               dynamic variables to use for the call. Without this, there's no way to pass
               dynamic variables for inbound calls.
 
-          model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
+          model: Select the underlying LLM. If not set, would default to gpt-4o.
 
           starting_state: Name of the starting state. Required if states is not empty.
 
@@ -305,8 +303,7 @@ class AsyncLlmResource(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
-        | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -341,7 +338,7 @@ class AsyncLlmResource(AsyncAPIResource):
               dynamic variables to use for the call. Without this, there's no way to pass
               dynamic variables for inbound calls.
 
-          model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
+          model: Select the underlying LLM. If not set, would default to gpt-4o.
 
           starting_state: Name of the starting state. Required if states is not empty.
 
@@ -420,8 +417,7 @@ class AsyncLlmResource(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
-        | NotGiven = NOT_GIVEN,
+        model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -456,7 +452,7 @@ class AsyncLlmResource(AsyncAPIResource):
               dynamic variables to use for the call. Without this, there's no way to pass
               dynamic variables for inbound calls.
 
-          model: Select the underlying LLM. If not set, would default to gpt-3.5-turbo.
+          model: Select the underlying LLM. If not set, would default to gpt-4o.
 
           starting_state: Name of the starting state. Required if states is not empty.
 

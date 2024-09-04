@@ -63,8 +63,8 @@ class LlmCreateParams(TypedDict, total=False):
     dynamic variables for inbound calls.
     """
 
-    model: Literal["gpt-3.5-turbo", "gpt-4-turbo", "gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
-    """Select the underlying LLM. If not set, would default to gpt-3.5-turbo."""
+    model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
+    """Select the underlying LLM. If not set, would default to gpt-4o."""
 
     starting_state: Optional[str]
     """Name of the starting state. Required if states is not empty."""
