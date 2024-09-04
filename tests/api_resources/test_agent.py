@@ -42,6 +42,7 @@ class TestAgent:
             fallback_voice_ids=["openai-Alloy", "deepgram-Angus"],
             interruption_sensitivity=1,
             language="en-US",
+            max_call_duration_ms=3600000,
             normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
             post_call_analysis_data=[
@@ -87,6 +88,7 @@ class TestAgent:
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
+            voicemail_detection_timeout_ms=30000,
             voicemail_message="Hi, please give us a callback.",
             webhook_url="https://webhook-url-here",
         )
@@ -180,6 +182,7 @@ class TestAgent:
             interruption_sensitivity=1,
             language="en-US",
             llm_websocket_url="wss://your-websocket-endpoint",
+            max_call_duration_ms=3600000,
             normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
             post_call_analysis_data=[
@@ -226,6 +229,7 @@ class TestAgent:
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
+            voicemail_detection_timeout_ms=30000,
             voicemail_message="Hi, please give us a callback.",
             webhook_url="https://webhook-url-here",
         )
@@ -354,6 +358,7 @@ class TestAsyncAgent:
             fallback_voice_ids=["openai-Alloy", "deepgram-Angus"],
             interruption_sensitivity=1,
             language="en-US",
+            max_call_duration_ms=3600000,
             normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
             post_call_analysis_data=[
@@ -399,6 +404,7 @@ class TestAsyncAgent:
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
+            voicemail_detection_timeout_ms=30000,
             voicemail_message="Hi, please give us a callback.",
             webhook_url="https://webhook-url-here",
         )
@@ -492,6 +498,7 @@ class TestAsyncAgent:
             interruption_sensitivity=1,
             language="en-US",
             llm_websocket_url="wss://your-websocket-endpoint",
+            max_call_duration_ms=3600000,
             normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
             post_call_analysis_data=[
@@ -538,6 +545,7 @@ class TestAsyncAgent:
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
+            voicemail_detection_timeout_ms=30000,
             voicemail_message="Hi, please give us a callback.",
             webhook_url="https://webhook-url-here",
         )

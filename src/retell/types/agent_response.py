@@ -224,6 +224,13 @@ class AgentResponse(BaseModel):
     multilingual support, currently this supports Spanish and English.
     """
 
+    max_call_duration_ms: Optional[int] = None
+    """Maximum allowed length for the call, will force end the call if reached.
+
+    The minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
+    7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
+    """
+
     normalize_for_speech: Optional[bool] = None
     """
     If set to true, will normalize the some part of text (number, currency, date,
@@ -306,6 +313,14 @@ class AgentResponse(BaseModel):
     Value ranging from [0,2]. Lower value means more stable, and higher value means
     more variant speech generation. Currently this setting only applies to `11labs`
     voices. If unset, default value 1 will apply.
+    """
+
+    voicemail_detection_timeout_ms: Optional[int] = None
+    """
+    Configures when to stop running voicemail detection, as it becomes unlikely to
+    hit voicemail after a couple minutes, and keep running it will only have
+    negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+    allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
     """
 
     voicemail_message: Optional[str] = None
