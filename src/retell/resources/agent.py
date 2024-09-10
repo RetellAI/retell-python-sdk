@@ -31,10 +31,21 @@ __all__ = ["AgentResource", "AsyncAgentResource"]
 class AgentResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AgentResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#accessing-raw-response-data-eg-headers
+        """
         return AgentResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AgentResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#with_streaming_response
+        """
         return AgentResourceWithStreamingResponse(self)
 
     def create(
@@ -637,10 +648,21 @@ class AgentResource(SyncAPIResource):
 class AsyncAgentResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAgentResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#accessing-raw-response-data-eg-headers
+        """
         return AsyncAgentResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAgentResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#with_streaming_response
+        """
         return AsyncAgentResourceWithStreamingResponse(self)
 
     async def create(
