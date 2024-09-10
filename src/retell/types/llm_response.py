@@ -232,6 +232,15 @@ class GeneralToolCustomTool(BaseModel):
     an empty parameter list.
     """
 
+    timeout_ms: Optional[int] = None
+    """The maximum time in milliseconds the tool can run before it's considered
+    timeout.
+
+    If the tool times out, the agent would have that info. The minimum value allowed
+    is 1000 ms (1 s), and maximum value allowed is 600,000 ms (10 min). By default,
+    this is set to 120,000 ms (2 min).
+    """
+
 
 GeneralTool: TypeAlias = Union[
     GeneralToolEndCallTool,
@@ -488,6 +497,15 @@ class StateToolCustomTool(BaseModel):
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
     an empty parameter list.
+    """
+
+    timeout_ms: Optional[int] = None
+    """The maximum time in milliseconds the tool can run before it's considered
+    timeout.
+
+    If the tool times out, the agent would have that info. The minimum value allowed
+    is 1000 ms (1 s), and maximum value allowed is 600,000 ms (10 min). By default,
+    this is set to 120,000 ms (2 min).
     """
 
 

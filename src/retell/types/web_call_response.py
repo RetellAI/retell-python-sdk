@@ -256,7 +256,11 @@ class WebCallResponse(BaseModel):
             "voicemail_reached",
             "inactivity",
             "machine_detected",
+            "max_duration_reached",
             "concurrency_limit_reached",
+            "no_valid_payment",
+            "scam_detected",
+            "error_inbound_webhook",
             "dial_busy",
             "dial_failed",
             "dial_no_answer",
@@ -270,6 +274,8 @@ class WebCallResponse(BaseModel):
             "error_asr",
             "error_retell",
             "error_unknown",
+            "error_user_not_joined",
+            "registered_call_timeout",
         ]
     ] = None
     """The reason for the disconnection of the call.
