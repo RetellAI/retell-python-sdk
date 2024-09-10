@@ -22,10 +22,21 @@ __all__ = ["ConcurrencyResource", "AsyncConcurrencyResource"]
 class ConcurrencyResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ConcurrencyResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#accessing-raw-response-data-eg-headers
+        """
         return ConcurrencyResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ConcurrencyResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#with_streaming_response
+        """
         return ConcurrencyResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -51,10 +62,21 @@ class ConcurrencyResource(SyncAPIResource):
 class AsyncConcurrencyResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncConcurrencyResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#accessing-raw-response-data-eg-headers
+        """
         return AsyncConcurrencyResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncConcurrencyResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#with_streaming_response
+        """
         return AsyncConcurrencyResourceWithStreamingResponse(self)
 
     async def retrieve(

@@ -30,10 +30,21 @@ __all__ = ["PhoneNumberResource", "AsyncPhoneNumberResource"]
 class PhoneNumberResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PhoneNumberResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#accessing-raw-response-data-eg-headers
+        """
         return PhoneNumberResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> PhoneNumberResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#with_streaming_response
+        """
         return PhoneNumberResourceWithStreamingResponse(self)
 
     def create(
@@ -307,10 +318,21 @@ class PhoneNumberResource(SyncAPIResource):
 class AsyncPhoneNumberResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncPhoneNumberResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#accessing-raw-response-data-eg-headers
+        """
         return AsyncPhoneNumberResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncPhoneNumberResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/RetellAI/retell-python-sdk#with_streaming_response
+        """
         return AsyncPhoneNumberResourceWithStreamingResponse(self)
 
     async def create(
