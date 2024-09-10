@@ -1,5 +1,19 @@
 # Changelog
 
+## 4.5.0 (2024-09-10)
+
+Full Changelog: [v4.4.0...v4.5.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.4.0...v4.5.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#176](https://github.com/RetellAI/retell-python-sdk/issues/176)) ([998682e](https://github.com/RetellAI/retell-python-sdk/commit/998682efa7001dd318cb372cf4311cd70a7179d3))
+
+
+### Chores
+
+* add docstrings to raw response properties ([#180](https://github.com/RetellAI/retell-python-sdk/issues/180)) ([fd726fe](https://github.com/RetellAI/retell-python-sdk/commit/fd726fe37fb0817d81c1c371404dde2148854229))
+* pyproject.toml formatting changes ([#178](https://github.com/RetellAI/retell-python-sdk/issues/178)) ([7f18a3c](https://github.com/RetellAI/retell-python-sdk/commit/7f18a3c2ef2ad4585e30e03db6e8074ba19b4a75))
+
 ## 4.4.0 (2024-09-04)
 
 Full Changelog: [v4.3.0...v4.4.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.3.0...v4.4.0)
