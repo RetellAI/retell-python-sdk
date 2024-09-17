@@ -56,6 +56,7 @@ class LlmResource(SyncAPIResource):
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
+        model_temperature: float | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -92,6 +93,11 @@ class LlmResource(SyncAPIResource):
 
           model: Select the underlying LLM. If not set, would default to gpt-4o.
 
+          model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
+              Lower value means more deterministic, while higher value means more random. If
+              unset, default value 0 will apply. Note that for tool calling, a lower value is
+              recommended.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -117,6 +123,7 @@ class LlmResource(SyncAPIResource):
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "model": model,
+                    "model_temperature": model_temperature,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -170,6 +177,7 @@ class LlmResource(SyncAPIResource):
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
+        model_temperature: float | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -206,6 +214,11 @@ class LlmResource(SyncAPIResource):
 
           model: Select the underlying LLM. If not set, would default to gpt-4o.
 
+          model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
+              Lower value means more deterministic, while higher value means more random. If
+              unset, default value 0 will apply. Note that for tool calling, a lower value is
+              recommended.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -233,6 +246,7 @@ class LlmResource(SyncAPIResource):
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "model": model,
+                    "model_temperature": model_temperature,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -326,6 +340,7 @@ class AsyncLlmResource(AsyncAPIResource):
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
+        model_temperature: float | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -362,6 +377,11 @@ class AsyncLlmResource(AsyncAPIResource):
 
           model: Select the underlying LLM. If not set, would default to gpt-4o.
 
+          model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
+              Lower value means more deterministic, while higher value means more random. If
+              unset, default value 0 will apply. Note that for tool calling, a lower value is
+              recommended.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -387,6 +407,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "model": model,
+                    "model_temperature": model_temperature,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -440,6 +461,7 @@ class AsyncLlmResource(AsyncAPIResource):
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
+        model_temperature: float | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -476,6 +498,11 @@ class AsyncLlmResource(AsyncAPIResource):
 
           model: Select the underlying LLM. If not set, would default to gpt-4o.
 
+          model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
+              Lower value means more deterministic, while higher value means more random. If
+              unset, default value 0 will apply. Note that for tool calling, a lower value is
+              recommended.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -503,6 +530,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "model": model,
+                    "model_temperature": model_temperature,
                     "starting_state": starting_state,
                     "states": states,
                 },

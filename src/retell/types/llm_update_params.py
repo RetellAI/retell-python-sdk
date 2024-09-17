@@ -66,6 +66,14 @@ class LlmUpdateParams(TypedDict, total=False):
     model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
     """Select the underlying LLM. If not set, would default to gpt-4o."""
 
+    model_temperature: float
+    """If set, will control the randomness of the response.
+
+    Value ranging from [0,1]. Lower value means more deterministic, while higher
+    value means more random. If unset, default value 0 will apply. Note that for
+    tool calling, a lower value is recommended.
+    """
+
     starting_state: Optional[str]
     """Name of the starting state. Required if states is not empty."""
 
