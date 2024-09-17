@@ -135,7 +135,26 @@ class AgentCreateParams(TypedDict, total=False):
     """
 
     language: Literal[
-        "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
+        "en-US",
+        "en-IN",
+        "en-GB",
+        "de-DE",
+        "es-ES",
+        "es-419",
+        "hi-IN",
+        "ja-JP",
+        "pt-PT",
+        "pt-BR",
+        "fr-FR",
+        "zh-CN",
+        "ru-RU",
+        "it-IT",
+        "ko-KR",
+        "nl-NL",
+        "pl-PL",
+        "tr-TR",
+        "vi-VN",
+        "multi",
     ]
     """Specifies what language (and dialect) the speech recognition will operate in.
 
@@ -248,6 +267,13 @@ class AgentCreateParams(TypedDict, total=False):
 
     Note that this feature is only available for phone calls. If you want to hangup
     after hitting voicemail, set this to empty string.
+    """
+
+    volume: float
+    """If set, will control the volume of the agent.
+
+    Value ranging from [0,2]. Lower value means quieter agent speech, while higher
+    value means louder agent speech. If unset, default value 1 will apply.
     """
 
     webhook_url: Optional[str]

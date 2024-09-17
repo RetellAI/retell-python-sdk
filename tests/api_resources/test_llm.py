@@ -36,6 +36,7 @@ class TestLlm:
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             model="gpt-4o",
+            model_temperature=0,
             starting_state="information_collection",
             states=[
                 {
@@ -188,6 +189,7 @@ class TestLlm:
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             model="gpt-4o",
+            model_temperature=0,
             starting_state="information_collection",
             states=[
                 {
@@ -377,6 +379,7 @@ class TestAsyncLlm:
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             model="gpt-4o",
+            model_temperature=0,
             starting_state="information_collection",
             states=[
                 {
@@ -529,6 +532,7 @@ class TestAsyncLlm:
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             model="gpt-4o",
+            model_temperature=0,
             starting_state="information_collection",
             states=[
                 {

@@ -3,6 +3,8 @@
 from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
+from pydantic import Field as FieldInfo
+
 from .._models import BaseModel
 
 __all__ = [
@@ -598,6 +600,14 @@ class LlmResponse(BaseModel):
 
     model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]] = None
     """Select the underlying LLM. If not set, would default to gpt-4o."""
+
+    api_model_temperature: Optional[float] = FieldInfo(alias="model_temperature", default=None)
+    """If set, will control the randomness of the response.
+
+    Value ranging from [0,1]. Lower value means more deterministic, while higher
+    value means more random. If unset, default value 0 will apply. Note that for
+    tool calling, a lower value is recommended.
+    """
 
     starting_state: Optional[str] = None
     """Name of the starting state. Required if states is not empty."""
