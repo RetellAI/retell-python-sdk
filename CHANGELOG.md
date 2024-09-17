@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.6.0 (2024-09-17)
+
+Full Changelog: [v4.5.0...v4.6.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.5.0...v4.6.0)
+
+### Features
+
+* **api:** OpenAPI spec update via Stainless API ([#183](https://github.com/RetellAI/retell-python-sdk/issues/183)) ([b85bb33](https://github.com/RetellAI/retell-python-sdk/commit/b85bb33bb623f09290e1258b487c3a1ce613549a))
+
 ## 4.5.0 (2024-09-10)
 
 Full Changelog: [v4.4.0...v4.5.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.4.0...v4.5.0)
