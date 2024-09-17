@@ -70,7 +70,26 @@ class AgentResource(SyncAPIResource):
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
-            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
+            "en-US",
+            "en-IN",
+            "en-GB",
+            "de-DE",
+            "es-ES",
+            "es-419",
+            "hi-IN",
+            "ja-JP",
+            "pt-PT",
+            "pt-BR",
+            "fr-FR",
+            "zh-CN",
+            "ru-RU",
+            "it-IT",
+            "ko-KR",
+            "nl-NL",
+            "pl-PL",
+            "tr-TR",
+            "vi-VN",
+            "multi",
         ]
         | NotGiven = NOT_GIVEN,
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
@@ -88,6 +107,7 @@ class AgentResource(SyncAPIResource):
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_detection_timeout_ms: int | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
+        volume: float | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -247,6 +267,10 @@ class AgentResource(SyncAPIResource):
               feature is only available for phone calls. If you want to hangup after hitting
               voicemail, set this to empty string.
 
+          volume: If set, will control the volume of the agent. Value ranging from [0,2]. Lower
+              value means quieter agent speech, while higher value means louder agent speech.
+              If unset, default value 1 will apply.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -291,6 +315,7 @@ class AgentResource(SyncAPIResource):
                     "voice_temperature": voice_temperature,
                     "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
                     "voicemail_message": voicemail_message,
+                    "volume": volume,
                     "webhook_url": webhook_url,
                 },
                 agent_create_params.AgentCreateParams,
@@ -355,7 +380,26 @@ class AgentResource(SyncAPIResource):
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
-            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
+            "en-US",
+            "en-IN",
+            "en-GB",
+            "de-DE",
+            "es-ES",
+            "es-419",
+            "hi-IN",
+            "ja-JP",
+            "pt-PT",
+            "pt-BR",
+            "fr-FR",
+            "zh-CN",
+            "ru-RU",
+            "it-IT",
+            "ko-KR",
+            "nl-NL",
+            "pl-PL",
+            "tr-TR",
+            "vi-VN",
+            "multi",
         ]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
@@ -375,6 +419,7 @@ class AgentResource(SyncAPIResource):
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_detection_timeout_ms: int | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
+        volume: float | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -535,6 +580,10 @@ class AgentResource(SyncAPIResource):
               feature is only available for phone calls. If you want to hangup after hitting
               voicemail, set this to empty string.
 
+          volume: If set, will control the volume of the agent. Value ranging from [0,2]. Lower
+              value means quieter agent speech, while higher value means louder agent speech.
+              If unset, default value 1 will apply.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -581,6 +630,7 @@ class AgentResource(SyncAPIResource):
                     "voice_temperature": voice_temperature,
                     "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
                     "voicemail_message": voicemail_message,
+                    "volume": volume,
                     "webhook_url": webhook_url,
                 },
                 agent_update_params.AgentUpdateParams,
@@ -687,7 +737,26 @@ class AsyncAgentResource(AsyncAPIResource):
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
-            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
+            "en-US",
+            "en-IN",
+            "en-GB",
+            "de-DE",
+            "es-ES",
+            "es-419",
+            "hi-IN",
+            "ja-JP",
+            "pt-PT",
+            "pt-BR",
+            "fr-FR",
+            "zh-CN",
+            "ru-RU",
+            "it-IT",
+            "ko-KR",
+            "nl-NL",
+            "pl-PL",
+            "tr-TR",
+            "vi-VN",
+            "multi",
         ]
         | NotGiven = NOT_GIVEN,
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
@@ -705,6 +774,7 @@ class AsyncAgentResource(AsyncAPIResource):
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_detection_timeout_ms: int | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
+        volume: float | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -864,6 +934,10 @@ class AsyncAgentResource(AsyncAPIResource):
               feature is only available for phone calls. If you want to hangup after hitting
               voicemail, set this to empty string.
 
+          volume: If set, will control the volume of the agent. Value ranging from [0,2]. Lower
+              value means quieter agent speech, while higher value means louder agent speech.
+              If unset, default value 1 will apply.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -908,6 +982,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voice_temperature": voice_temperature,
                     "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
                     "voicemail_message": voicemail_message,
+                    "volume": volume,
                     "webhook_url": webhook_url,
                 },
                 agent_create_params.AgentCreateParams,
@@ -972,7 +1047,26 @@ class AsyncAgentResource(AsyncAPIResource):
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
-            "en-US", "en-IN", "en-GB", "de-DE", "es-ES", "es-419", "hi-IN", "ja-JP", "pt-PT", "pt-BR", "fr-FR", "multi"
+            "en-US",
+            "en-IN",
+            "en-GB",
+            "de-DE",
+            "es-ES",
+            "es-419",
+            "hi-IN",
+            "ja-JP",
+            "pt-PT",
+            "pt-BR",
+            "fr-FR",
+            "zh-CN",
+            "ru-RU",
+            "it-IT",
+            "ko-KR",
+            "nl-NL",
+            "pl-PL",
+            "tr-TR",
+            "vi-VN",
+            "multi",
         ]
         | NotGiven = NOT_GIVEN,
         llm_websocket_url: str | NotGiven = NOT_GIVEN,
@@ -992,6 +1086,7 @@ class AsyncAgentResource(AsyncAPIResource):
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_detection_timeout_ms: int | NotGiven = NOT_GIVEN,
         voicemail_message: str | NotGiven = NOT_GIVEN,
+        volume: float | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1152,6 +1247,10 @@ class AsyncAgentResource(AsyncAPIResource):
               feature is only available for phone calls. If you want to hangup after hitting
               voicemail, set this to empty string.
 
+          volume: If set, will control the volume of the agent. Value ranging from [0,2]. Lower
+              value means quieter agent speech, while higher value means louder agent speech.
+              If unset, default value 1 will apply.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -1198,6 +1297,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voice_temperature": voice_temperature,
                     "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
                     "voicemail_message": voicemail_message,
+                    "volume": volume,
                     "webhook_url": webhook_url,
                 },
                 agent_update_params.AgentUpdateParams,
