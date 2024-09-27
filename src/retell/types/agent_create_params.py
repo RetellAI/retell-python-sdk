@@ -103,6 +103,13 @@ class AgentCreateParams(TypedDict, total=False):
     will not backchannel.
     """
 
+    enable_transcription_formatting: bool
+    """If set to true, will format transcription to number, date, email, etc.
+
+    If set to false, will return transcripts in raw words. If not set, default value
+    of true will apply.
+    """
+
     enable_voicemail_detection: bool
     """If set to true, will detect whether the call enters a voicemail.
 
