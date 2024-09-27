@@ -10,6 +10,9 @@ __all__ = [
     "GeneralTool",
     "GeneralToolEndCallTool",
     "GeneralToolTransferCallTool",
+    "GeneralToolTransferCallToolWarmTransferOption",
+    "GeneralToolTransferCallToolWarmTransferOptionWarmTransferPrompt",
+    "GeneralToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage",
     "GeneralToolCheckAvailabilityCalTool",
     "GeneralToolBookAppointmentCalTool",
     "GeneralToolPressDigitTool",
@@ -21,6 +24,9 @@ __all__ = [
     "StateTool",
     "StateToolEndCallTool",
     "StateToolTransferCallTool",
+    "StateToolTransferCallToolWarmTransferOption",
+    "StateToolTransferCallToolWarmTransferOptionWarmTransferPrompt",
+    "StateToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage",
     "StateToolCheckAvailabilityCalTool",
     "StateToolBookAppointmentCalTool",
     "StateToolPressDigitTool",
@@ -106,6 +112,26 @@ class GeneralToolEndCallTool(TypedDict, total=False):
     """
 
 
+class GeneralToolTransferCallToolWarmTransferOptionWarmTransferPrompt(TypedDict, total=False):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class GeneralToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage(TypedDict, total=False):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+GeneralToolTransferCallToolWarmTransferOption: TypeAlias = Union[
+    GeneralToolTransferCallToolWarmTransferOptionWarmTransferPrompt,
+    GeneralToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage,
+]
+
+
 class GeneralToolTransferCallTool(TypedDict, total=False):
     name: Required[str]
     """Name of the tool.
@@ -116,8 +142,8 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
 
     number: Required[str]
     """
-    The number to transfer to in E.164 format (a + and country code, then the phone
-    number with no space or other special characters). For example, +16175551212.
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
     """
 
     type: Required[Literal["transfer_call"]]
@@ -126,6 +152,13 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
+    """
+
+    warm_transfer_option: Optional[GeneralToolTransferCallToolWarmTransferOption]
+    """If set, when transfer is successful, will perform a warm handoff.
+
+    Can leave either a static message or a dynamic one based on prompt. Set to null
+    to disable warm handoff.
     """
 
 
@@ -373,6 +406,26 @@ class StateToolEndCallTool(TypedDict, total=False):
     """
 
 
+class StateToolTransferCallToolWarmTransferOptionWarmTransferPrompt(TypedDict, total=False):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class StateToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage(TypedDict, total=False):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+StateToolTransferCallToolWarmTransferOption: TypeAlias = Union[
+    StateToolTransferCallToolWarmTransferOptionWarmTransferPrompt,
+    StateToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage,
+]
+
+
 class StateToolTransferCallTool(TypedDict, total=False):
     name: Required[str]
     """Name of the tool.
@@ -383,8 +436,8 @@ class StateToolTransferCallTool(TypedDict, total=False):
 
     number: Required[str]
     """
-    The number to transfer to in E.164 format (a + and country code, then the phone
-    number with no space or other special characters). For example, +16175551212.
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
     """
 
     type: Required[Literal["transfer_call"]]
@@ -393,6 +446,13 @@ class StateToolTransferCallTool(TypedDict, total=False):
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
+    """
+
+    warm_transfer_option: Optional[StateToolTransferCallToolWarmTransferOption]
+    """If set, when transfer is successful, will perform a warm handoff.
+
+    Can leave either a static message or a dynamic one based on prompt. Set to null
+    to disable warm handoff.
     """
 
 
