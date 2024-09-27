@@ -65,6 +65,7 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -177,6 +178,10 @@ class AgentResource(SyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
+              false, will return transcripts in raw words. If not set, default value of true
+              will apply.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -297,6 +302,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "enable_transcription_formatting": enable_transcription_formatting,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
@@ -375,6 +381,7 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -483,6 +490,10 @@ class AgentResource(SyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
+              false, will return transcripts in raw words. If not set, default value of true
+              will apply.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -610,6 +621,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "enable_transcription_formatting": enable_transcription_formatting,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
@@ -732,6 +744,7 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -844,6 +857,10 @@ class AsyncAgentResource(AsyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
+              false, will return transcripts in raw words. If not set, default value of true
+              will apply.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -964,6 +981,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "enable_transcription_formatting": enable_transcription_formatting,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
@@ -1042,6 +1060,7 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
+        enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -1150,6 +1169,10 @@ class AsyncAgentResource(AsyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
+              false, will return transcripts in raw words. If not set, default value of true
+              will apply.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -1277,6 +1300,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
+                    "enable_transcription_formatting": enable_transcription_formatting,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
