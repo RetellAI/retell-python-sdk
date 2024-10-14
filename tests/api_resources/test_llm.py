@@ -59,6 +59,10 @@ class TestLlm:
                             "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "warm_transfer_option": {
+                                "prompt": "Summarize the call in one sentence for the warn handoff.",
+                                "type": "prompt",
+                            },
                         }
                     ],
                 },
@@ -212,6 +216,10 @@ class TestLlm:
                             "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "warm_transfer_option": {
+                                "prompt": "Summarize the call in one sentence for the warn handoff.",
+                                "type": "prompt",
+                            },
                         }
                     ],
                 },
@@ -402,6 +410,10 @@ class TestAsyncLlm:
                             "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "warm_transfer_option": {
+                                "prompt": "Summarize the call in one sentence for the warn handoff.",
+                                "type": "prompt",
+                            },
                         }
                     ],
                 },
@@ -555,6 +567,10 @@ class TestAsyncLlm:
                             "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "warm_transfer_option": {
+                                "prompt": "Summarize the call in one sentence for the warn handoff.",
+                                "type": "prompt",
+                            },
                         }
                     ],
                 },

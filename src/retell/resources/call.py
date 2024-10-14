@@ -273,7 +273,7 @@ class CallResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> PhoneCallResponse:
         """
-        Register a new outbound phone call for custom telephony
+        Register a new phone call for custom telephony
 
         Args:
           agent_id: The agent to use for the call.
@@ -557,7 +557,7 @@ class AsyncCallResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> PhoneCallResponse:
         """
-        Register a new outbound phone call for custom telephony
+        Register a new phone call for custom telephony
 
         Args:
           agent_id: The agent to use for the call.

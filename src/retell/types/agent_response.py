@@ -181,6 +181,13 @@ class AgentResponse(BaseModel):
     will not backchannel.
     """
 
+    enable_transcription_formatting: Optional[bool] = None
+    """If set to true, will format transcription to number, date, email, etc.
+
+    If set to false, will return transcripts in raw words. If not set, default value
+    of true will apply.
+    """
+
     enable_voicemail_detection: Optional[bool] = None
     """If set to true, will detect whether the call enters a voicemail.
 
