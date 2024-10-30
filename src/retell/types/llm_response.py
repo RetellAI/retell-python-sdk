@@ -98,6 +98,14 @@ class GeneralToolTransferCallTool(BaseModel):
     to call the tool.
     """
 
+    show_transferee_as_caller: Optional[bool] = None
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support SIP REFER to PSTN. This is
+    only applicable for cold transfer, so if warm transfer option is specified, this
+    field will be ignored. Default to false (default to show AI agent as caller).
+    """
+
     warm_transfer_option: Optional[GeneralToolTransferCallToolWarmTransferOption] = None
     """If set, when transfer is successful, will perform a warm handoff.
 
@@ -393,6 +401,14 @@ class StateToolTransferCallTool(BaseModel):
     to call the tool.
     """
 
+    show_transferee_as_caller: Optional[bool] = None
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support SIP REFER to PSTN. This is
+    only applicable for cold transfer, so if warm transfer option is specified, this
+    field will be ignored. Default to false (default to show AI agent as caller).
+    """
+
     warm_transfer_option: Optional[StateToolTransferCallToolWarmTransferOption] = None
     """If set, when transfer is successful, will perform a warm handoff.
 
@@ -660,8 +676,14 @@ class LlmResponse(BaseModel):
     dynamic variables for inbound calls.
     """
 
+    knowledge_base_ids: Optional[List[str]] = None
+    """A list of knowledge base ids to use for this resource.
+
+    Set to null to remove all knowledge bases.
+    """
+
     model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]] = None
-    """Select the underlying LLM. If not set, would default to gpt-4o."""
+    """Select the underlying text LLM. If not set, would default to gpt-4o."""
 
     api_model_temperature: Optional[float] = FieldInfo(alias="model_temperature", default=None)
     """If set, will control the randomness of the response.
@@ -669,6 +691,12 @@ class LlmResponse(BaseModel):
     Value ranging from [0,1]. Lower value means more deterministic, while higher
     value means more random. If unset, default value 0 will apply. Note that for
     tool calling, a lower value is recommended.
+    """
+
+    s2s_model: Optional[Literal["gpt-4o-realtime"]] = None
+    """Select the underlying speech to speech model.
+
+    Can only set this or model, not both.
     """
 
     starting_state: Optional[str] = None
