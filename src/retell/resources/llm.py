@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import List, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -55,8 +55,10 @@ class LlmResource(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
+        s2s_model: Optional[Literal["gpt-4o-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -91,12 +93,18 @@ class LlmResource(SyncAPIResource):
               dynamic variables to use for the call. Without this, there's no way to pass
               dynamic variables for inbound calls.
 
-          model: Select the underlying LLM. If not set, would default to gpt-4o.
+          knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
+              knowledge bases.
+
+          model: Select the underlying text LLM. If not set, would default to gpt-4o.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
               unset, default value 0 will apply. Note that for tool calling, a lower value is
               recommended.
+
+          s2s_model: Select the underlying speech to speech model. Can only set this or model, not
+              both.
 
           starting_state: Name of the starting state. Required if states is not empty.
 
@@ -122,8 +130,10 @@ class LlmResource(SyncAPIResource):
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
+                    "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
                     "model_temperature": model_temperature,
+                    "s2s_model": s2s_model,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -176,8 +186,10 @@ class LlmResource(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
+        s2s_model: Optional[Literal["gpt-4o-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -212,12 +224,18 @@ class LlmResource(SyncAPIResource):
               dynamic variables to use for the call. Without this, there's no way to pass
               dynamic variables for inbound calls.
 
-          model: Select the underlying LLM. If not set, would default to gpt-4o.
+          knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
+              knowledge bases.
+
+          model: Select the underlying text LLM. If not set, would default to gpt-4o.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
               unset, default value 0 will apply. Note that for tool calling, a lower value is
               recommended.
+
+          s2s_model: Select the underlying speech to speech model. Can only set this or model, not
+              both.
 
           starting_state: Name of the starting state. Required if states is not empty.
 
@@ -245,8 +263,10 @@ class LlmResource(SyncAPIResource):
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
+                    "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
                     "model_temperature": model_temperature,
+                    "s2s_model": s2s_model,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -339,8 +359,10 @@ class AsyncLlmResource(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
+        s2s_model: Optional[Literal["gpt-4o-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -375,12 +397,18 @@ class AsyncLlmResource(AsyncAPIResource):
               dynamic variables to use for the call. Without this, there's no way to pass
               dynamic variables for inbound calls.
 
-          model: Select the underlying LLM. If not set, would default to gpt-4o.
+          knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
+              knowledge bases.
+
+          model: Select the underlying text LLM. If not set, would default to gpt-4o.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
               unset, default value 0 will apply. Note that for tool calling, a lower value is
               recommended.
+
+          s2s_model: Select the underlying speech to speech model. Can only set this or model, not
+              both.
 
           starting_state: Name of the starting state. Required if states is not empty.
 
@@ -406,8 +434,10 @@ class AsyncLlmResource(AsyncAPIResource):
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
+                    "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
                     "model_temperature": model_temperature,
+                    "s2s_model": s2s_model,
                     "starting_state": starting_state,
                     "states": states,
                 },
@@ -460,8 +490,10 @@ class AsyncLlmResource(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"] | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
+        s2s_model: Optional[Literal["gpt-4o-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -496,12 +528,18 @@ class AsyncLlmResource(AsyncAPIResource):
               dynamic variables to use for the call. Without this, there's no way to pass
               dynamic variables for inbound calls.
 
-          model: Select the underlying LLM. If not set, would default to gpt-4o.
+          knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
+              knowledge bases.
+
+          model: Select the underlying text LLM. If not set, would default to gpt-4o.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
               unset, default value 0 will apply. Note that for tool calling, a lower value is
               recommended.
+
+          s2s_model: Select the underlying speech to speech model. Can only set this or model, not
+              both.
 
           starting_state: Name of the starting state. Required if states is not empty.
 
@@ -529,8 +567,10 @@ class AsyncLlmResource(AsyncAPIResource):
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
+                    "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
                     "model_temperature": model_temperature,
+                    "s2s_model": s2s_model,
                     "starting_state": starting_state,
                     "states": states,
                 },
