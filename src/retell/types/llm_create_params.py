@@ -69,8 +69,14 @@ class LlmCreateParams(TypedDict, total=False):
     dynamic variables for inbound calls.
     """
 
+    knowledge_base_ids: Optional[List[str]]
+    """A list of knowledge base ids to use for this resource.
+
+    Set to null to remove all knowledge bases.
+    """
+
     model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
-    """Select the underlying LLM. If not set, would default to gpt-4o."""
+    """Select the underlying text LLM. If not set, would default to gpt-4o."""
 
     model_temperature: float
     """If set, will control the randomness of the response.
@@ -78,6 +84,12 @@ class LlmCreateParams(TypedDict, total=False):
     Value ranging from [0,1]. Lower value means more deterministic, while higher
     value means more random. If unset, default value 0 will apply. Note that for
     tool calling, a lower value is recommended.
+    """
+
+    s2s_model: Optional[Literal["gpt-4o-realtime"]]
+    """Select the underlying speech to speech model.
+
+    Can only set this or model, not both.
     """
 
     starting_state: Optional[str]
@@ -152,6 +164,14 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
+    """
+
+    show_transferee_as_caller: Optional[bool]
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support SIP REFER to PSTN. This is
+    only applicable for cold transfer, so if warm transfer option is specified, this
+    field will be ignored. Default to false (default to show AI agent as caller).
     """
 
     warm_transfer_option: Optional[GeneralToolTransferCallToolWarmTransferOption]
@@ -446,6 +466,14 @@ class StateToolTransferCallTool(TypedDict, total=False):
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
+    """
+
+    show_transferee_as_caller: Optional[bool]
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support SIP REFER to PSTN. This is
+    only applicable for cold transfer, so if warm transfer option is specified, this
+    field will be ignored. Default to false (default to show AI agent as caller).
     """
 
     warm_transfer_option: Optional[StateToolTransferCallToolWarmTransferOption]

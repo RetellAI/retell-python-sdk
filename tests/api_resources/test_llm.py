@@ -35,8 +35,10 @@ class TestLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
+            knowledge_base_ids=["string", "string", "string"],
             model="gpt-4o",
             model_temperature=0,
+            s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
             states=[
                 {
@@ -59,6 +61,7 @@ class TestLlm:
                             "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "show_transferee_as_caller": True,
                             "warm_transfer_option": {
                                 "prompt": "Summarize the call in one sentence for the warn handoff.",
                                 "type": "prompt",
@@ -192,8 +195,10 @@ class TestLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
+            knowledge_base_ids=["string", "string", "string"],
             model="gpt-4o",
             model_temperature=0,
+            s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
             states=[
                 {
@@ -216,6 +221,7 @@ class TestLlm:
                             "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "show_transferee_as_caller": True,
                             "warm_transfer_option": {
                                 "prompt": "Summarize the call in one sentence for the warn handoff.",
                                 "type": "prompt",
@@ -386,8 +392,10 @@ class TestAsyncLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
+            knowledge_base_ids=["string", "string", "string"],
             model="gpt-4o",
             model_temperature=0,
+            s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
             states=[
                 {
@@ -410,6 +418,7 @@ class TestAsyncLlm:
                             "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "show_transferee_as_caller": True,
                             "warm_transfer_option": {
                                 "prompt": "Summarize the call in one sentence for the warn handoff.",
                                 "type": "prompt",
@@ -543,8 +552,10 @@ class TestAsyncLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
+            knowledge_base_ids=["string", "string", "string"],
             model="gpt-4o",
             model_temperature=0,
+            s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
             states=[
                 {
@@ -567,6 +578,7 @@ class TestAsyncLlm:
                             "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "show_transferee_as_caller": True,
                             "warm_transfer_option": {
                                 "prompt": "Summarize the call in one sentence for the warn handoff.",
                                 "type": "prompt",
