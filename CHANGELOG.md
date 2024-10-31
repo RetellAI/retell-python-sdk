@@ -1,5 +1,35 @@
 # Changelog
 
+## 4.7.0 (2024-10-31)
+
+Full Changelog: [v4.6.0...v4.7.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.6.0...v4.7.0)
+
+### Features
+
+* **api:** api update ([#193](https://github.com/RetellAI/retell-python-sdk/issues/193)) ([46ae92b](https://github.com/RetellAI/retell-python-sdk/commit/46ae92bc17b9d4d9ba193a1d4e91b802f121ec1a))
+* **api:** api update ([#194](https://github.com/RetellAI/retell-python-sdk/issues/194)) ([83c4c37](https://github.com/RetellAI/retell-python-sdk/commit/83c4c37100917a0afb7845f24a9ea5b984741026))
+* **api:** api update ([#196](https://github.com/RetellAI/retell-python-sdk/issues/196)) ([e897b96](https://github.com/RetellAI/retell-python-sdk/commit/e897b96750faf297c4f4c109ffd49a8fee4c330a))
+* **api:** api update ([#197](https://github.com/RetellAI/retell-python-sdk/issues/197)) ([a8a624a](https://github.com/RetellAI/retell-python-sdk/commit/a8a624a783fc47dfcced476c855974d537e6df56))
+* **api:** OpenAPI spec update via Stainless API ([#190](https://github.com/RetellAI/retell-python-sdk/issues/190)) ([e98859b](https://github.com/RetellAI/retell-python-sdk/commit/e98859be145a4148664131f6d33c9ea811274a5b))
+
+
+### Bug Fixes
+
+* **internal:** fix is_basemodel_type ([6af7cf4](https://github.com/RetellAI/retell-python-sdk/commit/6af7cf4792061daa0b8c4c67d6de0b5bbaf0c818))
+
+
+### Chores
+
+* **internal:** bump pyright / mypy version ([#189](https://github.com/RetellAI/retell-python-sdk/issues/189)) ([29a9814](https://github.com/RetellAI/retell-python-sdk/commit/29a98145c4cf0ceec56c33d95933c4dabf9b3521))
+* **internal:** bump ruff ([#188](https://github.com/RetellAI/retell-python-sdk/issues/188)) ([bd939c2](https://github.com/RetellAI/retell-python-sdk/commit/bd939c2475ba709ff65684bb87dd3b56d398e72f))
+* **internal:** codegen related update ([#191](https://github.com/RetellAI/retell-python-sdk/issues/191)) ([fbfd28d](https://github.com/RetellAI/retell-python-sdk/commit/fbfd28da765d0c030b8bef0b67fed8db43bdb92e))
+* **internal:** codegen related update ([#192](https://github.com/RetellAI/retell-python-sdk/issues/192)) ([ebfc813](https://github.com/RetellAI/retell-python-sdk/commit/ebfc8133ad3b96c963a62fed77736320cbb581b8))
+
+
+### Documentation
+
+* update CONTRIBUTING.md ([#185](https://github.com/RetellAI/retell-python-sdk/issues/185)) ([a939411](https://github.com/RetellAI/retell-python-sdk/commit/a9394111a918e04b72b1b6e4fdc49ad146172820))
+
 ## 4.6.0 (2024-09-17)
 
 Full Changelog: [v4.5.0...v4.6.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.5.0...v4.6.0)
