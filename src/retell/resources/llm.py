@@ -61,6 +61,7 @@ class LlmResource(SyncAPIResource):
         s2s_model: Optional[Literal["gpt-4o-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
+        tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -114,6 +115,11 @@ class LlmResource(SyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
+          tool_call_strict_mode: Only applicable when model is gpt-4o or gpt-4o mini. If set to true, will use
+              structured output to make sure tool call arguments follow the json schema. The
+              time to save a new tool or change to a tool will be longer as additional
+              processing is needed. Default to false.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -136,6 +142,7 @@ class LlmResource(SyncAPIResource):
                     "s2s_model": s2s_model,
                     "starting_state": starting_state,
                     "states": states,
+                    "tool_call_strict_mode": tool_call_strict_mode,
                 },
                 llm_create_params.LlmCreateParams,
             ),
@@ -192,6 +199,7 @@ class LlmResource(SyncAPIResource):
         s2s_model: Optional[Literal["gpt-4o-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
+        tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -245,6 +253,11 @@ class LlmResource(SyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
+          tool_call_strict_mode: Only applicable when model is gpt-4o or gpt-4o mini. If set to true, will use
+              structured output to make sure tool call arguments follow the json schema. The
+              time to save a new tool or change to a tool will be longer as additional
+              processing is needed. Default to false.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -269,6 +282,7 @@ class LlmResource(SyncAPIResource):
                     "s2s_model": s2s_model,
                     "starting_state": starting_state,
                     "states": states,
+                    "tool_call_strict_mode": tool_call_strict_mode,
                 },
                 llm_update_params.LlmUpdateParams,
             ),
@@ -365,6 +379,7 @@ class AsyncLlmResource(AsyncAPIResource):
         s2s_model: Optional[Literal["gpt-4o-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
+        tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -418,6 +433,11 @@ class AsyncLlmResource(AsyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
+          tool_call_strict_mode: Only applicable when model is gpt-4o or gpt-4o mini. If set to true, will use
+              structured output to make sure tool call arguments follow the json schema. The
+              time to save a new tool or change to a tool will be longer as additional
+              processing is needed. Default to false.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -440,6 +460,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "s2s_model": s2s_model,
                     "starting_state": starting_state,
                     "states": states,
+                    "tool_call_strict_mode": tool_call_strict_mode,
                 },
                 llm_create_params.LlmCreateParams,
             ),
@@ -496,6 +517,7 @@ class AsyncLlmResource(AsyncAPIResource):
         s2s_model: Optional[Literal["gpt-4o-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
+        tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -549,6 +571,11 @@ class AsyncLlmResource(AsyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
+          tool_call_strict_mode: Only applicable when model is gpt-4o or gpt-4o mini. If set to true, will use
+              structured output to make sure tool call arguments follow the json schema. The
+              time to save a new tool or change to a tool will be longer as additional
+              processing is needed. Default to false.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -573,6 +600,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "s2s_model": s2s_model,
                     "starting_state": starting_state,
                     "states": states,
+                    "tool_call_strict_mode": tool_call_strict_mode,
                 },
                 llm_update_params.LlmUpdateParams,
             ),

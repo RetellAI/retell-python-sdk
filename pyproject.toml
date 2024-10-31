@@ -5,7 +5,7 @@ description = "The official Python library for the retell API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Retell", email = "founders@retellai.com" },
+{ name = "Retell", email = "support@retellai.com" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
