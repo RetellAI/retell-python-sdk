@@ -48,6 +48,14 @@ from .phone_number import (
     PhoneNumberResourceWithStreamingResponse,
     AsyncPhoneNumberResourceWithStreamingResponse,
 )
+from .knowledge_base import (
+    KnowledgeBaseResource,
+    AsyncKnowledgeBaseResource,
+    KnowledgeBaseResourceWithRawResponse,
+    AsyncKnowledgeBaseResourceWithRawResponse,
+    KnowledgeBaseResourceWithStreamingResponse,
+    AsyncKnowledgeBaseResourceWithStreamingResponse,
+)
 
 __all__ = [
     "CallResource",
@@ -74,6 +82,12 @@ __all__ = [
     "AsyncLlmResourceWithRawResponse",
     "LlmResourceWithStreamingResponse",
     "AsyncLlmResourceWithStreamingResponse",
+    "KnowledgeBaseResource",
+    "AsyncKnowledgeBaseResource",
+    "KnowledgeBaseResourceWithRawResponse",
+    "AsyncKnowledgeBaseResourceWithRawResponse",
+    "KnowledgeBaseResourceWithStreamingResponse",
+    "AsyncKnowledgeBaseResourceWithStreamingResponse",
     "VoiceResource",
     "AsyncVoiceResource",
     "VoiceResourceWithRawResponse",

@@ -51,6 +51,7 @@ class Retell(SyncAPIClient):
     phone_number: resources.PhoneNumberResource
     agent: resources.AgentResource
     llm: resources.LlmResource
+    knowledge_base: resources.KnowledgeBaseResource
     voice: resources.VoiceResource
     concurrency: resources.ConcurrencyResource
     with_raw_response: RetellWithRawResponse
@@ -105,6 +106,7 @@ class Retell(SyncAPIClient):
         self.phone_number = resources.PhoneNumberResource(self)
         self.agent = resources.AgentResource(self)
         self.llm = resources.LlmResource(self)
+        self.knowledge_base = resources.KnowledgeBaseResource(self)
         self.voice = resources.VoiceResource(self)
         self.concurrency = resources.ConcurrencyResource(self)
         self.with_raw_response = RetellWithRawResponse(self)
@@ -222,6 +224,7 @@ class AsyncRetell(AsyncAPIClient):
     phone_number: resources.AsyncPhoneNumberResource
     agent: resources.AsyncAgentResource
     llm: resources.AsyncLlmResource
+    knowledge_base: resources.AsyncKnowledgeBaseResource
     voice: resources.AsyncVoiceResource
     concurrency: resources.AsyncConcurrencyResource
     with_raw_response: AsyncRetellWithRawResponse
@@ -276,6 +279,7 @@ class AsyncRetell(AsyncAPIClient):
         self.phone_number = resources.AsyncPhoneNumberResource(self)
         self.agent = resources.AsyncAgentResource(self)
         self.llm = resources.AsyncLlmResource(self)
+        self.knowledge_base = resources.AsyncKnowledgeBaseResource(self)
         self.voice = resources.AsyncVoiceResource(self)
         self.concurrency = resources.AsyncConcurrencyResource(self)
         self.with_raw_response = AsyncRetellWithRawResponse(self)
@@ -392,6 +396,7 @@ class RetellWithRawResponse:
         self.phone_number = resources.PhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = resources.AgentResourceWithRawResponse(client.agent)
         self.llm = resources.LlmResourceWithRawResponse(client.llm)
+        self.knowledge_base = resources.KnowledgeBaseResourceWithRawResponse(client.knowledge_base)
         self.voice = resources.VoiceResourceWithRawResponse(client.voice)
         self.concurrency = resources.ConcurrencyResourceWithRawResponse(client.concurrency)
 
@@ -402,6 +407,7 @@ class AsyncRetellWithRawResponse:
         self.phone_number = resources.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = resources.AsyncAgentResourceWithRawResponse(client.agent)
         self.llm = resources.AsyncLlmResourceWithRawResponse(client.llm)
+        self.knowledge_base = resources.AsyncKnowledgeBaseResourceWithRawResponse(client.knowledge_base)
         self.voice = resources.AsyncVoiceResourceWithRawResponse(client.voice)
         self.concurrency = resources.AsyncConcurrencyResourceWithRawResponse(client.concurrency)
 
@@ -412,6 +418,7 @@ class RetellWithStreamedResponse:
         self.phone_number = resources.PhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = resources.AgentResourceWithStreamingResponse(client.agent)
         self.llm = resources.LlmResourceWithStreamingResponse(client.llm)
+        self.knowledge_base = resources.KnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
         self.voice = resources.VoiceResourceWithStreamingResponse(client.voice)
         self.concurrency = resources.ConcurrencyResourceWithStreamingResponse(client.concurrency)
 
@@ -422,6 +429,7 @@ class AsyncRetellWithStreamedResponse:
         self.phone_number = resources.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = resources.AsyncAgentResourceWithStreamingResponse(client.agent)
         self.llm = resources.AsyncLlmResourceWithStreamingResponse(client.llm)
+        self.knowledge_base = resources.AsyncKnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
         self.voice = resources.AsyncVoiceResourceWithStreamingResponse(client.voice)
         self.concurrency = resources.AsyncConcurrencyResourceWithStreamingResponse(client.concurrency)
 
