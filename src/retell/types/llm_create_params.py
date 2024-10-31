@@ -105,6 +105,14 @@ class LlmCreateParams(TypedDict, total=False):
     one state).
     """
 
+    tool_call_strict_mode: bool
+    """Only applicable when model is gpt-4o or gpt-4o mini.
+
+    If set to true, will use structured output to make sure tool call arguments
+    follow the json schema. The time to save a new tool or change to a tool will be
+    longer as additional processing is needed. Default to false.
+    """
+
 
 class GeneralToolEndCallTool(TypedDict, total=False):
     name: Required[str]

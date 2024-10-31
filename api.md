@@ -63,6 +63,21 @@ Methods:
 - <code title="get /list-retell-llms">client.llm.<a href="./src/retell/resources/llm.py">list</a>() -> <a href="./src/retell/types/llm_list_response.py">LlmListResponse</a></code>
 - <code title="delete /delete-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">delete</a>(llm_id) -> None</code>
 
+# KnowledgeBase
+
+Types:
+
+```python
+from retell.types import KnowledgeBaseResponse, KnowledgeBaseListResponse
+```
+
+Methods:
+
+- <code title="post /create-knowledge-base">client.knowledge_base.<a href="./src/retell/resources/knowledge_base.py">create</a>(\*\*<a href="src/retell/types/knowledge_base_create_params.py">params</a>) -> <a href="./src/retell/types/knowledge_base_response.py">KnowledgeBaseResponse</a></code>
+- <code title="get /get-knowledge-base/{knowledge_base_id}">client.knowledge_base.<a href="./src/retell/resources/knowledge_base.py">retrieve</a>(knowledge_base_id) -> <a href="./src/retell/types/knowledge_base_response.py">KnowledgeBaseResponse</a></code>
+- <code title="get /list-knowledge-bases">client.knowledge_base.<a href="./src/retell/resources/knowledge_base.py">list</a>() -> <a href="./src/retell/types/knowledge_base_list_response.py">KnowledgeBaseListResponse</a></code>
+- <code title="delete /delete-knowledge-base/{knowledge_base_id}">client.knowledge_base.<a href="./src/retell/resources/knowledge_base.py">delete</a>(knowledge_base_id) -> None</code>
+
 # Voice
 
 Types:
