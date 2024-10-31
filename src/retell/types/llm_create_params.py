@@ -75,7 +75,7 @@ class LlmCreateParams(TypedDict, total=False):
     Set to null to remove all knowledge bases.
     """
 
-    model: Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]
+    model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]]
     """Select the underlying text LLM. If not set, would default to gpt-4o."""
 
     model_temperature: float
