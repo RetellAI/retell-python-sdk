@@ -7,6 +7,9 @@ from .._models import BaseModel
 
 __all__ = [
     "AgentResponse",
+    "ResponseEngine",
+    "ResponseEngineResponseEngineRetellLm",
+    "ResponseEngineResponseEngineCustomLm",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
     "PostCallAnalysisDataEnumAnalysisData",
@@ -14,6 +17,25 @@ __all__ = [
     "PostCallAnalysisDataNumberAnalysisData",
     "PronunciationDictionary",
 ]
+
+
+class ResponseEngineResponseEngineRetellLm(BaseModel):
+    llm_id: str
+    """id of the Retell LLM to use."""
+
+    type: Literal["retell-llm"]
+    """type of the response engine."""
+
+
+class ResponseEngineResponseEngineCustomLm(BaseModel):
+    llm_websocket_url: str
+    """LLM websocket url of the custom LLM."""
+
+    type: Literal["custom-llm"]
+    """type of the response engine."""
+
+
+ResponseEngine: TypeAlias = Union[ResponseEngineResponseEngineRetellLm, ResponseEngineResponseEngineCustomLm]
 
 
 class PostCallAnalysisDataStringAnalysisData(BaseModel):
@@ -95,12 +117,8 @@ class AgentResponse(BaseModel):
     Either the time of last update or creation if no updates available.
     """
 
-    llm_websocket_url: str
-    """
-    The URL we will establish LLM websocket for getting response, usually your
-    server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-    request format (sent from us) and response format (send to us).
-    """
+    response_engine: ResponseEngine
+    """The response engine to use for the agent."""
 
     voice_id: str
     """Unique voice id used for the agent.

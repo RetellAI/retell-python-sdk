@@ -7,6 +7,9 @@ from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
     "AgentCreateParams",
+    "ResponseEngine",
+    "ResponseEngineResponseEngineRetellLm",
+    "ResponseEngineResponseEngineCustomLm",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
     "PostCallAnalysisDataEnumAnalysisData",
@@ -17,12 +20,8 @@ __all__ = [
 
 
 class AgentCreateParams(TypedDict, total=False):
-    llm_websocket_url: Required[str]
-    """
-    The URL we will establish LLM websocket for getting response, usually your
-    server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-    request format (sent from us) and response format (send to us).
-    """
+    response_engine: Required[ResponseEngine]
+    """The response engine to use for the agent."""
 
     voice_id: Required[str]
     """Unique voice id used for the agent.
@@ -291,6 +290,25 @@ class AgentCreateParams(TypedDict, total=False):
     account level webhook for this agent. Set to `null` to remove webhook url from
     this agent.
     """
+
+
+class ResponseEngineResponseEngineRetellLm(TypedDict, total=False):
+    llm_id: Required[str]
+    """id of the Retell LLM to use."""
+
+    type: Required[Literal["retell-llm"]]
+    """type of the response engine."""
+
+
+class ResponseEngineResponseEngineCustomLm(TypedDict, total=False):
+    llm_websocket_url: Required[str]
+    """LLM websocket url of the custom LLM."""
+
+    type: Required[Literal["custom-llm"]]
+    """type of the response engine."""
+
+
+ResponseEngine: TypeAlias = Union[ResponseEngineResponseEngineRetellLm, ResponseEngineResponseEngineCustomLm]
 
 
 class PostCallAnalysisDataStringAnalysisData(TypedDict, total=False):

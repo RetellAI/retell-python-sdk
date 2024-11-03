@@ -701,7 +701,16 @@ class TestRetell:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
+                body=cast(
+                    object,
+                    dict(
+                        response_engine={
+                            "llm_id": "llm_234sdertfsdsfsdf",
+                            "type": "retell-llm",
+                        },
+                        voice_id="11labs-Adrian",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -716,7 +725,16 @@ class TestRetell:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
+                body=cast(
+                    object,
+                    dict(
+                        response_engine={
+                            "llm_id": "llm_234sdertfsdsfsdf",
+                            "type": "retell-llm",
+                        },
+                        voice_id="11labs-Adrian",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -750,7 +768,11 @@ class TestRetell:
         respx_mock.post("/create-agent").mock(side_effect=retry_handler)
 
         response = client.agent.with_raw_response.create(
-            llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian"
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
+            voice_id="11labs-Adrian",
         )
 
         assert response.retries_taken == failures_before_success
@@ -776,7 +798,10 @@ class TestRetell:
         respx_mock.post("/create-agent").mock(side_effect=retry_handler)
 
         response = client.agent.with_raw_response.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
             extra_headers={"x-stainless-retry-count": Omit()},
         )
@@ -803,7 +828,10 @@ class TestRetell:
         respx_mock.post("/create-agent").mock(side_effect=retry_handler)
 
         response = client.agent.with_raw_response.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
             extra_headers={"x-stainless-retry-count": "42"},
         )
@@ -1482,7 +1510,16 @@ class TestAsyncRetell:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
+                body=cast(
+                    object,
+                    dict(
+                        response_engine={
+                            "llm_id": "llm_234sdertfsdsfsdf",
+                            "type": "retell-llm",
+                        },
+                        voice_id="11labs-Adrian",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1497,7 +1534,16 @@ class TestAsyncRetell:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/create-agent",
-                body=cast(object, dict(llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian")),
+                body=cast(
+                    object,
+                    dict(
+                        response_engine={
+                            "llm_id": "llm_234sdertfsdsfsdf",
+                            "type": "retell-llm",
+                        },
+                        voice_id="11labs-Adrian",
+                    ),
+                ),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1532,7 +1578,11 @@ class TestAsyncRetell:
         respx_mock.post("/create-agent").mock(side_effect=retry_handler)
 
         response = await client.agent.with_raw_response.create(
-            llm_websocket_url="wss://your-websocket-endpoint", voice_id="11labs-Adrian"
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
+            voice_id="11labs-Adrian",
         )
 
         assert response.retries_taken == failures_before_success
@@ -1559,7 +1609,10 @@ class TestAsyncRetell:
         respx_mock.post("/create-agent").mock(side_effect=retry_handler)
 
         response = await client.agent.with_raw_response.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
             extra_headers={"x-stainless-retry-count": Omit()},
         )
@@ -1587,7 +1640,10 @@ class TestAsyncRetell:
         respx_mock.post("/create-agent").mock(side_effect=retry_handler)
 
         response = await client.agent.with_raw_response.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
             extra_headers={"x-stainless-retry-count": "42"},
         )
