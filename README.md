@@ -29,7 +29,10 @@ client = Retell(
 )
 
 agent_response = client.agent.create(
-    llm_websocket_url="wss://your-websocket-endpoint",
+    response_engine={
+        "llm_id": "llm_234sdertfsdsfsdf",
+        "type": "retell-llm",
+    },
     voice_id="11labs-Adrian",
 )
 print(agent_response.agent_id)
@@ -50,7 +53,10 @@ client = AsyncRetell(
 
 async def main() -> None:
     agent_response = await client.agent.create(
-        llm_websocket_url="wss://your-websocket-endpoint",
+        response_engine={
+            "llm_id": "llm_234sdertfsdsfsdf",
+            "type": "retell-llm",
+        },
         voice_id="11labs-Adrian",
     )
     print(agent_response.agent_id)
@@ -87,7 +93,10 @@ client = Retell()
 
 try:
     client.agent.create(
-        llm_websocket_url="wss://your-websocket-endpoint",
+        response_engine={
+            "llm_id": "llm_234sdertfsdsfsdf",
+            "type": "retell-llm",
+        },
         voice_id="11labs-Adrian",
     )
 except retell.APIConnectionError as e:
@@ -133,7 +142,10 @@ client = Retell(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).agent.create(
-    llm_websocket_url="wss://your-websocket-endpoint",
+    response_engine={
+        "llm_id": "llm_234sdertfsdsfsdf",
+        "type": "retell-llm",
+    },
     voice_id="11labs-Adrian",
 )
 ```
@@ -159,7 +171,10 @@ client = Retell(
 
 # Override per-request:
 client.with_options(timeout=5.0).agent.create(
-    llm_websocket_url="wss://your-websocket-endpoint",
+    response_engine={
+        "llm_id": "llm_234sdertfsdsfsdf",
+        "type": "retell-llm",
+    },
     voice_id="11labs-Adrian",
 )
 ```
@@ -201,7 +216,10 @@ from retell import Retell
 
 client = Retell()
 response = client.agent.with_raw_response.create(
-    llm_websocket_url="wss://your-websocket-endpoint",
+    response_engine={
+        "llm_id": "llm_234sdertfsdsfsdf",
+        "type": "retell-llm",
+    },
     voice_id="11labs-Adrian",
 )
 print(response.headers.get('X-My-Header'))
@@ -222,7 +240,10 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.agent.with_streaming_response.create(
-    llm_websocket_url="wss://your-websocket-endpoint",
+    response_engine={
+        "llm_id": "llm_234sdertfsdsfsdf",
+        "type": "retell-llm",
+    },
     voice_id="11labs-Adrian",
 ) as response:
     print(response.headers.get("X-My-Header"))

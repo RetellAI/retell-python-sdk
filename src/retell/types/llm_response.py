@@ -637,12 +637,6 @@ class LlmResponse(BaseModel):
     llm_id: str
     """Unique id of Retell LLM."""
 
-    llm_websocket_url: str
-    """The LLM Websocket URL constructed from unique id of Retell LLM.
-
-    Used in agent API to create / update agent.
-    """
-
     begin_message: Optional[str] = None
     """First utterance said by the agent in the call.
 
