@@ -20,7 +20,10 @@ class TestAgent:
     @parametrize
     def test_method_create(self, client: Retell) -> None:
         agent = client.agent.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
@@ -28,7 +31,10 @@ class TestAgent:
     @parametrize
     def test_method_create_with_all_params(self, client: Retell) -> None:
         agent = client.agent.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
             agent_name="Jarvis",
             ambient_sound="coffee-shop",
@@ -99,7 +105,10 @@ class TestAgent:
     @parametrize
     def test_raw_response_create(self, client: Retell) -> None:
         response = client.agent.with_raw_response.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
         )
 
@@ -111,7 +120,10 @@ class TestAgent:
     @parametrize
     def test_streaming_response_create(self, client: Retell) -> None:
         with client.agent.with_streaming_response.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
         ) as response:
             assert not response.is_closed
@@ -184,7 +196,6 @@ class TestAgent:
             fallback_voice_ids=["openai-Alloy", "deepgram-Angus"],
             interruption_sensitivity=1,
             language="en-US",
-            llm_websocket_url="wss://your-websocket-endpoint",
             max_call_duration_ms=3600000,
             normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
@@ -227,6 +238,10 @@ class TestAgent:
             ],
             reminder_max_count=2,
             reminder_trigger_ms=10000,
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             responsiveness=1,
             voice_id="11labs-Adrian",
             voice_model="eleven_turbo_v2",
@@ -340,7 +355,10 @@ class TestAsyncAgent:
     @parametrize
     async def test_method_create(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
@@ -348,7 +366,10 @@ class TestAsyncAgent:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
             agent_name="Jarvis",
             ambient_sound="coffee-shop",
@@ -419,7 +440,10 @@ class TestAsyncAgent:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncRetell) -> None:
         response = await async_client.agent.with_raw_response.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
         )
 
@@ -431,7 +455,10 @@ class TestAsyncAgent:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncRetell) -> None:
         async with async_client.agent.with_streaming_response.create(
-            llm_websocket_url="wss://your-websocket-endpoint",
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             voice_id="11labs-Adrian",
         ) as response:
             assert not response.is_closed
@@ -504,7 +531,6 @@ class TestAsyncAgent:
             fallback_voice_ids=["openai-Alloy", "deepgram-Angus"],
             interruption_sensitivity=1,
             language="en-US",
-            llm_websocket_url="wss://your-websocket-endpoint",
             max_call_duration_ms=3600000,
             normalize_for_speech=True,
             opt_out_sensitive_data_storage=True,
@@ -547,6 +573,10 @@ class TestAsyncAgent:
             ],
             reminder_max_count=2,
             reminder_trigger_ms=10000,
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
             responsiveness=1,
             voice_id="11labs-Adrian",
             voice_model="eleven_turbo_v2",

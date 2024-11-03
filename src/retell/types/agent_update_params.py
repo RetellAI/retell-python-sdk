@@ -13,6 +13,9 @@ __all__ = [
     "PostCallAnalysisDataBooleanAnalysisData",
     "PostCallAnalysisDataNumberAnalysisData",
     "PronunciationDictionary",
+    "ResponseEngine",
+    "ResponseEngineResponseEngineRetellLm",
+    "ResponseEngineResponseEngineCustomLm",
 ]
 
 
@@ -157,13 +160,6 @@ class AgentUpdateParams(TypedDict, total=False):
     multilingual support, currently this supports Spanish and English.
     """
 
-    llm_websocket_url: str
-    """
-    The URL we will establish LLM websocket for getting response, usually your
-    server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-    request format (sent from us) and response format (send to us).
-    """
-
     max_call_duration_ms: int
     """Maximum allowed length for the call, will force end the call if reached.
 
@@ -216,6 +212,9 @@ class AgentUpdateParams(TypedDict, total=False):
     user has been silent for the specified duration after some agent speech. Must be
     a positive number. If unset, default value of 10000 ms (10 s) will apply.
     """
+
+    response_engine: ResponseEngine
+    """The response engine to use for the agent."""
 
     responsiveness: float
     """Controls how responsive is the agent.
@@ -360,3 +359,22 @@ class PronunciationDictionary(TypedDict, total=False):
 
     word: Required[str]
     """The string of word / phrase to be annotated with pronunciation."""
+
+
+class ResponseEngineResponseEngineRetellLm(TypedDict, total=False):
+    llm_id: Required[str]
+    """id of the Retell LLM to use."""
+
+    type: Required[Literal["retell-llm"]]
+    """type of the response engine."""
+
+
+class ResponseEngineResponseEngineCustomLm(TypedDict, total=False):
+    llm_websocket_url: Required[str]
+    """LLM websocket url of the custom LLM."""
+
+    type: Required[Literal["custom-llm"]]
+    """type of the response engine."""
+
+
+ResponseEngine: TypeAlias = Union[ResponseEngineResponseEngineRetellLm, ResponseEngineResponseEngineCustomLm]
