@@ -51,7 +51,7 @@ class AgentResource(SyncAPIResource):
     def create(
         self,
         *,
-        llm_websocket_url: str,
+        response_engine: agent_create_params.ResponseEngine,
         voice_id: str,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
@@ -121,9 +121,7 @@ class AgentResource(SyncAPIResource):
         Create a new agent
 
         Args:
-          llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
-              server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-              request format (sent from us) and response format (send to us).
+          response_engine: The response engine to use for the agent.
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -293,7 +291,7 @@ class AgentResource(SyncAPIResource):
             "/create-agent",
             body=maybe_transform(
                 {
-                    "llm_websocket_url": llm_websocket_url,
+                    "response_engine": response_engine,
                     "voice_id": voice_id,
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
@@ -409,7 +407,6 @@ class AgentResource(SyncAPIResource):
             "multi",
         ]
         | NotGiven = NOT_GIVEN,
-        llm_websocket_url: str | NotGiven = NOT_GIVEN,
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
@@ -418,6 +415,7 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
+        response_engine: agent_update_params.ResponseEngine | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]]
@@ -518,10 +516,6 @@ class AgentResource(SyncAPIResource):
               English. If unset, will use default value `en-US`. Select `multi` for
               multilingual support, currently this supports Spanish and English.
 
-          llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
-              server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-              request format (sent from us) and response format (send to us).
-
           max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
               7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
@@ -553,6 +547,8 @@ class AgentResource(SyncAPIResource):
           reminder_trigger_ms: If set (in milliseconds), will trigger a reminder to the agent to speak if the
               user has been silent for the specified duration after some agent speech. Must be
               a positive number. If unset, default value of 10000 ms (10 s) will apply.
+
+          response_engine: The response engine to use for the agent.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -627,7 +623,6 @@ class AgentResource(SyncAPIResource):
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
-                    "llm_websocket_url": llm_websocket_url,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
@@ -635,6 +630,7 @@ class AgentResource(SyncAPIResource):
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
+                    "response_engine": response_engine,
                     "responsiveness": responsiveness,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
@@ -730,7 +726,7 @@ class AsyncAgentResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        llm_websocket_url: str,
+        response_engine: agent_create_params.ResponseEngine,
         voice_id: str,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
@@ -800,9 +796,7 @@ class AsyncAgentResource(AsyncAPIResource):
         Create a new agent
 
         Args:
-          llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
-              server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-              request format (sent from us) and response format (send to us).
+          response_engine: The response engine to use for the agent.
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -972,7 +966,7 @@ class AsyncAgentResource(AsyncAPIResource):
             "/create-agent",
             body=await async_maybe_transform(
                 {
-                    "llm_websocket_url": llm_websocket_url,
+                    "response_engine": response_engine,
                     "voice_id": voice_id,
                     "agent_name": agent_name,
                     "ambient_sound": ambient_sound,
@@ -1088,7 +1082,6 @@ class AsyncAgentResource(AsyncAPIResource):
             "multi",
         ]
         | NotGiven = NOT_GIVEN,
-        llm_websocket_url: str | NotGiven = NOT_GIVEN,
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
@@ -1097,6 +1090,7 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
+        response_engine: agent_update_params.ResponseEngine | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]]
@@ -1197,10 +1191,6 @@ class AsyncAgentResource(AsyncAPIResource):
               English. If unset, will use default value `en-US`. Select `multi` for
               multilingual support, currently this supports Spanish and English.
 
-          llm_websocket_url: The URL we will establish LLM websocket for getting response, usually your
-              server. Check out [LLM WebSocket](/api-references/llm-websocket) for more about
-              request format (sent from us) and response format (send to us).
-
           max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
               7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
@@ -1232,6 +1222,8 @@ class AsyncAgentResource(AsyncAPIResource):
           reminder_trigger_ms: If set (in milliseconds), will trigger a reminder to the agent to speak if the
               user has been silent for the specified duration after some agent speech. Must be
               a positive number. If unset, default value of 10000 ms (10 s) will apply.
+
+          response_engine: The response engine to use for the agent.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -1306,7 +1298,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "language": language,
-                    "llm_websocket_url": llm_websocket_url,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
@@ -1314,6 +1305,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
+                    "response_engine": response_engine,
                     "responsiveness": responsiveness,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
