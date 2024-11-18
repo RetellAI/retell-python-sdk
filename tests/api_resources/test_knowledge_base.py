@@ -29,20 +29,12 @@ class TestKnowledgeBase:
         knowledge_base = client.knowledge_base.create(
             knowledge_base_name="Sample KB",
             enable_auto_refresh=True,
-            knowledge_base_files=[b"raw file contents", b"raw file contents", b"raw file contents"],
+            knowledge_base_files=[b"raw file contents"],
             knowledge_base_texts=[
                 {
                     "text": "text",
                     "title": "title",
-                },
-                {
-                    "text": "text",
-                    "title": "title",
-                },
-                {
-                    "text": "text",
-                    "title": "title",
-                },
+                }
             ],
             knowledge_base_urls=["https://www.example.com", "https://www.retellai.com"],
         )
@@ -189,20 +181,12 @@ class TestAsyncKnowledgeBase:
         knowledge_base = await async_client.knowledge_base.create(
             knowledge_base_name="Sample KB",
             enable_auto_refresh=True,
-            knowledge_base_files=[b"raw file contents", b"raw file contents", b"raw file contents"],
+            knowledge_base_files=[b"raw file contents"],
             knowledge_base_texts=[
                 {
                     "text": "text",
                     "title": "title",
-                },
-                {
-                    "text": "text",
-                    "title": "title",
-                },
-                {
-                    "text": "text",
-                    "title": "title",
-                },
+                }
             ],
             knowledge_base_urls=["https://www.example.com", "https://www.retellai.com"],
         )
