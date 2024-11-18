@@ -58,36 +58,14 @@ class TestAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
-                },
-                {
-                    "description": "The name of the customer.",
-                    "name": "customer_name",
-                    "type": "string",
-                    "examples": ["John Doe", "Jane Smith"],
-                },
-                {
-                    "description": "The name of the customer.",
-                    "name": "customer_name",
-                    "type": "string",
-                    "examples": ["John Doe", "Jane Smith"],
-                },
+                }
             ],
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
                     "word": "actually",
-                },
-                {
-                    "alphabet": "ipa",
-                    "phoneme": "ˈæktʃuəli",
-                    "word": "actually",
-                },
-                {
-                    "alphabet": "ipa",
-                    "phoneme": "ˈæktʃuəli",
-                    "word": "actually",
-                },
+                }
             ],
             reminder_max_count=2,
             reminder_trigger_ms=10000,
@@ -205,36 +183,14 @@ class TestAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
-                },
-                {
-                    "description": "The name of the customer.",
-                    "name": "customer_name",
-                    "type": "string",
-                    "examples": ["John Doe", "Jane Smith"],
-                },
-                {
-                    "description": "The name of the customer.",
-                    "name": "customer_name",
-                    "type": "string",
-                    "examples": ["John Doe", "Jane Smith"],
-                },
+                }
             ],
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
                     "word": "actually",
-                },
-                {
-                    "alphabet": "ipa",
-                    "phoneme": "ˈæktʃuəli",
-                    "word": "actually",
-                },
-                {
-                    "alphabet": "ipa",
-                    "phoneme": "ˈæktʃuəli",
-                    "word": "actually",
-                },
+                }
             ],
             reminder_max_count=2,
             reminder_trigger_ms=10000,
@@ -393,36 +349,14 @@ class TestAsyncAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
-                },
-                {
-                    "description": "The name of the customer.",
-                    "name": "customer_name",
-                    "type": "string",
-                    "examples": ["John Doe", "Jane Smith"],
-                },
-                {
-                    "description": "The name of the customer.",
-                    "name": "customer_name",
-                    "type": "string",
-                    "examples": ["John Doe", "Jane Smith"],
-                },
+                }
             ],
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
                     "word": "actually",
-                },
-                {
-                    "alphabet": "ipa",
-                    "phoneme": "ˈæktʃuəli",
-                    "word": "actually",
-                },
-                {
-                    "alphabet": "ipa",
-                    "phoneme": "ˈæktʃuəli",
-                    "word": "actually",
-                },
+                }
             ],
             reminder_max_count=2,
             reminder_trigger_ms=10000,
@@ -540,36 +474,14 @@ class TestAsyncAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
-                },
-                {
-                    "description": "The name of the customer.",
-                    "name": "customer_name",
-                    "type": "string",
-                    "examples": ["John Doe", "Jane Smith"],
-                },
-                {
-                    "description": "The name of the customer.",
-                    "name": "customer_name",
-                    "type": "string",
-                    "examples": ["John Doe", "Jane Smith"],
-                },
+                }
             ],
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
                     "phoneme": "ˈæktʃuəli",
                     "word": "actually",
-                },
-                {
-                    "alphabet": "ipa",
-                    "phoneme": "ˈæktʃuəli",
-                    "word": "actually",
-                },
-                {
-                    "alphabet": "ipa",
-                    "phoneme": "ˈæktʃuəli",
-                    "word": "actually",
-                },
+                }
             ],
             reminder_max_count=2,
             reminder_trigger_ms=10000,

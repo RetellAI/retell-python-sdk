@@ -35,7 +35,7 @@ class TestLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
-            knowledge_base_ids=["string", "string", "string"],
+            knowledge_base_ids=["string"],
             model="gpt-4o",
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
@@ -50,7 +50,7 @@ class TestLlm:
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
-                                "required": ["string", "string", "string"],
+                                "required": ["string"],
                             },
                         }
                     ],
@@ -78,27 +78,9 @@ class TestLlm:
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
-                                "required": ["string", "string", "string"],
+                                "required": ["string"],
                             },
-                        },
-                        {
-                            "description": "description",
-                            "destination_state_name": "destination_state_name",
-                            "parameters": {
-                                "properties": {"foo": "bar"},
-                                "type": "object",
-                                "required": ["string", "string", "string"],
-                            },
-                        },
-                        {
-                            "description": "description",
-                            "destination_state_name": "destination_state_name",
-                            "parameters": {
-                                "properties": {"foo": "bar"},
-                                "type": "object",
-                                "required": ["string", "string", "string"],
-                            },
-                        },
+                        }
                     ],
                     "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
@@ -196,7 +178,7 @@ class TestLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
-            knowledge_base_ids=["string", "string", "string"],
+            knowledge_base_ids=["string"],
             model="gpt-4o",
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
@@ -211,7 +193,7 @@ class TestLlm:
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
-                                "required": ["string", "string", "string"],
+                                "required": ["string"],
                             },
                         }
                     ],
@@ -239,27 +221,9 @@ class TestLlm:
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
-                                "required": ["string", "string", "string"],
+                                "required": ["string"],
                             },
-                        },
-                        {
-                            "description": "description",
-                            "destination_state_name": "destination_state_name",
-                            "parameters": {
-                                "properties": {"foo": "bar"},
-                                "type": "object",
-                                "required": ["string", "string", "string"],
-                            },
-                        },
-                        {
-                            "description": "description",
-                            "destination_state_name": "destination_state_name",
-                            "parameters": {
-                                "properties": {"foo": "bar"},
-                                "type": "object",
-                                "required": ["string", "string", "string"],
-                            },
-                        },
+                        }
                     ],
                     "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
@@ -394,7 +358,7 @@ class TestAsyncLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
-            knowledge_base_ids=["string", "string", "string"],
+            knowledge_base_ids=["string"],
             model="gpt-4o",
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
@@ -409,7 +373,7 @@ class TestAsyncLlm:
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
-                                "required": ["string", "string", "string"],
+                                "required": ["string"],
                             },
                         }
                     ],
@@ -437,27 +401,9 @@ class TestAsyncLlm:
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
-                                "required": ["string", "string", "string"],
+                                "required": ["string"],
                             },
-                        },
-                        {
-                            "description": "description",
-                            "destination_state_name": "destination_state_name",
-                            "parameters": {
-                                "properties": {"foo": "bar"},
-                                "type": "object",
-                                "required": ["string", "string", "string"],
-                            },
-                        },
-                        {
-                            "description": "description",
-                            "destination_state_name": "destination_state_name",
-                            "parameters": {
-                                "properties": {"foo": "bar"},
-                                "type": "object",
-                                "required": ["string", "string", "string"],
-                            },
-                        },
+                        }
                     ],
                     "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
@@ -555,7 +501,7 @@ class TestAsyncLlm:
                 }
             ],
             inbound_dynamic_variables_webhook_url="https://webhook-url-here",
-            knowledge_base_ids=["string", "string", "string"],
+            knowledge_base_ids=["string"],
             model="gpt-4o",
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
@@ -570,7 +516,7 @@ class TestAsyncLlm:
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
-                                "required": ["string", "string", "string"],
+                                "required": ["string"],
                             },
                         }
                     ],
@@ -598,27 +544,9 @@ class TestAsyncLlm:
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
-                                "required": ["string", "string", "string"],
+                                "required": ["string"],
                             },
-                        },
-                        {
-                            "description": "description",
-                            "destination_state_name": "destination_state_name",
-                            "parameters": {
-                                "properties": {"foo": "bar"},
-                                "type": "object",
-                                "required": ["string", "string", "string"],
-                            },
-                        },
-                        {
-                            "description": "description",
-                            "destination_state_name": "destination_state_name",
-                            "parameters": {
-                                "properties": {"foo": "bar"},
-                                "type": "object",
-                                "required": ["string", "string", "string"],
-                            },
-                        },
+                        }
                     ],
                     "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
