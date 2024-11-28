@@ -49,7 +49,7 @@ class ConcurrencyResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConcurrencyRetrieveResponse:
-        """Get the current concurrency and concurrency limit of the user"""
+        """Get the current concurrency and concurrency limit of the org"""
         return self._get(
             "/get-concurrency",
             options=make_request_options(
@@ -89,7 +89,7 @@ class AsyncConcurrencyResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConcurrencyRetrieveResponse:
-        """Get the current concurrency and concurrency limit of the user"""
+        """Get the current concurrency and concurrency limit of the org"""
         return await self._get(
             "/get-concurrency",
             options=make_request_options(

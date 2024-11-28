@@ -8,9 +8,13 @@ from .._models import BaseModel
 __all__ = [
     "PhoneCallResponse",
     "CallAnalysis",
-    "E2ELatency",
-    "LlmLatency",
-    "LlmWebsocketNetworkRttLatency",
+    "Latency",
+    "LatencyE2E",
+    "LatencyKnowledgeBase",
+    "LatencyLlm",
+    "LatencyLlmWebsocketNetworkRtt",
+    "LatencyS2s",
+    "LatencyTts",
     "TranscriptObject",
     "TranscriptObjectWord",
     "TranscriptWithToolCall",
@@ -44,7 +48,7 @@ class CallAnalysis(BaseModel):
     """Sentiment of the user in the call."""
 
 
-class E2ELatency(BaseModel):
+class LatencyE2E(BaseModel):
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -66,8 +70,11 @@ class E2ELatency(BaseModel):
     p99: Optional[float] = None
     """99 percentile of latency, measured in milliseconds."""
 
+    values: Optional[List[float]] = None
+    """All the latency data points in the call, measured in milliseconds."""
 
-class LlmLatency(BaseModel):
+
+class LatencyKnowledgeBase(BaseModel):
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -89,8 +96,11 @@ class LlmLatency(BaseModel):
     p99: Optional[float] = None
     """99 percentile of latency, measured in milliseconds."""
 
+    values: Optional[List[float]] = None
+    """All the latency data points in the call, measured in milliseconds."""
 
-class LlmWebsocketNetworkRttLatency(BaseModel):
+
+class LatencyLlm(BaseModel):
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -111,6 +121,130 @@ class LlmWebsocketNetworkRttLatency(BaseModel):
 
     p99: Optional[float] = None
     """99 percentile of latency, measured in milliseconds."""
+
+    values: Optional[List[float]] = None
+    """All the latency data points in the call, measured in milliseconds."""
+
+
+class LatencyLlmWebsocketNetworkRtt(BaseModel):
+    max: Optional[float] = None
+    """Maximum latency in the call, measured in milliseconds."""
+
+    min: Optional[float] = None
+    """Minimum latency in the call, measured in milliseconds."""
+
+    num: Optional[float] = None
+    """Number of data points (number of times latency is tracked)."""
+
+    p50: Optional[float] = None
+    """50 percentile of latency, measured in milliseconds."""
+
+    p90: Optional[float] = None
+    """90 percentile of latency, measured in milliseconds."""
+
+    p95: Optional[float] = None
+    """95 percentile of latency, measured in milliseconds."""
+
+    p99: Optional[float] = None
+    """99 percentile of latency, measured in milliseconds."""
+
+    values: Optional[List[float]] = None
+    """All the latency data points in the call, measured in milliseconds."""
+
+
+class LatencyS2s(BaseModel):
+    max: Optional[float] = None
+    """Maximum latency in the call, measured in milliseconds."""
+
+    min: Optional[float] = None
+    """Minimum latency in the call, measured in milliseconds."""
+
+    num: Optional[float] = None
+    """Number of data points (number of times latency is tracked)."""
+
+    p50: Optional[float] = None
+    """50 percentile of latency, measured in milliseconds."""
+
+    p90: Optional[float] = None
+    """90 percentile of latency, measured in milliseconds."""
+
+    p95: Optional[float] = None
+    """95 percentile of latency, measured in milliseconds."""
+
+    p99: Optional[float] = None
+    """99 percentile of latency, measured in milliseconds."""
+
+    values: Optional[List[float]] = None
+    """All the latency data points in the call, measured in milliseconds."""
+
+
+class LatencyTts(BaseModel):
+    max: Optional[float] = None
+    """Maximum latency in the call, measured in milliseconds."""
+
+    min: Optional[float] = None
+    """Minimum latency in the call, measured in milliseconds."""
+
+    num: Optional[float] = None
+    """Number of data points (number of times latency is tracked)."""
+
+    p50: Optional[float] = None
+    """50 percentile of latency, measured in milliseconds."""
+
+    p90: Optional[float] = None
+    """90 percentile of latency, measured in milliseconds."""
+
+    p95: Optional[float] = None
+    """95 percentile of latency, measured in milliseconds."""
+
+    p99: Optional[float] = None
+    """99 percentile of latency, measured in milliseconds."""
+
+    values: Optional[List[float]] = None
+    """All the latency data points in the call, measured in milliseconds."""
+
+
+class Latency(BaseModel):
+    e2e: Optional[LatencyE2E] = None
+    """
+    End to end latency (from user stops talking to agent start talking) tracking of
+    the call. This latency does not account for the network trip time from Retell
+    server to user frontend. The latency is tracked every time turn change between
+    user and agent.
+    """
+
+    knowledge_base: Optional[LatencyKnowledgeBase] = None
+    """
+    Knowledge base latency (from the triggering of knowledge base retrival to all
+    relevant context received) tracking of the call. Only populated when using
+    knowledge base feature for the agent of the call.
+    """
+
+    llm: Optional[LatencyLlm] = None
+    """
+    LLM latency (from issue of LLM call to first speakable chunk received) tracking
+    of the call. When using custom LLM. this latency includes LLM websocket
+    roundtrip time between user server and Retell server.
+    """
+
+    llm_websocket_network_rtt: Optional[LatencyLlmWebsocketNetworkRtt] = None
+    """
+    LLM websocket roundtrip latency (between user server and Retell server) tracking
+    of the call. Only populated for calls using custom LLM.
+    """
+
+    s2s: Optional[LatencyS2s] = None
+    """
+    Speech-to-speech latency (from requesting responses of a S2S model to first byte
+    received) tracking of the call. Only populated for calls that uses S2S model
+    like Realtime API.
+    """
+
+    tts: Optional[LatencyTts] = None
+    """
+    Text-to-speech latency (from the triggering of TTS to first byte received)
+    tracking of the call.
+    """
 
 
 class TranscriptObjectWord(BaseModel):
@@ -287,32 +421,17 @@ class PhoneCallResponse(BaseModel):
     [Disconnection Reason Doc](/get-started/debug-guide#disconnection-reason).
     """
 
-    e2e_latency: Optional[E2ELatency] = None
-    """
-    End to end latency (from user stops talking to agent start talking) tracking of
-    the call, available after call ends. This latency does not account for the
-    network trip time from Retell server to user frontend. The latency is tracked
-    every time turn change between user and agent.
-    """
-
     end_timestamp: Optional[int] = None
     """End timestamp (milliseconds since epoch) of the call.
 
     Available after call ends.
     """
 
-    llm_latency: Optional[LlmLatency] = None
-    """
-    LLM latency (from issue of LLM call to first token received) tracking of the
-    call, available after call ends. When using custom LLM. this latency includes
-    LLM websocket roundtrip time between user server and Retell server.
-    """
+    latency: Optional[Latency] = None
+    """Latency tracking of the call, available after call ends.
 
-    llm_websocket_network_rtt_latency: Optional[LlmWebsocketNetworkRttLatency] = None
-    """
-    LLM websocket roundtrip latency (between user server and Retell server) tracking
-    of the call, available after call ends. Only populated for calls using custom
-    LLM.
+    Not all fields here will be available, as it depends on the type of call and
+    feature used.
     """
 
     metadata: Optional[object] = None
