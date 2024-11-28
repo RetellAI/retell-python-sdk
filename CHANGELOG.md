@@ -1,5 +1,34 @@
 # Changelog
 
+## 4.9.0 (2024-11-28)
+
+Full Changelog: [v4.8.0...v4.9.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.8.0...v4.9.0)
+
+### Features
+
+* **api:** api update ([#202](https://github.com/RetellAI/retell-python-sdk/issues/202)) ([8b74190](https://github.com/RetellAI/retell-python-sdk/commit/8b74190c18f22e2e25b926b744905bc3a7e5e369))
+
+
+### Bug Fixes
+
+* **client:** compat with new httpx 0.28.0 release ([#215](https://github.com/RetellAI/retell-python-sdk/issues/215)) ([962f440](https://github.com/RetellAI/retell-python-sdk/commit/962f4400fd242097cd960c66aaa69f745b42da58))
+
+
+### Chores
+
+* **internal:** exclude mypy from running on tests ([#212](https://github.com/RetellAI/retell-python-sdk/issues/212)) ([6b8890b](https://github.com/RetellAI/retell-python-sdk/commit/6b8890bcfbad412e9c2e9e3aac9119921f788f85))
+* **internal:** fix compat model_dump method when warnings are passed ([#208](https://github.com/RetellAI/retell-python-sdk/issues/208)) ([129bf7f](https://github.com/RetellAI/retell-python-sdk/commit/129bf7f2104b752da5a7c649779d1dc5b8c54402))
+* rebuild project due to codegen change ([#204](https://github.com/RetellAI/retell-python-sdk/issues/204)) ([73ef71b](https://github.com/RetellAI/retell-python-sdk/commit/73ef71b0769299dc84091718ea77d7b06bca11a0))
+* rebuild project due to codegen change ([#205](https://github.com/RetellAI/retell-python-sdk/issues/205)) ([41aecf5](https://github.com/RetellAI/retell-python-sdk/commit/41aecf5ca2df9da925417d812d0e87b1fb45c63d))
+* rebuild project due to codegen change ([#206](https://github.com/RetellAI/retell-python-sdk/issues/206)) ([dc300ff](https://github.com/RetellAI/retell-python-sdk/commit/dc300fff5cd0b3ee1af5018cb7445e7df0ab0746))
+* rebuild project due to codegen change ([#207](https://github.com/RetellAI/retell-python-sdk/issues/207)) ([db3cdc0](https://github.com/RetellAI/retell-python-sdk/commit/db3cdc051e04132cc280b12b2f15204eb8b979ab))
+* remove now unused `cached-property` dep ([#210](https://github.com/RetellAI/retell-python-sdk/issues/210)) ([e164f74](https://github.com/RetellAI/retell-python-sdk/commit/e164f7463e25aa4a9889cd863cf93db90f20fddc))
+
+
+### Documentation
+
+* add info log level to readme ([#209](https://github.com/RetellAI/retell-python-sdk/issues/209)) ([8b6e2ef](https://github.com/RetellAI/retell-python-sdk/commit/8b6e2ef6f43fa2232d91ae5ae00bbffb948849ed))
+
 ## 4.8.0 (2024-11-03)
 
 Full Changelog: [v4.7.0...v4.8.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.7.0...v4.8.0)
