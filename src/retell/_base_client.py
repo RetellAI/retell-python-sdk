@@ -516,33 +516,19 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
             **kwargs,
         )
 
-    def _serialize_multipartform(self, data: Mapping[object, object]) -> dict[str, object]:
-        items = self.qs.stringify_items(
-            # TODO: type ignore is required as stringify_items is well typed but we can't be
-            # well typed without heavy validation.
-            data,  # type: ignore
-            array_format="brackets",
-        )
-        serialized: dict[str, object] = {}
-        for key, value in items:
-            existing = serialized.get(key)
-
-            if not existing:
-                serialized[key] = value
+    def _serialize_multipartform(
+        self, data: Mapping[object, object]
+    ) -> dict[str, object]:
+        serialized: dict[str, str] = {}
+        for key, value in data.items():
+            if isinstance(value, (str, int, float)):
+                serialized[key] = str(value)
+            elif isinstance(value, bool):
+                serialized[key] = str(value).lower()
+            elif isinstance(value, (list, tuple, dict)):
+                serialized[key] = json.dumps(value)
+            elif value is None:
                 continue
-
-            # If a value has already been set for this key then that
-            # means we're sending data like `array[]=[1, 2, 3]` and we
-            # need to tell httpx that we want to send multiple values with
-            # the same key which is done by using a list or a tuple.
-            #
-            # Note: 2d arrays should never result in the same key at both
-            # levels so it's safe to assume that if the value is a list,
-            # it was because we changed it to be a list.
-            if is_list(existing):
-                existing.append(value)
-            else:
-                serialized[key] = [existing, value]
 
         return serialized
 

@@ -103,15 +103,20 @@ def _extract_items(
         if key != "<array>":
             return []
 
+        list_ = obj
+        if (len(path)) == index:
+            list_ = obj[:]
+            obj.clear()
+
         return flatten(
             [
                 _extract_items(
                     item,
                     path,
                     index=index,
-                    flattened_key=flattened_key + "[]" if flattened_key is not None else "[]",
+                    flattened_key=flattened_key,
                 )
-                for item in obj
+                for item in list_
             ]
         )
 
