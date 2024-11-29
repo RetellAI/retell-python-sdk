@@ -69,11 +69,24 @@ class TestCall:
     def test_method_list_with_all_params(self, client: Retell) -> None:
         call = client.call.list(
             filter_criteria={
-                "after_end_timestamp": 1703302428800,
-                "after_start_timestamp": 1703302407300,
-                "agent_id": ["oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD"],
-                "before_end_timestamp": 1703302428899,
-                "before_start_timestamp": 1703302407399,
+                "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD"],
+                "call_status": ["registered"],
+                "call_successful": [True],
+                "call_type": ["web_call"],
+                "direction": ["inbound"],
+                "disconnection_reason": ["user_hangup"],
+                "duration_ms": {
+                    "lower_threshold": 0,
+                    "upper_threshold": 172800000,
+                },
+                "from_number": ["+14157774444"],
+                "in_voicemail": [True],
+                "start_timestamp": {
+                    "lower_threshold": 0,
+                    "upper_threshold": 172800000,
+                },
+                "to_number": ["+12137774445"],
+                "user_sentiment": ["Negative"],
             },
             limit=0,
             pagination_key="pagination_key",
@@ -280,11 +293,24 @@ class TestAsyncCall:
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         call = await async_client.call.list(
             filter_criteria={
-                "after_end_timestamp": 1703302428800,
-                "after_start_timestamp": 1703302407300,
-                "agent_id": ["oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD"],
-                "before_end_timestamp": 1703302428899,
-                "before_start_timestamp": 1703302407399,
+                "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD"],
+                "call_status": ["registered"],
+                "call_successful": [True],
+                "call_type": ["web_call"],
+                "direction": ["inbound"],
+                "disconnection_reason": ["user_hangup"],
+                "duration_ms": {
+                    "lower_threshold": 0,
+                    "upper_threshold": 172800000,
+                },
+                "from_number": ["+14157774444"],
+                "in_voicemail": [True],
+                "start_timestamp": {
+                    "lower_threshold": 0,
+                    "upper_threshold": 172800000,
+                },
+                "to_number": ["+12137774445"],
+                "user_sentiment": ["Negative"],
             },
             limit=0,
             pagination_key="pagination_key",
