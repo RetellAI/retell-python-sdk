@@ -17,9 +17,9 @@ anyio==4.4.0
 certifi==2023.7.22
     # via httpcore
     # via httpx
-cffi==1.16.0
+cffi==1.17.1
     # via cryptography
-cryptography==42.0.5
+cryptography==44.0.0
     # via retell-sdk
 distro==1.8.0
     # via retell-sdk

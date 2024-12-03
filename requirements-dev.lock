@@ -19,11 +19,11 @@ argcomplete==3.1.2
 certifi==2023.7.22
     # via httpcore
     # via httpx
-cffi==1.16.0
+cffi==1.17.1
     # via cryptography
 colorlog==6.7.0
     # via nox
-cryptography==42.0.5
+cryptography==44.0.0
     # via retell-sdk
 dirty-equals==0.6.0
 distlib==0.3.7
