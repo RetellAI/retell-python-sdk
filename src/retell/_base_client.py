@@ -519,9 +519,14 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
     def _serialize_multipartform(self, data: Mapping[object, object]) -> dict[str, object]:
         serialized: dict[str, object] = {}
         for key, value in data.items():
-            str_key = str(key)
             if not isinstance(key, (str, int, float)):
+                warnings.warn(
+                    f"Key ${key} is not a string, int, or float, skipping.",
+                    stacklevel=1,
+                )
                 continue
+
+            str_key = str(key)
 
             # bool is a subclass of int in python so need to check for bool first
             if isinstance(value, bool):
