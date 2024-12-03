@@ -62,7 +62,7 @@ from ._types import (
     HttpxRequestFiles,
     ModelBuilderProtocol,
 )
-from ._utils import is_dict, is_list, asyncify, is_given, lru_cache, is_mapping
+from ._utils import is_dict, asyncify, is_given, lru_cache, is_mapping
 from ._compat import model_copy, model_dump
 from ._models import GenericModel, FinalRequestOptions, validate_type, construct_type
 from ._response import (
@@ -516,9 +516,7 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
             **kwargs,
         )
 
-    def _serialize_multipartform(
-        self, data: Mapping[object, object]
-    ) -> dict[str, object]:
+    def _serialize_multipartform(self, data: Mapping[object, object]) -> dict[str, object]:
         serialized: dict[str, str] = {}
         for key, value in data.items():
             # bool is a subclass of int in python so need to check for bool first
