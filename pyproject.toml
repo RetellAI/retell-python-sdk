@@ -1,6 +1,6 @@
 [project]
 name = "retell-sdk"
-version = "4.10.0"
+version = "4.11.0"
 description = "The official Python library for the retell API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -8,13 +8,14 @@ authors = [
 { name = "Retell", email = "support@retellai.com" },
 ]
 dependencies = [
-    "httpx>=0.23.0, <1",
+    "httpx>=0.23.0, <0.28.0",
     "pydantic>=1.9.0, <3",
     "typing-extensions>=4.7, <5",
     "anyio>=3.5.0, <5",
     "distro>=1.7.0, <2",
     "sniffio",
     "cached-property; python_version < '3.8'",
+    "cryptography",
 ]
 requires-python = ">= 3.8"
 classifiers = [

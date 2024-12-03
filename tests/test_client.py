@@ -459,13 +459,9 @@ class TestRetell:
 
         assert request.read().split(b"\r\n") == [
             b"--6b7ba517decee4a450543ea6ae821c82",
-            b'Content-Disposition: form-data; name="array[]"',
+            b'Content-Disposition: form-data; name="array"',
             b"",
-            b"foo",
-            b"--6b7ba517decee4a450543ea6ae821c82",
-            b'Content-Disposition: form-data; name="array[]"',
-            b"",
-            b"bar",
+            b'["foo", "bar"]',
             b"--6b7ba517decee4a450543ea6ae821c82",
             b'Content-Disposition: form-data; name="foo.txt"; filename="upload"',
             b"Content-Type: application/octet-stream",
@@ -1254,13 +1250,9 @@ class TestAsyncRetell:
 
         assert request.read().split(b"\r\n") == [
             b"--6b7ba517decee4a450543ea6ae821c82",
-            b'Content-Disposition: form-data; name="array[]"',
+            b'Content-Disposition: form-data; name="array"',
             b"",
-            b"foo",
-            b"--6b7ba517decee4a450543ea6ae821c82",
-            b'Content-Disposition: form-data; name="array[]"',
-            b"",
-            b"bar",
+            b'["foo", "bar"]',
             b"--6b7ba517decee4a450543ea6ae821c82",
             b'Content-Disposition: form-data; name="foo.txt"; filename="upload"',
             b"Content-Type: application/octet-stream",
@@ -1665,7 +1657,7 @@ class TestAsyncRetell:
         import threading
 
         from retell._utils import asyncify
-        from retell._base_client import get_platform 
+        from retell._base_client import get_platform
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()

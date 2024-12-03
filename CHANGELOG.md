@@ -1,5 +1,30 @@
 # Changelog
 
+## 4.11.0 (2024-12-03)
+
+Full Changelog: [v4.10.0...v4.11.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.10.0...v4.11.0)
+
+### Features
+
+* Fix httpx dependencies ([4730cd9](https://github.com/RetellAI/retell-python-sdk/commit/4730cd9f770f46a86ebfab72da1bc1625babfbf8))
+* fix: knowledge base api boolean ([8c06ce9](https://github.com/RetellAI/retell-python-sdk/commit/8c06ce9a9deaa9806d6086dcfb6047150c9e9b5f))
+
+
+### Bug Fixes
+
+* add missing cryptography dependency ([be4cbd9](https://github.com/RetellAI/retell-python-sdk/commit/be4cbd9727a3dac055139bd39a5668e98a8cf3df))
+* knowledge base api boolean ([436c09d](https://github.com/RetellAI/retell-python-sdk/commit/436c09d8c5421654d5f1e28c00353210524e954d))
+* serialization logic for multipartform for non-string keys ([489a198](https://github.com/RetellAI/retell-python-sdk/commit/489a198b6af5bc763d687c9b9acbb7e1ca4f758b))
+
+
+### Chores
+
+* bump ([806aae6](https://github.com/RetellAI/retell-python-sdk/commit/806aae6700a28dada4c569561e88b92aeea7cd28))
+* fix formatting ([cf1a618](https://github.com/RetellAI/retell-python-sdk/commit/cf1a6189861640f87debf6aed738aef2ade76f46))
+* **internal:** bump pyright ([#222](https://github.com/RetellAI/retell-python-sdk/issues/222)) ([d855687](https://github.com/RetellAI/retell-python-sdk/commit/d855687de9e0c1a688a14bd4692fb31ad869e4c8))
+* **tests:** update multipart test values ([1943d93](https://github.com/RetellAI/retell-python-sdk/commit/1943d93617fee96b0de17de72d67d40a170349de))
+* warn if serializing a non-string key ([b23ccc0](https://github.com/RetellAI/retell-python-sdk/commit/b23ccc0cce5b154d7a46467932445231e61ae194))
+
 ## 4.10.0 (2024-11-29)
 
 Full Changelog: [v4.9.0...v4.10.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.9.0...v4.10.0)

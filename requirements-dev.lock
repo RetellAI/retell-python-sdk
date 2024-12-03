@@ -19,11 +19,11 @@ argcomplete==3.1.2
 certifi==2023.7.22
     # via httpcore
     # via httpx
-cffi==1.16.0
+cffi==1.17.1
     # via cryptography
 colorlog==6.7.0
     # via nox
-cryptography==42.0.5
+cryptography==44.0.0
     # via retell-sdk
 dirty-equals==0.6.0
 distlib==0.3.7
@@ -74,7 +74,7 @@ pydantic-core==2.23.4
     # via pydantic
 pygments==2.18.0
     # via rich
-pyright==1.1.380
+pyright==1.1.389
 pytest==8.3.3
     # via pytest-asyncio
 pytest-asyncio==0.24.0
@@ -102,6 +102,7 @@ typing-extensions==4.12.2
     # via mypy
     # via pydantic
     # via pydantic-core
+    # via pyright
     # via retell-sdk
 virtualenv==20.24.5
     # via nox
