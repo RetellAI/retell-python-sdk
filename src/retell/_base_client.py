@@ -521,10 +521,11 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
     ) -> dict[str, object]:
         serialized: dict[str, str] = {}
         for key, value in data.items():
-            if isinstance(value, (str, int, float)):
-                serialized[key] = str(value)
-            elif isinstance(value, bool):
+            # bool is a subclass of int in python so need to check for bool first
+            if isinstance(value, bool):
                 serialized[key] = str(value).lower()
+            elif isinstance(value, (str, int, float)):
+                serialized[key] = str(value)
             elif isinstance(value, (list, tuple, dict)):
                 serialized[key] = json.dumps(value)
             elif value is None:
