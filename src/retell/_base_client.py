@@ -517,15 +517,19 @@ class BaseClient(Generic[_HttpxClientT, _DefaultStreamT]):
         )
 
     def _serialize_multipartform(self, data: Mapping[object, object]) -> dict[str, object]:
-        serialized: dict[str, str] = {}
+        serialized: dict[str, object] = {}
         for key, value in data.items():
+            str_key = str(key)
+            if not isinstance(key, (str, int, float)):
+                continue
+
             # bool is a subclass of int in python so need to check for bool first
             if isinstance(value, bool):
-                serialized[key] = str(value).lower()
+                serialized[str_key] = str(value).lower()
             elif isinstance(value, (str, int, float)):
-                serialized[key] = str(value)
+                serialized[str_key] = str(value)
             elif isinstance(value, (list, tuple, dict)):
-                serialized[key] = json.dumps(value)
+                serialized[str_key] = json.dumps(value)
             elif value is None:
                 continue
 
