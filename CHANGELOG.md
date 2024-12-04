@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.11.1 (2024-12-04)
+
+Full Changelog: [v4.11.0...v4.11.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.11.0...v4.11.1)
+
+### Chores
+
+* make the `Omit` type public ([#225](https://github.com/RetellAI/retell-python-sdk/issues/225)) ([ac96de0](https://github.com/RetellAI/retell-python-sdk/commit/ac96de09bc9d65a0f3435953dbede0740ad17e63))
+
 ## 4.11.0 (2024-12-03)
 
 Full Changelog: [v4.10.0...v4.11.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.10.0...v4.11.0)
