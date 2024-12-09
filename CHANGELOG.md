@@ -1,5 +1,19 @@
 # Changelog
 
+## 4.11.1 (2024-12-09)
+
+Full Changelog: [v4.11.0...v4.11.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.11.0...v4.11.1)
+
+### Chores
+
+* **internal:** bump pydantic dependency ([#227](https://github.com/RetellAI/retell-python-sdk/issues/227)) ([0ddec04](https://github.com/RetellAI/retell-python-sdk/commit/0ddec044da39420f9b43549841db8c5fca8eda97))
+* make the `Omit` type public ([#225](https://github.com/RetellAI/retell-python-sdk/issues/225)) ([ac96de0](https://github.com/RetellAI/retell-python-sdk/commit/ac96de09bc9d65a0f3435953dbede0740ad17e63))
+
+
+### Documentation
+
+* **readme:** fix http client proxies example ([#229](https://github.com/RetellAI/retell-python-sdk/issues/229)) ([0b59722](https://github.com/RetellAI/retell-python-sdk/commit/0b59722f7e65e1f78f43d888f036eede41d0b68f))
+
 ## 4.11.0 (2024-12-03)
 
 Full Changelog: [v4.10.0...v4.11.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.10.0...v4.11.0)
