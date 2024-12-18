@@ -289,8 +289,8 @@ class AgentResponse(BaseModel):
     opt_out_sensitive_data_storage: Optional[bool] = None
     """
     Whether this agent opts out of sensitive data storage like transcript,
-    recording, logging. These data can still be accessed securely via webhooks. If
-    not set, default value of false will apply.
+    recording, logging, inbound/outbound phone numbers, etc. These data can still be
+    accessed securely via webhooks. If not set, default value of false will apply.
     """
 
     post_call_analysis_data: Optional[List[PostCallAnalysisData]] = None
