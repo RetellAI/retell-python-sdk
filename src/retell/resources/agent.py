@@ -217,8 +217,8 @@ class AgentResource(SyncAPIResource):
               twelve cents payment" before starting audio generation.
 
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
-              recording, logging. These data can still be accessed securely via webhooks. If
-              not set, default value of false will apply.
+              recording, logging, inbound/outbound phone numbers, etc. These data can still be
+              accessed securely via webhooks. If not set, default value of false will apply.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
@@ -529,8 +529,8 @@ class AgentResource(SyncAPIResource):
               twelve cents payment" before starting audio generation.
 
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
-              recording, logging. These data can still be accessed securely via webhooks. If
-              not set, default value of false will apply.
+              recording, logging, inbound/outbound phone numbers, etc. These data can still be
+              accessed securely via webhooks. If not set, default value of false will apply.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
@@ -892,8 +892,8 @@ class AsyncAgentResource(AsyncAPIResource):
               twelve cents payment" before starting audio generation.
 
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
-              recording, logging. These data can still be accessed securely via webhooks. If
-              not set, default value of false will apply.
+              recording, logging, inbound/outbound phone numbers, etc. These data can still be
+              accessed securely via webhooks. If not set, default value of false will apply.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
@@ -1204,8 +1204,8 @@ class AsyncAgentResource(AsyncAPIResource):
               twelve cents payment" before starting audio generation.
 
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
-              recording, logging. These data can still be accessed securely via webhooks. If
-              not set, default value of false will apply.
+              recording, logging, inbound/outbound phone numbers, etc. These data can still be
+              accessed securely via webhooks. If not set, default value of false will apply.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
