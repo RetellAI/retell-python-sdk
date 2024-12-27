@@ -3,11 +3,15 @@
 from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
+from pydantic import Field as FieldInfo
+
 from .._models import BaseModel
 
 __all__ = [
     "WebCallResponse",
     "CallAnalysis",
+    "CallCost",
+    "CallCostProductCost",
     "Latency",
     "LatencyE2E",
     "LatencyKnowledgeBase",
@@ -46,6 +50,34 @@ class CallAnalysis(BaseModel):
 
     user_sentiment: Optional[Literal["Negative", "Positive", "Neutral", "Unknown"]] = None
     """Sentiment of the user in the call."""
+
+
+class CallCostProductCost(BaseModel):
+    cost: float
+    """Cost for the product in cents for the duration of the call."""
+
+    product: str
+    """Product name that has a cost associated with it."""
+
+    unit_price: float = FieldInfo(alias="unitPrice")
+    """Unit price of the product in cents per second."""
+
+
+class CallCost(BaseModel):
+    combined_cost: float
+    """Combined cost of all individual costs in cents"""
+
+    product_costs: List[CallCostProductCost]
+    """List of products with their unit prices and costs in cents"""
+
+    total_duration_seconds: float
+    """Total duration of the call in seconds"""
+
+    total_duration_unit_price: float
+    """Total unit duration price of all products in cents per second"""
+
+    total_one_time_price: float
+    """Total one time price of all products in cents per call"""
 
 
 class LatencyE2E(BaseModel):
@@ -381,6 +413,9 @@ class WebCallResponse(BaseModel):
     and custom defined data to extract. Available after call ends. Subscribe to
     `call_analyzed` webhook event type to receive it once ready.
     """
+
+    call_cost: Optional[CallCost] = None
+    """Cost of the call, including all the products and their costs and discount."""
 
     disconnection_reason: Optional[
         Literal[

@@ -1,5 +1,29 @@
 # Changelog
 
+## 4.12.0 (2024-12-27)
+
+Full Changelog: [v4.11.1...v4.12.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.11.1...v4.12.0)
+
+### Features
+
+* **api:** api update ([#238](https://github.com/RetellAI/retell-python-sdk/issues/238)) ([0d12871](https://github.com/RetellAI/retell-python-sdk/commit/0d128717359dae474f8a18ec25d4dd03e964daa5))
+* **api:** api update ([#239](https://github.com/RetellAI/retell-python-sdk/issues/239)) ([80ac9de](https://github.com/RetellAI/retell-python-sdk/commit/80ac9dedf50e3f70f891acdc260989df160f5a8d))
+* **api:** api update ([#240](https://github.com/RetellAI/retell-python-sdk/issues/240)) ([5a3b444](https://github.com/RetellAI/retell-python-sdk/commit/5a3b444acc9871abf8d3dcd7be0c745c9bee8a2f))
+* remove uesless test ([01a09b7](https://github.com/RetellAI/retell-python-sdk/commit/01a09b7a5372c6ae732e491641ca16c028567eaa))
+
+
+### Chores
+
+* **internal:** add support for TypeAliasType ([#234](https://github.com/RetellAI/retell-python-sdk/issues/234)) ([6b28299](https://github.com/RetellAI/retell-python-sdk/commit/6b2829901b2883d07d4f58c4c83a8f5972d7576b))
+* **internal:** bump pyright ([#232](https://github.com/RetellAI/retell-python-sdk/issues/232)) ([dc804e8](https://github.com/RetellAI/retell-python-sdk/commit/dc804e8d8953caedb89d6f781f53e0fa11344c64))
+* **internal:** fix some typos ([#237](https://github.com/RetellAI/retell-python-sdk/issues/237)) ([e46e933](https://github.com/RetellAI/retell-python-sdk/commit/e46e933a5051cfdd6e3914a936a6105b42d62a90))
+* **internal:** updated imports ([#235](https://github.com/RetellAI/retell-python-sdk/issues/235)) ([2713fb1](https://github.com/RetellAI/retell-python-sdk/commit/2713fb1ab4a2b72c4777fdb384eef0109bbcd4e6))
+
+
+### Documentation
+
+* **readme:** example snippet for client context manager ([#236](https://github.com/RetellAI/retell-python-sdk/issues/236)) ([95b8f34](https://github.com/RetellAI/retell-python-sdk/commit/95b8f3445b1802ab294c7b3df2549fae1953b6af))
+
 ## 4.11.1 (2024-12-09)
 
 Full Changelog: [v4.11.0...v4.11.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.11.0...v4.11.1)

@@ -8,7 +8,7 @@ from typing_extensions import Self, override
 
 import httpx
 
-from . import resources, _exceptions
+from . import _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -24,6 +24,7 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
+from .resources import llm, call, agent, voice, concurrency, phone_number, knowledge_base
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -33,27 +34,17 @@ from ._base_client import (
 )
 from .lib.webhook_auth import verify  # type: ignore
 
-__all__ = [
-    "Timeout",
-    "Transport",
-    "ProxiesTypes",
-    "RequestOptions",
-    "resources",
-    "Retell",
-    "AsyncRetell",
-    "Client",
-    "AsyncClient",
-]
+__all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Retell", "AsyncRetell", "Client", "AsyncClient"]
 
 
 class Retell(SyncAPIClient):
-    call: resources.CallResource
-    phone_number: resources.PhoneNumberResource
-    agent: resources.AgentResource
-    llm: resources.LlmResource
-    knowledge_base: resources.KnowledgeBaseResource
-    voice: resources.VoiceResource
-    concurrency: resources.ConcurrencyResource
+    call: call.CallResource
+    phone_number: phone_number.PhoneNumberResource
+    agent: agent.AgentResource
+    llm: llm.LlmResource
+    knowledge_base: knowledge_base.KnowledgeBaseResource
+    voice: voice.VoiceResource
+    concurrency: concurrency.ConcurrencyResource
     with_raw_response: RetellWithRawResponse
     with_streaming_response: RetellWithStreamedResponse
 
@@ -102,13 +93,13 @@ class Retell(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.call = resources.CallResource(self)
-        self.phone_number = resources.PhoneNumberResource(self)
-        self.agent = resources.AgentResource(self)
-        self.llm = resources.LlmResource(self)
-        self.knowledge_base = resources.KnowledgeBaseResource(self)
-        self.voice = resources.VoiceResource(self)
-        self.concurrency = resources.ConcurrencyResource(self)
+        self.call = call.CallResource(self)
+        self.phone_number = phone_number.PhoneNumberResource(self)
+        self.agent = agent.AgentResource(self)
+        self.llm = llm.LlmResource(self)
+        self.knowledge_base = knowledge_base.KnowledgeBaseResource(self)
+        self.voice = voice.VoiceResource(self)
+        self.concurrency = concurrency.ConcurrencyResource(self)
         self.with_raw_response = RetellWithRawResponse(self)
         self.with_streaming_response = RetellWithStreamedResponse(self)
 
@@ -220,13 +211,13 @@ class Retell(SyncAPIClient):
 
 
 class AsyncRetell(AsyncAPIClient):
-    call: resources.AsyncCallResource
-    phone_number: resources.AsyncPhoneNumberResource
-    agent: resources.AsyncAgentResource
-    llm: resources.AsyncLlmResource
-    knowledge_base: resources.AsyncKnowledgeBaseResource
-    voice: resources.AsyncVoiceResource
-    concurrency: resources.AsyncConcurrencyResource
+    call: call.AsyncCallResource
+    phone_number: phone_number.AsyncPhoneNumberResource
+    agent: agent.AsyncAgentResource
+    llm: llm.AsyncLlmResource
+    knowledge_base: knowledge_base.AsyncKnowledgeBaseResource
+    voice: voice.AsyncVoiceResource
+    concurrency: concurrency.AsyncConcurrencyResource
     with_raw_response: AsyncRetellWithRawResponse
     with_streaming_response: AsyncRetellWithStreamedResponse
 
@@ -275,13 +266,13 @@ class AsyncRetell(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.call = resources.AsyncCallResource(self)
-        self.phone_number = resources.AsyncPhoneNumberResource(self)
-        self.agent = resources.AsyncAgentResource(self)
-        self.llm = resources.AsyncLlmResource(self)
-        self.knowledge_base = resources.AsyncKnowledgeBaseResource(self)
-        self.voice = resources.AsyncVoiceResource(self)
-        self.concurrency = resources.AsyncConcurrencyResource(self)
+        self.call = call.AsyncCallResource(self)
+        self.phone_number = phone_number.AsyncPhoneNumberResource(self)
+        self.agent = agent.AsyncAgentResource(self)
+        self.llm = llm.AsyncLlmResource(self)
+        self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResource(self)
+        self.voice = voice.AsyncVoiceResource(self)
+        self.concurrency = concurrency.AsyncConcurrencyResource(self)
         self.with_raw_response = AsyncRetellWithRawResponse(self)
         self.with_streaming_response = AsyncRetellWithStreamedResponse(self)
 
@@ -392,46 +383,46 @@ class AsyncRetell(AsyncAPIClient):
 
 class RetellWithRawResponse:
     def __init__(self, client: Retell) -> None:
-        self.call = resources.CallResourceWithRawResponse(client.call)
-        self.phone_number = resources.PhoneNumberResourceWithRawResponse(client.phone_number)
-        self.agent = resources.AgentResourceWithRawResponse(client.agent)
-        self.llm = resources.LlmResourceWithRawResponse(client.llm)
-        self.knowledge_base = resources.KnowledgeBaseResourceWithRawResponse(client.knowledge_base)
-        self.voice = resources.VoiceResourceWithRawResponse(client.voice)
-        self.concurrency = resources.ConcurrencyResourceWithRawResponse(client.concurrency)
+        self.call = call.CallResourceWithRawResponse(client.call)
+        self.phone_number = phone_number.PhoneNumberResourceWithRawResponse(client.phone_number)
+        self.agent = agent.AgentResourceWithRawResponse(client.agent)
+        self.llm = llm.LlmResourceWithRawResponse(client.llm)
+        self.knowledge_base = knowledge_base.KnowledgeBaseResourceWithRawResponse(client.knowledge_base)
+        self.voice = voice.VoiceResourceWithRawResponse(client.voice)
+        self.concurrency = concurrency.ConcurrencyResourceWithRawResponse(client.concurrency)
 
 
 class AsyncRetellWithRawResponse:
     def __init__(self, client: AsyncRetell) -> None:
-        self.call = resources.AsyncCallResourceWithRawResponse(client.call)
-        self.phone_number = resources.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
-        self.agent = resources.AsyncAgentResourceWithRawResponse(client.agent)
-        self.llm = resources.AsyncLlmResourceWithRawResponse(client.llm)
-        self.knowledge_base = resources.AsyncKnowledgeBaseResourceWithRawResponse(client.knowledge_base)
-        self.voice = resources.AsyncVoiceResourceWithRawResponse(client.voice)
-        self.concurrency = resources.AsyncConcurrencyResourceWithRawResponse(client.concurrency)
+        self.call = call.AsyncCallResourceWithRawResponse(client.call)
+        self.phone_number = phone_number.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
+        self.agent = agent.AsyncAgentResourceWithRawResponse(client.agent)
+        self.llm = llm.AsyncLlmResourceWithRawResponse(client.llm)
+        self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResourceWithRawResponse(client.knowledge_base)
+        self.voice = voice.AsyncVoiceResourceWithRawResponse(client.voice)
+        self.concurrency = concurrency.AsyncConcurrencyResourceWithRawResponse(client.concurrency)
 
 
 class RetellWithStreamedResponse:
     def __init__(self, client: Retell) -> None:
-        self.call = resources.CallResourceWithStreamingResponse(client.call)
-        self.phone_number = resources.PhoneNumberResourceWithStreamingResponse(client.phone_number)
-        self.agent = resources.AgentResourceWithStreamingResponse(client.agent)
-        self.llm = resources.LlmResourceWithStreamingResponse(client.llm)
-        self.knowledge_base = resources.KnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
-        self.voice = resources.VoiceResourceWithStreamingResponse(client.voice)
-        self.concurrency = resources.ConcurrencyResourceWithStreamingResponse(client.concurrency)
+        self.call = call.CallResourceWithStreamingResponse(client.call)
+        self.phone_number = phone_number.PhoneNumberResourceWithStreamingResponse(client.phone_number)
+        self.agent = agent.AgentResourceWithStreamingResponse(client.agent)
+        self.llm = llm.LlmResourceWithStreamingResponse(client.llm)
+        self.knowledge_base = knowledge_base.KnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
+        self.voice = voice.VoiceResourceWithStreamingResponse(client.voice)
+        self.concurrency = concurrency.ConcurrencyResourceWithStreamingResponse(client.concurrency)
 
 
 class AsyncRetellWithStreamedResponse:
     def __init__(self, client: AsyncRetell) -> None:
-        self.call = resources.AsyncCallResourceWithStreamingResponse(client.call)
-        self.phone_number = resources.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
-        self.agent = resources.AsyncAgentResourceWithStreamingResponse(client.agent)
-        self.llm = resources.AsyncLlmResourceWithStreamingResponse(client.llm)
-        self.knowledge_base = resources.AsyncKnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
-        self.voice = resources.AsyncVoiceResourceWithStreamingResponse(client.voice)
-        self.concurrency = resources.AsyncConcurrencyResourceWithStreamingResponse(client.concurrency)
+        self.call = call.AsyncCallResourceWithStreamingResponse(client.call)
+        self.phone_number = phone_number.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
+        self.agent = agent.AsyncAgentResourceWithStreamingResponse(client.agent)
+        self.llm = llm.AsyncLlmResourceWithStreamingResponse(client.llm)
+        self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
+        self.voice = voice.AsyncVoiceResourceWithStreamingResponse(client.voice)
+        self.concurrency = concurrency.AsyncConcurrencyResourceWithStreamingResponse(client.concurrency)
 
 
 Client = Retell
