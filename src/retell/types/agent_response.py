@@ -184,6 +184,14 @@ class AgentResponse(BaseModel):
     so it's recommended to expeirment before adding any words.
     """
 
+    begin_message_delay_ms: Optional[int] = None
+    """
+    If set, will delay the first message by the specified amount of milliseconds, so
+    that it gives user more time to prepare to take the call. Valid range is [0,
+    5000]. If not set or set to 0, agent will speak immediately. Only applicable
+    when agent speaks first.
+    """
+
     boosted_keywords: Optional[List[str]] = None
     """
     Provide a customized list of keywords to bias the transcriber model, so that
@@ -329,19 +337,22 @@ class AgentResponse(BaseModel):
     can). If unset, default value 1 will apply.
     """
 
-    voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]] = None
+    voice_model: Optional[
+        Literal[
+            "eleven_turbo_v2",
+            "eleven_flash_v2",
+            "eleven_turbo_v2_5",
+            "eleven_flash_v2_5",
+            "eleven_multilingual_v2",
+            "Play3.0-mini",
+            "PlayDialog",
+        ]
+    ] = None
     """Optionally set the voice model used for the selected voice.
 
     Currently only elevenlab voices have voice model selections. Set to null to
-    remove voice model selection, and default ones will apply. Supported voice
-    models are:
-
-    - `eleven_turbo_v2`: Fast english only model, supports pronunciation tags.
-
-    - `eleven_turbo_v2_5`: Multilingual model with lowest latency.
-
-    - `eleven_multilingual_v2`: Multilingual model with rich emotion and nice
-      accent.
+    remove voice model selection, and default ones will apply. Check out the
+    dashboard for details on each voice model.
     """
 
     voice_speed: Optional[float] = None
