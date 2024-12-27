@@ -63,6 +63,7 @@ class AgentResource(SyncAPIResource):
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
@@ -102,7 +103,17 @@ class AgentResource(SyncAPIResource):
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
-        voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]]
+        voice_model: Optional[
+            Literal[
+                "eleven_turbo_v2",
+                "eleven_flash_v2",
+                "eleven_turbo_v2_5",
+                "eleven_flash_v2_5",
+                "eleven_multilingual_v2",
+                "Play3.0-mini",
+                "PlayDialog",
+            ]
+        ]
         | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
@@ -167,6 +178,11 @@ class AgentResource(SyncAPIResource):
               [backchannel default words](/agent/interaction-configuration#backchannel) for
               more details. Note that certain voices do not work too well with certain words,
               so it's recommended to expeirment before adding any words.
+
+          begin_message_delay_ms: If set, will delay the first message by the specified amount of milliseconds, so
+              that it gives user more time to prepare to take the call. Valid range is [0,
+              5000]. If not set or set to 0, agent will speak immediately. Only applicable
+              when agent speaks first.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -243,14 +259,8 @@ class AgentResource(SyncAPIResource):
 
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
-              selection, and default ones will apply. Supported voice models are:
-
-              - `eleven_turbo_v2`: Fast english only model, supports pronunciation tags.
-
-              - `eleven_turbo_v2_5`: Multilingual model with lowest latency.
-
-              - `eleven_multilingual_v2`: Multilingual model with rich emotion and nice
-                accent.
+              selection, and default ones will apply. Check out the dashboard for details on
+              each voice model.
 
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
@@ -298,6 +308,7 @@ class AgentResource(SyncAPIResource):
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
+                    "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "enable_transcription_formatting": enable_transcription_formatting,
@@ -377,6 +388,7 @@ class AgentResource(SyncAPIResource):
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
@@ -418,7 +430,17 @@ class AgentResource(SyncAPIResource):
         response_engine: agent_update_params.ResponseEngine | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
-        voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]]
+        voice_model: Optional[
+            Literal[
+                "eleven_turbo_v2",
+                "eleven_flash_v2",
+                "eleven_turbo_v2_5",
+                "eleven_flash_v2_5",
+                "eleven_multilingual_v2",
+                "Play3.0-mini",
+                "PlayDialog",
+            ]
+        ]
         | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
@@ -479,6 +501,11 @@ class AgentResource(SyncAPIResource):
               [backchannel default words](/agent/interaction-configuration#backchannel) for
               more details. Note that certain voices do not work too well with certain words,
               so it's recommended to expeirment before adding any words.
+
+          begin_message_delay_ms: If set, will delay the first message by the specified amount of milliseconds, so
+              that it gives user more time to prepare to take the call. Valid range is [0,
+              5000]. If not set or set to 0, agent will speak immediately. Only applicable
+              when agent speaks first.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -560,14 +587,8 @@ class AgentResource(SyncAPIResource):
 
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
-              selection, and default ones will apply. Supported voice models are:
-
-              - `eleven_turbo_v2`: Fast english only model, supports pronunciation tags.
-
-              - `eleven_turbo_v2_5`: Multilingual model with lowest latency.
-
-              - `eleven_multilingual_v2`: Multilingual model with rich emotion and nice
-                accent.
+              selection, and default ones will apply. Check out the dashboard for details on
+              each voice model.
 
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
@@ -615,6 +636,7 @@ class AgentResource(SyncAPIResource):
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
+                    "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "enable_transcription_formatting": enable_transcription_formatting,
@@ -738,6 +760,7 @@ class AsyncAgentResource(AsyncAPIResource):
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
@@ -777,7 +800,17 @@ class AsyncAgentResource(AsyncAPIResource):
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
-        voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]]
+        voice_model: Optional[
+            Literal[
+                "eleven_turbo_v2",
+                "eleven_flash_v2",
+                "eleven_turbo_v2_5",
+                "eleven_flash_v2_5",
+                "eleven_multilingual_v2",
+                "Play3.0-mini",
+                "PlayDialog",
+            ]
+        ]
         | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
@@ -842,6 +875,11 @@ class AsyncAgentResource(AsyncAPIResource):
               [backchannel default words](/agent/interaction-configuration#backchannel) for
               more details. Note that certain voices do not work too well with certain words,
               so it's recommended to expeirment before adding any words.
+
+          begin_message_delay_ms: If set, will delay the first message by the specified amount of milliseconds, so
+              that it gives user more time to prepare to take the call. Valid range is [0,
+              5000]. If not set or set to 0, agent will speak immediately. Only applicable
+              when agent speaks first.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -918,14 +956,8 @@ class AsyncAgentResource(AsyncAPIResource):
 
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
-              selection, and default ones will apply. Supported voice models are:
-
-              - `eleven_turbo_v2`: Fast english only model, supports pronunciation tags.
-
-              - `eleven_turbo_v2_5`: Multilingual model with lowest latency.
-
-              - `eleven_multilingual_v2`: Multilingual model with rich emotion and nice
-                accent.
+              selection, and default ones will apply. Check out the dashboard for details on
+              each voice model.
 
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
@@ -973,6 +1005,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
+                    "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "enable_transcription_formatting": enable_transcription_formatting,
@@ -1052,6 +1085,7 @@ class AsyncAgentResource(AsyncAPIResource):
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
@@ -1093,7 +1127,17 @@ class AsyncAgentResource(AsyncAPIResource):
         response_engine: agent_update_params.ResponseEngine | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
-        voice_model: Optional[Literal["eleven_turbo_v2", "eleven_turbo_v2_5", "eleven_multilingual_v2"]]
+        voice_model: Optional[
+            Literal[
+                "eleven_turbo_v2",
+                "eleven_flash_v2",
+                "eleven_turbo_v2_5",
+                "eleven_flash_v2_5",
+                "eleven_multilingual_v2",
+                "Play3.0-mini",
+                "PlayDialog",
+            ]
+        ]
         | NotGiven = NOT_GIVEN,
         voice_speed: float | NotGiven = NOT_GIVEN,
         voice_temperature: float | NotGiven = NOT_GIVEN,
@@ -1154,6 +1198,11 @@ class AsyncAgentResource(AsyncAPIResource):
               [backchannel default words](/agent/interaction-configuration#backchannel) for
               more details. Note that certain voices do not work too well with certain words,
               so it's recommended to expeirment before adding any words.
+
+          begin_message_delay_ms: If set, will delay the first message by the specified amount of milliseconds, so
+              that it gives user more time to prepare to take the call. Valid range is [0,
+              5000]. If not set or set to 0, agent will speak immediately. Only applicable
+              when agent speaks first.
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
@@ -1235,14 +1284,8 @@ class AsyncAgentResource(AsyncAPIResource):
 
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
-              selection, and default ones will apply. Supported voice models are:
-
-              - `eleven_turbo_v2`: Fast english only model, supports pronunciation tags.
-
-              - `eleven_turbo_v2_5`: Multilingual model with lowest latency.
-
-              - `eleven_multilingual_v2`: Multilingual model with rich emotion and nice
-                accent.
+              selection, and default ones will apply. Check out the dashboard for details on
+              each voice model.
 
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
@@ -1290,6 +1333,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
+                    "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "enable_backchannel": enable_backchannel,
                     "enable_transcription_formatting": enable_transcription_formatting,

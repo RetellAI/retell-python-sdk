@@ -690,7 +690,7 @@ class LlmResponse(BaseModel):
     Set to null to remove all knowledge bases.
     """
 
-    model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku"]] = None
+    model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]] = None
     """Select the underlying text LLM. If not set, would default to gpt-4o."""
 
     api_model_temperature: Optional[float] = FieldInfo(alias="model_temperature", default=None)
@@ -701,7 +701,7 @@ class LlmResponse(BaseModel):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[Literal["gpt-4o-realtime"]] = None
+    s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime"]] = None
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.
