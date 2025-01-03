@@ -67,14 +67,14 @@ class TestKnowledgeBase:
     @parametrize
     def test_method_retrieve(self, client: Retell) -> None:
         knowledge_base = client.knowledge_base.retrieve(
-            "knowledge_base_id",
+            "kb_1234567890",
         )
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.knowledge_base.with_raw_response.retrieve(
-            "knowledge_base_id",
+            "kb_1234567890",
         )
 
         assert response.is_closed is True
@@ -85,7 +85,7 @@ class TestKnowledgeBase:
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.knowledge_base.with_streaming_response.retrieve(
-            "knowledge_base_id",
+            "kb_1234567890",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -130,14 +130,14 @@ class TestKnowledgeBase:
     @parametrize
     def test_method_delete(self, client: Retell) -> None:
         knowledge_base = client.knowledge_base.delete(
-            "knowledge_base_id",
+            "kb_1234567890",
         )
         assert knowledge_base is None
 
     @parametrize
     def test_raw_response_delete(self, client: Retell) -> None:
         response = client.knowledge_base.with_raw_response.delete(
-            "knowledge_base_id",
+            "kb_1234567890",
         )
 
         assert response.is_closed is True
@@ -148,7 +148,7 @@ class TestKnowledgeBase:
     @parametrize
     def test_streaming_response_delete(self, client: Retell) -> None:
         with client.knowledge_base.with_streaming_response.delete(
-            "knowledge_base_id",
+            "kb_1234567890",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -219,14 +219,14 @@ class TestAsyncKnowledgeBase:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         knowledge_base = await async_client.knowledge_base.retrieve(
-            "knowledge_base_id",
+            "kb_1234567890",
         )
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.knowledge_base.with_raw_response.retrieve(
-            "knowledge_base_id",
+            "kb_1234567890",
         )
 
         assert response.is_closed is True
@@ -237,7 +237,7 @@ class TestAsyncKnowledgeBase:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.knowledge_base.with_streaming_response.retrieve(
-            "knowledge_base_id",
+            "kb_1234567890",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -282,14 +282,14 @@ class TestAsyncKnowledgeBase:
     @parametrize
     async def test_method_delete(self, async_client: AsyncRetell) -> None:
         knowledge_base = await async_client.knowledge_base.delete(
-            "knowledge_base_id",
+            "kb_1234567890",
         )
         assert knowledge_base is None
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncRetell) -> None:
         response = await async_client.knowledge_base.with_raw_response.delete(
-            "knowledge_base_id",
+            "kb_1234567890",
         )
 
         assert response.is_closed is True
@@ -300,7 +300,7 @@ class TestAsyncKnowledgeBase:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncRetell) -> None:
         async with async_client.knowledge_base.with_streaming_response.delete(
-            "knowledge_base_id",
+            "kb_1234567890",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
