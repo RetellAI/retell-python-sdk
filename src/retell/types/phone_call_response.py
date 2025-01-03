@@ -26,6 +26,7 @@ __all__ = [
     "TranscriptWithToolCallUtteranceWord",
     "TranscriptWithToolCallToolCallInvocationUtterance",
     "TranscriptWithToolCallToolCallResultUtterance",
+    "TranscriptWithToolCallDtmfUtterance",
 ]
 
 
@@ -368,10 +369,22 @@ class TranscriptWithToolCallToolCallResultUtterance(BaseModel):
     """Tool call id, globally unique."""
 
 
+class TranscriptWithToolCallDtmfUtterance(BaseModel):
+    digit: str
+    """The digit pressed by the user.
+
+    Will be a single digit string like "1", "2", "3", "\\**", "#" etc.
+    """
+
+    role: Literal["dtmf"]
+    """This is user pressed digit from their phone keypad."""
+
+
 TranscriptWithToolCall: TypeAlias = Union[
     TranscriptWithToolCallUtterance,
     TranscriptWithToolCallToolCallInvocationUtterance,
     TranscriptWithToolCallToolCallResultUtterance,
+    TranscriptWithToolCallDtmfUtterance,
 ]
 
 
