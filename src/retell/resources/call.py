@@ -105,11 +105,13 @@ class CallResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CallListResponse:
-        """
-        Retrieve call details
+        """Retrieve call details
 
         Args:
           limit: Limit the number of calls returned.
+
+        Default 50, Max 1000. To retrieve more than
+              1000, use pagination_key to continue fetching the next page.
 
           pagination_key: The pagination key to continue fetching the next page of calls. Pagination key
               is represented by a call id here, and it's exclusive (not included in the
@@ -389,11 +391,13 @@ class AsyncCallResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CallListResponse:
-        """
-        Retrieve call details
+        """Retrieve call details
 
         Args:
           limit: Limit the number of calls returned.
+
+        Default 50, Max 1000. To retrieve more than
+              1000, use pagination_key to continue fetching the next page.
 
           pagination_key: The pagination key to continue fetching the next page of calls. Pagination key
               is represented by a call id here, and it's exclusive (not included in the
