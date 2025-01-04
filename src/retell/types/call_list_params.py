@@ -12,7 +12,11 @@ class CallListParams(TypedDict, total=False):
     filter_criteria: FilterCriteria
 
     limit: int
-    """Limit the number of calls returned."""
+    """Limit the number of calls returned.
+
+    Default 50, Max 1000. To retrieve more than 1000, use pagination_key to continue
+    fetching the next page.
+    """
 
     pagination_key: str
     """The pagination key to continue fetching the next page of calls.
