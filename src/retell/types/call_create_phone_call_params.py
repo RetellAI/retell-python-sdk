@@ -10,12 +10,16 @@ __all__ = ["CallCreatePhoneCallParams"]
 
 class CallCreatePhoneCallParams(TypedDict, total=False):
     from_number: Required[str]
-    """The number you own in E.164 format. Must be a Retell managed number."""
+    """The number you own in E.164 format.
+
+    Must be a number purchased from Retell or imported to Retell.
+    """
 
     to_number: Required[str]
     """The number you want to call, in E.164 format.
 
-    Right now only US numbers are officially supported.
+    If using a number purchased from Retell, only US numbers are supported as
+    destination.
     """
 
     metadata: object
