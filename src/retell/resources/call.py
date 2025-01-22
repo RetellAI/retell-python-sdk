@@ -165,10 +165,11 @@ class CallResource(SyncAPIResource):
         Create a new outbound phone call
 
         Args:
-          from_number: The number you own in E.164 format. Must be a Retell managed number.
+          from_number: The number you own in E.164 format. Must be a number purchased from Retell or
+              imported to Retell.
 
-          to_number: The number you want to call, in E.164 format. Right now only US numbers are
-              officially supported.
+          to_number: The number you want to call, in E.164 format. If using a number purchased from
+              Retell, only US numbers are supported as destination.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
@@ -451,10 +452,11 @@ class AsyncCallResource(AsyncAPIResource):
         Create a new outbound phone call
 
         Args:
-          from_number: The number you own in E.164 format. Must be a Retell managed number.
+          from_number: The number you own in E.164 format. Must be a number purchased from Retell or
+              imported to Retell.
 
-          to_number: The number you want to call, in E.164 format. Right now only US numbers are
-              officially supported.
+          to_number: The number you want to call, in E.164 format. If using a number purchased from
+              Retell, only US numbers are supported as destination.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
