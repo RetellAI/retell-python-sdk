@@ -6,7 +6,7 @@ from typing import List, Mapping, Iterable, cast
 
 import httpx
 
-from ..types import knowledge_base_create_params
+from ..types import knowledge_base_create_params, knowledge_base_add_sources_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
 from .._utils import (
     extract_files,
@@ -198,6 +198,99 @@ class KnowledgeBaseResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def add_sources(
+        self,
+        knowledge_base_id: str,
+        *,
+        knowledge_base_files: List[FileTypes] | NotGiven = NOT_GIVEN,
+        knowledge_base_texts: Iterable[knowledge_base_add_sources_params.KnowledgeBaseText] | NotGiven = NOT_GIVEN,
+        knowledge_base_urls: List[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> KnowledgeBaseResponse:
+        """
+        Add sources to a knowledge base
+
+        Args:
+          knowledge_base_files: Files to add to the knowledge base. Limit to 25 files, where each file is
+              limited to 50MB.
+
+          knowledge_base_texts: Texts to add to the knowledge base.
+
+          knowledge_base_urls: URLs to be scraped and added to the knowledge base. Must be valid urls.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not knowledge_base_id:
+            raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
+        body = deepcopy_minimal(
+            {
+                "knowledge_base_files": knowledge_base_files,
+                "knowledge_base_texts": knowledge_base_texts,
+                "knowledge_base_urls": knowledge_base_urls,
+            }
+        )
+        files = extract_files(cast(Mapping[str, object], body), paths=[["knowledge_base_files", "<array>"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+        return self._post(
+            f"/add-knowledge-base-sources/{knowledge_base_id}",
+            body=maybe_transform(body, knowledge_base_add_sources_params.KnowledgeBaseAddSourcesParams),
+            files=files,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=KnowledgeBaseResponse,
+        )
+
+    def delete_source(
+        self,
+        source_id: str,
+        *,
+        knowledge_base_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> KnowledgeBaseResponse:
+        """
+        Delete an existing source from knowledge base
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not knowledge_base_id:
+            raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
+        if not source_id:
+            raise ValueError(f"Expected a non-empty value for `source_id` but received {source_id!r}")
+        return self._delete(
+            f"/delete-knowledge-base-source/{knowledge_base_id}/source/{source_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=KnowledgeBaseResponse,
+        )
+
 
 class AsyncKnowledgeBaseResource(AsyncAPIResource):
     @cached_property
@@ -368,6 +461,99 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def add_sources(
+        self,
+        knowledge_base_id: str,
+        *,
+        knowledge_base_files: List[FileTypes] | NotGiven = NOT_GIVEN,
+        knowledge_base_texts: Iterable[knowledge_base_add_sources_params.KnowledgeBaseText] | NotGiven = NOT_GIVEN,
+        knowledge_base_urls: List[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> KnowledgeBaseResponse:
+        """
+        Add sources to a knowledge base
+
+        Args:
+          knowledge_base_files: Files to add to the knowledge base. Limit to 25 files, where each file is
+              limited to 50MB.
+
+          knowledge_base_texts: Texts to add to the knowledge base.
+
+          knowledge_base_urls: URLs to be scraped and added to the knowledge base. Must be valid urls.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not knowledge_base_id:
+            raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
+        body = deepcopy_minimal(
+            {
+                "knowledge_base_files": knowledge_base_files,
+                "knowledge_base_texts": knowledge_base_texts,
+                "knowledge_base_urls": knowledge_base_urls,
+            }
+        )
+        files = extract_files(cast(Mapping[str, object], body), paths=[["knowledge_base_files", "<array>"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+        return await self._post(
+            f"/add-knowledge-base-sources/{knowledge_base_id}",
+            body=await async_maybe_transform(body, knowledge_base_add_sources_params.KnowledgeBaseAddSourcesParams),
+            files=files,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=KnowledgeBaseResponse,
+        )
+
+    async def delete_source(
+        self,
+        source_id: str,
+        *,
+        knowledge_base_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> KnowledgeBaseResponse:
+        """
+        Delete an existing source from knowledge base
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not knowledge_base_id:
+            raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
+        if not source_id:
+            raise ValueError(f"Expected a non-empty value for `source_id` but received {source_id!r}")
+        return await self._delete(
+            f"/delete-knowledge-base-source/{knowledge_base_id}/source/{source_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=KnowledgeBaseResponse,
+        )
+
 
 class KnowledgeBaseResourceWithRawResponse:
     def __init__(self, knowledge_base: KnowledgeBaseResource) -> None:
@@ -384,6 +570,12 @@ class KnowledgeBaseResourceWithRawResponse:
         )
         self.delete = to_raw_response_wrapper(
             knowledge_base.delete,
+        )
+        self.add_sources = to_raw_response_wrapper(
+            knowledge_base.add_sources,
+        )
+        self.delete_source = to_raw_response_wrapper(
+            knowledge_base.delete_source,
         )
 
 
@@ -403,6 +595,12 @@ class AsyncKnowledgeBaseResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             knowledge_base.delete,
         )
+        self.add_sources = async_to_raw_response_wrapper(
+            knowledge_base.add_sources,
+        )
+        self.delete_source = async_to_raw_response_wrapper(
+            knowledge_base.delete_source,
+        )
 
 
 class KnowledgeBaseResourceWithStreamingResponse:
@@ -421,6 +619,12 @@ class KnowledgeBaseResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             knowledge_base.delete,
         )
+        self.add_sources = to_streamed_response_wrapper(
+            knowledge_base.add_sources,
+        )
+        self.delete_source = to_streamed_response_wrapper(
+            knowledge_base.delete_source,
+        )
 
 
 class AsyncKnowledgeBaseResourceWithStreamingResponse:
@@ -438,4 +642,10 @@ class AsyncKnowledgeBaseResourceWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             knowledge_base.delete,
+        )
+        self.add_sources = async_to_streamed_response_wrapper(
+            knowledge_base.add_sources,
+        )
+        self.delete_source = async_to_streamed_response_wrapper(
+            knowledge_base.delete_source,
         )
