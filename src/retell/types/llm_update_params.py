@@ -10,6 +10,9 @@ __all__ = [
     "GeneralTool",
     "GeneralToolEndCallTool",
     "GeneralToolTransferCallTool",
+    "GeneralToolTransferCallToolTransferDestination",
+    "GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefined",
+    "GeneralToolTransferCallToolTransferDestinationTransferDestinationInferred",
     "GeneralToolTransferCallToolWarmTransferOption",
     "GeneralToolTransferCallToolWarmTransferOptionWarmTransferPrompt",
     "GeneralToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage",
@@ -24,6 +27,9 @@ __all__ = [
     "StateTool",
     "StateToolEndCallTool",
     "StateToolTransferCallTool",
+    "StateToolTransferCallToolTransferDestination",
+    "StateToolTransferCallToolTransferDestinationTransferDestinationPredefined",
+    "StateToolTransferCallToolTransferDestinationTransferDestinationInferred",
     "StateToolTransferCallToolWarmTransferOption",
     "StateToolTransferCallToolWarmTransferOptionWarmTransferPrompt",
     "StateToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage",
@@ -132,6 +138,36 @@ class GeneralToolEndCallTool(TypedDict, total=False):
     """
 
 
+class GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefined(TypedDict, total=False):
+    number: Required[str]
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
+    """
+
+    type: Required[Literal["predefined"]]
+    """The type of transfer destination."""
+
+
+class GeneralToolTransferCallToolTransferDestinationTransferDestinationInferred(TypedDict, total=False):
+    prompt: Required[str]
+    """The prompt to be used to help infer the transfer destination.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right number to transfer to. Can contain dynamic
+    variables.
+    """
+
+    type: Required[Literal["inferred"]]
+    """The type of transfer destination."""
+
+
+GeneralToolTransferCallToolTransferDestination: TypeAlias = Union[
+    GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefined,
+    GeneralToolTransferCallToolTransferDestinationTransferDestinationInferred,
+]
+
+
 class GeneralToolTransferCallToolWarmTransferOptionWarmTransferPrompt(TypedDict, total=False):
     prompt: str
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
@@ -160,18 +196,18 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
     tools + state tools + state edges).
     """
 
-    number: Required[str]
-    """
-    The number to transfer to in E.164 format or a dynamic variable like
-    {{transfer_number}}.
-    """
-
     type: Required[Literal["transfer_call"]]
 
     description: str
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
+    """
+
+    number: Optional[str]
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
     """
 
     show_transferee_as_caller: Optional[bool]
@@ -181,6 +217,8 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
+
+    transfer_destination: GeneralToolTransferCallToolTransferDestination
 
     warm_transfer_option: Optional[GeneralToolTransferCallToolWarmTransferOption]
     """If set, when transfer is successful, will perform a warm handoff.
@@ -441,6 +479,36 @@ class StateToolEndCallTool(TypedDict, total=False):
     """
 
 
+class StateToolTransferCallToolTransferDestinationTransferDestinationPredefined(TypedDict, total=False):
+    number: Required[str]
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
+    """
+
+    type: Required[Literal["predefined"]]
+    """The type of transfer destination."""
+
+
+class StateToolTransferCallToolTransferDestinationTransferDestinationInferred(TypedDict, total=False):
+    prompt: Required[str]
+    """The prompt to be used to help infer the transfer destination.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right number to transfer to. Can contain dynamic
+    variables.
+    """
+
+    type: Required[Literal["inferred"]]
+    """The type of transfer destination."""
+
+
+StateToolTransferCallToolTransferDestination: TypeAlias = Union[
+    StateToolTransferCallToolTransferDestinationTransferDestinationPredefined,
+    StateToolTransferCallToolTransferDestinationTransferDestinationInferred,
+]
+
+
 class StateToolTransferCallToolWarmTransferOptionWarmTransferPrompt(TypedDict, total=False):
     prompt: str
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
@@ -469,18 +537,18 @@ class StateToolTransferCallTool(TypedDict, total=False):
     tools + state tools + state edges).
     """
 
-    number: Required[str]
-    """
-    The number to transfer to in E.164 format or a dynamic variable like
-    {{transfer_number}}.
-    """
-
     type: Required[Literal["transfer_call"]]
 
     description: str
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
+    """
+
+    number: Optional[str]
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
     """
 
     show_transferee_as_caller: Optional[bool]
@@ -490,6 +558,8 @@ class StateToolTransferCallTool(TypedDict, total=False):
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
+
+    transfer_destination: StateToolTransferCallToolTransferDestination
 
     warm_transfer_option: Optional[StateToolTransferCallToolWarmTransferOption]
     """If set, when transfer is successful, will perform a warm handoff.

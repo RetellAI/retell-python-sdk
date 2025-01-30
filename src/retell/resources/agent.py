@@ -103,6 +103,7 @@ class AgentResource(SyncAPIResource):
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
+        ring_duration_ms: int | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -257,6 +258,10 @@ class AgentResource(SyncAPIResource):
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
 
+          ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
+              This applies for both outbound call ringtime, and call transfer ringtime.
+              Default to 30000 (30 s). Valid range is [5000, 90000].
+
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
               selection, and default ones will apply. Check out the dashboard for details on
@@ -325,6 +330,7 @@ class AgentResource(SyncAPIResource):
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
+                    "ring_duration_ms": ring_duration_ms,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -429,6 +435,7 @@ class AgentResource(SyncAPIResource):
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         response_engine: agent_update_params.ResponseEngine | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
+        ring_duration_ms: int | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -582,6 +589,10 @@ class AgentResource(SyncAPIResource):
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
 
+          ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
+              This applies for both outbound call ringtime, and call transfer ringtime.
+              Default to 30000 (30 s). Valid range is [5000, 90000].
+
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
@@ -654,6 +665,7 @@ class AgentResource(SyncAPIResource):
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "response_engine": response_engine,
                     "responsiveness": responsiveness,
+                    "ring_duration_ms": ring_duration_ms,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -800,6 +812,7 @@ class AsyncAgentResource(AsyncAPIResource):
         reminder_max_count: int | NotGiven = NOT_GIVEN,
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
+        ring_duration_ms: int | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -954,6 +967,10 @@ class AsyncAgentResource(AsyncAPIResource):
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
 
+          ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
+              This applies for both outbound call ringtime, and call transfer ringtime.
+              Default to 30000 (30 s). Valid range is [5000, 90000].
+
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
               selection, and default ones will apply. Check out the dashboard for details on
@@ -1022,6 +1039,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
+                    "ring_duration_ms": ring_duration_ms,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -1126,6 +1144,7 @@ class AsyncAgentResource(AsyncAPIResource):
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         response_engine: agent_update_params.ResponseEngine | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
+        ring_duration_ms: int | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -1279,6 +1298,10 @@ class AsyncAgentResource(AsyncAPIResource):
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
 
+          ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
+              This applies for both outbound call ringtime, and call transfer ringtime.
+              Default to 30000 (30 s). Valid range is [5000, 90000].
+
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
@@ -1351,6 +1374,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "response_engine": response_engine,
                     "responsiveness": responsiveness,
+                    "ring_duration_ms": ring_duration_ms,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
