@@ -337,6 +337,13 @@ class AgentResponse(BaseModel):
     can). If unset, default value 1 will apply.
     """
 
+    ring_duration_ms: Optional[int] = None
+    """If set, the phone ringing will last for the specified amount of milliseconds.
+
+    This applies for both outbound call ringtime, and call transfer ringtime.
+    Default to 30000 (30 s). Valid range is [5000, 90000].
+    """
+
     voice_model: Optional[
         Literal[
             "eleven_turbo_v2",
