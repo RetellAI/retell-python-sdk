@@ -24,7 +24,7 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
-from .resources import llm, call, agent, voice, concurrency, phone_number, knowledge_base
+from .resources import llm, call, agent, voice, batch_call, concurrency, phone_number, knowledge_base
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -44,6 +44,7 @@ class Retell(SyncAPIClient):
     knowledge_base: knowledge_base.KnowledgeBaseResource
     voice: voice.VoiceResource
     concurrency: concurrency.ConcurrencyResource
+    batch_call: batch_call.BatchCallResource
     with_raw_response: RetellWithRawResponse
     with_streaming_response: RetellWithStreamedResponse
 
@@ -99,6 +100,7 @@ class Retell(SyncAPIClient):
         self.knowledge_base = knowledge_base.KnowledgeBaseResource(self)
         self.voice = voice.VoiceResource(self)
         self.concurrency = concurrency.ConcurrencyResource(self)
+        self.batch_call = batch_call.BatchCallResource(self)
         self.with_raw_response = RetellWithRawResponse(self)
         self.with_streaming_response = RetellWithStreamedResponse(self)
 
@@ -215,6 +217,7 @@ class AsyncRetell(AsyncAPIClient):
     knowledge_base: knowledge_base.AsyncKnowledgeBaseResource
     voice: voice.AsyncVoiceResource
     concurrency: concurrency.AsyncConcurrencyResource
+    batch_call: batch_call.AsyncBatchCallResource
     with_raw_response: AsyncRetellWithRawResponse
     with_streaming_response: AsyncRetellWithStreamedResponse
 
@@ -270,6 +273,7 @@ class AsyncRetell(AsyncAPIClient):
         self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResource(self)
         self.voice = voice.AsyncVoiceResource(self)
         self.concurrency = concurrency.AsyncConcurrencyResource(self)
+        self.batch_call = batch_call.AsyncBatchCallResource(self)
         self.with_raw_response = AsyncRetellWithRawResponse(self)
         self.with_streaming_response = AsyncRetellWithStreamedResponse(self)
 
@@ -387,6 +391,7 @@ class RetellWithRawResponse:
         self.knowledge_base = knowledge_base.KnowledgeBaseResourceWithRawResponse(client.knowledge_base)
         self.voice = voice.VoiceResourceWithRawResponse(client.voice)
         self.concurrency = concurrency.ConcurrencyResourceWithRawResponse(client.concurrency)
+        self.batch_call = batch_call.BatchCallResourceWithRawResponse(client.batch_call)
 
 
 class AsyncRetellWithRawResponse:
@@ -398,6 +403,7 @@ class AsyncRetellWithRawResponse:
         self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResourceWithRawResponse(client.knowledge_base)
         self.voice = voice.AsyncVoiceResourceWithRawResponse(client.voice)
         self.concurrency = concurrency.AsyncConcurrencyResourceWithRawResponse(client.concurrency)
+        self.batch_call = batch_call.AsyncBatchCallResourceWithRawResponse(client.batch_call)
 
 
 class RetellWithStreamedResponse:
@@ -409,6 +415,7 @@ class RetellWithStreamedResponse:
         self.knowledge_base = knowledge_base.KnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
         self.voice = voice.VoiceResourceWithStreamingResponse(client.voice)
         self.concurrency = concurrency.ConcurrencyResourceWithStreamingResponse(client.concurrency)
+        self.batch_call = batch_call.BatchCallResourceWithStreamingResponse(client.batch_call)
 
 
 class AsyncRetellWithStreamedResponse:
@@ -420,6 +427,7 @@ class AsyncRetellWithStreamedResponse:
         self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
         self.voice = voice.AsyncVoiceResourceWithStreamingResponse(client.voice)
         self.concurrency = concurrency.AsyncConcurrencyResourceWithStreamingResponse(client.concurrency)
+        self.batch_call = batch_call.AsyncBatchCallResourceWithStreamingResponse(client.batch_call)
 
 
 Client = Retell
