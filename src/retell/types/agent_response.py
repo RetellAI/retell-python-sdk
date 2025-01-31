@@ -10,6 +10,7 @@ __all__ = [
     "ResponseEngine",
     "ResponseEngineResponseEngineRetellLm",
     "ResponseEngineResponseEngineCustomLm",
+    "ResponseEngineResponseEngineConversationFlow",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
     "PostCallAnalysisDataEnumAnalysisData",
@@ -35,7 +36,19 @@ class ResponseEngineResponseEngineCustomLm(BaseModel):
     """type of the response engine."""
 
 
-ResponseEngine: TypeAlias = Union[ResponseEngineResponseEngineRetellLm, ResponseEngineResponseEngineCustomLm]
+class ResponseEngineResponseEngineConversationFlow(BaseModel):
+    conversation_flow_id: str
+    """ID of the conversation flow to use."""
+
+    type: Literal["conversation-flow"]
+    """type of the response engine."""
+
+
+ResponseEngine: TypeAlias = Union[
+    ResponseEngineResponseEngineRetellLm,
+    ResponseEngineResponseEngineCustomLm,
+    ResponseEngineResponseEngineConversationFlow,
+]
 
 
 class PostCallAnalysisDataStringAnalysisData(BaseModel):
