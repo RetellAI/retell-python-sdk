@@ -16,6 +16,7 @@ __all__ = [
     "ResponseEngine",
     "ResponseEngineResponseEngineRetellLm",
     "ResponseEngineResponseEngineCustomLm",
+    "ResponseEngineResponseEngineConversationFlow",
 ]
 
 
@@ -395,4 +396,16 @@ class ResponseEngineResponseEngineCustomLm(TypedDict, total=False):
     """type of the response engine."""
 
 
-ResponseEngine: TypeAlias = Union[ResponseEngineResponseEngineRetellLm, ResponseEngineResponseEngineCustomLm]
+class ResponseEngineResponseEngineConversationFlow(TypedDict, total=False):
+    conversation_flow_id: Required[str]
+    """ID of the conversation flow to use."""
+
+    type: Required[Literal["conversation-flow"]]
+    """type of the response engine."""
+
+
+ResponseEngine: TypeAlias = Union[
+    ResponseEngineResponseEngineRetellLm,
+    ResponseEngineResponseEngineCustomLm,
+    ResponseEngineResponseEngineConversationFlow,
+]
