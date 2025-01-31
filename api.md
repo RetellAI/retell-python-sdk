@@ -111,9 +111,9 @@ Methods:
 Types:
 
 ```python
-from retell.types import AgentResponse
+from retell.types import BatchCallResponse
 ```
 
 Methods:
 
-- <code title="post /create-batch-call">client.batch_call.<a href="./src/retell/resources/batch_call.py">create_batch_call</a>(\*\*<a href="src/retell/types/batch_call_create_batch_call_params.py">params</a>) -> <a href="./src/retell/types/agent_response.py">AgentResponse</a></code>
+- <code title="post /create-batch-call">client.batch_call.<a href="./src/retell/resources/batch_call.py">create_batch_call</a>(\*\*<a href="src/retell/types/batch_call_create_batch_call_params.py">params</a>) -> <a href="./src/retell/types/batch_call_response.py">BatchCallResponse</a></code>

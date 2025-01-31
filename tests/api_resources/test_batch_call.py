@@ -9,7 +9,7 @@ import pytest
 
 from retell import Retell, AsyncRetell
 from tests.utils import assert_matches_type
-from retell.types import AgentResponse
+from retell.types import BatchCallResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -23,7 +23,7 @@ class TestBatchCall:
             from_number="+14157774444",
             tasks=[{"to_number": "+12137774445"}],
         )
-        assert_matches_type(AgentResponse, batch_call, path=["response"])
+        assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
     @parametrize
     def test_method_create_batch_call_with_all_params(self, client: Retell) -> None:
@@ -38,7 +38,7 @@ class TestBatchCall:
             name="First batch call",
             trigger_timestamp=1735718400000,
         )
-        assert_matches_type(AgentResponse, batch_call, path=["response"])
+        assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
     @parametrize
     def test_raw_response_create_batch_call(self, client: Retell) -> None:
@@ -50,7 +50,7 @@ class TestBatchCall:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         batch_call = response.parse()
-        assert_matches_type(AgentResponse, batch_call, path=["response"])
+        assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
     @parametrize
     def test_streaming_response_create_batch_call(self, client: Retell) -> None:
@@ -62,7 +62,7 @@ class TestBatchCall:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             batch_call = response.parse()
-            assert_matches_type(AgentResponse, batch_call, path=["response"])
+            assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -76,7 +76,7 @@ class TestAsyncBatchCall:
             from_number="+14157774444",
             tasks=[{"to_number": "+12137774445"}],
         )
-        assert_matches_type(AgentResponse, batch_call, path=["response"])
+        assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
     @parametrize
     async def test_method_create_batch_call_with_all_params(self, async_client: AsyncRetell) -> None:
@@ -91,7 +91,7 @@ class TestAsyncBatchCall:
             name="First batch call",
             trigger_timestamp=1735718400000,
         )
-        assert_matches_type(AgentResponse, batch_call, path=["response"])
+        assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
     @parametrize
     async def test_raw_response_create_batch_call(self, async_client: AsyncRetell) -> None:
@@ -103,7 +103,7 @@ class TestAsyncBatchCall:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         batch_call = await response.parse()
-        assert_matches_type(AgentResponse, batch_call, path=["response"])
+        assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
     @parametrize
     async def test_streaming_response_create_batch_call(self, async_client: AsyncRetell) -> None:
@@ -115,6 +115,6 @@ class TestAsyncBatchCall:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             batch_call = await response.parse()
-            assert_matches_type(AgentResponse, batch_call, path=["response"])
+            assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
