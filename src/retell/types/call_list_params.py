@@ -5,11 +5,18 @@ from __future__ import annotations
 from typing import List, Iterable
 from typing_extensions import Literal, TypedDict
 
-__all__ = ["CallListParams", "FilterCriteria", "FilterCriteriaDurationMs", "FilterCriteriaStartTimestamp"]
+__all__ = [
+    "CallListParams",
+    "FilterCriteria",
+    "FilterCriteriaDurationMs",
+    "FilterCriteriaE2ELatencyP50",
+    "FilterCriteriaStartTimestamp",
+]
 
 
 class CallListParams(TypedDict, total=False):
     filter_criteria: FilterCriteria
+    """Filter criteria for the calls to retrieve."""
 
     limit: int
     """Limit the number of calls returned.
@@ -34,6 +41,12 @@ class CallListParams(TypedDict, total=False):
 
 
 class FilterCriteriaDurationMs(TypedDict, total=False):
+    lower_threshold: int
+
+    upper_threshold: int
+
+
+class FilterCriteriaE2ELatencyP50(TypedDict, total=False):
     lower_threshold: int
 
     upper_threshold: int
@@ -95,6 +108,8 @@ class FilterCriteria(TypedDict, total=False):
 
     duration_ms: FilterCriteriaDurationMs
     """Only retrieve calls with specific range of duration(s)."""
+
+    e2e_latency_p50: FilterCriteriaE2ELatencyP50
 
     from_number: List[str]
     """Only retrieve calls with specific from number(s)."""
