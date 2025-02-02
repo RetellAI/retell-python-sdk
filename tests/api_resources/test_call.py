@@ -69,7 +69,7 @@ class TestCall:
     def test_method_list_with_all_params(self, client: Retell) -> None:
         call = client.call.list(
             filter_criteria={
-                "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD"],
+                "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
                 "call_status": ["registered"],
                 "call_successful": [True],
                 "call_type": ["web_call"],
@@ -77,15 +77,19 @@ class TestCall:
                 "disconnection_reason": ["user_hangup"],
                 "duration_ms": {
                     "lower_threshold": 0,
-                    "upper_threshold": 172800000,
+                    "upper_threshold": 0,
                 },
-                "from_number": ["+14157774444"],
+                "e2e_latency_p50": {
+                    "lower_threshold": 0,
+                    "upper_threshold": 0,
+                },
+                "from_number": ["string"],
                 "in_voicemail": [True],
                 "start_timestamp": {
-                    "lower_threshold": 0,
-                    "upper_threshold": 172800000,
+                    "lower_threshold": 1738475411000,
+                    "upper_threshold": 1738475421000,
                 },
-                "to_number": ["+12137774445"],
+                "to_number": ["string"],
                 "user_sentiment": ["Negative"],
             },
             limit=0,
@@ -331,7 +335,7 @@ class TestAsyncCall:
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         call = await async_client.call.list(
             filter_criteria={
-                "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD"],
+                "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
                 "call_status": ["registered"],
                 "call_successful": [True],
                 "call_type": ["web_call"],
@@ -339,15 +343,19 @@ class TestAsyncCall:
                 "disconnection_reason": ["user_hangup"],
                 "duration_ms": {
                     "lower_threshold": 0,
-                    "upper_threshold": 172800000,
+                    "upper_threshold": 0,
                 },
-                "from_number": ["+14157774444"],
+                "e2e_latency_p50": {
+                    "lower_threshold": 0,
+                    "upper_threshold": 0,
+                },
+                "from_number": ["string"],
                 "in_voicemail": [True],
                 "start_timestamp": {
-                    "lower_threshold": 0,
-                    "upper_threshold": 172800000,
+                    "lower_threshold": 1738475411000,
+                    "upper_threshold": 1738475421000,
                 },
-                "to_number": ["+12137774445"],
+                "to_number": ["string"],
                 "user_sentiment": ["Negative"],
             },
             limit=0,
