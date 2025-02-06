@@ -224,7 +224,7 @@ class AgentResponse(BaseModel):
     """If set to true, will format transcription to number, date, email, etc.
 
     If set to false, will return transcripts in raw words. If not set, default value
-    of true will apply.
+    of true will apply. This currently only applies to English.
     """
 
     enable_voicemail_detection: Optional[bool] = None

@@ -196,7 +196,7 @@ class AgentResource(SyncAPIResource):
 
           enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
               false, will return transcripts in raw words. If not set, default value of true
-              will apply.
+              will apply. This currently only applies to English.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -525,7 +525,7 @@ class AgentResource(SyncAPIResource):
 
           enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
               false, will return transcripts in raw words. If not set, default value of true
-              will apply.
+              will apply. This currently only applies to English.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -905,7 +905,7 @@ class AsyncAgentResource(AsyncAPIResource):
 
           enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
               false, will return transcripts in raw words. If not set, default value of true
-              will apply.
+              will apply. This currently only applies to English.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -1234,7 +1234,7 @@ class AsyncAgentResource(AsyncAPIResource):
 
           enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
               false, will return transcripts in raw words. If not set, default value of true
-              will apply.
+              will apply. This currently only applies to English.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
