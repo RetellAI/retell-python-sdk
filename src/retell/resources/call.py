@@ -9,6 +9,7 @@ import httpx
 
 from ..types import (
     call_list_params,
+    call_update_params,
     call_create_web_call_params,
     call_create_phone_call_params,
     call_register_phone_call_params,
@@ -84,6 +85,58 @@ class CallResource(SyncAPIResource):
             CallResponse,
             self._get(
                 f"/v2/get-call/{call_id}",
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
+
+    def update(
+        self,
+        call_id: str,
+        *,
+        metadata: object | NotGiven = NOT_GIVEN,
+        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CallResponse:
+        """
+        Update metadata and sensitive data storage settings for an existing call
+
+        Args:
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the call. Not used for processing. You
+              can later get this field from the call object. Size limited to 100kB max.
+
+          opt_out_sensitive_data_storage: Whether this call opts out of sensitive data storage like transcript, recording,
+              logging. Can only be changed from false to true.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not call_id:
+            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
+        return cast(
+            CallResponse,
+            self._patch(
+                f"/v2/update-call/{call_id}",
+                body=maybe_transform(
+                    {
+                        "metadata": metadata,
+                        "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    },
+                    call_update_params.CallUpdateParams,
+                ),
                 options=make_request_options(
                     extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
                 ),
@@ -413,6 +466,58 @@ class AsyncCallResource(AsyncAPIResource):
             ),
         )
 
+    async def update(
+        self,
+        call_id: str,
+        *,
+        metadata: object | NotGiven = NOT_GIVEN,
+        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CallResponse:
+        """
+        Update metadata and sensitive data storage settings for an existing call
+
+        Args:
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the call. Not used for processing. You
+              can later get this field from the call object. Size limited to 100kB max.
+
+          opt_out_sensitive_data_storage: Whether this call opts out of sensitive data storage like transcript, recording,
+              logging. Can only be changed from false to true.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not call_id:
+            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
+        return cast(
+            CallResponse,
+            await self._patch(
+                f"/v2/update-call/{call_id}",
+                body=await async_maybe_transform(
+                    {
+                        "metadata": metadata,
+                        "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    },
+                    call_update_params.CallUpdateParams,
+                ),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
+
     async def list(
         self,
         *,
@@ -686,6 +791,9 @@ class CallResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             call.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            call.update,
+        )
         self.list = to_raw_response_wrapper(
             call.list,
         )
@@ -709,6 +817,9 @@ class AsyncCallResourceWithRawResponse:
 
         self.retrieve = async_to_raw_response_wrapper(
             call.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            call.update,
         )
         self.list = async_to_raw_response_wrapper(
             call.list,
@@ -734,6 +845,9 @@ class CallResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             call.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            call.update,
+        )
         self.list = to_streamed_response_wrapper(
             call.list,
         )
@@ -757,6 +871,9 @@ class AsyncCallResourceWithStreamingResponse:
 
         self.retrieve = async_to_streamed_response_wrapper(
             call.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            call.update,
         )
         self.list = async_to_streamed_response_wrapper(
             call.list,
