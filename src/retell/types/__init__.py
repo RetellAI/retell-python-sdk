@@ -12,6 +12,7 @@ from .llm_list_response import LlmListResponse as LlmListResponse
 from .llm_update_params import LlmUpdateParams as LlmUpdateParams
 from .web_call_response import WebCallResponse as WebCallResponse
 from .call_list_response import CallListResponse as CallListResponse
+from .call_update_params import CallUpdateParams as CallUpdateParams
 from .agent_create_params import AgentCreateParams as AgentCreateParams
 from .agent_list_response import AgentListResponse as AgentListResponse
 from .agent_update_params import AgentUpdateParams as AgentUpdateParams
