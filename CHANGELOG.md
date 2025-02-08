@@ -1,5 +1,24 @@
 # Changelog
 
+## 4.19.0 (2025-02-08)
+
+Full Changelog: [v4.18.0...v4.19.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.18.0...v4.19.0)
+
+### Features
+
+* **api:** api update ([#280](https://github.com/RetellAI/retell-python-sdk/issues/280)) ([9af405b](https://github.com/RetellAI/retell-python-sdk/commit/9af405bae125682ec4d9b6c83f0b533b86d3be14))
+* **api:** api update ([#287](https://github.com/RetellAI/retell-python-sdk/issues/287)) ([39dd1c9](https://github.com/RetellAI/retell-python-sdk/commit/39dd1c958a927da6f957b39f0a6e66694760ae8a))
+* **api:** api update ([#288](https://github.com/RetellAI/retell-python-sdk/issues/288)) ([3d9779e](https://github.com/RetellAI/retell-python-sdk/commit/3d9779e32935fe0976e05a4709402b68624932c0))
+* **client:** send `X-Stainless-Read-Timeout` header ([#284](https://github.com/RetellAI/retell-python-sdk/issues/284)) ([2b6a263](https://github.com/RetellAI/retell-python-sdk/commit/2b6a2633ec85ab1a65086c3947cfdce4076ed0c4))
+
+
+### Chores
+
+* **internal:** bummp ruff dependency ([#283](https://github.com/RetellAI/retell-python-sdk/issues/283)) ([e58baa1](https://github.com/RetellAI/retell-python-sdk/commit/e58baa15ac174781f82246fc9d2df66294521142))
+* **internal:** change default timeout to an int ([#282](https://github.com/RetellAI/retell-python-sdk/issues/282)) ([fe3fd76](https://github.com/RetellAI/retell-python-sdk/commit/fe3fd7658cec53d7d5fa33d1bebe34baa1d266bb))
+* **internal:** fix type traversing dictionary params ([#285](https://github.com/RetellAI/retell-python-sdk/issues/285)) ([4587e0f](https://github.com/RetellAI/retell-python-sdk/commit/4587e0f9a77b7da61bbed093cd82e3e25ce93c7f))
+* **internal:** minor type handling changes ([#286](https://github.com/RetellAI/retell-python-sdk/issues/286)) ([3ce63ee](https://github.com/RetellAI/retell-python-sdk/commit/3ce63ee23d4aa8e1b11d46ef78108906989b1e2d))
+
 ## 4.18.0 (2025-01-31)
 
 Full Changelog: [v4.17.0...v4.18.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.17.0...v4.18.0)
