@@ -72,7 +72,7 @@ class TestCall:
         call = client.call.update(
             call_id="call_a4441234567890777c4a4a123e6",
             metadata={
-                "customer_id": "cust_123",
+                "customer_id": "cust_123456",
                 "notes": "Follow-up required",
             },
             opt_out_sensitive_data_storage=True,
@@ -388,7 +388,7 @@ class TestAsyncCall:
         call = await async_client.call.update(
             call_id="call_a4441234567890777c4a4a123e6",
             metadata={
-                "customer_id": "cust_123",
+                "customer_id": "cust_123456",
                 "notes": "Follow-up required",
             },
             opt_out_sensitive_data_storage=True,
