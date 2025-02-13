@@ -1,5 +1,24 @@
 # Changelog
 
+## 4.20.0 (2025-02-13)
+
+Full Changelog: [v4.19.0...v4.20.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.19.0...v4.20.0)
+
+### Features
+
+* **api:** api update ([#290](https://github.com/RetellAI/retell-python-sdk/issues/290)) ([7a9f3b6](https://github.com/RetellAI/retell-python-sdk/commit/7a9f3b671fd706481bee7bfb93b22e928a572168))
+* **api:** api update ([#293](https://github.com/RetellAI/retell-python-sdk/issues/293)) ([b44b4a7](https://github.com/RetellAI/retell-python-sdk/commit/b44b4a7c60bd36356215d3d65c6a2c6b53d72da5))
+
+
+### Bug Fixes
+
+* asyncify on non-asyncio runtimes ([#294](https://github.com/RetellAI/retell-python-sdk/issues/294)) ([0808f3f](https://github.com/RetellAI/retell-python-sdk/commit/0808f3f8223ca559b42f6ec3b3aab6db41ee00dc))
+
+
+### Chores
+
+* **internal:** update client tests ([#292](https://github.com/RetellAI/retell-python-sdk/issues/292)) ([224b6c1](https://github.com/RetellAI/retell-python-sdk/commit/224b6c1d6ffdd2b4698d5f3559d438627b654a1d))
+
 ## 4.19.0 (2025-02-08)
 
 Full Changelog: [v4.18.0...v4.19.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.18.0...v4.19.0)

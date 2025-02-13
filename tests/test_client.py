@@ -23,10 +23,12 @@ from pydantic import ValidationError
 
 from retell import Retell, AsyncRetell, APIResponseValidationError
 from retell._types import Omit
+from retell._utils import maybe_transform
 from retell._models import BaseModel, FinalRequestOptions
 from retell._constants import RAW_RESPONSE_HEADER
 from retell._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
 from retell._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
+from retell.types.agent_create_params import AgentCreateParams
 
 from .utils import update_env
 
@@ -703,12 +705,15 @@ class TestRetell:
                 "/create-agent",
                 body=cast(
                     object,
-                    dict(
-                        response_engine={
-                            "llm_id": "llm_234sdertfsdsfsdf",
-                            "type": "retell-llm",
-                        },
-                        voice_id="11labs-Adrian",
+                    maybe_transform(
+                        dict(
+                            response_engine={
+                                "llm_id": "llm_234sdertfsdsfsdf",
+                                "type": "retell-llm",
+                            },
+                            voice_id="11labs-Adrian",
+                        ),
+                        AgentCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
@@ -727,12 +732,15 @@ class TestRetell:
                 "/create-agent",
                 body=cast(
                     object,
-                    dict(
-                        response_engine={
-                            "llm_id": "llm_234sdertfsdsfsdf",
-                            "type": "retell-llm",
-                        },
-                        voice_id="11labs-Adrian",
+                    maybe_transform(
+                        dict(
+                            response_engine={
+                                "llm_id": "llm_234sdertfsdsfsdf",
+                                "type": "retell-llm",
+                            },
+                            voice_id="11labs-Adrian",
+                        ),
+                        AgentCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
@@ -1508,12 +1516,15 @@ class TestAsyncRetell:
                 "/create-agent",
                 body=cast(
                     object,
-                    dict(
-                        response_engine={
-                            "llm_id": "llm_234sdertfsdsfsdf",
-                            "type": "retell-llm",
-                        },
-                        voice_id="11labs-Adrian",
+                    maybe_transform(
+                        dict(
+                            response_engine={
+                                "llm_id": "llm_234sdertfsdsfsdf",
+                                "type": "retell-llm",
+                            },
+                            voice_id="11labs-Adrian",
+                        ),
+                        AgentCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
@@ -1532,12 +1543,15 @@ class TestAsyncRetell:
                 "/create-agent",
                 body=cast(
                     object,
-                    dict(
-                        response_engine={
-                            "llm_id": "llm_234sdertfsdsfsdf",
-                            "type": "retell-llm",
-                        },
-                        voice_id="11labs-Adrian",
+                    maybe_transform(
+                        dict(
+                            response_engine={
+                                "llm_id": "llm_234sdertfsdsfsdf",
+                                "type": "retell-llm",
+                            },
+                            voice_id="11labs-Adrian",
+                        ),
+                        AgentCreateParams,
                     ),
                 ),
                 cast_to=httpx.Response,
