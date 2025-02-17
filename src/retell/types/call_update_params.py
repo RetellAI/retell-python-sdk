@@ -13,7 +13,7 @@ class CallUpdateParams(TypedDict, total=False):
 
     You can put anything here like your internal customer id associated with the
     call. Not used for processing. You can later get this field from the call
-    object. Size limited to 100kB max.
+    object. Size limited to 50kB max.
     """
 
     opt_out_sensitive_data_storage: bool
