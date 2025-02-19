@@ -52,6 +52,7 @@ class PhoneNumberResource(SyncAPIResource):
         *,
         area_code: int | NotGiven = NOT_GIVEN,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -71,6 +72,9 @@ class PhoneNumberResource(SyncAPIResource):
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
+
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
+              id, set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -92,6 +96,7 @@ class PhoneNumberResource(SyncAPIResource):
                 {
                     "area_code": area_code,
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                 },
@@ -141,6 +146,7 @@ class PhoneNumberResource(SyncAPIResource):
         phone_number: str,
         *,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: Optional[str] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -157,6 +163,9 @@ class PhoneNumberResource(SyncAPIResource):
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If set to null, this number would not accept
               inbound call.
+
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
+              id, set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -179,6 +188,7 @@ class PhoneNumberResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                 },
@@ -249,6 +259,7 @@ class PhoneNumberResource(SyncAPIResource):
         phone_number: str,
         termination_uri: str,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         sip_trunk_auth_password: str | NotGiven = NOT_GIVEN,
@@ -276,6 +287,9 @@ class PhoneNumberResource(SyncAPIResource):
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
 
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
+              id, set dynamic variables and other fields specific to that call.
+
           nickname: Nickname of the number. This is for your reference only.
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
@@ -301,6 +315,7 @@ class PhoneNumberResource(SyncAPIResource):
                     "phone_number": phone_number,
                     "termination_uri": termination_uri,
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                     "sip_trunk_auth_password": sip_trunk_auth_password,
@@ -340,6 +355,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         *,
         area_code: int | NotGiven = NOT_GIVEN,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -359,6 +375,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
+
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
+              id, set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -380,6 +399,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                 {
                     "area_code": area_code,
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                 },
@@ -429,6 +449,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         phone_number: str,
         *,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: Optional[str] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -445,6 +466,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If set to null, this number would not accept
               inbound call.
+
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
+              id, set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -467,6 +491,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                 },
@@ -537,6 +562,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         phone_number: str,
         termination_uri: str,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         sip_trunk_auth_password: str | NotGiven = NOT_GIVEN,
@@ -564,6 +590,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
 
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
+              id, set dynamic variables and other fields specific to that call.
+
           nickname: Nickname of the number. This is for your reference only.
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
@@ -589,6 +618,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "phone_number": phone_number,
                     "termination_uri": termination_uri,
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                     "sip_trunk_auth_password": sip_trunk_auth_password,

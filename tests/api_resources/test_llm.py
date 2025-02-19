@@ -34,9 +34,9 @@ class TestLlm:
                     "description": "End the call with user.",
                 }
             ],
-            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             knowledge_base_ids=["string"],
             model="gpt-4o",
+            model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
@@ -181,9 +181,9 @@ class TestLlm:
                     "description": "End the call with user.",
                 }
             ],
-            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             knowledge_base_ids=["string"],
             model="gpt-4o",
+            model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
@@ -365,9 +365,9 @@ class TestAsyncLlm:
                     "description": "End the call with user.",
                 }
             ],
-            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             knowledge_base_ids=["string"],
             model="gpt-4o",
+            model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
@@ -512,9 +512,9 @@ class TestAsyncLlm:
                     "description": "End the call with user.",
                 }
             ],
-            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             knowledge_base_ids=["string"],
             model="gpt-4o",
+            model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
