@@ -747,13 +747,6 @@ class LlmResponse(BaseModel):
     - Tools of LLM (no state) = general tools
     """
 
-    inbound_dynamic_variables_webhook_url: Optional[str] = None
-    """
-    For inbound phone calls, if this webhook is set, will POST to it to retrieve
-    dynamic variables to use for the call. Without this, there's no way to pass
-    dynamic variables for inbound calls.
-    """
-
     knowledge_base_ids: Optional[List[str]] = None
     """A list of knowledge base ids to use for this resource.
 
@@ -762,6 +755,13 @@ class LlmResponse(BaseModel):
 
     model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]] = None
     """Select the underlying text LLM. If not set, would default to gpt-4o."""
+
+    api_model_high_priority: Optional[bool] = FieldInfo(alias="model_high_priority", default=None)
+    """
+    If set to true, will use high priority pool with more dedicated resource to
+    ensure lower and more consistent latency, default to false. This feature usually
+    comes with a higher cost.
+    """
 
     api_model_temperature: Optional[float] = FieldInfo(alias="model_temperature", default=None)
     """If set, will control the randomness of the response.

@@ -30,6 +30,12 @@ class PhoneNumberImportParams(TypedDict, total=False):
     null, this number would not accept inbound call.
     """
 
+    inbound_webhook_url: Optional[str]
+    """
+    If set, will send a webhook for inbound calls, where you can to override agent
+    id, set dynamic variables and other fields specific to that call.
+    """
+
     nickname: str
     """Nickname of the number. This is for your reference only."""
 

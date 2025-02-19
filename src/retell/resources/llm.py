@@ -54,10 +54,10 @@ class LlmResource(SyncAPIResource):
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
-        inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]]
         | NotGiven = NOT_GIVEN,
+        model_high_priority: bool | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
@@ -91,14 +91,14 @@ class LlmResource(SyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
-          inbound_dynamic_variables_webhook_url: For inbound phone calls, if this webhook is set, will POST to it to retrieve
-              dynamic variables to use for the call. Without this, there's no way to pass
-              dynamic variables for inbound calls.
-
           knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
               knowledge bases.
 
           model: Select the underlying text LLM. If not set, would default to gpt-4o.
+
+          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
+              ensure lower and more consistent latency, default to false. This feature usually
+              comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -136,9 +136,9 @@ class LlmResource(SyncAPIResource):
                     "begin_message": begin_message,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
-                    "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
+                    "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
                     "starting_state": starting_state,
@@ -193,10 +193,10 @@ class LlmResource(SyncAPIResource):
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
-        inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]]
         | NotGiven = NOT_GIVEN,
+        model_high_priority: bool | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
@@ -230,14 +230,14 @@ class LlmResource(SyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
-          inbound_dynamic_variables_webhook_url: For inbound phone calls, if this webhook is set, will POST to it to retrieve
-              dynamic variables to use for the call. Without this, there's no way to pass
-              dynamic variables for inbound calls.
-
           knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
               knowledge bases.
 
           model: Select the underlying text LLM. If not set, would default to gpt-4o.
+
+          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
+              ensure lower and more consistent latency, default to false. This feature usually
+              comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -277,9 +277,9 @@ class LlmResource(SyncAPIResource):
                     "begin_message": begin_message,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
-                    "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
+                    "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
                     "starting_state": starting_state,
@@ -374,10 +374,10 @@ class AsyncLlmResource(AsyncAPIResource):
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
-        inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]]
         | NotGiven = NOT_GIVEN,
+        model_high_priority: bool | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
@@ -411,14 +411,14 @@ class AsyncLlmResource(AsyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
-          inbound_dynamic_variables_webhook_url: For inbound phone calls, if this webhook is set, will POST to it to retrieve
-              dynamic variables to use for the call. Without this, there's no way to pass
-              dynamic variables for inbound calls.
-
           knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
               knowledge bases.
 
           model: Select the underlying text LLM. If not set, would default to gpt-4o.
+
+          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
+              ensure lower and more consistent latency, default to false. This feature usually
+              comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -456,9 +456,9 @@ class AsyncLlmResource(AsyncAPIResource):
                     "begin_message": begin_message,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
-                    "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
+                    "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
                     "starting_state": starting_state,
@@ -513,10 +513,10 @@ class AsyncLlmResource(AsyncAPIResource):
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
-        inbound_dynamic_variables_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]]
         | NotGiven = NOT_GIVEN,
+        model_high_priority: bool | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime"]] | NotGiven = NOT_GIVEN,
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
@@ -550,14 +550,14 @@ class AsyncLlmResource(AsyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
-          inbound_dynamic_variables_webhook_url: For inbound phone calls, if this webhook is set, will POST to it to retrieve
-              dynamic variables to use for the call. Without this, there's no way to pass
-              dynamic variables for inbound calls.
-
           knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
               knowledge bases.
 
           model: Select the underlying text LLM. If not set, would default to gpt-4o.
+
+          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
+              ensure lower and more consistent latency, default to false. This feature usually
+              comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -597,9 +597,9 @@ class AsyncLlmResource(AsyncAPIResource):
                     "begin_message": begin_message,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
-                    "inbound_dynamic_variables_webhook_url": inbound_dynamic_variables_webhook_url,
                     "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
+                    "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
                     "starting_state": starting_state,
