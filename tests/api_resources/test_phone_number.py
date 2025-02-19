@@ -30,6 +30,7 @@ class TestPhoneNumber:
         phone_number = client.phone_number.create(
             area_code=415,
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
@@ -105,6 +106,7 @@ class TestPhoneNumber:
         phone_number = client.phone_number.update(
             phone_number="+14157774444",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
@@ -218,6 +220,7 @@ class TestPhoneNumber:
             phone_number="+14157774444",
             termination_uri="someuri.pstn.twilio.com",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             sip_trunk_auth_password="123456",
@@ -265,6 +268,7 @@ class TestAsyncPhoneNumber:
         phone_number = await async_client.phone_number.create(
             area_code=415,
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
@@ -340,6 +344,7 @@ class TestAsyncPhoneNumber:
         phone_number = await async_client.phone_number.update(
             phone_number="+14157774444",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
@@ -453,6 +458,7 @@ class TestAsyncPhoneNumber:
             phone_number="+14157774444",
             termination_uri="someuri.pstn.twilio.com",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             sip_trunk_auth_password="123456",
