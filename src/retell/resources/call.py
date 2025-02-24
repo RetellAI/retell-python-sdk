@@ -9,12 +9,11 @@ import httpx
 
 from ..types import (
     call_list_params,
-    call_update_params,
     call_create_web_call_params,
     call_create_phone_call_params,
     call_register_phone_call_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import (
     maybe_transform,
     async_maybe_transform,
@@ -92,58 +91,6 @@ class CallResource(SyncAPIResource):
             ),
         )
 
-    def update(
-        self,
-        call_id: str,
-        *,
-        metadata: object | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallResponse:
-        """
-        Update metadata and sensitive data storage settings for an existing call
-
-        Args:
-          metadata: An arbitrary object for storage purpose only. You can put anything here like
-              your internal customer id associated with the call. Not used for processing. You
-              can later get this field from the call object. Size limited to 50kB max.
-
-          opt_out_sensitive_data_storage: Whether this call opts out of sensitive data storage like transcript, recording,
-              logging. Can only be changed from false to true.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not call_id:
-            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
-        return cast(
-            CallResponse,
-            self._patch(
-                f"/v2/update-call/{call_id}",
-                body=maybe_transform(
-                    {
-                        "metadata": metadata,
-                        "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
-                    },
-                    call_update_params.CallUpdateParams,
-                ),
-                options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-                ),
-                cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
-            ),
-        )
-
     def list(
         self,
         *,
@@ -158,13 +105,12 @@ class CallResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CallListResponse:
-        """
-        Retrieve call details
+        """Retrieve call details
 
         Args:
-          filter_criteria: Filter criteria for the calls to retrieve.
+          limit: Limit the number of calls returned.
 
-          limit: Limit the number of calls returned. Default 50, Max 1000. To retrieve more than
+        Default 50, Max 1000. To retrieve more than
               1000, use pagination_key to continue fetching the next page.
 
           pagination_key: The pagination key to continue fetching the next page of calls. Pagination key
@@ -198,40 +144,6 @@ class CallResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CallListResponse,
-        )
-
-    def delete(
-        self,
-        call_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Delete a specific call and its associated data
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not call_id:
-            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._delete(
-            f"/v2/delete-call/{call_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     def create_phone_call(
@@ -466,58 +378,6 @@ class AsyncCallResource(AsyncAPIResource):
             ),
         )
 
-    async def update(
-        self,
-        call_id: str,
-        *,
-        metadata: object | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CallResponse:
-        """
-        Update metadata and sensitive data storage settings for an existing call
-
-        Args:
-          metadata: An arbitrary object for storage purpose only. You can put anything here like
-              your internal customer id associated with the call. Not used for processing. You
-              can later get this field from the call object. Size limited to 50kB max.
-
-          opt_out_sensitive_data_storage: Whether this call opts out of sensitive data storage like transcript, recording,
-              logging. Can only be changed from false to true.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not call_id:
-            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
-        return cast(
-            CallResponse,
-            await self._patch(
-                f"/v2/update-call/{call_id}",
-                body=await async_maybe_transform(
-                    {
-                        "metadata": metadata,
-                        "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
-                    },
-                    call_update_params.CallUpdateParams,
-                ),
-                options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-                ),
-                cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
-            ),
-        )
-
     async def list(
         self,
         *,
@@ -532,13 +392,12 @@ class AsyncCallResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CallListResponse:
-        """
-        Retrieve call details
+        """Retrieve call details
 
         Args:
-          filter_criteria: Filter criteria for the calls to retrieve.
+          limit: Limit the number of calls returned.
 
-          limit: Limit the number of calls returned. Default 50, Max 1000. To retrieve more than
+        Default 50, Max 1000. To retrieve more than
               1000, use pagination_key to continue fetching the next page.
 
           pagination_key: The pagination key to continue fetching the next page of calls. Pagination key
@@ -572,40 +431,6 @@ class AsyncCallResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CallListResponse,
-        )
-
-    async def delete(
-        self,
-        call_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Delete a specific call and its associated data
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not call_id:
-            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._delete(
-            f"/v2/delete-call/{call_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     async def create_phone_call(
@@ -791,14 +616,8 @@ class CallResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             call.retrieve,
         )
-        self.update = to_raw_response_wrapper(
-            call.update,
-        )
         self.list = to_raw_response_wrapper(
             call.list,
-        )
-        self.delete = to_raw_response_wrapper(
-            call.delete,
         )
         self.create_phone_call = to_raw_response_wrapper(
             call.create_phone_call,
@@ -818,14 +637,8 @@ class AsyncCallResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             call.retrieve,
         )
-        self.update = async_to_raw_response_wrapper(
-            call.update,
-        )
         self.list = async_to_raw_response_wrapper(
             call.list,
-        )
-        self.delete = async_to_raw_response_wrapper(
-            call.delete,
         )
         self.create_phone_call = async_to_raw_response_wrapper(
             call.create_phone_call,
@@ -845,14 +658,8 @@ class CallResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             call.retrieve,
         )
-        self.update = to_streamed_response_wrapper(
-            call.update,
-        )
         self.list = to_streamed_response_wrapper(
             call.list,
-        )
-        self.delete = to_streamed_response_wrapper(
-            call.delete,
         )
         self.create_phone_call = to_streamed_response_wrapper(
             call.create_phone_call,
@@ -872,14 +679,8 @@ class AsyncCallResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             call.retrieve,
         )
-        self.update = async_to_streamed_response_wrapper(
-            call.update,
-        )
         self.list = async_to_streamed_response_wrapper(
             call.list,
-        )
-        self.delete = async_to_streamed_response_wrapper(
-            call.delete,
         )
         self.create_phone_call = async_to_streamed_response_wrapper(
             call.create_phone_call,

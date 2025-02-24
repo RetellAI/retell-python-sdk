@@ -10,7 +10,6 @@ __all__ = [
     "ResponseEngine",
     "ResponseEngineResponseEngineRetellLm",
     "ResponseEngineResponseEngineCustomLm",
-    "ResponseEngineResponseEngineConversationFlow",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
     "PostCallAnalysisDataEnumAnalysisData",
@@ -115,7 +114,7 @@ class AgentCreateParams(TypedDict, total=False):
     """If set to true, will format transcription to number, date, email, etc.
 
     If set to false, will return transcripts in raw words. If not set, default value
-    of true will apply. This currently only applies to English.
+    of true will apply.
     """
 
     enable_voicemail_detection: bool
@@ -239,13 +238,6 @@ class AgentCreateParams(TypedDict, total=False):
     can). If unset, default value 1 will apply.
     """
 
-    ring_duration_ms: int
-    """If set, the phone ringing will last for the specified amount of milliseconds.
-
-    This applies for both outbound call ringtime, and call transfer ringtime.
-    Default to 30000 (30 s). Valid range is [5000, 90000].
-    """
-
     voice_model: Optional[
         Literal[
             "eleven_turbo_v2",
@@ -327,19 +319,7 @@ class ResponseEngineResponseEngineCustomLm(TypedDict, total=False):
     """type of the response engine."""
 
 
-class ResponseEngineResponseEngineConversationFlow(TypedDict, total=False):
-    conversation_flow_id: Required[str]
-    """ID of the conversation flow to use."""
-
-    type: Required[Literal["conversation-flow"]]
-    """type of the response engine."""
-
-
-ResponseEngine: TypeAlias = Union[
-    ResponseEngineResponseEngineRetellLm,
-    ResponseEngineResponseEngineCustomLm,
-    ResponseEngineResponseEngineConversationFlow,
-]
+ResponseEngine: TypeAlias = Union[ResponseEngineResponseEngineRetellLm, ResponseEngineResponseEngineCustomLm]
 
 
 class PostCallAnalysisDataStringAnalysisData(TypedDict, total=False):
