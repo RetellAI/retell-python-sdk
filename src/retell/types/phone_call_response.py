@@ -19,7 +19,6 @@ __all__ = [
     "LatencyLlmWebsocketNetworkRtt",
     "LatencyS2s",
     "LatencyTts",
-    "TelephonyIdentifier",
     "TranscriptObject",
     "TranscriptObjectWord",
     "TranscriptWithToolCall",
@@ -281,11 +280,6 @@ class Latency(BaseModel):
     """
 
 
-class TelephonyIdentifier(BaseModel):
-    twilio_call_sid: Optional[str] = None
-    """Twilio call sid."""
-
-
 class TranscriptObjectWord(BaseModel):
     end: Optional[float] = None
     """End time of the word in the call in second.
@@ -522,12 +516,6 @@ class PhoneCallResponse(BaseModel):
     """Begin timestamp (milliseconds since epoch) of the call.
 
     Available after call starts.
-    """
-
-    telephony_identifier: Optional[TelephonyIdentifier] = None
-    """Telephony identifier of the call, populated when available.
-
-    Tracking purposes only.
     """
 
     transcript: Optional[str] = None

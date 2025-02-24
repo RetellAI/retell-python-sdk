@@ -12,11 +12,9 @@ from .llm_list_response import LlmListResponse as LlmListResponse
 from .llm_update_params import LlmUpdateParams as LlmUpdateParams
 from .web_call_response import WebCallResponse as WebCallResponse
 from .call_list_response import CallListResponse as CallListResponse
-from .call_update_params import CallUpdateParams as CallUpdateParams
 from .agent_create_params import AgentCreateParams as AgentCreateParams
 from .agent_list_response import AgentListResponse as AgentListResponse
 from .agent_update_params import AgentUpdateParams as AgentUpdateParams
-from .batch_call_response import BatchCallResponse as BatchCallResponse
 from .phone_call_response import PhoneCallResponse as PhoneCallResponse
 from .voice_list_response import VoiceListResponse as VoiceListResponse
 from .phone_number_response import PhoneNumberResponse as PhoneNumberResponse
@@ -31,5 +29,3 @@ from .knowledge_base_list_response import KnowledgeBaseListResponse as Knowledge
 from .call_create_phone_call_params import CallCreatePhoneCallParams as CallCreatePhoneCallParams
 from .concurrency_retrieve_response import ConcurrencyRetrieveResponse as ConcurrencyRetrieveResponse
 from .call_register_phone_call_params import CallRegisterPhoneCallParams as CallRegisterPhoneCallParams
-from .knowledge_base_add_sources_params import KnowledgeBaseAddSourcesParams as KnowledgeBaseAddSourcesParams
-from .batch_call_create_batch_call_params import BatchCallCreateBatchCallParams as BatchCallCreateBatchCallParams
