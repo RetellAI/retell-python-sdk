@@ -32,14 +32,6 @@ from .voice import (
     VoiceResourceWithStreamingResponse,
     AsyncVoiceResourceWithStreamingResponse,
 )
-from .batch_call import (
-    BatchCallResource,
-    AsyncBatchCallResource,
-    BatchCallResourceWithRawResponse,
-    AsyncBatchCallResourceWithRawResponse,
-    BatchCallResourceWithStreamingResponse,
-    AsyncBatchCallResourceWithStreamingResponse,
-)
 from .concurrency import (
     ConcurrencyResource,
     AsyncConcurrencyResource,
@@ -108,10 +100,4 @@ __all__ = [
     "AsyncConcurrencyResourceWithRawResponse",
     "ConcurrencyResourceWithStreamingResponse",
     "AsyncConcurrencyResourceWithStreamingResponse",
-    "BatchCallResource",
-    "AsyncBatchCallResource",
-    "BatchCallResourceWithRawResponse",
-    "AsyncBatchCallResourceWithRawResponse",
-    "BatchCallResourceWithStreamingResponse",
-    "AsyncBatchCallResourceWithStreamingResponse",
 ]
