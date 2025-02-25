@@ -12,6 +12,9 @@ __all__ = [
     "GeneralTool",
     "GeneralToolEndCallTool",
     "GeneralToolTransferCallTool",
+    "GeneralToolTransferCallToolTransferDestination",
+    "GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefined",
+    "GeneralToolTransferCallToolTransferDestinationTransferDestinationInferred",
     "GeneralToolTransferCallToolWarmTransferOption",
     "GeneralToolTransferCallToolWarmTransferOptionWarmTransferPrompt",
     "GeneralToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage",
@@ -26,6 +29,9 @@ __all__ = [
     "StateTool",
     "StateToolEndCallTool",
     "StateToolTransferCallTool",
+    "StateToolTransferCallToolTransferDestination",
+    "StateToolTransferCallToolTransferDestinationTransferDestinationPredefined",
+    "StateToolTransferCallToolTransferDestinationTransferDestinationInferred",
     "StateToolTransferCallToolWarmTransferOption",
     "StateToolTransferCallToolWarmTransferOptionWarmTransferPrompt",
     "StateToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage",
@@ -53,6 +59,36 @@ class GeneralToolEndCallTool(BaseModel):
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
     """
+
+
+class GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefined(BaseModel):
+    number: str
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
+    """
+
+    type: Literal["predefined"]
+    """The type of transfer destination."""
+
+
+class GeneralToolTransferCallToolTransferDestinationTransferDestinationInferred(BaseModel):
+    prompt: str
+    """The prompt to be used to help infer the transfer destination.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right number to transfer to. Can contain dynamic
+    variables.
+    """
+
+    type: Literal["inferred"]
+    """The type of transfer destination."""
+
+
+GeneralToolTransferCallToolTransferDestination: TypeAlias = Union[
+    GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefined,
+    GeneralToolTransferCallToolTransferDestinationTransferDestinationInferred,
+]
 
 
 class GeneralToolTransferCallToolWarmTransferOptionWarmTransferPrompt(BaseModel):
@@ -84,18 +120,18 @@ class GeneralToolTransferCallTool(BaseModel):
     tools + state tools + state edges).
     """
 
-    number: str
-    """
-    The number to transfer to in E.164 format or a dynamic variable like
-    {{transfer_number}}.
-    """
-
     type: Literal["transfer_call"]
 
     description: Optional[str] = None
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
+    """
+
+    number: Optional[str] = None
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
     """
 
     show_transferee_as_caller: Optional[bool] = None
@@ -105,6 +141,8 @@ class GeneralToolTransferCallTool(BaseModel):
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
+
+    transfer_destination: Optional[GeneralToolTransferCallToolTransferDestination] = None
 
     warm_transfer_option: Optional[GeneralToolTransferCallToolWarmTransferOption] = None
     """If set, when transfer is successful, will perform a warm handoff.
@@ -365,6 +403,36 @@ class StateToolEndCallTool(BaseModel):
     """
 
 
+class StateToolTransferCallToolTransferDestinationTransferDestinationPredefined(BaseModel):
+    number: str
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
+    """
+
+    type: Literal["predefined"]
+    """The type of transfer destination."""
+
+
+class StateToolTransferCallToolTransferDestinationTransferDestinationInferred(BaseModel):
+    prompt: str
+    """The prompt to be used to help infer the transfer destination.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right number to transfer to. Can contain dynamic
+    variables.
+    """
+
+    type: Literal["inferred"]
+    """The type of transfer destination."""
+
+
+StateToolTransferCallToolTransferDestination: TypeAlias = Union[
+    StateToolTransferCallToolTransferDestinationTransferDestinationPredefined,
+    StateToolTransferCallToolTransferDestinationTransferDestinationInferred,
+]
+
+
 class StateToolTransferCallToolWarmTransferOptionWarmTransferPrompt(BaseModel):
     prompt: Optional[str] = None
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
@@ -394,18 +462,18 @@ class StateToolTransferCallTool(BaseModel):
     tools + state tools + state edges).
     """
 
-    number: str
-    """
-    The number to transfer to in E.164 format or a dynamic variable like
-    {{transfer_number}}.
-    """
-
     type: Literal["transfer_call"]
 
     description: Optional[str] = None
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
+    """
+
+    number: Optional[str] = None
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
     """
 
     show_transferee_as_caller: Optional[bool] = None
@@ -415,6 +483,8 @@ class StateToolTransferCallTool(BaseModel):
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
+
+    transfer_destination: Optional[StateToolTransferCallToolTransferDestination] = None
 
     warm_transfer_option: Optional[StateToolTransferCallToolWarmTransferOption] = None
     """If set, when transfer is successful, will perform a warm handoff.
@@ -677,13 +747,6 @@ class LlmResponse(BaseModel):
     - Tools of LLM (no state) = general tools
     """
 
-    inbound_dynamic_variables_webhook_url: Optional[str] = None
-    """
-    For inbound phone calls, if this webhook is set, will POST to it to retrieve
-    dynamic variables to use for the call. Without this, there's no way to pass
-    dynamic variables for inbound calls.
-    """
-
     knowledge_base_ids: Optional[List[str]] = None
     """A list of knowledge base ids to use for this resource.
 
@@ -692,6 +755,13 @@ class LlmResponse(BaseModel):
 
     model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]] = None
     """Select the underlying text LLM. If not set, would default to gpt-4o."""
+
+    api_model_high_priority: Optional[bool] = FieldInfo(alias="model_high_priority", default=None)
+    """
+    If set to true, will use high priority pool with more dedicated resource to
+    ensure lower and more consistent latency, default to false. This feature usually
+    comes with a higher cost.
+    """
 
     api_model_temperature: Optional[float] = FieldInfo(alias="model_temperature", default=None)
     """If set, will control the randomness of the response.

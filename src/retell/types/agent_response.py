@@ -10,6 +10,7 @@ __all__ = [
     "ResponseEngine",
     "ResponseEngineResponseEngineRetellLm",
     "ResponseEngineResponseEngineCustomLm",
+    "ResponseEngineResponseEngineConversationFlow",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
     "PostCallAnalysisDataEnumAnalysisData",
@@ -35,7 +36,19 @@ class ResponseEngineResponseEngineCustomLm(BaseModel):
     """type of the response engine."""
 
 
-ResponseEngine: TypeAlias = Union[ResponseEngineResponseEngineRetellLm, ResponseEngineResponseEngineCustomLm]
+class ResponseEngineResponseEngineConversationFlow(BaseModel):
+    conversation_flow_id: str
+    """ID of the conversation flow to use."""
+
+    type: Literal["conversation-flow"]
+    """type of the response engine."""
+
+
+ResponseEngine: TypeAlias = Union[
+    ResponseEngineResponseEngineRetellLm,
+    ResponseEngineResponseEngineCustomLm,
+    ResponseEngineResponseEngineConversationFlow,
+]
 
 
 class PostCallAnalysisDataStringAnalysisData(BaseModel):
@@ -211,7 +224,7 @@ class AgentResponse(BaseModel):
     """If set to true, will format transcription to number, date, email, etc.
 
     If set to false, will return transcripts in raw words. If not set, default value
-    of true will apply.
+    of true will apply. This currently only applies to English.
     """
 
     enable_voicemail_detection: Optional[bool] = None
@@ -335,6 +348,13 @@ class AgentResponse(BaseModel):
     Value ranging from [0,1]. Lower value means less responsive agent (wait more,
     respond slower), while higher value means faster exchanges (respond when it
     can). If unset, default value 1 will apply.
+    """
+
+    ring_duration_ms: Optional[int] = None
+    """If set, the phone ringing will last for the specified amount of milliseconds.
+
+    This applies for both outbound call ringtime, and call transfer ringtime.
+    Default to 30000 (30 s). Valid range is [5000, 90000].
     """
 
     voice_model: Optional[
