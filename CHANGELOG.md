@@ -1,5 +1,32 @@
 # Changelog
 
+## 4.20.0 (2025-02-25)
+
+Full Changelog: [v4.19.0...v4.20.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.19.0...v4.20.0)
+
+### Features
+
+* **api:** api update ([#290](https://github.com/RetellAI/retell-python-sdk/issues/290)) ([7a9f3b6](https://github.com/RetellAI/retell-python-sdk/commit/7a9f3b671fd706481bee7bfb93b22e928a572168))
+* **api:** api update ([#293](https://github.com/RetellAI/retell-python-sdk/issues/293)) ([b44b4a7](https://github.com/RetellAI/retell-python-sdk/commit/b44b4a7c60bd36356215d3d65c6a2c6b53d72da5))
+* **api:** api update ([#295](https://github.com/RetellAI/retell-python-sdk/issues/295)) ([517cb44](https://github.com/RetellAI/retell-python-sdk/commit/517cb446dd3bbbee5b135e9d2de3b914989890ca))
+* **api:** api update ([#296](https://github.com/RetellAI/retell-python-sdk/issues/296)) ([0275240](https://github.com/RetellAI/retell-python-sdk/commit/02752405df39ae7129419093e1a1307d891bb379))
+* **api:** api update ([#299](https://github.com/RetellAI/retell-python-sdk/issues/299)) ([b4a62b6](https://github.com/RetellAI/retell-python-sdk/commit/b4a62b6d28e9865d1be7b19c6e6f0ef6750318b2))
+* **api:** api update ([#300](https://github.com/RetellAI/retell-python-sdk/issues/300)) ([5848752](https://github.com/RetellAI/retell-python-sdk/commit/584875228384879978b1f164a88efbd25ea440b8))
+* **client:** allow passing `NotGiven` for body ([#297](https://github.com/RetellAI/retell-python-sdk/issues/297)) ([4ee0ba9](https://github.com/RetellAI/retell-python-sdk/commit/4ee0ba9ed6438cf540c6280372eeefdadba91003))
+
+
+### Bug Fixes
+
+* asyncify on non-asyncio runtimes ([#294](https://github.com/RetellAI/retell-python-sdk/issues/294)) ([0808f3f](https://github.com/RetellAI/retell-python-sdk/commit/0808f3f8223ca559b42f6ec3b3aab6db41ee00dc))
+* **client:** mark some request bodies as optional ([4ee0ba9](https://github.com/RetellAI/retell-python-sdk/commit/4ee0ba9ed6438cf540c6280372eeefdadba91003))
+
+
+### Chores
+
+* **internal:** fix devcontainers setup ([#298](https://github.com/RetellAI/retell-python-sdk/issues/298)) ([fcd1458](https://github.com/RetellAI/retell-python-sdk/commit/fcd1458c82a7e383047c192f88ddd5b08473ecfd))
+* **internal:** properly set __pydantic_private__ ([#301](https://github.com/RetellAI/retell-python-sdk/issues/301)) ([c1114f7](https://github.com/RetellAI/retell-python-sdk/commit/c1114f790b05ad25b773422af221235f8905c48f))
+* **internal:** update client tests ([#292](https://github.com/RetellAI/retell-python-sdk/issues/292)) ([224b6c1](https://github.com/RetellAI/retell-python-sdk/commit/224b6c1d6ffdd2b4698d5f3559d438627b654a1d))
+
 ## 4.19.0 (2025-02-08)
 
 Full Changelog: [v4.18.0...v4.19.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.18.0...v4.19.0)
