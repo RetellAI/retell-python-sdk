@@ -34,9 +34,9 @@ class TestLlm:
                     "description": "End the call with user.",
                 }
             ],
-            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             knowledge_base_ids=["string"],
             model="gpt-4o",
+            model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
@@ -58,10 +58,14 @@ class TestLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "number": "16175551212",
                             "show_transferee_as_caller": True,
+                            "transfer_destination": {
+                                "number": "number",
+                                "type": "predefined",
+                            },
                             "warm_transfer_option": {
                                 "prompt": "Summarize the call in one sentence for the warn handoff.",
                                 "type": "prompt",
@@ -177,9 +181,9 @@ class TestLlm:
                     "description": "End the call with user.",
                 }
             ],
-            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             knowledge_base_ids=["string"],
             model="gpt-4o",
+            model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
@@ -201,10 +205,14 @@ class TestLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "number": "16175551212",
                             "show_transferee_as_caller": True,
+                            "transfer_destination": {
+                                "number": "number",
+                                "type": "predefined",
+                            },
                             "warm_transfer_option": {
                                 "prompt": "Summarize the call in one sentence for the warn handoff.",
                                 "type": "prompt",
@@ -357,9 +365,9 @@ class TestAsyncLlm:
                     "description": "End the call with user.",
                 }
             ],
-            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             knowledge_base_ids=["string"],
             model="gpt-4o",
+            model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
@@ -381,10 +389,14 @@ class TestAsyncLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "number": "16175551212",
                             "show_transferee_as_caller": True,
+                            "transfer_destination": {
+                                "number": "number",
+                                "type": "predefined",
+                            },
                             "warm_transfer_option": {
                                 "prompt": "Summarize the call in one sentence for the warn handoff.",
                                 "type": "prompt",
@@ -500,9 +512,9 @@ class TestAsyncLlm:
                     "description": "End the call with user.",
                 }
             ],
-            inbound_dynamic_variables_webhook_url="https://webhook-url-here",
             knowledge_base_ids=["string"],
             model="gpt-4o",
+            model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
             starting_state="information_collection",
@@ -524,10 +536,14 @@ class TestAsyncLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "number": "16175551212",
                             "type": "transfer_call",
                             "description": "Transfer to the support team.",
+                            "number": "16175551212",
                             "show_transferee_as_caller": True,
+                            "transfer_destination": {
+                                "number": "number",
+                                "type": "predefined",
+                            },
                             "warm_transfer_option": {
                                 "prompt": "Summarize the call in one sentence for the warn handoff.",
                                 "type": "prompt",
