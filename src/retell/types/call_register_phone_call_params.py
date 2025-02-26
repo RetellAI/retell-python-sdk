@@ -29,7 +29,8 @@ class CallRegisterPhoneCallParams(TypedDict, total=False):
     retell_llm_dynamic_variables: Dict[str, object]
     """
     Add optional dynamic variables in key value pairs of string that injects into
-    your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+    your Retell LLM Response Engine prompt and tool description. Only applicable for
+    Retell LLM Response Engine.
     """
 
     to_number: str

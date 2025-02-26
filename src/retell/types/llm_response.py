@@ -719,7 +719,7 @@ class LlmResponse(BaseModel):
     """
 
     llm_id: str
-    """Unique id of Retell LLM."""
+    """Unique id of Retell LLM Response Engine."""
 
     begin_message: Optional[str] = None
     """First utterance said by the agent in the call.

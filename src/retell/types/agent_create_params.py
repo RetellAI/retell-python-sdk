@@ -22,7 +22,11 @@ __all__ = [
 
 class AgentCreateParams(TypedDict, total=False):
     response_engine: Required[ResponseEngine]
-    """The response engine to use for the agent."""
+    """The Retell LLM Response Engine to attach to the agent.
+
+    It is used to generate responses for the agent. You need to create a Retell LLM
+    Response Engine first before attaching it to an agent.
+    """
 
     voice_id: Required[str]
     """Unique voice id used for the agent.
@@ -316,7 +320,7 @@ class ResponseEngineResponseEngineRetellLm(TypedDict, total=False):
     """id of the Retell LLM to use."""
 
     type: Required[Literal["retell-llm"]]
-    """type of the response engine."""
+    """type of the Retell LLM Response Engine."""
 
 
 class ResponseEngineResponseEngineCustomLm(TypedDict, total=False):
@@ -324,7 +328,7 @@ class ResponseEngineResponseEngineCustomLm(TypedDict, total=False):
     """LLM websocket url of the custom LLM."""
 
     type: Required[Literal["custom-llm"]]
-    """type of the response engine."""
+    """type of the Retell LLM Response Engine."""
 
 
 class ResponseEngineResponseEngineConversationFlow(TypedDict, total=False):
@@ -332,7 +336,7 @@ class ResponseEngineResponseEngineConversationFlow(TypedDict, total=False):
     """ID of the conversation flow to use."""
 
     type: Required[Literal["conversation-flow"]]
-    """type of the response engine."""
+    """type of the Retell LLM Response Engine."""
 
 
 ResponseEngine: TypeAlias = Union[
