@@ -25,7 +25,7 @@ class ResponseEngineResponseEngineRetellLm(BaseModel):
     """id of the Retell LLM to use."""
 
     type: Literal["retell-llm"]
-    """type of the response engine."""
+    """type of the Retell LLM Response Engine."""
 
 
 class ResponseEngineResponseEngineCustomLm(BaseModel):
@@ -33,7 +33,7 @@ class ResponseEngineResponseEngineCustomLm(BaseModel):
     """LLM websocket url of the custom LLM."""
 
     type: Literal["custom-llm"]
-    """type of the response engine."""
+    """type of the Retell LLM Response Engine."""
 
 
 class ResponseEngineResponseEngineConversationFlow(BaseModel):
@@ -41,7 +41,7 @@ class ResponseEngineResponseEngineConversationFlow(BaseModel):
     """ID of the conversation flow to use."""
 
     type: Literal["conversation-flow"]
-    """type of the response engine."""
+    """type of the Retell LLM Response Engine."""
 
 
 ResponseEngine: TypeAlias = Union[
@@ -131,7 +131,11 @@ class AgentResponse(BaseModel):
     """
 
     response_engine: ResponseEngine
-    """The response engine to use for the agent."""
+    """The Retell LLM Response Engine to attach to the agent.
+
+    It is used to generate responses for the agent. You need to create a Retell LLM
+    Response Engine first before attaching it to an agent.
+    """
 
     voice_id: str
     """Unique voice id used for the agent.

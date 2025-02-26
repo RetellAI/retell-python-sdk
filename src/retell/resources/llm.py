@@ -70,8 +70,10 @@ class LlmResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> LlmResponse:
-        """
-        Create a new Retell LLM
+        """Create a new Retell LLM Response Engine that can be attached to an agent.
+
+        This
+        is used to generate response output for the agent.
 
         Args:
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
@@ -165,7 +167,7 @@ class LlmResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> LlmResponse:
         """
-        Retrieve details of a specific Retell LLM
+        Retrieve details of a specific Retell LLM Response Engine
 
         Args:
           extra_headers: Send extra headers
@@ -210,7 +212,7 @@ class LlmResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> LlmResponse:
         """
-        Update an existing Retell LLM
+        Update an existing Retell LLM Response Engine
 
         Args:
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
@@ -304,7 +306,7 @@ class LlmResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> LlmListResponse:
-        """List all retell LLM"""
+        """List all Retell LLM Response Engines that can be attached to an agent."""
         return self._get(
             "/list-retell-llms",
             options=make_request_options(
@@ -325,7 +327,7 @@ class LlmResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Delete an existing Retell LLM
+        Delete an existing Retell LLM Response Engine
 
         Args:
           extra_headers: Send extra headers
@@ -390,8 +392,10 @@ class AsyncLlmResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> LlmResponse:
-        """
-        Create a new Retell LLM
+        """Create a new Retell LLM Response Engine that can be attached to an agent.
+
+        This
+        is used to generate response output for the agent.
 
         Args:
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
@@ -485,7 +489,7 @@ class AsyncLlmResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> LlmResponse:
         """
-        Retrieve details of a specific Retell LLM
+        Retrieve details of a specific Retell LLM Response Engine
 
         Args:
           extra_headers: Send extra headers
@@ -530,7 +534,7 @@ class AsyncLlmResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> LlmResponse:
         """
-        Update an existing Retell LLM
+        Update an existing Retell LLM Response Engine
 
         Args:
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
@@ -624,7 +628,7 @@ class AsyncLlmResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> LlmListResponse:
-        """List all retell LLM"""
+        """List all Retell LLM Response Engines that can be attached to an agent."""
         return await self._get(
             "/list-retell-llms",
             options=make_request_options(
@@ -645,7 +649,7 @@ class AsyncLlmResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Delete an existing Retell LLM
+        Delete an existing Retell LLM Response Engine
 
         Args:
           extra_headers: Send extra headers

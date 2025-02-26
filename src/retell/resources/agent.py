@@ -133,7 +133,9 @@ class AgentResource(SyncAPIResource):
         Create a new agent
 
         Args:
-          response_engine: The response engine to use for the agent.
+          response_engine: The Retell LLM Response Engine to attach to the agent. It is used to generate
+              responses for the agent. You need to create a Retell LLM Response Engine first
+              before attaching it to an agent.
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -582,7 +584,9 @@ class AgentResource(SyncAPIResource):
               user has been silent for the specified duration after some agent speech. Must be
               a positive number. If unset, default value of 10000 ms (10 s) will apply.
 
-          response_engine: The response engine to use for the agent.
+          response_engine: The Retell LLM Response Engine to attach to the agent. It is used to generate
+              responses for the agent. You need to create a Retell LLM Response Engine first
+              before attaching it to an agent.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
@@ -842,7 +846,9 @@ class AsyncAgentResource(AsyncAPIResource):
         Create a new agent
 
         Args:
-          response_engine: The response engine to use for the agent.
+          response_engine: The Retell LLM Response Engine to attach to the agent. It is used to generate
+              responses for the agent. You need to create a Retell LLM Response Engine first
+              before attaching it to an agent.
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -1291,7 +1297,9 @@ class AsyncAgentResource(AsyncAPIResource):
               user has been silent for the specified duration after some agent speech. Must be
               a positive number. If unset, default value of 10000 ms (10 s) will apply.
 
-          response_engine: The response engine to use for the agent.
+          response_engine: The Retell LLM Response Engine to attach to the agent. It is used to generate
+              responses for the agent. You need to create a Retell LLM Response Engine first
+              before attaching it to an agent.
 
           responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
