@@ -267,7 +267,8 @@ class CallResource(SyncAPIResource):
               not bind the agent to this number, this is for one time override.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
-              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+              your Retell LLM Response Engine prompt and tool description. Only applicable for
+              Retell LLM Response Engine.
 
           extra_headers: Send extra headers
 
@@ -321,7 +322,8 @@ class CallResource(SyncAPIResource):
               can later get this field from the call object.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
-              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+              your Retell LLM Response Engine prompt and tool description. Only applicable for
+              Retell LLM Response Engine.
 
           extra_headers: Send extra headers
 
@@ -378,7 +380,8 @@ class CallResource(SyncAPIResource):
               can later get this field from the call object.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
-              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+              your Retell LLM Response Engine prompt and tool description. Only applicable for
+              Retell LLM Response Engine.
 
           to_number: The number you want to call, in E.164 format. Stored for tracking purpose.
 
@@ -641,7 +644,8 @@ class AsyncCallResource(AsyncAPIResource):
               not bind the agent to this number, this is for one time override.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
-              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+              your Retell LLM Response Engine prompt and tool description. Only applicable for
+              Retell LLM Response Engine.
 
           extra_headers: Send extra headers
 
@@ -695,7 +699,8 @@ class AsyncCallResource(AsyncAPIResource):
               can later get this field from the call object.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
-              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+              your Retell LLM Response Engine prompt and tool description. Only applicable for
+              Retell LLM Response Engine.
 
           extra_headers: Send extra headers
 
@@ -752,7 +757,8 @@ class AsyncCallResource(AsyncAPIResource):
               can later get this field from the call object.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
-              your Retell LLM prompt and tool description. Only applicable for Retell LLM.
+              your Retell LLM Response Engine prompt and tool description. Only applicable for
+              Retell LLM Response Engine.
 
           to_number: The number you want to call, in E.164 format. Stored for tracking purpose.
 
