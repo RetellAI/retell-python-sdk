@@ -74,7 +74,7 @@ class Retell(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous retell client instance."""
+        """Construct a new synchronous Retell client instance."""
         self.api_key = api_key
 
         if base_url is None:
@@ -247,7 +247,7 @@ class AsyncRetell(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async retell client instance."""
+        """Construct a new async AsyncRetell client instance."""
         self.api_key = api_key
 
         if base_url is None:
