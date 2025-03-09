@@ -76,6 +76,44 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
 
+## Nested params
+
+Nested parameters are dictionaries, typed using `TypedDict`, for example:
+
+```python
+from retell import Retell
+
+client = Retell()
+
+call_responses = client.call.list(
+    filter_criteria={
+        "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
+        "call_status": ["registered"],
+        "call_successful": [True],
+        "call_type": ["web_call"],
+        "direction": ["inbound"],
+        "disconnection_reason": ["user_hangup"],
+        "duration_ms": {
+            "lower_threshold": 0,
+            "upper_threshold": 0,
+        },
+        "e2e_latency_p50": {
+            "lower_threshold": 0,
+            "upper_threshold": 0,
+        },
+        "from_number": ["string"],
+        "in_voicemail": [True],
+        "start_timestamp": {
+            "lower_threshold": 1738475411000,
+            "upper_threshold": 1738475421000,
+        },
+        "to_number": ["string"],
+        "user_sentiment": ["Negative"],
+    },
+)
+print(call_responses.filter_criteria)
+```
+
 ## Handling errors
 
 When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `retell.APIConnectionError` is raised.
