@@ -131,10 +131,10 @@ class AgentResponse(BaseModel):
     """
 
     response_engine: ResponseEngine
-    """The Retell LLM Response Engine to attach to the agent.
+    """The Response Engine to attach to the agent.
 
-    It is used to generate responses for the agent. You need to create a Retell LLM
-    Response Engine first before attaching it to an agent.
+    It is used to generate responses for the agent. You need to create a Response
+    Engine first before attaching it to an agent.
     """
 
     voice_id: str
