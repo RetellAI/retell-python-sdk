@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
+from typing_extensions import Literal
 
 from .._models import BaseModel
 
@@ -52,3 +53,6 @@ class PhoneNumberResponse(BaseModel):
 
     phone_number_pretty: Optional[str] = None
     """Pretty printed phone number, provided for your reference."""
+
+    phone_number_type: Optional[Literal["retell-twilio", "retell-telnyx", "custom"]] = None
+    """Type of the phone number."""

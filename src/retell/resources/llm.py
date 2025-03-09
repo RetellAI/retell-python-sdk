@@ -55,7 +55,7 @@ class LlmResource(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]]
+        model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.7-sonnet", "claude-3.5-haiku"]]
         | NotGiven = NOT_GIVEN,
         model_high_priority: bool | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
@@ -196,7 +196,7 @@ class LlmResource(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]]
+        model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.7-sonnet", "claude-3.5-haiku"]]
         | NotGiven = NOT_GIVEN,
         model_high_priority: bool | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
@@ -377,7 +377,7 @@ class AsyncLlmResource(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]]
+        model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.7-sonnet", "claude-3.5-haiku"]]
         | NotGiven = NOT_GIVEN,
         model_high_priority: bool | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
@@ -518,7 +518,7 @@ class AsyncLlmResource(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]]
+        model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.7-sonnet", "claude-3.5-haiku"]]
         | NotGiven = NOT_GIVEN,
         model_high_priority: bool | NotGiven = NOT_GIVEN,
         model_temperature: float | NotGiven = NOT_GIVEN,
