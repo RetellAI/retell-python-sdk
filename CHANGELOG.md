@@ -1,5 +1,27 @@
 # Changelog
 
+## 4.21.0 (2025-03-09)
+
+Full Changelog: [v4.20.0...v4.21.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.20.0...v4.21.0)
+
+### Features
+
+* **api:** api update ([#303](https://github.com/RetellAI/retell-python-sdk/issues/303)) ([b9d83bf](https://github.com/RetellAI/retell-python-sdk/commit/b9d83bfec8b48b31069aa91e18f65682cbb8133f))
+* **api:** api update ([#309](https://github.com/RetellAI/retell-python-sdk/issues/309)) ([b65bd4e](https://github.com/RetellAI/retell-python-sdk/commit/b65bd4e58bf01edaccab7c32155258128840da03))
+* **api:** api update ([#310](https://github.com/RetellAI/retell-python-sdk/issues/310)) ([05dc8b2](https://github.com/RetellAI/retell-python-sdk/commit/05dc8b20e64d5654785945bdfb3dd8ac52e6fabc))
+* **api:** api update ([#311](https://github.com/RetellAI/retell-python-sdk/issues/311)) ([699d602](https://github.com/RetellAI/retell-python-sdk/commit/699d602b996043592a3f3d08c4ff43bac8f3428e))
+
+
+### Chores
+
+* **docs:** update client docstring ([#306](https://github.com/RetellAI/retell-python-sdk/issues/306)) ([8b71f84](https://github.com/RetellAI/retell-python-sdk/commit/8b71f84f8012b4f7c62bd18378e81d260468f073))
+* **internal:** codegen related update ([#308](https://github.com/RetellAI/retell-python-sdk/issues/308)) ([885b3de](https://github.com/RetellAI/retell-python-sdk/commit/885b3ded2b8cdfa72174eb6f8c0ef039ebc88039))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#305](https://github.com/RetellAI/retell-python-sdk/issues/305)) ([f37bd78](https://github.com/RetellAI/retell-python-sdk/commit/f37bd78982c188dc079665c77ac56b0489515df4))
+
 ## 4.20.0 (2025-02-25)
 
 Full Changelog: [v4.19.0...v4.20.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.19.0...v4.20.0)
