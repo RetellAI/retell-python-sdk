@@ -32,6 +32,7 @@ class TestPhoneNumber:
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
+            number_provider="twilio",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
@@ -270,6 +271,7 @@ class TestAsyncPhoneNumber:
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
+            number_provider="twilio",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])

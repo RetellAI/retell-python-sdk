@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -54,6 +55,7 @@ class PhoneNumberResource(SyncAPIResource):
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
+        number_provider: Literal["twilio", "telnyx"] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -78,6 +80,8 @@ class PhoneNumberResource(SyncAPIResource):
 
           nickname: Nickname of the number. This is for your reference only.
 
+          number_provider: The provider to purchase the phone number from. Default to twilio.
+
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
               initiate outbound call without agent id override.
@@ -98,6 +102,7 @@ class PhoneNumberResource(SyncAPIResource):
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
+                    "number_provider": number_provider,
                     "outbound_agent_id": outbound_agent_id,
                 },
                 phone_number_create_params.PhoneNumberCreateParams,
@@ -357,6 +362,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
+        number_provider: Literal["twilio", "telnyx"] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -381,6 +387,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           nickname: Nickname of the number. This is for your reference only.
 
+          number_provider: The provider to purchase the phone number from. Default to twilio.
+
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
               initiate outbound call without agent id override.
@@ -401,6 +409,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
+                    "number_provider": number_provider,
                     "outbound_agent_id": outbound_agent_id,
                 },
                 phone_number_create_params.PhoneNumberCreateParams,
