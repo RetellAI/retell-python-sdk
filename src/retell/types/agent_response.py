@@ -22,10 +22,10 @@ __all__ = [
 
 class ResponseEngineResponseEngineRetellLm(BaseModel):
     llm_id: str
-    """id of the Retell LLM to use."""
+    """id of the Retell LLM Response Engine."""
 
     type: Literal["retell-llm"]
-    """type of the Retell LLM Response Engine."""
+    """type of the Response Engine."""
 
 
 class ResponseEngineResponseEngineCustomLm(BaseModel):
@@ -33,15 +33,15 @@ class ResponseEngineResponseEngineCustomLm(BaseModel):
     """LLM websocket url of the custom LLM."""
 
     type: Literal["custom-llm"]
-    """type of the Retell LLM Response Engine."""
+    """type of the Response Engine."""
 
 
 class ResponseEngineResponseEngineConversationFlow(BaseModel):
     conversation_flow_id: str
-    """ID of the conversation flow to use."""
+    """ID of the Conversation Flow Response Engine."""
 
     type: Literal["conversation-flow"]
-    """type of the Retell LLM Response Engine."""
+    """type of the Response Engine."""
 
 
 ResponseEngine: TypeAlias = Union[
