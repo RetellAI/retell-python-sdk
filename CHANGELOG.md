@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.21.1 (2025-03-09)
+
+Full Changelog: [v4.21.0...v4.21.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.21.0...v4.21.1)
+
+### Documentation
+
+* revise readme docs about nested params ([#313](https://github.com/RetellAI/retell-python-sdk/issues/313)) ([ab748d9](https://github.com/RetellAI/retell-python-sdk/commit/ab748d90934c659c7c69a3f9a807cee0f8c05fd6))
+
 ## 4.21.0 (2025-03-09)
 
 Full Changelog: [v4.20.0...v4.21.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.20.0...v4.21.0)
