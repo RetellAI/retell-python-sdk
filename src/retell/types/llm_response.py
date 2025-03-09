@@ -753,7 +753,7 @@ class LlmResponse(BaseModel):
     Set to null to remove all knowledge bases.
     """
 
-    model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.5-sonnet", "claude-3-haiku", "claude-3.5-haiku"]] = None
+    model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.7-sonnet", "claude-3.5-haiku"]] = None
     """Select the underlying text LLM. If not set, would default to gpt-4o."""
 
     api_model_high_priority: Optional[bool] = FieldInfo(alias="model_high_priority", default=None)
