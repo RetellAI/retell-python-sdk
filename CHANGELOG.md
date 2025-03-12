@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.21.1 (2025-03-12)
+
+Full Changelog: [v4.21.0...v4.21.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.21.0...v4.21.1)
+
+### Chores
+
+* loosen up httpx constraint ([92ba3dd](https://github.com/RetellAI/retell-python-sdk/commit/92ba3dd81117ae812393cd10a0af8782dc7b3246))
+
+
+### Documentation
+
+* revise readme docs about nested params ([#313](https://github.com/RetellAI/retell-python-sdk/issues/313)) ([d6120fa](https://github.com/RetellAI/retell-python-sdk/commit/d6120fa8df8d941a4af199d85e164d6bb8fb5dda))
+
 ## 4.21.0 (2025-03-09)
 
 Full Changelog: [v4.20.0...v4.21.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.20.0...v4.21.0)
