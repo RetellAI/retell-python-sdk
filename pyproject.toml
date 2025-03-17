@@ -1,6 +1,6 @@
 [project]
 name = "retell-sdk"
-version = "4.21.1"
+version = "4.21.2"
 description = "The official Python library for the retell API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -38,7 +38,6 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/RetellAI/retell-python-sdk"
 Repository = "https://github.com/RetellAI/retell-python-sdk"
-
 
 
 [tool.rye]
@@ -89,7 +88,7 @@ typecheck = { chain = [
 "typecheck:mypy" = "mypy ."
 
 [build-system]
-requires = ["hatchling", "hatch-fancy-pypi-readme"]
+requires = ["hatchling==1.26.3", "hatch-fancy-pypi-readme"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build]
@@ -153,7 +152,6 @@ reportImplicitOverride = true
 
 reportImportCycles = false
 reportPrivateUsage = false
-
 
 [tool.ruff]
 line-length = 120
