@@ -1,5 +1,22 @@
 # Changelog
 
+## 4.21.2 (2025-03-17)
+
+Full Changelog: [v4.21.1...v4.21.2](https://github.com/RetellAI/retell-python-sdk/compare/v4.21.1...v4.21.2)
+
+### Bug Fixes
+
+* **ci:** ensure pip is always available ([#322](https://github.com/RetellAI/retell-python-sdk/issues/322)) ([64ac22a](https://github.com/RetellAI/retell-python-sdk/commit/64ac22a6cbe2a2b8d3f4090a7e3d0d87d9eb73e0))
+* **ci:** remove publishing patch ([#323](https://github.com/RetellAI/retell-python-sdk/issues/323)) ([800e99c](https://github.com/RetellAI/retell-python-sdk/commit/800e99c13b0b728d35b4ae6f37871c6370f4ceda))
+* **types:** handle more discriminated union shapes ([#321](https://github.com/RetellAI/retell-python-sdk/issues/321)) ([c03eaa0](https://github.com/RetellAI/retell-python-sdk/commit/c03eaa0eded525d9e04eb22671c0d99c2a626ab0))
+
+
+### Chores
+
+* **internal:** bump rye to 0.44.0 ([#319](https://github.com/RetellAI/retell-python-sdk/issues/319)) ([b068185](https://github.com/RetellAI/retell-python-sdk/commit/b068185a95252ea4913748e0d4656cec32554e17))
+* **internal:** codegen related update ([#320](https://github.com/RetellAI/retell-python-sdk/issues/320)) ([e8169d9](https://github.com/RetellAI/retell-python-sdk/commit/e8169d993f1b7aaca2462e318ffd703f279f73be))
+* **internal:** remove extra empty newlines ([#317](https://github.com/RetellAI/retell-python-sdk/issues/317)) ([11a4546](https://github.com/RetellAI/retell-python-sdk/commit/11a4546e1c69a58175eb22ae9dc8b7b15878871b))
+
 ## 4.21.1 (2025-03-12)
 
 Full Changelog: [v4.21.0...v4.21.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.21.0...v4.21.1)
