@@ -728,6 +728,13 @@ class LlmResponse(BaseModel):
     wait for user to speak first.
     """
 
+    default_dynamic_variables: Optional[Dict[str, str]] = None
+    """Default dynamic variables represented as key-value pairs of strings.
+
+    These are injected into your Retell LLM prompt and tool description when
+    specific values are not provided in a request. Only applicable for Retell LLM.
+    """
+
     general_prompt: Optional[str] = None
     """General prompt appended to system prompt no matter what state the agent is in.
 

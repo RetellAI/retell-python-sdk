@@ -26,6 +26,7 @@ class TestLlm:
     def test_method_create_with_all_params(self, client: Retell) -> None:
         llm = client.llm.create(
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
+            default_dynamic_variables={"customer_name": "John Doe"},
             general_prompt="You are ...",
             general_tools=[
                 {
@@ -173,6 +174,7 @@ class TestLlm:
         llm = client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
+            default_dynamic_variables={"customer_name": "John Doe"},
             general_prompt="You are ...",
             general_tools=[
                 {
@@ -357,6 +359,7 @@ class TestAsyncLlm:
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.create(
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
+            default_dynamic_variables={"customer_name": "John Doe"},
             general_prompt="You are ...",
             general_tools=[
                 {
@@ -504,6 +507,7 @@ class TestAsyncLlm:
         llm = await async_client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
+            default_dynamic_variables={"customer_name": "John Doe"},
             general_prompt="You are ...",
             general_tools=[
                 {
