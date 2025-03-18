@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
+from typing import Dict, List, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -52,6 +52,7 @@ class LlmResource(SyncAPIResource):
         self,
         *,
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
+        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -78,6 +79,10 @@ class LlmResource(SyncAPIResource):
         Args:
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
+
+          default_dynamic_variables: Default dynamic variables represented as key-value pairs of strings. These are
+              injected into your Retell LLM prompt and tool description when specific values
+              are not provided in a request. Only applicable for Retell LLM.
 
           general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
@@ -136,6 +141,7 @@ class LlmResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "begin_message": begin_message,
+                    "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "knowledge_base_ids": knowledge_base_ids,
@@ -193,6 +199,7 @@ class LlmResource(SyncAPIResource):
         llm_id: str,
         *,
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
+        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -217,6 +224,10 @@ class LlmResource(SyncAPIResource):
         Args:
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
+
+          default_dynamic_variables: Default dynamic variables represented as key-value pairs of strings. These are
+              injected into your Retell LLM prompt and tool description when specific values
+              are not provided in a request. Only applicable for Retell LLM.
 
           general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
@@ -277,6 +288,7 @@ class LlmResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "begin_message": begin_message,
+                    "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "knowledge_base_ids": knowledge_base_ids,
@@ -374,6 +386,7 @@ class AsyncLlmResource(AsyncAPIResource):
         self,
         *,
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
+        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -400,6 +413,10 @@ class AsyncLlmResource(AsyncAPIResource):
         Args:
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
+
+          default_dynamic_variables: Default dynamic variables represented as key-value pairs of strings. These are
+              injected into your Retell LLM prompt and tool description when specific values
+              are not provided in a request. Only applicable for Retell LLM.
 
           general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
@@ -458,6 +475,7 @@ class AsyncLlmResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "begin_message": begin_message,
+                    "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "knowledge_base_ids": knowledge_base_ids,
@@ -515,6 +533,7 @@ class AsyncLlmResource(AsyncAPIResource):
         llm_id: str,
         *,
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
+        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -539,6 +558,10 @@ class AsyncLlmResource(AsyncAPIResource):
         Args:
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
+
+          default_dynamic_variables: Default dynamic variables represented as key-value pairs of strings. These are
+              injected into your Retell LLM prompt and tool description when specific values
+              are not provided in a request. Only applicable for Retell LLM.
 
           general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
@@ -599,6 +622,7 @@ class AsyncLlmResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "begin_message": begin_message,
+                    "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
                     "knowledge_base_ids": knowledge_base_ids,
