@@ -250,6 +250,12 @@ class AgentCreateParams(TypedDict, total=False):
     Default to 30000 (30 s). Valid range is [5000, 90000].
     """
 
+    stt_mode: Literal["fast", "accurate"]
+    """If set, determines whether speech to text should focus on latency or accuracy.
+
+    Default to fast mode.
+    """
+
     voice_model: Optional[
         Literal[
             "eleven_turbo_v2",
