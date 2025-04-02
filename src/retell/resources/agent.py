@@ -104,6 +104,7 @@ class AgentResource(SyncAPIResource):
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
+        stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -264,6 +265,9 @@ class AgentResource(SyncAPIResource):
               This applies for both outbound call ringtime, and call transfer ringtime.
               Default to 30000 (30 s). Valid range is [5000, 90000].
 
+          stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
+              Default to fast mode.
+
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
               selection, and default ones will apply. Check out the dashboard for details on
@@ -333,6 +337,7 @@ class AgentResource(SyncAPIResource):
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
+                    "stt_mode": stt_mode,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -438,6 +443,7 @@ class AgentResource(SyncAPIResource):
         response_engine: agent_update_params.ResponseEngine | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
+        stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -597,6 +603,9 @@ class AgentResource(SyncAPIResource):
               This applies for both outbound call ringtime, and call transfer ringtime.
               Default to 30000 (30 s). Valid range is [5000, 90000].
 
+          stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
+              Default to fast mode.
+
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
@@ -670,6 +679,7 @@ class AgentResource(SyncAPIResource):
                     "response_engine": response_engine,
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
+                    "stt_mode": stt_mode,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -817,6 +827,7 @@ class AsyncAgentResource(AsyncAPIResource):
         reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
+        stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -977,6 +988,9 @@ class AsyncAgentResource(AsyncAPIResource):
               This applies for both outbound call ringtime, and call transfer ringtime.
               Default to 30000 (30 s). Valid range is [5000, 90000].
 
+          stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
+              Default to fast mode.
+
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
               selection, and default ones will apply. Check out the dashboard for details on
@@ -1046,6 +1060,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
+                    "stt_mode": stt_mode,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -1151,6 +1166,7 @@ class AsyncAgentResource(AsyncAPIResource):
         response_engine: agent_update_params.ResponseEngine | NotGiven = NOT_GIVEN,
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
+        stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -1310,6 +1326,9 @@ class AsyncAgentResource(AsyncAPIResource):
               This applies for both outbound call ringtime, and call transfer ringtime.
               Default to 30000 (30 s). Valid range is [5000, 90000].
 
+          stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
+              Default to fast mode.
+
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
@@ -1383,6 +1402,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "response_engine": response_engine,
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
+                    "stt_mode": stt_mode,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
