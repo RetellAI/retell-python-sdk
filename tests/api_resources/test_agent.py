@@ -61,6 +61,7 @@ class TestAgent:
                     "examples": ["John Doe", "Jane Smith"],
                 }
             ],
+            post_call_analysis_model="gpt-4o-mini",
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
@@ -189,6 +190,7 @@ class TestAgent:
                     "examples": ["John Doe", "Jane Smith"],
                 }
             ],
+            post_call_analysis_model="gpt-4o-mini",
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
@@ -358,6 +360,7 @@ class TestAsyncAgent:
                     "examples": ["John Doe", "Jane Smith"],
                 }
             ],
+            post_call_analysis_model="gpt-4o-mini",
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
@@ -486,6 +489,7 @@ class TestAsyncAgent:
                     "examples": ["John Doe", "Jane Smith"],
                 }
             ],
+            post_call_analysis_model="gpt-4o-mini",
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",

@@ -325,6 +325,12 @@ class AgentResponse(BaseModel):
     This will be available after the call ends.
     """
 
+    post_call_analysis_model: Optional[Literal["gpt-4o-mini", "gpt-4o"]] = None
+    """The model to use for post call analysis.
+
+    Currently only supports gpt-4o-mini and gpt-4o. Default to gpt-4o-mini.
+    """
+
     pronunciation_dictionary: Optional[List[PronunciationDictionary]] = None
     """
     A list of words / phrases and their pronunciation to be used to guide the audio
