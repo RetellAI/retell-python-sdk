@@ -98,6 +98,7 @@ class AgentResource(SyncAPIResource):
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
+        post_call_analysis_model: Literal["gpt-4o-mini", "gpt-4o"] | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
@@ -244,6 +245,9 @@ class AgentResource(SyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
+          post_call_analysis_model: The model to use for post call analysis. Currently only supports gpt-4o-mini and
+              gpt-4o. Default to gpt-4o-mini.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
               11labs voices. Set to null to remove pronunciation dictionary from this agent.
@@ -332,6 +336,7 @@ class AgentResource(SyncAPIResource):
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
+                    "post_call_analysis_model": post_call_analysis_model,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
@@ -436,6 +441,7 @@ class AgentResource(SyncAPIResource):
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
+        post_call_analysis_model: Literal["gpt-4o-mini", "gpt-4o"] | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
@@ -578,6 +584,9 @@ class AgentResource(SyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
+          post_call_analysis_model: The model to use for post call analysis. Currently only supports gpt-4o-mini and
+              gpt-4o. Default to gpt-4o-mini.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
               11labs voices. Set to null to remove pronunciation dictionary from this agent.
@@ -673,6 +682,7 @@ class AgentResource(SyncAPIResource):
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
+                    "post_call_analysis_model": post_call_analysis_model,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
@@ -821,6 +831,7 @@ class AsyncAgentResource(AsyncAPIResource):
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
+        post_call_analysis_model: Literal["gpt-4o-mini", "gpt-4o"] | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
@@ -967,6 +978,9 @@ class AsyncAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
+          post_call_analysis_model: The model to use for post call analysis. Currently only supports gpt-4o-mini and
+              gpt-4o. Default to gpt-4o-mini.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
               11labs voices. Set to null to remove pronunciation dictionary from this agent.
@@ -1055,6 +1069,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
+                    "post_call_analysis_model": post_call_analysis_model,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
@@ -1159,6 +1174,7 @@ class AsyncAgentResource(AsyncAPIResource):
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
+        post_call_analysis_model: Literal["gpt-4o-mini", "gpt-4o"] | NotGiven = NOT_GIVEN,
         pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]]
         | NotGiven = NOT_GIVEN,
         reminder_max_count: int | NotGiven = NOT_GIVEN,
@@ -1301,6 +1317,9 @@ class AsyncAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
+          post_call_analysis_model: The model to use for post call analysis. Currently only supports gpt-4o-mini and
+              gpt-4o. Default to gpt-4o-mini.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
               11labs voices. Set to null to remove pronunciation dictionary from this agent.
@@ -1396,6 +1415,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "normalize_for_speech": normalize_for_speech,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
+                    "post_call_analysis_model": post_call_analysis_model,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
