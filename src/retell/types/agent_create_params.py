@@ -214,6 +214,12 @@ class AgentCreateParams(TypedDict, total=False):
     This will be available after the call ends.
     """
 
+    post_call_analysis_model: Literal["gpt-4o-mini", "gpt-4o"]
+    """The model to use for post call analysis.
+
+    Currently only supports gpt-4o-mini and gpt-4o. Default to gpt-4o-mini.
+    """
+
     pronunciation_dictionary: Optional[Iterable[PronunciationDictionary]]
     """
     A list of words / phrases and their pronunciation to be used to guide the audio
