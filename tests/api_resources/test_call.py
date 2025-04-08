@@ -120,9 +120,9 @@ class TestCall:
         call = client.call.list(
             filter_criteria={
                 "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
-                "call_status": ["registered"],
+                "call_status": ["ended"],
                 "call_successful": [True],
-                "call_type": ["web_call"],
+                "call_type": ["phone_call"],
                 "direction": ["inbound"],
                 "disconnection_reason": ["user_hangup"],
                 "duration_ms": {
@@ -140,7 +140,7 @@ class TestCall:
                     "upper_threshold": 1738475421000,
                 },
                 "to_number": ["string"],
-                "user_sentiment": ["Negative"],
+                "user_sentiment": ["Positive"],
             },
             limit=0,
             pagination_key="pagination_key",
@@ -436,9 +436,9 @@ class TestAsyncCall:
         call = await async_client.call.list(
             filter_criteria={
                 "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
-                "call_status": ["registered"],
+                "call_status": ["ended"],
                 "call_successful": [True],
-                "call_type": ["web_call"],
+                "call_type": ["phone_call"],
                 "direction": ["inbound"],
                 "disconnection_reason": ["user_hangup"],
                 "duration_ms": {
@@ -456,7 +456,7 @@ class TestAsyncCall:
                     "upper_threshold": 1738475421000,
                 },
                 "to_number": ["string"],
-                "user_sentiment": ["Negative"],
+                "user_sentiment": ["Positive"],
             },
             limit=0,
             pagination_key="pagination_key",
