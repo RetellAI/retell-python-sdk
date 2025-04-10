@@ -1,5 +1,21 @@
 # Changelog
 
+## 4.25.0 (2025-04-10)
+
+Full Changelog: [v4.24.0...v4.25.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.24.0...v4.25.0)
+
+### Features
+
+* **api:** api update ([c1f4244](https://github.com/RetellAI/retell-python-sdk/commit/c1f4244017b8c1ac99b34611bcdd16ec0b8104c5))
+
+
+### Chores
+
+* **internal:** expand CI branch coverage ([#340](https://github.com/RetellAI/retell-python-sdk/issues/340)) ([4b912cc](https://github.com/RetellAI/retell-python-sdk/commit/4b912cc7e93454a43ddd56c35caed901b9bcd645))
+* **internal:** reduce CI branch coverage ([7747875](https://github.com/RetellAI/retell-python-sdk/commit/7747875d10604c536731229454bcc0f8b8607ab7))
+* **internal:** slight transform perf improvement ([#337](https://github.com/RetellAI/retell-python-sdk/issues/337)) ([4b10a27](https://github.com/RetellAI/retell-python-sdk/commit/4b10a27b02aa792f1b377bcdebee0bad346c48a3))
+* **tests:** improve enum examples ([#339](https://github.com/RetellAI/retell-python-sdk/issues/339)) ([986021c](https://github.com/RetellAI/retell-python-sdk/commit/986021c4b9f82e06bf1db5ba4e4e0494d6713dc6))
+
 ## 4.24.0 (2025-04-06)
 
 Full Changelog: [v4.23.0...v4.24.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.23.0...v4.24.0)
