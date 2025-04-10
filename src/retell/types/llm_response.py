@@ -120,18 +120,14 @@ class GeneralToolTransferCallTool(BaseModel):
     tools + state tools + state edges).
     """
 
+    transfer_destination: GeneralToolTransferCallToolTransferDestination
+
     type: Literal["transfer_call"]
 
     description: Optional[str] = None
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
-    """
-
-    number: Optional[str] = None
-    """
-    The number to transfer to in E.164 format or a dynamic variable like
-    {{transfer_number}}.
     """
 
     show_transferee_as_caller: Optional[bool] = None
@@ -141,8 +137,6 @@ class GeneralToolTransferCallTool(BaseModel):
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
-
-    transfer_destination: Optional[GeneralToolTransferCallToolTransferDestination] = None
 
     warm_transfer_option: Optional[GeneralToolTransferCallToolWarmTransferOption] = None
     """If set, when transfer is successful, will perform a warm handoff.
@@ -462,18 +456,14 @@ class StateToolTransferCallTool(BaseModel):
     tools + state tools + state edges).
     """
 
+    transfer_destination: StateToolTransferCallToolTransferDestination
+
     type: Literal["transfer_call"]
 
     description: Optional[str] = None
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
-    """
-
-    number: Optional[str] = None
-    """
-    The number to transfer to in E.164 format or a dynamic variable like
-    {{transfer_number}}.
     """
 
     show_transferee_as_caller: Optional[bool] = None
@@ -483,8 +473,6 @@ class StateToolTransferCallTool(BaseModel):
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
-
-    transfer_destination: Optional[StateToolTransferCallToolTransferDestination] = None
 
     warm_transfer_option: Optional[StateToolTransferCallToolWarmTransferOption] = None
     """If set, when transfer is successful, will perform a warm handoff.
@@ -760,7 +748,16 @@ class LlmResponse(BaseModel):
     Set to null to remove all knowledge bases.
     """
 
-    model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.7-sonnet", "claude-3.5-haiku"]] = None
+    model: Optional[
+        Literal[
+            "gpt-4o",
+            "gpt-4o-mini",
+            "claude-3.7-sonnet",
+            "claude-3.5-haiku",
+            "gemini-2.0-flash",
+            "gemini-2.0-flash-lite",
+        ]
+    ] = None
     """Select the underlying text LLM. If not set, would default to gpt-4o."""
 
     api_model_high_priority: Optional[bool] = FieldInfo(alias="model_high_priority", default=None)

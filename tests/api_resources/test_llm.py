@@ -59,18 +59,8 @@ class TestLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "type": "transfer_call",
+                            "type": "end_call",
                             "description": "Transfer to the support team.",
-                            "number": "16175551212",
-                            "show_transferee_as_caller": True,
-                            "transfer_destination": {
-                                "number": "number",
-                                "type": "predefined",
-                            },
-                            "warm_transfer_option": {
-                                "prompt": "Summarize the call in one sentence for the warn handoff.",
-                                "type": "prompt",
-                            },
                         }
                     ],
                 },
@@ -207,18 +197,8 @@ class TestLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "type": "transfer_call",
+                            "type": "end_call",
                             "description": "Transfer to the support team.",
-                            "number": "16175551212",
-                            "show_transferee_as_caller": True,
-                            "transfer_destination": {
-                                "number": "number",
-                                "type": "predefined",
-                            },
-                            "warm_transfer_option": {
-                                "prompt": "Summarize the call in one sentence for the warn handoff.",
-                                "type": "prompt",
-                            },
                         }
                     ],
                 },
@@ -392,18 +372,8 @@ class TestAsyncLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "type": "transfer_call",
+                            "type": "end_call",
                             "description": "Transfer to the support team.",
-                            "number": "16175551212",
-                            "show_transferee_as_caller": True,
-                            "transfer_destination": {
-                                "number": "number",
-                                "type": "predefined",
-                            },
-                            "warm_transfer_option": {
-                                "prompt": "Summarize the call in one sentence for the warn handoff.",
-                                "type": "prompt",
-                            },
                         }
                     ],
                 },
@@ -540,18 +510,8 @@ class TestAsyncLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "type": "transfer_call",
+                            "type": "end_call",
                             "description": "Transfer to the support team.",
-                            "number": "16175551212",
-                            "show_transferee_as_caller": True,
-                            "transfer_destination": {
-                                "number": "number",
-                                "type": "predefined",
-                            },
-                            "warm_transfer_option": {
-                                "prompt": "Summarize the call in one sentence for the warn handoff.",
-                                "type": "prompt",
-                            },
                         }
                     ],
                 },
