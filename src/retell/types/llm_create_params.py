@@ -81,7 +81,16 @@ class LlmCreateParams(TypedDict, total=False):
     Set to null to remove all knowledge bases.
     """
 
-    model: Optional[Literal["gpt-4o", "gpt-4o-mini", "claude-3.7-sonnet", "claude-3.5-haiku"]]
+    model: Optional[
+        Literal[
+            "gpt-4o",
+            "gpt-4o-mini",
+            "claude-3.7-sonnet",
+            "claude-3.5-haiku",
+            "gemini-2.0-flash",
+            "gemini-2.0-flash-lite",
+        ]
+    ]
     """Select the underlying text LLM. If not set, would default to gpt-4o."""
 
     model_high_priority: bool
@@ -203,18 +212,14 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
     tools + state tools + state edges).
     """
 
+    transfer_destination: Required[GeneralToolTransferCallToolTransferDestination]
+
     type: Required[Literal["transfer_call"]]
 
     description: str
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
-    """
-
-    number: Optional[str]
-    """
-    The number to transfer to in E.164 format or a dynamic variable like
-    {{transfer_number}}.
     """
 
     show_transferee_as_caller: Optional[bool]
@@ -224,8 +229,6 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
-
-    transfer_destination: GeneralToolTransferCallToolTransferDestination
 
     warm_transfer_option: Optional[GeneralToolTransferCallToolWarmTransferOption]
     """If set, when transfer is successful, will perform a warm handoff.
@@ -544,18 +547,14 @@ class StateToolTransferCallTool(TypedDict, total=False):
     tools + state tools + state edges).
     """
 
+    transfer_destination: Required[StateToolTransferCallToolTransferDestination]
+
     type: Required[Literal["transfer_call"]]
 
     description: str
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
-    """
-
-    number: Optional[str]
-    """
-    The number to transfer to in E.164 format or a dynamic variable like
-    {{transfer_number}}.
     """
 
     show_transferee_as_caller: Optional[bool]
@@ -565,8 +564,6 @@ class StateToolTransferCallTool(TypedDict, total=False):
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
-
-    transfer_destination: StateToolTransferCallToolTransferDestination
 
     warm_transfer_option: Optional[StateToolTransferCallToolWarmTransferOption]
     """If set, when transfer is successful, will perform a warm handoff.
