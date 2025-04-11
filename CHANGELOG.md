@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.25.1 (2025-04-11)
+
+Full Changelog: [v4.25.0...v4.25.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.25.0...v4.25.1)
+
+### Bug Fixes
+
+* **perf:** optimize some hot paths ([cdf7ff2](https://github.com/RetellAI/retell-python-sdk/commit/cdf7ff2bf99325bb69644893019cd6e63d4790b8))
+* **perf:** skip traversing types for NotGiven values ([a5d9069](https://github.com/RetellAI/retell-python-sdk/commit/a5d9069d9c2c0a0f4bbf596bf0cbf1915fc50a50))
+
 ## 4.25.0 (2025-04-10)
 
 Full Changelog: [v4.24.0...v4.25.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.24.0...v4.25.0)
