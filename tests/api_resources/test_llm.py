@@ -46,6 +46,28 @@ class TestLlm:
                     "name": "information_collection",
                     "edges": [
                         {
+                            "description": "Transition to book an appointment.",
+                            "destination_state_name": "appointment_booking",
+                            "parameters": {
+                                "properties": {"foo": "bar"},
+                                "type": "object",
+                                "required": ["string"],
+                            },
+                        }
+                    ],
+                    "state_prompt": "You will follow the steps below to collect information...",
+                    "tools": [
+                        {
+                            "name": "transfer_to_support",
+                            "type": "end_call",
+                            "description": "Transfer to the support team.",
+                        }
+                    ],
+                },
+                {
+                    "name": "appointment_booking",
+                    "edges": [
+                        {
                             "description": "description",
                             "destination_state_name": "destination_state_name",
                             "parameters": {
@@ -55,15 +77,18 @@ class TestLlm:
                             },
                         }
                     ],
-                    "state_prompt": "## Task\nYou will follow the steps below...",
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
                         {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
+                            "cal_api_key": "cal_live_xxxxxxxxxxxx",
+                            "event_type_id": 60444,
+                            "name": "book_appointment",
+                            "type": "book_appointment_cal",
+                            "description": "Book an annual check up.",
+                            "timezone": "America/Los_Angeles",
                         }
                     ],
-                }
+                },
             ],
             tool_call_strict_mode=True,
         )
@@ -159,6 +184,28 @@ class TestLlm:
                     "name": "information_collection",
                     "edges": [
                         {
+                            "description": "Transition to book an appointment.",
+                            "destination_state_name": "appointment_booking",
+                            "parameters": {
+                                "properties": {"foo": "bar"},
+                                "type": "object",
+                                "required": ["string"],
+                            },
+                        }
+                    ],
+                    "state_prompt": "You will follow the steps below to collect information...",
+                    "tools": [
+                        {
+                            "name": "transfer_to_support",
+                            "type": "end_call",
+                            "description": "Transfer to the support team.",
+                        }
+                    ],
+                },
+                {
+                    "name": "appointment_booking",
+                    "edges": [
+                        {
                             "description": "description",
                             "destination_state_name": "destination_state_name",
                             "parameters": {
@@ -168,15 +215,18 @@ class TestLlm:
                             },
                         }
                     ],
-                    "state_prompt": "## Task\nYou will follow the steps below...",
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
                         {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
+                            "cal_api_key": "cal_live_xxxxxxxxxxxx",
+                            "event_type_id": 60444,
+                            "name": "book_appointment",
+                            "type": "book_appointment_cal",
+                            "description": "Book an annual check up.",
+                            "timezone": "America/Los_Angeles",
                         }
                     ],
-                }
+                },
             ],
             tool_call_strict_mode=True,
         )
@@ -309,6 +359,28 @@ class TestAsyncLlm:
                     "name": "information_collection",
                     "edges": [
                         {
+                            "description": "Transition to book an appointment.",
+                            "destination_state_name": "appointment_booking",
+                            "parameters": {
+                                "properties": {"foo": "bar"},
+                                "type": "object",
+                                "required": ["string"],
+                            },
+                        }
+                    ],
+                    "state_prompt": "You will follow the steps below to collect information...",
+                    "tools": [
+                        {
+                            "name": "transfer_to_support",
+                            "type": "end_call",
+                            "description": "Transfer to the support team.",
+                        }
+                    ],
+                },
+                {
+                    "name": "appointment_booking",
+                    "edges": [
+                        {
                             "description": "description",
                             "destination_state_name": "destination_state_name",
                             "parameters": {
@@ -318,15 +390,18 @@ class TestAsyncLlm:
                             },
                         }
                     ],
-                    "state_prompt": "## Task\nYou will follow the steps below...",
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
                         {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
+                            "cal_api_key": "cal_live_xxxxxxxxxxxx",
+                            "event_type_id": 60444,
+                            "name": "book_appointment",
+                            "type": "book_appointment_cal",
+                            "description": "Book an annual check up.",
+                            "timezone": "America/Los_Angeles",
                         }
                     ],
-                }
+                },
             ],
             tool_call_strict_mode=True,
         )
@@ -422,6 +497,28 @@ class TestAsyncLlm:
                     "name": "information_collection",
                     "edges": [
                         {
+                            "description": "Transition to book an appointment.",
+                            "destination_state_name": "appointment_booking",
+                            "parameters": {
+                                "properties": {"foo": "bar"},
+                                "type": "object",
+                                "required": ["string"],
+                            },
+                        }
+                    ],
+                    "state_prompt": "You will follow the steps below to collect information...",
+                    "tools": [
+                        {
+                            "name": "transfer_to_support",
+                            "type": "end_call",
+                            "description": "Transfer to the support team.",
+                        }
+                    ],
+                },
+                {
+                    "name": "appointment_booking",
+                    "edges": [
+                        {
                             "description": "description",
                             "destination_state_name": "destination_state_name",
                             "parameters": {
@@ -431,15 +528,18 @@ class TestAsyncLlm:
                             },
                         }
                     ],
-                    "state_prompt": "## Task\nYou will follow the steps below...",
+                    "state_prompt": "You will follow the steps below to book an appointment...",
                     "tools": [
                         {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
+                            "cal_api_key": "cal_live_xxxxxxxxxxxx",
+                            "event_type_id": 60444,
+                            "name": "book_appointment",
+                            "type": "book_appointment_cal",
+                            "description": "Book an annual check up.",
+                            "timezone": "America/Los_Angeles",
                         }
                     ],
-                }
+                },
             ],
             tool_call_strict_mode=True,
         )
