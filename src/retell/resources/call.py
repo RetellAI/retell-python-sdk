@@ -241,6 +241,7 @@ class CallResource(SyncAPIResource):
         to_number: str,
         metadata: object | NotGiven = NOT_GIVEN,
         override_agent_id: str | NotGiven = NOT_GIVEN,
+        override_agent_version: int | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -266,6 +267,10 @@ class CallResource(SyncAPIResource):
           override_agent_id: For this particular call, override the agent used with this agent id. This does
               not bind the agent to this number, this is for one time override.
 
+          override_agent_version: For this particular call, override the agent version used with this version.
+              This does not bind the agent to this number, this is for one time override.
+              Default to 0.
+
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
               your Response Engine prompt and tool description. Only applicable for Response
               Engine.
@@ -286,6 +291,7 @@ class CallResource(SyncAPIResource):
                     "to_number": to_number,
                     "metadata": metadata,
                     "override_agent_id": override_agent_id,
+                    "override_agent_version": override_agent_version,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
                 call_create_phone_call_params.CallCreatePhoneCallParams,
@@ -300,6 +306,7 @@ class CallResource(SyncAPIResource):
         self,
         *,
         agent_id: str,
+        agent_version: int | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -316,6 +323,8 @@ class CallResource(SyncAPIResource):
 
         Your agent would contain the LLM Websocket
               url used for this call.
+
+          agent_version: The version of the agent to use for the call.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
@@ -338,6 +347,7 @@ class CallResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "agent_id": agent_id,
+                    "agent_version": agent_version,
                     "metadata": metadata,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
@@ -353,6 +363,7 @@ class CallResource(SyncAPIResource):
         self,
         *,
         agent_id: str,
+        agent_version: int | NotGiven = NOT_GIVEN,
         direction: Literal["inbound", "outbound"] | NotGiven = NOT_GIVEN,
         from_number: str | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
@@ -370,6 +381,8 @@ class CallResource(SyncAPIResource):
 
         Args:
           agent_id: The agent to use for the call.
+
+          agent_version: The version of the agent to use for the call.
 
           direction: Direction of the phone call. Stored for tracking purpose.
 
@@ -398,6 +411,7 @@ class CallResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "agent_id": agent_id,
+                    "agent_version": agent_version,
                     "direction": direction,
                     "from_number": from_number,
                     "metadata": metadata,
@@ -618,6 +632,7 @@ class AsyncCallResource(AsyncAPIResource):
         to_number: str,
         metadata: object | NotGiven = NOT_GIVEN,
         override_agent_id: str | NotGiven = NOT_GIVEN,
+        override_agent_version: int | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -643,6 +658,10 @@ class AsyncCallResource(AsyncAPIResource):
           override_agent_id: For this particular call, override the agent used with this agent id. This does
               not bind the agent to this number, this is for one time override.
 
+          override_agent_version: For this particular call, override the agent version used with this version.
+              This does not bind the agent to this number, this is for one time override.
+              Default to 0.
+
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
               your Response Engine prompt and tool description. Only applicable for Response
               Engine.
@@ -663,6 +682,7 @@ class AsyncCallResource(AsyncAPIResource):
                     "to_number": to_number,
                     "metadata": metadata,
                     "override_agent_id": override_agent_id,
+                    "override_agent_version": override_agent_version,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
                 call_create_phone_call_params.CallCreatePhoneCallParams,
@@ -677,6 +697,7 @@ class AsyncCallResource(AsyncAPIResource):
         self,
         *,
         agent_id: str,
+        agent_version: int | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
         retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -693,6 +714,8 @@ class AsyncCallResource(AsyncAPIResource):
 
         Your agent would contain the LLM Websocket
               url used for this call.
+
+          agent_version: The version of the agent to use for the call.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
@@ -715,6 +738,7 @@ class AsyncCallResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "agent_id": agent_id,
+                    "agent_version": agent_version,
                     "metadata": metadata,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
@@ -730,6 +754,7 @@ class AsyncCallResource(AsyncAPIResource):
         self,
         *,
         agent_id: str,
+        agent_version: int | NotGiven = NOT_GIVEN,
         direction: Literal["inbound", "outbound"] | NotGiven = NOT_GIVEN,
         from_number: str | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
@@ -747,6 +772,8 @@ class AsyncCallResource(AsyncAPIResource):
 
         Args:
           agent_id: The agent to use for the call.
+
+          agent_version: The version of the agent to use for the call.
 
           direction: Direction of the phone call. Stored for tracking purpose.
 
@@ -775,6 +802,7 @@ class AsyncCallResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "agent_id": agent_id,
+                    "agent_version": agent_version,
                     "direction": direction,
                     "from_number": from_number,
                     "metadata": metadata,

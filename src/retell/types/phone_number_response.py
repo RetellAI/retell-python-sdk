@@ -34,6 +34,9 @@ class PhoneNumberResponse(BaseModel):
     null, this number would not accept inbound call.
     """
 
+    inbound_agent_version: Optional[int] = None
+    """The version of the inbound agent."""
+
     inbound_webhook_url: Optional[str] = None
     """
     If set, will send a webhook for inbound calls, where you can to override agent
@@ -50,6 +53,9 @@ class PhoneNumberResponse(BaseModel):
     null, this number would not be able to initiate outbound call without agent id
     override.
     """
+
+    outbound_agent_version: Optional[int] = None
+    """The version of the outbound agent."""
 
     phone_number_pretty: Optional[str] = None
     """Pretty printed phone number, provided for your reference."""

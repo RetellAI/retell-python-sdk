@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import agent_create_params, agent_update_params
+from ..types import agent_create_params, agent_update_params, agent_retrieve_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -24,6 +24,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.agent_response import AgentResponse
 from ..types.agent_list_response import AgentListResponse
+from ..types.agent_get_versions_response import AgentGetVersionsResponse
 
 __all__ = ["AgentResource", "AsyncAgentResource"]
 
@@ -120,6 +121,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -286,6 +288,8 @@ class AgentResource(SyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
+          version: Version of the agent. Default to 0. Is part of the query parameter.
+
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
               selection, and default ones will apply. Check out the dashboard for details on
@@ -357,6 +361,7 @@ class AgentResource(SyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "version": version,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -377,6 +382,7 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
+        version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -388,6 +394,8 @@ class AgentResource(SyncAPIResource):
         Retrieve details of a specific agent
 
         Args:
+          version: Optional version of the API to use for this request. Default to 0.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -401,7 +409,11 @@ class AgentResource(SyncAPIResource):
         return self._get(
             f"/get-agent/{agent_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"version": version}, agent_retrieve_params.AgentRetrieveParams),
             ),
             cast_to=AgentResponse,
         )
@@ -410,6 +422,7 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
+        query_version: int | NotGiven = NOT_GIVEN,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
             Literal[
@@ -478,6 +491,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        body_version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -504,12 +518,13 @@ class AgentResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AgentResponse:
-        """Update an existing agent
+        """
+        Update an existing agent
 
         Args:
-          agent_name: The name of the agent.
+          query_version: Optional version of the API to use for this request. Default to 0.
 
-        Only used for your own reference.
+          agent_name: The name of the agent. Only used for your own reference.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -643,6 +658,8 @@ class AgentResource(SyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
+          body_version: Version of the agent. Default to 0. Is part of the query parameter.
+
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
@@ -718,6 +735,7 @@ class AgentResource(SyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "body_version": body_version,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -730,7 +748,11 @@ class AgentResource(SyncAPIResource):
                 agent_update_params.AgentUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"query_version": query_version}, agent_update_params.AgentUpdateParams),
             ),
             cast_to=AgentResponse,
         )
@@ -786,6 +808,39 @@ class AgentResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
+        )
+
+    def get_versions(
+        self,
+        agent_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AgentGetVersionsResponse:
+        """
+        Get all versions of an agent
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        return self._get(
+            f"/get-agent-versions/{agent_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AgentGetVersionsResponse,
         )
 
 
@@ -881,6 +936,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -1047,6 +1103,8 @@ class AsyncAgentResource(AsyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
+          version: Version of the agent. Default to 0. Is part of the query parameter.
+
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
               selection, and default ones will apply. Check out the dashboard for details on
@@ -1118,6 +1176,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "version": version,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -1138,6 +1197,7 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
+        version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1149,6 +1209,8 @@ class AsyncAgentResource(AsyncAPIResource):
         Retrieve details of a specific agent
 
         Args:
+          version: Optional version of the API to use for this request. Default to 0.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1162,7 +1224,11 @@ class AsyncAgentResource(AsyncAPIResource):
         return await self._get(
             f"/get-agent/{agent_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"version": version}, agent_retrieve_params.AgentRetrieveParams),
             ),
             cast_to=AgentResponse,
         )
@@ -1171,6 +1237,7 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
+        query_version: int | NotGiven = NOT_GIVEN,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
             Literal[
@@ -1239,6 +1306,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        body_version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -1265,12 +1333,13 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AgentResponse:
-        """Update an existing agent
+        """
+        Update an existing agent
 
         Args:
-          agent_name: The name of the agent.
+          query_version: Optional version of the API to use for this request. Default to 0.
 
-        Only used for your own reference.
+          agent_name: The name of the agent. Only used for your own reference.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -1404,6 +1473,8 @@ class AsyncAgentResource(AsyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
+          body_version: Version of the agent. Default to 0. Is part of the query parameter.
+
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
@@ -1479,6 +1550,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "body_version": body_version,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -1491,7 +1563,13 @@ class AsyncAgentResource(AsyncAPIResource):
                 agent_update_params.AgentUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"query_version": query_version}, agent_update_params.AgentUpdateParams
+                ),
             ),
             cast_to=AgentResponse,
         )
@@ -1549,6 +1627,39 @@ class AsyncAgentResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def get_versions(
+        self,
+        agent_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AgentGetVersionsResponse:
+        """
+        Get all versions of an agent
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        return await self._get(
+            f"/get-agent-versions/{agent_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AgentGetVersionsResponse,
+        )
+
 
 class AgentResourceWithRawResponse:
     def __init__(self, agent: AgentResource) -> None:
@@ -1568,6 +1679,9 @@ class AgentResourceWithRawResponse:
         )
         self.delete = to_raw_response_wrapper(
             agent.delete,
+        )
+        self.get_versions = to_raw_response_wrapper(
+            agent.get_versions,
         )
 
 
@@ -1590,6 +1704,9 @@ class AsyncAgentResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             agent.delete,
         )
+        self.get_versions = async_to_raw_response_wrapper(
+            agent.get_versions,
+        )
 
 
 class AgentResourceWithStreamingResponse:
@@ -1611,6 +1728,9 @@ class AgentResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             agent.delete,
         )
+        self.get_versions = to_streamed_response_wrapper(
+            agent.get_versions,
+        )
 
 
 class AsyncAgentResourceWithStreamingResponse:
@@ -1631,4 +1751,7 @@ class AsyncAgentResourceWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             agent.delete,
+        )
+        self.get_versions = async_to_streamed_response_wrapper(
+            agent.get_versions,
         )

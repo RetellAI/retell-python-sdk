@@ -9,7 +9,11 @@ import pytest
 
 from retell import Retell, AsyncRetell
 from tests.utils import assert_matches_type
-from retell.types import AgentResponse, AgentListResponse
+from retell.types import (
+    AgentResponse,
+    AgentListResponse,
+    AgentGetVersionsResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -74,6 +78,7 @@ class TestAgent:
             responsiveness=1,
             ring_duration_ms=30000,
             stt_mode="fast",
+            version=0,
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
@@ -119,14 +124,22 @@ class TestAgent:
     @parametrize
     def test_method_retrieve(self, client: Retell) -> None:
         agent = client.agent.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(AgentResponse, agent, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Retell) -> None:
+        agent = client.agent.retrieve(
+            agent_id="16b980523634a6dc504898cda492e939",
+            version=1,
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.agent.with_raw_response.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
         )
 
         assert response.is_closed is True
@@ -137,7 +150,7 @@ class TestAgent:
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.agent.with_streaming_response.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -151,7 +164,7 @@ class TestAgent:
     def test_path_params_retrieve(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             client.agent.with_raw_response.retrieve(
-                "",
+                agent_id="",
             )
 
     @parametrize
@@ -165,6 +178,7 @@ class TestAgent:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         agent = client.agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
+            query_version=1,
             agent_name="Jarvis",
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
@@ -207,6 +221,7 @@ class TestAgent:
             responsiveness=1,
             ring_duration_ms=30000,
             stt_mode="fast",
+            body_version=0,
             voice_id="11labs-Adrian",
             voice_model="eleven_turbo_v2",
             voice_speed=1,
@@ -312,6 +327,44 @@ class TestAgent:
                 "",
             )
 
+    @parametrize
+    def test_method_get_versions(self, client: Retell) -> None:
+        agent = client.agent.get_versions(
+            "16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
+
+    @parametrize
+    def test_raw_response_get_versions(self, client: Retell) -> None:
+        response = client.agent.with_raw_response.get_versions(
+            "16b980523634a6dc504898cda492e939",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = response.parse()
+        assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
+
+    @parametrize
+    def test_streaming_response_get_versions(self, client: Retell) -> None:
+        with client.agent.with_streaming_response.get_versions(
+            "16b980523634a6dc504898cda492e939",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = response.parse()
+            assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_get_versions(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            client.agent.with_raw_response.get_versions(
+                "",
+            )
+
 
 class TestAsyncAgent:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
@@ -373,6 +426,7 @@ class TestAsyncAgent:
             responsiveness=1,
             ring_duration_ms=30000,
             stt_mode="fast",
+            version=0,
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
@@ -418,14 +472,22 @@ class TestAsyncAgent:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(AgentResponse, agent, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.retrieve(
+            agent_id="16b980523634a6dc504898cda492e939",
+            version=1,
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.agent.with_raw_response.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
         )
 
         assert response.is_closed is True
@@ -436,7 +498,7 @@ class TestAsyncAgent:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.agent.with_streaming_response.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -450,7 +512,7 @@ class TestAsyncAgent:
     async def test_path_params_retrieve(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             await async_client.agent.with_raw_response.retrieve(
-                "",
+                agent_id="",
             )
 
     @parametrize
@@ -464,6 +526,7 @@ class TestAsyncAgent:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
+            query_version=1,
             agent_name="Jarvis",
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
@@ -506,6 +569,7 @@ class TestAsyncAgent:
             responsiveness=1,
             ring_duration_ms=30000,
             stt_mode="fast",
+            body_version=0,
             voice_id="11labs-Adrian",
             voice_model="eleven_turbo_v2",
             voice_speed=1,
@@ -608,5 +672,43 @@ class TestAsyncAgent:
     async def test_path_params_delete(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             await async_client.agent.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
+    async def test_method_get_versions(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.get_versions(
+            "16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
+
+    @parametrize
+    async def test_raw_response_get_versions(self, async_client: AsyncRetell) -> None:
+        response = await async_client.agent.with_raw_response.get_versions(
+            "16b980523634a6dc504898cda492e939",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = await response.parse()
+        assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_get_versions(self, async_client: AsyncRetell) -> None:
+        async with async_client.agent.with_streaming_response.get_versions(
+            "16b980523634a6dc504898cda492e939",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = await response.parse()
+            assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_get_versions(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            await async_client.agent.with_raw_response.get_versions(
                 "",
             )

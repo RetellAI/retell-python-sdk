@@ -801,3 +801,6 @@ class LlmResponse(BaseModel):
     follow the json schema. The time to save a new tool or change to a tool will be
     longer as additional processing is needed. Default to false.
     """
+
+    version: Optional[float] = None
+    """Version of the Retell LLM. Default to 0. Is part of the query parameter."""

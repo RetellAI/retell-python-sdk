@@ -125,3 +125,6 @@ class FilterCriteria(TypedDict, total=False):
 
     user_sentiment: List[Literal["Negative", "Positive", "Neutral", "Unknown"]]
     """Only retrieve calls with specific user sentiment(s)."""
+
+    version: Iterable[int]
+    """The version of the agent to use for the call."""
