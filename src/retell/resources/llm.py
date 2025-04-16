@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import llm_create_params, llm_update_params
+from ..types import llm_create_params, llm_update_params, llm_retrieve_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import (
     maybe_transform,
@@ -73,6 +73,7 @@ class LlmResource(SyncAPIResource):
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
+        version: Optional[float] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -137,6 +138,8 @@ class LlmResource(SyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
+          version: Version of the Retell LLM. Default to 0. Is part of the query parameter.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -161,6 +164,7 @@ class LlmResource(SyncAPIResource):
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
+                    "version": version,
                 },
                 llm_create_params.LlmCreateParams,
             ),
@@ -174,6 +178,7 @@ class LlmResource(SyncAPIResource):
         self,
         llm_id: str,
         *,
+        version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -185,6 +190,8 @@ class LlmResource(SyncAPIResource):
         Retrieve details of a specific Retell LLM Response Engine
 
         Args:
+          version: Optional version of the API to use for this request. Default to 0.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -198,7 +205,11 @@ class LlmResource(SyncAPIResource):
         return self._get(
             f"/get-retell-llm/{llm_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"version": version}, llm_retrieve_params.LlmRetrieveParams),
             ),
             cast_to=LlmResponse,
         )
@@ -207,6 +218,7 @@ class LlmResource(SyncAPIResource):
         self,
         llm_id: str,
         *,
+        query_version: int | NotGiven = NOT_GIVEN,
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
         default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
@@ -229,6 +241,7 @@ class LlmResource(SyncAPIResource):
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
+        body_version: Optional[float] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -240,6 +253,8 @@ class LlmResource(SyncAPIResource):
         Update an existing Retell LLM Response Engine
 
         Args:
+          query_version: Optional version of the API to use for this request. Default to 0.
+
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
 
@@ -291,6 +306,8 @@ class LlmResource(SyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
+          body_version: Version of the Retell LLM. Default to 0. Is part of the query parameter.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -317,11 +334,16 @@ class LlmResource(SyncAPIResource):
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
+                    "body_version": body_version,
                 },
                 llm_update_params.LlmUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"query_version": query_version}, llm_update_params.LlmUpdateParams),
             ),
             cast_to=LlmResponse,
         )
@@ -425,6 +447,7 @@ class AsyncLlmResource(AsyncAPIResource):
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
         tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
+        version: Optional[float] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -489,6 +512,8 @@ class AsyncLlmResource(AsyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
+          version: Version of the Retell LLM. Default to 0. Is part of the query parameter.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -513,6 +538,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
+                    "version": version,
                 },
                 llm_create_params.LlmCreateParams,
             ),
@@ -526,6 +552,7 @@ class AsyncLlmResource(AsyncAPIResource):
         self,
         llm_id: str,
         *,
+        version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -537,6 +564,8 @@ class AsyncLlmResource(AsyncAPIResource):
         Retrieve details of a specific Retell LLM Response Engine
 
         Args:
+          version: Optional version of the API to use for this request. Default to 0.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -550,7 +579,11 @@ class AsyncLlmResource(AsyncAPIResource):
         return await self._get(
             f"/get-retell-llm/{llm_id}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"version": version}, llm_retrieve_params.LlmRetrieveParams),
             ),
             cast_to=LlmResponse,
         )
@@ -559,6 +592,7 @@ class AsyncLlmResource(AsyncAPIResource):
         self,
         llm_id: str,
         *,
+        query_version: int | NotGiven = NOT_GIVEN,
         begin_message: Optional[str] | NotGiven = NOT_GIVEN,
         default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
@@ -581,6 +615,7 @@ class AsyncLlmResource(AsyncAPIResource):
         starting_state: Optional[str] | NotGiven = NOT_GIVEN,
         states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
         tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
+        body_version: Optional[float] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -592,6 +627,8 @@ class AsyncLlmResource(AsyncAPIResource):
         Update an existing Retell LLM Response Engine
 
         Args:
+          query_version: Optional version of the API to use for this request. Default to 0.
+
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
 
@@ -643,6 +680,8 @@ class AsyncLlmResource(AsyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
+          body_version: Version of the Retell LLM. Default to 0. Is part of the query parameter.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -669,11 +708,16 @@ class AsyncLlmResource(AsyncAPIResource):
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
+                    "body_version": body_version,
                 },
                 llm_update_params.LlmUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"query_version": query_version}, llm_update_params.LlmUpdateParams),
             ),
             cast_to=LlmResponse,
         )

@@ -36,6 +36,13 @@ class CallCreatePhoneCallParams(TypedDict, total=False):
     This does not bind the agent to this number, this is for one time override.
     """
 
+    override_agent_version: int
+    """For this particular call, override the agent version used with this version.
+
+    This does not bind the agent to this number, this is for one time override.
+    Default to 0.
+    """
+
     retell_llm_dynamic_variables: Dict[str, object]
     """
     Add optional dynamic variables in key value pairs of string that injects into

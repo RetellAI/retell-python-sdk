@@ -38,16 +38,17 @@ Methods:
 Types:
 
 ```python
-from retell.types import AgentResponse, AgentListResponse
+from retell.types import AgentResponse, AgentListResponse, AgentGetVersionsResponse
 ```
 
 Methods:
 
 - <code title="post /create-agent">client.agent.<a href="./src/retell/resources/agent.py">create</a>(\*\*<a href="src/retell/types/agent_create_params.py">params</a>) -> <a href="./src/retell/types/agent_response.py">AgentResponse</a></code>
-- <code title="get /get-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">retrieve</a>(agent_id) -> <a href="./src/retell/types/agent_response.py">AgentResponse</a></code>
+- <code title="get /get-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">retrieve</a>(agent_id, \*\*<a href="src/retell/types/agent_retrieve_params.py">params</a>) -> <a href="./src/retell/types/agent_response.py">AgentResponse</a></code>
 - <code title="patch /update-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">update</a>(agent_id, \*\*<a href="src/retell/types/agent_update_params.py">params</a>) -> <a href="./src/retell/types/agent_response.py">AgentResponse</a></code>
 - <code title="get /list-agents">client.agent.<a href="./src/retell/resources/agent.py">list</a>() -> <a href="./src/retell/types/agent_list_response.py">AgentListResponse</a></code>
 - <code title="delete /delete-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">delete</a>(agent_id) -> None</code>
+- <code title="get /get-agent-versions/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">get_versions</a>(agent_id) -> <a href="./src/retell/types/agent_get_versions_response.py">AgentGetVersionsResponse</a></code>
 
 # Llm
 
@@ -60,7 +61,7 @@ from retell.types import LlmResponse, LlmListResponse
 Methods:
 
 - <code title="post /create-retell-llm">client.llm.<a href="./src/retell/resources/llm.py">create</a>(\*\*<a href="src/retell/types/llm_create_params.py">params</a>) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
-- <code title="get /get-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">retrieve</a>(llm_id) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
+- <code title="get /get-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">retrieve</a>(llm_id, \*\*<a href="src/retell/types/llm_retrieve_params.py">params</a>) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
 - <code title="patch /update-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">update</a>(llm_id, \*\*<a href="src/retell/types/llm_update_params.py">params</a>) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
 - <code title="get /list-retell-llms">client.llm.<a href="./src/retell/resources/llm.py">list</a>() -> <a href="./src/retell/types/llm_list_response.py">LlmListResponse</a></code>
 - <code title="delete /delete-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">delete</a>(llm_id) -> None</code>

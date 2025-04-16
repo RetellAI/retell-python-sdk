@@ -53,10 +53,12 @@ class PhoneNumberResource(SyncAPIResource):
         *,
         area_code: int | NotGiven = NOT_GIVEN,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
         number_provider: Literal["twilio", "telnyx"] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -75,6 +77,9 @@ class PhoneNumberResource(SyncAPIResource):
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
 
+          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
+              default to 0.
+
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
 
@@ -85,6 +90,9 @@ class PhoneNumberResource(SyncAPIResource):
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
               initiate outbound call without agent id override.
+
+          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
+              default to 0.
 
           extra_headers: Send extra headers
 
@@ -100,10 +108,12 @@ class PhoneNumberResource(SyncAPIResource):
                 {
                     "area_code": area_code,
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_agent_version": inbound_agent_version,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "number_provider": number_provider,
                     "outbound_agent_id": outbound_agent_id,
+                    "outbound_agent_version": outbound_agent_version,
                 },
                 phone_number_create_params.PhoneNumberCreateParams,
             ),
@@ -151,9 +161,11 @@ class PhoneNumberResource(SyncAPIResource):
         phone_number: str,
         *,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: Optional[str] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -169,6 +181,9 @@ class PhoneNumberResource(SyncAPIResource):
               agent when receiving inbound calls. If set to null, this number would not accept
               inbound call.
 
+          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
+              default to 0.
+
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
 
@@ -177,6 +192,9 @@ class PhoneNumberResource(SyncAPIResource):
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If set to null, this number would not be
               able to initiate outbound call without agent id override.
+
+          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
+              default to 0.
 
           extra_headers: Send extra headers
 
@@ -193,9 +211,11 @@ class PhoneNumberResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_agent_version": inbound_agent_version,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
+                    "outbound_agent_version": outbound_agent_version,
                 },
                 phone_number_update_params.PhoneNumberUpdateParams,
             ),
@@ -264,9 +284,11 @@ class PhoneNumberResource(SyncAPIResource):
         phone_number: str,
         termination_uri: str,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
-        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_id: str | NotGiven = NOT_GIVEN,
+        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         sip_trunk_auth_password: str | NotGiven = NOT_GIVEN,
         sip_trunk_auth_username: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -292,6 +314,9 @@ class PhoneNumberResource(SyncAPIResource):
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
 
+          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
+              default to 0.
+
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
 
@@ -300,6 +325,9 @@ class PhoneNumberResource(SyncAPIResource):
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
               initiate outbound call without agent id override.
+
+          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
+              default to 0.
 
           sip_trunk_auth_password: The password used for authentication for the SIP trunk.
 
@@ -320,9 +348,11 @@ class PhoneNumberResource(SyncAPIResource):
                     "phone_number": phone_number,
                     "termination_uri": termination_uri,
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_agent_version": inbound_agent_version,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
+                    "outbound_agent_version": outbound_agent_version,
                     "sip_trunk_auth_password": sip_trunk_auth_password,
                     "sip_trunk_auth_username": sip_trunk_auth_username,
                 },
@@ -360,10 +390,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         *,
         area_code: int | NotGiven = NOT_GIVEN,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
         number_provider: Literal["twilio", "telnyx"] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -382,6 +414,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
 
+          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
+              default to 0.
+
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
 
@@ -392,6 +427,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
               initiate outbound call without agent id override.
+
+          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
+              default to 0.
 
           extra_headers: Send extra headers
 
@@ -407,10 +445,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                 {
                     "area_code": area_code,
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_agent_version": inbound_agent_version,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "number_provider": number_provider,
                     "outbound_agent_id": outbound_agent_id,
+                    "outbound_agent_version": outbound_agent_version,
                 },
                 phone_number_create_params.PhoneNumberCreateParams,
             ),
@@ -458,9 +498,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         phone_number: str,
         *,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: Optional[str] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -476,6 +518,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               agent when receiving inbound calls. If set to null, this number would not accept
               inbound call.
 
+          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
+              default to 0.
+
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
 
@@ -484,6 +529,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If set to null, this number would not be
               able to initiate outbound call without agent id override.
+
+          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
+              default to 0.
 
           extra_headers: Send extra headers
 
@@ -500,9 +548,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_agent_version": inbound_agent_version,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
+                    "outbound_agent_version": outbound_agent_version,
                 },
                 phone_number_update_params.PhoneNumberUpdateParams,
             ),
@@ -571,9 +621,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         phone_number: str,
         termination_uri: str,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         nickname: str | NotGiven = NOT_GIVEN,
-        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
+        outbound_agent_id: str | NotGiven = NOT_GIVEN,
+        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         sip_trunk_auth_password: str | NotGiven = NOT_GIVEN,
         sip_trunk_auth_username: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -599,6 +651,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
 
+          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
+              default to 0.
+
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
 
@@ -607,6 +662,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
               initiate outbound call without agent id override.
+
+          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
+              default to 0.
 
           sip_trunk_auth_password: The password used for authentication for the SIP trunk.
 
@@ -627,9 +685,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "phone_number": phone_number,
                     "termination_uri": termination_uri,
                     "inbound_agent_id": inbound_agent_id,
+                    "inbound_agent_version": inbound_agent_version,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
+                    "outbound_agent_version": outbound_agent_version,
                     "sip_trunk_auth_password": sip_trunk_auth_password,
                     "sip_trunk_auth_username": sip_trunk_auth_username,
                 },

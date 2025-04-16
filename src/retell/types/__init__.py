@@ -17,14 +17,17 @@ from .agent_create_params import AgentCreateParams as AgentCreateParams
 from .agent_list_response import AgentListResponse as AgentListResponse
 from .agent_update_params import AgentUpdateParams as AgentUpdateParams
 from .batch_call_response import BatchCallResponse as BatchCallResponse
+from .llm_retrieve_params import LlmRetrieveParams as LlmRetrieveParams
 from .phone_call_response import PhoneCallResponse as PhoneCallResponse
 from .voice_list_response import VoiceListResponse as VoiceListResponse
+from .agent_retrieve_params import AgentRetrieveParams as AgentRetrieveParams
 from .phone_number_response import PhoneNumberResponse as PhoneNumberResponse
 from .knowledge_base_response import KnowledgeBaseResponse as KnowledgeBaseResponse
 from .phone_number_create_params import PhoneNumberCreateParams as PhoneNumberCreateParams
 from .phone_number_import_params import PhoneNumberImportParams as PhoneNumberImportParams
 from .phone_number_list_response import PhoneNumberListResponse as PhoneNumberListResponse
 from .phone_number_update_params import PhoneNumberUpdateParams as PhoneNumberUpdateParams
+from .agent_get_versions_response import AgentGetVersionsResponse as AgentGetVersionsResponse
 from .call_create_web_call_params import CallCreateWebCallParams as CallCreateWebCallParams
 from .knowledge_base_create_params import KnowledgeBaseCreateParams as KnowledgeBaseCreateParams
 from .knowledge_base_list_response import KnowledgeBaseListResponse as KnowledgeBaseListResponse

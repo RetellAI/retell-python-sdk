@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from typing import List, Union, Iterable, Optional
-from typing_extensions import Literal, Required, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = [
     "AgentUpdateParams",
@@ -21,6 +23,9 @@ __all__ = [
 
 
 class AgentUpdateParams(TypedDict, total=False):
+    query_version: Annotated[int, PropertyInfo(alias="version")]
+    """Optional version of the API to use for this request. Default to 0."""
+
     agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
 
@@ -269,6 +274,9 @@ class AgentUpdateParams(TypedDict, total=False):
 
     Default to fast mode.
     """
+
+    body_version: Annotated[Optional[float], PropertyInfo(alias="version")]
+    """Version of the agent. Default to 0. Is part of the query parameter."""
 
     voice_id: str
     """Unique voice id used for the agent.

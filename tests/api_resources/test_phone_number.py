@@ -30,10 +30,12 @@ class TestPhoneNumber:
         phone_number = client.phone_number.create(
             area_code=415,
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_agent_version=1,
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             number_provider="twilio",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            outbound_agent_version=1,
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -107,9 +109,11 @@ class TestPhoneNumber:
         phone_number = client.phone_number.update(
             phone_number="+14157774444",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_agent_version=1,
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            outbound_agent_version=1,
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -221,9 +225,11 @@ class TestPhoneNumber:
             phone_number="+14157774444",
             termination_uri="someuri.pstn.twilio.com",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_agent_version=1,
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            outbound_agent_version=1,
             sip_trunk_auth_password="123456",
             sip_trunk_auth_username="username",
         )
@@ -269,10 +275,12 @@ class TestAsyncPhoneNumber:
         phone_number = await async_client.phone_number.create(
             area_code=415,
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_agent_version=1,
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             number_provider="twilio",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            outbound_agent_version=1,
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -346,9 +354,11 @@ class TestAsyncPhoneNumber:
         phone_number = await async_client.phone_number.update(
             phone_number="+14157774444",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_agent_version=1,
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            outbound_agent_version=1,
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -460,9 +470,11 @@ class TestAsyncPhoneNumber:
             phone_number="+14157774444",
             termination_uri="someuri.pstn.twilio.com",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            inbound_agent_version=1,
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            outbound_agent_version=1,
             sip_trunk_auth_password="123456",
             sip_trunk_auth_username="username",
         )

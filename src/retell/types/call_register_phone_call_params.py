@@ -12,6 +12,9 @@ class CallRegisterPhoneCallParams(TypedDict, total=False):
     agent_id: Required[str]
     """The agent to use for the call."""
 
+    agent_version: int
+    """The version of the agent to use for the call."""
+
     direction: Literal["inbound", "outbound"]
     """Direction of the phone call. Stored for tracking purpose."""
 
