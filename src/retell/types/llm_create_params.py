@@ -136,7 +136,7 @@ class LlmCreateParams(TypedDict, total=False):
     """
 
     version: Optional[float]
-    """Version of the Retell LLM. Default to 0. Is part of the query parameter."""
+    """Version of the Retell LLM."""
 
 
 class GeneralToolEndCallTool(TypedDict, total=False):
