@@ -1,5 +1,31 @@
 # Changelog
 
+## 4.26.0 (2025-04-16)
+
+Full Changelog: [v4.25.0...v4.26.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.25.0...v4.26.0)
+
+### Features
+
+* **api:** api update ([2d16641](https://github.com/RetellAI/retell-python-sdk/commit/2d166415ab5e4ece0330373ea2ebb9f98ea491df))
+* **api:** api update ([0afbfe6](https://github.com/RetellAI/retell-python-sdk/commit/0afbfe6ed6d7788049f245b8924ee987534134d9))
+* **api:** api update ([c1a1694](https://github.com/RetellAI/retell-python-sdk/commit/c1a169403dba8827c563ec0c94a19c8840ba80c9))
+
+
+### Bug Fixes
+
+* **perf:** optimize some hot paths ([cdf7ff2](https://github.com/RetellAI/retell-python-sdk/commit/cdf7ff2bf99325bb69644893019cd6e63d4790b8))
+* **perf:** skip traversing types for NotGiven values ([a5d9069](https://github.com/RetellAI/retell-python-sdk/commit/a5d9069d9c2c0a0f4bbf596bf0cbf1915fc50a50))
+
+
+### Chores
+
+* **client:** minor internal fixes ([e3b004c](https://github.com/RetellAI/retell-python-sdk/commit/e3b004c45f0248548fb3432b3f44a4b6728fd25c))
+* **internal:** base client updates ([57475f6](https://github.com/RetellAI/retell-python-sdk/commit/57475f6e038cc1efc1c2e50cf9bfaea9c025d90f))
+* **internal:** bump pyright version ([7627186](https://github.com/RetellAI/retell-python-sdk/commit/76271860a6ad29276ea95e897bfdd1a91142a585))
+* **internal:** update pyright settings ([a211c52](https://github.com/RetellAI/retell-python-sdk/commit/a211c529d199ce449924d422d16fe14eedf9e47c))
+* update tests ([056ec2a](https://github.com/RetellAI/retell-python-sdk/commit/056ec2acad0e119195a75711cac8f8971efbaa73))
+* update tests ([52c5253](https://github.com/RetellAI/retell-python-sdk/commit/52c52537b775efdbdd9ae906307eb858ecba2edb))
+
 ## 4.25.0 (2025-04-10)
 
 Full Changelog: [v4.24.0...v4.25.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.24.0...v4.25.0)
