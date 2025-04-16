@@ -141,6 +141,7 @@ class TestCall:
                 },
                 "to_number": ["string"],
                 "user_sentiment": ["Positive"],
+                "version": [0],
             },
             limit=0,
             pagination_key="pagination_key",
@@ -221,6 +222,7 @@ class TestCall:
             to_number="+12137774445",
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            override_agent_version=1,
             retell_llm_dynamic_variables={"customer_name": "bar"},
         )
         assert_matches_type(PhoneCallResponse, call, path=["response"])
@@ -262,6 +264,7 @@ class TestCall:
     def test_method_create_web_call_with_all_params(self, client: Retell) -> None:
         call = client.call.create_web_call(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            agent_version=1,
             metadata={},
             retell_llm_dynamic_variables={"customer_name": "bar"},
         )
@@ -302,6 +305,7 @@ class TestCall:
     def test_method_register_phone_call_with_all_params(self, client: Retell) -> None:
         call = client.call.register_phone_call(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            agent_version=1,
             direction="inbound",
             from_number="+14157774444",
             metadata={},
@@ -457,6 +461,7 @@ class TestAsyncCall:
                 },
                 "to_number": ["string"],
                 "user_sentiment": ["Positive"],
+                "version": [0],
             },
             limit=0,
             pagination_key="pagination_key",
@@ -537,6 +542,7 @@ class TestAsyncCall:
             to_number="+12137774445",
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            override_agent_version=1,
             retell_llm_dynamic_variables={"customer_name": "bar"},
         )
         assert_matches_type(PhoneCallResponse, call, path=["response"])
@@ -578,6 +584,7 @@ class TestAsyncCall:
     async def test_method_create_web_call_with_all_params(self, async_client: AsyncRetell) -> None:
         call = await async_client.call.create_web_call(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            agent_version=1,
             metadata={},
             retell_llm_dynamic_variables={"customer_name": "bar"},
         )
@@ -618,6 +625,7 @@ class TestAsyncCall:
     async def test_method_register_phone_call_with_all_params(self, async_client: AsyncRetell) -> None:
         call = await async_client.call.register_phone_call(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            agent_version=1,
             direction="inbound",
             from_number="+14157774444",
             metadata={},

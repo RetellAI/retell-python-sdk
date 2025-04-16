@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
-from typing_extensions import Literal, Required, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
+
+from .._utils import PropertyInfo
 
 __all__ = [
     "LlmUpdateParams",
@@ -42,6 +44,9 @@ __all__ = [
 
 
 class LlmUpdateParams(TypedDict, total=False):
+    query_version: Annotated[int, PropertyInfo(alias="version")]
+    """Optional version of the API to use for this request. Default to 0."""
+
     begin_message: Optional[str]
     """First utterance said by the agent in the call.
 
@@ -134,6 +139,9 @@ class LlmUpdateParams(TypedDict, total=False):
     follow the json schema. The time to save a new tool or change to a tool will be
     longer as additional processing is needed. Default to false.
     """
+
+    body_version: Annotated[Optional[float], PropertyInfo(alias="version")]
+    """Version of the Retell LLM. Default to 0. Is part of the query parameter."""
 
 
 class GeneralToolEndCallTool(TypedDict, total=False):

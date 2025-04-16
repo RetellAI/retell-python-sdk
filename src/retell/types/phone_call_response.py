@@ -546,3 +546,6 @@ class PhoneCallResponse(BaseModel):
     It precisely captures when (at what utterance, which word) the tool was invoked
     and what was the result. Available after call ends.
     """
+
+    version: Optional[int] = None
+    """The version of the agent."""

@@ -276,6 +276,9 @@ class AgentCreateParams(TypedDict, total=False):
     Default to fast mode.
     """
 
+    version: Optional[float]
+    """Version of the agent. Default to 0. Is part of the query parameter."""
+
     voice_model: Optional[
         Literal[
             "eleven_turbo_v2",

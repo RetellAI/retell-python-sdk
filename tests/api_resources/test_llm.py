@@ -100,6 +100,7 @@ class TestLlm:
                 },
             ],
             tool_call_strict_mode=True,
+            version=0,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -126,14 +127,22 @@ class TestLlm:
     @parametrize
     def test_method_retrieve(self, client: Retell) -> None:
         llm = client.llm.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(LlmResponse, llm, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Retell) -> None:
+        llm = client.llm.retrieve(
+            llm_id="16b980523634a6dc504898cda492e939",
+            version=1,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.llm.with_raw_response.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
         )
 
         assert response.is_closed is True
@@ -144,7 +153,7 @@ class TestLlm:
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.llm.with_streaming_response.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -158,7 +167,7 @@ class TestLlm:
     def test_path_params_retrieve(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `llm_id` but received ''"):
             client.llm.with_raw_response.retrieve(
-                "",
+                llm_id="",
             )
 
     @parametrize
@@ -172,6 +181,7 @@ class TestLlm:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         llm = client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
+            query_version=1,
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
             general_prompt="You are ...",
@@ -247,6 +257,7 @@ class TestLlm:
                 },
             ],
             tool_call_strict_mode=True,
+            body_version=0,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -431,6 +442,7 @@ class TestAsyncLlm:
                 },
             ],
             tool_call_strict_mode=True,
+            version=0,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -457,14 +469,22 @@ class TestAsyncLlm:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(LlmResponse, llm, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncRetell) -> None:
+        llm = await async_client.llm.retrieve(
+            llm_id="16b980523634a6dc504898cda492e939",
+            version=1,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.llm.with_raw_response.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
         )
 
         assert response.is_closed is True
@@ -475,7 +495,7 @@ class TestAsyncLlm:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.llm.with_streaming_response.retrieve(
-            "16b980523634a6dc504898cda492e939",
+            llm_id="16b980523634a6dc504898cda492e939",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -489,7 +509,7 @@ class TestAsyncLlm:
     async def test_path_params_retrieve(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `llm_id` but received ''"):
             await async_client.llm.with_raw_response.retrieve(
-                "",
+                llm_id="",
             )
 
     @parametrize
@@ -503,6 +523,7 @@ class TestAsyncLlm:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
+            query_version=1,
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
             general_prompt="You are ...",
@@ -578,6 +599,7 @@ class TestAsyncLlm:
                 },
             ],
             tool_call_strict_mode=True,
+            body_version=0,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 

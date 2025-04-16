@@ -22,6 +22,12 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     null, this number would not accept inbound call.
     """
 
+    inbound_agent_version: Optional[int]
+    """Version of the inbound agent to bind to the number.
+
+    If not provided, will default to 0.
+    """
+
     inbound_webhook_url: Optional[str]
     """
     If set, will send a webhook for inbound calls, where you can to override agent
@@ -40,4 +46,10 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     The number will automatically use the agent when conducting outbound calls. If
     null, this number would not be able to initiate outbound call without agent id
     override.
+    """
+
+    outbound_agent_version: Optional[int]
+    """Version of the outbound agent to bind to the number.
+
+    If not provided, will default to 0.
     """

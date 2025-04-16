@@ -109,6 +109,7 @@ call_responses = client.call.list(
         },
         "to_number": ["string"],
         "user_sentiment": ["Positive"],
+        "version": [0],
     },
 )
 print(call_responses.filter_criteria)

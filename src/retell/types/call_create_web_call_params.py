@@ -15,6 +15,9 @@ class CallCreateWebCallParams(TypedDict, total=False):
     Your agent would contain the LLM Websocket url used for this call.
     """
 
+    agent_version: int
+    """The version of the agent to use for the call."""
+
     metadata: object
     """An arbitrary object for storage purpose only.
 
