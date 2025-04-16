@@ -288,7 +288,7 @@ class AgentResource(SyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
-          version: Version of the agent. Default to 0. Is part of the query parameter.
+          version: Version of the agent.
 
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
@@ -658,7 +658,7 @@ class AgentResource(SyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
-          body_version: Version of the agent. Default to 0. Is part of the query parameter.
+          body_version: Version of the agent.
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -1103,7 +1103,7 @@ class AsyncAgentResource(AsyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
-          version: Version of the agent. Default to 0. Is part of the query parameter.
+          version: Version of the agent.
 
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
@@ -1473,7 +1473,7 @@ class AsyncAgentResource(AsyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
-          body_version: Version of the agent. Default to 0. Is part of the query parameter.
+          body_version: Version of the agent.
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.

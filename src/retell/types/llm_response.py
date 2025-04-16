@@ -803,4 +803,4 @@ class LlmResponse(BaseModel):
     """
 
     version: Optional[float] = None
-    """Version of the Retell LLM. Default to 0. Is part of the query parameter."""
+    """Version of the Retell LLM."""

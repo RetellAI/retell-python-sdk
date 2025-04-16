@@ -141,7 +141,7 @@ class LlmUpdateParams(TypedDict, total=False):
     """
 
     body_version: Annotated[Optional[float], PropertyInfo(alias="version")]
-    """Version of the Retell LLM. Default to 0. Is part of the query parameter."""
+    """Version of the Retell LLM."""
 
 
 class GeneralToolEndCallTool(TypedDict, total=False):
