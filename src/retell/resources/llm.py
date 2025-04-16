@@ -138,7 +138,7 @@ class LlmResource(SyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
-          version: Version of the Retell LLM. Default to 0. Is part of the query parameter.
+          version: Version of the Retell LLM.
 
           extra_headers: Send extra headers
 
@@ -306,7 +306,7 @@ class LlmResource(SyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
-          body_version: Version of the Retell LLM. Default to 0. Is part of the query parameter.
+          body_version: Version of the Retell LLM.
 
           extra_headers: Send extra headers
 
@@ -512,7 +512,7 @@ class AsyncLlmResource(AsyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
-          version: Version of the Retell LLM. Default to 0. Is part of the query parameter.
+          version: Version of the Retell LLM.
 
           extra_headers: Send extra headers
 
@@ -680,7 +680,7 @@ class AsyncLlmResource(AsyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
-          body_version: Version of the Retell LLM. Default to 0. Is part of the query parameter.
+          body_version: Version of the Retell LLM.
 
           extra_headers: Send extra headers
 

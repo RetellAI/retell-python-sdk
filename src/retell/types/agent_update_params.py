@@ -276,7 +276,7 @@ class AgentUpdateParams(TypedDict, total=False):
     """
 
     body_version: Annotated[Optional[float], PropertyInfo(alias="version")]
-    """Version of the agent. Default to 0. Is part of the query parameter."""
+    """Version of the agent."""
 
     voice_id: str
     """Unique voice id used for the agent.

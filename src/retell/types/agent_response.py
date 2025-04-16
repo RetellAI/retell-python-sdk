@@ -388,7 +388,7 @@ class AgentResponse(BaseModel):
     """
 
     version: Optional[float] = None
-    """Version of the agent. Default to 0. Is part of the query parameter."""
+    """Version of the agent."""
 
     voice_model: Optional[
         Literal[
