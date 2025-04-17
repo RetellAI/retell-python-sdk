@@ -35,7 +35,10 @@ class PhoneNumberResponse(BaseModel):
     """
 
     inbound_agent_version: Optional[int] = None
-    """The version of the inbound agent."""
+    """Version of the inbound agent to bind to the number.
+
+    If not provided, will default to 0.
+    """
 
     inbound_webhook_url: Optional[str] = None
     """
@@ -55,7 +58,10 @@ class PhoneNumberResponse(BaseModel):
     """
 
     outbound_agent_version: Optional[int] = None
-    """The version of the outbound agent."""
+    """Version of the outbound agent to bind to the number.
+
+    If not provided, will default to 0.
+    """
 
     phone_number_pretty: Optional[str] = None
     """Pretty printed phone number, provided for your reference."""
