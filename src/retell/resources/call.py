@@ -268,8 +268,8 @@ class CallResource(SyncAPIResource):
               not bind the agent to this number, this is for one time override.
 
           override_agent_version: For this particular call, override the agent version used with this version.
-              This does not bind the agent to this number, this is for one time override.
-              Default to 0.
+              This does not bind the agent version to this number, this is for one time
+              override.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
               your Response Engine prompt and tool description. Only applicable for Response
@@ -659,8 +659,8 @@ class AsyncCallResource(AsyncAPIResource):
               not bind the agent to this number, this is for one time override.
 
           override_agent_version: For this particular call, override the agent version used with this version.
-              This does not bind the agent to this number, this is for one time override.
-              Default to 0.
+              This does not bind the agent version to this number, this is for one time
+              override.
 
           retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
               your Response Engine prompt and tool description. Only applicable for Response
