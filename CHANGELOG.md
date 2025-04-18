@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.27.1 (2025-04-18)
+
+Full Changelog: [v4.27.0...v4.27.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.27.0...v4.27.1)
+
+### Bug Fixes
+
+* **tests:** skip unsupported test failure ([4b84d08](https://github.com/RetellAI/retell-python-sdk/commit/4b84d0840d58854e82f52f827eb78d01af451388))
+
+
+### Chores
+
+* **internal:** update models test ([f3443df](https://github.com/RetellAI/retell-python-sdk/commit/f3443dfabd37ffb641707df5158334af96dc9b96))
+
 ## 4.27.0 (2025-04-17)
 
 Full Changelog: [v4.26.0...v4.27.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.26.0...v4.27.0)
