@@ -327,7 +327,6 @@ class TestAgent:
                 "",
             )
 
-    @pytest.mark.skip(reason="prism test failure")
     @parametrize
     def test_method_get_versions(self, client: Retell) -> None:
         agent = client.agent.get_versions(
@@ -335,7 +334,6 @@ class TestAgent:
         )
         assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
 
-    @pytest.mark.skip(reason="prism test failure")
     @parametrize
     def test_raw_response_get_versions(self, client: Retell) -> None:
         response = client.agent.with_raw_response.get_versions(
@@ -347,7 +345,6 @@ class TestAgent:
         agent = response.parse()
         assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
 
-    @pytest.mark.skip(reason="prism test failure")
     @parametrize
     def test_streaming_response_get_versions(self, client: Retell) -> None:
         with client.agent.with_streaming_response.get_versions(
@@ -361,7 +358,6 @@ class TestAgent:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="prism test failure")
     @parametrize
     def test_path_params_get_versions(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
@@ -679,7 +675,6 @@ class TestAsyncAgent:
                 "",
             )
 
-    @pytest.mark.skip(reason="prism test failure")
     @parametrize
     async def test_method_get_versions(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.get_versions(
@@ -687,7 +682,6 @@ class TestAsyncAgent:
         )
         assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
 
-    @pytest.mark.skip(reason="prism test failure")
     @parametrize
     async def test_raw_response_get_versions(self, async_client: AsyncRetell) -> None:
         response = await async_client.agent.with_raw_response.get_versions(
@@ -699,7 +693,6 @@ class TestAsyncAgent:
         agent = await response.parse()
         assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
 
-    @pytest.mark.skip(reason="prism test failure")
     @parametrize
     async def test_streaming_response_get_versions(self, async_client: AsyncRetell) -> None:
         async with async_client.agent.with_streaming_response.get_versions(
@@ -713,7 +706,6 @@ class TestAsyncAgent:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="prism test failure")
     @parametrize
     async def test_path_params_get_versions(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
