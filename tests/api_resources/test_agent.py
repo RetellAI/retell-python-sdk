@@ -38,6 +38,7 @@ class TestAgent:
             response_engine={
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
+                "version": 0,
             },
             voice_id="11labs-Adrian",
             agent_name="Jarvis",
@@ -217,6 +218,7 @@ class TestAgent:
             response_engine={
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
+                "version": 0,
             },
             responsiveness=1,
             ring_duration_ms=30000,
@@ -386,6 +388,7 @@ class TestAsyncAgent:
             response_engine={
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
+                "version": 0,
             },
             voice_id="11labs-Adrian",
             agent_name="Jarvis",
@@ -565,6 +568,7 @@ class TestAsyncAgent:
             response_engine={
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
+                "version": 0,
             },
             responsiveness=1,
             ring_duration_ms=30000,

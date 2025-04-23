@@ -351,6 +351,9 @@ class ResponseEngineResponseEngineRetellLm(TypedDict, total=False):
     type: Required[Literal["retell-llm"]]
     """type of the Response Engine."""
 
+    version: Optional[float]
+    """Version of the Retell LLM Response Engine."""
+
 
 class ResponseEngineResponseEngineCustomLm(TypedDict, total=False):
     llm_websocket_url: Required[str]
@@ -366,6 +369,9 @@ class ResponseEngineResponseEngineConversationFlow(TypedDict, total=False):
 
     type: Required[Literal["conversation-flow"]]
     """type of the Response Engine."""
+
+    version: Optional[float]
+    """Version of the Conversation Flow Response Engine."""
 
 
 ResponseEngine: TypeAlias = Union[

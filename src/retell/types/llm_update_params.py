@@ -45,7 +45,7 @@ __all__ = [
 
 class LlmUpdateParams(TypedDict, total=False):
     query_version: Annotated[int, PropertyInfo(alias="version")]
-    """Optional version of the API to use for this request. Default to 0."""
+    """Optional version of the API to use for this request. Default to latest version."""
 
     begin_message: Optional[str]
     """First utterance said by the agent in the call.

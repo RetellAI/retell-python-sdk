@@ -24,7 +24,7 @@ __all__ = [
 
 class AgentUpdateParams(TypedDict, total=False):
     query_version: Annotated[int, PropertyInfo(alias="version")]
-    """Optional version of the API to use for this request. Default to 0."""
+    """Optional version of the API to use for this request. Default to latest version."""
 
     agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
@@ -425,6 +425,9 @@ class ResponseEngineResponseEngineRetellLm(TypedDict, total=False):
     type: Required[Literal["retell-llm"]]
     """type of the Response Engine."""
 
+    version: Optional[float]
+    """Version of the Retell LLM Response Engine."""
+
 
 class ResponseEngineResponseEngineCustomLm(TypedDict, total=False):
     llm_websocket_url: Required[str]
@@ -440,6 +443,9 @@ class ResponseEngineResponseEngineConversationFlow(TypedDict, total=False):
 
     type: Required[Literal["conversation-flow"]]
     """type of the Response Engine."""
+
+    version: Optional[float]
+    """Version of the Conversation Flow Response Engine."""
 
 
 ResponseEngine: TypeAlias = Union[
