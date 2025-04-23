@@ -25,7 +25,7 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     inbound_agent_version: Optional[int]
     """Version of the inbound agent to bind to the number.
 
-    If not provided, will default to 0.
+    If not provided, will default to latest version.
     """
 
     inbound_webhook_url: Optional[str]
@@ -51,5 +51,5 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     outbound_agent_version: Optional[int]
     """Version of the outbound agent to bind to the number.
 
-    If not provided, will default to 0.
+    If not provided, will default to latest version.
     """

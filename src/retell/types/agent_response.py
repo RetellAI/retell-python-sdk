@@ -27,6 +27,9 @@ class ResponseEngineResponseEngineRetellLm(BaseModel):
     type: Literal["retell-llm"]
     """type of the Response Engine."""
 
+    version: Optional[float] = None
+    """Version of the Retell LLM Response Engine."""
+
 
 class ResponseEngineResponseEngineCustomLm(BaseModel):
     llm_websocket_url: str
@@ -42,6 +45,9 @@ class ResponseEngineResponseEngineConversationFlow(BaseModel):
 
     type: Literal["conversation-flow"]
     """type of the Response Engine."""
+
+    version: Optional[float] = None
+    """Version of the Conversation Flow Response Engine."""
 
 
 ResponseEngine: TypeAlias = Union[

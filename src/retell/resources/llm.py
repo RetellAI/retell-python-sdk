@@ -190,7 +190,7 @@ class LlmResource(SyncAPIResource):
         Retrieve details of a specific Retell LLM Response Engine
 
         Args:
-          version: Optional version of the API to use for this request. Default to 0.
+          version: Optional version of the API to use for this request. Default to latest version.
 
           extra_headers: Send extra headers
 
@@ -256,7 +256,7 @@ class LlmResource(SyncAPIResource):
         Update an existing Retell LLM Response Engine
 
         Args:
-          query_version: Optional version of the API to use for this request. Default to 0.
+          query_version: Optional version of the API to use for this request. Default to latest version.
 
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
@@ -570,7 +570,7 @@ class AsyncLlmResource(AsyncAPIResource):
         Retrieve details of a specific Retell LLM Response Engine
 
         Args:
-          version: Optional version of the API to use for this request. Default to 0.
+          version: Optional version of the API to use for this request. Default to latest version.
 
           extra_headers: Send extra headers
 
@@ -636,7 +636,7 @@ class AsyncLlmResource(AsyncAPIResource):
         Update an existing Retell LLM Response Engine
 
         Args:
-          query_version: Optional version of the API to use for this request. Default to 0.
+          query_version: Optional version of the API to use for this request. Default to latest version.
 
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.

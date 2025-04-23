@@ -75,7 +75,7 @@ class PhoneNumberResource(SyncAPIResource):
               inbound call.
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -89,7 +89,7 @@ class PhoneNumberResource(SyncAPIResource):
               initiate outbound call without agent id override.
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           extra_headers: Send extra headers
 
@@ -179,7 +179,7 @@ class PhoneNumberResource(SyncAPIResource):
               inbound call.
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -191,7 +191,7 @@ class PhoneNumberResource(SyncAPIResource):
               able to initiate outbound call without agent id override.
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           extra_headers: Send extra headers
 
@@ -312,7 +312,7 @@ class PhoneNumberResource(SyncAPIResource):
               inbound call.
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -324,7 +324,7 @@ class PhoneNumberResource(SyncAPIResource):
               initiate outbound call without agent id override.
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           sip_trunk_auth_password: The password used for authentication for the SIP trunk.
 
@@ -412,7 +412,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               inbound call.
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -426,7 +426,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               initiate outbound call without agent id override.
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           extra_headers: Send extra headers
 
@@ -516,7 +516,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               inbound call.
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -528,7 +528,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               able to initiate outbound call without agent id override.
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           extra_headers: Send extra headers
 
@@ -649,7 +649,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               inbound call.
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -661,7 +661,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               initiate outbound call without agent id override.
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to 0.
+              default to latest version.
 
           sip_trunk_auth_password: The password used for authentication for the SIP trunk.
 
