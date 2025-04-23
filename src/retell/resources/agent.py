@@ -391,7 +391,7 @@ class AgentResource(SyncAPIResource):
         Retrieve details of a specific agent
 
         Args:
-          version: Optional version of the API to use for this request. Default to 0.
+          version: Optional version of the API to use for this request. Default to latest version.
 
           extra_headers: Send extra headers
 
@@ -519,7 +519,7 @@ class AgentResource(SyncAPIResource):
         Update an existing agent
 
         Args:
-          query_version: Optional version of the API to use for this request. Default to 0.
+          query_version: Optional version of the API to use for this request. Default to latest version.
 
           agent_name: The name of the agent. Only used for your own reference.
 
@@ -1206,7 +1206,7 @@ class AsyncAgentResource(AsyncAPIResource):
         Retrieve details of a specific agent
 
         Args:
-          version: Optional version of the API to use for this request. Default to 0.
+          version: Optional version of the API to use for this request. Default to latest version.
 
           extra_headers: Send extra headers
 
@@ -1334,7 +1334,7 @@ class AsyncAgentResource(AsyncAPIResource):
         Update an existing agent
 
         Args:
-          query_version: Optional version of the API to use for this request. Default to 0.
+          query_version: Optional version of the API to use for this request. Default to latest version.
 
           agent_name: The name of the agent. Only used for your own reference.
 

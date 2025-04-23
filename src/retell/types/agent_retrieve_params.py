@@ -9,4 +9,4 @@ __all__ = ["AgentRetrieveParams"]
 
 class AgentRetrieveParams(TypedDict, total=False):
     version: int
-    """Optional version of the API to use for this request. Default to 0."""
+    """Optional version of the API to use for this request. Default to latest version."""
