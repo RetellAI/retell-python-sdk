@@ -1,5 +1,35 @@
 # Changelog
 
+## 4.28.0 (2025-04-28)
+
+Full Changelog: [v4.27.0...v4.28.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.27.0...v4.28.0)
+
+### Features
+
+* **api:** api update ([7209868](https://github.com/RetellAI/retell-python-sdk/commit/720986890a8507d13899991f36d15579c5e0b9d3))
+* **api:** api update ([3e5dcb9](https://github.com/RetellAI/retell-python-sdk/commit/3e5dcb923f8d33e884de34a1318d2fce12a69a3a))
+* **api:** api update ([39bff7c](https://github.com/RetellAI/retell-python-sdk/commit/39bff7cc6167ce97eb8ad4c4ca3d09bd8764a75f))
+* **api:** api update ([b5a06e9](https://github.com/RetellAI/retell-python-sdk/commit/b5a06e91f50360e0c0bb1fc1781fcd969e8bf048))
+
+
+### Bug Fixes
+
+* **pydantic v1:** more robust ModelField.annotation check ([55b27a8](https://github.com/RetellAI/retell-python-sdk/commit/55b27a85de8ee14c8526efeaeebaa49d74dacff8))
+* **tests:** skip unsupported test failure ([4b84d08](https://github.com/RetellAI/retell-python-sdk/commit/4b84d0840d58854e82f52f827eb78d01af451388))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([fec9a6a](https://github.com/RetellAI/retell-python-sdk/commit/fec9a6a1c287d3bb13bd1635e087be4011afb50e))
+* **ci:** add timeout thresholds for CI jobs ([ca60ef4](https://github.com/RetellAI/retell-python-sdk/commit/ca60ef4277816a35d2c90f03d2daff0ba82d259e))
+* **ci:** only use depot for staging repos ([d50e8a6](https://github.com/RetellAI/retell-python-sdk/commit/d50e8a65d3aabd49f3c4234e9e1e96b27d0677c7))
+* **ci:** run on more branches and use depot runners ([28cc47c](https://github.com/RetellAI/retell-python-sdk/commit/28cc47c7636e367b86db66859f8ce753f7f420ed))
+* **internal:** fix list file params ([70b1c71](https://github.com/RetellAI/retell-python-sdk/commit/70b1c71441bd11e0fdd06a772db93a7fa4f5db42))
+* **internal:** import reformatting ([41140c3](https://github.com/RetellAI/retell-python-sdk/commit/41140c3a54597b06dc6b2c2331b9f45f0716c782))
+* **internal:** minor formatting changes ([12f8012](https://github.com/RetellAI/retell-python-sdk/commit/12f80126dfcd2298064780a03a22a0cbf9eb5699))
+* **internal:** refactor retries to not use recursion ([01f6688](https://github.com/RetellAI/retell-python-sdk/commit/01f6688d5ce6dc10626843e99a69ba89c81e2e7d))
+* **internal:** update models test ([f3443df](https://github.com/RetellAI/retell-python-sdk/commit/f3443dfabd37ffb641707df5158334af96dc9b96))
+
 ## 4.27.0 (2025-04-17)
 
 Full Changelog: [v4.26.0...v4.27.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.26.0...v4.27.0)
