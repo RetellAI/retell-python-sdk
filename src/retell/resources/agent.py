@@ -108,6 +108,7 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
+        opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal["gpt-4o-mini", "gpt-4o"] | NotGiven = NOT_GIVEN,
@@ -250,6 +251,10 @@ class AgentResource(SyncAPIResource):
               three four two on july fifth, twenty twenty four for the twenty four dollars
               twelve cents payment" before starting audio generation.
 
+          opt_in_signed_url: Whether this agent opts in for signed URLs for public logs and recordings. When
+              enabled, the generated URLs will include security signatures that restrict
+              access and automatically expire after 24 hours.
+
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
               recording, logging, inbound/outbound phone numbers, etc. These data can still be
               accessed securely via webhooks. If not set, default value of false will apply.
@@ -349,6 +354,7 @@ class AgentResource(SyncAPIResource):
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
+                    "opt_in_signed_url": opt_in_signed_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
@@ -477,6 +483,7 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
+        opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal["gpt-4o-mini", "gpt-4o"] | NotGiven = NOT_GIVEN,
@@ -616,6 +623,10 @@ class AgentResource(SyncAPIResource):
               three four two on july fifth, twenty twenty four for the twenty four dollars
               twelve cents payment" before starting audio generation.
 
+          opt_in_signed_url: Whether this agent opts in for signed URLs for public logs and recordings. When
+              enabled, the generated URLs will include security signatures that restrict
+              access and automatically expire after 24 hours.
+
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
               recording, logging, inbound/outbound phone numbers, etc. These data can still be
               accessed securely via webhooks. If not set, default value of false will apply.
@@ -722,6 +733,7 @@ class AgentResource(SyncAPIResource):
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
+                    "opt_in_signed_url": opt_in_signed_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
@@ -923,6 +935,7 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
+        opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal["gpt-4o-mini", "gpt-4o"] | NotGiven = NOT_GIVEN,
@@ -1065,6 +1078,10 @@ class AsyncAgentResource(AsyncAPIResource):
               three four two on july fifth, twenty twenty four for the twenty four dollars
               twelve cents payment" before starting audio generation.
 
+          opt_in_signed_url: Whether this agent opts in for signed URLs for public logs and recordings. When
+              enabled, the generated URLs will include security signatures that restrict
+              access and automatically expire after 24 hours.
+
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
               recording, logging, inbound/outbound phone numbers, etc. These data can still be
               accessed securely via webhooks. If not set, default value of false will apply.
@@ -1164,6 +1181,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
+                    "opt_in_signed_url": opt_in_signed_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
@@ -1292,6 +1310,7 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
+        opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal["gpt-4o-mini", "gpt-4o"] | NotGiven = NOT_GIVEN,
@@ -1431,6 +1450,10 @@ class AsyncAgentResource(AsyncAPIResource):
               three four two on july fifth, twenty twenty four for the twenty four dollars
               twelve cents payment" before starting audio generation.
 
+          opt_in_signed_url: Whether this agent opts in for signed URLs for public logs and recordings. When
+              enabled, the generated URLs will include security signatures that restrict
+              access and automatically expire after 24 hours.
+
           opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
               recording, logging, inbound/outbound phone numbers, etc. These data can still be
               accessed securely via webhooks. If not set, default value of false will apply.
@@ -1537,6 +1560,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
+                    "opt_in_signed_url": opt_in_signed_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,

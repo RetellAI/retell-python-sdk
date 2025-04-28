@@ -214,6 +214,13 @@ class AgentCreateParams(TypedDict, total=False):
     twelve cents payment" before starting audio generation.
     """
 
+    opt_in_signed_url: bool
+    """Whether this agent opts in for signed URLs for public logs and recordings.
+
+    When enabled, the generated URLs will include security signatures that restrict
+    access and automatically expire after 24 hours.
+    """
+
     opt_out_sensitive_data_storage: bool
     """
     Whether this agent opts out of sensitive data storage like transcript,
