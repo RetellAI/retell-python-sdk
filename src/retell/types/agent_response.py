@@ -268,6 +268,9 @@ class AgentResponse(BaseModel):
     agent would never be interrupted.
     """
 
+    is_published: Optional[bool] = None
+    """Whether the agent is published."""
+
     language: Optional[
         Literal[
             "en-US",
@@ -400,7 +403,7 @@ class AgentResponse(BaseModel):
     Default to fast mode.
     """
 
-    version: Optional[float] = None
+    version: Optional[object] = None
     """Version of the agent."""
 
     voice_model: Optional[
