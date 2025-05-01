@@ -742,6 +742,9 @@ class LlmResponse(BaseModel):
     - Tools of LLM (no state) = general tools
     """
 
+    is_published: Optional[bool] = None
+    """Whether the Retell LLM Response Engine is published."""
+
     knowledge_base_ids: Optional[List[str]] = None
     """A list of knowledge base ids to use for this resource.
 
@@ -805,5 +808,5 @@ class LlmResponse(BaseModel):
     longer as additional processing is needed. Default to false.
     """
 
-    version: Optional[float] = None
+    version: Optional[object] = None
     """Version of the Retell LLM."""
