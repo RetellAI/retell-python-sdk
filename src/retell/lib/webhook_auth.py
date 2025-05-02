@@ -40,7 +40,9 @@ def make_secure_webhooks(get_signer, get_verifier):  # type: ignore
 
 def symmetric_get_signer(secret):  # type: ignore
     def signer(input_str):  # type: ignore
-        return hashlib.sha256(secret.encode() + input_str.encode()).hexdigest()  # type: ignore
+        h = hmac.new(secret.encode(), digestmod=hashlib.sha256) # type: ignore
+        h.update(input_str.encode()) # type: ignore
+        return h.hexdigest() # type: ignore
 
     return signer  # type: ignore
 
