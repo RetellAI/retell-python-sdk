@@ -38,6 +38,9 @@ class AgentCreateParams(TypedDict, total=False):
     agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
 
+    allow_user_dtmf: bool
+    """If set to true, will allow user to input DTMF digits."""
+
     ambient_sound: Optional[
         Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"]
     ]
