@@ -164,6 +164,9 @@ class AgentResponse(BaseModel):
     agent_name: Optional[str] = None
     """The name of the agent. Only used for your own reference."""
 
+    allow_user_dtmf: Optional[bool] = None
+    """If set to true, will allow user to input DTMF digits."""
+
     ambient_sound: Optional[
         Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"]
     ] = None
