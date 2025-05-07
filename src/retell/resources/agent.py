@@ -119,6 +119,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -364,6 +365,7 @@ class AgentResource(SyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "version": version,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -495,6 +497,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         body_version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
@@ -744,6 +747,7 @@ class AgentResource(SyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "body_version": body_version,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
@@ -946,6 +950,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -1191,6 +1196,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "version": version,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -1322,6 +1328,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         body_version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
@@ -1571,6 +1578,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "body_version": body_version,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
