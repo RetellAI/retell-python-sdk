@@ -17,6 +17,7 @@ __all__ = [
     "PostCallAnalysisDataBooleanAnalysisData",
     "PostCallAnalysisDataNumberAnalysisData",
     "PronunciationDictionary",
+    "UserDtmfOptions",
 ]
 
 
@@ -124,6 +125,17 @@ class PronunciationDictionary(BaseModel):
 
     word: str
     """The string of word / phrase to be annotated with pronunciation."""
+
+
+class UserDtmfOptions(BaseModel):
+    digit_limit: Optional[float] = None
+    """The maximum number of digits allowed in user DTMF input."""
+
+    termination_key: Optional[str] = None
+    """The key that terminates the DTMF input. Any digit, #, or \\** is allowed."""
+
+    timeout_ms: Optional[int] = None
+    """The timeout for user DTMF input in milliseconds."""
 
 
 class AgentResponse(BaseModel):
@@ -402,6 +414,8 @@ class AgentResponse(BaseModel):
 
     Default to fast mode.
     """
+
+    user_dtmf_options: Optional[UserDtmfOptions] = None
 
     version: Optional[object] = None
     """Version of the agent."""

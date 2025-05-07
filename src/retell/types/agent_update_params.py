@@ -19,6 +19,7 @@ __all__ = [
     "ResponseEngineResponseEngineRetellLm",
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
+    "UserDtmfOptions",
 ]
 
 
@@ -282,6 +283,8 @@ class AgentUpdateParams(TypedDict, total=False):
     Default to fast mode.
     """
 
+    user_dtmf_options: Optional[UserDtmfOptions]
+
     body_version: Annotated[Optional[float], PropertyInfo(alias="version")]
     """Version of the agent."""
 
@@ -460,3 +463,14 @@ ResponseEngine: TypeAlias = Union[
     ResponseEngineResponseEngineCustomLm,
     ResponseEngineResponseEngineConversationFlow,
 ]
+
+
+class UserDtmfOptions(TypedDict, total=False):
+    digit_limit: Optional[float]
+    """The maximum number of digits allowed in user DTMF input."""
+
+    termination_key: Optional[str]
+    """The key that terminates the DTMF input. Any digit, #, or \\** is allowed."""
+
+    timeout_ms: int
+    """The timeout for user DTMF input in milliseconds."""

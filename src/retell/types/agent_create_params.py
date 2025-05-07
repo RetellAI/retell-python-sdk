@@ -17,6 +17,7 @@ __all__ = [
     "PostCallAnalysisDataBooleanAnalysisData",
     "PostCallAnalysisDataNumberAnalysisData",
     "PronunciationDictionary",
+    "UserDtmfOptions",
 ]
 
 
@@ -283,6 +284,8 @@ class AgentCreateParams(TypedDict, total=False):
     Default to fast mode.
     """
 
+    user_dtmf_options: Optional[UserDtmfOptions]
+
     version: Optional[float]
     """Version of the agent."""
 
@@ -455,3 +458,14 @@ class PronunciationDictionary(TypedDict, total=False):
 
     word: Required[str]
     """The string of word / phrase to be annotated with pronunciation."""
+
+
+class UserDtmfOptions(TypedDict, total=False):
+    digit_limit: Optional[float]
+    """The maximum number of digits allowed in user DTMF input."""
+
+    termination_key: Optional[str]
+    """The key that terminates the DTMF input. Any digit, #, or \\** is allowed."""
+
+    timeout_ms: int
+    """The timeout for user DTMF input in milliseconds."""
