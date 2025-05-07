@@ -39,7 +39,10 @@ class AgentCreateParams(TypedDict, total=False):
     """The name of the agent. Only used for your own reference."""
 
     allow_user_dtmf: bool
-    """If set to true, will allow user to input DTMF digits."""
+    """If set to true, DTMF input will be accepted and processed.
+
+    If false, any DTMF input will be ignored.
+    """
 
     ambient_sound: Optional[
         Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"]
@@ -465,10 +468,21 @@ class PronunciationDictionary(TypedDict, total=False):
 
 class UserDtmfOptions(TypedDict, total=False):
     digit_limit: Optional[int]
-    """The maximum number of digits allowed in user DTMF input."""
+    """
+    The maximum number of digits allowed in the user's DTMF (Dual-Tone
+    Multi-Frequency) input per turn. Once this limit is reached, the input is
+    considered complete and a response will be generated immediately.
+    """
 
     termination_key: Optional[str]
-    """The key that terminates the DTMF input. Any digit, #, or \\** is allowed."""
+    """A single key that signals the end of DTMF input.
+
+    Acceptable values include any digit (0–9), the pound/hash symbol (#), or the
+    asterisk (\\**).
+    """
 
     timeout_ms: int
-    """The timeout for user DTMF input in milliseconds."""
+    """The time (in milliseconds) to wait for user DTMF input before timing out.
+
+    The timer resets with each digit received.
+    """

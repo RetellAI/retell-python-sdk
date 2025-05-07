@@ -160,7 +160,8 @@ class AgentResource(SyncAPIResource):
 
           agent_name: The name of the agent. Only used for your own reference.
 
-          allow_user_dtmf: If set to true, will allow user to input DTMF digits.
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -538,7 +539,8 @@ class AgentResource(SyncAPIResource):
 
           agent_name: The name of the agent. Only used for your own reference.
 
-          allow_user_dtmf: If set to true, will allow user to input DTMF digits.
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -999,7 +1001,8 @@ class AsyncAgentResource(AsyncAPIResource):
 
           agent_name: The name of the agent. Only used for your own reference.
 
-          allow_user_dtmf: If set to true, will allow user to input DTMF digits.
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -1377,7 +1380,8 @@ class AsyncAgentResource(AsyncAPIResource):
 
           agent_name: The name of the agent. Only used for your own reference.
 
-          allow_user_dtmf: If set to true, will allow user to input DTMF digits.
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
