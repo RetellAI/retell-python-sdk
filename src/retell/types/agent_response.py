@@ -128,7 +128,7 @@ class PronunciationDictionary(BaseModel):
 
 
 class UserDtmfOptions(BaseModel):
-    digit_limit: Optional[float] = None
+    digit_limit: Optional[int] = None
     """The maximum number of digits allowed in user DTMF input."""
 
     termination_key: Optional[str] = None

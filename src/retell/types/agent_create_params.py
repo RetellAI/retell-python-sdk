@@ -464,7 +464,7 @@ class PronunciationDictionary(TypedDict, total=False):
 
 
 class UserDtmfOptions(TypedDict, total=False):
-    digit_limit: Optional[float]
+    digit_limit: Optional[int]
     """The maximum number of digits allowed in user DTMF input."""
 
     termination_key: Optional[str]
