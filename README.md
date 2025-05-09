@@ -85,34 +85,19 @@ from retell import Retell
 
 client = Retell()
 
-call_responses = client.call.list(
-    filter_criteria={
-        "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
-        "call_status": ["ended"],
-        "call_successful": [True],
-        "call_type": ["phone_call"],
-        "direction": ["inbound"],
-        "disconnection_reason": ["user_hangup"],
-        "duration_ms": {
-            "lower_threshold": 0,
-            "upper_threshold": 0,
-        },
-        "e2e_latency_p50": {
-            "lower_threshold": 0,
-            "upper_threshold": 0,
-        },
-        "from_number": ["string"],
-        "in_voicemail": [True],
-        "start_timestamp": {
-            "lower_threshold": 1738475411000,
-            "upper_threshold": 1738475421000,
-        },
-        "to_number": ["string"],
-        "user_sentiment": ["Positive"],
-        "version": [0],
+agent_response = client.agent.create(
+    response_engine={
+        "llm_id": "llm_234sdertfsdsfsdf",
+        "type": "retell-llm",
+    },
+    voice_id="11labs-Adrian",
+    user_dtmf_options={
+        "digit_limit": 1,
+        "termination_key": "#",
+        "timeout_ms": 1000,
     },
 )
-print(call_responses.filter_criteria)
+print(agent_response.user_dtmf_options)
 ```
 
 ## Handling errors

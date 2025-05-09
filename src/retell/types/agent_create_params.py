@@ -17,6 +17,7 @@ __all__ = [
     "PostCallAnalysisDataBooleanAnalysisData",
     "PostCallAnalysisDataNumberAnalysisData",
     "PronunciationDictionary",
+    "UserDtmfOptions",
 ]
 
 
@@ -36,6 +37,12 @@ class AgentCreateParams(TypedDict, total=False):
 
     agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
+
+    allow_user_dtmf: bool
+    """If set to true, DTMF input will be accepted and processed.
+
+    If false, any DTMF input will be ignored.
+    """
 
     ambient_sound: Optional[
         Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"]
@@ -283,6 +290,8 @@ class AgentCreateParams(TypedDict, total=False):
     Default to fast mode.
     """
 
+    user_dtmf_options: Optional[UserDtmfOptions]
+
     version: Optional[float]
     """Version of the agent."""
 
@@ -455,3 +464,25 @@ class PronunciationDictionary(TypedDict, total=False):
 
     word: Required[str]
     """The string of word / phrase to be annotated with pronunciation."""
+
+
+class UserDtmfOptions(TypedDict, total=False):
+    digit_limit: Optional[int]
+    """
+    The maximum number of digits allowed in the user's DTMF (Dual-Tone
+    Multi-Frequency) input per turn. Once this limit is reached, the input is
+    considered complete and a response will be generated immediately.
+    """
+
+    termination_key: Optional[str]
+    """A single key that signals the end of DTMF input.
+
+    Acceptable values include any digit (0–9), the pound/hash symbol (#), or the
+    asterisk (\\**).
+    """
+
+    timeout_ms: int
+    """The time (in milliseconds) to wait for user DTMF input before timing out.
+
+    The timer resets with each digit received.
+    """

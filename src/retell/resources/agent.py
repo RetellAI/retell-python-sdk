@@ -52,6 +52,7 @@ class AgentResource(SyncAPIResource):
         response_engine: agent_create_params.ResponseEngine,
         voice_id: str,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
@@ -119,6 +120,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -157,6 +159,9 @@ class AgentResource(SyncAPIResource):
               preview in Dashboard.
 
           agent_name: The name of the agent. Only used for your own reference.
+
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -339,6 +344,7 @@ class AgentResource(SyncAPIResource):
                     "response_engine": response_engine,
                     "voice_id": voice_id,
                     "agent_name": agent_name,
+                    "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
@@ -364,6 +370,7 @@ class AgentResource(SyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "version": version,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -427,6 +434,7 @@ class AgentResource(SyncAPIResource):
         *,
         query_version: int | NotGiven = NOT_GIVEN,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
@@ -495,6 +503,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         body_version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
@@ -529,6 +538,9 @@ class AgentResource(SyncAPIResource):
           query_version: Optional version of the API to use for this request. Default to latest version.
 
           agent_name: The name of the agent. Only used for your own reference.
+
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -718,6 +730,7 @@ class AgentResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "agent_name": agent_name,
+                    "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
@@ -744,6 +757,7 @@ class AgentResource(SyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "body_version": body_version,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
@@ -879,6 +893,7 @@ class AsyncAgentResource(AsyncAPIResource):
         response_engine: agent_create_params.ResponseEngine,
         voice_id: str,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
@@ -946,6 +961,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -984,6 +1000,9 @@ class AsyncAgentResource(AsyncAPIResource):
               preview in Dashboard.
 
           agent_name: The name of the agent. Only used for your own reference.
+
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -1166,6 +1185,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "response_engine": response_engine,
                     "voice_id": voice_id,
                     "agent_name": agent_name,
+                    "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
@@ -1191,6 +1211,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "version": version,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -1254,6 +1275,7 @@ class AsyncAgentResource(AsyncAPIResource):
         *,
         query_version: int | NotGiven = NOT_GIVEN,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
@@ -1322,6 +1344,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         body_version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
@@ -1356,6 +1379,9 @@ class AsyncAgentResource(AsyncAPIResource):
           query_version: Optional version of the API to use for this request. Default to latest version.
 
           agent_name: The name of the agent. Only used for your own reference.
+
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -1545,6 +1571,7 @@ class AsyncAgentResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "agent_name": agent_name,
+                    "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
@@ -1571,6 +1598,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "body_version": body_version,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
