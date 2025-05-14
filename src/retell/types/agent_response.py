@@ -178,7 +178,7 @@ class AgentResponse(BaseModel):
     allow_user_dtmf: Optional[bool] = None
     """If set to true, DTMF input will be accepted and processed.
 
-    If false, any DTMF input will be ignored.
+    If false, any DTMF input will be ignored. Default to true.
     """
 
     ambient_sound: Optional[
@@ -250,6 +250,9 @@ class AgentResponse(BaseModel):
     these words are more likely to get transcribed. Commonly used for names, brands,
     street, etc.
     """
+
+    denoising_mode: Optional[Literal["noise-cancellation", "noise-and-background-speech-cancellation"]] = None
+    """If set, determines what denoising mode to use. Default to noise-cancellation."""
 
     enable_backchannel: Optional[bool] = None
     """

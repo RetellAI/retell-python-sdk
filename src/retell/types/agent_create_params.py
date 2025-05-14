@@ -41,7 +41,7 @@ class AgentCreateParams(TypedDict, total=False):
     allow_user_dtmf: bool
     """If set to true, DTMF input will be accepted and processed.
 
-    If false, any DTMF input will be ignored.
+    If false, any DTMF input will be ignored. Default to true.
     """
 
     ambient_sound: Optional[
@@ -113,6 +113,9 @@ class AgentCreateParams(TypedDict, total=False):
     these words are more likely to get transcribed. Commonly used for names, brands,
     street, etc.
     """
+
+    denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
+    """If set, determines what denoising mode to use. Default to noise-cancellation."""
 
     enable_backchannel: bool
     """
