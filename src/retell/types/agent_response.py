@@ -17,6 +17,7 @@ __all__ = [
     "PostCallAnalysisDataBooleanAnalysisData",
     "PostCallAnalysisDataNumberAnalysisData",
     "PronunciationDictionary",
+    "UserDtmfOptions",
 ]
 
 
@@ -126,6 +127,28 @@ class PronunciationDictionary(BaseModel):
     """The string of word / phrase to be annotated with pronunciation."""
 
 
+class UserDtmfOptions(BaseModel):
+    digit_limit: Optional[int] = None
+    """
+    The maximum number of digits allowed in the user's DTMF (Dual-Tone
+    Multi-Frequency) input per turn. Once this limit is reached, the input is
+    considered complete and a response will be generated immediately.
+    """
+
+    termination_key: Optional[str] = None
+    """A single key that signals the end of DTMF input.
+
+    Acceptable values include any digit (0–9), the pound/hash symbol (#), or the
+    asterisk (\\**).
+    """
+
+    timeout_ms: Optional[int] = None
+    """The time (in milliseconds) to wait for user DTMF input before timing out.
+
+    The timer resets with each digit received.
+    """
+
+
 class AgentResponse(BaseModel):
     agent_id: str
     """Unique id of agent."""
@@ -151,6 +174,12 @@ class AgentResponse(BaseModel):
 
     agent_name: Optional[str] = None
     """The name of the agent. Only used for your own reference."""
+
+    allow_user_dtmf: Optional[bool] = None
+    """If set to true, DTMF input will be accepted and processed.
+
+    If false, any DTMF input will be ignored. Default to true.
+    """
 
     ambient_sound: Optional[
         Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"]
@@ -222,6 +251,9 @@ class AgentResponse(BaseModel):
     street, etc.
     """
 
+    denoising_mode: Optional[Literal["noise-cancellation", "noise-and-background-speech-cancellation"]] = None
+    """If set, determines what denoising mode to use. Default to noise-cancellation."""
+
     enable_backchannel: Optional[bool] = None
     """
     Controls whether the agent would backchannel (agent interjects the speaker with
@@ -267,6 +299,9 @@ class AgentResponse(BaseModel):
     interrupt agent. If unset, default value 1 will apply. When this is set to 0,
     agent would never be interrupted.
     """
+
+    is_published: Optional[bool] = None
+    """Whether the agent is published."""
 
     language: Optional[
         Literal[
@@ -400,7 +435,9 @@ class AgentResponse(BaseModel):
     Default to fast mode.
     """
 
-    version: Optional[float] = None
+    user_dtmf_options: Optional[UserDtmfOptions] = None
+
+    version: Optional[object] = None
     """Version of the agent."""
 
     voice_model: Optional[

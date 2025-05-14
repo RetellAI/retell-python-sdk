@@ -52,6 +52,7 @@ class AgentResource(SyncAPIResource):
         response_engine: agent_create_params.ResponseEngine,
         voice_id: str,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
@@ -63,6 +64,8 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
+        | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
@@ -119,6 +122,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -157,6 +161,9 @@ class AgentResource(SyncAPIResource):
               preview in Dashboard.
 
           agent_name: The name of the agent. Only used for your own reference.
+
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored. Default to true.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -206,6 +213,8 @@ class AgentResource(SyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
@@ -339,12 +348,14 @@ class AgentResource(SyncAPIResource):
                     "response_engine": response_engine,
                     "voice_id": voice_id,
                     "agent_name": agent_name,
+                    "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "enable_transcription_formatting": enable_transcription_formatting,
                     "enable_voicemail_detection": enable_voicemail_detection,
@@ -364,6 +375,7 @@ class AgentResource(SyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "version": version,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -427,6 +439,7 @@ class AgentResource(SyncAPIResource):
         *,
         query_version: int | NotGiven = NOT_GIVEN,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
@@ -438,6 +451,8 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
+        | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
@@ -495,6 +510,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         body_version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
@@ -529,6 +545,9 @@ class AgentResource(SyncAPIResource):
           query_version: Optional version of the API to use for this request. Default to latest version.
 
           agent_name: The name of the agent. Only used for your own reference.
+
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored. Default to true.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -578,6 +597,8 @@ class AgentResource(SyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
@@ -718,12 +739,14 @@ class AgentResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "agent_name": agent_name,
+                    "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "enable_transcription_formatting": enable_transcription_formatting,
                     "enable_voicemail_detection": enable_voicemail_detection,
@@ -744,6 +767,7 @@ class AgentResource(SyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "body_version": body_version,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
@@ -879,6 +903,7 @@ class AsyncAgentResource(AsyncAPIResource):
         response_engine: agent_create_params.ResponseEngine,
         voice_id: str,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
@@ -890,6 +915,8 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
+        | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
@@ -946,6 +973,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -984,6 +1012,9 @@ class AsyncAgentResource(AsyncAPIResource):
               preview in Dashboard.
 
           agent_name: The name of the agent. Only used for your own reference.
+
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored. Default to true.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -1033,6 +1064,8 @@ class AsyncAgentResource(AsyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
@@ -1166,12 +1199,14 @@ class AsyncAgentResource(AsyncAPIResource):
                     "response_engine": response_engine,
                     "voice_id": voice_id,
                     "agent_name": agent_name,
+                    "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "enable_transcription_formatting": enable_transcription_formatting,
                     "enable_voicemail_detection": enable_voicemail_detection,
@@ -1191,6 +1226,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "version": version,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -1254,6 +1290,7 @@ class AsyncAgentResource(AsyncAPIResource):
         *,
         query_version: int | NotGiven = NOT_GIVEN,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
+        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
@@ -1265,6 +1302,8 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
+        | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         enable_voicemail_detection: bool | NotGiven = NOT_GIVEN,
@@ -1322,6 +1361,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | NotGiven = NOT_GIVEN,
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
+        user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         body_version: Optional[float] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
@@ -1356,6 +1396,9 @@ class AsyncAgentResource(AsyncAPIResource):
           query_version: Optional version of the API to use for this request. Default to latest version.
 
           agent_name: The name of the agent. Only used for your own reference.
+
+          allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
+              input will be ignored. Default to true.
 
           ambient_sound: If set, will add ambient environment sound to the call to make experience more
               realistic. Currently supports the following options:
@@ -1405,6 +1448,8 @@ class AsyncAgentResource(AsyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
@@ -1545,12 +1590,14 @@ class AsyncAgentResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "agent_name": agent_name,
+                    "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "enable_transcription_formatting": enable_transcription_formatting,
                     "enable_voicemail_detection": enable_voicemail_detection,
@@ -1571,6 +1618,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
+                    "user_dtmf_options": user_dtmf_options,
                     "body_version": body_version,
                     "voice_id": voice_id,
                     "voice_model": voice_model,

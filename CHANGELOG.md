@@ -1,5 +1,29 @@
 # Changelog
 
+## 4.29.0 (2025-05-14)
+
+Full Changelog: [v4.28.0...v4.29.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.28.0...v4.29.0)
+
+### Features
+
+* **api:** api update ([3f6509c](https://github.com/RetellAI/retell-python-sdk/commit/3f6509cf38b6f1f3cb73b0d8bb918edb54c383ba))
+* **api:** api update ([dc02872](https://github.com/RetellAI/retell-python-sdk/commit/dc028721305eec0c8c6126ac795011b07c6d82cd))
+* **api:** api update ([4e2edb1](https://github.com/RetellAI/retell-python-sdk/commit/4e2edb1f2d4b9aa1116e31d546b005f1d03b1b48))
+* **api:** api update ([3cb87df](https://github.com/RetellAI/retell-python-sdk/commit/3cb87df96dfce683feaa0a4a3b8d7285da07678b))
+* **api:** api update ([fb974a7](https://github.com/RetellAI/retell-python-sdk/commit/fb974a7a9f4367f3146443b7d484997791f40639))
+* **api:** api update ([84bc6f9](https://github.com/RetellAI/retell-python-sdk/commit/84bc6f9064fe0272f3e71a0963ae7f17c92672ff))
+* **api:** api update ([f4a83f3](https://github.com/RetellAI/retell-python-sdk/commit/f4a83f3ec4a359547cc08917fc2277b8b4663fb6))
+
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([94bf9a5](https://github.com/RetellAI/retell-python-sdk/commit/94bf9a5e4e91f44902d777683498b82bdba1a691))
+
+
+### Chores
+
+* **internal:** avoid errors for isinstance checks on proxies ([ae0efc9](https://github.com/RetellAI/retell-python-sdk/commit/ae0efc9c584268ba9bfd7b5a3681145a97322133))
+
 ## 4.28.0 (2025-04-28)
 
 Full Changelog: [v4.27.0...v4.28.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.27.0...v4.28.0)
