@@ -450,8 +450,6 @@ class WebCallResponse(BaseModel):
             "error_llm_websocket_lost_connection",
             "error_llm_websocket_runtime",
             "error_llm_websocket_corrupt_payload",
-            "error_frontend_corrupted_payload",
-            "error_twilio",
             "error_no_audio_received",
             "error_asr",
             "error_retell",
@@ -463,8 +461,11 @@ class WebCallResponse(BaseModel):
     """The reason for the disconnection of the call.
 
     Read details desciption about reasons listed here at
-    [Disconnection Reason Doc](/get-started/debug-guide#disconnection-reason).
+    [Disconnection Reason Doc](/reliability/debug-call-disconnect#understanding-disconnection-reasons).
     """
+
+    duration_ms: Optional[int] = None
+    """Duration of the call in milliseconds. Available after call ends."""
 
     end_timestamp: Optional[int] = None
     """End timestamp (milliseconds since epoch) of the call.
