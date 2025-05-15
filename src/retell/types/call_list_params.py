@@ -94,8 +94,6 @@ class FilterCriteria(TypedDict, total=False):
             "error_llm_websocket_lost_connection",
             "error_llm_websocket_runtime",
             "error_llm_websocket_corrupt_payload",
-            "error_frontend_corrupted_payload",
-            "error_twilio",
             "error_no_audio_received",
             "error_asr",
             "error_retell",
