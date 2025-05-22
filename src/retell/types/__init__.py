@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from .llm_response import LlmResponse as LlmResponse
 from .call_response import CallResponse as CallResponse
+from .chat_response import ChatResponse as ChatResponse
 from .agent_response import AgentResponse as AgentResponse
 from .voice_response import VoiceResponse as VoiceResponse
 from .call_list_params import CallListParams as CallListParams
@@ -13,6 +14,8 @@ from .llm_update_params import LlmUpdateParams as LlmUpdateParams
 from .web_call_response import WebCallResponse as WebCallResponse
 from .call_list_response import CallListResponse as CallListResponse
 from .call_update_params import CallUpdateParams as CallUpdateParams
+from .chat_create_params import ChatCreateParams as ChatCreateParams
+from .chat_list_response import ChatListResponse as ChatListResponse
 from .agent_create_params import AgentCreateParams as AgentCreateParams
 from .agent_list_response import AgentListResponse as AgentListResponse
 from .agent_update_params import AgentUpdateParams as AgentUpdateParams
@@ -35,4 +38,6 @@ from .call_create_phone_call_params import CallCreatePhoneCallParams as CallCrea
 from .concurrency_retrieve_response import ConcurrencyRetrieveResponse as ConcurrencyRetrieveResponse
 from .call_register_phone_call_params import CallRegisterPhoneCallParams as CallRegisterPhoneCallParams
 from .knowledge_base_add_sources_params import KnowledgeBaseAddSourcesParams as KnowledgeBaseAddSourcesParams
+from .chat_create_chat_completion_params import ChatCreateChatCompletionParams as ChatCreateChatCompletionParams
 from .batch_call_create_batch_call_params import BatchCallCreateBatchCallParams as BatchCallCreateBatchCallParams
+from .chat_create_chat_completion_response import ChatCreateChatCompletionResponse as ChatCreateChatCompletionResponse

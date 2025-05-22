@@ -21,7 +21,7 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
-from .resources import llm, call, agent, voice, batch_call, concurrency, phone_number, knowledge_base
+from .resources import llm, call, chat, agent, voice, batch_call, concurrency, phone_number, knowledge_base
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -36,6 +36,7 @@ __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Retell", "
 
 class Retell(SyncAPIClient):
     call: call.CallResource
+    chat: chat.ChatResource
     phone_number: phone_number.PhoneNumberResource
     agent: agent.AgentResource
     llm: llm.LlmResource
@@ -92,6 +93,7 @@ class Retell(SyncAPIClient):
         )
 
         self.call = call.CallResource(self)
+        self.chat = chat.ChatResource(self)
         self.phone_number = phone_number.PhoneNumberResource(self)
         self.agent = agent.AgentResource(self)
         self.llm = llm.LlmResource(self)
@@ -211,6 +213,7 @@ class Retell(SyncAPIClient):
 
 class AsyncRetell(AsyncAPIClient):
     call: call.AsyncCallResource
+    chat: chat.AsyncChatResource
     phone_number: phone_number.AsyncPhoneNumberResource
     agent: agent.AsyncAgentResource
     llm: llm.AsyncLlmResource
@@ -267,6 +270,7 @@ class AsyncRetell(AsyncAPIClient):
         )
 
         self.call = call.AsyncCallResource(self)
+        self.chat = chat.AsyncChatResource(self)
         self.phone_number = phone_number.AsyncPhoneNumberResource(self)
         self.agent = agent.AsyncAgentResource(self)
         self.llm = llm.AsyncLlmResource(self)
@@ -385,6 +389,7 @@ class AsyncRetell(AsyncAPIClient):
 class RetellWithRawResponse:
     def __init__(self, client: Retell) -> None:
         self.call = call.CallResourceWithRawResponse(client.call)
+        self.chat = chat.ChatResourceWithRawResponse(client.chat)
         self.phone_number = phone_number.PhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = agent.AgentResourceWithRawResponse(client.agent)
         self.llm = llm.LlmResourceWithRawResponse(client.llm)
@@ -397,6 +402,7 @@ class RetellWithRawResponse:
 class AsyncRetellWithRawResponse:
     def __init__(self, client: AsyncRetell) -> None:
         self.call = call.AsyncCallResourceWithRawResponse(client.call)
+        self.chat = chat.AsyncChatResourceWithRawResponse(client.chat)
         self.phone_number = phone_number.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = agent.AsyncAgentResourceWithRawResponse(client.agent)
         self.llm = llm.AsyncLlmResourceWithRawResponse(client.llm)
@@ -409,6 +415,7 @@ class AsyncRetellWithRawResponse:
 class RetellWithStreamedResponse:
     def __init__(self, client: Retell) -> None:
         self.call = call.CallResourceWithStreamingResponse(client.call)
+        self.chat = chat.ChatResourceWithStreamingResponse(client.chat)
         self.phone_number = phone_number.PhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = agent.AgentResourceWithStreamingResponse(client.agent)
         self.llm = llm.LlmResourceWithStreamingResponse(client.llm)
@@ -421,6 +428,7 @@ class RetellWithStreamedResponse:
 class AsyncRetellWithStreamedResponse:
     def __init__(self, client: AsyncRetell) -> None:
         self.call = call.AsyncCallResourceWithStreamingResponse(client.call)
+        self.chat = chat.AsyncChatResourceWithStreamingResponse(client.chat)
         self.phone_number = phone_number.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = agent.AsyncAgentResourceWithStreamingResponse(client.agent)
         self.llm = llm.AsyncLlmResourceWithStreamingResponse(client.llm)

@@ -1,0 +1,121 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from typing import List, Union, Optional
+from typing_extensions import Literal, TypeAlias
+
+from .._models import BaseModel
+
+__all__ = [
+    "ChatCreateChatCompletionResponse",
+    "Message",
+    "MessageMessage",
+    "MessageToolCallInvocationMessage",
+    "MessageToolCallResultMessage",
+    "MessageNodeTransitionMessage",
+    "MessageStateTransitionMessage",
+]
+
+
+class MessageMessage(BaseModel):
+    content: str
+    """Content of the message"""
+
+    created_timestamp: int
+    """Create timestamp of the message"""
+
+    message_id: str
+    """Unique id ot the message"""
+
+    role: Literal["agent", "user"]
+    """Documents whether this message is sent by agent or user."""
+
+
+class MessageToolCallInvocationMessage(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    message_id: str
+    """Unique id ot the message"""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+
+class MessageToolCallResultMessage(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    created_timestamp: int
+    """Create timestamp of the message"""
+
+    message_id: str
+    """Unique id ot the message"""
+
+    role: Literal["tool_call_result"]
+    """This is result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+
+class MessageNodeTransitionMessage(BaseModel):
+    created_timestamp: int
+    """Create timestamp of the message"""
+
+    message_id: str
+    """Unique id ot the message"""
+
+    role: Literal["node_transition"]
+    """This is node transition."""
+
+    former_node_id: Optional[str] = None
+    """Former node id"""
+
+    former_node_name: Optional[str] = None
+    """Former node name"""
+
+    new_node_id: Optional[str] = None
+    """New node id"""
+
+    new_node_name: Optional[str] = None
+    """New node name"""
+
+
+class MessageStateTransitionMessage(BaseModel):
+    created_timestamp: int
+    """Create timestamp of the message"""
+
+    message_id: str
+    """Unique id ot the message"""
+
+    role: Literal["state_transition"]
+    """This is state transition for ."""
+
+    former_state_name: Optional[str] = None
+    """Former state name"""
+
+    new_state_name: Optional[str] = None
+    """New state name"""
+
+
+Message: TypeAlias = Union[
+    MessageMessage,
+    MessageToolCallInvocationMessage,
+    MessageToolCallResultMessage,
+    MessageNodeTransitionMessage,
+    MessageStateTransitionMessage,
+]
+
+
+class ChatCreateChatCompletionResponse(BaseModel):
+    messages: List[Message]
+    """Transcript of the chat completion weaved with tool call invocation and results."""

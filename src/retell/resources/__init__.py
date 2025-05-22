@@ -16,6 +16,14 @@ from .call import (
     CallResourceWithStreamingResponse,
     AsyncCallResourceWithStreamingResponse,
 )
+from .chat import (
+    ChatResource,
+    AsyncChatResource,
+    ChatResourceWithRawResponse,
+    AsyncChatResourceWithRawResponse,
+    ChatResourceWithStreamingResponse,
+    AsyncChatResourceWithStreamingResponse,
+)
 from .agent import (
     AgentResource,
     AsyncAgentResource,
@@ -72,6 +80,12 @@ __all__ = [
     "AsyncCallResourceWithRawResponse",
     "CallResourceWithStreamingResponse",
     "AsyncCallResourceWithStreamingResponse",
+    "ChatResource",
+    "AsyncChatResource",
+    "ChatResourceWithRawResponse",
+    "AsyncChatResourceWithRawResponse",
+    "ChatResourceWithStreamingResponse",
+    "AsyncChatResourceWithStreamingResponse",
     "PhoneNumberResource",
     "AsyncPhoneNumberResource",
     "PhoneNumberResourceWithRawResponse",
