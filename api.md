@@ -16,6 +16,22 @@ Methods:
 - <code title="post /v2/create-web-call">client.call.<a href="./src/retell/resources/call.py">create_web_call</a>(\*\*<a href="src/retell/types/call_create_web_call_params.py">params</a>) -> <a href="./src/retell/types/web_call_response.py">WebCallResponse</a></code>
 - <code title="post /v2/register-phone-call">client.call.<a href="./src/retell/resources/call.py">register_phone_call</a>(\*\*<a href="src/retell/types/call_register_phone_call_params.py">params</a>) -> <a href="./src/retell/types/phone_call_response.py">PhoneCallResponse</a></code>
 
+# Chat
+
+Types:
+
+```python
+from retell.types import ChatResponse, ChatListResponse, ChatCreateChatCompletionResponse
+```
+
+Methods:
+
+- <code title="post /create-chat">client.chat.<a href="./src/retell/resources/chat.py">create</a>(\*\*<a href="src/retell/types/chat_create_params.py">params</a>) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
+- <code title="get /get-chat/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">retrieve</a>(chat_id) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
+- <code title="get /list-chat">client.chat.<a href="./src/retell/resources/chat.py">list</a>() -> <a href="./src/retell/types/chat_list_response.py">ChatListResponse</a></code>
+- <code title="post /create-chat-completion">client.chat.<a href="./src/retell/resources/chat.py">create_chat_completion</a>(\*\*<a href="src/retell/types/chat_create_chat_completion_params.py">params</a>) -> <a href="./src/retell/types/chat_create_chat_completion_response.py">ChatCreateChatCompletionResponse</a></code>
+- <code title="patch /end-chat/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">end</a>(chat_id) -> None</code>
+
 # PhoneNumber
 
 Types:
