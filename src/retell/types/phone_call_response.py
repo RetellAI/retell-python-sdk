@@ -19,6 +19,7 @@ __all__ = [
     "LatencyLlmWebsocketNetworkRtt",
     "LatencyS2s",
     "LatencyTts",
+    "LlmTokenUsage",
     "TelephonyIdentifier",
     "TranscriptObject",
     "TranscriptObjectWord",
@@ -281,6 +282,17 @@ class Latency(BaseModel):
     """
 
 
+class LlmTokenUsage(BaseModel):
+    average: float
+    """Average token count of the call."""
+
+    num_requests: float
+    """Number of requests made to the LLM."""
+
+    values: List[float]
+    """All the token count values in the call."""
+
+
 class TelephonyIdentifier(BaseModel):
     twilio_call_sid: Optional[str] = None
     """Twilio call sid."""
@@ -439,6 +451,9 @@ class PhoneCallResponse(BaseModel):
     call_cost: Optional[CallCost] = None
     """Cost of the call, including all the products and their costs and discount."""
 
+    collected_dynamic_variables: Optional[Dict[str, object]] = None
+    """Dynamic variables collected from the call. Only available after the call ends."""
+
     disconnection_reason: Optional[
         Literal[
             "user_hangup",
@@ -487,6 +502,12 @@ class PhoneCallResponse(BaseModel):
 
     Not all fields here will be available, as it depends on the type of call and
     feature used.
+    """
+
+    llm_token_usage: Optional[LlmTokenUsage] = None
+    """LLM token usage of the call, available after call ends.
+
+    Not populated if using custom LLM, realtime API, or no LLM call is made.
     """
 
     metadata: Optional[object] = None
