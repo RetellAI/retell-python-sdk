@@ -297,6 +297,13 @@ class AgentUpdateParams(TypedDict, total=False):
     body_version: Annotated[Optional[float], PropertyInfo(alias="version")]
     """Version of the agent."""
 
+    vocab_specialization: Literal["general", "medical"]
+    """If set, determines the vocabulary set to use for transcription.
+
+    This setting only applies for English agents, for non English agent, this
+    setting is a no-op. Default to general.
+    """
+
     voice_id: str
     """Unique voice id used for the agent.
 

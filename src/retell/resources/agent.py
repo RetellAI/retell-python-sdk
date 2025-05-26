@@ -124,6 +124,7 @@ class AgentResource(SyncAPIResource):
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         version: Optional[float] | NotGiven = NOT_GIVEN,
+        vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -301,6 +302,10 @@ class AgentResource(SyncAPIResource):
 
           version: Version of the agent.
 
+          vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
+              only applies for English agents, for non English agent, this setting is a no-op.
+              Default to general.
+
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
               selection, and default ones will apply. Check out the dashboard for details on
@@ -377,6 +382,7 @@ class AgentResource(SyncAPIResource):
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
                     "version": version,
+                    "vocab_specialization": vocab_specialization,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -512,6 +518,7 @@ class AgentResource(SyncAPIResource):
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         body_version: Optional[float] | NotGiven = NOT_GIVEN,
+        vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -689,6 +696,10 @@ class AgentResource(SyncAPIResource):
 
           body_version: Version of the agent.
 
+          vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
+              only applies for English agents, for non English agent, this setting is a no-op.
+              Default to general.
+
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
@@ -769,6 +780,7 @@ class AgentResource(SyncAPIResource):
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
                     "body_version": body_version,
+                    "vocab_specialization": vocab_specialization,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -975,6 +987,7 @@ class AsyncAgentResource(AsyncAPIResource):
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         version: Optional[float] | NotGiven = NOT_GIVEN,
+        vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -1152,6 +1165,10 @@ class AsyncAgentResource(AsyncAPIResource):
 
           version: Version of the agent.
 
+          vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
+              only applies for English agents, for non English agent, this setting is a no-op.
+              Default to general.
+
           voice_model: Optionally set the voice model used for the selected voice. Currently only
               elevenlab voices have voice model selections. Set to null to remove voice model
               selection, and default ones will apply. Check out the dashboard for details on
@@ -1228,6 +1245,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
                     "version": version,
+                    "vocab_specialization": vocab_specialization,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -1363,6 +1381,7 @@ class AsyncAgentResource(AsyncAPIResource):
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
         body_version: Optional[float] | NotGiven = NOT_GIVEN,
+        vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -1540,6 +1559,10 @@ class AsyncAgentResource(AsyncAPIResource):
 
           body_version: Version of the agent.
 
+          vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
+              only applies for English agents, for non English agent, this setting is a no-op.
+              Default to general.
+
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
@@ -1620,6 +1643,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
                     "body_version": body_version,
+                    "vocab_specialization": vocab_specialization,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,

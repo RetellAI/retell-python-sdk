@@ -298,6 +298,13 @@ class AgentCreateParams(TypedDict, total=False):
     version: Optional[float]
     """Version of the agent."""
 
+    vocab_specialization: Literal["general", "medical"]
+    """If set, determines the vocabulary set to use for transcription.
+
+    This setting only applies for English agents, for non English agent, this
+    setting is a no-op. Default to general.
+    """
+
     voice_model: Optional[
         Literal[
             "eleven_turbo_v2",
