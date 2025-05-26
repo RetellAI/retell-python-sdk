@@ -440,6 +440,13 @@ class AgentResponse(BaseModel):
     version: Optional[object] = None
     """Version of the agent."""
 
+    vocab_specialization: Optional[Literal["general", "medical"]] = None
+    """If set, determines the vocabulary set to use for transcription.
+
+    This setting only applies for English agents, for non English agent, this
+    setting is a no-op. Default to general.
+    """
+
     voice_model: Optional[
         Literal[
             "eleven_turbo_v2",

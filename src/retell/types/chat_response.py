@@ -187,6 +187,9 @@ class ChatResponse(BaseModel):
 
     chat_cost: Optional[ChatCost] = None
 
+    collected_dynamic_variables: Optional[Dict[str, object]] = None
+    """Dynamic variables collected from the chat. Only available after the chat ends."""
+
     end_timestamp: Optional[int] = None
     """End timestamp (milliseconds since epoch) of the chat.
 
