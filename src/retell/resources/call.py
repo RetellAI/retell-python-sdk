@@ -102,8 +102,10 @@ class CallResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CallResponse:
-        """
-        Update metadata and sensitive data storage settings for an existing call
+        """Update metadata and sensitive data storage settings for an existing call.
+
+        Note
+        that ongoing calls cannot be updated.
 
         Args:
           metadata: An arbitrary object for storage purpose only. You can put anything here like
@@ -493,8 +495,10 @@ class AsyncCallResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CallResponse:
-        """
-        Update metadata and sensitive data storage settings for an existing call
+        """Update metadata and sensitive data storage settings for an existing call.
+
+        Note
+        that ongoing calls cannot be updated.
 
         Args:
           metadata: An arbitrary object for storage purpose only. You can put anything here like
