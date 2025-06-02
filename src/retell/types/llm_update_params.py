@@ -15,9 +15,12 @@ __all__ = [
     "GeneralToolTransferCallToolTransferDestination",
     "GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefined",
     "GeneralToolTransferCallToolTransferDestinationTransferDestinationInferred",
-    "GeneralToolTransferCallToolWarmTransferOption",
-    "GeneralToolTransferCallToolWarmTransferOptionWarmTransferPrompt",
-    "GeneralToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage",
+    "GeneralToolTransferCallToolTransferOption",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
     "GeneralToolCheckAvailabilityCalTool",
     "GeneralToolBookAppointmentCalTool",
     "GeneralToolPressDigitTool",
@@ -32,9 +35,12 @@ __all__ = [
     "StateToolTransferCallToolTransferDestination",
     "StateToolTransferCallToolTransferDestinationTransferDestinationPredefined",
     "StateToolTransferCallToolTransferDestinationTransferDestinationInferred",
-    "StateToolTransferCallToolWarmTransferOption",
-    "StateToolTransferCallToolWarmTransferOptionWarmTransferPrompt",
-    "StateToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage",
+    "StateToolTransferCallToolTransferOption",
+    "StateToolTransferCallToolTransferOptionTransferOptionColdTransfer",
+    "StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
+    "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
     "StateToolCheckAvailabilityCalTool",
     "StateToolBookAppointmentCalTool",
     "StateToolPressDigitTool",
@@ -195,23 +201,58 @@ GeneralToolTransferCallToolTransferDestination: TypeAlias = Union[
 ]
 
 
-class GeneralToolTransferCallToolWarmTransferOptionWarmTransferPrompt(TypedDict, total=False):
+class GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer(TypedDict, total=False):
+    show_transferee_as_caller: Required[bool]
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support SIP REFER to PSTN. This is
+    only applicable for cold transfer, so if warm transfer option is specified, this
+    field will be ignored. Default to false (default to show AI agent as caller).
+    """
+
+    type: Required[Literal["cold_transfer"]]
+    """The type of the transfer."""
+
+
+class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
     prompt: str
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
 
     type: Literal["prompt"]
 
 
-class GeneralToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage(TypedDict, total=False):
+class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
     message: str
     """The static message to be used for warm handoff. Can contain dynamic variables."""
 
     type: Literal["static_message"]
 
 
-GeneralToolTransferCallToolWarmTransferOption: TypeAlias = Union[
-    GeneralToolTransferCallToolWarmTransferOptionWarmTransferPrompt,
-    GeneralToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage,
+GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption: TypeAlias = Union[
+    GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedDict, total=False):
+    type: Required[Literal["warm_transfer"]]
+    """The type of the transfer."""
+
+    public_handoff_option: GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+
+GeneralToolTransferCallToolTransferOption: TypeAlias = Union[
+    GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer,
+    GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer,
 ]
 
 
@@ -225,27 +266,14 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
 
     transfer_destination: Required[GeneralToolTransferCallToolTransferDestination]
 
+    transfer_option: Required[GeneralToolTransferCallToolTransferOption]
+
     type: Required[Literal["transfer_call"]]
 
     description: str
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
-    """
-
-    show_transferee_as_caller: Optional[bool]
-    """
-    If set to true, will show transferee (the user, not the AI agent) as caller when
-    transferring, requires the telephony side to support SIP REFER to PSTN. This is
-    only applicable for cold transfer, so if warm transfer option is specified, this
-    field will be ignored. Default to false (default to show AI agent as caller).
-    """
-
-    warm_transfer_option: Optional[GeneralToolTransferCallToolWarmTransferOption]
-    """If set, when transfer is successful, will perform a warm handoff.
-
-    Can leave either a static message or a dynamic one based on prompt. Set to null
-    to disable warm handoff.
     """
 
 
@@ -530,23 +558,58 @@ StateToolTransferCallToolTransferDestination: TypeAlias = Union[
 ]
 
 
-class StateToolTransferCallToolWarmTransferOptionWarmTransferPrompt(TypedDict, total=False):
+class StateToolTransferCallToolTransferOptionTransferOptionColdTransfer(TypedDict, total=False):
+    show_transferee_as_caller: Required[bool]
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support SIP REFER to PSTN. This is
+    only applicable for cold transfer, so if warm transfer option is specified, this
+    field will be ignored. Default to false (default to show AI agent as caller).
+    """
+
+    type: Required[Literal["cold_transfer"]]
+    """The type of the transfer."""
+
+
+class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
     prompt: str
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
 
     type: Literal["prompt"]
 
 
-class StateToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage(TypedDict, total=False):
+class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
     message: str
     """The static message to be used for warm handoff. Can contain dynamic variables."""
 
     type: Literal["static_message"]
 
 
-StateToolTransferCallToolWarmTransferOption: TypeAlias = Union[
-    StateToolTransferCallToolWarmTransferOptionWarmTransferPrompt,
-    StateToolTransferCallToolWarmTransferOptionWarmTransferStaticMessage,
+StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption: TypeAlias = Union[
+    StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedDict, total=False):
+    type: Required[Literal["warm_transfer"]]
+    """The type of the transfer."""
+
+    public_handoff_option: StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+
+StateToolTransferCallToolTransferOption: TypeAlias = Union[
+    StateToolTransferCallToolTransferOptionTransferOptionColdTransfer,
+    StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer,
 ]
 
 
@@ -560,27 +623,14 @@ class StateToolTransferCallTool(TypedDict, total=False):
 
     transfer_destination: Required[StateToolTransferCallToolTransferDestination]
 
+    transfer_option: Required[StateToolTransferCallToolTransferOption]
+
     type: Required[Literal["transfer_call"]]
 
     description: str
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
-    """
-
-    show_transferee_as_caller: Optional[bool]
-    """
-    If set to true, will show transferee (the user, not the AI agent) as caller when
-    transferring, requires the telephony side to support SIP REFER to PSTN. This is
-    only applicable for cold transfer, so if warm transfer option is specified, this
-    field will be ignored. Default to false (default to show AI agent as caller).
-    """
-
-    warm_transfer_option: Optional[StateToolTransferCallToolWarmTransferOption]
-    """If set, when transfer is successful, will perform a warm handoff.
-
-    Can leave either a static message or a dynamic one based on prompt. Set to null
-    to disable warm handoff.
     """
 
 
