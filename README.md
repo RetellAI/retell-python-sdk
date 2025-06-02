@@ -91,11 +91,7 @@ agent_response = client.agent.create(
         "type": "retell-llm",
     },
     voice_id="11labs-Adrian",
-    user_dtmf_options={
-        "digit_limit": 1,
-        "termination_key": "#",
-        "timeout_ms": 1000,
-    },
+    user_dtmf_options={},
 )
 print(agent_response.user_dtmf_options)
 ```
