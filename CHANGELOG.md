@@ -1,5 +1,25 @@
 # Changelog
 
+## 4.33.0 (2025-06-04)
+
+Full Changelog: [v4.32.0...v4.33.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.32.0...v4.33.0)
+
+### Features
+
+* **api:** api update ([dd7af99](https://github.com/RetellAI/retell-python-sdk/commit/dd7af99acba77ffed717d0e5011e57e92ce9debd))
+* **api:** api update ([fb2e772](https://github.com/RetellAI/retell-python-sdk/commit/fb2e7725c80906892687f2b78c4fdcfa659fe984))
+* **api:** api update ([323a83f](https://github.com/RetellAI/retell-python-sdk/commit/323a83f10f58d907ba1efc8fabdb4fb3a9ccbdc2))
+* **api:** api update ([c642329](https://github.com/RetellAI/retell-python-sdk/commit/c6423291f5d23bfa14e652216489828c484ee94f))
+* **api:** api update ([b4a0386](https://github.com/RetellAI/retell-python-sdk/commit/b4a03868e6fddb84c6e8188d9726f89b451cb0ce))
+* **api:** api update ([792c706](https://github.com/RetellAI/retell-python-sdk/commit/792c706eafe63afbe41406a658d1f905a233d0b4))
+* **client:** add follow_redirects request option ([2588c21](https://github.com/RetellAI/retell-python-sdk/commit/2588c217e52353aa446fa8ac4afb02f41a561c01))
+
+
+### Chores
+
+* **docs:** remove reference to rye shell ([8b4f0b8](https://github.com/RetellAI/retell-python-sdk/commit/8b4f0b804bbcede54c53e8ae63600fd6058f47e4))
+* **docs:** remove unnecessary param examples ([b07cd50](https://github.com/RetellAI/retell-python-sdk/commit/b07cd50231c2da29ec2ec1a6fadee50b19ad0186))
+
 ## 4.32.0 (2025-05-26)
 
 Full Changelog: [v4.31.0...v4.32.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.31.0...v4.32.0)
