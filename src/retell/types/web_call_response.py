@@ -491,10 +491,11 @@ class WebCallResponse(BaseModel):
     knowledge_base_retrieved_contents_url: Optional[str] = None
     """URL to the knowledge base retrieved contents of the call.
 
-    Available after call ends. It consists of the respond id and the retrieved
-    contents related to that response. It's already rendered in call history tab of
-    dashboard, and you can also manually download and check against the transcript
-    to view the knowledge base retrieval results.
+    Available after call ends if the call utilizes knowledge base feature. It
+    consists of the respond id and the retrieved contents related to that response.
+    It's already rendered in call history tab of dashboard, and you can also
+    manually download and check against the transcript to view the knowledge base
+    retrieval results.
     """
 
     latency: Optional[Latency] = None
