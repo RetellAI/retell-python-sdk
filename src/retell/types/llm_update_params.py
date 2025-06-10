@@ -438,6 +438,12 @@ class GeneralToolCustomTool(TypedDict, total=False):
     calling this tool. Make sure it fits into the conversation smoothly.".
     """
 
+    headers: Dict[str, str]
+    """Headers to add to the request."""
+
+    method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
+    """Method to use for the request."""
+
     parameters: GeneralToolCustomToolParameters
     """The parameters the functions accepts, described as a JSON Schema object.
 
@@ -445,6 +451,11 @@ class GeneralToolCustomTool(TypedDict, total=False):
     for documentation about the format. Omitting parameters defines a function with
     an empty parameter list.
     """
+
+    query_params: Annotated[Dict[str, str], PropertyInfo(alias="queryParams")]
+
+    response_variables: Dict[str, str]
+    """Response variables to add to the dynamic variables."""
 
     timeout_ms: int
     """The maximum time in milliseconds the tool can run before it's considered
@@ -795,6 +806,12 @@ class StateToolCustomTool(TypedDict, total=False):
     calling this tool. Make sure it fits into the conversation smoothly.".
     """
 
+    headers: Dict[str, str]
+    """Headers to add to the request."""
+
+    method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
+    """Method to use for the request."""
+
     parameters: StateToolCustomToolParameters
     """The parameters the functions accepts, described as a JSON Schema object.
 
@@ -802,6 +819,11 @@ class StateToolCustomTool(TypedDict, total=False):
     for documentation about the format. Omitting parameters defines a function with
     an empty parameter list.
     """
+
+    query_params: Annotated[Dict[str, str], PropertyInfo(alias="queryParams")]
+
+    response_variables: Dict[str, str]
+    """Response variables to add to the dynamic variables."""
 
     timeout_ms: int
     """The maximum time in milliseconds the tool can run before it's considered

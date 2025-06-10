@@ -336,6 +336,12 @@ class GeneralToolCustomTool(BaseModel):
     calling this tool. Make sure it fits into the conversation smoothly.".
     """
 
+    headers: Optional[Dict[str, str]] = None
+    """Headers to add to the request."""
+
+    method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
+    """Method to use for the request."""
+
     parameters: Optional[GeneralToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
 
@@ -343,6 +349,11 @@ class GeneralToolCustomTool(BaseModel):
     for documentation about the format. Omitting parameters defines a function with
     an empty parameter list.
     """
+
+    query_params: Optional[Dict[str, str]] = FieldInfo(alias="queryParams", default=None)
+
+    response_variables: Optional[Dict[str, str]] = None
+    """Response variables to add to the dynamic variables."""
 
     timeout_ms: Optional[int] = None
     """The maximum time in milliseconds the tool can run before it's considered
@@ -693,6 +704,12 @@ class StateToolCustomTool(BaseModel):
     calling this tool. Make sure it fits into the conversation smoothly.".
     """
 
+    headers: Optional[Dict[str, str]] = None
+    """Headers to add to the request."""
+
+    method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
+    """Method to use for the request."""
+
     parameters: Optional[StateToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
 
@@ -700,6 +717,11 @@ class StateToolCustomTool(BaseModel):
     for documentation about the format. Omitting parameters defines a function with
     an empty parameter list.
     """
+
+    query_params: Optional[Dict[str, str]] = FieldInfo(alias="queryParams", default=None)
+
+    response_variables: Optional[Dict[str, str]] = None
+    """Response variables to add to the dynamic variables."""
 
     timeout_ms: Optional[int] = None
     """The maximum time in milliseconds the tool can run before it's considered
