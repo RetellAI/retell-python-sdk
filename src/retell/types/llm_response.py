@@ -350,7 +350,7 @@ class GeneralToolCustomTool(BaseModel):
     an empty parameter list.
     """
 
-    query_params: Optional[Dict[str, str]] = FieldInfo(alias="queryParams", default=None)
+    query_params: Optional[Dict[str, str]] = None
 
     response_variables: Optional[Dict[str, str]] = None
     """Response variables to add to the dynamic variables."""
@@ -718,7 +718,7 @@ class StateToolCustomTool(BaseModel):
     an empty parameter list.
     """
 
-    query_params: Optional[Dict[str, str]] = FieldInfo(alias="queryParams", default=None)
+    query_params: Optional[Dict[str, str]] = None
 
     response_variables: Optional[Dict[str, str]] = None
     """Response variables to add to the dynamic variables."""

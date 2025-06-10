@@ -452,7 +452,7 @@ class GeneralToolCustomTool(TypedDict, total=False):
     an empty parameter list.
     """
 
-    query_params: Annotated[Dict[str, str], PropertyInfo(alias="queryParams")]
+    query_params: Dict[str, str]
 
     response_variables: Dict[str, str]
     """Response variables to add to the dynamic variables."""
@@ -820,7 +820,7 @@ class StateToolCustomTool(TypedDict, total=False):
     an empty parameter list.
     """
 
-    query_params: Annotated[Dict[str, str], PropertyInfo(alias="queryParams")]
+    query_params: Dict[str, str]
 
     response_variables: Dict[str, str]
     """Response variables to add to the dynamic variables."""
