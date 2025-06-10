@@ -3,9 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
-from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
-
-from .._utils import PropertyInfo
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 __all__ = [
     "LlmCreateParams",
@@ -449,7 +447,7 @@ class GeneralToolCustomTool(TypedDict, total=False):
     an empty parameter list.
     """
 
-    query_params: Annotated[Dict[str, str], PropertyInfo(alias="queryParams")]
+    query_params: Dict[str, str]
 
     response_variables: Dict[str, str]
     """Response variables to add to the dynamic variables."""
@@ -817,7 +815,7 @@ class StateToolCustomTool(TypedDict, total=False):
     an empty parameter list.
     """
 
-    query_params: Annotated[Dict[str, str], PropertyInfo(alias="queryParams")]
+    query_params: Dict[str, str]
 
     response_variables: Dict[str, str]
     """Response variables to add to the dynamic variables."""
