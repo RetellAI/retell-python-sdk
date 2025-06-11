@@ -410,6 +410,9 @@ class PhoneCallResponse(BaseModel):
     agent_id: str
     """Corresponding agent id of this call."""
 
+    agent_version: int
+    """The version of the agent."""
+
     call_id: str
     """Unique id of the call.
 
@@ -585,6 +588,3 @@ class PhoneCallResponse(BaseModel):
     It precisely captures when (at what utterance, which word) the tool was invoked
     and what was the result. Available after call ends.
     """
-
-    version: Optional[int] = None
-    """The version of the agent."""
