@@ -98,16 +98,16 @@ GeneralToolTransferCallToolTransferDestination: TypeAlias = Union[
 
 
 class GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseModel):
-    show_transferee_as_caller: bool
+    type: Literal["cold_transfer"]
+    """The type of the transfer."""
+
+    show_transferee_as_caller: Optional[bool] = None
     """
     If set to true, will show transferee (the user, not the AI agent) as caller when
     transferring, requires the telephony side to support SIP REFER to PSTN. This is
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
-
-    type: Literal["cold_transfer"]
-    """The type of the transfer."""
 
 
 class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
@@ -336,12 +336,28 @@ class GeneralToolCustomTool(BaseModel):
     calling this tool. Make sure it fits into the conversation smoothly.".
     """
 
+    headers: Optional[Dict[str, str]] = None
+    """Headers to add to the request."""
+
+    method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
+    """Method to use for the request, default to POST."""
+
     parameters: Optional[GeneralToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
     an empty parameter list.
+    """
+
+    query_params: Optional[Dict[str, str]] = None
+    """Query parameters to append to the request URL."""
+
+    response_variables: Optional[Dict[str, str]] = None
+    """A mapping of variable names to JSON paths in the response body.
+
+    These values will be extracted from the response and made available as dynamic
+    variables for use.
     """
 
     timeout_ms: Optional[int] = None
@@ -457,16 +473,16 @@ StateToolTransferCallToolTransferDestination: TypeAlias = Union[
 
 
 class StateToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseModel):
-    show_transferee_as_caller: bool
+    type: Literal["cold_transfer"]
+    """The type of the transfer."""
+
+    show_transferee_as_caller: Optional[bool] = None
     """
     If set to true, will show transferee (the user, not the AI agent) as caller when
     transferring, requires the telephony side to support SIP REFER to PSTN. This is
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
-
-    type: Literal["cold_transfer"]
-    """The type of the transfer."""
 
 
 class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(BaseModel):
@@ -693,12 +709,28 @@ class StateToolCustomTool(BaseModel):
     calling this tool. Make sure it fits into the conversation smoothly.".
     """
 
+    headers: Optional[Dict[str, str]] = None
+    """Headers to add to the request."""
+
+    method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
+    """Method to use for the request, default to POST."""
+
     parameters: Optional[StateToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
     an empty parameter list.
+    """
+
+    query_params: Optional[Dict[str, str]] = None
+    """Query parameters to append to the request URL."""
+
+    response_variables: Optional[Dict[str, str]] = None
+    """A mapping of variable names to JSON paths in the response body.
+
+    These values will be extracted from the response and made available as dynamic
+    variables for use.
     """
 
     timeout_ms: Optional[int] = None

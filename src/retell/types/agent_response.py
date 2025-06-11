@@ -456,6 +456,8 @@ class AgentResponse(BaseModel):
             "eleven_multilingual_v2",
             "Play3.0-mini",
             "PlayDialog",
+            "tts-1",
+            "gpt-4o-mini-tts",
         ]
     ] = None
     """Optionally set the voice model used for the selected voice.

@@ -1,5 +1,20 @@
 # Changelog
 
+## 4.34.0 (2025-06-11)
+
+Full Changelog: [v4.33.0...v4.34.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.33.0...v4.34.0)
+
+### Features
+
+* **api:** api update ([c141937](https://github.com/RetellAI/retell-python-sdk/commit/c1419375a721b271fe86806aad499deab7ef81d3))
+* **api:** api update ([8f76d19](https://github.com/RetellAI/retell-python-sdk/commit/8f76d19d499df917abf861c79e1f92a9d95a419c))
+* **api:** api update ([80cfbfb](https://github.com/RetellAI/retell-python-sdk/commit/80cfbfb0c62135ecefc7cd92ea5829bbedd99881))
+* **api:** api update ([e52831a](https://github.com/RetellAI/retell-python-sdk/commit/e52831aeb49967506a1daf1b06b034368c11d865))
+* **api:** api update ([8f88a3c](https://github.com/RetellAI/retell-python-sdk/commit/8f88a3cd122c43793888cda86c20e4a3d0fa2095))
+* **api:** api update ([b2df68b](https://github.com/RetellAI/retell-python-sdk/commit/b2df68b78027f5d760b06292591ba7a1ca6a9bce))
+* **api:** api update ([8053323](https://github.com/RetellAI/retell-python-sdk/commit/8053323dbb47fef685a662767ae329d0a382cbc0))
+* **api:** api update ([35b025b](https://github.com/RetellAI/retell-python-sdk/commit/35b025bc9aa7bdc628be6b831f03745097a57023))
+
 ## 4.33.0 (2025-06-04)
 
 Full Changelog: [v4.32.0...v4.33.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.32.0...v4.33.0)
