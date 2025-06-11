@@ -297,6 +297,9 @@ class GeneralToolCustomTool(BaseModel):
     description: str
     """Describes what this tool does and when to call this tool."""
 
+    method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
+    """Method to use for the request."""
+
     name: str
     """Name of the tool.
 
@@ -338,9 +341,6 @@ class GeneralToolCustomTool(BaseModel):
 
     headers: Optional[Dict[str, str]] = None
     """Headers to add to the request."""
-
-    method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
-    """Method to use for the request."""
 
     parameters: Optional[GeneralToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
@@ -665,6 +665,9 @@ class StateToolCustomTool(BaseModel):
     description: str
     """Describes what this tool does and when to call this tool."""
 
+    method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
+    """Method to use for the request."""
+
     name: str
     """Name of the tool.
 
@@ -706,9 +709,6 @@ class StateToolCustomTool(BaseModel):
 
     headers: Optional[Dict[str, str]] = None
     """Headers to add to the request."""
-
-    method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
-    """Method to use for the request."""
 
     parameters: Optional[StateToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
