@@ -448,9 +448,14 @@ class GeneralToolCustomTool(TypedDict, total=False):
     """
 
     query_params: Dict[str, str]
+    """Query parameters to append to the request URL."""
 
     response_variables: Dict[str, str]
-    """Response variables to add to the dynamic variables."""
+    """A mapping of variable names to JSON paths in the response body.
+
+    These values will be extracted from the response and made available as dynamic
+    variables for use.
+    """
 
     timeout_ms: int
     """The maximum time in milliseconds the tool can run before it's considered
@@ -816,9 +821,14 @@ class StateToolCustomTool(TypedDict, total=False):
     """
 
     query_params: Dict[str, str]
+    """Query parameters to append to the request URL."""
 
     response_variables: Dict[str, str]
-    """Response variables to add to the dynamic variables."""
+    """A mapping of variable names to JSON paths in the response body.
+
+    These values will be extracted from the response and made available as dynamic
+    variables for use.
+    """
 
     timeout_ms: int
     """The maximum time in milliseconds the tool can run before it's considered
