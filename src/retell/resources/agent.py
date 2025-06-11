@@ -134,6 +134,8 @@ class AgentResource(SyncAPIResource):
                 "eleven_multilingual_v2",
                 "Play3.0-mini",
                 "PlayDialog",
+                "tts-1",
+                "gpt-4o-mini-tts",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -529,6 +531,8 @@ class AgentResource(SyncAPIResource):
                 "eleven_multilingual_v2",
                 "Play3.0-mini",
                 "PlayDialog",
+                "tts-1",
+                "gpt-4o-mini-tts",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -997,6 +1001,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 "eleven_multilingual_v2",
                 "Play3.0-mini",
                 "PlayDialog",
+                "tts-1",
+                "gpt-4o-mini-tts",
             ]
         ]
         | NotGiven = NOT_GIVEN,
@@ -1392,6 +1398,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 "eleven_multilingual_v2",
                 "Play3.0-mini",
                 "PlayDialog",
+                "tts-1",
+                "gpt-4o-mini-tts",
             ]
         ]
         | NotGiven = NOT_GIVEN,
