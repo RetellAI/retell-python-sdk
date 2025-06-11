@@ -394,9 +394,6 @@ class GeneralToolCustomTool(TypedDict, total=False):
     description: Required[str]
     """Describes what this tool does and when to call this tool."""
 
-    method: Required[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]]
-    """Method to use for the request."""
-
     name: Required[str]
     """Name of the tool.
 
@@ -438,6 +435,9 @@ class GeneralToolCustomTool(TypedDict, total=False):
 
     headers: Dict[str, str]
     """Headers to add to the request."""
+
+    method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
+    """Method to use for the request, default to POST."""
 
     parameters: GeneralToolCustomToolParameters
     """The parameters the functions accepts, described as a JSON Schema object.
@@ -762,9 +762,6 @@ class StateToolCustomTool(TypedDict, total=False):
     description: Required[str]
     """Describes what this tool does and when to call this tool."""
 
-    method: Required[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]]
-    """Method to use for the request."""
-
     name: Required[str]
     """Name of the tool.
 
@@ -806,6 +803,9 @@ class StateToolCustomTool(TypedDict, total=False):
 
     headers: Dict[str, str]
     """Headers to add to the request."""
+
+    method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
+    """Method to use for the request, default to POST."""
 
     parameters: StateToolCustomToolParameters
     """The parameters the functions accepts, described as a JSON Schema object.
