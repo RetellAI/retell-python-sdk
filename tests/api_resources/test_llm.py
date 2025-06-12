@@ -59,7 +59,15 @@ class TestLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "type": "end_call",
+                            "transfer_destination": {
+                                "number": "16175551212",
+                                "type": "predefined",
+                            },
+                            "transfer_option": {
+                                "type": "cold_transfer",
+                                "show_transferee_as_caller": False,
+                            },
+                            "type": "transfer_call",
                             "description": "Transfer to the support team.",
                         }
                     ],
@@ -207,7 +215,15 @@ class TestLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "type": "end_call",
+                            "transfer_destination": {
+                                "number": "16175551212",
+                                "type": "predefined",
+                            },
+                            "transfer_option": {
+                                "type": "cold_transfer",
+                                "show_transferee_as_caller": False,
+                            },
+                            "type": "transfer_call",
                             "description": "Transfer to the support team.",
                         }
                     ],
@@ -383,7 +399,15 @@ class TestAsyncLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "type": "end_call",
+                            "transfer_destination": {
+                                "number": "16175551212",
+                                "type": "predefined",
+                            },
+                            "transfer_option": {
+                                "type": "cold_transfer",
+                                "show_transferee_as_caller": False,
+                            },
+                            "type": "transfer_call",
                             "description": "Transfer to the support team.",
                         }
                     ],
@@ -531,7 +555,15 @@ class TestAsyncLlm:
                     "tools": [
                         {
                             "name": "transfer_to_support",
-                            "type": "end_call",
+                            "transfer_destination": {
+                                "number": "16175551212",
+                                "type": "predefined",
+                            },
+                            "transfer_option": {
+                                "type": "cold_transfer",
+                                "show_transferee_as_caller": False,
+                            },
+                            "type": "transfer_call",
                             "description": "Transfer to the support team.",
                         }
                     ],
