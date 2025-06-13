@@ -1,5 +1,25 @@
 # Changelog
 
+## 4.35.0 (2025-06-13)
+
+Full Changelog: [v4.34.0...v4.35.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.34.0...v4.35.0)
+
+### Features
+
+* **api:** api update ([cd5addb](https://github.com/RetellAI/retell-python-sdk/commit/cd5addb4641d3c136faf19b5b500f20d17ff0e6c))
+* **api:** api update ([d56f39e](https://github.com/RetellAI/retell-python-sdk/commit/d56f39e79341c0af2e54d68aea298465ae9c290b))
+* **api:** api update ([abd1558](https://github.com/RetellAI/retell-python-sdk/commit/abd155800da17746a7617342f7f85c40c70d48fe))
+
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([6ea3bc6](https://github.com/RetellAI/retell-python-sdk/commit/6ea3bc69ddc6e5852a1563a232a427d980f03128))
+
+
+### Chores
+
+* **tests:** run tests in parallel ([0e2b1e4](https://github.com/RetellAI/retell-python-sdk/commit/0e2b1e44f3a3e6cd044bfd66d0fe6c1b4a1dfa54))
+
 ## 4.34.0 (2025-06-11)
 
 Full Changelog: [v4.33.0...v4.34.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.33.0...v4.34.0)
