@@ -455,7 +455,6 @@ class WebCallResponse(BaseModel):
             "call_transfer",
             "voicemail_reached",
             "inactivity",
-            "machine_detected",
             "max_duration_reached",
             "concurrency_limit_reached",
             "no_valid_payment",

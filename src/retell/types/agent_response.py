@@ -18,6 +18,11 @@ __all__ = [
     "PostCallAnalysisDataNumberAnalysisData",
     "PronunciationDictionary",
     "UserDtmfOptions",
+    "VoicemailOption",
+    "VoicemailOptionAction",
+    "VoicemailOptionActionVoicemailActionPrompt",
+    "VoicemailOptionActionVoicemailActionStaticText",
+    "VoicemailOptionActionVoicemailActionHangup",
 ]
 
 
@@ -149,6 +154,38 @@ class UserDtmfOptions(BaseModel):
     """
 
 
+class VoicemailOptionActionVoicemailActionPrompt(BaseModel):
+    text: str
+    """
+    The prompt used to generate the text to be spoken when the call is detected to
+    be in voicemail.
+    """
+
+    type: Literal["prompt"]
+
+
+class VoicemailOptionActionVoicemailActionStaticText(BaseModel):
+    text: str
+    """The text to be spoken when the call is detected to be in voicemail."""
+
+    type: Literal["static_text"]
+
+
+class VoicemailOptionActionVoicemailActionHangup(BaseModel):
+    type: Literal["hangup"]
+
+
+VoicemailOptionAction: TypeAlias = Union[
+    VoicemailOptionActionVoicemailActionPrompt,
+    VoicemailOptionActionVoicemailActionStaticText,
+    VoicemailOptionActionVoicemailActionHangup,
+]
+
+
+class VoicemailOption(BaseModel):
+    action: VoicemailOptionAction
+
+
 class AgentResponse(BaseModel):
     agent_id: str
     """Unique id of agent."""
@@ -269,12 +306,6 @@ class AgentResponse(BaseModel):
     of true will apply. This currently only applies to English.
     """
 
-    enable_voicemail_detection: Optional[bool] = None
-    """If set to true, will detect whether the call enters a voicemail.
-
-    Note that this feature is only available for phone calls.
-    """
-
     end_call_after_silence_ms: Optional[int] = None
     """If users stay silent for a period after agent speech, end the call.
 
@@ -324,8 +355,10 @@ class AgentResponse(BaseModel):
             "it-IT",
             "ko-KR",
             "nl-NL",
+            "nl-BE",
             "pl-PL",
             "tr-TR",
+            "th-TH",
             "vi-VN",
             "ro-RO",
             "bg-BG",
@@ -482,19 +515,12 @@ class AgentResponse(BaseModel):
     voices. If unset, default value 1 will apply.
     """
 
-    voicemail_detection_timeout_ms: Optional[int] = None
+    voicemail_option: Optional[VoicemailOption] = None
     """
-    Configures when to stop running voicemail detection, as it becomes unlikely to
-    hit voicemail after a couple minutes, and keep running it will only have
-    negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
-    allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
-    """
-
-    voicemail_message: Optional[str] = None
-    """The message to be played when the call enters a voicemail.
-
-    Note that this feature is only available for phone calls. If you want to hangup
-    after hitting voicemail, set this to empty string.
+    If this option is set, the call will try to detect voicemail in the first 3
+    minutes of the call. Actions defined (hangup, or leave a message) will be
+    applied when the voicemail is detected. Set this to null to disable voicemail
+    detection.
     """
 
     volume: Optional[float] = None
