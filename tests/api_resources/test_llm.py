@@ -68,6 +68,7 @@ class TestLlm:
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
+                            "custom_sip_headers": {"foo": "string"},
                             "description": "Transfer to the support team.",
                         }
                     ],
@@ -224,6 +225,7 @@ class TestLlm:
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
+                            "custom_sip_headers": {"foo": "string"},
                             "description": "Transfer to the support team.",
                         }
                     ],
@@ -408,6 +410,7 @@ class TestAsyncLlm:
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
+                            "custom_sip_headers": {"foo": "string"},
                             "description": "Transfer to the support team.",
                         }
                     ],
@@ -564,6 +567,7 @@ class TestAsyncLlm:
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
+                            "custom_sip_headers": {"foo": "string"},
                             "description": "Transfer to the support team.",
                         }
                     ],
