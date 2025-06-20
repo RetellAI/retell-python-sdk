@@ -1,5 +1,34 @@
 # Changelog
 
+## 4.37.0 (2025-06-20)
+
+Full Changelog: [v4.36.0...v4.37.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.36.0...v4.37.0)
+
+### Features
+
+* **api:** api update ([3600f4c](https://github.com/RetellAI/retell-python-sdk/commit/3600f4cf8833658591ef72e58e33df57dc223eb4))
+* **api:** api update ([e33361b](https://github.com/RetellAI/retell-python-sdk/commit/e33361bc15fc80a3fcbb9be089742f7dfda7568b))
+* **api:** api update ([15b8af3](https://github.com/RetellAI/retell-python-sdk/commit/15b8af3658b36e040a21fc5be3c28d2e3a45bf79))
+* **client:** add support for aiohttp ([c3c2840](https://github.com/RetellAI/retell-python-sdk/commit/c3c2840e285d73c451f0a4e18ffcdf6d7bdff06a))
+
+
+### Bug Fixes
+
+* **tests:** fix: tests which call HTTP endpoints directly with the example parameters ([82eb666](https://github.com/RetellAI/retell-python-sdk/commit/82eb66606315b29827250d1db55cbc8d1201a770))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([3255f4a](https://github.com/RetellAI/retell-python-sdk/commit/3255f4a2a7e57ae4dfc3e704c1895ca76d6eaeb4))
+* **internal:** update conftest.py ([56ff61e](https://github.com/RetellAI/retell-python-sdk/commit/56ff61e8c2a353faf6b668d40b7ea96d57576789))
+* **readme:** update badges ([faaed6a](https://github.com/RetellAI/retell-python-sdk/commit/faaed6a89f513e4de848ca569140f15989ec84f3))
+* **tests:** add tests for httpx client instantiation & proxies ([f055bdf](https://github.com/RetellAI/retell-python-sdk/commit/f055bdf00ae2ab8d39684fd7674ac04845858170))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([bbbf5ce](https://github.com/RetellAI/retell-python-sdk/commit/bbbf5ceee0d1f5ea5578fe22d5a5046afd17e925))
+
 ## 4.36.0 (2025-06-16)
 
 Full Changelog: [v4.35.0...v4.36.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.35.0...v4.36.0)
