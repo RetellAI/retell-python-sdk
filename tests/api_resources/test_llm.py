@@ -68,6 +68,7 @@ class TestLlm:
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
+                            "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
                         }
                     ],
@@ -224,6 +225,7 @@ class TestLlm:
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
+                            "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
                         }
                     ],
@@ -355,7 +357,9 @@ class TestLlm:
 
 
 class TestAsyncLlm:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncRetell) -> None:
@@ -408,6 +412,7 @@ class TestAsyncLlm:
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
+                            "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
                         }
                     ],
@@ -564,6 +569,7 @@ class TestAsyncLlm:
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
+                            "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
                         }
                     ],

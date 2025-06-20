@@ -1,6 +1,6 @@
 # Retell Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/retell-sdk.svg)](https://pypi.org/project/retell-sdk/)
+[![PyPI version](<https://img.shields.io/pypi/v/retell-sdk.svg?label=pypi%20(stable)>)](https://pypi.org/project/retell-sdk/)
 
 The Retell Python library provides convenient access to the Retell REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -66,6 +66,43 @@ asyncio.run(main())
 ```
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
+
+### With aiohttp
+
+By default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.
+
+You can enable this by installing `aiohttp`:
+
+```sh
+# install from PyPI
+pip install retell-sdk[aiohttp]
+```
+
+Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
+
+```python
+import asyncio
+from retell import DefaultAioHttpClient
+from retell import AsyncRetell
+
+
+async def main() -> None:
+    async with AsyncRetell(
+        api_key="YOUR_RETELL_API_KEY",
+        http_client=DefaultAioHttpClient(),
+    ) as client:
+        agent_response = await client.agent.create(
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
+            voice_id="11labs-Adrian",
+        )
+        print(agent_response.agent_id)
+
+
+asyncio.run(main())
+```
 
 ## Using types
 
@@ -173,7 +210,7 @@ client.with_options(max_retries=5).agent.create(
 ### Timeouts
 
 By default requests time out after 1 minute. You can configure this with a `timeout` option,
-which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
+which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
 from retell import Retell

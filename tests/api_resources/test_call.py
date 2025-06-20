@@ -220,6 +220,7 @@ class TestCall:
         call = client.call.create_phone_call(
             from_number="+14157774444",
             to_number="+12137774445",
+            custom_sip_headers={"X-Custom-Header": "Custom Value"},
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             override_agent_version=1,
@@ -340,7 +341,9 @@ class TestCall:
 
 
 class TestAsyncCall:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
@@ -540,6 +543,7 @@ class TestAsyncCall:
         call = await async_client.call.create_phone_call(
             from_number="+14157774444",
             to_number="+12137774445",
+            custom_sip_headers={"X-Custom-Header": "Custom Value"},
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             override_agent_version=1,
