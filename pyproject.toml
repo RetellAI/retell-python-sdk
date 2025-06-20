@@ -37,6 +37,8 @@ classifiers = [
 Homepage = "https://github.com/RetellAI/retell-python-sdk"
 Repository = "https://github.com/RetellAI/retell-python-sdk"
 
+[project.optional-dependencies]
+aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.6"]
 
 [tool.rye]
 managed = true
