@@ -67,6 +67,43 @@ asyncio.run(main())
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
 
+### With aiohttp
+
+By default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.
+
+You can enable this by installing `aiohttp`:
+
+```sh
+# install from PyPI
+pip install retell-sdk[aiohttp]
+```
+
+Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
+
+```python
+import asyncio
+from retell import DefaultAioHttpClient
+from retell import AsyncRetell
+
+
+async def main() -> None:
+    async with AsyncRetell(
+        api_key="YOUR_RETELL_API_KEY",
+        http_client=DefaultAioHttpClient(),
+    ) as client:
+        agent_response = await client.agent.create(
+            response_engine={
+                "llm_id": "llm_234sdertfsdsfsdf",
+                "type": "retell-llm",
+            },
+            voice_id="11labs-Adrian",
+        )
+        print(agent_response.agent_id)
+
+
+asyncio.run(main())
+```
+
 ## Using types
 
 Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typing.html#typing.TypedDict). Responses are [Pydantic models](https://docs.pydantic.dev) which also provide helper methods for things like:
