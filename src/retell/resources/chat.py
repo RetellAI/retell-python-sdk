@@ -65,7 +65,8 @@ class ChatResource(SyncAPIResource):
         Args:
           agent_id: The chat agent to use for the call.
 
-          agent_version: The version of the chat agent to use for the call.
+          agent_version: The version of the chat agent to use for the call. If not provided, will default
+              to latest version.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the chat. Not used for processing. You
@@ -270,7 +271,8 @@ class AsyncChatResource(AsyncAPIResource):
         Args:
           agent_id: The chat agent to use for the call.
 
-          agent_version: The version of the chat agent to use for the call.
+          agent_version: The version of the chat agent to use for the call. If not provided, will default
+              to latest version.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the chat. Not used for processing. You
