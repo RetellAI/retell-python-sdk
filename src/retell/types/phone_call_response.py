@@ -457,9 +457,6 @@ class PhoneCallResponse(BaseModel):
     collected_dynamic_variables: Optional[Dict[str, object]] = None
     """Dynamic variables collected from the call. Only available after the call ends."""
 
-    custom_sip_headers: Optional[Dict[str, str]] = None
-    """Custom SIP headers to be added to the call."""
-
     disconnection_reason: Optional[
         Literal[
             "user_hangup",

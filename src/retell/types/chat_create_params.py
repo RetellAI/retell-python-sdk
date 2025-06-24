@@ -13,10 +13,7 @@ class ChatCreateParams(TypedDict, total=False):
     """The chat agent to use for the call."""
 
     agent_version: int
-    """The version of the chat agent to use for the call.
-
-    If not provided, will default to latest version.
-    """
+    """The version of the chat agent to use for the call."""
 
     metadata: object
     """An arbitrary object for storage purpose only.
