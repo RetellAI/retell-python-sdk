@@ -270,9 +270,6 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
 
     type: Required[Literal["transfer_call"]]
 
-    custom_sip_headers: Dict[str, str]
-    """Custom SIP headers to be added to the call."""
-
     description: str
     """
     Describes what the tool does, sometimes can also include information about when
@@ -645,9 +642,6 @@ class StateToolTransferCallTool(TypedDict, total=False):
     transfer_option: Required[StateToolTransferCallToolTransferOption]
 
     type: Required[Literal["transfer_call"]]
-
-    custom_sip_headers: Dict[str, str]
-    """Custom SIP headers to be added to the call."""
 
     description: str
     """

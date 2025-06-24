@@ -236,7 +236,6 @@ class CallResource(SyncAPIResource):
         *,
         from_number: str,
         to_number: str,
-        custom_sip_headers: Dict[str, str] | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
         override_agent_id: str | NotGiven = NOT_GIVEN,
         override_agent_version: int | NotGiven = NOT_GIVEN,
@@ -257,8 +256,6 @@ class CallResource(SyncAPIResource):
 
           to_number: The number you want to call, in E.164 format. If using a number purchased from
               Retell, only US numbers are supported as destination.
-
-          custom_sip_headers: Add optional custom SIP headers to the call.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
@@ -289,7 +286,6 @@ class CallResource(SyncAPIResource):
                 {
                     "from_number": from_number,
                     "to_number": to_number,
-                    "custom_sip_headers": custom_sip_headers,
                     "metadata": metadata,
                     "override_agent_id": override_agent_id,
                     "override_agent_version": override_agent_version,
@@ -631,7 +627,6 @@ class AsyncCallResource(AsyncAPIResource):
         *,
         from_number: str,
         to_number: str,
-        custom_sip_headers: Dict[str, str] | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
         override_agent_id: str | NotGiven = NOT_GIVEN,
         override_agent_version: int | NotGiven = NOT_GIVEN,
@@ -652,8 +647,6 @@ class AsyncCallResource(AsyncAPIResource):
 
           to_number: The number you want to call, in E.164 format. If using a number purchased from
               Retell, only US numbers are supported as destination.
-
-          custom_sip_headers: Add optional custom SIP headers to the call.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
@@ -684,7 +677,6 @@ class AsyncCallResource(AsyncAPIResource):
                 {
                     "from_number": from_number,
                     "to_number": to_number,
-                    "custom_sip_headers": custom_sip_headers,
                     "metadata": metadata,
                     "override_agent_id": override_agent_id,
                     "override_agent_version": override_agent_version,
