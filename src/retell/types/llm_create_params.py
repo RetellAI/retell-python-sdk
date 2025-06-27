@@ -24,6 +24,12 @@ __all__ = [
     "GeneralToolPressDigitTool",
     "GeneralToolCustomTool",
     "GeneralToolCustomToolParameters",
+    "GeneralToolExtractDynamicVariableTool",
+    "GeneralToolExtractDynamicVariableToolVariable",
+    "GeneralToolExtractDynamicVariableToolVariableStringAnalysisData",
+    "GeneralToolExtractDynamicVariableToolVariableEnumAnalysisData",
+    "GeneralToolExtractDynamicVariableToolVariableBooleanAnalysisData",
+    "GeneralToolExtractDynamicVariableToolVariableNumberAnalysisData",
     "State",
     "StateEdge",
     "StateEdgeParameters",
@@ -44,6 +50,12 @@ __all__ = [
     "StateToolPressDigitTool",
     "StateToolCustomTool",
     "StateToolCustomToolParameters",
+    "StateToolExtractDynamicVariableTool",
+    "StateToolExtractDynamicVariableToolVariable",
+    "StateToolExtractDynamicVariableToolVariableStringAnalysisData",
+    "StateToolExtractDynamicVariableToolVariableEnumAnalysisData",
+    "StateToolExtractDynamicVariableToolVariableBooleanAnalysisData",
+    "StateToolExtractDynamicVariableToolVariableNumberAnalysisData",
 ]
 
 
@@ -467,6 +479,85 @@ class GeneralToolCustomTool(TypedDict, total=False):
     """
 
 
+class GeneralToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["string"]]
+    """Type of the variable to extract."""
+
+    examples: List[str]
+    """Examples of the variable value to teach model the style and syntax."""
+
+
+class GeneralToolExtractDynamicVariableToolVariableEnumAnalysisData(TypedDict, total=False):
+    choices: Required[List[str]]
+    """The possible values of the variable, must be non empty array."""
+
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["enum"]]
+    """Type of the variable to extract."""
+
+
+class GeneralToolExtractDynamicVariableToolVariableBooleanAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["boolean"]]
+    """Type of the variable to extract."""
+
+
+class GeneralToolExtractDynamicVariableToolVariableNumberAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["number"]]
+    """Type of the variable to extract."""
+
+
+GeneralToolExtractDynamicVariableToolVariable: TypeAlias = Union[
+    GeneralToolExtractDynamicVariableToolVariableStringAnalysisData,
+    GeneralToolExtractDynamicVariableToolVariableEnumAnalysisData,
+    GeneralToolExtractDynamicVariableToolVariableBooleanAnalysisData,
+    GeneralToolExtractDynamicVariableToolVariableNumberAnalysisData,
+]
+
+
+class GeneralToolExtractDynamicVariableTool(TypedDict, total=False):
+    description: Required[str]
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["extract_dynamic_variable"]]
+
+    variables: Required[Iterable[GeneralToolExtractDynamicVariableToolVariable]]
+    """The variables to be extracted."""
+
+
 GeneralTool: TypeAlias = Union[
     GeneralToolEndCallTool,
     GeneralToolTransferCallTool,
@@ -474,7 +565,7 @@ GeneralTool: TypeAlias = Union[
     GeneralToolBookAppointmentCalTool,
     GeneralToolPressDigitTool,
     GeneralToolCustomTool,
-    object,
+    GeneralToolExtractDynamicVariableTool,
 ]
 
 
@@ -841,6 +932,85 @@ class StateToolCustomTool(TypedDict, total=False):
     """
 
 
+class StateToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["string"]]
+    """Type of the variable to extract."""
+
+    examples: List[str]
+    """Examples of the variable value to teach model the style and syntax."""
+
+
+class StateToolExtractDynamicVariableToolVariableEnumAnalysisData(TypedDict, total=False):
+    choices: Required[List[str]]
+    """The possible values of the variable, must be non empty array."""
+
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["enum"]]
+    """Type of the variable to extract."""
+
+
+class StateToolExtractDynamicVariableToolVariableBooleanAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["boolean"]]
+    """Type of the variable to extract."""
+
+
+class StateToolExtractDynamicVariableToolVariableNumberAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["number"]]
+    """Type of the variable to extract."""
+
+
+StateToolExtractDynamicVariableToolVariable: TypeAlias = Union[
+    StateToolExtractDynamicVariableToolVariableStringAnalysisData,
+    StateToolExtractDynamicVariableToolVariableEnumAnalysisData,
+    StateToolExtractDynamicVariableToolVariableBooleanAnalysisData,
+    StateToolExtractDynamicVariableToolVariableNumberAnalysisData,
+]
+
+
+class StateToolExtractDynamicVariableTool(TypedDict, total=False):
+    description: Required[str]
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["extract_dynamic_variable"]]
+
+    variables: Required[Iterable[StateToolExtractDynamicVariableToolVariable]]
+    """The variables to be extracted."""
+
+
 StateTool: TypeAlias = Union[
     StateToolEndCallTool,
     StateToolTransferCallTool,
@@ -848,7 +1018,7 @@ StateTool: TypeAlias = Union[
     StateToolBookAppointmentCalTool,
     StateToolPressDigitTool,
     StateToolCustomTool,
-    object,
+    StateToolExtractDynamicVariableTool,
 ]
 
 
