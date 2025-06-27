@@ -479,6 +479,7 @@ GeneralTool: TypeAlias = Union[
     GeneralToolBookAppointmentCalTool,
     GeneralToolPressDigitTool,
     GeneralToolCustomTool,
+    object,
 ]
 
 
@@ -852,6 +853,7 @@ StateTool: TypeAlias = Union[
     StateToolBookAppointmentCalTool,
     StateToolPressDigitTool,
     StateToolCustomTool,
+    object,
 ]
 
 
