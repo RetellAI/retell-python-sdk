@@ -299,13 +299,6 @@ class AgentResponse(BaseModel):
     will not backchannel.
     """
 
-    enable_transcription_formatting: Optional[bool] = None
-    """If set to true, will format transcription to number, date, email, etc.
-
-    If set to false, will return transcripts in raw words. If not set, default value
-    of true will apply. This currently only applies to English.
-    """
-
     end_call_after_silence_ms: Optional[int] = None
     """If users stay silent for a period after agent speech, end the call.
 

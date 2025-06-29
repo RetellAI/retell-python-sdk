@@ -22,6 +22,9 @@ class CallCreatePhoneCallParams(TypedDict, total=False):
     destination.
     """
 
+    custom_sip_headers: Dict[str, str]
+    """Add optional custom SIP headers to the call."""
+
     metadata: object
     """An arbitrary object for storage purpose only.
 
