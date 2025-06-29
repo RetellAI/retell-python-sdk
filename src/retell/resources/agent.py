@@ -67,7 +67,6 @@ class AgentResource(SyncAPIResource):
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -222,10 +221,6 @@ class AgentResource(SyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
-          enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
-              false, will return transcripts in raw words. If not set, default value of true
-              will apply. This currently only applies to English.
-
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -355,7 +350,6 @@ class AgentResource(SyncAPIResource):
                     "boosted_keywords": boosted_keywords,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
-                    "enable_transcription_formatting": enable_transcription_formatting,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -451,7 +445,6 @@ class AgentResource(SyncAPIResource):
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -603,10 +596,6 @@ class AgentResource(SyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
-          enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
-              false, will return transcripts in raw words. If not set, default value of true
-              will apply. This currently only applies to English.
-
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -743,7 +732,6 @@ class AgentResource(SyncAPIResource):
                     "boosted_keywords": boosted_keywords,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
-                    "enable_transcription_formatting": enable_transcription_formatting,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -912,7 +900,6 @@ class AsyncAgentResource(AsyncAPIResource):
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -1067,10 +1054,6 @@ class AsyncAgentResource(AsyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
-          enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
-              false, will return transcripts in raw words. If not set, default value of true
-              will apply. This currently only applies to English.
-
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -1200,7 +1183,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "boosted_keywords": boosted_keywords,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
-                    "enable_transcription_formatting": enable_transcription_formatting,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -1296,7 +1278,6 @@ class AsyncAgentResource(AsyncAPIResource):
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        enable_transcription_formatting: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
         fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
@@ -1448,10 +1429,6 @@ class AsyncAgentResource(AsyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
-          enable_transcription_formatting: If set to true, will format transcription to number, date, email, etc. If set to
-              false, will return transcripts in raw words. If not set, default value of true
-              will apply. This currently only applies to English.
-
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -1588,7 +1565,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "boosted_keywords": boosted_keywords,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
-                    "enable_transcription_formatting": enable_transcription_formatting,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
