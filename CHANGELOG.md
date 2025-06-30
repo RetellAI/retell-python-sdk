@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.37.1 (2025-06-30)
+
+Full Changelog: [v4.37.0...v4.37.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.37.0...v4.37.1)
+
+### Bug Fixes
+
+* type errors in webhook tests ([f99c778](https://github.com/RetellAI/retell-python-sdk/commit/f99c77843bbb5b1e5f3a0e2c878414ad74b3aefe))
+
 ## 4.37.0 (2025-06-29)
 
 Full Changelog: [v4.36.0...v4.37.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.36.0...v4.37.0)
