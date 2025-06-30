@@ -1,6 +1,6 @@
 import json
 
-from retell.lib.webhook_auth import symmetric
+from retell.lib.webhook_auth import symmetric  # type: ignore
 
 
 def test_symmetric_signature() -> None:
@@ -11,5 +11,5 @@ def test_symmetric_signature() -> None:
     body = json.dumps(post_data, separators=(",", ":"), ensure_ascii=False)
     api_key = "fake-api-key"
 
-    signature = symmetric["sign"](body, api_key)
+    signature = symmetric["sign"](body, api_key)  # type: ignore
     assert symmetric["verify"](body, api_key, signature)
