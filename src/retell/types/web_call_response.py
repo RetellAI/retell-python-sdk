@@ -419,7 +419,7 @@ class WebCallResponse(BaseModel):
     Used to identify in LLM websocket and used to authenticate in audio websocket.
     """
 
-    call_status: Literal["registered", "ongoing", "ended", "error"]
+    call_status: Literal["registered", "not_connected", "ongoing", "ended", "error"]
     """Status of call.
 
     - `registered`: Call id issued, starting to make a call using this id.
@@ -466,6 +466,12 @@ class WebCallResponse(BaseModel):
             "dial_busy",
             "dial_failed",
             "dial_no_answer",
+            "invalid_destination",
+            "telephony_provider_permission_denied",
+            "telephony_provider_unavailable",
+            "sip_routing_error",
+            "marked_as_spam",
+            "user_declined",
             "error_llm_websocket_open",
             "error_llm_websocket_lost_connection",
             "error_llm_websocket_runtime",
