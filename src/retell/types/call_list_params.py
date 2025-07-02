@@ -62,7 +62,7 @@ class FilterCriteria(TypedDict, total=False):
     agent_id: List[str]
     """Only retrieve calls that are made with specific agent(s)."""
 
-    call_status: List[Literal["registered", "ongoing", "ended", "error"]]
+    call_status: List[Literal["registered", "not_connected", "ongoing", "ended", "error"]]
     """Only retrieve calls with specific call status(es)."""
 
     call_successful: Iterable[bool]
