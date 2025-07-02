@@ -471,7 +471,6 @@ class PhoneCallResponse(BaseModel):
             "concurrency_limit_reached",
             "no_valid_payment",
             "scam_detected",
-            "error_inbound_webhook",
             "dial_busy",
             "dial_failed",
             "dial_no_answer",
