@@ -121,9 +121,9 @@ class LlmUpdateParams(TypedDict, total=False):
 
     model_high_priority: bool
     """
-    If set to true, will use high priority pool with more dedicated resource to
-    ensure lower and more consistent latency, default to false. This feature usually
-    comes with a higher cost.
+    If set to true, will enable fast tier, which uses high priority pool with more
+    dedicated resource to ensure lower and more consistent latency, default to
+    false. This feature usually comes with a higher cost.
     """
 
     model_temperature: float
