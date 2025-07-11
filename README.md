@@ -1,6 +1,7 @@
 # Retell Python API library
 
-[![PyPI version](<https://img.shields.io/pypi/v/retell-sdk.svg?label=pypi%20(stable)>)](https://pypi.org/project/retell-sdk/)
+<!-- prettier-ignore -->
+[![PyPI version](https://img.shields.io/pypi/v/retell-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/retell-sdk/)
 
 The Retell Python library provides convenient access to the Retell REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,

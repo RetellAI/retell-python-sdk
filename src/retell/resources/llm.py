@@ -113,9 +113,9 @@ class LlmResource(SyncAPIResource):
 
           model: Select the underlying text LLM. If not set, would default to gpt-4o.
 
-          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
-              ensure lower and more consistent latency, default to false. This feature usually
-              comes with a higher cost.
+          model_high_priority: If set to true, will enable fast tier, which uses high priority pool with more
+              dedicated resource to ensure lower and more consistent latency, default to
+              false. This feature usually comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -284,9 +284,9 @@ class LlmResource(SyncAPIResource):
 
           model: Select the underlying text LLM. If not set, would default to gpt-4o.
 
-          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
-              ensure lower and more consistent latency, default to false. This feature usually
-              comes with a higher cost.
+          model_high_priority: If set to true, will enable fast tier, which uses high priority pool with more
+              dedicated resource to ensure lower and more consistent latency, default to
+              false. This feature usually comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -493,9 +493,9 @@ class AsyncLlmResource(AsyncAPIResource):
 
           model: Select the underlying text LLM. If not set, would default to gpt-4o.
 
-          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
-              ensure lower and more consistent latency, default to false. This feature usually
-              comes with a higher cost.
+          model_high_priority: If set to true, will enable fast tier, which uses high priority pool with more
+              dedicated resource to ensure lower and more consistent latency, default to
+              false. This feature usually comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -664,9 +664,9 @@ class AsyncLlmResource(AsyncAPIResource):
 
           model: Select the underlying text LLM. If not set, would default to gpt-4o.
 
-          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
-              ensure lower and more consistent latency, default to false. This feature usually
-              comes with a higher cost.
+          model_high_priority: If set to true, will enable fast tier, which uses high priority pool with more
+              dedicated resource to ensure lower and more consistent latency, default to
+              false. This feature usually comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
