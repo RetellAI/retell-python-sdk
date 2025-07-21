@@ -72,6 +72,14 @@ from .knowledge_base import (
     KnowledgeBaseResourceWithStreamingResponse,
     AsyncKnowledgeBaseResourceWithStreamingResponse,
 )
+from .conversation_flow import (
+    ConversationFlowResource,
+    AsyncConversationFlowResource,
+    ConversationFlowResourceWithRawResponse,
+    AsyncConversationFlowResourceWithRawResponse,
+    ConversationFlowResourceWithStreamingResponse,
+    AsyncConversationFlowResourceWithStreamingResponse,
+)
 
 __all__ = [
     "CallResource",
@@ -104,6 +112,12 @@ __all__ = [
     "AsyncLlmResourceWithRawResponse",
     "LlmResourceWithStreamingResponse",
     "AsyncLlmResourceWithStreamingResponse",
+    "ConversationFlowResource",
+    "AsyncConversationFlowResource",
+    "ConversationFlowResourceWithRawResponse",
+    "AsyncConversationFlowResourceWithRawResponse",
+    "ConversationFlowResourceWithStreamingResponse",
+    "AsyncConversationFlowResourceWithStreamingResponse",
     "KnowledgeBaseResource",
     "AsyncKnowledgeBaseResource",
     "KnowledgeBaseResourceWithRawResponse",

@@ -1,5 +1,28 @@
 # Changelog
 
+## 4.39.0 (2025-07-21)
+
+Full Changelog: [v4.38.0...v4.39.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.38.0...v4.39.0)
+
+### Features
+
+* **api:** api update ([86775d4](https://github.com/RetellAI/retell-python-sdk/commit/86775d4c13308bb97db33b6eb261d34a27efbd46))
+* **api:** api update ([7939f60](https://github.com/RetellAI/retell-python-sdk/commit/7939f600161efb54058cfc035d94043fd75ad726))
+
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([54566d1](https://github.com/RetellAI/retell-python-sdk/commit/54566d1a5c3f4bccbb0f6826d201e9c6bb589446))
+* **parsing:** correctly handle nested discriminated unions ([4ca9fcc](https://github.com/RetellAI/retell-python-sdk/commit/4ca9fcccee3ac0ed3409c0229c0c88efadc0fc9f))
+* **parsing:** ignore empty metadata ([362b16b](https://github.com/RetellAI/retell-python-sdk/commit/362b16ba249d4df2ff8c78d47bc76901e5596a18))
+
+
+### Chores
+
+* **internal:** bump pinned h11 dep ([c1cfc1c](https://github.com/RetellAI/retell-python-sdk/commit/c1cfc1ceeb67147383013012d8287f02207d30a9))
+* **package:** mark python 3.13 as supported ([4db522f](https://github.com/RetellAI/retell-python-sdk/commit/4db522f58093d261e83dd3b2f404250bbd156d49))
+* **readme:** fix version rendering on pypi ([1573527](https://github.com/RetellAI/retell-python-sdk/commit/1573527151ce922f246c740f74b8e0bee54dd6f1))
+
 ## 4.38.0 (2025-07-02)
 
 Full Changelog: [v4.37.1...v4.38.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.37.1...v4.38.0)
