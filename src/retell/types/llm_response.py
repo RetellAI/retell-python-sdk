@@ -18,6 +18,9 @@ __all__ = [
     "GeneralToolTransferCallToolTransferOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
@@ -32,6 +35,12 @@ __all__ = [
     "GeneralToolExtractDynamicVariableToolVariableEnumAnalysisData",
     "GeneralToolExtractDynamicVariableToolVariableBooleanAnalysisData",
     "GeneralToolExtractDynamicVariableToolVariableNumberAnalysisData",
+    "GeneralToolAgentSwapTool",
+    "GeneralToolMcpTool",
+    "GeneralToolSendSMSTool",
+    "GeneralToolSendSMSToolSMSContent",
+    "GeneralToolSendSMSToolSMSContentSMSContentPredefined",
+    "GeneralToolSendSMSToolSMSContentSMSContentInferred",
     "State",
     "StateEdge",
     "StateEdgeParameters",
@@ -44,6 +53,9 @@ __all__ = [
     "StateToolTransferCallToolTransferOption",
     "StateToolTransferCallToolTransferOptionTransferOptionColdTransfer",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
+    "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
+    "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
@@ -58,6 +70,12 @@ __all__ = [
     "StateToolExtractDynamicVariableToolVariableEnumAnalysisData",
     "StateToolExtractDynamicVariableToolVariableBooleanAnalysisData",
     "StateToolExtractDynamicVariableToolVariableNumberAnalysisData",
+    "StateToolAgentSwapTool",
+    "StateToolMcpTool",
+    "StateToolSendSMSTool",
+    "StateToolSendSMSToolSMSContent",
+    "StateToolSendSMSToolSMSContentSMSContentPredefined",
+    "StateToolSendSMSToolSMSContentSMSContentInferred",
 ]
 
 
@@ -122,6 +140,30 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseMo
     """
 
 
+class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
+    BaseModel
+):
+    prompt: Optional[str] = None
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["prompt"]] = None
+
+
+class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage(
+    BaseModel
+):
+    message: Optional[str] = None
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["static_message"]] = None
+
+
+GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption: TypeAlias = Union[
+    GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt,
+    GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage,
+]
+
+
 class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
     BaseModel
 ):
@@ -149,6 +191,33 @@ GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoff
 class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseModel):
     type: Literal["warm_transfer"]
     """The type of the transfer."""
+
+    agent_detection_timeout_ms: Optional[float] = None
+    """The time to wait before considering transfer fails."""
+
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
+    """The music to play while the caller is being transferred."""
+
+    opt_out_human_detection: Optional[bool] = None
+    """If set to true, will not perform human detection for the transfer.
+
+    Default to false.
+    """
+
+    opt_out_initial_message: Optional[bool] = None
+    """If set to true, AI will not say "Hello" after connecting the call.
+
+    Default to false.
+    """
+
+    private_handoff_option: Optional[
+        GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption
+    ] = None
+    """
+    If set, when transfer is connected, will say the handoff message only to the
+    agent receiving the transfer. Can leave either a static message or a dynamic one
+    based on prompt. Set to null to disable warm handoff.
+    """
 
     public_handoff_option: Optional[
         GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption
@@ -464,6 +533,97 @@ class GeneralToolExtractDynamicVariableTool(BaseModel):
     """The variables to be extracted."""
 
 
+class GeneralToolAgentSwapTool(BaseModel):
+    agent_id: str
+    """The id of the agent to swap to."""
+
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    type: Literal["agent_swap"]
+
+    agent_version: Optional[float] = None
+    """The version of the agent to swap to.
+
+    If not specified, will use the latest version.
+    """
+
+    description: Optional[str] = None
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    execution_message_description: Optional[str] = None
+    """The message for the agent to speak when executing agent swap."""
+
+    post_call_analysis_setting: Optional[Literal["both_agents", "only_destination_agent"]] = None
+
+    speak_during_execution: Optional[bool] = None
+
+
+class GeneralToolMcpTool(BaseModel):
+    description: str
+    """Description of the MCP tool."""
+
+    name: str
+    """Name of the MCP tool."""
+
+    type: Literal["mcp"]
+
+    input_schema: Optional[Dict[str, str]] = None
+    """The input schema of the MCP tool."""
+
+    mcp_id: Optional[str] = None
+    """Unique id of the MCP."""
+
+
+class GeneralToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
+    content: Optional[str] = None
+    """The static message to be sent in the SMS. Can contain dynamic variables."""
+
+    type: Optional[Literal["predefined"]] = None
+
+
+class GeneralToolSendSMSToolSMSContentSMSContentInferred(BaseModel):
+    prompt: Optional[str] = None
+    """The prompt to be used to help infer the SMS content.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right message to send. Can contain dynamic variables.
+    """
+
+    type: Optional[Literal["inferred"]] = None
+
+
+GeneralToolSendSMSToolSMSContent: TypeAlias = Union[
+    GeneralToolSendSMSToolSMSContentSMSContentPredefined, GeneralToolSendSMSToolSMSContentSMSContentInferred
+]
+
+
+class GeneralToolSendSMSTool(BaseModel):
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    sms_content: GeneralToolSendSMSToolSMSContent
+
+    type: Literal["send_sms"]
+
+    description: Optional[str] = None
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+
 GeneralTool: TypeAlias = Union[
     GeneralToolEndCallTool,
     GeneralToolTransferCallTool,
@@ -472,6 +632,9 @@ GeneralTool: TypeAlias = Union[
     GeneralToolPressDigitTool,
     GeneralToolCustomTool,
     GeneralToolExtractDynamicVariableTool,
+    GeneralToolAgentSwapTool,
+    GeneralToolMcpTool,
+    GeneralToolSendSMSTool,
 ]
 
 
@@ -580,6 +743,30 @@ class StateToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseMode
     """
 
 
+class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
+    BaseModel
+):
+    prompt: Optional[str] = None
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["prompt"]] = None
+
+
+class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage(
+    BaseModel
+):
+    message: Optional[str] = None
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["static_message"]] = None
+
+
+StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption: TypeAlias = Union[
+    StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt,
+    StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage,
+]
+
+
 class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(BaseModel):
     prompt: Optional[str] = None
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
@@ -605,6 +792,33 @@ StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOp
 class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseModel):
     type: Literal["warm_transfer"]
     """The type of the transfer."""
+
+    agent_detection_timeout_ms: Optional[float] = None
+    """The time to wait before considering transfer fails."""
+
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
+    """The music to play while the caller is being transferred."""
+
+    opt_out_human_detection: Optional[bool] = None
+    """If set to true, will not perform human detection for the transfer.
+
+    Default to false.
+    """
+
+    opt_out_initial_message: Optional[bool] = None
+    """If set to true, AI will not say "Hello" after connecting the call.
+
+    Default to false.
+    """
+
+    private_handoff_option: Optional[
+        StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption
+    ] = None
+    """
+    If set, when transfer is connected, will say the handoff message only to the
+    agent receiving the transfer. Can leave either a static message or a dynamic one
+    based on prompt. Set to null to disable warm handoff.
+    """
 
     public_handoff_option: Optional[
         StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption
@@ -920,6 +1134,97 @@ class StateToolExtractDynamicVariableTool(BaseModel):
     """The variables to be extracted."""
 
 
+class StateToolAgentSwapTool(BaseModel):
+    agent_id: str
+    """The id of the agent to swap to."""
+
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    type: Literal["agent_swap"]
+
+    agent_version: Optional[float] = None
+    """The version of the agent to swap to.
+
+    If not specified, will use the latest version.
+    """
+
+    description: Optional[str] = None
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    execution_message_description: Optional[str] = None
+    """The message for the agent to speak when executing agent swap."""
+
+    post_call_analysis_setting: Optional[Literal["both_agents", "only_destination_agent"]] = None
+
+    speak_during_execution: Optional[bool] = None
+
+
+class StateToolMcpTool(BaseModel):
+    description: str
+    """Description of the MCP tool."""
+
+    name: str
+    """Name of the MCP tool."""
+
+    type: Literal["mcp"]
+
+    input_schema: Optional[Dict[str, str]] = None
+    """The input schema of the MCP tool."""
+
+    mcp_id: Optional[str] = None
+    """Unique id of the MCP."""
+
+
+class StateToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
+    content: Optional[str] = None
+    """The static message to be sent in the SMS. Can contain dynamic variables."""
+
+    type: Optional[Literal["predefined"]] = None
+
+
+class StateToolSendSMSToolSMSContentSMSContentInferred(BaseModel):
+    prompt: Optional[str] = None
+    """The prompt to be used to help infer the SMS content.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right message to send. Can contain dynamic variables.
+    """
+
+    type: Optional[Literal["inferred"]] = None
+
+
+StateToolSendSMSToolSMSContent: TypeAlias = Union[
+    StateToolSendSMSToolSMSContentSMSContentPredefined, StateToolSendSMSToolSMSContentSMSContentInferred
+]
+
+
+class StateToolSendSMSTool(BaseModel):
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    sms_content: StateToolSendSMSToolSMSContent
+
+    type: Literal["send_sms"]
+
+    description: Optional[str] = None
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+
 StateTool: TypeAlias = Union[
     StateToolEndCallTool,
     StateToolTransferCallTool,
@@ -928,6 +1233,9 @@ StateTool: TypeAlias = Union[
     StateToolPressDigitTool,
     StateToolCustomTool,
     StateToolExtractDynamicVariableTool,
+    StateToolAgentSwapTool,
+    StateToolMcpTool,
+    StateToolSendSMSTool,
 ]
 
 

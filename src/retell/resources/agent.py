@@ -400,7 +400,8 @@ class AgentResource(SyncAPIResource):
         Retrieve details of a specific agent
 
         Args:
-          version: Optional version of the API to use for this request. Default to latest version.
+          version: Optional version of the API to use for this request. If not provided, will
+              default to latest version.
 
           extra_headers: Send extra headers
 
@@ -1233,7 +1234,8 @@ class AsyncAgentResource(AsyncAPIResource):
         Retrieve details of a specific agent
 
         Args:
-          version: Optional version of the API to use for this request. Default to latest version.
+          version: Optional version of the API to use for this request. If not provided, will
+              default to latest version.
 
           extra_headers: Send extra headers
 
