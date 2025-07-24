@@ -396,14 +396,6 @@ class GeneralToolCustomTool(BaseModel):
     get update for the function call.
     """
 
-    speak_during_execution: bool
-    """
-    Determines whether the agent would say sentence like "One moment, let me check
-    that." when executing the function. Recommend to turn on if your function call
-    takes over 1s (including network) to complete, so that your agent remains
-    responsive.
-    """
-
     type: Literal["custom"]
 
     url: str
@@ -442,6 +434,14 @@ class GeneralToolCustomTool(BaseModel):
 
     These values will be extracted from the response and made available as dynamic
     variables for use.
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
     """
 
     timeout_ms: Optional[int] = None
@@ -997,14 +997,6 @@ class StateToolCustomTool(BaseModel):
     get update for the function call.
     """
 
-    speak_during_execution: bool
-    """
-    Determines whether the agent would say sentence like "One moment, let me check
-    that." when executing the function. Recommend to turn on if your function call
-    takes over 1s (including network) to complete, so that your agent remains
-    responsive.
-    """
-
     type: Literal["custom"]
 
     url: str
@@ -1043,6 +1035,14 @@ class StateToolCustomTool(BaseModel):
 
     These values will be extracted from the response and made available as dynamic
     variables for use.
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
     """
 
     timeout_ms: Optional[int] = None
