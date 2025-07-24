@@ -798,7 +798,9 @@ class AgentResource(SyncAPIResource):
               is represented by a agent id, pagination key and version pair is exclusive (not
               included in the fetched page). If not set, will start from the beginning.
 
-          pagination_key_version: The agent version to continue fetching the next page of agents.
+          pagination_key_version: Specifies the version of the agent associated with the pagination_key. When
+              paginating, both the pagination_key and its version must be provided to ensure
+              consistent ordering and to fetch the next page correctly.
 
           extra_headers: Send extra headers
 
@@ -1669,7 +1671,9 @@ class AsyncAgentResource(AsyncAPIResource):
               is represented by a agent id, pagination key and version pair is exclusive (not
               included in the fetched page). If not set, will start from the beginning.
 
-          pagination_key_version: The agent version to continue fetching the next page of agents.
+          pagination_key_version: Specifies the version of the agent associated with the pagination_key. When
+              paginating, both the pagination_key and its version must be provided to ensure
+              consistent ordering and to fetch the next page correctly.
 
           extra_headers: Send extra headers
 

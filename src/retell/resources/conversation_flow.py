@@ -308,8 +308,9 @@ class ConversationFlowResource(SyncAPIResource):
               from the list conversation flows is usually used as pagination key here. If not
               set, will start from the beginning.
 
-          pagination_key_version: The version of the conversation flow to continue fetching the next page of
-              conversation flows.
+          pagination_key_version: Specifies the version of the conversation flow associated with the
+              pagination_key. When paginating, both the pagination_key and its version must be
+              provided to ensure consistent ordering and to fetch the next page correctly.
 
           extra_headers: Send extra headers
 
@@ -653,8 +654,9 @@ class AsyncConversationFlowResource(AsyncAPIResource):
               from the list conversation flows is usually used as pagination key here. If not
               set, will start from the beginning.
 
-          pagination_key_version: The version of the conversation flow to continue fetching the next page of
-              conversation flows.
+          pagination_key_version: Specifies the version of the conversation flow associated with the
+              pagination_key. When paginating, both the pagination_key and its version must be
+              provided to ensure consistent ordering and to fetch the next page correctly.
 
           extra_headers: Send extra headers
 
