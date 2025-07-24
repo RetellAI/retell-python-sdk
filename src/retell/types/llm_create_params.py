@@ -491,14 +491,6 @@ class GeneralToolCustomTool(TypedDict, total=False):
     get update for the function call.
     """
 
-    speak_during_execution: Required[bool]
-    """
-    Determines whether the agent would say sentence like "One moment, let me check
-    that." when executing the function. Recommend to turn on if your function call
-    takes over 1s (including network) to complete, so that your agent remains
-    responsive.
-    """
-
     type: Required[Literal["custom"]]
 
     url: Required[str]
@@ -537,6 +529,14 @@ class GeneralToolCustomTool(TypedDict, total=False):
 
     These values will be extracted from the response and made available as dynamic
     variables for use.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
     """
 
     timeout_ms: int
@@ -1090,14 +1090,6 @@ class StateToolCustomTool(TypedDict, total=False):
     get update for the function call.
     """
 
-    speak_during_execution: Required[bool]
-    """
-    Determines whether the agent would say sentence like "One moment, let me check
-    that." when executing the function. Recommend to turn on if your function call
-    takes over 1s (including network) to complete, so that your agent remains
-    responsive.
-    """
-
     type: Required[Literal["custom"]]
 
     url: Required[str]
@@ -1136,6 +1128,14 @@ class StateToolCustomTool(TypedDict, total=False):
 
     These values will be extracted from the response and made available as dynamic
     variables for use.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
     """
 
     timeout_ms: int
