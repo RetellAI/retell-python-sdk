@@ -794,11 +794,11 @@ class AgentResource(SyncAPIResource):
         Limit can range between 1 and
               1000, and the default is 1000.
 
-          pagination_key: The pagination key to continue fetching the next page of Agents. Pagination key
-              is represented by a call id, pagination key and version pair is exclusive (not
+          pagination_key: The pagination key to continue fetching the next page of agents. Pagination key
+              is represented by a agent id, pagination key and version pair is exclusive (not
               included in the fetched page). If not set, will start from the beginning.
 
-          pagination_key_version: The pagination key version to continue fetching the next page of Agents.
+          pagination_key_version: The agent version to continue fetching the next page of agents.
 
           extra_headers: Send extra headers
 
@@ -1665,11 +1665,11 @@ class AsyncAgentResource(AsyncAPIResource):
         Limit can range between 1 and
               1000, and the default is 1000.
 
-          pagination_key: The pagination key to continue fetching the next page of Agents. Pagination key
-              is represented by a call id, pagination key and version pair is exclusive (not
+          pagination_key: The pagination key to continue fetching the next page of agents. Pagination key
+              is represented by a agent id, pagination key and version pair is exclusive (not
               included in the fetched page). If not set, will start from the beginning.
 
-          pagination_key_version: The pagination key version to continue fetching the next page of Agents.
+          pagination_key_version: The agent version to continue fetching the next page of agents.
 
           extra_headers: Send extra headers
 

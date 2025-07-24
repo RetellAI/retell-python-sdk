@@ -23,4 +23,4 @@ class LlmListParams(TypedDict, total=False):
     """
 
     pagination_key_version: int
-    """The pagination key to continue fetching the next page of LLMs."""
+    """The version of the llm to continue fetching the next page of llms."""

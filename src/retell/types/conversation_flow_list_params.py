@@ -26,6 +26,6 @@ class ConversationFlowListParams(TypedDict, total=False):
 
     pagination_key_version: int
     """
-    The pagination key version to continue fetching the next page of conversation
-    flows.
+    The version of the conversation flow to continue fetching the next page of
+    conversation flows.
     """
