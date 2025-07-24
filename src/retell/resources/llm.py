@@ -375,7 +375,7 @@ class LlmResource(SyncAPIResource):
               represented by a llm id, pagination key and version pair is exclusive (not
               included in the fetched page). If not set, will start from the beginning.
 
-          pagination_key_version: The pagination key to continue fetching the next page of LLMs.
+          pagination_key_version: The version of the llm to continue fetching the next page of llms.
 
           extra_headers: Send extra headers
 
@@ -789,7 +789,7 @@ class AsyncLlmResource(AsyncAPIResource):
               represented by a llm id, pagination key and version pair is exclusive (not
               included in the fetched page). If not set, will start from the beginning.
 
-          pagination_key_version: The pagination key to continue fetching the next page of LLMs.
+          pagination_key_version: The version of the llm to continue fetching the next page of llms.
 
           extra_headers: Send extra headers
 
