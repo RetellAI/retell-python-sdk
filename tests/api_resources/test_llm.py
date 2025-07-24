@@ -9,7 +9,10 @@ import pytest
 
 from retell import Retell, AsyncRetell
 from tests.utils import assert_matches_type
-from retell.types import LlmResponse, LlmListResponse
+from retell.types import (
+    LlmResponse,
+    LlmListResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -295,6 +298,15 @@ class TestLlm:
     @parametrize
     def test_method_list(self, client: Retell) -> None:
         llm = client.llm.list()
+        assert_matches_type(LlmListResponse, llm, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Retell) -> None:
+        llm = client.llm.list(
+            limit=50,
+            pagination_key="llm_1ffdb9717444d0e77346838911",
+            pagination_key_version=0,
+        )
         assert_matches_type(LlmListResponse, llm, path=["response"])
 
     @parametrize
@@ -639,6 +651,15 @@ class TestAsyncLlm:
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.list()
+        assert_matches_type(LlmListResponse, llm, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
+        llm = await async_client.llm.list(
+            limit=50,
+            pagination_key="llm_1ffdb9717444d0e77346838911",
+            pagination_key_version=0,
+        )
         assert_matches_type(LlmListResponse, llm, path=["response"])
 
     @parametrize

@@ -294,6 +294,15 @@ class TestAgent:
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Retell) -> None:
+        agent = client.agent.list(
+            limit=50,
+            pagination_key="agent_1ffdb9717444d0e77346838911",
+            pagination_key_version=0,
+        )
+        assert_matches_type(AgentListResponse, agent, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
         response = client.agent.with_raw_response.list()
 
@@ -665,6 +674,15 @@ class TestAsyncAgent:
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.list()
+        assert_matches_type(AgentListResponse, agent, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.list(
+            limit=50,
+            pagination_key="agent_1ffdb9717444d0e77346838911",
+            pagination_key_version=0,
+        )
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
     @parametrize
