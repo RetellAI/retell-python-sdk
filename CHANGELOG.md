@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.41.0 (2025-07-30)
+
+Full Changelog: [v4.40.0...v4.41.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.40.0...v4.41.0)
+
+### Features
+
+* **client:** support file upload requests ([9b6b79d](https://github.com/RetellAI/retell-python-sdk/commit/9b6b79d1e25a59da411c490b1d2c5747759adbcd))
+
 ## 4.40.0 (2025-07-30)
 
 Full Changelog: [v4.39.0...v4.40.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.39.0...v4.40.0)
