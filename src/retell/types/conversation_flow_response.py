@@ -990,9 +990,6 @@ class NodeFunctionNode(BaseModel):
     id: str
     """Unique identifier for the node"""
 
-    speak_during_execution: bool
-    """Whether to speak during tool execution"""
-
     tool_id: str
     """Tool ID for function nodes"""
 
@@ -1022,6 +1019,9 @@ class NodeFunctionNode(BaseModel):
 
     name: Optional[str] = None
     """Optional name for display purposes"""
+
+    speak_during_execution: Optional[bool] = None
+    """Whether to speak during tool execution"""
 
 
 class NodeTransferCallNodeEdgeTransitionConditionPromptCondition(BaseModel):
@@ -2710,9 +2710,6 @@ class NodeMcpNode(BaseModel):
     mcp_tool_name: str
     """Name of the MCP tool to call"""
 
-    speak_during_execution: bool
-    """If true, will speak during execution"""
-
     type: Literal["mcp"]
     """Type of the node"""
 
@@ -2741,6 +2738,9 @@ class NodeMcpNode(BaseModel):
     Response variables to add to dynamic variables, key is the variable name, value
     is the path to the variable in the response
     """
+
+    speak_during_execution: Optional[bool] = None
+    """If true, will speak during execution"""
 
 
 Node: TypeAlias = Union[

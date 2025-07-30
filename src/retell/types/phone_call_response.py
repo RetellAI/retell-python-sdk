@@ -3,8 +3,6 @@
 from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
-from pydantic import Field as FieldInfo
-
 from .._models import BaseModel
 
 __all__ = [
@@ -62,7 +60,7 @@ class CallCostProductCost(BaseModel):
     product: str
     """Product name that has a cost associated with it."""
 
-    unit_price: float = FieldInfo(alias="unitPrice")
+    unit_price: float
     """Unit price of the product in cents per second."""
 
 
@@ -78,9 +76,6 @@ class CallCost(BaseModel):
 
     total_duration_unit_price: float
     """Total unit duration price of all products in cents per second"""
-
-    total_one_time_price: float
-    """Total one time price of all products in cents per call"""
 
 
 class LatencyE2E(BaseModel):
@@ -319,7 +314,7 @@ class TranscriptObject(BaseModel):
     content: str
     """Transcript of the utterances."""
 
-    role: Literal["agent", "user"]
+    role: Literal["agent", "user", "transfer_target"]
     """Documents whether this utterance is spoken by agent or user."""
 
     words: List[TranscriptObjectWord]
@@ -351,7 +346,7 @@ class TranscriptWithToolCallUtterance(BaseModel):
     content: str
     """Transcript of the utterances."""
 
-    role: Literal["agent", "user"]
+    role: Literal["agent", "user", "transfer_target"]
     """Documents whether this utterance is spoken by agent or user."""
 
     words: List[TranscriptWithToolCallUtteranceWord]

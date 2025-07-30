@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import llm_create_params, llm_update_params, llm_retrieve_params
+from ..types import llm_list_params, llm_create_params, llm_update_params, llm_retrieve_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -354,6 +354,9 @@ class LlmResource(SyncAPIResource):
     def list(
         self,
         *,
+        limit: int | NotGiven = NOT_GIVEN,
+        pagination_key: str | NotGiven = NOT_GIVEN,
+        pagination_key_version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -361,11 +364,44 @@ class LlmResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> LlmListResponse:
-        """List all Retell LLM Response Engines that can be attached to an agent."""
+        """
+        List all Retell LLM Response Engines that can be attached to an agent.
+
+        Args:
+          limit: A limit on the number of objects to be returned. Limit can range between 1 and
+              1000, and the default is 1000.
+
+          pagination_key: The pagination key to continue fetching the next page of LLMs. Pagination key is
+              represented by a llm id, pagination key and version pair is exclusive (not
+              included in the fetched page). If not set, will start from the beginning.
+
+          pagination_key_version: Specifies the version of the llm associated with the pagination_key. When
+              paginating, both the pagination_key and its version must be provided to ensure
+              consistent ordering and to fetch the next page correctly.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             "/list-retell-llms",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "pagination_key_version": pagination_key_version,
+                    },
+                    llm_list_params.LlmListParams,
+                ),
             ),
             cast_to=LlmListResponse,
         )
@@ -734,6 +770,9 @@ class AsyncLlmResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        limit: int | NotGiven = NOT_GIVEN,
+        pagination_key: str | NotGiven = NOT_GIVEN,
+        pagination_key_version: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -741,11 +780,44 @@ class AsyncLlmResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> LlmListResponse:
-        """List all Retell LLM Response Engines that can be attached to an agent."""
+        """
+        List all Retell LLM Response Engines that can be attached to an agent.
+
+        Args:
+          limit: A limit on the number of objects to be returned. Limit can range between 1 and
+              1000, and the default is 1000.
+
+          pagination_key: The pagination key to continue fetching the next page of LLMs. Pagination key is
+              represented by a llm id, pagination key and version pair is exclusive (not
+              included in the fetched page). If not set, will start from the beginning.
+
+          pagination_key_version: Specifies the version of the llm associated with the pagination_key. When
+              paginating, both the pagination_key and its version must be provided to ensure
+              consistent ordering and to fetch the next page correctly.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             "/list-retell-llms",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "pagination_key_version": pagination_key_version,
+                    },
+                    llm_list_params.LlmListParams,
+                ),
             ),
             cast_to=LlmListResponse,
         )

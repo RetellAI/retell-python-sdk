@@ -1,5 +1,27 @@
 # Changelog
 
+## 4.40.0 (2025-07-30)
+
+Full Changelog: [v4.39.0...v4.40.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.39.0...v4.40.0)
+
+### Features
+
+* **api:** api update ([7885078](https://github.com/RetellAI/retell-python-sdk/commit/7885078eddff560d7f332c2d44cc2cf13e0f3fef))
+* **api:** api update ([1bae255](https://github.com/RetellAI/retell-python-sdk/commit/1bae255bb0db00e0ff0a24c86c58096ff52c2caf))
+* **api:** api update ([cdf6604](https://github.com/RetellAI/retell-python-sdk/commit/cdf6604d2a0f1ab108439879730e8df5d7745745))
+* **api:** api update ([1f7e4fb](https://github.com/RetellAI/retell-python-sdk/commit/1f7e4fbd433d1f5a62fb5755eb21fa89c0e2d949))
+* **api:** api update ([03cf7a0](https://github.com/RetellAI/retell-python-sdk/commit/03cf7a003bcd572eb6932b9f1a99bf040d4dc99a))
+
+
+### Bug Fixes
+
+* **parsing:** parse extra field types ([0503bfc](https://github.com/RetellAI/retell-python-sdk/commit/0503bfc911dc7155229ee4245311f2650b113881))
+
+
+### Chores
+
+* **project:** add settings file for vscode ([b4c019f](https://github.com/RetellAI/retell-python-sdk/commit/b4c019fccedfc693b00b750af5c18901110d8f37))
+
 ## 4.39.0 (2025-07-21)
 
 Full Changelog: [v4.38.0...v4.39.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.38.0...v4.39.0)

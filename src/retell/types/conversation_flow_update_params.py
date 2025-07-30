@@ -1044,9 +1044,6 @@ class NodeFunctionNode(TypedDict, total=False):
     id: Required[str]
     """Unique identifier for the node"""
 
-    speak_during_execution: Required[bool]
-    """Whether to speak during tool execution"""
-
     tool_id: Required[str]
     """Tool ID for function nodes"""
 
@@ -1076,6 +1073,9 @@ class NodeFunctionNode(TypedDict, total=False):
 
     name: str
     """Optional name for display purposes"""
+
+    speak_during_execution: bool
+    """Whether to speak during tool execution"""
 
 
 class NodeTransferCallNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
@@ -2776,9 +2776,6 @@ class NodeMcpNode(TypedDict, total=False):
     mcp_tool_name: Required[str]
     """Name of the MCP tool to call"""
 
-    speak_during_execution: Required[bool]
-    """If true, will speak during execution"""
-
     type: Required[Literal["mcp"]]
     """Type of the node"""
 
@@ -2807,6 +2804,9 @@ class NodeMcpNode(TypedDict, total=False):
     Response variables to add to dynamic variables, key is the variable name, value
     is the path to the variable in the response
     """
+
+    speak_during_execution: bool
+    """If true, will speak during execution"""
 
 
 Node: TypeAlias = Union[
