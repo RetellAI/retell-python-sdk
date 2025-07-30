@@ -3,8 +3,6 @@
 from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
-from pydantic import Field as FieldInfo
-
 from .._models import BaseModel
 
 __all__ = [
@@ -48,7 +46,7 @@ class ChatCostProductCost(BaseModel):
     product: str
     """Product name that has a cost associated with it."""
 
-    unit_price: float = FieldInfo(alias="unitPrice")
+    unit_price: float
     """Unit price of the product in cents per second."""
 
 
