@@ -1,6 +1,6 @@
 [project]
 name = "retell-sdk"
-version = "4.40.0"
+version = "4.41.0"
 description = "The official Python library for the retell API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -161,7 +161,7 @@ reportPrivateUsage = false
 [tool.ruff]
 line-length = 120
 output-format = "grouped"
-target-version = "py37"
+target-version = "py38"
 
 [tool.ruff.format]
 docstring-code-format = true
