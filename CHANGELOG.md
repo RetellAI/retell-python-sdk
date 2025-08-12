@@ -1,5 +1,21 @@
 # Changelog
 
+## 4.41.0 (2025-08-12)
+
+Full Changelog: [v4.40.0...v4.41.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.40.0...v4.41.0)
+
+### Features
+
+* **api:** api update ([c2ec5de](https://github.com/RetellAI/retell-python-sdk/commit/c2ec5de4abc373d385a5021a5631171cfe252e86))
+* **client:** support file upload requests ([9b6b79d](https://github.com/RetellAI/retell-python-sdk/commit/9b6b79d1e25a59da411c490b1d2c5747759adbcd))
+
+
+### Chores
+
+* **internal:** fix ruff target version ([78b33c4](https://github.com/RetellAI/retell-python-sdk/commit/78b33c4a563db13b6aaebd2edc646ac853c33888))
+* **internal:** update comment in script ([ddf00a4](https://github.com/RetellAI/retell-python-sdk/commit/ddf00a45ddd71e51bc2edb9cf8276d536dc42699))
+* update @stainless-api/prism-cli to v5.15.0 ([ebb9f1d](https://github.com/RetellAI/retell-python-sdk/commit/ebb9f1d44b224a0963d44dadacf17324f5323205))
+
 ## 4.40.0 (2025-07-30)
 
 Full Changelog: [v4.39.0...v4.40.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.39.0...v4.40.0)
