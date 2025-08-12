@@ -49,6 +49,7 @@ class PhoneNumberResource(SyncAPIResource):
         self,
         *,
         area_code: int | NotGiven = NOT_GIVEN,
+        country_code: Literal["US", "CA"] | NotGiven = NOT_GIVEN,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
@@ -56,6 +57,8 @@ class PhoneNumberResource(SyncAPIResource):
         number_provider: Literal["twilio", "telnyx"] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
+        phone_number: str | NotGiven = NOT_GIVEN,
+        toll_free: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -69,6 +72,9 @@ class PhoneNumberResource(SyncAPIResource):
         Args:
           area_code: Area code of the number to obtain. Format is a 3 digit integer. Currently only
               supports US area code.
+
+          country_code: The ISO 3166-1 alpha-2 country code of the number you are trying to purchase. If
+              left empty, will default to "US".
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
@@ -91,6 +97,11 @@ class PhoneNumberResource(SyncAPIResource):
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
               default to latest version.
 
+          phone_number: The number you are trying to purchase in E.164 format of the number (+country
+              code then number with no space and no special characters).
+
+          toll_free: Whether to purchase a toll-free number. Toll-free numbers incur higher costs.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -104,6 +115,7 @@ class PhoneNumberResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "area_code": area_code,
+                    "country_code": country_code,
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_agent_version": inbound_agent_version,
                     "inbound_webhook_url": inbound_webhook_url,
@@ -111,6 +123,8 @@ class PhoneNumberResource(SyncAPIResource):
                     "number_provider": number_provider,
                     "outbound_agent_id": outbound_agent_id,
                     "outbound_agent_version": outbound_agent_version,
+                    "phone_number": phone_number,
+                    "toll_free": toll_free,
                 },
                 phone_number_create_params.PhoneNumberCreateParams,
             ),
@@ -386,6 +400,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         self,
         *,
         area_code: int | NotGiven = NOT_GIVEN,
+        country_code: Literal["US", "CA"] | NotGiven = NOT_GIVEN,
         inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
         inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
@@ -393,6 +408,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         number_provider: Literal["twilio", "telnyx"] | NotGiven = NOT_GIVEN,
         outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
         outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
+        phone_number: str | NotGiven = NOT_GIVEN,
+        toll_free: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -406,6 +423,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         Args:
           area_code: Area code of the number to obtain. Format is a 3 digit integer. Currently only
               supports US area code.
+
+          country_code: The ISO 3166-1 alpha-2 country code of the number you are trying to purchase. If
+              left empty, will default to "US".
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
@@ -428,6 +448,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
               default to latest version.
 
+          phone_number: The number you are trying to purchase in E.164 format of the number (+country
+              code then number with no space and no special characters).
+
+          toll_free: Whether to purchase a toll-free number. Toll-free numbers incur higher costs.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -441,6 +466,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "area_code": area_code,
+                    "country_code": country_code,
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_agent_version": inbound_agent_version,
                     "inbound_webhook_url": inbound_webhook_url,
@@ -448,6 +474,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "number_provider": number_provider,
                     "outbound_agent_id": outbound_agent_id,
                     "outbound_agent_version": outbound_agent_version,
+                    "phone_number": phone_number,
+                    "toll_free": toll_free,
                 },
                 phone_number_create_params.PhoneNumberCreateParams,
             ),

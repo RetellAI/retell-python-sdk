@@ -15,6 +15,12 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     Format is a 3 digit integer. Currently only supports US area code.
     """
 
+    country_code: Literal["US", "CA"]
+    """The ISO 3166-1 alpha-2 country code of the number you are trying to purchase.
+
+    If left empty, will default to "US".
+    """
+
     inbound_agent_id: Optional[str]
     """Unique id of agent to bind to the number.
 
@@ -53,3 +59,12 @@ class PhoneNumberCreateParams(TypedDict, total=False):
 
     If not provided, will default to latest version.
     """
+
+    phone_number: str
+    """
+    The number you are trying to purchase in E.164 format of the number (+country
+    code then number with no space and no special characters).
+    """
+
+    toll_free: bool
+    """Whether to purchase a toll-free number. Toll-free numbers incur higher costs."""

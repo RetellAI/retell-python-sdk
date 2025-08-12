@@ -29,6 +29,7 @@ class TestPhoneNumber:
     def test_method_create_with_all_params(self, client: Retell) -> None:
         phone_number = client.phone_number.create(
             area_code=415,
+            country_code="US",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_agent_version=1,
             inbound_webhook_url="https://example.com/inbound-webhook",
@@ -36,6 +37,8 @@ class TestPhoneNumber:
             number_provider="twilio",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             outbound_agent_version=1,
+            phone_number="+14157774444",
+            toll_free=True,
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -276,6 +279,7 @@ class TestAsyncPhoneNumber:
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.create(
             area_code=415,
+            country_code="US",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_agent_version=1,
             inbound_webhook_url="https://example.com/inbound-webhook",
@@ -283,6 +287,8 @@ class TestAsyncPhoneNumber:
             number_provider="twilio",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             outbound_agent_version=1,
+            phone_number="+14157774444",
+            toll_free=True,
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
