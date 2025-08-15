@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, cast
+from typing import Any, Dict, Optional, cast
 from typing_extensions import Literal
 
 import httpx
@@ -95,6 +95,7 @@ class CallResource(SyncAPIResource):
         *,
         metadata: object | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        override_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -112,6 +113,9 @@ class CallResource(SyncAPIResource):
 
           opt_out_sensitive_data_storage: Whether this call opts out of sensitive data storage like transcript, recording,
               logging. Can only be changed from false to true.
+
+          override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. These are
+              provided during call-updates and have the highest priorty.
 
           extra_headers: Send extra headers
 
@@ -131,6 +135,7 @@ class CallResource(SyncAPIResource):
                     {
                         "metadata": metadata,
                         "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                        "override_dynamic_variables": override_dynamic_variables,
                     },
                     call_update_params.CallUpdateParams,
                 ),
@@ -490,6 +495,7 @@ class AsyncCallResource(AsyncAPIResource):
         *,
         metadata: object | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        override_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -507,6 +513,9 @@ class AsyncCallResource(AsyncAPIResource):
 
           opt_out_sensitive_data_storage: Whether this call opts out of sensitive data storage like transcript, recording,
               logging. Can only be changed from false to true.
+
+          override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. These are
+              provided during call-updates and have the highest priorty.
 
           extra_headers: Send extra headers
 
@@ -526,6 +535,7 @@ class AsyncCallResource(AsyncAPIResource):
                     {
                         "metadata": metadata,
                         "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                        "override_dynamic_variables": override_dynamic_variables,
                     },
                     call_update_params.CallUpdateParams,
                 ),
