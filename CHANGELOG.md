@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.42.0 (2025-08-15)
+
+Full Changelog: [v4.41.0...v4.42.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.41.0...v4.42.0)
+
+### Features
+
+* **api:** api update ([90b632b](https://github.com/RetellAI/retell-python-sdk/commit/90b632bda4c1f6c6b40b9fd5cfc5b5eee58508f4))
+
 ## 4.41.0 (2025-08-12)
 
 Full Changelog: [v4.40.0...v4.41.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.40.0...v4.41.0)

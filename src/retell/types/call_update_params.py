@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Dict, Optional
 from typing_extensions import TypedDict
 
 __all__ = ["CallUpdateParams"]
@@ -20,4 +21,10 @@ class CallUpdateParams(TypedDict, total=False):
     """
     Whether this call opts out of sensitive data storage like transcript, recording,
     logging. Can only be changed from false to true.
+    """
+
+    override_dynamic_variables: Optional[Dict[str, str]]
+    """Override dynamic varaibles represented as key-value pairs of strings.
+
+    These are provided during call-updates and have the highest priorty.
     """
