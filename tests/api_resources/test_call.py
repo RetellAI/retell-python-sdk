@@ -76,6 +76,7 @@ class TestCall:
                 "notes": "Follow-up required",
             },
             opt_out_sensitive_data_storage=True,
+            override_dynamic_variables={"additional_discount": "15%"},
         )
         assert_matches_type(CallResponse, call, path=["response"])
 
@@ -399,6 +400,7 @@ class TestAsyncCall:
                 "notes": "Follow-up required",
             },
             opt_out_sensitive_data_storage=True,
+            override_dynamic_variables={"additional_discount": "15%"},
         )
         assert_matches_type(CallResponse, call, path=["response"])
 
