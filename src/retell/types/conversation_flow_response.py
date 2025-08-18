@@ -314,6 +314,9 @@ class Mcp(BaseModel):
 
 class ModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -323,6 +326,8 @@ class ModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -571,6 +576,9 @@ class NodeConversationNodeGlobalNodeSetting(BaseModel):
 
 class NodeConversationNodeModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -580,6 +588,8 @@ class NodeConversationNodeModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -979,6 +989,9 @@ NodeFunctionNodeInstruction: TypeAlias = Union[
 
 class NodeFunctionNodeModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -988,6 +1001,8 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -1317,6 +1332,9 @@ class NodeTransferCallNodeGlobalNodeSetting(BaseModel):
 
 class NodeTransferCallNodeModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -1326,6 +1344,8 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -1548,6 +1568,9 @@ class NodePressDigitNodeGlobalNodeSetting(BaseModel):
 
 class NodePressDigitNodeModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -1557,6 +1580,8 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -2331,6 +2356,9 @@ class NodeExtractDynamicVariablesNodeGlobalNodeSetting(BaseModel):
 
 class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -2340,6 +2368,8 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
