@@ -371,10 +371,14 @@ class NodeConversationNodeEdgeTransitionConditionEquationConditionEquation(BaseM
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeConversationNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -597,10 +601,14 @@ class NodeConversationNodeSkipResponseEdgeTransitionConditionEquationConditionEq
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeConversationNodeSkipResponseEdgeTransitionConditionEquationCondition(BaseModel):
@@ -790,10 +798,14 @@ class NodeFunctionNodeEdgeTransitionConditionEquationConditionEquation(BaseModel
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeFunctionNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1035,10 +1047,14 @@ class NodeTransferCallNodeEdgeTransitionConditionEquationConditionEquation(BaseM
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeTransferCallNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1372,10 +1388,14 @@ class NodePressDigitNodeEdgeTransitionConditionEquationConditionEquation(BaseMod
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodePressDigitNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1585,10 +1605,14 @@ class NodeBranchNodeElseEdgeTransitionConditionEquationConditionEquation(BaseMod
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeBranchNodeElseEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1643,10 +1667,14 @@ class NodeBranchNodeEdgeTransitionConditionEquationConditionEquation(BaseModel):
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeBranchNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1830,10 +1858,14 @@ class NodeSMSNodeFailedEdgeTransitionConditionEquationConditionEquation(BaseMode
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeSMSNodeFailedEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1903,10 +1935,14 @@ class NodeSMSNodeSuccessEdgeTransitionConditionEquationConditionEquation(BaseMod
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeSMSNodeSuccessEdgeTransitionConditionEquationCondition(BaseModel):
@@ -2130,10 +2166,14 @@ class NodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationConditionEqu
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -2347,10 +2387,14 @@ class NodeAgentSwapNodeEdgeTransitionConditionEquationConditionEquation(BaseMode
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeAgentSwapNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -2525,10 +2569,14 @@ class NodeMcpNodeEdgeTransitionConditionEquationConditionEquation(BaseModel):
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeMcpNodeEdgeTransitionConditionEquationCondition(BaseModel):
