@@ -421,10 +421,14 @@ class NodeConversationNodeEdgeTransitionConditionEquationConditionEquation(Typed
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeConversationNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -649,10 +653,14 @@ class NodeConversationNodeSkipResponseEdgeTransitionConditionEquationConditionEq
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeConversationNodeSkipResponseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -842,10 +850,14 @@ class NodeFunctionNodeEdgeTransitionConditionEquationConditionEquation(TypedDict
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeFunctionNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -1089,10 +1101,14 @@ class NodeTransferCallNodeEdgeTransitionConditionEquationConditionEquation(Typed
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeTransferCallNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -1428,10 +1444,14 @@ class NodePressDigitNodeEdgeTransitionConditionEquationConditionEquation(TypedDi
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodePressDigitNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -1643,10 +1663,14 @@ class NodeBranchNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDi
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeBranchNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -1701,10 +1725,14 @@ class NodeBranchNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, 
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeBranchNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -1888,10 +1916,14 @@ class NodeSMSNodeFailedEdgeTransitionConditionEquationConditionEquation(TypedDic
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeSMSNodeFailedEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -1961,10 +1993,14 @@ class NodeSMSNodeSuccessEdgeTransitionConditionEquationConditionEquation(TypedDi
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeSMSNodeSuccessEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -2188,10 +2224,14 @@ class NodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationConditionEqu
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -2413,10 +2453,14 @@ class NodeAgentSwapNodeEdgeTransitionConditionEquationConditionEquation(TypedDic
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeAgentSwapNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
@@ -2591,10 +2635,14 @@ class NodeMcpNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, tot
     left: Required[str]
     """Left side of the equation"""
 
-    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]]
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
 
-    right: Required[str]
-    """Right side of the equation"""
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeMcpNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
