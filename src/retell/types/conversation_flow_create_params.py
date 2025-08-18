@@ -335,6 +335,9 @@ class ConversationFlowCreateParams(TypedDict, total=False):
 class ModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
             "gpt-4o",
             "gpt-4o-mini",
             "gpt-4.1",
@@ -344,6 +347,8 @@ class ModelChoice(TypedDict, total=False):
             "claude-3.5-haiku",
             "gemini-2.0-flash",
             "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -594,6 +599,9 @@ class NodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
 class NodeConversationNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
             "gpt-4o",
             "gpt-4o-mini",
             "gpt-4.1",
@@ -603,6 +611,8 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
             "claude-3.5-haiku",
             "gemini-2.0-flash",
             "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -1004,6 +1014,9 @@ NodeFunctionNodeInstruction: TypeAlias = Union[
 class NodeFunctionNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
             "gpt-4o",
             "gpt-4o-mini",
             "gpt-4.1",
@@ -1013,6 +1026,8 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
             "claude-3.5-haiku",
             "gemini-2.0-flash",
             "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -1344,6 +1359,9 @@ class NodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
 class NodeTransferCallNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
             "gpt-4o",
             "gpt-4o-mini",
             "gpt-4.1",
@@ -1353,6 +1371,8 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
             "claude-3.5-haiku",
             "gemini-2.0-flash",
             "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -1577,6 +1597,9 @@ class NodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
 class NodePressDigitNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
             "gpt-4o",
             "gpt-4o-mini",
             "gpt-4.1",
@@ -1586,6 +1609,8 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
             "claude-3.5-haiku",
             "gemini-2.0-flash",
             "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -2370,6 +2395,9 @@ class NodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total=False):
 class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
             "gpt-4o",
             "gpt-4o-mini",
             "gpt-4.1",
@@ -2379,6 +2407,8 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
             "claude-3.5-haiku",
             "gemini-2.0-flash",
             "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
         ]
     ]
     """The LLM model to use"""
