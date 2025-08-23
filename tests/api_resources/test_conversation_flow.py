@@ -24,7 +24,7 @@ class TestConversationFlow:
     def test_method_create(self, client: Retell) -> None:
         conversation_flow = client.conversation_flow.create(
             model_choice={
-                "model": "gpt-4o",
+                "model": "gpt-5",
                 "type": "cascading",
             },
             nodes=[
@@ -45,7 +45,7 @@ class TestConversationFlow:
     def test_method_create_with_all_params(self, client: Retell) -> None:
         conversation_flow = client.conversation_flow.create(
             model_choice={
-                "model": "gpt-4o",
+                "model": "gpt-5",
                 "type": "cascading",
                 "high_priority": True,
             },
@@ -119,7 +119,7 @@ class TestConversationFlow:
                     },
                     "interruption_sensitivity": 0,
                     "model_choice": {
-                        "model": "gpt-4o",
+                        "model": "gpt-5",
                         "type": "cascading",
                         "high_priority": True,
                     },
@@ -186,7 +186,7 @@ class TestConversationFlow:
     def test_raw_response_create(self, client: Retell) -> None:
         response = client.conversation_flow.with_raw_response.create(
             model_choice={
-                "model": "gpt-4o",
+                "model": "gpt-5",
                 "type": "cascading",
             },
             nodes=[
@@ -211,7 +211,7 @@ class TestConversationFlow:
     def test_streaming_response_create(self, client: Retell) -> None:
         with client.conversation_flow.with_streaming_response.create(
             model_choice={
-                "model": "gpt-4o",
+                "model": "gpt-5",
                 "type": "cascading",
             },
             nodes=[
@@ -315,7 +315,7 @@ class TestConversationFlow:
                 }
             ],
             model_choice={
-                "model": "gpt-4o",
+                "model": "gpt-5",
                 "type": "cascading",
                 "high_priority": True,
             },
@@ -390,7 +390,7 @@ class TestConversationFlow:
                     },
                     "interruption_sensitivity": 0,
                     "model_choice": {
-                        "model": "gpt-4o",
+                        "model": "gpt-5",
                         "type": "cascading",
                         "high_priority": True,
                     },
@@ -543,7 +543,7 @@ class TestAsyncConversationFlow:
     async def test_method_create(self, async_client: AsyncRetell) -> None:
         conversation_flow = await async_client.conversation_flow.create(
             model_choice={
-                "model": "gpt-4o",
+                "model": "gpt-5",
                 "type": "cascading",
             },
             nodes=[
@@ -564,7 +564,7 @@ class TestAsyncConversationFlow:
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         conversation_flow = await async_client.conversation_flow.create(
             model_choice={
-                "model": "gpt-4o",
+                "model": "gpt-5",
                 "type": "cascading",
                 "high_priority": True,
             },
@@ -638,7 +638,7 @@ class TestAsyncConversationFlow:
                     },
                     "interruption_sensitivity": 0,
                     "model_choice": {
-                        "model": "gpt-4o",
+                        "model": "gpt-5",
                         "type": "cascading",
                         "high_priority": True,
                     },
@@ -705,7 +705,7 @@ class TestAsyncConversationFlow:
     async def test_raw_response_create(self, async_client: AsyncRetell) -> None:
         response = await async_client.conversation_flow.with_raw_response.create(
             model_choice={
-                "model": "gpt-4o",
+                "model": "gpt-5",
                 "type": "cascading",
             },
             nodes=[
@@ -730,7 +730,7 @@ class TestAsyncConversationFlow:
     async def test_streaming_response_create(self, async_client: AsyncRetell) -> None:
         async with async_client.conversation_flow.with_streaming_response.create(
             model_choice={
-                "model": "gpt-4o",
+                "model": "gpt-5",
                 "type": "cascading",
             },
             nodes=[
@@ -834,7 +834,7 @@ class TestAsyncConversationFlow:
                 }
             ],
             model_choice={
-                "model": "gpt-4o",
+                "model": "gpt-5",
                 "type": "cascading",
                 "high_priority": True,
             },
@@ -909,7 +909,7 @@ class TestAsyncConversationFlow:
                     },
                     "interruption_sensitivity": 0,
                     "model_choice": {
-                        "model": "gpt-4o",
+                        "model": "gpt-5",
                         "type": "cascading",
                         "high_priority": True,
                     },

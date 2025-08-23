@@ -26,5 +26,7 @@ class CallUpdateParams(TypedDict, total=False):
     override_dynamic_variables: Optional[Dict[str, str]]
     """Override dynamic varaibles represented as key-value pairs of strings.
 
-    These are provided during call-updates and have the highest priorty.
+    Setting this will override or add the dynamic variables set in the agent during
+    the call. Only need to set the delta where you want to override, no need to set
+    the entire dynamic variables object.
     """

@@ -314,6 +314,9 @@ class Mcp(BaseModel):
 
 class ModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -323,6 +326,8 @@ class ModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -371,10 +376,14 @@ class NodeConversationNodeEdgeTransitionConditionEquationConditionEquation(BaseM
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeConversationNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -567,6 +576,9 @@ class NodeConversationNodeGlobalNodeSetting(BaseModel):
 
 class NodeConversationNodeModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -576,6 +588,8 @@ class NodeConversationNodeModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -597,10 +611,14 @@ class NodeConversationNodeSkipResponseEdgeTransitionConditionEquationConditionEq
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeConversationNodeSkipResponseEdgeTransitionConditionEquationCondition(BaseModel):
@@ -790,10 +808,14 @@ class NodeFunctionNodeEdgeTransitionConditionEquationConditionEquation(BaseModel
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeFunctionNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -967,6 +989,9 @@ NodeFunctionNodeInstruction: TypeAlias = Union[
 
 class NodeFunctionNodeModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -976,6 +1001,8 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -1035,10 +1062,14 @@ class NodeTransferCallNodeEdgeTransitionConditionEquationConditionEquation(BaseM
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeTransferCallNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1301,6 +1332,9 @@ class NodeTransferCallNodeGlobalNodeSetting(BaseModel):
 
 class NodeTransferCallNodeModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -1310,6 +1344,8 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -1372,10 +1408,14 @@ class NodePressDigitNodeEdgeTransitionConditionEquationConditionEquation(BaseMod
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodePressDigitNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1528,6 +1568,9 @@ class NodePressDigitNodeGlobalNodeSetting(BaseModel):
 
 class NodePressDigitNodeModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -1537,6 +1580,8 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -1585,10 +1630,14 @@ class NodeBranchNodeElseEdgeTransitionConditionEquationConditionEquation(BaseMod
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeBranchNodeElseEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1643,10 +1692,14 @@ class NodeBranchNodeEdgeTransitionConditionEquationConditionEquation(BaseModel):
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeBranchNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1830,10 +1883,14 @@ class NodeSMSNodeFailedEdgeTransitionConditionEquationConditionEquation(BaseMode
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeSMSNodeFailedEdgeTransitionConditionEquationCondition(BaseModel):
@@ -1903,10 +1960,14 @@ class NodeSMSNodeSuccessEdgeTransitionConditionEquationConditionEquation(BaseMod
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeSMSNodeSuccessEdgeTransitionConditionEquationCondition(BaseModel):
@@ -2130,10 +2191,14 @@ class NodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationConditionEqu
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -2291,6 +2356,9 @@ class NodeExtractDynamicVariablesNodeGlobalNodeSetting(BaseModel):
 
 class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
     model: Literal[
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
         "gpt-4o",
         "gpt-4o-mini",
         "gpt-4.1",
@@ -2300,6 +2368,8 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "claude-3.5-haiku",
         "gemini-2.0-flash",
         "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -2347,10 +2417,14 @@ class NodeAgentSwapNodeEdgeTransitionConditionEquationConditionEquation(BaseMode
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeAgentSwapNodeEdgeTransitionConditionEquationCondition(BaseModel):
@@ -2525,10 +2599,14 @@ class NodeMcpNodeEdgeTransitionConditionEquationConditionEquation(BaseModel):
     left: str
     """Left side of the equation"""
 
-    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains"]
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
 
-    right: str
-    """Right side of the equation"""
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
 
 
 class NodeMcpNodeEdgeTransitionConditionEquationCondition(BaseModel):

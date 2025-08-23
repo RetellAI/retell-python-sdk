@@ -114,8 +114,10 @@ class CallResource(SyncAPIResource):
           opt_out_sensitive_data_storage: Whether this call opts out of sensitive data storage like transcript, recording,
               logging. Can only be changed from false to true.
 
-          override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. These are
-              provided during call-updates and have the highest priorty.
+          override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
+              this will override or add the dynamic variables set in the agent during the
+              call. Only need to set the delta where you want to override, no need to set the
+              entire dynamic variables object.
 
           extra_headers: Send extra headers
 
@@ -514,8 +516,10 @@ class AsyncCallResource(AsyncAPIResource):
           opt_out_sensitive_data_storage: Whether this call opts out of sensitive data storage like transcript, recording,
               logging. Can only be changed from false to true.
 
-          override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. These are
-              provided during call-updates and have the highest priorty.
+          override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
+              this will override or add the dynamic variables set in the agent during the
+              call. Only need to set the delta where you want to override, no need to set the
+              entire dynamic variables object.
 
           extra_headers: Send extra headers
 
