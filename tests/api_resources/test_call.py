@@ -121,6 +121,7 @@ class TestCall:
         call = client.call.list(
             filter_criteria={
                 "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
+                "batch_call_id": ["string"],
                 "call_status": ["ended"],
                 "call_successful": [True],
                 "call_type": ["phone_call"],
@@ -445,6 +446,7 @@ class TestAsyncCall:
         call = await async_client.call.list(
             filter_criteria={
                 "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
+                "batch_call_id": ["string"],
                 "call_status": ["ended"],
                 "call_successful": [True],
                 "call_type": ["phone_call"],
