@@ -41,6 +41,7 @@ __all__ = [
     "GeneralToolSendSMSToolSMSContent",
     "GeneralToolSendSMSToolSMSContentSMSContentPredefined",
     "GeneralToolSendSMSToolSMSContentSMSContentInferred",
+    "KBConfig",
     "State",
     "StateEdge",
     "StateEdgeParameters",
@@ -636,6 +637,14 @@ GeneralTool: TypeAlias = Union[
     GeneralToolMcpTool,
     GeneralToolSendSMSTool,
 ]
+
+
+class KBConfig(BaseModel):
+    filter_score: Optional[float] = None
+    """Similarity threshold for filtering search results"""
+
+    top_k: Optional[int] = None
+    """Number of top knowledge base chunks to retrieve"""
 
 
 class StateEdgeParameters(BaseModel):
@@ -1312,6 +1321,9 @@ class LlmResponse(BaseModel):
 
     is_published: Optional[bool] = None
     """Whether the Retell LLM Response Engine is published."""
+
+    kb_config: Optional[KBConfig] = None
+    """Knowledge base configuration for RAG retrieval."""
 
     knowledge_base_ids: Optional[List[str]] = None
     """A list of knowledge base ids to use for this resource.

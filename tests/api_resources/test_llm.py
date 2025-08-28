@@ -38,6 +38,10 @@ class TestLlm:
                     "description": "End the call with user.",
                 }
             ],
+            kb_config={
+                "filter_score": 0.6,
+                "top_k": 3,
+            },
             knowledge_base_ids=["string"],
             model="gpt-4o",
             model_high_priority=True,
@@ -195,6 +199,10 @@ class TestLlm:
                     "description": "End the call with user.",
                 }
             ],
+            kb_config={
+                "filter_score": 0.6,
+                "top_k": 3,
+            },
             knowledge_base_ids=["string"],
             model="gpt-4o",
             model_high_priority=True,
@@ -391,6 +399,10 @@ class TestAsyncLlm:
                     "description": "End the call with user.",
                 }
             ],
+            kb_config={
+                "filter_score": 0.6,
+                "top_k": 3,
+            },
             knowledge_base_ids=["string"],
             model="gpt-4o",
             model_high_priority=True,
@@ -548,6 +560,10 @@ class TestAsyncLlm:
                     "description": "End the call with user.",
                 }
             ],
+            kb_config={
+                "filter_score": 0.6,
+                "top_k": 3,
+            },
             knowledge_base_ids=["string"],
             model="gpt-4o",
             model_high_priority=True,

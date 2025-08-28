@@ -8,6 +8,7 @@ from typing_extensions import Literal, Required, TypeAlias, TypedDict
 __all__ = [
     "ConversationFlowUpdateParams",
     "BeginTagDisplayPosition",
+    "KBConfig",
     "Mcp",
     "ModelChoice",
     "Node",
@@ -301,6 +302,9 @@ class ConversationFlowUpdateParams(TypedDict, total=False):
     global_prompt: Optional[str]
     """Global prompt used in every node of the conversation flow."""
 
+    kb_config: KBConfig
+    """Knowledge base configuration for RAG retrieval."""
+
     knowledge_base_ids: Optional[List[str]]
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
@@ -339,6 +343,14 @@ class BeginTagDisplayPosition(TypedDict, total=False):
     x: float
 
     y: float
+
+
+class KBConfig(TypedDict, total=False):
+    filter_score: float
+    """Similarity threshold for filtering search results"""
+
+    top_k: int
+    """Number of top knowledge base chunks to retrieve"""
 
 
 class Mcp(TypedDict, total=False):

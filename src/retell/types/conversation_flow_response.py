@@ -10,6 +10,7 @@ from .._models import BaseModel
 __all__ = [
     "ConversationFlowResponse",
     "BeginTagDisplayPosition",
+    "KBConfig",
     "Mcp",
     "ModelChoice",
     "Node",
@@ -291,6 +292,14 @@ class BeginTagDisplayPosition(BaseModel):
     x: Optional[float] = None
 
     y: Optional[float] = None
+
+
+class KBConfig(BaseModel):
+    filter_score: Optional[float] = None
+    """Similarity threshold for filtering search results"""
+
+    top_k: Optional[int] = None
+    """Number of top knowledge base chunks to retrieve"""
 
 
 class Mcp(BaseModel):
@@ -2993,6 +3002,9 @@ class ConversationFlowResponse(BaseModel):
 
     global_prompt: Optional[str] = None
     """Global prompt used in every node of the conversation flow."""
+
+    kb_config: Optional[KBConfig] = None
+    """Knowledge base configuration for RAG retrieval."""
 
     knowledge_base_ids: Optional[List[str]] = None
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
