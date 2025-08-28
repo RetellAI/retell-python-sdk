@@ -52,6 +52,7 @@ class LlmResource(SyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        kb_config: Optional[llm_create_params.KBConfig] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Optional[
             Literal[
@@ -113,6 +114,8 @@ class LlmResource(SyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
+          kb_config: Knowledge base configuration for RAG retrieval.
+
           knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
               knowledge bases.
 
@@ -161,6 +164,7 @@ class LlmResource(SyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
                     "model_high_priority": model_high_priority,
@@ -228,6 +232,7 @@ class LlmResource(SyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        kb_config: Optional[llm_update_params.KBConfig] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Optional[
             Literal[
@@ -289,6 +294,8 @@ class LlmResource(SyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
+          kb_config: Knowledge base configuration for RAG retrieval.
+
           knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
               knowledge bases.
 
@@ -339,6 +346,7 @@ class LlmResource(SyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
                     "model_high_priority": model_high_priority,
@@ -478,6 +486,7 @@ class AsyncLlmResource(AsyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        kb_config: Optional[llm_create_params.KBConfig] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Optional[
             Literal[
@@ -539,6 +548,8 @@ class AsyncLlmResource(AsyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
+          kb_config: Knowledge base configuration for RAG retrieval.
+
           knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
               knowledge bases.
 
@@ -587,6 +598,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
                     "model_high_priority": model_high_priority,
@@ -654,6 +666,7 @@ class AsyncLlmResource(AsyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
+        kb_config: Optional[llm_update_params.KBConfig] | NotGiven = NOT_GIVEN,
         knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         model: Optional[
             Literal[
@@ -715,6 +728,8 @@ class AsyncLlmResource(AsyncAPIResource):
 
               - Tools of LLM (no state) = general tools
 
+          kb_config: Knowledge base configuration for RAG retrieval.
+
           knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
               knowledge bases.
 
@@ -765,6 +780,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "model": model,
                     "model_high_priority": model_high_priority,

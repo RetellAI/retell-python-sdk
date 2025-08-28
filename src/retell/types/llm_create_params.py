@@ -39,6 +39,7 @@ __all__ = [
     "GeneralToolSendSMSToolSMSContent",
     "GeneralToolSendSMSToolSMSContentSMSContentPredefined",
     "GeneralToolSendSMSToolSMSContentSMSContentInferred",
+    "KBConfig",
     "State",
     "StateEdge",
     "StateEdgeParameters",
@@ -110,6 +111,9 @@ class LlmCreateParams(TypedDict, total=False):
 
     - Tools of LLM (no state) = general tools
     """
+
+    kb_config: Optional[KBConfig]
+    """Knowledge base configuration for RAG retrieval."""
 
     knowledge_base_ids: Optional[List[str]]
     """A list of knowledge base ids to use for this resource.
@@ -736,6 +740,14 @@ GeneralTool: TypeAlias = Union[
     GeneralToolMcpTool,
     GeneralToolSendSMSTool,
 ]
+
+
+class KBConfig(TypedDict, total=False):
+    filter_score: float
+    """Similarity threshold for filtering search results"""
+
+    top_k: int
+    """Number of top knowledge base chunks to retrieve"""
 
 
 class StateEdgeParameters(TypedDict, total=False):

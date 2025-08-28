@@ -144,6 +144,10 @@ class TestConversationFlow:
                 "support_hours": "9 AM - 5 PM",
             },
             global_prompt="You are a helpful customer service agent.",
+            kb_config={
+                "filter_score": 0.6,
+                "top_k": 3,
+            },
             knowledge_base_ids=["kb_001", "kb_002"],
             mcps=[
                 {
@@ -301,6 +305,10 @@ class TestConversationFlow:
                 "support_hours": "9 AM - 5 PM",
             },
             global_prompt="You are a helpful customer service agent.",
+            kb_config={
+                "filter_score": 0.6,
+                "top_k": 3,
+            },
             knowledge_base_ids=["kb_001", "kb_002"],
             mcps=[
                 {
@@ -663,6 +671,10 @@ class TestAsyncConversationFlow:
                 "support_hours": "9 AM - 5 PM",
             },
             global_prompt="You are a helpful customer service agent.",
+            kb_config={
+                "filter_score": 0.6,
+                "top_k": 3,
+            },
             knowledge_base_ids=["kb_001", "kb_002"],
             mcps=[
                 {
@@ -820,6 +832,10 @@ class TestAsyncConversationFlow:
                 "support_hours": "9 AM - 5 PM",
             },
             global_prompt="You are a helpful customer service agent.",
+            kb_config={
+                "filter_score": 0.6,
+                "top_k": 3,
+            },
             knowledge_base_ids=["kb_001", "kb_002"],
             mcps=[
                 {
