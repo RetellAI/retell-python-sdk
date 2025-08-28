@@ -64,6 +64,8 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
+        | NotGiven = NOT_GIVEN,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
@@ -214,6 +216,16 @@ class AgentResource(SyncAPIResource):
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
 
+          data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
+              recordings, logs, etc.). This replaces the deprecated
+              `opt_out_sensitive_data_storage` field.
+
+              - `everything`: Store all data including transcripts, recordings, and logs.
+              - `everything_except_pii`: Store data without PII when PII is detected.
+              - `basic_attributes_only`: Store only basic attributes; no
+                transcripts/recordings/logs. If not set, default value of "everything" will
+                apply.
+
           denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
@@ -257,9 +269,11 @@ class AgentResource(SyncAPIResource):
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
 
-          opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
-              recording, logging, inbound/outbound phone numbers, etc. These data can still be
-              accessed securely via webhooks. If not set, default value of false will apply.
+          opt_out_sensitive_data_storage: DEPRECATED: This field is deprecated and will be removed on 9/30/2025. Use
+              data_storage_setting instead. Whether this agent opts out of sensitive data
+              storage like transcript, recording, logging, inbound/outbound phone numbers,
+              etc. These data can still be accessed securely via webhooks. If not set, default
+              value of false will apply.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
@@ -348,6 +362,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
@@ -443,6 +458,8 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
+        | NotGiven = NOT_GIVEN,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
@@ -590,6 +607,16 @@ class AgentResource(SyncAPIResource):
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
 
+          data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
+              recordings, logs, etc.). This replaces the deprecated
+              `opt_out_sensitive_data_storage` field.
+
+              - `everything`: Store all data including transcripts, recordings, and logs.
+              - `everything_except_pii`: Store data without PII when PII is detected.
+              - `basic_attributes_only`: Store only basic attributes; no
+                transcripts/recordings/logs. If not set, default value of "everything" will
+                apply.
+
           denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
@@ -633,9 +660,11 @@ class AgentResource(SyncAPIResource):
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
 
-          opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
-              recording, logging, inbound/outbound phone numbers, etc. These data can still be
-              accessed securely via webhooks. If not set, default value of false will apply.
+          opt_out_sensitive_data_storage: DEPRECATED: This field is deprecated and will be removed on 9/30/2025. Use
+              data_storage_setting instead. Whether this agent opts out of sensitive data
+              storage like transcript, recording, logging, inbound/outbound phone numbers,
+              etc. These data can still be accessed securely via webhooks. If not set, default
+              value of false will apply.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
@@ -731,6 +760,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
@@ -935,6 +965,8 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
+        | NotGiven = NOT_GIVEN,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
@@ -1085,6 +1117,16 @@ class AsyncAgentResource(AsyncAPIResource):
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
 
+          data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
+              recordings, logs, etc.). This replaces the deprecated
+              `opt_out_sensitive_data_storage` field.
+
+              - `everything`: Store all data including transcripts, recordings, and logs.
+              - `everything_except_pii`: Store data without PII when PII is detected.
+              - `basic_attributes_only`: Store only basic attributes; no
+                transcripts/recordings/logs. If not set, default value of "everything" will
+                apply.
+
           denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
@@ -1128,9 +1170,11 @@ class AsyncAgentResource(AsyncAPIResource):
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
 
-          opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
-              recording, logging, inbound/outbound phone numbers, etc. These data can still be
-              accessed securely via webhooks. If not set, default value of false will apply.
+          opt_out_sensitive_data_storage: DEPRECATED: This field is deprecated and will be removed on 9/30/2025. Use
+              data_storage_setting instead. Whether this agent opts out of sensitive data
+              storage like transcript, recording, logging, inbound/outbound phone numbers,
+              etc. These data can still be accessed securely via webhooks. If not set, default
+              value of false will apply.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
@@ -1219,6 +1263,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
@@ -1314,6 +1359,8 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
         boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
+        | NotGiven = NOT_GIVEN,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
@@ -1461,6 +1508,16 @@ class AsyncAgentResource(AsyncAPIResource):
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
 
+          data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
+              recordings, logs, etc.). This replaces the deprecated
+              `opt_out_sensitive_data_storage` field.
+
+              - `everything`: Store all data including transcripts, recordings, and logs.
+              - `everything_except_pii`: Store data without PII when PII is detected.
+              - `basic_attributes_only`: Store only basic attributes; no
+                transcripts/recordings/logs. If not set, default value of "everything" will
+                apply.
+
           denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
@@ -1504,9 +1561,11 @@ class AsyncAgentResource(AsyncAPIResource):
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
 
-          opt_out_sensitive_data_storage: Whether this agent opts out of sensitive data storage like transcript,
-              recording, logging, inbound/outbound phone numbers, etc. These data can still be
-              accessed securely via webhooks. If not set, default value of false will apply.
+          opt_out_sensitive_data_storage: DEPRECATED: This field is deprecated and will be removed on 9/30/2025. Use
+              data_storage_setting instead. Whether this agent opts out of sensitive data
+              storage like transcript, recording, logging, inbound/outbound phone numbers,
+              etc. These data can still be accessed securely via webhooks. If not set, default
+              value of false will apply.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
@@ -1602,6 +1661,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
