@@ -144,7 +144,7 @@ class LlmUpdateParams(TypedDict, total=False):
             "gemini-2.5-flash-lite",
         ]
     ]
-    """Select the underlying text LLM. If not set, would default to gpt-4o."""
+    """Select the underlying text LLM. If not set, would default to gpt-4.1."""
 
     model_high_priority: bool
     """
@@ -161,7 +161,7 @@ class LlmUpdateParams(TypedDict, total=False):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime"]]
+    s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]]
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.
