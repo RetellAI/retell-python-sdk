@@ -1349,7 +1349,7 @@ class LlmResponse(BaseModel):
             "gemini-2.5-flash-lite",
         ]
     ] = None
-    """Select the underlying text LLM. If not set, would default to gpt-4o."""
+    """Select the underlying text LLM. If not set, would default to gpt-4.1."""
 
     api_model_high_priority: Optional[bool] = FieldInfo(alias="model_high_priority", default=None)
     """
@@ -1366,7 +1366,7 @@ class LlmResponse(BaseModel):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime"]] = None
+    s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] = None
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.
