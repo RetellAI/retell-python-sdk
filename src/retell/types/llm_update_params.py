@@ -684,11 +684,37 @@ class GeneralToolMcpTool(TypedDict, total=False):
 
     type: Required[Literal["mcp"]]
 
-    input_schema: Dict[str, str]
-    """The input schema of the MCP tool."""
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true. Can write what to say or
+    even provide examples. The default is "The message you will say to callee when
+    calling this tool. Make sure it fits into the conversation smoothly.".
+    """
 
     mcp_id: str
     """Unique id of the MCP."""
+
+    response_variables: Dict[str, str]
+    """
+    Response variables to add to dynamic variables, key is the variable name, value
+    is the path to the variable in the response
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
+    """
 
 
 class GeneralToolSendSMSToolSMSContentSMSContentPredefined(TypedDict, total=False):
@@ -1291,11 +1317,37 @@ class StateToolMcpTool(TypedDict, total=False):
 
     type: Required[Literal["mcp"]]
 
-    input_schema: Dict[str, str]
-    """The input schema of the MCP tool."""
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true. Can write what to say or
+    even provide examples. The default is "The message you will say to callee when
+    calling this tool. Make sure it fits into the conversation smoothly.".
+    """
 
     mcp_id: str
     """Unique id of the MCP."""
+
+    response_variables: Dict[str, str]
+    """
+    Response variables to add to dynamic variables, key is the variable name, value
+    is the path to the variable in the response
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
+    """
 
 
 class StateToolSendSMSToolSMSContentSMSContentPredefined(TypedDict, total=False):
