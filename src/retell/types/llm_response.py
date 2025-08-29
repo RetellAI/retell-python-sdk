@@ -670,7 +670,7 @@ class KBConfig(BaseModel):
     """Similarity threshold for filtering search results"""
 
     top_k: Optional[int] = None
-    """Number of top knowledge base chunks to retrieve"""
+    """Max number of knowledge base chunks to retrieve"""
 
 
 class StateEdgeParameters(BaseModel):
