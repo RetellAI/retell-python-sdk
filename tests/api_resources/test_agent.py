@@ -59,6 +59,7 @@ class TestAgent:
             max_call_duration_ms=3600000,
             normalize_for_speech=True,
             opt_in_signed_url=True,
+            opt_out_sensitive_data_storage=True,
             pii_config={
                 "categories": ["person_name"],
                 "mode": "post_call",
@@ -213,6 +214,7 @@ class TestAgent:
             max_call_duration_ms=3600000,
             normalize_for_speech=True,
             opt_in_signed_url=True,
+            opt_out_sensitive_data_storage=True,
             pii_config={
                 "categories": ["person_name"],
                 "mode": "post_call",
@@ -450,6 +452,7 @@ class TestAsyncAgent:
             max_call_duration_ms=3600000,
             normalize_for_speech=True,
             opt_in_signed_url=True,
+            opt_out_sensitive_data_storage=True,
             pii_config={
                 "categories": ["person_name"],
                 "mode": "post_call",
@@ -604,6 +607,7 @@ class TestAsyncAgent:
             max_call_duration_ms=3600000,
             normalize_for_speech=True,
             opt_in_signed_url=True,
+            opt_out_sensitive_data_storage=True,
             pii_config={
                 "categories": ["person_name"],
                 "mode": "post_call",
