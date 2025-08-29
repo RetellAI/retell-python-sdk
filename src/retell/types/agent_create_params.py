@@ -11,6 +11,7 @@ __all__ = [
     "ResponseEngineResponseEngineRetellLm",
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
+    "PiiConfig",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
     "PostCallAnalysisDataEnumAnalysisData",
@@ -247,6 +248,9 @@ class AgentCreateParams(TypedDict, total=False):
     value of false will apply.
     """
 
+    pii_config: PiiConfig
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     post_call_analysis_data: Optional[Iterable[PostCallAnalysisData]]
     """Post call analysis data to extract from the call.
 
@@ -420,6 +424,32 @@ ResponseEngine: TypeAlias = Union[
     ResponseEngineResponseEngineCustomLm,
     ResponseEngineResponseEngineConversationFlow,
 ]
+
+
+class PiiConfig(TypedDict, total=False):
+    categories: Required[
+        List[
+            Literal[
+                "person_name",
+                "address",
+                "email",
+                "phone_number",
+                "ssn",
+                "passport",
+                "driver_license",
+                "credit_card",
+                "bank_account",
+                "password",
+                "pin",
+                "medical_id",
+                "date_of_birth",
+            ]
+        ]
+    ]
+    """List of PII categories to scrub from transcripts and recordings."""
+
+    mode: Required[Literal["post_call"]]
+    """The processing mode for PII scrubbing. Currently only post-call is supported."""
 
 
 class PostCallAnalysisDataStringAnalysisData(TypedDict, total=False):
