@@ -778,7 +778,7 @@ class KBConfig(TypedDict, total=False):
     """Similarity threshold for filtering search results"""
 
     top_k: int
-    """Number of top knowledge base chunks to retrieve"""
+    """Max number of knowledge base chunks to retrieve"""
 
 
 class StateEdgeParameters(TypedDict, total=False):
