@@ -455,6 +455,13 @@ class PhoneCallResponse(BaseModel):
     custom_sip_headers: Optional[Dict[str, str]] = None
     """Custom SIP headers to be added to the call."""
 
+    data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]] = None
+    """Data storage setting for this call's agent.
+
+    "everything" stores all data, "everything_except_pii" excludes PII when
+    possible, "basic_attributes_only" stores only metadata.
+    """
+
     disconnection_reason: Optional[
         Literal[
             "user_hangup",
@@ -538,12 +545,6 @@ class PhoneCallResponse(BaseModel):
 
     When enabled, the generated URLs will include security signatures that restrict
     access and automatically expire after 24 hours.
-    """
-
-    opt_out_sensitive_data_storage: Optional[bool] = None
-    """
-    Whether this call opts out of sensitive data storage like transcript, recording,
-    logging.
     """
 
     public_log_url: Optional[str] = None

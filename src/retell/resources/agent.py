@@ -115,6 +115,7 @@ class AgentResource(SyncAPIResource):
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        pii_config: agent_create_params.PiiConfig | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal[
             "gpt-4o",
@@ -292,6 +293,8 @@ class AgentResource(SyncAPIResource):
               etc. These data can still be accessed securely via webhooks. If not set, default
               value of false will apply.
 
+          pii_config: Configuration for PII scrubbing from transcripts and recordings.
+
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
@@ -389,6 +392,7 @@ class AgentResource(SyncAPIResource):
                     "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
                     "pronunciation_dictionary": pronunciation_dictionary,
@@ -525,6 +529,7 @@ class AgentResource(SyncAPIResource):
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        pii_config: agent_update_params.PiiConfig | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal[
             "gpt-4o",
@@ -699,6 +704,8 @@ class AgentResource(SyncAPIResource):
               etc. These data can still be accessed securely via webhooks. If not set, default
               value of false will apply.
 
+          pii_config: Configuration for PII scrubbing from transcripts and recordings.
+
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
@@ -803,6 +810,7 @@ class AgentResource(SyncAPIResource):
                     "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
                     "pronunciation_dictionary": pronunciation_dictionary,
@@ -1048,6 +1056,7 @@ class AsyncAgentResource(AsyncAPIResource):
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        pii_config: agent_create_params.PiiConfig | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal[
             "gpt-4o",
@@ -1225,6 +1234,8 @@ class AsyncAgentResource(AsyncAPIResource):
               etc. These data can still be accessed securely via webhooks. If not set, default
               value of false will apply.
 
+          pii_config: Configuration for PII scrubbing from transcripts and recordings.
+
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
@@ -1322,6 +1333,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
                     "pronunciation_dictionary": pronunciation_dictionary,
@@ -1458,6 +1470,7 @@ class AsyncAgentResource(AsyncAPIResource):
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
         opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
+        pii_config: agent_update_params.PiiConfig | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal[
             "gpt-4o",
@@ -1632,6 +1645,8 @@ class AsyncAgentResource(AsyncAPIResource):
               etc. These data can still be accessed securely via webhooks. If not set, default
               value of false will apply.
 
+          pii_config: Configuration for PII scrubbing from transcripts and recordings.
+
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
@@ -1736,6 +1751,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
                     "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
+                    "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
                     "pronunciation_dictionary": pronunciation_dictionary,

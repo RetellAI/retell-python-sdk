@@ -11,6 +11,7 @@ __all__ = [
     "ResponseEngineResponseEngineRetellLm",
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
+    "PiiConfig",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
     "PostCallAnalysisDataEnumAnalysisData",
@@ -61,6 +62,30 @@ ResponseEngine: TypeAlias = Union[
     ResponseEngineResponseEngineCustomLm,
     ResponseEngineResponseEngineConversationFlow,
 ]
+
+
+class PiiConfig(BaseModel):
+    categories: List[
+        Literal[
+            "person_name",
+            "address",
+            "email",
+            "phone_number",
+            "ssn",
+            "passport",
+            "driver_license",
+            "credit_card",
+            "bank_account",
+            "password",
+            "pin",
+            "medical_id",
+            "date_of_birth",
+        ]
+    ]
+    """List of PII categories to scrub from transcripts and recordings."""
+
+    mode: Literal["post_call"]
+    """The processing mode for PII scrubbing. Currently only post-call is supported."""
 
 
 class PostCallAnalysisDataStringAnalysisData(BaseModel):
@@ -420,6 +445,9 @@ class AgentResponse(BaseModel):
     etc. These data can still be accessed securely via webhooks. If not set, default
     value of false will apply.
     """
+
+    pii_config: Optional[PiiConfig] = None
+    """Configuration for PII scrubbing from transcripts and recordings."""
 
     post_call_analysis_data: Optional[List[PostCallAnalysisData]] = None
     """Post call analysis data to extract from the call.

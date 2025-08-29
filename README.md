@@ -129,9 +129,12 @@ agent_response = client.agent.create(
         "type": "retell-llm",
     },
     voice_id="11labs-Adrian",
-    user_dtmf_options={},
+    pii_config={
+        "categories": ["person_name"],
+        "mode": "post_call",
+    },
 )
-print(agent_response.user_dtmf_options)
+print(agent_response.pii_config)
 ```
 
 ## Handling errors
