@@ -71,11 +71,11 @@ class TestCall:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         call = client.call.update(
             call_id="call_a4441234567890777c4a4a123e6",
+            data_storage_setting="everything_except_pii",
             metadata={
                 "customer_id": "cust_123",
                 "notes": "Follow-up required",
             },
-            opt_out_sensitive_data_storage=True,
             override_dynamic_variables={"additional_discount": "15%"},
         )
         assert_matches_type(CallResponse, call, path=["response"])
@@ -396,11 +396,11 @@ class TestAsyncCall:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         call = await async_client.call.update(
             call_id="call_a4441234567890777c4a4a123e6",
+            data_storage_setting="everything_except_pii",
             metadata={
                 "customer_id": "cust_123",
                 "notes": "Follow-up required",
             },
-            opt_out_sensitive_data_storage=True,
             override_dynamic_variables={"additional_discount": "15%"},
         )
         assert_matches_type(CallResponse, call, path=["response"])

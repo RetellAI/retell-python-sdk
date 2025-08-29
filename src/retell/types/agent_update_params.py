@@ -9,6 +9,7 @@ from .._utils import PropertyInfo
 
 __all__ = [
     "AgentUpdateParams",
+    "PiiConfig",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
     "PostCallAnalysisDataEnumAnalysisData",
@@ -239,6 +240,9 @@ class AgentUpdateParams(TypedDict, total=False):
     value of false will apply.
     """
 
+    pii_config: PiiConfig
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     post_call_analysis_data: Optional[Iterable[PostCallAnalysisData]]
     """Post call analysis data to extract from the call.
 
@@ -388,6 +392,32 @@ class AgentUpdateParams(TypedDict, total=False):
     account level webhook for this agent. Set to `null` to remove webhook url from
     this agent.
     """
+
+
+class PiiConfig(TypedDict, total=False):
+    categories: Required[
+        List[
+            Literal[
+                "person_name",
+                "address",
+                "email",
+                "phone_number",
+                "ssn",
+                "passport",
+                "driver_license",
+                "credit_card",
+                "bank_account",
+                "password",
+                "pin",
+                "medical_id",
+                "date_of_birth",
+            ]
+        ]
+    ]
+    """List of PII categories to scrub from transcripts and recordings."""
+
+    mode: Required[Literal["post_call"]]
+    """The processing mode for PII scrubbing. Currently only post-call is supported."""
 
 
 class PostCallAnalysisDataStringAnalysisData(TypedDict, total=False):
