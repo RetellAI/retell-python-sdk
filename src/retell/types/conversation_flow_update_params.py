@@ -742,6 +742,9 @@ class NodeConversationNode(TypedDict, total=False):
 
     interruption_sensitivity: float
 
+    knowledge_base_ids: Optional[List[str]]
+    """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
+
     model_choice: NodeConversationNodeModelChoice
 
     name: str
