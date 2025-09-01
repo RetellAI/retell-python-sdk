@@ -687,6 +687,9 @@ class NodeConversationNode(BaseModel):
 
     interruption_sensitivity: Optional[float] = None
 
+    knowledge_base_ids: Optional[List[str]] = None
+    """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
+
     api_model_choice: Optional[NodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None

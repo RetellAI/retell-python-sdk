@@ -118,6 +118,7 @@ class TestConversationFlow:
                         ],
                     },
                     "interruption_sensitivity": 0,
+                    "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
                         "model": "gpt-5",
                         "type": "cascading",
@@ -397,6 +398,7 @@ class TestConversationFlow:
                         ],
                     },
                     "interruption_sensitivity": 0,
+                    "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
                         "model": "gpt-5",
                         "type": "cascading",
@@ -645,6 +647,7 @@ class TestAsyncConversationFlow:
                         ],
                     },
                     "interruption_sensitivity": 0,
+                    "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
                         "model": "gpt-5",
                         "type": "cascading",
@@ -924,6 +927,7 @@ class TestAsyncConversationFlow:
                         ],
                     },
                     "interruption_sensitivity": 0,
+                    "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
                         "model": "gpt-5",
                         "type": "cascading",
