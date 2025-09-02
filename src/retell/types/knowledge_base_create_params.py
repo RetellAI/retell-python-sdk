@@ -2,10 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Required, TypedDict
 
-from .._types import FileTypes
+from .._types import FileTypes, SequenceNotStr
 
 __all__ = ["KnowledgeBaseCreateParams", "KnowledgeBaseText"]
 
@@ -20,7 +20,7 @@ class KnowledgeBaseCreateParams(TypedDict, total=False):
     If set to true, will retrieve the data from the specified url every 12 hours.
     """
 
-    knowledge_base_files: List[FileTypes]
+    knowledge_base_files: SequenceNotStr[FileTypes]
     """Files to add to the knowledge base.
 
     Limit to 25 files, where each file is limited to 50MB.
@@ -29,7 +29,7 @@ class KnowledgeBaseCreateParams(TypedDict, total=False):
     knowledge_base_texts: Iterable[KnowledgeBaseText]
     """Texts to add to the knowledge base."""
 
-    knowledge_base_urls: List[str]
+    knowledge_base_urls: SequenceNotStr[str]
     """URLs to be scraped and added to the knowledge base. Must be valid urls."""
 
 
