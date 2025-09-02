@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable, Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import agent_list_params, agent_create_params, agent_update_params, agent_retrieve_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -61,16 +61,16 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        backchannel_words: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
-        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        boosted_keywords: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
         | NotGiven = NOT_GIVEN,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
-        fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        fallback_voice_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US",
@@ -475,16 +475,16 @@ class AgentResource(SyncAPIResource):
         | NotGiven = NOT_GIVEN,
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        backchannel_words: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
-        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        boosted_keywords: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
         | NotGiven = NOT_GIVEN,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
-        fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        fallback_voice_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US",
@@ -1002,16 +1002,16 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        backchannel_words: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
-        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        boosted_keywords: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
         | NotGiven = NOT_GIVEN,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
-        fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        fallback_voice_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US",
@@ -1416,16 +1416,16 @@ class AsyncAgentResource(AsyncAPIResource):
         | NotGiven = NOT_GIVEN,
         ambient_sound_volume: float | NotGiven = NOT_GIVEN,
         backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        backchannel_words: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
-        boosted_keywords: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        boosted_keywords: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
         | NotGiven = NOT_GIVEN,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
         | NotGiven = NOT_GIVEN,
         enable_backchannel: bool | NotGiven = NOT_GIVEN,
         end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
-        fallback_voice_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        fallback_voice_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         interruption_sensitivity: float | NotGiven = NOT_GIVEN,
         language: Literal[
             "en-US",

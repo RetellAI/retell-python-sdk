@@ -5,6 +5,8 @@ from __future__ import annotations
 from typing import List, Iterable
 from typing_extensions import Literal, TypedDict
 
+from .._types import SequenceNotStr
+
 __all__ = [
     "CallListParams",
     "FilterCriteria",
@@ -59,10 +61,10 @@ class FilterCriteriaStartTimestamp(TypedDict, total=False):
 
 
 class FilterCriteria(TypedDict, total=False):
-    agent_id: List[str]
+    agent_id: SequenceNotStr[str]
     """Only retrieve calls that are made with specific agent(s)."""
 
-    batch_call_id: List[str]
+    batch_call_id: SequenceNotStr[str]
     """Only retrieve calls with specific batch call id(s)."""
 
     call_status: List[Literal["registered", "not_connected", "ongoing", "ended", "error"]]
@@ -116,7 +118,7 @@ class FilterCriteria(TypedDict, total=False):
 
     e2e_latency_p50: FilterCriteriaE2ELatencyP50
 
-    from_number: List[str]
+    from_number: SequenceNotStr[str]
     """Only retrieve calls with specific from number(s)."""
 
     in_voicemail: Iterable[bool]
@@ -125,7 +127,7 @@ class FilterCriteria(TypedDict, total=False):
     start_timestamp: FilterCriteriaStartTimestamp
     """Only retrieve calls with specific range of start timestamp(s)."""
 
-    to_number: List[str]
+    to_number: SequenceNotStr[str]
     """Only retrieve calls with specific to number(s)."""
 
     user_sentiment: List[Literal["Negative", "Positive", "Neutral", "Unknown"]]
