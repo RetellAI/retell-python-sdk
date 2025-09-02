@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -120,7 +121,7 @@ class LlmUpdateParams(TypedDict, total=False):
     kb_config: Optional[KBConfig]
     """Knowledge base configuration for RAG retrieval."""
 
-    knowledge_base_ids: Optional[List[str]]
+    knowledge_base_ids: Optional[SequenceNotStr[str]]
     """A list of knowledge base ids to use for this resource.
 
     Set to null to remove all knowledge bases.
@@ -478,7 +479,7 @@ class GeneralToolCustomToolParameters(TypedDict, total=False):
     type: Required[Literal["object"]]
     """Type must be "object" for a JSON Schema object."""
 
-    required: List[str]
+    required: SequenceNotStr[str]
     """List of names of required property when generating this parameter.
 
     LLM will do its best to generate the required properties in its function
@@ -573,12 +574,12 @@ class GeneralToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict,
     type: Required[Literal["string"]]
     """Type of the variable to extract."""
 
-    examples: List[str]
+    examples: SequenceNotStr[str]
     """Examples of the variable value to teach model the style and syntax."""
 
 
 class GeneralToolExtractDynamicVariableToolVariableEnumAnalysisData(TypedDict, total=False):
-    choices: Required[List[str]]
+    choices: Required[SequenceNotStr[str]]
     """The possible values of the variable, must be non empty array."""
 
     description: Required[str]
@@ -791,7 +792,7 @@ class StateEdgeParameters(TypedDict, total=False):
     type: Required[Literal["object"]]
     """Type must be "object" for a JSON Schema object."""
 
-    required: List[str]
+    required: SequenceNotStr[str]
     """List of names of required property when generating this parameter.
 
     LLM will do its best to generate the required properties in its function
@@ -1111,7 +1112,7 @@ class StateToolCustomToolParameters(TypedDict, total=False):
     type: Required[Literal["object"]]
     """Type must be "object" for a JSON Schema object."""
 
-    required: List[str]
+    required: SequenceNotStr[str]
     """List of names of required property when generating this parameter.
 
     LLM will do its best to generate the required properties in its function
@@ -1206,12 +1207,12 @@ class StateToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict, t
     type: Required[Literal["string"]]
     """Type of the variable to extract."""
 
-    examples: List[str]
+    examples: SequenceNotStr[str]
     """Examples of the variable value to teach model the style and syntax."""
 
 
 class StateToolExtractDynamicVariableToolVariableEnumAnalysisData(TypedDict, total=False):
-    choices: Required[List[str]]
+    choices: Required[SequenceNotStr[str]]
     """The possible values of the variable, must be non empty array."""
 
     description: Required[str]

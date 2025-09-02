@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List, Mapping, Iterable, cast
+from typing import Mapping, Iterable, cast
 
 import httpx
 
 from ..types import knowledge_base_create_params, knowledge_base_add_sources_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes, SequenceNotStr
 from .._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -49,9 +49,9 @@ class KnowledgeBaseResource(SyncAPIResource):
         *,
         knowledge_base_name: str,
         enable_auto_refresh: bool | NotGiven = NOT_GIVEN,
-        knowledge_base_files: List[FileTypes] | NotGiven = NOT_GIVEN,
+        knowledge_base_files: SequenceNotStr[FileTypes] | NotGiven = NOT_GIVEN,
         knowledge_base_texts: Iterable[knowledge_base_create_params.KnowledgeBaseText] | NotGiven = NOT_GIVEN,
-        knowledge_base_urls: List[str] | NotGiven = NOT_GIVEN,
+        knowledge_base_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -197,9 +197,9 @@ class KnowledgeBaseResource(SyncAPIResource):
         self,
         knowledge_base_id: str,
         *,
-        knowledge_base_files: List[FileTypes] | NotGiven = NOT_GIVEN,
+        knowledge_base_files: SequenceNotStr[FileTypes] | NotGiven = NOT_GIVEN,
         knowledge_base_texts: Iterable[knowledge_base_add_sources_params.KnowledgeBaseText] | NotGiven = NOT_GIVEN,
-        knowledge_base_urls: List[str] | NotGiven = NOT_GIVEN,
+        knowledge_base_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -312,9 +312,9 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         *,
         knowledge_base_name: str,
         enable_auto_refresh: bool | NotGiven = NOT_GIVEN,
-        knowledge_base_files: List[FileTypes] | NotGiven = NOT_GIVEN,
+        knowledge_base_files: SequenceNotStr[FileTypes] | NotGiven = NOT_GIVEN,
         knowledge_base_texts: Iterable[knowledge_base_create_params.KnowledgeBaseText] | NotGiven = NOT_GIVEN,
-        knowledge_base_urls: List[str] | NotGiven = NOT_GIVEN,
+        knowledge_base_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -460,9 +460,9 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         self,
         knowledge_base_id: str,
         *,
-        knowledge_base_files: List[FileTypes] | NotGiven = NOT_GIVEN,
+        knowledge_base_files: SequenceNotStr[FileTypes] | NotGiven = NOT_GIVEN,
         knowledge_base_texts: Iterable[knowledge_base_add_sources_params.KnowledgeBaseText] | NotGiven = NOT_GIVEN,
-        knowledge_base_urls: List[str] | NotGiven = NOT_GIVEN,
+        knowledge_base_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

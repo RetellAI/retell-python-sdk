@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = [
     "ConversationFlowCreateParams",
@@ -311,7 +313,7 @@ class ConversationFlowCreateParams(TypedDict, total=False):
     kb_config: KBConfig
     """Knowledge base configuration for RAG retrieval."""
 
-    knowledge_base_ids: Optional[List[str]]
+    knowledge_base_ids: Optional[SequenceNotStr[str]]
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
     mcps: Optional[Iterable[Mcp]]
@@ -706,7 +708,7 @@ class NodeConversationNode(TypedDict, total=False):
 
     interruption_sensitivity: float
 
-    knowledge_base_ids: Optional[List[str]]
+    knowledge_base_ids: Optional[SequenceNotStr[str]]
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
     model_choice: NodeConversationNodeModelChoice
@@ -2163,12 +2165,12 @@ class NodeExtractDynamicVariablesNodeVariableStringAnalysisData(TypedDict, total
     type: Required[Literal["string"]]
     """Type of the variable to extract."""
 
-    examples: List[str]
+    examples: SequenceNotStr[str]
     """Examples of the variable value to teach model the style and syntax."""
 
 
 class NodeExtractDynamicVariablesNodeVariableEnumAnalysisData(TypedDict, total=False):
-    choices: Required[List[str]]
+    choices: Required[SequenceNotStr[str]]
     """The possible values of the variable, must be non empty array."""
 
     description: Required[str]
@@ -2923,7 +2925,7 @@ class ToolConversationFlowCustomToolParameters(TypedDict, total=False):
     type: Required[Literal["object"]]
     """Type must be "object" for a JSON Schema object."""
 
-    required: List[str]
+    required: SequenceNotStr[str]
     """List of names of required property when generating this parameter.
 
     LLM will do its best to generate the required properties in its function

@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable, Optional
+from typing import Dict, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import llm_list_params, llm_create_params, llm_update_params, llm_retrieve_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -53,7 +53,7 @@ class LlmResource(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         kb_config: Optional[llm_create_params.KBConfig] | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -233,7 +233,7 @@ class LlmResource(SyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         kb_config: Optional[llm_update_params.KBConfig] | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -487,7 +487,7 @@ class AsyncLlmResource(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         kb_config: Optional[llm_create_params.KBConfig] | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -667,7 +667,7 @@ class AsyncLlmResource(AsyncAPIResource):
         general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
         kb_config: Optional[llm_update_params.KBConfig] | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         model: Optional[
             Literal[
                 "gpt-5",

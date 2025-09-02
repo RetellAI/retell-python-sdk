@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import List, Union, Iterable, Optional
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -87,7 +88,7 @@ class AgentUpdateParams(TypedDict, total=False):
     apply.
     """
 
-    backchannel_words: Optional[List[str]]
+    backchannel_words: Optional[SequenceNotStr[str]]
     """Only applicable when enable_backchannel is true.
 
     A list of words that the agent would use as backchannel. If not set, default
@@ -105,7 +106,7 @@ class AgentUpdateParams(TypedDict, total=False):
     when agent speaks first.
     """
 
-    boosted_keywords: Optional[List[str]]
+    boosted_keywords: Optional[SequenceNotStr[str]]
     """
     Provide a customized list of keywords to bias the transcriber model, so that
     these words are more likely to get transcribed. Commonly used for names, brands,
@@ -143,7 +144,7 @@ class AgentUpdateParams(TypedDict, total=False):
     (10 min).
     """
 
-    fallback_voice_ids: Optional[List[str]]
+    fallback_voice_ids: Optional[SequenceNotStr[str]]
     """
     When TTS provider for the selected voice is experiencing outages, we would use
     fallback voices listed here for the agent. Voice id and the fallback voice ids
@@ -430,12 +431,12 @@ class PostCallAnalysisDataStringAnalysisData(TypedDict, total=False):
     type: Required[Literal["string"]]
     """Type of the variable to extract."""
 
-    examples: List[str]
+    examples: SequenceNotStr[str]
     """Examples of the variable value to teach model the style and syntax."""
 
 
 class PostCallAnalysisDataEnumAnalysisData(TypedDict, total=False):
-    choices: Required[List[str]]
+    choices: Required[SequenceNotStr[str]]
     """The possible values of the variable, must be non empty array."""
 
     description: Required[str]
