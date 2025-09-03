@@ -128,7 +128,7 @@ class TestConversationFlow:
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "Skip response",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -408,7 +408,7 @@ class TestConversationFlow:
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "Skip response",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -657,7 +657,7 @@ class TestAsyncConversationFlow:
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "Skip response",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -937,7 +937,7 @@ class TestAsyncConversationFlow:
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "Skip response",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
