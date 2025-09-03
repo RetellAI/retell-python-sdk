@@ -69,6 +69,7 @@ class TestLlm:
                             "transfer_destination": {
                                 "number": "16175551212",
                                 "type": "predefined",
+                                "extension": "123*456#",
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
@@ -230,6 +231,7 @@ class TestLlm:
                             "transfer_destination": {
                                 "number": "16175551212",
                                 "type": "predefined",
+                                "extension": "123*456#",
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
@@ -430,6 +432,7 @@ class TestAsyncLlm:
                             "transfer_destination": {
                                 "number": "16175551212",
                                 "type": "predefined",
+                                "extension": "123*456#",
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
@@ -591,6 +594,7 @@ class TestAsyncLlm:
                             "transfer_destination": {
                                 "number": "16175551212",
                                 "type": "predefined",
+                                "extension": "123*456#",
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
