@@ -1,5 +1,42 @@
 # Changelog
 
+## 4.43.0 (2025-09-03)
+
+Full Changelog: [v4.42.0...v4.43.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.42.0...v4.43.0)
+
+### Features
+
+* **api:** api update ([6b30fb3](https://github.com/RetellAI/retell-python-sdk/commit/6b30fb37a58d5b8d45d30975125c4c0d9720fb4e))
+* **api:** api update ([324eb87](https://github.com/RetellAI/retell-python-sdk/commit/324eb871083560734e6dccbef898fa9d5d179cd7))
+* **api:** api update ([9cfee57](https://github.com/RetellAI/retell-python-sdk/commit/9cfee57d5f2d7962d6958a734b3d8aa41a64405e))
+* **api:** api update ([10ba7e3](https://github.com/RetellAI/retell-python-sdk/commit/10ba7e3bbe59dd698a9ca0f9d0197b106aec43b6))
+* **api:** api update ([ecf0110](https://github.com/RetellAI/retell-python-sdk/commit/ecf01106c277768208356af456ca6c0fd51e309f))
+* **api:** api update ([f84076d](https://github.com/RetellAI/retell-python-sdk/commit/f84076d775cc55964ba66b7f4dc97654e5614380))
+* **api:** api update ([84cd5e8](https://github.com/RetellAI/retell-python-sdk/commit/84cd5e83e0cd1cc033a751de0812dd36265a2e3f))
+* **api:** api update ([df43c8e](https://github.com/RetellAI/retell-python-sdk/commit/df43c8ef51563c1185d5f70bbebfa1b4dd837061))
+* **api:** api update ([ebf30e3](https://github.com/RetellAI/retell-python-sdk/commit/ebf30e3ded6a3e39590e26e41d10d19f0446c8d4))
+* **api:** api update ([c9bdc33](https://github.com/RetellAI/retell-python-sdk/commit/c9bdc33162e1d65906e65850a76ab6ff533f9778))
+* **api:** api update ([7deebf0](https://github.com/RetellAI/retell-python-sdk/commit/7deebf0c74920695a33b2fab02c39d5e1f3432eb))
+* **api:** api update ([5a8688b](https://github.com/RetellAI/retell-python-sdk/commit/5a8688b8958056b99594b66fbf02b4910c4f8669))
+* **api:** api update ([f476cf6](https://github.com/RetellAI/retell-python-sdk/commit/f476cf6ef594eece7a371e4adf6c85493fc6e520))
+* **api:** api update ([f73e52d](https://github.com/RetellAI/retell-python-sdk/commit/f73e52defbbddf6a115e5df24bbd756ee1bd8361))
+* **api:** api update ([6254374](https://github.com/RetellAI/retell-python-sdk/commit/62543744add93c8ff3fef0ddec855f003c6eb810))
+* **types:** replace List[str] with SequenceNotStr in params ([e97ba63](https://github.com/RetellAI/retell-python-sdk/commit/e97ba63a6f2d4944571b25d7116c55d3c2c5e922))
+
+
+### Bug Fixes
+
+* avoid newer type syntax ([69b92a2](https://github.com/RetellAI/retell-python-sdk/commit/69b92a2bc1b41c02115125bbc0984717d55ae140))
+* **tests:** update to use correct value ([5db35b9](https://github.com/RetellAI/retell-python-sdk/commit/5db35b9491976692f7aed919f988b41c6980001b))
+
+
+### Chores
+
+* **internal:** add Sequence related utils ([0aa4198](https://github.com/RetellAI/retell-python-sdk/commit/0aa4198ae5c8e2ba7fa67b1678121c862e2b42e4))
+* **internal:** change ci workflow machines ([cb120b5](https://github.com/RetellAI/retell-python-sdk/commit/cb120b574f10b4e2ae1be7ef0455acdcc7a1e4bc))
+* **internal:** update pyright exclude list ([2cb0b1f](https://github.com/RetellAI/retell-python-sdk/commit/2cb0b1f167fb330b08363f2b760ac319cb62e63e))
+* update github action ([1e29de2](https://github.com/RetellAI/retell-python-sdk/commit/1e29de2af0b08a20a316c39f5c5f6c2addb722f8))
+
 ## 4.42.0 (2025-08-15)
 
 Full Changelog: [v4.41.0...v4.42.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.41.0...v4.42.0)
