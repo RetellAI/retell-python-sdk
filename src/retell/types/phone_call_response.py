@@ -547,12 +547,6 @@ class PhoneCallResponse(BaseModel):
     access and automatically expire after 24 hours.
     """
 
-    opt_out_sensitive_data_storage: Optional[bool] = None
-    """
-    Whether this call opts out of sensitive data storage like transcript, recording,
-    logging.
-    """
-
     public_log_url: Optional[str] = None
     """
     Public log of the call, containing details about all the requests and responses

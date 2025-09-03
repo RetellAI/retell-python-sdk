@@ -96,7 +96,6 @@ class CallResource(SyncAPIResource):
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
         | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         override_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -117,9 +116,6 @@ class CallResource(SyncAPIResource):
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
               can later get this field from the call object. Size limited to 50kB max.
-
-          opt_out_sensitive_data_storage: Whether this call opts out of sensitive data storage like transcript, recording,
-              logging. Can only be changed from false to true.
 
           override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
               this will override or add the dynamic variables set in the agent during the
@@ -144,7 +140,6 @@ class CallResource(SyncAPIResource):
                     {
                         "data_storage_setting": data_storage_setting,
                         "metadata": metadata,
-                        "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                         "override_dynamic_variables": override_dynamic_variables,
                     },
                     call_update_params.CallUpdateParams,
@@ -506,7 +501,6 @@ class AsyncCallResource(AsyncAPIResource):
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
         | NotGiven = NOT_GIVEN,
         metadata: object | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         override_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -527,9 +521,6 @@ class AsyncCallResource(AsyncAPIResource):
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
               can later get this field from the call object. Size limited to 50kB max.
-
-          opt_out_sensitive_data_storage: Whether this call opts out of sensitive data storage like transcript, recording,
-              logging. Can only be changed from false to true.
 
           override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
               this will override or add the dynamic variables set in the agent during the
@@ -554,7 +545,6 @@ class AsyncCallResource(AsyncAPIResource):
                     {
                         "data_storage_setting": data_storage_setting,
                         "metadata": metadata,
-                        "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                         "override_dynamic_variables": override_dynamic_variables,
                     },
                     call_update_params.CallUpdateParams,

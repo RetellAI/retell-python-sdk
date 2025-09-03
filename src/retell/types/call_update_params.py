@@ -26,12 +26,6 @@ class CallUpdateParams(TypedDict, total=False):
     object. Size limited to 50kB max.
     """
 
-    opt_out_sensitive_data_storage: bool
-    """
-    Whether this call opts out of sensitive data storage like transcript, recording,
-    logging. Can only be changed from false to true.
-    """
-
     override_dynamic_variables: Optional[Dict[str, str]]
     """Override dynamic varaibles represented as key-value pairs of strings.
 
