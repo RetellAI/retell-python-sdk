@@ -114,7 +114,6 @@ class AgentResource(SyncAPIResource):
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         pii_config: agent_create_params.PiiConfig | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal[
@@ -287,12 +286,6 @@ class AgentResource(SyncAPIResource):
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
 
-          opt_out_sensitive_data_storage: DEPRECATED: This field is deprecated and will be removed on 9/30/2025. Use
-              data_storage_setting instead. Whether this agent opts out of sensitive data
-              storage like transcript, recording, logging, inbound/outbound phone numbers,
-              etc. These data can still be accessed securely via webhooks. If not set, default
-              value of false will apply.
-
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
@@ -391,7 +384,6 @@ class AgentResource(SyncAPIResource):
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
-                    "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
@@ -528,7 +520,6 @@ class AgentResource(SyncAPIResource):
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         pii_config: agent_update_params.PiiConfig | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal[
@@ -698,12 +689,6 @@ class AgentResource(SyncAPIResource):
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
 
-          opt_out_sensitive_data_storage: DEPRECATED: This field is deprecated and will be removed on 9/30/2025. Use
-              data_storage_setting instead. Whether this agent opts out of sensitive data
-              storage like transcript, recording, logging, inbound/outbound phone numbers,
-              etc. These data can still be accessed securely via webhooks. If not set, default
-              value of false will apply.
-
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
@@ -809,7 +794,6 @@ class AgentResource(SyncAPIResource):
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
-                    "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
@@ -1055,7 +1039,6 @@ class AsyncAgentResource(AsyncAPIResource):
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         pii_config: agent_create_params.PiiConfig | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal[
@@ -1228,12 +1211,6 @@ class AsyncAgentResource(AsyncAPIResource):
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
 
-          opt_out_sensitive_data_storage: DEPRECATED: This field is deprecated and will be removed on 9/30/2025. Use
-              data_storage_setting instead. Whether this agent opts out of sensitive data
-              storage like transcript, recording, logging, inbound/outbound phone numbers,
-              etc. These data can still be accessed securely via webhooks. If not set, default
-              value of false will apply.
-
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
@@ -1332,7 +1309,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
-                    "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
@@ -1469,7 +1445,6 @@ class AsyncAgentResource(AsyncAPIResource):
         max_call_duration_ms: int | NotGiven = NOT_GIVEN,
         normalize_for_speech: bool | NotGiven = NOT_GIVEN,
         opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
-        opt_out_sensitive_data_storage: bool | NotGiven = NOT_GIVEN,
         pii_config: agent_update_params.PiiConfig | NotGiven = NOT_GIVEN,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
         post_call_analysis_model: Literal[
@@ -1639,12 +1614,6 @@ class AsyncAgentResource(AsyncAPIResource):
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
 
-          opt_out_sensitive_data_storage: DEPRECATED: This field is deprecated and will be removed on 9/30/2025. Use
-              data_storage_setting instead. Whether this agent opts out of sensitive data
-              storage like transcript, recording, logging, inbound/outbound phone numbers,
-              etc. These data can still be accessed securely via webhooks. If not set, default
-              value of false will apply.
-
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
           post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
@@ -1750,7 +1719,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
-                    "opt_out_sensitive_data_storage": opt_out_sensitive_data_storage,
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,

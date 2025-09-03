@@ -437,15 +437,6 @@ class AgentResponse(BaseModel):
     access and automatically expire after 24 hours.
     """
 
-    opt_out_sensitive_data_storage: Optional[bool] = None
-    """DEPRECATED: This field is deprecated and will be removed on 9/30/2025.
-
-    Use data_storage_setting instead. Whether this agent opts out of sensitive data
-    storage like transcript, recording, logging, inbound/outbound phone numbers,
-    etc. These data can still be accessed securely via webhooks. If not set, default
-    value of false will apply.
-    """
-
     pii_config: Optional[PiiConfig] = None
     """Configuration for PII scrubbing from transcripts and recordings."""
 
