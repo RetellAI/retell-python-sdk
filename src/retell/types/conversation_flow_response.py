@@ -1129,6 +1129,12 @@ class NodeTransferCallNodeTransferDestinationTransferDestinationPredefined(BaseM
     type: Literal["predefined"]
     """The type of transfer destination."""
 
+    extension: Optional[str] = None
+    """Extension digits to dial after the main number connects.
+
+    Sent via DTMF. Allow digits, '\\**', '#'.
+    """
+
 
 class NodeTransferCallNodeTransferDestinationTransferDestinationInferred(BaseModel):
     prompt: str
