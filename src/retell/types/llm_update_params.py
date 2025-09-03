@@ -221,6 +221,12 @@ class GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefine
     type: Required[Literal["predefined"]]
     """The type of transfer destination."""
 
+    extension: str
+    """Extension digits to dial after the main number connects.
+
+    Sent via DTMF. Allow digits, '\\**', '#'.
+    """
+
 
 class GeneralToolTransferCallToolTransferDestinationTransferDestinationInferred(TypedDict, total=False):
     prompt: Required[str]
@@ -853,6 +859,12 @@ class StateToolTransferCallToolTransferDestinationTransferDestinationPredefined(
 
     type: Required[Literal["predefined"]]
     """The type of transfer destination."""
+
+    extension: str
+    """Extension digits to dial after the main number connects.
+
+    Sent via DTMF. Allow digits, '\\**', '#'.
+    """
 
 
 class StateToolTransferCallToolTransferDestinationTransferDestinationInferred(TypedDict, total=False):
