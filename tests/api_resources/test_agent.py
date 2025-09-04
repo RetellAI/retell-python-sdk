@@ -101,6 +101,7 @@ class TestAgent:
                 }
             },
             volume=1,
+            webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
@@ -261,6 +262,7 @@ class TestAgent:
                 }
             },
             volume=1,
+            webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
@@ -492,6 +494,7 @@ class TestAsyncAgent:
                 }
             },
             volume=1,
+            webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
@@ -652,6 +655,7 @@ class TestAsyncAgent:
                 }
             },
             volume=1,
+            webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])

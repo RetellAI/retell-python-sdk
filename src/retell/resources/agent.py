@@ -160,6 +160,7 @@ class AgentResource(SyncAPIResource):
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_option: Optional[agent_create_params.VoicemailOption] | NotGiven = NOT_GIVEN,
         volume: float | NotGiven = NOT_GIVEN,
+        webhook_timeout_ms: int | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -347,6 +348,9 @@ class AgentResource(SyncAPIResource):
               value means quieter agent speech, while higher value means louder agent speech.
               If unset, default value 1 will apply.
 
+          webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
+              will apply.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -401,6 +405,7 @@ class AgentResource(SyncAPIResource):
                     "voice_temperature": voice_temperature,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
+                    "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
                 agent_create_params.AgentCreateParams,
@@ -568,6 +573,7 @@ class AgentResource(SyncAPIResource):
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_option: Optional[agent_update_params.VoicemailOption] | NotGiven = NOT_GIVEN,
         volume: float | NotGiven = NOT_GIVEN,
+        webhook_timeout_ms: int | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -757,6 +763,9 @@ class AgentResource(SyncAPIResource):
               value means quieter agent speech, while higher value means louder agent speech.
               If unset, default value 1 will apply.
 
+          webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
+              will apply.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -813,6 +822,7 @@ class AgentResource(SyncAPIResource):
                     "voice_temperature": voice_temperature,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
+                    "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
                 agent_update_params.AgentUpdateParams,
@@ -1085,6 +1095,7 @@ class AsyncAgentResource(AsyncAPIResource):
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_option: Optional[agent_create_params.VoicemailOption] | NotGiven = NOT_GIVEN,
         volume: float | NotGiven = NOT_GIVEN,
+        webhook_timeout_ms: int | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1272,6 +1283,9 @@ class AsyncAgentResource(AsyncAPIResource):
               value means quieter agent speech, while higher value means louder agent speech.
               If unset, default value 1 will apply.
 
+          webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
+              will apply.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -1326,6 +1340,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voice_temperature": voice_temperature,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
+                    "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
                 agent_create_params.AgentCreateParams,
@@ -1493,6 +1508,7 @@ class AsyncAgentResource(AsyncAPIResource):
         voice_temperature: float | NotGiven = NOT_GIVEN,
         voicemail_option: Optional[agent_update_params.VoicemailOption] | NotGiven = NOT_GIVEN,
         volume: float | NotGiven = NOT_GIVEN,
+        webhook_timeout_ms: int | NotGiven = NOT_GIVEN,
         webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1682,6 +1698,9 @@ class AsyncAgentResource(AsyncAPIResource):
               value means quieter agent speech, while higher value means louder agent speech.
               If unset, default value 1 will apply.
 
+          webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
+              will apply.
+
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
               [webhook doc](/features/webhook). If set, will binds webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
@@ -1738,6 +1757,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voice_temperature": voice_temperature,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
+                    "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
                 agent_update_params.AgentUpdateParams,

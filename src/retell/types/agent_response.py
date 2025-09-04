@@ -570,6 +570,12 @@ class AgentResponse(BaseModel):
     value means louder agent speech. If unset, default value 1 will apply.
     """
 
+    webhook_timeout_ms: Optional[int] = None
+    """The timeout for the webhook in milliseconds.
+
+    If not set, default value of 10000 will apply.
+    """
+
     webhook_url: Optional[str] = None
     """The webhook for agent to listen to call events.
 
