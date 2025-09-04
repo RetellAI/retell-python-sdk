@@ -1,5 +1,20 @@
 # Changelog
 
+## 4.44.0 (2025-09-04)
+
+Full Changelog: [v4.43.0...v4.44.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.43.0...v4.44.0)
+
+### Features
+
+* **api:** api update ([c6879b3](https://github.com/RetellAI/retell-python-sdk/commit/c6879b3f094485beb20ac72afd059194d2cecefe))
+* **api:** api update ([c3b128e](https://github.com/RetellAI/retell-python-sdk/commit/c3b128e5680a7501a1cc04369805bb851b724449))
+* improve future compat with pydantic v3 ([286040d](https://github.com/RetellAI/retell-python-sdk/commit/286040d7d843ad3872ef0a48f3d85ddae1fbe47b))
+
+
+### Chores
+
+* **internal:** move mypy configurations to `pyproject.toml` file ([7d6ee2f](https://github.com/RetellAI/retell-python-sdk/commit/7d6ee2ff09ab298ad2d1e6b64348a59f65f0b813))
+
 ## 4.43.0 (2025-09-03)
 
 Full Changelog: [v4.42.0...v4.43.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.42.0...v4.43.0)
