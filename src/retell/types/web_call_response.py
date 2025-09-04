@@ -18,6 +18,12 @@ __all__ = [
     "LatencyS2s",
     "LatencyTts",
     "LlmTokenUsage",
+    "ScrubbedTranscriptWithToolCall",
+    "ScrubbedTranscriptWithToolCallUtterance",
+    "ScrubbedTranscriptWithToolCallUtteranceWord",
+    "ScrubbedTranscriptWithToolCallToolCallInvocationUtterance",
+    "ScrubbedTranscriptWithToolCallToolCallResultUtterance",
+    "ScrubbedTranscriptWithToolCallDtmfUtterance",
     "TranscriptObject",
     "TranscriptObjectWord",
     "TranscriptWithToolCall",
@@ -287,6 +293,82 @@ class LlmTokenUsage(BaseModel):
     """All the token count values in the call."""
 
 
+class ScrubbedTranscriptWithToolCallUtteranceWord(BaseModel):
+    end: Optional[float] = None
+    """End time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    start: Optional[float] = None
+    """Start time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    word: Optional[str] = None
+    """Word transcript (with punctuation if applicable)."""
+
+
+class ScrubbedTranscriptWithToolCallUtterance(BaseModel):
+    content: str
+    """Transcript of the utterances."""
+
+    role: Literal["agent", "user", "transfer_target"]
+    """Documents whether this utterance is spoken by agent or user."""
+
+    words: List[ScrubbedTranscriptWithToolCallUtteranceWord]
+    """Array of words in the utterance with the word timestamp.
+
+    Useful for understanding what word was spoken at what time. Note that the word
+    timestamp is not guaranteed to be accurate, it's more like an approximation.
+    """
+
+
+class ScrubbedTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+
+class ScrubbedTranscriptWithToolCallToolCallResultUtterance(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    role: Literal["tool_call_result"]
+    """This is result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+
+class ScrubbedTranscriptWithToolCallDtmfUtterance(BaseModel):
+    digit: str
+    """The digit pressed by the user.
+
+    Will be a single digit string like "1", "2", "3", "\\**", "#" etc.
+    """
+
+    role: Literal["dtmf"]
+    """This is user pressed digit from their phone keypad."""
+
+
+ScrubbedTranscriptWithToolCall: TypeAlias = Union[
+    ScrubbedTranscriptWithToolCallUtterance,
+    ScrubbedTranscriptWithToolCallToolCallInvocationUtterance,
+    ScrubbedTranscriptWithToolCallToolCallResultUtterance,
+    ScrubbedTranscriptWithToolCallDtmfUtterance,
+]
+
+
 class TranscriptObjectWord(BaseModel):
     end: Optional[float] = None
     """End time of the word in the call in second.
@@ -545,6 +627,12 @@ class WebCallResponse(BaseModel):
     debugging and tracing. Available after call ends.
     """
 
+    recording_multi_channel_url: Optional[str] = None
+    """Recording of the call, with each party’s audio stored in a separate channel.
+
+    Available after the call ends.
+    """
+
     recording_url: Optional[str] = None
     """Recording of the call. Available after call ends."""
 
@@ -553,6 +641,23 @@ class WebCallResponse(BaseModel):
     Add optional dynamic variables in key value pairs of string that injects into
     your Response Engine prompt and tool description. Only applicable for Response
     Engine.
+    """
+
+    scrubbed_recording_multi_channel_url: Optional[str] = None
+    """
+    Recording of the call without PII, with each party’s audio stored in a separate
+    channel. Available after the call ends.
+    """
+
+    scrubbed_recording_url: Optional[str] = None
+    """Recording of the call without PII. Available after call ends."""
+
+    scrubbed_transcript_with_tool_calls: Optional[List[ScrubbedTranscriptWithToolCall]] = None
+    """Transcript of the call weaved with tool call invocation and results, without
+    PII.
+
+    It precisely captures when (at what utterance, which word) the tool was invoked
+    and what was the result. Available after call ends.
     """
 
     start_timestamp: Optional[int] = None
