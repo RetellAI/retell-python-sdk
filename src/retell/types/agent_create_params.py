@@ -372,6 +372,12 @@ class AgentCreateParams(TypedDict, total=False):
     value means louder agent speech. If unset, default value 1 will apply.
     """
 
+    webhook_timeout_ms: int
+    """The timeout for the webhook in milliseconds.
+
+    If not set, default value of 10000 will apply.
+    """
+
     webhook_url: Optional[str]
     """The webhook for agent to listen to call events.
 
