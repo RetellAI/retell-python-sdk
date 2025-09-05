@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 from typing import List, Union, Iterable, Optional
-from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
-from .._utils import PropertyInfo
 
 __all__ = [
     "AgentUpdateParams",
@@ -31,7 +30,7 @@ __all__ = [
 
 
 class AgentUpdateParams(TypedDict, total=False):
-    query_version: Annotated[int, PropertyInfo(alias="version")]
+    version: int
     """Optional version of the API to use for this request. Default to latest version."""
 
     agent_name: Optional[str]
@@ -311,9 +310,6 @@ class AgentUpdateParams(TypedDict, total=False):
     """
 
     user_dtmf_options: Optional[UserDtmfOptions]
-
-    body_version: Annotated[Optional[float], PropertyInfo(alias="version")]
-    """Version of the agent."""
 
     vocab_specialization: Literal["general", "medical"]
     """If set, determines the vocabulary set to use for transcription.

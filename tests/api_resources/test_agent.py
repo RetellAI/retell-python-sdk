@@ -89,7 +89,6 @@ class TestAgent:
                 "termination_key": "#",
                 "timeout_ms": 1000,
             },
-            version=0,
             vocab_specialization="general",
             voice_model="eleven_turbo_v2",
             voice_speed=1,
@@ -195,7 +194,7 @@ class TestAgent:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         agent = client.agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            query_version=1,
+            version=1,
             agent_name="Jarvis",
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
@@ -249,7 +248,6 @@ class TestAgent:
                 "termination_key": "#",
                 "timeout_ms": 1000,
             },
-            body_version=0,
             vocab_specialization="general",
             voice_id="11labs-Adrian",
             voice_model="eleven_turbo_v2",
@@ -482,7 +480,6 @@ class TestAsyncAgent:
                 "termination_key": "#",
                 "timeout_ms": 1000,
             },
-            version=0,
             vocab_specialization="general",
             voice_model="eleven_turbo_v2",
             voice_speed=1,
@@ -588,7 +585,7 @@ class TestAsyncAgent:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            query_version=1,
+            version=1,
             agent_name="Jarvis",
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
@@ -642,7 +639,6 @@ class TestAsyncAgent:
                 "termination_key": "#",
                 "timeout_ms": 1000,
             },
-            body_version=0,
             vocab_specialization="general",
             voice_id="11labs-Adrian",
             voice_model="eleven_turbo_v2",

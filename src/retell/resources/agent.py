@@ -142,7 +142,6 @@ class AgentResource(SyncAPIResource):
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
-        version: Optional[float] | NotGiven = NOT_GIVEN,
         vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -319,8 +318,6 @@ class AgentResource(SyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
-          version: Version of the agent.
-
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
@@ -398,7 +395,6 @@ class AgentResource(SyncAPIResource):
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
-                    "version": version,
                     "vocab_specialization": vocab_specialization,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -461,7 +457,7 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        query_version: int | NotGiven = NOT_GIVEN,
+        version: int | NotGiven = NOT_GIVEN,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
         allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
@@ -554,7 +550,6 @@ class AgentResource(SyncAPIResource):
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
-        body_version: Optional[float] | NotGiven = NOT_GIVEN,
         vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
@@ -586,7 +581,7 @@ class AgentResource(SyncAPIResource):
         Update an existing agent
 
         Args:
-          query_version: Optional version of the API to use for this request. Default to latest version.
+          version: Optional version of the API to use for this request. Default to latest version.
 
           agent_name: The name of the agent. Only used for your own reference.
 
@@ -731,8 +726,6 @@ class AgentResource(SyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
-          body_version: Version of the agent.
-
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
@@ -814,7 +807,6 @@ class AgentResource(SyncAPIResource):
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
-                    "body_version": body_version,
                     "vocab_specialization": vocab_specialization,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
@@ -832,7 +824,7 @@ class AgentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"query_version": query_version}, agent_update_params.AgentUpdateParams),
+                query=maybe_transform({"version": version}, agent_update_params.AgentUpdateParams),
             ),
             cast_to=AgentResponse,
         )
@@ -1077,7 +1069,6 @@ class AsyncAgentResource(AsyncAPIResource):
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
-        version: Optional[float] | NotGiven = NOT_GIVEN,
         vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
         voice_model: Optional[
             Literal[
@@ -1254,8 +1245,6 @@ class AsyncAgentResource(AsyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
-          version: Version of the agent.
-
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
@@ -1333,7 +1322,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
-                    "version": version,
                     "vocab_specialization": vocab_specialization,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -1396,7 +1384,7 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        query_version: int | NotGiven = NOT_GIVEN,
+        version: int | NotGiven = NOT_GIVEN,
         agent_name: Optional[str] | NotGiven = NOT_GIVEN,
         allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
         ambient_sound: Optional[
@@ -1489,7 +1477,6 @@ class AsyncAgentResource(AsyncAPIResource):
         ring_duration_ms: int | NotGiven = NOT_GIVEN,
         stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
-        body_version: Optional[float] | NotGiven = NOT_GIVEN,
         vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
         voice_id: str | NotGiven = NOT_GIVEN,
         voice_model: Optional[
@@ -1521,7 +1508,7 @@ class AsyncAgentResource(AsyncAPIResource):
         Update an existing agent
 
         Args:
-          query_version: Optional version of the API to use for this request. Default to latest version.
+          version: Optional version of the API to use for this request. Default to latest version.
 
           agent_name: The name of the agent. Only used for your own reference.
 
@@ -1666,8 +1653,6 @@ class AsyncAgentResource(AsyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
-          body_version: Version of the agent.
-
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
@@ -1749,7 +1734,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "ring_duration_ms": ring_duration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
-                    "body_version": body_version,
                     "vocab_specialization": vocab_specialization,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
@@ -1767,9 +1751,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
-                    {"query_version": query_version}, agent_update_params.AgentUpdateParams
-                ),
+                query=await async_maybe_transform({"version": version}, agent_update_params.AgentUpdateParams),
             ),
             cast_to=AgentResponse,
         )
