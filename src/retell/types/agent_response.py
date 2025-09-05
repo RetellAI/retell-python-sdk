@@ -512,7 +512,7 @@ class AgentResponse(BaseModel):
 
     user_dtmf_options: Optional[UserDtmfOptions] = None
 
-    version: Optional[object] = None
+    version: Optional[int] = None
     """Version of the agent."""
 
     vocab_specialization: Optional[Literal["general", "medical"]] = None

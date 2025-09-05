@@ -314,9 +314,6 @@ class AgentCreateParams(TypedDict, total=False):
 
     user_dtmf_options: Optional[UserDtmfOptions]
 
-    version: Optional[float]
-    """Version of the agent."""
-
     vocab_specialization: Literal["general", "medical"]
     """If set, determines the vocabulary set to use for transcription.
 
