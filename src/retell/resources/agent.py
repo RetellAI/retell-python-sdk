@@ -578,7 +578,7 @@ class AgentResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AgentResponse:
         """
-        Update an existing agent
+        Update an existing agent's latest draft version
 
         Args:
           version: Optional version of the API to use for this request. Default to latest version.
@@ -1505,7 +1505,7 @@ class AsyncAgentResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AgentResponse:
         """
-        Update an existing agent
+        Update an existing agent's latest draft version
 
         Args:
           version: Optional version of the API to use for this request. Default to latest version.
