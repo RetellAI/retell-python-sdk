@@ -6,7 +6,7 @@ from typing import Dict
 
 import httpx
 
-from ..types import chat_create_params, chat_create_sms_params, chat_create_chat_completion_params
+from ..types import chat_create_params, chat_create_sms_chat_params, chat_create_chat_completion_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -196,7 +196,7 @@ class ChatResource(SyncAPIResource):
             cast_to=ChatCreateChatCompletionResponse,
         )
 
-    def create_sms(
+    def create_sms_chat(
         self,
         *,
         from_number: str,
@@ -257,7 +257,7 @@ class ChatResource(SyncAPIResource):
                     "override_agent_version": override_agent_version,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
-                chat_create_sms_params.ChatCreateSMSParams,
+                chat_create_sms_chat_params.ChatCreateSMSChatParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -471,7 +471,7 @@ class AsyncChatResource(AsyncAPIResource):
             cast_to=ChatCreateChatCompletionResponse,
         )
 
-    async def create_sms(
+    async def create_sms_chat(
         self,
         *,
         from_number: str,
@@ -532,7 +532,7 @@ class AsyncChatResource(AsyncAPIResource):
                     "override_agent_version": override_agent_version,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
-                chat_create_sms_params.ChatCreateSMSParams,
+                chat_create_sms_chat_params.ChatCreateSMSChatParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -591,8 +591,8 @@ class ChatResourceWithRawResponse:
         self.create_chat_completion = to_raw_response_wrapper(
             chat.create_chat_completion,
         )
-        self.create_sms = to_raw_response_wrapper(
-            chat.create_sms,
+        self.create_sms_chat = to_raw_response_wrapper(
+            chat.create_sms_chat,
         )
         self.end = to_raw_response_wrapper(
             chat.end,
@@ -615,8 +615,8 @@ class AsyncChatResourceWithRawResponse:
         self.create_chat_completion = async_to_raw_response_wrapper(
             chat.create_chat_completion,
         )
-        self.create_sms = async_to_raw_response_wrapper(
-            chat.create_sms,
+        self.create_sms_chat = async_to_raw_response_wrapper(
+            chat.create_sms_chat,
         )
         self.end = async_to_raw_response_wrapper(
             chat.end,
@@ -639,8 +639,8 @@ class ChatResourceWithStreamingResponse:
         self.create_chat_completion = to_streamed_response_wrapper(
             chat.create_chat_completion,
         )
-        self.create_sms = to_streamed_response_wrapper(
-            chat.create_sms,
+        self.create_sms_chat = to_streamed_response_wrapper(
+            chat.create_sms_chat,
         )
         self.end = to_streamed_response_wrapper(
             chat.end,
@@ -663,8 +663,8 @@ class AsyncChatResourceWithStreamingResponse:
         self.create_chat_completion = async_to_streamed_response_wrapper(
             chat.create_chat_completion,
         )
-        self.create_sms = async_to_streamed_response_wrapper(
-            chat.create_sms,
+        self.create_sms_chat = async_to_streamed_response_wrapper(
+            chat.create_sms_chat,
         )
         self.end = async_to_streamed_response_wrapper(
             chat.end,

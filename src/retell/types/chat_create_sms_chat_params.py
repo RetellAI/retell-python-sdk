@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import Dict
 from typing_extensions import Required, TypedDict
 
-__all__ = ["ChatCreateSMSParams"]
+__all__ = ["ChatCreateSMSChatParams"]
 
 
-class ChatCreateSMSParams(TypedDict, total=False):
+class ChatCreateSMSChatParams(TypedDict, total=False):
     from_number: Required[str]
     """The phone number to send SMS from in E.164 format.
 

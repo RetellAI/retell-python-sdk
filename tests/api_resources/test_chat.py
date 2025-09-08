@@ -160,16 +160,16 @@ class TestChat:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_create_sms(self, client: Retell) -> None:
-        chat = client.chat.create_sms(
+    def test_method_create_sms_chat(self, client: Retell) -> None:
+        chat = client.chat.create_sms_chat(
             from_number="+12137771234",
             to_number="+14155551234",
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
     @parametrize
-    def test_method_create_sms_with_all_params(self, client: Retell) -> None:
-        chat = client.chat.create_sms(
+    def test_method_create_sms_chat_with_all_params(self, client: Retell) -> None:
+        chat = client.chat.create_sms_chat(
             from_number="+12137771234",
             to_number="+14155551234",
             metadata={},
@@ -180,8 +180,8 @@ class TestChat:
         assert_matches_type(ChatResponse, chat, path=["response"])
 
     @parametrize
-    def test_raw_response_create_sms(self, client: Retell) -> None:
-        response = client.chat.with_raw_response.create_sms(
+    def test_raw_response_create_sms_chat(self, client: Retell) -> None:
+        response = client.chat.with_raw_response.create_sms_chat(
             from_number="+12137771234",
             to_number="+14155551234",
         )
@@ -192,8 +192,8 @@ class TestChat:
         assert_matches_type(ChatResponse, chat, path=["response"])
 
     @parametrize
-    def test_streaming_response_create_sms(self, client: Retell) -> None:
-        with client.chat.with_streaming_response.create_sms(
+    def test_streaming_response_create_sms_chat(self, client: Retell) -> None:
+        with client.chat.with_streaming_response.create_sms_chat(
             from_number="+12137771234",
             to_number="+14155551234",
         ) as response:
@@ -388,16 +388,16 @@ class TestAsyncChat:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_create_sms(self, async_client: AsyncRetell) -> None:
-        chat = await async_client.chat.create_sms(
+    async def test_method_create_sms_chat(self, async_client: AsyncRetell) -> None:
+        chat = await async_client.chat.create_sms_chat(
             from_number="+12137771234",
             to_number="+14155551234",
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
     @parametrize
-    async def test_method_create_sms_with_all_params(self, async_client: AsyncRetell) -> None:
-        chat = await async_client.chat.create_sms(
+    async def test_method_create_sms_chat_with_all_params(self, async_client: AsyncRetell) -> None:
+        chat = await async_client.chat.create_sms_chat(
             from_number="+12137771234",
             to_number="+14155551234",
             metadata={},
@@ -408,8 +408,8 @@ class TestAsyncChat:
         assert_matches_type(ChatResponse, chat, path=["response"])
 
     @parametrize
-    async def test_raw_response_create_sms(self, async_client: AsyncRetell) -> None:
-        response = await async_client.chat.with_raw_response.create_sms(
+    async def test_raw_response_create_sms_chat(self, async_client: AsyncRetell) -> None:
+        response = await async_client.chat.with_raw_response.create_sms_chat(
             from_number="+12137771234",
             to_number="+14155551234",
         )
@@ -420,8 +420,8 @@ class TestAsyncChat:
         assert_matches_type(ChatResponse, chat, path=["response"])
 
     @parametrize
-    async def test_streaming_response_create_sms(self, async_client: AsyncRetell) -> None:
-        async with async_client.chat.with_streaming_response.create_sms(
+    async def test_streaming_response_create_sms_chat(self, async_client: AsyncRetell) -> None:
+        async with async_client.chat.with_streaming_response.create_sms_chat(
             from_number="+12137771234",
             to_number="+14155551234",
         ) as response:
