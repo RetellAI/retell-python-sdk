@@ -30,6 +30,7 @@ Methods:
 - <code title="get /get-chat/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">retrieve</a>(chat_id) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
 - <code title="get /list-chat">client.chat.<a href="./src/retell/resources/chat.py">list</a>() -> <a href="./src/retell/types/chat_list_response.py">ChatListResponse</a></code>
 - <code title="post /create-chat-completion">client.chat.<a href="./src/retell/resources/chat.py">create_chat_completion</a>(\*\*<a href="src/retell/types/chat_create_chat_completion_params.py">params</a>) -> <a href="./src/retell/types/chat_create_chat_completion_response.py">ChatCreateChatCompletionResponse</a></code>
+- <code title="post /create-sms-chat">client.chat.<a href="./src/retell/resources/chat.py">create_sms</a>(\*\*<a href="src/retell/types/chat_create_sms_params.py">params</a>) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
 - <code title="patch /end-chat/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">end</a>(chat_id) -> None</code>
 
 # PhoneNumber

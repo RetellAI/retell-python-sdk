@@ -27,6 +27,7 @@ from .phone_call_response import PhoneCallResponse as PhoneCallResponse
 from .voice_list_response import VoiceListResponse as VoiceListResponse
 from .agent_retrieve_params import AgentRetrieveParams as AgentRetrieveParams
 from .phone_number_response import PhoneNumberResponse as PhoneNumberResponse
+from .chat_create_sms_params import ChatCreateSMSParams as ChatCreateSMSParams
 from .knowledge_base_response import KnowledgeBaseResponse as KnowledgeBaseResponse
 from .conversation_flow_response import ConversationFlowResponse as ConversationFlowResponse
 from .phone_number_create_params import PhoneNumberCreateParams as PhoneNumberCreateParams
