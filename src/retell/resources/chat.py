@@ -6,7 +6,7 @@ from typing import Dict
 
 import httpx
 
-from ..types import chat_create_params, chat_create_chat_completion_params
+from ..types import chat_create_params, chat_create_sms_chat_params, chat_create_chat_completion_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -194,6 +194,75 @@ class ChatResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ChatCreateChatCompletionResponse,
+        )
+
+    def create_sms_chat(
+        self,
+        *,
+        from_number: str,
+        to_number: str,
+        metadata: object | NotGiven = NOT_GIVEN,
+        override_agent_id: str | NotGiven = NOT_GIVEN,
+        override_agent_version: int | NotGiven = NOT_GIVEN,
+        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ChatResponse:
+        """
+        Start an outbound SMS chat conversation with a phone number using the specified
+        agent. The agent must be configured for chat mode. The initial SMS message will
+        be automatically generated and sent based on the agent's configuration.
+
+        Args:
+          from_number: The phone number to send SMS from in E.164 format. Must be a number purchased
+              from Retell or imported to Retell with SMS capability.
+
+          to_number: The phone number to send SMS to in E.164 format
+
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the chat. Not used for processing. You
+              can later get this field from the chat object.
+
+          override_agent_id: For this particular chat, override the agent used with this agent id. This does
+              not bind the agent to this number, this is for one time override.
+
+          override_agent_version: For this particular chat, override the agent version used with this version.
+              This does not bind the agent version to this number, this is for one time
+              override.
+
+          retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
+              your Response Engine prompt and tool description. Only applicable for Response
+              Engine.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/create-sms-chat",
+            body=maybe_transform(
+                {
+                    "from_number": from_number,
+                    "to_number": to_number,
+                    "metadata": metadata,
+                    "override_agent_id": override_agent_id,
+                    "override_agent_version": override_agent_version,
+                    "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
+                },
+                chat_create_sms_chat_params.ChatCreateSMSChatParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ChatResponse,
         )
 
     def end(
@@ -402,6 +471,75 @@ class AsyncChatResource(AsyncAPIResource):
             cast_to=ChatCreateChatCompletionResponse,
         )
 
+    async def create_sms_chat(
+        self,
+        *,
+        from_number: str,
+        to_number: str,
+        metadata: object | NotGiven = NOT_GIVEN,
+        override_agent_id: str | NotGiven = NOT_GIVEN,
+        override_agent_version: int | NotGiven = NOT_GIVEN,
+        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ChatResponse:
+        """
+        Start an outbound SMS chat conversation with a phone number using the specified
+        agent. The agent must be configured for chat mode. The initial SMS message will
+        be automatically generated and sent based on the agent's configuration.
+
+        Args:
+          from_number: The phone number to send SMS from in E.164 format. Must be a number purchased
+              from Retell or imported to Retell with SMS capability.
+
+          to_number: The phone number to send SMS to in E.164 format
+
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the chat. Not used for processing. You
+              can later get this field from the chat object.
+
+          override_agent_id: For this particular chat, override the agent used with this agent id. This does
+              not bind the agent to this number, this is for one time override.
+
+          override_agent_version: For this particular chat, override the agent version used with this version.
+              This does not bind the agent version to this number, this is for one time
+              override.
+
+          retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
+              your Response Engine prompt and tool description. Only applicable for Response
+              Engine.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/create-sms-chat",
+            body=await async_maybe_transform(
+                {
+                    "from_number": from_number,
+                    "to_number": to_number,
+                    "metadata": metadata,
+                    "override_agent_id": override_agent_id,
+                    "override_agent_version": override_agent_version,
+                    "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
+                },
+                chat_create_sms_chat_params.ChatCreateSMSChatParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ChatResponse,
+        )
+
     async def end(
         self,
         chat_id: str,
@@ -453,6 +591,9 @@ class ChatResourceWithRawResponse:
         self.create_chat_completion = to_raw_response_wrapper(
             chat.create_chat_completion,
         )
+        self.create_sms_chat = to_raw_response_wrapper(
+            chat.create_sms_chat,
+        )
         self.end = to_raw_response_wrapper(
             chat.end,
         )
@@ -473,6 +614,9 @@ class AsyncChatResourceWithRawResponse:
         )
         self.create_chat_completion = async_to_raw_response_wrapper(
             chat.create_chat_completion,
+        )
+        self.create_sms_chat = async_to_raw_response_wrapper(
+            chat.create_sms_chat,
         )
         self.end = async_to_raw_response_wrapper(
             chat.end,
@@ -495,6 +639,9 @@ class ChatResourceWithStreamingResponse:
         self.create_chat_completion = to_streamed_response_wrapper(
             chat.create_chat_completion,
         )
+        self.create_sms_chat = to_streamed_response_wrapper(
+            chat.create_sms_chat,
+        )
         self.end = to_streamed_response_wrapper(
             chat.end,
         )
@@ -515,6 +662,9 @@ class AsyncChatResourceWithStreamingResponse:
         )
         self.create_chat_completion = async_to_streamed_response_wrapper(
             chat.create_chat_completion,
+        )
+        self.create_sms_chat = async_to_streamed_response_wrapper(
+            chat.create_sms_chat,
         )
         self.end = async_to_streamed_response_wrapper(
             chat.end,
