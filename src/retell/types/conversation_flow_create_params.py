@@ -2634,6 +2634,9 @@ class NodeAgentSwapNode(TypedDict, total=False):
     name: str
     """Optional name for display purposes"""
 
+    webhook_setting: Literal["both_agents", "only_destination_agent", "only_source_agent"]
+    """Webhook setting for the agent swap, defaults to only source."""
+
 
 class NodeMcpNodeDisplayPosition(TypedDict, total=False):
     x: float

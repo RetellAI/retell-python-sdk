@@ -2599,6 +2599,9 @@ class NodeAgentSwapNode(BaseModel):
     name: Optional[str] = None
     """Optional name for display purposes"""
 
+    webhook_setting: Optional[Literal["both_agents", "only_destination_agent", "only_source_agent"]] = None
+    """Webhook setting for the agent swap, defaults to only source."""
+
 
 class NodeMcpNodeDisplayPosition(BaseModel):
     x: Optional[float] = None
