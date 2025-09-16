@@ -551,6 +551,9 @@ class GeneralToolAgentSwapTool(BaseModel):
     tools + state tools + state edges).
     """
 
+    post_call_analysis_setting: Literal["both_agents", "only_destination_agent"]
+    """Post call analysis setting for the agent swap."""
+
     type: Literal["agent_swap"]
 
     agent_version: Optional[float] = None
@@ -568,9 +571,10 @@ class GeneralToolAgentSwapTool(BaseModel):
     execution_message_description: Optional[str] = None
     """The message for the agent to speak when executing agent swap."""
 
-    post_call_analysis_setting: Optional[Literal["both_agents", "only_destination_agent"]] = None
-
     speak_during_execution: Optional[bool] = None
+
+    webhook_setting: Optional[Literal["both_agents", "only_destination_agent", "only_source_agent"]] = None
+    """Webhook setting for the agent swap, defaults to only source."""
 
 
 class GeneralToolMcpTool(BaseModel):
@@ -1192,6 +1196,9 @@ class StateToolAgentSwapTool(BaseModel):
     tools + state tools + state edges).
     """
 
+    post_call_analysis_setting: Literal["both_agents", "only_destination_agent"]
+    """Post call analysis setting for the agent swap."""
+
     type: Literal["agent_swap"]
 
     agent_version: Optional[float] = None
@@ -1209,9 +1216,10 @@ class StateToolAgentSwapTool(BaseModel):
     execution_message_description: Optional[str] = None
     """The message for the agent to speak when executing agent swap."""
 
-    post_call_analysis_setting: Optional[Literal["both_agents", "only_destination_agent"]] = None
-
     speak_during_execution: Optional[bool] = None
+
+    webhook_setting: Optional[Literal["both_agents", "only_destination_agent", "only_source_agent"]] = None
+    """Webhook setting for the agent swap, defaults to only source."""
 
 
 class StateToolMcpTool(BaseModel):
