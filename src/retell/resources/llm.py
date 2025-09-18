@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import llm_list_params, llm_create_params, llm_update_params, llm_retrieve_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,12 +48,12 @@ class LlmResource(SyncAPIResource):
     def create(
         self,
         *,
-        begin_message: Optional[str] | NotGiven = NOT_GIVEN,
-        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
-        general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
-        kb_config: Optional[llm_create_params.KBConfig] | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        begin_message: Optional[str] | Omit = omit,
+        default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        general_prompt: Optional[str] | Omit = omit,
+        general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | Omit = omit,
+        kb_config: Optional[llm_create_params.KBConfig] | Omit = omit,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -72,20 +72,20 @@ class LlmResource(SyncAPIResource):
                 "gemini-2.5-flash-lite",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        model_high_priority: bool | NotGiven = NOT_GIVEN,
-        model_temperature: float | NotGiven = NOT_GIVEN,
-        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | NotGiven = NOT_GIVEN,
-        starting_state: Optional[str] | NotGiven = NOT_GIVEN,
-        states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
-        tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
-        version: Optional[float] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        model_high_priority: bool | Omit = omit,
+        model_temperature: float | Omit = omit,
+        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        starting_state: Optional[str] | Omit = omit,
+        states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
+        tool_call_strict_mode: bool | Omit = omit,
+        version: Optional[float] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LlmResponse:
         """Create a new Retell LLM Response Engine that can be attached to an agent.
 
@@ -187,13 +187,13 @@ class LlmResource(SyncAPIResource):
         self,
         llm_id: str,
         *,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LlmResponse:
         """
         Retrieve details of a specific Retell LLM Response Engine
@@ -227,13 +227,13 @@ class LlmResource(SyncAPIResource):
         self,
         llm_id: str,
         *,
-        query_version: int | NotGiven = NOT_GIVEN,
-        begin_message: Optional[str] | NotGiven = NOT_GIVEN,
-        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
-        general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
-        kb_config: Optional[llm_update_params.KBConfig] | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        query_version: int | Omit = omit,
+        begin_message: Optional[str] | Omit = omit,
+        default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        general_prompt: Optional[str] | Omit = omit,
+        general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | Omit = omit,
+        kb_config: Optional[llm_update_params.KBConfig] | Omit = omit,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -252,20 +252,20 @@ class LlmResource(SyncAPIResource):
                 "gemini-2.5-flash-lite",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        model_high_priority: bool | NotGiven = NOT_GIVEN,
-        model_temperature: float | NotGiven = NOT_GIVEN,
-        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | NotGiven = NOT_GIVEN,
-        starting_state: Optional[str] | NotGiven = NOT_GIVEN,
-        states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
-        tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
-        body_version: Optional[float] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        model_high_priority: bool | Omit = omit,
+        model_temperature: float | Omit = omit,
+        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        starting_state: Optional[str] | Omit = omit,
+        states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
+        tool_call_strict_mode: bool | Omit = omit,
+        body_version: Optional[float] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LlmResponse:
         """
         Update an existing Retell LLM Response Engine
@@ -372,15 +372,15 @@ class LlmResource(SyncAPIResource):
     def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        pagination_key: str | NotGiven = NOT_GIVEN,
-        pagination_key_version: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        pagination_key_version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LlmListResponse:
         """
         List all Retell LLM Response Engines that can be attached to an agent.
@@ -433,7 +433,7 @@ class LlmResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing Retell LLM Response Engine
@@ -482,12 +482,12 @@ class AsyncLlmResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        begin_message: Optional[str] | NotGiven = NOT_GIVEN,
-        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
-        general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | NotGiven = NOT_GIVEN,
-        kb_config: Optional[llm_create_params.KBConfig] | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        begin_message: Optional[str] | Omit = omit,
+        default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        general_prompt: Optional[str] | Omit = omit,
+        general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | Omit = omit,
+        kb_config: Optional[llm_create_params.KBConfig] | Omit = omit,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -506,20 +506,20 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gemini-2.5-flash-lite",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        model_high_priority: bool | NotGiven = NOT_GIVEN,
-        model_temperature: float | NotGiven = NOT_GIVEN,
-        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | NotGiven = NOT_GIVEN,
-        starting_state: Optional[str] | NotGiven = NOT_GIVEN,
-        states: Optional[Iterable[llm_create_params.State]] | NotGiven = NOT_GIVEN,
-        tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
-        version: Optional[float] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        model_high_priority: bool | Omit = omit,
+        model_temperature: float | Omit = omit,
+        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        starting_state: Optional[str] | Omit = omit,
+        states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
+        tool_call_strict_mode: bool | Omit = omit,
+        version: Optional[float] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LlmResponse:
         """Create a new Retell LLM Response Engine that can be attached to an agent.
 
@@ -621,13 +621,13 @@ class AsyncLlmResource(AsyncAPIResource):
         self,
         llm_id: str,
         *,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LlmResponse:
         """
         Retrieve details of a specific Retell LLM Response Engine
@@ -661,13 +661,13 @@ class AsyncLlmResource(AsyncAPIResource):
         self,
         llm_id: str,
         *,
-        query_version: int | NotGiven = NOT_GIVEN,
-        begin_message: Optional[str] | NotGiven = NOT_GIVEN,
-        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
-        general_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | NotGiven = NOT_GIVEN,
-        kb_config: Optional[llm_update_params.KBConfig] | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        query_version: int | Omit = omit,
+        begin_message: Optional[str] | Omit = omit,
+        default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        general_prompt: Optional[str] | Omit = omit,
+        general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | Omit = omit,
+        kb_config: Optional[llm_update_params.KBConfig] | Omit = omit,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -686,20 +686,20 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gemini-2.5-flash-lite",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        model_high_priority: bool | NotGiven = NOT_GIVEN,
-        model_temperature: float | NotGiven = NOT_GIVEN,
-        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | NotGiven = NOT_GIVEN,
-        starting_state: Optional[str] | NotGiven = NOT_GIVEN,
-        states: Optional[Iterable[llm_update_params.State]] | NotGiven = NOT_GIVEN,
-        tool_call_strict_mode: bool | NotGiven = NOT_GIVEN,
-        body_version: Optional[float] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        model_high_priority: bool | Omit = omit,
+        model_temperature: float | Omit = omit,
+        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        starting_state: Optional[str] | Omit = omit,
+        states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
+        tool_call_strict_mode: bool | Omit = omit,
+        body_version: Optional[float] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LlmResponse:
         """
         Update an existing Retell LLM Response Engine
@@ -806,15 +806,15 @@ class AsyncLlmResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        pagination_key: str | NotGiven = NOT_GIVEN,
-        pagination_key_version: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        pagination_key_version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LlmListResponse:
         """
         List all Retell LLM Response Engines that can be attached to an agent.
@@ -867,7 +867,7 @@ class AsyncLlmResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing Retell LLM Response Engine

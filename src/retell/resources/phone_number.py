@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import phone_number_create_params, phone_number_import_params, phone_number_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,23 +48,23 @@ class PhoneNumberResource(SyncAPIResource):
     def create(
         self,
         *,
-        area_code: int | NotGiven = NOT_GIVEN,
-        country_code: Literal["US", "CA"] | NotGiven = NOT_GIVEN,
-        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
-        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
-        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        nickname: str | NotGiven = NOT_GIVEN,
-        number_provider: Literal["twilio", "telnyx"] | NotGiven = NOT_GIVEN,
-        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
-        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
-        phone_number: str | NotGiven = NOT_GIVEN,
-        toll_free: bool | NotGiven = NOT_GIVEN,
+        area_code: int | Omit = omit,
+        country_code: Literal["US", "CA"] | Omit = omit,
+        inbound_agent_id: Optional[str] | Omit = omit,
+        inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_webhook_url: Optional[str] | Omit = omit,
+        nickname: str | Omit = omit,
+        number_provider: Literal["twilio", "telnyx"] | Omit = omit,
+        outbound_agent_id: Optional[str] | Omit = omit,
+        outbound_agent_version: Optional[int] | Omit = omit,
+        phone_number: str | Omit = omit,
+        toll_free: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Buy a new phone number & Bind agents
@@ -143,7 +143,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Retrieve details of a specific phone number
@@ -171,18 +171,18 @@ class PhoneNumberResource(SyncAPIResource):
         self,
         phone_number: str,
         *,
-        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
-        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
-        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        nickname: Optional[str] | NotGiven = NOT_GIVEN,
-        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
-        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
+        inbound_agent_id: Optional[str] | Omit = omit,
+        inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_webhook_url: Optional[str] | Omit = omit,
+        nickname: Optional[str] | Omit = omit,
+        outbound_agent_id: Optional[str] | Omit = omit,
+        outbound_agent_version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Update agent bound to a purchased phone number
@@ -244,7 +244,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberListResponse:
         """List all phone numbers"""
         return self._get(
@@ -264,7 +264,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing phone number
@@ -294,20 +294,20 @@ class PhoneNumberResource(SyncAPIResource):
         *,
         phone_number: str,
         termination_uri: str,
-        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
-        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
-        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        nickname: str | NotGiven = NOT_GIVEN,
-        outbound_agent_id: str | NotGiven = NOT_GIVEN,
-        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
-        sip_trunk_auth_password: str | NotGiven = NOT_GIVEN,
-        sip_trunk_auth_username: str | NotGiven = NOT_GIVEN,
+        inbound_agent_id: Optional[str] | Omit = omit,
+        inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_webhook_url: Optional[str] | Omit = omit,
+        nickname: str | Omit = omit,
+        outbound_agent_id: str | Omit = omit,
+        outbound_agent_version: Optional[int] | Omit = omit,
+        sip_trunk_auth_password: str | Omit = omit,
+        sip_trunk_auth_username: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Import a phone number from custom telephony & Bind agents
@@ -399,23 +399,23 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        area_code: int | NotGiven = NOT_GIVEN,
-        country_code: Literal["US", "CA"] | NotGiven = NOT_GIVEN,
-        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
-        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
-        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        nickname: str | NotGiven = NOT_GIVEN,
-        number_provider: Literal["twilio", "telnyx"] | NotGiven = NOT_GIVEN,
-        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
-        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
-        phone_number: str | NotGiven = NOT_GIVEN,
-        toll_free: bool | NotGiven = NOT_GIVEN,
+        area_code: int | Omit = omit,
+        country_code: Literal["US", "CA"] | Omit = omit,
+        inbound_agent_id: Optional[str] | Omit = omit,
+        inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_webhook_url: Optional[str] | Omit = omit,
+        nickname: str | Omit = omit,
+        number_provider: Literal["twilio", "telnyx"] | Omit = omit,
+        outbound_agent_id: Optional[str] | Omit = omit,
+        outbound_agent_version: Optional[int] | Omit = omit,
+        phone_number: str | Omit = omit,
+        toll_free: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Buy a new phone number & Bind agents
@@ -494,7 +494,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Retrieve details of a specific phone number
@@ -522,18 +522,18 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         self,
         phone_number: str,
         *,
-        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
-        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
-        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        nickname: Optional[str] | NotGiven = NOT_GIVEN,
-        outbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
-        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
+        inbound_agent_id: Optional[str] | Omit = omit,
+        inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_webhook_url: Optional[str] | Omit = omit,
+        nickname: Optional[str] | Omit = omit,
+        outbound_agent_id: Optional[str] | Omit = omit,
+        outbound_agent_version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Update agent bound to a purchased phone number
@@ -595,7 +595,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberListResponse:
         """List all phone numbers"""
         return await self._get(
@@ -615,7 +615,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing phone number
@@ -645,20 +645,20 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         *,
         phone_number: str,
         termination_uri: str,
-        inbound_agent_id: Optional[str] | NotGiven = NOT_GIVEN,
-        inbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
-        inbound_webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
-        nickname: str | NotGiven = NOT_GIVEN,
-        outbound_agent_id: str | NotGiven = NOT_GIVEN,
-        outbound_agent_version: Optional[int] | NotGiven = NOT_GIVEN,
-        sip_trunk_auth_password: str | NotGiven = NOT_GIVEN,
-        sip_trunk_auth_username: str | NotGiven = NOT_GIVEN,
+        inbound_agent_id: Optional[str] | Omit = omit,
+        inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_webhook_url: Optional[str] | Omit = omit,
+        nickname: str | Omit = omit,
+        outbound_agent_id: str | Omit = omit,
+        outbound_agent_version: Optional[int] | Omit = omit,
+        sip_trunk_auth_password: str | Omit = omit,
+        sip_trunk_auth_username: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Import a phone number from custom telephony & Bind agents

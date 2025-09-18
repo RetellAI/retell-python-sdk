@@ -7,7 +7,7 @@ from typing import Mapping, Iterable, cast
 import httpx
 
 from ..types import knowledge_base_create_params, knowledge_base_add_sources_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, FileTypes, SequenceNotStr, omit, not_given
 from .._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,16 +48,16 @@ class KnowledgeBaseResource(SyncAPIResource):
         self,
         *,
         knowledge_base_name: str,
-        enable_auto_refresh: bool | NotGiven = NOT_GIVEN,
-        knowledge_base_files: SequenceNotStr[FileTypes] | NotGiven = NOT_GIVEN,
-        knowledge_base_texts: Iterable[knowledge_base_create_params.KnowledgeBaseText] | NotGiven = NOT_GIVEN,
-        knowledge_base_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        enable_auto_refresh: bool | Omit = omit,
+        knowledge_base_files: SequenceNotStr[FileTypes] | Omit = omit,
+        knowledge_base_texts: Iterable[knowledge_base_create_params.KnowledgeBaseText] | Omit = omit,
+        knowledge_base_urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Create a new knowledge base
@@ -116,7 +116,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Retrieve details of a specific knowledge base
@@ -148,7 +148,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> KnowledgeBaseListResponse:
         """List all knowledge bases"""
         return self._get(
@@ -168,7 +168,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing knowledge base
@@ -197,15 +197,15 @@ class KnowledgeBaseResource(SyncAPIResource):
         self,
         knowledge_base_id: str,
         *,
-        knowledge_base_files: SequenceNotStr[FileTypes] | NotGiven = NOT_GIVEN,
-        knowledge_base_texts: Iterable[knowledge_base_add_sources_params.KnowledgeBaseText] | NotGiven = NOT_GIVEN,
-        knowledge_base_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        knowledge_base_files: SequenceNotStr[FileTypes] | Omit = omit,
+        knowledge_base_texts: Iterable[knowledge_base_add_sources_params.KnowledgeBaseText] | Omit = omit,
+        knowledge_base_urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Add sources to a knowledge base
@@ -260,7 +260,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Delete an existing source from knowledge base
@@ -311,16 +311,16 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         self,
         *,
         knowledge_base_name: str,
-        enable_auto_refresh: bool | NotGiven = NOT_GIVEN,
-        knowledge_base_files: SequenceNotStr[FileTypes] | NotGiven = NOT_GIVEN,
-        knowledge_base_texts: Iterable[knowledge_base_create_params.KnowledgeBaseText] | NotGiven = NOT_GIVEN,
-        knowledge_base_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        enable_auto_refresh: bool | Omit = omit,
+        knowledge_base_files: SequenceNotStr[FileTypes] | Omit = omit,
+        knowledge_base_texts: Iterable[knowledge_base_create_params.KnowledgeBaseText] | Omit = omit,
+        knowledge_base_urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Create a new knowledge base
@@ -379,7 +379,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Retrieve details of a specific knowledge base
@@ -411,7 +411,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> KnowledgeBaseListResponse:
         """List all knowledge bases"""
         return await self._get(
@@ -431,7 +431,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing knowledge base
@@ -460,15 +460,15 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         self,
         knowledge_base_id: str,
         *,
-        knowledge_base_files: SequenceNotStr[FileTypes] | NotGiven = NOT_GIVEN,
-        knowledge_base_texts: Iterable[knowledge_base_add_sources_params.KnowledgeBaseText] | NotGiven = NOT_GIVEN,
-        knowledge_base_urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        knowledge_base_files: SequenceNotStr[FileTypes] | Omit = omit,
+        knowledge_base_texts: Iterable[knowledge_base_add_sources_params.KnowledgeBaseText] | Omit = omit,
+        knowledge_base_urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Add sources to a knowledge base
@@ -523,7 +523,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Delete an existing source from knowledge base

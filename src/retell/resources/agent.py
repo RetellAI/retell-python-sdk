@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import agent_list_params, agent_create_params, agent_update_params, agent_retrieve_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -51,27 +51,25 @@ class AgentResource(SyncAPIResource):
         *,
         response_engine: agent_create_params.ResponseEngine,
         voice_id: str,
-        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
-        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
+        agent_name: Optional[str] | Omit = omit,
+        allow_user_dtmf: bool | Omit = omit,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        ambient_sound_volume: float | NotGiven = NOT_GIVEN,
-        backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
-        boosted_keywords: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
-        | NotGiven = NOT_GIVEN,
-        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
-        | NotGiven = NOT_GIVEN,
-        enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
-        fallback_voice_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        interruption_sensitivity: float | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        ambient_sound_volume: float | Omit = omit,
+        backchannel_frequency: float | Omit = omit,
+        backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
+        begin_message_delay_ms: int | Omit = omit,
+        boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
+        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        enable_backchannel: bool | Omit = omit,
+        end_call_after_silence_ms: int | Omit = omit,
+        fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        interruption_sensitivity: float | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -110,12 +108,12 @@ class AgentResource(SyncAPIResource):
             "sv-SE",
             "multi",
         ]
-        | NotGiven = NOT_GIVEN,
-        max_call_duration_ms: int | NotGiven = NOT_GIVEN,
-        normalize_for_speech: bool | NotGiven = NOT_GIVEN,
-        opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
-        pii_config: agent_create_params.PiiConfig | NotGiven = NOT_GIVEN,
-        post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        max_call_duration_ms: int | Omit = omit,
+        normalize_for_speech: bool | Omit = omit,
+        opt_in_signed_url: bool | Omit = omit,
+        pii_config: agent_create_params.PiiConfig | Omit = omit,
+        post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | Omit = omit,
         post_call_analysis_model: Literal[
             "gpt-4o",
             "gpt-4o-mini",
@@ -133,16 +131,15 @@ class AgentResource(SyncAPIResource):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
-        | NotGiven = NOT_GIVEN,
-        pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]]
-        | NotGiven = NOT_GIVEN,
-        reminder_max_count: int | NotGiven = NOT_GIVEN,
-        reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
-        responsiveness: float | NotGiven = NOT_GIVEN,
-        ring_duration_ms: int | NotGiven = NOT_GIVEN,
-        stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
-        user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
-        vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]] | Omit = omit,
+        reminder_max_count: int | Omit = omit,
+        reminder_trigger_ms: float | Omit = omit,
+        responsiveness: float | Omit = omit,
+        ring_duration_ms: int | Omit = omit,
+        stt_mode: Literal["fast", "accurate"] | Omit = omit,
+        user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
+        vocab_specialization: Literal["general", "medical"] | Omit = omit,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -154,19 +151,19 @@ class AgentResource(SyncAPIResource):
                 "gpt-4o-mini-tts",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        voice_speed: float | NotGiven = NOT_GIVEN,
-        voice_temperature: float | NotGiven = NOT_GIVEN,
-        voicemail_option: Optional[agent_create_params.VoicemailOption] | NotGiven = NOT_GIVEN,
-        volume: float | NotGiven = NOT_GIVEN,
-        webhook_timeout_ms: int | NotGiven = NOT_GIVEN,
-        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        voice_speed: float | Omit = omit,
+        voice_temperature: float | Omit = omit,
+        voicemail_option: Optional[agent_create_params.VoicemailOption] | Omit = omit,
+        volume: float | Omit = omit,
+        webhook_timeout_ms: int | Omit = omit,
+        webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Create a new agent
@@ -416,13 +413,13 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Retrieve details of a specific agent
@@ -457,28 +454,26 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: int | NotGiven = NOT_GIVEN,
-        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
-        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
+        agent_name: Optional[str] | Omit = omit,
+        allow_user_dtmf: bool | Omit = omit,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        ambient_sound_volume: float | NotGiven = NOT_GIVEN,
-        backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
-        boosted_keywords: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
-        | NotGiven = NOT_GIVEN,
-        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
-        | NotGiven = NOT_GIVEN,
-        enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
-        fallback_voice_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        interruption_sensitivity: float | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        ambient_sound_volume: float | Omit = omit,
+        backchannel_frequency: float | Omit = omit,
+        backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
+        begin_message_delay_ms: int | Omit = omit,
+        boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
+        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        enable_backchannel: bool | Omit = omit,
+        end_call_after_silence_ms: int | Omit = omit,
+        fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        interruption_sensitivity: float | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -517,12 +512,12 @@ class AgentResource(SyncAPIResource):
             "sv-SE",
             "multi",
         ]
-        | NotGiven = NOT_GIVEN,
-        max_call_duration_ms: int | NotGiven = NOT_GIVEN,
-        normalize_for_speech: bool | NotGiven = NOT_GIVEN,
-        opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
-        pii_config: agent_update_params.PiiConfig | NotGiven = NOT_GIVEN,
-        post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        max_call_duration_ms: int | Omit = omit,
+        normalize_for_speech: bool | Omit = omit,
+        opt_in_signed_url: bool | Omit = omit,
+        pii_config: agent_update_params.PiiConfig | Omit = omit,
+        post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | Omit = omit,
         post_call_analysis_model: Literal[
             "gpt-4o",
             "gpt-4o-mini",
@@ -540,18 +535,17 @@ class AgentResource(SyncAPIResource):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
-        | NotGiven = NOT_GIVEN,
-        pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]]
-        | NotGiven = NOT_GIVEN,
-        reminder_max_count: int | NotGiven = NOT_GIVEN,
-        reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
-        response_engine: agent_update_params.ResponseEngine | NotGiven = NOT_GIVEN,
-        responsiveness: float | NotGiven = NOT_GIVEN,
-        ring_duration_ms: int | NotGiven = NOT_GIVEN,
-        stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
-        user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
-        vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
-        voice_id: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]] | Omit = omit,
+        reminder_max_count: int | Omit = omit,
+        reminder_trigger_ms: float | Omit = omit,
+        response_engine: agent_update_params.ResponseEngine | Omit = omit,
+        responsiveness: float | Omit = omit,
+        ring_duration_ms: int | Omit = omit,
+        stt_mode: Literal["fast", "accurate"] | Omit = omit,
+        user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
+        vocab_specialization: Literal["general", "medical"] | Omit = omit,
+        voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -563,19 +557,19 @@ class AgentResource(SyncAPIResource):
                 "gpt-4o-mini-tts",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        voice_speed: float | NotGiven = NOT_GIVEN,
-        voice_temperature: float | NotGiven = NOT_GIVEN,
-        voicemail_option: Optional[agent_update_params.VoicemailOption] | NotGiven = NOT_GIVEN,
-        volume: float | NotGiven = NOT_GIVEN,
-        webhook_timeout_ms: int | NotGiven = NOT_GIVEN,
-        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        voice_speed: float | Omit = omit,
+        voice_temperature: float | Omit = omit,
+        voicemail_option: Optional[agent_update_params.VoicemailOption] | Omit = omit,
+        volume: float | Omit = omit,
+        webhook_timeout_ms: int | Omit = omit,
+        webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Update an existing agent's latest draft version
@@ -832,15 +826,15 @@ class AgentResource(SyncAPIResource):
     def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        pagination_key: str | NotGiven = NOT_GIVEN,
-        pagination_key_version: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        pagination_key_version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListResponse:
         """List all agents
 
@@ -894,7 +888,7 @@ class AgentResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing agent
@@ -928,7 +922,7 @@ class AgentResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentGetVersionsResponse:
         """
         Get all versions of an agent
@@ -978,27 +972,25 @@ class AsyncAgentResource(AsyncAPIResource):
         *,
         response_engine: agent_create_params.ResponseEngine,
         voice_id: str,
-        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
-        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
+        agent_name: Optional[str] | Omit = omit,
+        allow_user_dtmf: bool | Omit = omit,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        ambient_sound_volume: float | NotGiven = NOT_GIVEN,
-        backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
-        boosted_keywords: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
-        | NotGiven = NOT_GIVEN,
-        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
-        | NotGiven = NOT_GIVEN,
-        enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
-        fallback_voice_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        interruption_sensitivity: float | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        ambient_sound_volume: float | Omit = omit,
+        backchannel_frequency: float | Omit = omit,
+        backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
+        begin_message_delay_ms: int | Omit = omit,
+        boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
+        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        enable_backchannel: bool | Omit = omit,
+        end_call_after_silence_ms: int | Omit = omit,
+        fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        interruption_sensitivity: float | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -1037,12 +1029,12 @@ class AsyncAgentResource(AsyncAPIResource):
             "sv-SE",
             "multi",
         ]
-        | NotGiven = NOT_GIVEN,
-        max_call_duration_ms: int | NotGiven = NOT_GIVEN,
-        normalize_for_speech: bool | NotGiven = NOT_GIVEN,
-        opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
-        pii_config: agent_create_params.PiiConfig | NotGiven = NOT_GIVEN,
-        post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        max_call_duration_ms: int | Omit = omit,
+        normalize_for_speech: bool | Omit = omit,
+        opt_in_signed_url: bool | Omit = omit,
+        pii_config: agent_create_params.PiiConfig | Omit = omit,
+        post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | Omit = omit,
         post_call_analysis_model: Literal[
             "gpt-4o",
             "gpt-4o-mini",
@@ -1060,16 +1052,15 @@ class AsyncAgentResource(AsyncAPIResource):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
-        | NotGiven = NOT_GIVEN,
-        pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]]
-        | NotGiven = NOT_GIVEN,
-        reminder_max_count: int | NotGiven = NOT_GIVEN,
-        reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
-        responsiveness: float | NotGiven = NOT_GIVEN,
-        ring_duration_ms: int | NotGiven = NOT_GIVEN,
-        stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
-        user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
-        vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]] | Omit = omit,
+        reminder_max_count: int | Omit = omit,
+        reminder_trigger_ms: float | Omit = omit,
+        responsiveness: float | Omit = omit,
+        ring_duration_ms: int | Omit = omit,
+        stt_mode: Literal["fast", "accurate"] | Omit = omit,
+        user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
+        vocab_specialization: Literal["general", "medical"] | Omit = omit,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -1081,19 +1072,19 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-4o-mini-tts",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        voice_speed: float | NotGiven = NOT_GIVEN,
-        voice_temperature: float | NotGiven = NOT_GIVEN,
-        voicemail_option: Optional[agent_create_params.VoicemailOption] | NotGiven = NOT_GIVEN,
-        volume: float | NotGiven = NOT_GIVEN,
-        webhook_timeout_ms: int | NotGiven = NOT_GIVEN,
-        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        voice_speed: float | Omit = omit,
+        voice_temperature: float | Omit = omit,
+        voicemail_option: Optional[agent_create_params.VoicemailOption] | Omit = omit,
+        volume: float | Omit = omit,
+        webhook_timeout_ms: int | Omit = omit,
+        webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Create a new agent
@@ -1343,13 +1334,13 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: int | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Retrieve details of a specific agent
@@ -1384,28 +1375,26 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: int | NotGiven = NOT_GIVEN,
-        agent_name: Optional[str] | NotGiven = NOT_GIVEN,
-        allow_user_dtmf: bool | NotGiven = NOT_GIVEN,
+        version: int | Omit = omit,
+        agent_name: Optional[str] | Omit = omit,
+        allow_user_dtmf: bool | Omit = omit,
         ambient_sound: Optional[
             Literal[
                 "coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        ambient_sound_volume: float | NotGiven = NOT_GIVEN,
-        backchannel_frequency: float | NotGiven = NOT_GIVEN,
-        backchannel_words: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        begin_message_delay_ms: int | NotGiven = NOT_GIVEN,
-        boosted_keywords: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
-        | NotGiven = NOT_GIVEN,
-        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
-        | NotGiven = NOT_GIVEN,
-        enable_backchannel: bool | NotGiven = NOT_GIVEN,
-        end_call_after_silence_ms: int | NotGiven = NOT_GIVEN,
-        fallback_voice_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        interruption_sensitivity: float | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        ambient_sound_volume: float | Omit = omit,
+        backchannel_frequency: float | Omit = omit,
+        backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
+        begin_message_delay_ms: int | Omit = omit,
+        boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
+        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        enable_backchannel: bool | Omit = omit,
+        end_call_after_silence_ms: int | Omit = omit,
+        fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        interruption_sensitivity: float | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -1444,12 +1433,12 @@ class AsyncAgentResource(AsyncAPIResource):
             "sv-SE",
             "multi",
         ]
-        | NotGiven = NOT_GIVEN,
-        max_call_duration_ms: int | NotGiven = NOT_GIVEN,
-        normalize_for_speech: bool | NotGiven = NOT_GIVEN,
-        opt_in_signed_url: bool | NotGiven = NOT_GIVEN,
-        pii_config: agent_update_params.PiiConfig | NotGiven = NOT_GIVEN,
-        post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        max_call_duration_ms: int | Omit = omit,
+        normalize_for_speech: bool | Omit = omit,
+        opt_in_signed_url: bool | Omit = omit,
+        pii_config: agent_update_params.PiiConfig | Omit = omit,
+        post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | Omit = omit,
         post_call_analysis_model: Literal[
             "gpt-4o",
             "gpt-4o-mini",
@@ -1467,18 +1456,17 @@ class AsyncAgentResource(AsyncAPIResource):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
-        | NotGiven = NOT_GIVEN,
-        pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]]
-        | NotGiven = NOT_GIVEN,
-        reminder_max_count: int | NotGiven = NOT_GIVEN,
-        reminder_trigger_ms: float | NotGiven = NOT_GIVEN,
-        response_engine: agent_update_params.ResponseEngine | NotGiven = NOT_GIVEN,
-        responsiveness: float | NotGiven = NOT_GIVEN,
-        ring_duration_ms: int | NotGiven = NOT_GIVEN,
-        stt_mode: Literal["fast", "accurate"] | NotGiven = NOT_GIVEN,
-        user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | NotGiven = NOT_GIVEN,
-        vocab_specialization: Literal["general", "medical"] | NotGiven = NOT_GIVEN,
-        voice_id: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]] | Omit = omit,
+        reminder_max_count: int | Omit = omit,
+        reminder_trigger_ms: float | Omit = omit,
+        response_engine: agent_update_params.ResponseEngine | Omit = omit,
+        responsiveness: float | Omit = omit,
+        ring_duration_ms: int | Omit = omit,
+        stt_mode: Literal["fast", "accurate"] | Omit = omit,
+        user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
+        vocab_specialization: Literal["general", "medical"] | Omit = omit,
+        voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -1490,19 +1478,19 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-4o-mini-tts",
             ]
         ]
-        | NotGiven = NOT_GIVEN,
-        voice_speed: float | NotGiven = NOT_GIVEN,
-        voice_temperature: float | NotGiven = NOT_GIVEN,
-        voicemail_option: Optional[agent_update_params.VoicemailOption] | NotGiven = NOT_GIVEN,
-        volume: float | NotGiven = NOT_GIVEN,
-        webhook_timeout_ms: int | NotGiven = NOT_GIVEN,
-        webhook_url: Optional[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        voice_speed: float | Omit = omit,
+        voice_temperature: float | Omit = omit,
+        voicemail_option: Optional[agent_update_params.VoicemailOption] | Omit = omit,
+        volume: float | Omit = omit,
+        webhook_timeout_ms: int | Omit = omit,
+        webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Update an existing agent's latest draft version
@@ -1759,15 +1747,15 @@ class AsyncAgentResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        pagination_key: str | NotGiven = NOT_GIVEN,
-        pagination_key_version: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        pagination_key_version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListResponse:
         """List all agents
 
@@ -1821,7 +1809,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing agent
@@ -1855,7 +1843,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentGetVersionsResponse:
         """
         Get all versions of an agent
