@@ -946,6 +946,41 @@ class AgentResource(SyncAPIResource):
             cast_to=AgentGetVersionsResponse,
         )
 
+    def publish(
+        self,
+        agent_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Publish the latest version of the agent and create a new draft agent with newer
+        version.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            f"/publish-agent/{agent_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class AsyncAgentResource(AsyncAPIResource):
     @cached_property
@@ -1867,6 +1902,41 @@ class AsyncAgentResource(AsyncAPIResource):
             cast_to=AgentGetVersionsResponse,
         )
 
+    async def publish(
+        self,
+        agent_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Publish the latest version of the agent and create a new draft agent with newer
+        version.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            f"/publish-agent/{agent_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class AgentResourceWithRawResponse:
     def __init__(self, agent: AgentResource) -> None:
@@ -1889,6 +1959,9 @@ class AgentResourceWithRawResponse:
         )
         self.get_versions = to_raw_response_wrapper(
             agent.get_versions,
+        )
+        self.publish = to_raw_response_wrapper(
+            agent.publish,
         )
 
 
@@ -1914,6 +1987,9 @@ class AsyncAgentResourceWithRawResponse:
         self.get_versions = async_to_raw_response_wrapper(
             agent.get_versions,
         )
+        self.publish = async_to_raw_response_wrapper(
+            agent.publish,
+        )
 
 
 class AgentResourceWithStreamingResponse:
@@ -1938,6 +2014,9 @@ class AgentResourceWithStreamingResponse:
         self.get_versions = to_streamed_response_wrapper(
             agent.get_versions,
         )
+        self.publish = to_streamed_response_wrapper(
+            agent.publish,
+        )
 
 
 class AsyncAgentResourceWithStreamingResponse:
@@ -1961,4 +2040,7 @@ class AsyncAgentResourceWithStreamingResponse:
         )
         self.get_versions = async_to_streamed_response_wrapper(
             agent.get_versions,
+        )
+        self.publish = async_to_streamed_response_wrapper(
+            agent.publish,
         )
