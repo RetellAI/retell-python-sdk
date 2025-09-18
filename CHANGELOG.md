@@ -1,5 +1,21 @@
 # Changelog
 
+## 4.47.0 (2025-09-18)
+
+Full Changelog: [v4.46.0...v4.47.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.46.0...v4.47.0)
+
+### Features
+
+* **api:** api update ([159292a](https://github.com/RetellAI/retell-python-sdk/commit/159292a844d35c1b0d3f3e632a83ece6054d4708))
+* **api:** api update ([6a36071](https://github.com/RetellAI/retell-python-sdk/commit/6a36071a37e75c6b08f83144527915cb2a4b2de4))
+
+
+### Chores
+
+* **internal:** update pydantic dependency ([20d9315](https://github.com/RetellAI/retell-python-sdk/commit/20d9315209de2175e4505bc3f0a7a30e3257bb0d))
+* **tests:** simplify `get_platform` test ([4000fc1](https://github.com/RetellAI/retell-python-sdk/commit/4000fc195daff4166e2e8f6d98c65201f6b95050))
+* **types:** change optional parameter type from NotGiven to Omit ([1b853b2](https://github.com/RetellAI/retell-python-sdk/commit/1b853b207b102db8f386311f6885c4b726a3ff54))
+
 ## 4.46.0 (2025-09-08)
 
 Full Changelog: [v4.45.0...v4.46.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.45.0...v4.46.0)
