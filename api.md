@@ -66,6 +66,7 @@ Methods:
 - <code title="get /list-agents">client.agent.<a href="./src/retell/resources/agent.py">list</a>(\*\*<a href="src/retell/types/agent_list_params.py">params</a>) -> <a href="./src/retell/types/agent_list_response.py">AgentListResponse</a></code>
 - <code title="delete /delete-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">delete</a>(agent_id) -> None</code>
 - <code title="get /get-agent-versions/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">get_versions</a>(agent_id) -> <a href="./src/retell/types/agent_get_versions_response.py">AgentGetVersionsResponse</a></code>
+- <code title="post /publish-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">publish</a>(agent_id) -> None</code>
 
 # Llm
 
