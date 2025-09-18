@@ -7,7 +7,7 @@ from typing import Dict
 import httpx
 
 from ..types import chat_create_params, chat_create_sms_chat_params, chat_create_chat_completion_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -49,15 +49,15 @@ class ChatResource(SyncAPIResource):
         self,
         *,
         agent_id: str,
-        agent_version: int | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
-        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        agent_version: int | Omit = omit,
+        metadata: object | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Create a chat session
@@ -110,7 +110,7 @@ class ChatResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Retrieve details of a specific chat
@@ -142,7 +142,7 @@ class ChatResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatListResponse:
         """List all chats"""
         return self._get(
@@ -163,7 +163,7 @@ class ChatResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatCreateChatCompletionResponse:
         """
         Create a chat completion message
@@ -201,16 +201,16 @@ class ChatResource(SyncAPIResource):
         *,
         from_number: str,
         to_number: str,
-        metadata: object | NotGiven = NOT_GIVEN,
-        override_agent_id: str | NotGiven = NOT_GIVEN,
-        override_agent_version: int | NotGiven = NOT_GIVEN,
-        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        metadata: object | Omit = omit,
+        override_agent_id: str | Omit = omit,
+        override_agent_version: int | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Start an outbound SMS chat conversation with a phone number using the specified
@@ -274,7 +274,7 @@ class ChatResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         End an ongoing chat
@@ -324,15 +324,15 @@ class AsyncChatResource(AsyncAPIResource):
         self,
         *,
         agent_id: str,
-        agent_version: int | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
-        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        agent_version: int | Omit = omit,
+        metadata: object | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Create a chat session
@@ -385,7 +385,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Retrieve details of a specific chat
@@ -417,7 +417,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatListResponse:
         """List all chats"""
         return await self._get(
@@ -438,7 +438,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatCreateChatCompletionResponse:
         """
         Create a chat completion message
@@ -476,16 +476,16 @@ class AsyncChatResource(AsyncAPIResource):
         *,
         from_number: str,
         to_number: str,
-        metadata: object | NotGiven = NOT_GIVEN,
-        override_agent_id: str | NotGiven = NOT_GIVEN,
-        override_agent_version: int | NotGiven = NOT_GIVEN,
-        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        metadata: object | Omit = omit,
+        override_agent_id: str | Omit = omit,
+        override_agent_version: int | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Start an outbound SMS chat conversation with a phone number using the specified
@@ -549,7 +549,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         End an ongoing chat

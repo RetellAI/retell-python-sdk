@@ -13,7 +13,7 @@ from ..types import (
     conversation_flow_update_params,
     conversation_flow_retrieve_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -56,23 +56,22 @@ class ConversationFlowResource(SyncAPIResource):
         model_choice: conversation_flow_create_params.ModelChoice,
         nodes: Iterable[conversation_flow_create_params.Node],
         start_speaker: Literal["user", "agent"],
-        begin_tag_display_position: Optional[conversation_flow_create_params.BeginTagDisplayPosition]
-        | NotGiven = NOT_GIVEN,
-        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
-        global_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        kb_config: conversation_flow_create_params.KBConfig | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | NotGiven = NOT_GIVEN,
-        model_temperature: Optional[float] | NotGiven = NOT_GIVEN,
-        start_node_id: Optional[str] | NotGiven = NOT_GIVEN,
-        tool_call_strict_mode: Optional[bool] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[conversation_flow_create_params.Tool]] | NotGiven = NOT_GIVEN,
+        begin_tag_display_position: Optional[conversation_flow_create_params.BeginTagDisplayPosition] | Omit = omit,
+        default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        global_prompt: Optional[str] | Omit = omit,
+        kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | Omit = omit,
+        model_temperature: Optional[float] | Omit = omit,
+        start_node_id: Optional[str] | Omit = omit,
+        tool_call_strict_mode: Optional[bool] | Omit = omit,
+        tools: Optional[Iterable[conversation_flow_create_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """Create a new Conversation Flow that can be attached to an agent.
 
@@ -147,13 +146,13 @@ class ConversationFlowResource(SyncAPIResource):
         self,
         conversation_flow_id: str,
         *,
-        version: str | NotGiven = NOT_GIVEN,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """
         Retrieve details of a specific Conversation Flow
@@ -189,27 +188,26 @@ class ConversationFlowResource(SyncAPIResource):
         self,
         conversation_flow_id: str,
         *,
-        version: str | NotGiven = NOT_GIVEN,
-        begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition]
-        | NotGiven = NOT_GIVEN,
-        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
-        global_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        kb_config: conversation_flow_update_params.KBConfig | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        mcps: Optional[Iterable[conversation_flow_update_params.Mcp]] | NotGiven = NOT_GIVEN,
-        model_choice: conversation_flow_update_params.ModelChoice | NotGiven = NOT_GIVEN,
-        model_temperature: Optional[float] | NotGiven = NOT_GIVEN,
-        nodes: Iterable[conversation_flow_update_params.Node] | NotGiven = NOT_GIVEN,
-        start_node_id: Optional[str] | NotGiven = NOT_GIVEN,
-        start_speaker: Literal["user", "agent"] | NotGiven = NOT_GIVEN,
-        tool_call_strict_mode: Optional[bool] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[conversation_flow_update_params.Tool]] | NotGiven = NOT_GIVEN,
+        version: str | Omit = omit,
+        begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition] | Omit = omit,
+        default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        global_prompt: Optional[str] | Omit = omit,
+        kb_config: conversation_flow_update_params.KBConfig | Omit = omit,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        mcps: Optional[Iterable[conversation_flow_update_params.Mcp]] | Omit = omit,
+        model_choice: conversation_flow_update_params.ModelChoice | Omit = omit,
+        model_temperature: Optional[float] | Omit = omit,
+        nodes: Iterable[conversation_flow_update_params.Node] | Omit = omit,
+        start_node_id: Optional[str] | Omit = omit,
+        start_speaker: Literal["user", "agent"] | Omit = omit,
+        tool_call_strict_mode: Optional[bool] | Omit = omit,
+        tools: Optional[Iterable[conversation_flow_update_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """
         Update an existing conversation flow
@@ -293,15 +291,15 @@ class ConversationFlowResource(SyncAPIResource):
     def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        pagination_key: str | NotGiven = NOT_GIVEN,
-        pagination_key_version: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        pagination_key_version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowListResponse:
         """
         List all conversation flows that can be attached to an agent.
@@ -356,7 +354,7 @@ class ConversationFlowResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete a conversation flow and all its versions
@@ -410,23 +408,22 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         model_choice: conversation_flow_create_params.ModelChoice,
         nodes: Iterable[conversation_flow_create_params.Node],
         start_speaker: Literal["user", "agent"],
-        begin_tag_display_position: Optional[conversation_flow_create_params.BeginTagDisplayPosition]
-        | NotGiven = NOT_GIVEN,
-        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
-        global_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        kb_config: conversation_flow_create_params.KBConfig | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | NotGiven = NOT_GIVEN,
-        model_temperature: Optional[float] | NotGiven = NOT_GIVEN,
-        start_node_id: Optional[str] | NotGiven = NOT_GIVEN,
-        tool_call_strict_mode: Optional[bool] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[conversation_flow_create_params.Tool]] | NotGiven = NOT_GIVEN,
+        begin_tag_display_position: Optional[conversation_flow_create_params.BeginTagDisplayPosition] | Omit = omit,
+        default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        global_prompt: Optional[str] | Omit = omit,
+        kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | Omit = omit,
+        model_temperature: Optional[float] | Omit = omit,
+        start_node_id: Optional[str] | Omit = omit,
+        tool_call_strict_mode: Optional[bool] | Omit = omit,
+        tools: Optional[Iterable[conversation_flow_create_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """Create a new Conversation Flow that can be attached to an agent.
 
@@ -501,13 +498,13 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         self,
         conversation_flow_id: str,
         *,
-        version: str | NotGiven = NOT_GIVEN,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """
         Retrieve details of a specific Conversation Flow
@@ -543,27 +540,26 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         self,
         conversation_flow_id: str,
         *,
-        version: str | NotGiven = NOT_GIVEN,
-        begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition]
-        | NotGiven = NOT_GIVEN,
-        default_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
-        global_prompt: Optional[str] | NotGiven = NOT_GIVEN,
-        kb_config: conversation_flow_update_params.KBConfig | NotGiven = NOT_GIVEN,
-        knowledge_base_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        mcps: Optional[Iterable[conversation_flow_update_params.Mcp]] | NotGiven = NOT_GIVEN,
-        model_choice: conversation_flow_update_params.ModelChoice | NotGiven = NOT_GIVEN,
-        model_temperature: Optional[float] | NotGiven = NOT_GIVEN,
-        nodes: Iterable[conversation_flow_update_params.Node] | NotGiven = NOT_GIVEN,
-        start_node_id: Optional[str] | NotGiven = NOT_GIVEN,
-        start_speaker: Literal["user", "agent"] | NotGiven = NOT_GIVEN,
-        tool_call_strict_mode: Optional[bool] | NotGiven = NOT_GIVEN,
-        tools: Optional[Iterable[conversation_flow_update_params.Tool]] | NotGiven = NOT_GIVEN,
+        version: str | Omit = omit,
+        begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition] | Omit = omit,
+        default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        global_prompt: Optional[str] | Omit = omit,
+        kb_config: conversation_flow_update_params.KBConfig | Omit = omit,
+        knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        mcps: Optional[Iterable[conversation_flow_update_params.Mcp]] | Omit = omit,
+        model_choice: conversation_flow_update_params.ModelChoice | Omit = omit,
+        model_temperature: Optional[float] | Omit = omit,
+        nodes: Iterable[conversation_flow_update_params.Node] | Omit = omit,
+        start_node_id: Optional[str] | Omit = omit,
+        start_speaker: Literal["user", "agent"] | Omit = omit,
+        tool_call_strict_mode: Optional[bool] | Omit = omit,
+        tools: Optional[Iterable[conversation_flow_update_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """
         Update an existing conversation flow
@@ -647,15 +643,15 @@ class AsyncConversationFlowResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        limit: int | NotGiven = NOT_GIVEN,
-        pagination_key: str | NotGiven = NOT_GIVEN,
-        pagination_key_version: int | NotGiven = NOT_GIVEN,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        pagination_key_version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowListResponse:
         """
         List all conversation flows that can be attached to an agent.
@@ -710,7 +706,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete a conversation flow and all its versions

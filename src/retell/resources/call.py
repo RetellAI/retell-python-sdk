@@ -14,7 +14,7 @@ from ..types import (
     call_create_phone_call_params,
     call_register_phone_call_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -62,7 +62,7 @@ class CallResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CallResponse:
         """
         Retrieve details of a specific call
@@ -93,16 +93,15 @@ class CallResource(SyncAPIResource):
         self,
         call_id: str,
         *,
-        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
-        | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
-        override_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
+        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
+        metadata: object | Omit = omit,
+        override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CallResponse:
         """
         Update metadata and sensitive data storage settings for an existing call.
@@ -154,16 +153,16 @@ class CallResource(SyncAPIResource):
     def list(
         self,
         *,
-        filter_criteria: call_list_params.FilterCriteria | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        pagination_key: str | NotGiven = NOT_GIVEN,
-        sort_order: Literal["ascending", "descending"] | NotGiven = NOT_GIVEN,
+        filter_criteria: call_list_params.FilterCriteria | Omit = omit,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CallListResponse:
         """
         Retrieve call details
@@ -216,7 +215,7 @@ class CallResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete a specific call and its associated data
@@ -246,17 +245,17 @@ class CallResource(SyncAPIResource):
         *,
         from_number: str,
         to_number: str,
-        custom_sip_headers: Dict[str, str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
-        override_agent_id: str | NotGiven = NOT_GIVEN,
-        override_agent_version: int | NotGiven = NOT_GIVEN,
-        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_sip_headers: Dict[str, str] | Omit = omit,
+        metadata: object | Omit = omit,
+        override_agent_id: str | Omit = omit,
+        override_agent_version: int | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneCallResponse:
         """
         Create a new outbound phone call
@@ -317,15 +316,15 @@ class CallResource(SyncAPIResource):
         self,
         *,
         agent_id: str,
-        agent_version: int | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
-        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        agent_version: int | Omit = omit,
+        metadata: object | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WebCallResponse:
         """Create a new web call
 
@@ -374,18 +373,18 @@ class CallResource(SyncAPIResource):
         self,
         *,
         agent_id: str,
-        agent_version: int | NotGiven = NOT_GIVEN,
-        direction: Literal["inbound", "outbound"] | NotGiven = NOT_GIVEN,
-        from_number: str | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
-        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
-        to_number: str | NotGiven = NOT_GIVEN,
+        agent_version: int | Omit = omit,
+        direction: Literal["inbound", "outbound"] | Omit = omit,
+        from_number: str | Omit = omit,
+        metadata: object | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        to_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneCallResponse:
         """
         Register a new phone call for custom telephony
@@ -467,7 +466,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CallResponse:
         """
         Retrieve details of a specific call
@@ -498,16 +497,15 @@ class AsyncCallResource(AsyncAPIResource):
         self,
         call_id: str,
         *,
-        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
-        | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
-        override_dynamic_variables: Optional[Dict[str, str]] | NotGiven = NOT_GIVEN,
+        data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
+        metadata: object | Omit = omit,
+        override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CallResponse:
         """
         Update metadata and sensitive data storage settings for an existing call.
@@ -559,16 +557,16 @@ class AsyncCallResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        filter_criteria: call_list_params.FilterCriteria | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        pagination_key: str | NotGiven = NOT_GIVEN,
-        sort_order: Literal["ascending", "descending"] | NotGiven = NOT_GIVEN,
+        filter_criteria: call_list_params.FilterCriteria | Omit = omit,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CallListResponse:
         """
         Retrieve call details
@@ -621,7 +619,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Delete a specific call and its associated data
@@ -651,17 +649,17 @@ class AsyncCallResource(AsyncAPIResource):
         *,
         from_number: str,
         to_number: str,
-        custom_sip_headers: Dict[str, str] | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
-        override_agent_id: str | NotGiven = NOT_GIVEN,
-        override_agent_version: int | NotGiven = NOT_GIVEN,
-        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        custom_sip_headers: Dict[str, str] | Omit = omit,
+        metadata: object | Omit = omit,
+        override_agent_id: str | Omit = omit,
+        override_agent_version: int | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneCallResponse:
         """
         Create a new outbound phone call
@@ -722,15 +720,15 @@ class AsyncCallResource(AsyncAPIResource):
         self,
         *,
         agent_id: str,
-        agent_version: int | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
-        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
+        agent_version: int | Omit = omit,
+        metadata: object | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WebCallResponse:
         """Create a new web call
 
@@ -779,18 +777,18 @@ class AsyncCallResource(AsyncAPIResource):
         self,
         *,
         agent_id: str,
-        agent_version: int | NotGiven = NOT_GIVEN,
-        direction: Literal["inbound", "outbound"] | NotGiven = NOT_GIVEN,
-        from_number: str | NotGiven = NOT_GIVEN,
-        metadata: object | NotGiven = NOT_GIVEN,
-        retell_llm_dynamic_variables: Dict[str, object] | NotGiven = NOT_GIVEN,
-        to_number: str | NotGiven = NOT_GIVEN,
+        agent_version: int | Omit = omit,
+        direction: Literal["inbound", "outbound"] | Omit = omit,
+        from_number: str | Omit = omit,
+        metadata: object | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        to_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneCallResponse:
         """
         Register a new phone call for custom telephony
