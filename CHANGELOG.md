@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.48.0 (2025-09-24)
+
+Full Changelog: [v4.47.0...v4.48.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.47.0...v4.48.0)
+
+### Features
+
+* **api:** api update ([8ea9eb8](https://github.com/RetellAI/retell-python-sdk/commit/8ea9eb869291c9270d4fd5b1cff771787a94276e))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([c72a7cd](https://github.com/RetellAI/retell-python-sdk/commit/c72a7cd68f311805d2eddfd8dd55a646ff2014ba))
+
 ## 4.47.0 (2025-09-18)
 
 Full Changelog: [v4.46.0...v4.47.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.46.0...v4.47.0)
