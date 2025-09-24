@@ -40,6 +40,14 @@ from .voice import (
     VoiceResourceWithStreamingResponse,
     AsyncVoiceResourceWithStreamingResponse,
 )
+from .mcp_tool import (
+    McpToolResource,
+    AsyncMcpToolResource,
+    McpToolResourceWithRawResponse,
+    AsyncMcpToolResourceWithRawResponse,
+    McpToolResourceWithStreamingResponse,
+    AsyncMcpToolResourceWithStreamingResponse,
+)
 from .batch_call import (
     BatchCallResource,
     AsyncBatchCallResource,
@@ -142,4 +150,10 @@ __all__ = [
     "AsyncBatchCallResourceWithRawResponse",
     "BatchCallResourceWithStreamingResponse",
     "AsyncBatchCallResourceWithStreamingResponse",
+    "McpToolResource",
+    "AsyncMcpToolResource",
+    "McpToolResourceWithRawResponse",
+    "AsyncMcpToolResourceWithRawResponse",
+    "McpToolResourceWithStreamingResponse",
+    "AsyncMcpToolResourceWithStreamingResponse",
 ]

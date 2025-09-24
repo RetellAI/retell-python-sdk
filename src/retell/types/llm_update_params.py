@@ -168,6 +168,12 @@ class LlmUpdateParams(TypedDict, total=False):
     Can only set this or model, not both.
     """
 
+    start_speaker: Literal["user", "agent"]
+    """The speaker who starts the conversation.
+
+    Required. Must be either 'user' or 'agent'.
+    """
+
     starting_state: Optional[str]
     """Name of the starting state. Required if states is not empty."""
 
