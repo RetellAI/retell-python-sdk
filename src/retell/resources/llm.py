@@ -76,6 +76,7 @@ class LlmResource(SyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
@@ -133,6 +134,9 @@ class LlmResource(SyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -170,6 +174,7 @@ class LlmResource(SyncAPIResource):
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
+                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
@@ -256,6 +261,7 @@ class LlmResource(SyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
@@ -313,6 +319,9 @@ class LlmResource(SyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -352,6 +361,7 @@ class LlmResource(SyncAPIResource):
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
+                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
@@ -510,6 +520,7 @@ class AsyncLlmResource(AsyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
@@ -567,6 +578,9 @@ class AsyncLlmResource(AsyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -604,6 +618,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
+                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
@@ -690,6 +705,7 @@ class AsyncLlmResource(AsyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
@@ -747,6 +763,9 @@ class AsyncLlmResource(AsyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -786,6 +805,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
+                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,

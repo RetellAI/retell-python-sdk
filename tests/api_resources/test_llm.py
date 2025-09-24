@@ -47,6 +47,7 @@ class TestLlm:
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
+            start_speaker="user",
             starting_state="information_collection",
             states=[
                 {
@@ -209,6 +210,7 @@ class TestLlm:
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
+            start_speaker="user",
             starting_state="information_collection",
             states=[
                 {
@@ -410,6 +412,7 @@ class TestAsyncLlm:
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
+            start_speaker="user",
             starting_state="information_collection",
             states=[
                 {
@@ -572,6 +575,7 @@ class TestAsyncLlm:
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
+            start_speaker="user",
             starting_state="information_collection",
             states=[
                 {

@@ -153,3 +153,15 @@ from retell.types import BatchCallResponse
 Methods:
 
 - <code title="post /create-batch-call">client.batch_call.<a href="./src/retell/resources/batch_call.py">create_batch_call</a>(\*\*<a href="src/retell/types/batch_call_create_batch_call_params.py">params</a>) -> <a href="./src/retell/types/batch_call_response.py">BatchCallResponse</a></code>
+
+# McpTool
+
+Types:
+
+```python
+from retell.types import McpToolDefinition, McpToolGetMcpToolsResponse
+```
+
+Methods:
+
+- <code title="get /get-mcp-tools/{agent_id}">client.mcp_tool.<a href="./src/retell/resources/mcp_tool.py">get_mcp_tools</a>(agent_id, \*\*<a href="src/retell/types/mcp_tool_get_mcp_tools_params.py">params</a>) -> <a href="./src/retell/types/mcp_tool_get_mcp_tools_response.py">McpToolGetMcpToolsResponse</a></code>
