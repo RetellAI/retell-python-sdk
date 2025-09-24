@@ -1444,6 +1444,12 @@ class LlmResponse(BaseModel):
     Can only set this or model, not both.
     """
 
+    start_speaker: Optional[Literal["user", "agent"]] = None
+    """The speaker who starts the conversation.
+
+    Required. Must be either 'user' or 'agent'.
+    """
+
     starting_state: Optional[str] = None
     """Name of the starting state. Required if states is not empty."""
 
