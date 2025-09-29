@@ -250,6 +250,7 @@ class AgentUpdateParams(TypedDict, total=False):
         "gpt-5",
         "gpt-5-mini",
         "gpt-5-nano",
+        "claude-4.5-sonnet",
         "claude-4.0-sonnet",
         "claude-3.7-sonnet",
         "claude-3.5-haiku",
