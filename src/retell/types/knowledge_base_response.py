@@ -87,4 +87,7 @@ class KnowledgeBaseResponse(BaseModel):
     """
 
     last_refreshed_timestamp: Optional[int] = None
-    """Last refreshed timestamp (milliseconds since epoch)."""
+    """Last refreshed timestamp (milliseconds since epoch).
+
+    Only applicable when enable_auto_refresh is true.
+    """
