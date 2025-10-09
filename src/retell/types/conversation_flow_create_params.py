@@ -102,6 +102,7 @@ __all__ = [
     "NodeTransferCallNodeTransferOption",
     "NodeTransferCallNodeTransferOptionTransferOptionColdTransfer",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer",
+    "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
@@ -1155,7 +1156,8 @@ class NodeTransferCallNodeTransferDestinationTransferDestinationPredefined(Typed
     extension: str
     """Extension digits to dial after the main number connects.
 
-    Sent via DTMF. Allow digits, '\\**', '#'.
+    Sent via DTMF. Allow digits, '\\**', '#', or a dynamic variable like
+    {{extension}}.
     """
 
 
@@ -1189,6 +1191,13 @@ class NodeTransferCallNodeTransferOptionTransferOptionColdTransfer(TypedDict, to
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
+
+
+class NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption(TypedDict, total=False):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
 
 
 class NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
@@ -1245,6 +1254,12 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(TypedDict, to
 
     agent_detection_timeout_ms: float
     """The time to wait before considering transfer fails."""
+
+    ivr_option: NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
 
     on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
     """The music to play while the caller is being transferred."""
