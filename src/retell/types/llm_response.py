@@ -18,6 +18,7 @@ __all__ = [
     "GeneralToolTransferCallToolTransferOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
@@ -54,6 +55,7 @@ __all__ = [
     "StateToolTransferCallToolTransferOption",
     "StateToolTransferCallToolTransferOptionTransferOptionColdTransfer",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
@@ -111,7 +113,8 @@ class GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefine
     extension: Optional[str] = None
     """Extension digits to dial after the main number connects.
 
-    Sent via DTMF. Allow digits, '\\**', '#'.
+    Sent via DTMF. Allow digits, '\\**', '#', or a dynamic variable like
+    {{extension}}.
     """
 
 
@@ -145,6 +148,13 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseMo
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
+
+
+class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
+    prompt: Optional[str] = None
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["prompt"]] = None
 
 
 class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
@@ -201,6 +211,12 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMo
 
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
+
+    ivr_option: Optional[GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption] = None
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
 
     on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
     """The music to play while the caller is being transferred."""
@@ -758,7 +774,8 @@ class StateToolTransferCallToolTransferDestinationTransferDestinationPredefined(
     extension: Optional[str] = None
     """Extension digits to dial after the main number connects.
 
-    Sent via DTMF. Allow digits, '\\**', '#'.
+    Sent via DTMF. Allow digits, '\\**', '#', or a dynamic variable like
+    {{extension}}.
     """
 
 
@@ -792,6 +809,13 @@ class StateToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseMode
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
+
+
+class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
+    prompt: Optional[str] = None
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["prompt"]] = None
 
 
 class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
@@ -846,6 +870,12 @@ class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMode
 
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
+
+    ivr_option: Optional[StateToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption] = None
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
 
     on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
     """The music to play while the caller is being transferred."""
@@ -1358,6 +1388,12 @@ class LlmResponse(BaseModel):
     llm_id: str
     """Unique id of Retell LLM Response Engine."""
 
+    start_speaker: Literal["user", "agent"]
+    """The speaker who starts the conversation.
+
+    Required. Must be either 'user' or 'agent'.
+    """
+
     begin_message: Optional[str] = None
     """First utterance said by the agent in the call.
 
@@ -1442,12 +1478,6 @@ class LlmResponse(BaseModel):
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.
-    """
-
-    start_speaker: Optional[Literal["user", "agent"]] = None
-    """The speaker who starts the conversation.
-
-    Required. Must be either 'user' or 'agent'.
     """
 
     starting_state: Optional[str] = None

@@ -22,12 +22,15 @@ class TestLlm:
 
     @parametrize
     def test_method_create(self, client: Retell) -> None:
-        llm = client.llm.create()
+        llm = client.llm.create(
+            start_speaker="user",
+        )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     def test_method_create_with_all_params(self, client: Retell) -> None:
         llm = client.llm.create(
+            start_speaker="user",
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
             general_prompt="You are ...",
@@ -47,7 +50,6 @@ class TestLlm:
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
-            start_speaker="user",
             starting_state="information_collection",
             states=[
                 {
@@ -115,7 +117,9 @@ class TestLlm:
 
     @parametrize
     def test_raw_response_create(self, client: Retell) -> None:
-        response = client.llm.with_raw_response.create()
+        response = client.llm.with_raw_response.create(
+            start_speaker="user",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -124,7 +128,9 @@ class TestLlm:
 
     @parametrize
     def test_streaming_response_create(self, client: Retell) -> None:
-        with client.llm.with_streaming_response.create() as response:
+        with client.llm.with_streaming_response.create(
+            start_speaker="user",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -183,6 +189,7 @@ class TestLlm:
     def test_method_update(self, client: Retell) -> None:
         llm = client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
+            start_speaker="user",
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -190,6 +197,7 @@ class TestLlm:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         llm = client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
+            start_speaker="user",
             query_version=1,
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
@@ -210,7 +218,6 @@ class TestLlm:
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
-            start_speaker="user",
             starting_state="information_collection",
             states=[
                 {
@@ -280,6 +287,7 @@ class TestLlm:
     def test_raw_response_update(self, client: Retell) -> None:
         response = client.llm.with_raw_response.update(
             llm_id="16b980523634a6dc504898cda492e939",
+            start_speaker="user",
         )
 
         assert response.is_closed is True
@@ -291,6 +299,7 @@ class TestLlm:
     def test_streaming_response_update(self, client: Retell) -> None:
         with client.llm.with_streaming_response.update(
             llm_id="16b980523634a6dc504898cda492e939",
+            start_speaker="user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -305,6 +314,7 @@ class TestLlm:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `llm_id` but received ''"):
             client.llm.with_raw_response.update(
                 llm_id="",
+                start_speaker="user",
             )
 
     @parametrize
@@ -387,12 +397,15 @@ class TestAsyncLlm:
 
     @parametrize
     async def test_method_create(self, async_client: AsyncRetell) -> None:
-        llm = await async_client.llm.create()
+        llm = await async_client.llm.create(
+            start_speaker="user",
+        )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.create(
+            start_speaker="user",
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
             general_prompt="You are ...",
@@ -412,7 +425,6 @@ class TestAsyncLlm:
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
-            start_speaker="user",
             starting_state="information_collection",
             states=[
                 {
@@ -480,7 +492,9 @@ class TestAsyncLlm:
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncRetell) -> None:
-        response = await async_client.llm.with_raw_response.create()
+        response = await async_client.llm.with_raw_response.create(
+            start_speaker="user",
+        )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -489,7 +503,9 @@ class TestAsyncLlm:
 
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncRetell) -> None:
-        async with async_client.llm.with_streaming_response.create() as response:
+        async with async_client.llm.with_streaming_response.create(
+            start_speaker="user",
+        ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -548,6 +564,7 @@ class TestAsyncLlm:
     async def test_method_update(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
+            start_speaker="user",
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -555,6 +572,7 @@ class TestAsyncLlm:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
+            start_speaker="user",
             query_version=1,
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
@@ -575,7 +593,6 @@ class TestAsyncLlm:
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-4o-realtime",
-            start_speaker="user",
             starting_state="information_collection",
             states=[
                 {
@@ -645,6 +662,7 @@ class TestAsyncLlm:
     async def test_raw_response_update(self, async_client: AsyncRetell) -> None:
         response = await async_client.llm.with_raw_response.update(
             llm_id="16b980523634a6dc504898cda492e939",
+            start_speaker="user",
         )
 
         assert response.is_closed is True
@@ -656,6 +674,7 @@ class TestAsyncLlm:
     async def test_streaming_response_update(self, async_client: AsyncRetell) -> None:
         async with async_client.llm.with_streaming_response.update(
             llm_id="16b980523634a6dc504898cda492e939",
+            start_speaker="user",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -670,6 +689,7 @@ class TestAsyncLlm:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `llm_id` but received ''"):
             await async_client.llm.with_raw_response.update(
                 llm_id="",
+                start_speaker="user",
             )
 
     @parametrize

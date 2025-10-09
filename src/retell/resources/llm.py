@@ -48,6 +48,7 @@ class LlmResource(SyncAPIResource):
     def create(
         self,
         *,
+        start_speaker: Literal["user", "agent"],
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         general_prompt: Optional[str] | Omit = omit,
@@ -76,7 +77,6 @@ class LlmResource(SyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
-        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
@@ -94,6 +94,9 @@ class LlmResource(SyncAPIResource):
         is used to generate response output for the agent.
 
         Args:
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
 
@@ -134,9 +137,6 @@ class LlmResource(SyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
-          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
-              'agent'.
-
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -164,6 +164,7 @@ class LlmResource(SyncAPIResource):
             "/create-retell-llm",
             body=maybe_transform(
                 {
+                    "start_speaker": start_speaker,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
@@ -174,7 +175,6 @@ class LlmResource(SyncAPIResource):
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
-                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
@@ -232,6 +232,7 @@ class LlmResource(SyncAPIResource):
         self,
         llm_id: str,
         *,
+        start_speaker: Literal["user", "agent"],
         query_version: int | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -261,7 +262,6 @@ class LlmResource(SyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
-        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
@@ -277,6 +277,9 @@ class LlmResource(SyncAPIResource):
         Update an existing Retell LLM Response Engine
 
         Args:
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           query_version: Optional version of the API to use for this request. Default to latest version.
 
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
@@ -319,9 +322,6 @@ class LlmResource(SyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
-          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
-              'agent'.
-
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -351,6 +351,7 @@ class LlmResource(SyncAPIResource):
             f"/update-retell-llm/{llm_id}",
             body=maybe_transform(
                 {
+                    "start_speaker": start_speaker,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
@@ -361,7 +362,6 @@ class LlmResource(SyncAPIResource):
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
-                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
@@ -492,6 +492,7 @@ class AsyncLlmResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        start_speaker: Literal["user", "agent"],
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         general_prompt: Optional[str] | Omit = omit,
@@ -520,7 +521,6 @@ class AsyncLlmResource(AsyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
-        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
@@ -538,6 +538,9 @@ class AsyncLlmResource(AsyncAPIResource):
         is used to generate response output for the agent.
 
         Args:
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
 
@@ -578,9 +581,6 @@ class AsyncLlmResource(AsyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
-          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
-              'agent'.
-
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -608,6 +608,7 @@ class AsyncLlmResource(AsyncAPIResource):
             "/create-retell-llm",
             body=await async_maybe_transform(
                 {
+                    "start_speaker": start_speaker,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
@@ -618,7 +619,6 @@ class AsyncLlmResource(AsyncAPIResource):
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
-                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
@@ -676,6 +676,7 @@ class AsyncLlmResource(AsyncAPIResource):
         self,
         llm_id: str,
         *,
+        start_speaker: Literal["user", "agent"],
         query_version: int | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -705,7 +706,6 @@ class AsyncLlmResource(AsyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
-        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
@@ -721,6 +721,9 @@ class AsyncLlmResource(AsyncAPIResource):
         Update an existing Retell LLM Response Engine
 
         Args:
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           query_version: Optional version of the API to use for this request. Default to latest version.
 
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
@@ -763,9 +766,6 @@ class AsyncLlmResource(AsyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
-          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
-              'agent'.
-
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -795,6 +795,7 @@ class AsyncLlmResource(AsyncAPIResource):
             f"/update-retell-llm/{llm_id}",
             body=await async_maybe_transform(
                 {
+                    "start_speaker": start_speaker,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
@@ -805,7 +806,6 @@ class AsyncLlmResource(AsyncAPIResource):
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
-                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,

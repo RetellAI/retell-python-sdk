@@ -105,6 +105,7 @@ __all__ = [
     "NodeTransferCallNodeTransferOption",
     "NodeTransferCallNodeTransferOptionTransferOptionColdTransfer",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer",
+    "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
@@ -1132,7 +1133,8 @@ class NodeTransferCallNodeTransferDestinationTransferDestinationPredefined(BaseM
     extension: Optional[str] = None
     """Extension digits to dial after the main number connects.
 
-    Sent via DTMF. Allow digits, '\\**', '#'.
+    Sent via DTMF. Allow digits, '\\**', '#', or a dynamic variable like
+    {{extension}}.
     """
 
 
@@ -1166,6 +1168,13 @@ class NodeTransferCallNodeTransferOptionTransferOptionColdTransfer(BaseModel):
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
+
+
+class NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
+    prompt: Optional[str] = None
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["prompt"]] = None
 
 
 class NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(BaseModel):
@@ -1218,6 +1227,12 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(BaseModel):
 
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
+
+    ivr_option: Optional[NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption] = None
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
 
     on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
     """The music to play while the caller is being transferred."""
