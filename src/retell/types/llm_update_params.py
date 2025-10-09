@@ -19,6 +19,7 @@ __all__ = [
     "GeneralToolTransferCallToolTransferOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
@@ -55,6 +56,7 @@ __all__ = [
     "StateToolTransferCallToolTransferOption",
     "StateToolTransferCallToolTransferOptionTransferOptionColdTransfer",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
@@ -82,6 +84,12 @@ __all__ = [
 
 
 class LlmUpdateParams(TypedDict, total=False):
+    start_speaker: Required[Literal["user", "agent"]]
+    """The speaker who starts the conversation.
+
+    Required. Must be either 'user' or 'agent'.
+    """
+
     query_version: Annotated[int, PropertyInfo(alias="version")]
     """Optional version of the API to use for this request. Default to latest version."""
 
@@ -168,12 +176,6 @@ class LlmUpdateParams(TypedDict, total=False):
     Can only set this or model, not both.
     """
 
-    start_speaker: Literal["user", "agent"]
-    """The speaker who starts the conversation.
-
-    Required. Must be either 'user' or 'agent'.
-    """
-
     starting_state: Optional[str]
     """Name of the starting state. Required if states is not empty."""
 
@@ -230,7 +232,8 @@ class GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefine
     extension: str
     """Extension digits to dial after the main number connects.
 
-    Sent via DTMF. Allow digits, '\\**', '#'.
+    Sent via DTMF. Allow digits, '\\**', '#', or a dynamic variable like
+    {{extension}}.
     """
 
 
@@ -264,6 +267,13 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer(TypedD
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
+
+
+class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(TypedDict, total=False):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
 
 
 class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
@@ -320,6 +330,12 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedD
 
     agent_detection_timeout_ms: float
     """The time to wait before considering transfer fails."""
+
+    ivr_option: GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
 
     on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
     """The music to play while the caller is being transferred."""
@@ -873,7 +889,8 @@ class StateToolTransferCallToolTransferDestinationTransferDestinationPredefined(
     extension: str
     """Extension digits to dial after the main number connects.
 
-    Sent via DTMF. Allow digits, '\\**', '#'.
+    Sent via DTMF. Allow digits, '\\**', '#', or a dynamic variable like
+    {{extension}}.
     """
 
 
@@ -907,6 +924,13 @@ class StateToolTransferCallToolTransferOptionTransferOptionColdTransfer(TypedDic
     only applicable for cold transfer, so if warm transfer option is specified, this
     field will be ignored. Default to false (default to show AI agent as caller).
     """
+
+
+class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(TypedDict, total=False):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
 
 
 class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
@@ -963,6 +987,12 @@ class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedDic
 
     agent_detection_timeout_ms: float
     """The time to wait before considering transfer fails."""
+
+    ivr_option: StateToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
 
     on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
     """The music to play while the caller is being transferred."""
