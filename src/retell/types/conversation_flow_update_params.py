@@ -10,6 +10,305 @@ from .._types import SequenceNotStr
 __all__ = [
     "ConversationFlowUpdateParams",
     "BeginTagDisplayPosition",
+    "Component",
+    "ComponentNode",
+    "ComponentNodeConversationNode",
+    "ComponentNodeConversationNodeInstruction",
+    "ComponentNodeConversationNodeInstructionNodeInstructionPrompt",
+    "ComponentNodeConversationNodeInstructionNodeInstructionStaticText",
+    "ComponentNodeConversationNodeDisplayPosition",
+    "ComponentNodeConversationNodeEdge",
+    "ComponentNodeConversationNodeEdgeTransitionCondition",
+    "ComponentNodeConversationNodeEdgeTransitionConditionPromptCondition",
+    "ComponentNodeConversationNodeEdgeTransitionConditionEquationCondition",
+    "ComponentNodeConversationNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeConversationNodeFinetuneConversationExample",
+    "ComponentNodeConversationNodeFinetuneConversationExampleTranscript",
+    "ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0",
+    "ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember1",
+    "ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember2",
+    "ComponentNodeConversationNodeFinetuneTransitionExample",
+    "ComponentNodeConversationNodeFinetuneTransitionExampleTranscript",
+    "ComponentNodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember0",
+    "ComponentNodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember1",
+    "ComponentNodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember2",
+    "ComponentNodeConversationNodeGlobalNodeSetting",
+    "ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeConversationNodeModelChoice",
+    "ComponentNodeConversationNodeSkipResponseEdge",
+    "ComponentNodeConversationNodeSkipResponseEdgeTransitionCondition",
+    "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionPromptCondition",
+    "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionEquationCondition",
+    "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionUnionMember2",
+    "ComponentNodeEndNode",
+    "ComponentNodeEndNodeDisplayPosition",
+    "ComponentNodeEndNodeGlobalNodeSetting",
+    "ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeFunctionNode",
+    "ComponentNodeFunctionNodeDisplayPosition",
+    "ComponentNodeFunctionNodeEdge",
+    "ComponentNodeFunctionNodeEdgeTransitionCondition",
+    "ComponentNodeFunctionNodeEdgeTransitionConditionPromptCondition",
+    "ComponentNodeFunctionNodeEdgeTransitionConditionEquationCondition",
+    "ComponentNodeFunctionNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeFunctionNodeFinetuneTransitionExample",
+    "ComponentNodeFunctionNodeFinetuneTransitionExampleTranscript",
+    "ComponentNodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember0",
+    "ComponentNodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember1",
+    "ComponentNodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember2",
+    "ComponentNodeFunctionNodeGlobalNodeSetting",
+    "ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeFunctionNodeInstruction",
+    "ComponentNodeFunctionNodeInstructionNodeInstructionPrompt",
+    "ComponentNodeFunctionNodeInstructionNodeInstructionStaticText",
+    "ComponentNodeFunctionNodeModelChoice",
+    "ComponentNodeTransferCallNode",
+    "ComponentNodeTransferCallNodeEdge",
+    "ComponentNodeTransferCallNodeEdgeTransitionCondition",
+    "ComponentNodeTransferCallNodeEdgeTransitionConditionPromptCondition",
+    "ComponentNodeTransferCallNodeEdgeTransitionConditionEquationCondition",
+    "ComponentNodeTransferCallNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeTransferCallNodeEdgeTransitionConditionUnionMember2",
+    "ComponentNodeTransferCallNodeTransferDestination",
+    "ComponentNodeTransferCallNodeTransferDestinationTransferDestinationPredefined",
+    "ComponentNodeTransferCallNodeTransferDestinationTransferDestinationInferred",
+    "ComponentNodeTransferCallNodeTransferOption",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionColdTransfer",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOption",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "ComponentNodeTransferCallNodeDisplayPosition",
+    "ComponentNodeTransferCallNodeGlobalNodeSetting",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeTransferCallNodeModelChoice",
+    "ComponentNodePressDigitNode",
+    "ComponentNodePressDigitNodeInstruction",
+    "ComponentNodePressDigitNodeDisplayPosition",
+    "ComponentNodePressDigitNodeEdge",
+    "ComponentNodePressDigitNodeEdgeTransitionCondition",
+    "ComponentNodePressDigitNodeEdgeTransitionConditionPromptCondition",
+    "ComponentNodePressDigitNodeEdgeTransitionConditionEquationCondition",
+    "ComponentNodePressDigitNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodePressDigitNodeFinetuneTransitionExample",
+    "ComponentNodePressDigitNodeFinetuneTransitionExampleTranscript",
+    "ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember0",
+    "ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember1",
+    "ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember2",
+    "ComponentNodePressDigitNodeGlobalNodeSetting",
+    "ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodePressDigitNodeModelChoice",
+    "ComponentNodeBranchNode",
+    "ComponentNodeBranchNodeElseEdge",
+    "ComponentNodeBranchNodeElseEdgeTransitionCondition",
+    "ComponentNodeBranchNodeElseEdgeTransitionConditionPromptCondition",
+    "ComponentNodeBranchNodeElseEdgeTransitionConditionEquationCondition",
+    "ComponentNodeBranchNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeBranchNodeElseEdgeTransitionConditionUnionMember2",
+    "ComponentNodeBranchNodeDisplayPosition",
+    "ComponentNodeBranchNodeEdge",
+    "ComponentNodeBranchNodeEdgeTransitionCondition",
+    "ComponentNodeBranchNodeEdgeTransitionConditionPromptCondition",
+    "ComponentNodeBranchNodeEdgeTransitionConditionEquationCondition",
+    "ComponentNodeBranchNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeBranchNodeFinetuneTransitionExample",
+    "ComponentNodeBranchNodeFinetuneTransitionExampleTranscript",
+    "ComponentNodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember0",
+    "ComponentNodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember1",
+    "ComponentNodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember2",
+    "ComponentNodeBranchNodeGlobalNodeSetting",
+    "ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeSMSNode",
+    "ComponentNodeSMSNodeFailedEdge",
+    "ComponentNodeSMSNodeFailedEdgeTransitionCondition",
+    "ComponentNodeSMSNodeFailedEdgeTransitionConditionPromptCondition",
+    "ComponentNodeSMSNodeFailedEdgeTransitionConditionEquationCondition",
+    "ComponentNodeSMSNodeFailedEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeSMSNodeFailedEdgeTransitionConditionUnionMember2",
+    "ComponentNodeSMSNodeInstruction",
+    "ComponentNodeSMSNodeInstructionNodeInstructionPrompt",
+    "ComponentNodeSMSNodeInstructionNodeInstructionStaticText",
+    "ComponentNodeSMSNodeSuccessEdge",
+    "ComponentNodeSMSNodeSuccessEdgeTransitionCondition",
+    "ComponentNodeSMSNodeSuccessEdgeTransitionConditionPromptCondition",
+    "ComponentNodeSMSNodeSuccessEdgeTransitionConditionEquationCondition",
+    "ComponentNodeSMSNodeSuccessEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeSMSNodeSuccessEdgeTransitionConditionUnionMember2",
+    "ComponentNodeSMSNodeDisplayPosition",
+    "ComponentNodeSMSNodeGlobalNodeSetting",
+    "ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeExtractDynamicVariablesNode",
+    "ComponentNodeExtractDynamicVariablesNodeVariable",
+    "ComponentNodeExtractDynamicVariablesNodeVariableStringAnalysisData",
+    "ComponentNodeExtractDynamicVariablesNodeVariableEnumAnalysisData",
+    "ComponentNodeExtractDynamicVariablesNodeVariableBooleanAnalysisData",
+    "ComponentNodeExtractDynamicVariablesNodeVariableNumberAnalysisData",
+    "ComponentNodeExtractDynamicVariablesNodeDisplayPosition",
+    "ComponentNodeExtractDynamicVariablesNodeEdge",
+    "ComponentNodeExtractDynamicVariablesNodeEdgeTransitionCondition",
+    "ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionPromptCondition",
+    "ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationCondition",
+    "ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExample",
+    "ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscript",
+    "ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember0",
+    "ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember1",
+    "ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember2",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSetting",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeExtractDynamicVariablesNodeModelChoice",
+    "ComponentNodeAgentSwapNode",
+    "ComponentNodeAgentSwapNodeEdge",
+    "ComponentNodeAgentSwapNodeEdgeTransitionCondition",
+    "ComponentNodeAgentSwapNodeEdgeTransitionConditionPromptCondition",
+    "ComponentNodeAgentSwapNodeEdgeTransitionConditionEquationCondition",
+    "ComponentNodeAgentSwapNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeAgentSwapNodeEdgeTransitionConditionUnionMember2",
+    "ComponentNodeAgentSwapNodeDisplayPosition",
+    "ComponentNodeAgentSwapNodeGlobalNodeSetting",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeMcpNode",
+    "ComponentNodeMcpNodeDisplayPosition",
+    "ComponentNodeMcpNodeEdge",
+    "ComponentNodeMcpNodeEdgeTransitionCondition",
+    "ComponentNodeMcpNodeEdgeTransitionConditionPromptCondition",
+    "ComponentNodeMcpNodeEdgeTransitionConditionEquationCondition",
+    "ComponentNodeMcpNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeMcpNodeFinetuneTransitionExample",
+    "ComponentNodeMcpNodeFinetuneTransitionExampleTranscript",
+    "ComponentNodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember0",
+    "ComponentNodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember1",
+    "ComponentNodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember2",
+    "ComponentNodeMcpNodeGlobalNodeSetting",
+    "ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeMcpNodeInstruction",
+    "ComponentNodeMcpNodeInstructionNodeInstructionPrompt",
+    "ComponentNodeMcpNodeInstructionNodeInstructionStaticText",
+    "ComponentNodeComponentNode",
+    "ComponentNodeComponentNodeElseEdge",
+    "ComponentNodeComponentNodeElseEdgeTransitionCondition",
+    "ComponentNodeComponentNodeElseEdgeTransitionConditionPromptCondition",
+    "ComponentNodeComponentNodeElseEdgeTransitionConditionEquationCondition",
+    "ComponentNodeComponentNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeComponentNodeElseEdgeTransitionConditionUnionMember2",
+    "ComponentNodeComponentNodeDisplayPosition",
+    "ComponentNodeComponentNodeEdge",
+    "ComponentNodeComponentNodeEdgeTransitionCondition",
+    "ComponentNodeComponentNodeEdgeTransitionConditionPromptCondition",
+    "ComponentNodeComponentNodeEdgeTransitionConditionEquationCondition",
+    "ComponentNodeComponentNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeComponentNodeGlobalNodeSetting",
+    "ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentBeginTagDisplayPosition",
+    "ComponentTool",
+    "ComponentToolConversationFlowCustomTool",
+    "ComponentToolConversationFlowCustomToolParameters",
+    "ComponentToolCheckAvailabilityCalTool",
+    "ComponentToolBookAppointmentCalTool",
     "KBConfig",
     "Mcp",
     "ModelChoice",
@@ -281,6 +580,30 @@ __all__ = [
     "NodeMcpNodeInstruction",
     "NodeMcpNodeInstructionNodeInstructionPrompt",
     "NodeMcpNodeInstructionNodeInstructionStaticText",
+    "NodeComponentNode",
+    "NodeComponentNodeElseEdge",
+    "NodeComponentNodeElseEdgeTransitionCondition",
+    "NodeComponentNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeComponentNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeComponentNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeComponentNodeElseEdgeTransitionConditionUnionMember2",
+    "NodeComponentNodeDisplayPosition",
+    "NodeComponentNodeEdge",
+    "NodeComponentNodeEdgeTransitionCondition",
+    "NodeComponentNodeEdgeTransitionConditionPromptCondition",
+    "NodeComponentNodeEdgeTransitionConditionEquationCondition",
+    "NodeComponentNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeComponentNodeGlobalNodeSetting",
+    "NodeComponentNodeGlobalNodeSettingNegativeFinetuneExample",
+    "NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "NodeComponentNodeGlobalNodeSettingPositiveFinetuneExample",
+    "NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "Tool",
     "ToolConversationFlowCustomTool",
     "ToolConversationFlowCustomToolParameters",
@@ -295,6 +618,9 @@ class ConversationFlowUpdateParams(TypedDict, total=False):
 
     begin_tag_display_position: Optional[BeginTagDisplayPosition]
     """Display position for the begin tag in the frontend."""
+
+    components: Optional[Iterable[Component]]
+    """Local components embedded within the conversation flow."""
 
     default_dynamic_variables: Optional[Dict[str, str]]
     """
@@ -346,6 +672,2975 @@ class BeginTagDisplayPosition(TypedDict, total=False):
     x: float
 
     y: float
+
+
+class ComponentNodeConversationNodeInstructionNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class ComponentNodeConversationNodeInstructionNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+ComponentNodeConversationNodeInstruction: TypeAlias = Union[
+    ComponentNodeConversationNodeInstructionNodeInstructionPrompt,
+    ComponentNodeConversationNodeInstructionNodeInstructionStaticText,
+]
+
+
+class ComponentNodeConversationNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodeConversationNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeConversationNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeConversationNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeConversationNodeEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+ComponentNodeConversationNodeEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeConversationNodeEdgeTransitionConditionPromptCondition,
+    ComponentNodeConversationNodeEdgeTransitionConditionEquationCondition,
+]
+
+
+class ComponentNodeConversationNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeConversationNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeConversationNodeFinetuneConversationExampleTranscript: TypeAlias = Union[
+    ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0,
+    ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember1,
+    ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeConversationNodeFinetuneConversationExample(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the example"""
+
+    transcript: Required[Iterable[ComponentNodeConversationNodeFinetuneConversationExampleTranscript]]
+    """The example transcript to finetune how the conversation should be."""
+
+
+class ComponentNodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeConversationNodeFinetuneTransitionExampleTranscript: TypeAlias = Union[
+    ComponentNodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember0,
+    ComponentNodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember1,
+    ComponentNodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeConversationNodeFinetuneTransitionExample(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the example"""
+
+    transcript: Required[Iterable[ComponentNodeConversationNodeFinetuneTransitionExampleTranscript]]
+    """The example transcript to finetune how the node should transition."""
+
+    destination_node_id: str
+    """Optional destination node ID"""
+
+
+class ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(
+    TypedDict, total=False
+):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(
+    TypedDict, total=False
+):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class ComponentNodeConversationNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-4o",
+            "gpt-4o-mini",
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "claude-3.7-sonnet",
+            "claude-3.5-haiku",
+            "gemini-2.0-flash",
+            "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Skip response"]
+    """Must be "Skip response" for skip response edge"""
+
+
+class ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Skip response"]]
+    """Must be "Skip response" for skip response edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeConversationNodeSkipResponseEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionPromptCondition,
+    ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionEquationCondition,
+    ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeConversationNodeSkipResponseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeConversationNodeSkipResponseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeConversationNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    instruction: Required[ComponentNodeConversationNodeInstruction]
+
+    type: Required[Literal["conversation"]]
+    """Type of the node"""
+
+    display_position: ComponentNodeConversationNodeDisplayPosition
+    """Position for frontend display"""
+
+    edges: Iterable[ComponentNodeConversationNodeEdge]
+
+    finetune_conversation_examples: Iterable[ComponentNodeConversationNodeFinetuneConversationExample]
+
+    finetune_transition_examples: Iterable[ComponentNodeConversationNodeFinetuneTransitionExample]
+
+    global_node_setting: ComponentNodeConversationNodeGlobalNodeSetting
+
+    interruption_sensitivity: float
+
+    knowledge_base_ids: Optional[SequenceNotStr[str]]
+    """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
+
+    model_choice: ComponentNodeConversationNodeModelChoice
+
+    name: str
+    """Optional name for display purposes"""
+
+    skip_response_edge: ComponentNodeConversationNodeSkipResponseEdge
+
+
+class ComponentNodeEndNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeEndNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class ComponentNodeEndNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    type: Required[Literal["end"]]
+    """Type of the node"""
+
+    display_position: ComponentNodeEndNodeDisplayPosition
+    """Position for frontend display"""
+
+    global_node_setting: ComponentNodeEndNodeGlobalNodeSetting
+
+    name: str
+    """Optional name for display purposes"""
+
+
+class ComponentNodeFunctionNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodeFunctionNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeFunctionNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeFunctionNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeFunctionNodeEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+ComponentNodeFunctionNodeEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeFunctionNodeEdgeTransitionConditionPromptCondition,
+    ComponentNodeFunctionNodeEdgeTransitionConditionEquationCondition,
+]
+
+
+class ComponentNodeFunctionNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeFunctionNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeFunctionNodeFinetuneTransitionExampleTranscript: TypeAlias = Union[
+    ComponentNodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember0,
+    ComponentNodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember1,
+    ComponentNodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeFunctionNodeFinetuneTransitionExample(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the example"""
+
+    transcript: Required[Iterable[ComponentNodeFunctionNodeFinetuneTransitionExampleTranscript]]
+    """The example transcript to finetune how the node should transition."""
+
+    destination_node_id: str
+    """Optional destination node ID"""
+
+
+class ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeFunctionNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class ComponentNodeFunctionNodeInstructionNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class ComponentNodeFunctionNodeInstructionNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+ComponentNodeFunctionNodeInstruction: TypeAlias = Union[
+    ComponentNodeFunctionNodeInstructionNodeInstructionPrompt,
+    ComponentNodeFunctionNodeInstructionNodeInstructionStaticText,
+]
+
+
+class ComponentNodeFunctionNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-4o",
+            "gpt-4o-mini",
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "claude-3.7-sonnet",
+            "claude-3.5-haiku",
+            "gemini-2.0-flash",
+            "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class ComponentNodeFunctionNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    tool_id: Required[str]
+    """Tool ID for function nodes"""
+
+    tool_type: Required[Literal["local", "shared"]]
+    """Tool type for function nodes"""
+
+    type: Required[Literal["function"]]
+    """Type of the node"""
+
+    wait_for_result: Required[bool]
+    """Whether to wait for tool result"""
+
+    display_position: ComponentNodeFunctionNodeDisplayPosition
+    """Position for frontend display"""
+
+    edges: Iterable[ComponentNodeFunctionNodeEdge]
+
+    finetune_transition_examples: Iterable[ComponentNodeFunctionNodeFinetuneTransitionExample]
+
+    global_node_setting: ComponentNodeFunctionNodeGlobalNodeSetting
+
+    instruction: ComponentNodeFunctionNodeInstruction
+
+    interruption_sensitivity: float
+
+    model_choice: ComponentNodeFunctionNodeModelChoice
+
+    name: str
+    """Optional name for display purposes"""
+
+    speak_during_execution: bool
+    """Whether to speak during tool execution"""
+
+
+class ComponentNodeTransferCallNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeTransferCallNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeTransferCallNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeTransferCallNodeEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Transfer failed"]
+    """Must be "Transfer failed" for transfer failed edge"""
+
+
+class ComponentNodeTransferCallNodeEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Transfer failed"]]
+    """Must be "Transfer failed" for transfer failed edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeTransferCallNodeEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeTransferCallNodeEdgeTransitionConditionPromptCondition,
+    ComponentNodeTransferCallNodeEdgeTransitionConditionEquationCondition,
+    ComponentNodeTransferCallNodeEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeTransferCallNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeTransferCallNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeTransferCallNodeTransferDestinationTransferDestinationPredefined(TypedDict, total=False):
+    number: Required[str]
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
+    """
+
+    type: Required[Literal["predefined"]]
+    """The type of transfer destination."""
+
+    extension: str
+    """Extension digits to dial after the main number connects.
+
+    Sent via DTMF. Allow digits, '\\**', '#', or a dynamic variable like
+    {{extension}}.
+    """
+
+
+class ComponentNodeTransferCallNodeTransferDestinationTransferDestinationInferred(TypedDict, total=False):
+    prompt: Required[str]
+    """The prompt to be used to help infer the transfer destination.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right number to transfer to. Can contain dynamic
+    variables.
+    """
+
+    type: Required[Literal["inferred"]]
+    """The type of transfer destination."""
+
+
+ComponentNodeTransferCallNodeTransferDestination: TypeAlias = Union[
+    ComponentNodeTransferCallNodeTransferDestinationTransferDestinationPredefined,
+    ComponentNodeTransferCallNodeTransferDestinationTransferDestinationInferred,
+]
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionColdTransfer(TypedDict, total=False):
+    type: Required[Literal["cold_transfer"]]
+    """The type of the transfer."""
+
+    show_transferee_as_caller: bool
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support SIP REFER to PSTN. This is
+    only applicable for cold transfer, so if warm transfer option is specified, this
+    field will be ignored. Default to false (default to show AI agent as caller).
+    """
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption(TypedDict, total=False):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOption: TypeAlias = Union[
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt,
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOption: TypeAlias = Union[
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(TypedDict, total=False):
+    type: Required[Literal["warm_transfer"]]
+    """The type of the transfer."""
+
+    agent_detection_timeout_ms: float
+    """The time to wait before considering transfer fails."""
+
+    ivr_option: ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
+    """The music to play while the caller is being transferred."""
+
+    opt_out_human_detection: bool
+    """If set to true, will not perform human detection for the transfer.
+
+    Default to false.
+    """
+
+    opt_out_initial_message: bool
+    """If set to true, AI will not say "Hello" after connecting the call.
+
+    Default to false.
+    """
+
+    private_handoff_option: ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPrivateHandoffOption
+    """
+    If set, when transfer is connected, will say the handoff message only to the
+    agent receiving the transfer. Can leave either a static message or a dynamic one
+    based on prompt. Set to null to disable warm handoff.
+    """
+
+    public_handoff_option: ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOption
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+
+ComponentNodeTransferCallNodeTransferOption: TypeAlias = Union[
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionColdTransfer,
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer,
+]
+
+
+class ComponentNodeTransferCallNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(
+    TypedDict, total=False
+):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(
+    TypedDict, total=False
+):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class ComponentNodeTransferCallNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-4o",
+            "gpt-4o-mini",
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "claude-3.7-sonnet",
+            "claude-3.5-haiku",
+            "gemini-2.0-flash",
+            "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class ComponentNodeTransferCallNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    edge: Required[ComponentNodeTransferCallNodeEdge]
+
+    transfer_destination: Required[ComponentNodeTransferCallNodeTransferDestination]
+
+    transfer_option: Required[ComponentNodeTransferCallNodeTransferOption]
+
+    type: Required[Literal["transfer_call"]]
+    """Type of the node"""
+
+    custom_sip_headers: Dict[str, str]
+    """Custom SIP headers for transfer calls"""
+
+    display_position: ComponentNodeTransferCallNodeDisplayPosition
+    """Position for frontend display"""
+
+    global_node_setting: ComponentNodeTransferCallNodeGlobalNodeSetting
+
+    model_choice: ComponentNodeTransferCallNodeModelChoice
+
+    name: str
+    """Optional name for display purposes"""
+
+
+class ComponentNodePressDigitNodeInstruction(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class ComponentNodePressDigitNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodePressDigitNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodePressDigitNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodePressDigitNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodePressDigitNodeEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+ComponentNodePressDigitNodeEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodePressDigitNodeEdgeTransitionConditionPromptCondition,
+    ComponentNodePressDigitNodeEdgeTransitionConditionEquationCondition,
+]
+
+
+class ComponentNodePressDigitNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodePressDigitNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodePressDigitNodeFinetuneTransitionExampleTranscript: TypeAlias = Union[
+    ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember0,
+    ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember1,
+    ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodePressDigitNodeFinetuneTransitionExample(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the example"""
+
+    transcript: Required[Iterable[ComponentNodePressDigitNodeFinetuneTransitionExampleTranscript]]
+    """The example transcript to finetune how the node should transition."""
+
+    destination_node_id: str
+    """Optional destination node ID"""
+
+
+class ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class ComponentNodePressDigitNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-4o",
+            "gpt-4o-mini",
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "claude-3.7-sonnet",
+            "claude-3.5-haiku",
+            "gemini-2.0-flash",
+            "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class ComponentNodePressDigitNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    instruction: Required[ComponentNodePressDigitNodeInstruction]
+
+    type: Required[Literal["press_digit"]]
+    """Type of the node"""
+
+    delay_ms: int
+    """Delay in milliseconds before pressing the digit"""
+
+    display_position: ComponentNodePressDigitNodeDisplayPosition
+    """Position for frontend display"""
+
+    edges: Iterable[ComponentNodePressDigitNodeEdge]
+
+    finetune_transition_examples: Iterable[ComponentNodePressDigitNodeFinetuneTransitionExample]
+
+    global_node_setting: ComponentNodePressDigitNodeGlobalNodeSetting
+
+    model_choice: ComponentNodePressDigitNodeModelChoice
+
+    name: str
+    """Optional name for display purposes"""
+
+
+class ComponentNodeBranchNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeBranchNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeBranchNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeBranchNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class ComponentNodeBranchNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeBranchNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeBranchNodeElseEdgeTransitionConditionPromptCondition,
+    ComponentNodeBranchNodeElseEdgeTransitionConditionEquationCondition,
+    ComponentNodeBranchNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeBranchNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeBranchNodeElseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeBranchNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodeBranchNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeBranchNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeBranchNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeBranchNodeEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+ComponentNodeBranchNodeEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeBranchNodeEdgeTransitionConditionPromptCondition,
+    ComponentNodeBranchNodeEdgeTransitionConditionEquationCondition,
+]
+
+
+class ComponentNodeBranchNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeBranchNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeBranchNodeFinetuneTransitionExampleTranscript: TypeAlias = Union[
+    ComponentNodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember0,
+    ComponentNodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember1,
+    ComponentNodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeBranchNodeFinetuneTransitionExample(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the example"""
+
+    transcript: Required[Iterable[ComponentNodeBranchNodeFinetuneTransitionExampleTranscript]]
+    """The example transcript to finetune how the node should transition."""
+
+    destination_node_id: str
+    """Optional destination node ID"""
+
+
+class ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeBranchNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class ComponentNodeBranchNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    else_edge: Required[ComponentNodeBranchNodeElseEdge]
+
+    type: Required[Literal["branch"]]
+    """Type of the node"""
+
+    display_position: ComponentNodeBranchNodeDisplayPosition
+    """Position for frontend display"""
+
+    edges: Iterable[ComponentNodeBranchNodeEdge]
+
+    finetune_transition_examples: Iterable[ComponentNodeBranchNodeFinetuneTransitionExample]
+
+    global_node_setting: ComponentNodeBranchNodeGlobalNodeSetting
+
+    name: str
+    """Optional name for display purposes"""
+
+
+class ComponentNodeSMSNodeFailedEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeSMSNodeFailedEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeSMSNodeFailedEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeSMSNodeFailedEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Failed to send"]
+    """Must be "failed to send" for SMS failed edge"""
+
+
+class ComponentNodeSMSNodeFailedEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Failed to send"]]
+    """Must be "failed to send" for SMS failed edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeSMSNodeFailedEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeSMSNodeFailedEdgeTransitionConditionPromptCondition,
+    ComponentNodeSMSNodeFailedEdgeTransitionConditionEquationCondition,
+    ComponentNodeSMSNodeFailedEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeSMSNodeFailedEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeSMSNodeFailedEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeSMSNodeInstructionNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class ComponentNodeSMSNodeInstructionNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+ComponentNodeSMSNodeInstruction: TypeAlias = Union[
+    ComponentNodeSMSNodeInstructionNodeInstructionPrompt, ComponentNodeSMSNodeInstructionNodeInstructionStaticText
+]
+
+
+class ComponentNodeSMSNodeSuccessEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeSMSNodeSuccessEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeSMSNodeSuccessEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeSMSNodeSuccessEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Sent successfully"]
+    """Must be "sent successfully" for SMS success edge"""
+
+
+class ComponentNodeSMSNodeSuccessEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Sent successfully"]]
+    """Must be "sent successfully" for SMS success edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeSMSNodeSuccessEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeSMSNodeSuccessEdgeTransitionConditionPromptCondition,
+    ComponentNodeSMSNodeSuccessEdgeTransitionConditionEquationCondition,
+    ComponentNodeSMSNodeSuccessEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeSMSNodeSuccessEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeSMSNodeSuccessEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeSMSNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeSMSNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class ComponentNodeSMSNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    failed_edge: Required[ComponentNodeSMSNodeFailedEdge]
+
+    instruction: Required[ComponentNodeSMSNodeInstruction]
+
+    success_edge: Required[ComponentNodeSMSNodeSuccessEdge]
+
+    type: Required[Literal["sms"]]
+    """Type of the node"""
+
+    display_position: ComponentNodeSMSNodeDisplayPosition
+    """Position for frontend display"""
+
+    global_node_setting: ComponentNodeSMSNodeGlobalNodeSetting
+
+    name: str
+    """Optional name for display purposes"""
+
+
+class ComponentNodeExtractDynamicVariablesNodeVariableStringAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["string"]]
+    """Type of the variable to extract."""
+
+    examples: SequenceNotStr[str]
+    """Examples of the variable value to teach model the style and syntax."""
+
+
+class ComponentNodeExtractDynamicVariablesNodeVariableEnumAnalysisData(TypedDict, total=False):
+    choices: Required[SequenceNotStr[str]]
+    """The possible values of the variable, must be non empty array."""
+
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["enum"]]
+    """Type of the variable to extract."""
+
+
+class ComponentNodeExtractDynamicVariablesNodeVariableBooleanAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["boolean"]]
+    """Type of the variable to extract."""
+
+
+class ComponentNodeExtractDynamicVariablesNodeVariableNumberAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["number"]]
+    """Type of the variable to extract."""
+
+
+ComponentNodeExtractDynamicVariablesNodeVariable: TypeAlias = Union[
+    ComponentNodeExtractDynamicVariablesNodeVariableStringAnalysisData,
+    ComponentNodeExtractDynamicVariablesNodeVariableEnumAnalysisData,
+    ComponentNodeExtractDynamicVariablesNodeVariableBooleanAnalysisData,
+    ComponentNodeExtractDynamicVariablesNodeVariableNumberAnalysisData,
+]
+
+
+class ComponentNodeExtractDynamicVariablesNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+ComponentNodeExtractDynamicVariablesNodeEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionPromptCondition,
+    ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationCondition,
+]
+
+
+class ComponentNodeExtractDynamicVariablesNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeExtractDynamicVariablesNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscript: TypeAlias = Union[
+    ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember0,
+    ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember1,
+    ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExample(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the example"""
+
+    transcript: Required[Iterable[ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscript]]
+    """The example transcript to finetune how the node should transition."""
+
+    destination_node_id: str
+    """Optional destination node ID"""
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(
+    TypedDict, total=False
+):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[
+        Iterable[ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]
+    ]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(
+    TypedDict, total=False
+):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(
+    TypedDict, total=False
+):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[
+        Iterable[ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]
+    ]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[
+        ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExample
+    ]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[
+        ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExample
+    ]
+    """Transition to this node"""
+
+
+class ComponentNodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-4o",
+            "gpt-4o-mini",
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "claude-3.7-sonnet",
+            "claude-3.5-haiku",
+            "gemini-2.0-flash",
+            "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class ComponentNodeExtractDynamicVariablesNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    type: Required[Literal["extract_dynamic_variables"]]
+    """Type of the node"""
+
+    variables: Required[Iterable[ComponentNodeExtractDynamicVariablesNodeVariable]]
+
+    display_position: ComponentNodeExtractDynamicVariablesNodeDisplayPosition
+    """Position for frontend display"""
+
+    edges: Iterable[ComponentNodeExtractDynamicVariablesNodeEdge]
+
+    finetune_transition_examples: Iterable[ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExample]
+
+    global_node_setting: ComponentNodeExtractDynamicVariablesNodeGlobalNodeSetting
+
+    model_choice: ComponentNodeExtractDynamicVariablesNodeModelChoice
+
+    name: str
+    """Optional name for display purposes"""
+
+
+class ComponentNodeAgentSwapNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeAgentSwapNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeAgentSwapNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeAgentSwapNodeEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Transfer failed"]
+    """Must be "Transfer failed" for transfer failed edge"""
+
+
+class ComponentNodeAgentSwapNodeEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Transfer failed"]]
+    """Must be "Transfer failed" for transfer failed edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeAgentSwapNodeEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeAgentSwapNodeEdgeTransitionConditionPromptCondition,
+    ComponentNodeAgentSwapNodeEdgeTransitionConditionEquationCondition,
+    ComponentNodeAgentSwapNodeEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeAgentSwapNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeAgentSwapNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeAgentSwapNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class ComponentNodeAgentSwapNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    agent_id: Required[str]
+    """The ID of the agent to swap to"""
+
+    edge: Required[ComponentNodeAgentSwapNodeEdge]
+    """Edge to transition to if agent swap fails"""
+
+    post_call_analysis_setting: Required[Literal["both_agents", "only_destination_agent"]]
+    """Post call analysis setting for the agent swap"""
+
+    type: Required[Literal["agent_swap"]]
+    """Type of the node"""
+
+    agent_version: float
+    """The version of the agent to swap to.
+
+    If not specified, will use the latest version
+    """
+
+    display_position: ComponentNodeAgentSwapNodeDisplayPosition
+    """Position for frontend display"""
+
+    global_node_setting: ComponentNodeAgentSwapNodeGlobalNodeSetting
+
+    name: str
+    """Optional name for display purposes"""
+
+    webhook_setting: Literal["both_agents", "only_destination_agent", "only_source_agent"]
+    """Webhook setting for the agent swap, defaults to only source."""
+
+
+class ComponentNodeMcpNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodeMcpNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeMcpNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeMcpNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeMcpNodeEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+ComponentNodeMcpNodeEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeMcpNodeEdgeTransitionConditionPromptCondition,
+    ComponentNodeMcpNodeEdgeTransitionConditionEquationCondition,
+]
+
+
+class ComponentNodeMcpNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeMcpNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeMcpNodeFinetuneTransitionExampleTranscript: TypeAlias = Union[
+    ComponentNodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember0,
+    ComponentNodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember1,
+    ComponentNodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeMcpNodeFinetuneTransitionExample(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the example"""
+
+    transcript: Required[Iterable[ComponentNodeMcpNodeFinetuneTransitionExampleTranscript]]
+    """The example transcript to finetune how the node should transition."""
+
+    destination_node_id: str
+    """Optional destination node ID"""
+
+
+class ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeMcpNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class ComponentNodeMcpNodeInstructionNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class ComponentNodeMcpNodeInstructionNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+ComponentNodeMcpNodeInstruction: TypeAlias = Union[
+    ComponentNodeMcpNodeInstructionNodeInstructionPrompt, ComponentNodeMcpNodeInstructionNodeInstructionStaticText
+]
+
+
+class ComponentNodeMcpNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    mcp_id: Required[str]
+    """Unique ID of the MCP server"""
+
+    mcp_tool_name: Required[str]
+    """Name of the MCP tool to call"""
+
+    type: Required[Literal["mcp"]]
+    """Type of the node"""
+
+    wait_for_result: Required[bool]
+    """If true, will wait for result before transitioning to next node"""
+
+    display_position: ComponentNodeMcpNodeDisplayPosition
+    """Position for frontend display"""
+
+    edges: Iterable[ComponentNodeMcpNodeEdge]
+
+    finetune_transition_examples: Iterable[ComponentNodeMcpNodeFinetuneTransitionExample]
+
+    global_node_setting: ComponentNodeMcpNodeGlobalNodeSetting
+
+    instruction: ComponentNodeMcpNodeInstruction
+    """What to say when calling the function, only used when speak during execution"""
+
+    interruption_sensitivity: float
+
+    name: str
+    """Optional name for display purposes"""
+
+    response_variables: Dict[str, str]
+    """
+    Response variables to add to dynamic variables, key is the variable name, value
+    is the path to the variable in the response
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution"""
+
+
+class ComponentNodeComponentNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeComponentNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeComponentNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeComponentNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class ComponentNodeComponentNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeComponentNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeComponentNodeElseEdgeTransitionConditionPromptCondition,
+    ComponentNodeComponentNodeElseEdgeTransitionConditionEquationCondition,
+    ComponentNodeComponentNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeComponentNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeComponentNodeElseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeComponentNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentNodeComponentNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeComponentNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeComponentNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeComponentNodeEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+ComponentNodeComponentNodeEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeComponentNodeEdgeTransitionConditionPromptCondition,
+    ComponentNodeComponentNodeEdgeTransitionConditionEquationCondition,
+]
+
+
+class ComponentNodeComponentNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeComponentNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeComponentNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class ComponentNodeComponentNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    component_id: Required[str]
+    """The reference ID of the component"""
+
+    component_type: Required[Literal["local", "shared"]]
+    """Type of component:
+
+    - local: stored in conversation flow's components array
+    - shared: stored in stand-alone conversation-flow-component table
+    """
+
+    else_edge: Required[ComponentNodeComponentNodeElseEdge]
+    """Default edge when no other conditions are met"""
+
+    type: Required[Literal["component"]]
+    """Type of the node"""
+
+    display_position: ComponentNodeComponentNodeDisplayPosition
+    """Position for frontend display"""
+
+    edges: Iterable[ComponentNodeComponentNodeEdge]
+    """Array of edges for conditional transitions"""
+
+    global_node_setting: ComponentNodeComponentNodeGlobalNodeSetting
+
+    name: str
+    """Optional name for display purposes"""
+
+
+ComponentNode: TypeAlias = Union[
+    ComponentNodeConversationNode,
+    ComponentNodeEndNode,
+    ComponentNodeFunctionNode,
+    ComponentNodeTransferCallNode,
+    ComponentNodePressDigitNode,
+    ComponentNodeBranchNode,
+    ComponentNodeSMSNode,
+    ComponentNodeExtractDynamicVariablesNode,
+    ComponentNodeAgentSwapNode,
+    ComponentNodeMcpNode,
+    ComponentNodeComponentNode,
+]
+
+
+class ComponentBeginTagDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class ComponentToolConversationFlowCustomToolParameters(TypedDict, total=False):
+    properties: Required[Dict[str, object]]
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Required[Literal["object"]]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: SequenceNotStr[str]
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class ComponentToolConversationFlowCustomTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool"""
+
+    type: Required[Literal["custom"]]
+    """Type of the tool"""
+
+    url: Required[str]
+    """Server URL to call the tool. Dynamic variables can be used in the URL."""
+
+    description: str
+    """Description of the tool"""
+
+    headers: Dict[str, str]
+    """Headers to add to the request"""
+
+    method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
+    """HTTP method to use for the request, defaults to POST"""
+
+    parameters: ComponentToolConversationFlowCustomToolParameters
+    """Tool parameters schema"""
+
+    query_params: Dict[str, str]
+    """Query parameters to add to the request"""
+
+    response_variables: Dict[str, str]
+    """
+    Response variables to add to the dynamic variables, key is the variable name,
+    value is the path to the variable in the response
+    """
+
+    timeout_ms: int
+    """Timeout in milliseconds for the function call, defaults to 2 min"""
+
+    tool_id: str
+    """Unique identifier for the tool"""
+
+
+class ComponentToolCheckAvailabilityCalTool(TypedDict, total=False):
+    cal_api_key: Required[str]
+    """
+    Cal.com Api key that have access to the cal.com event you want to check
+    availability for.
+    """
+
+    event_type_id: Required[float]
+    """
+    Cal.com event type id number for the cal.com event you want to check
+    availability for.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["check_availability_cal"]]
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    timezone: str
+    """
+    Timezone to be used when checking availability, must be in
+    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+    If not specified, will check if user specified timezone in call, and if not,
+    will use the timezone of the Retell servers.
+    """
+
+    tool_id: str
+    """Unique identifier for the tool"""
+
+
+class ComponentToolBookAppointmentCalTool(TypedDict, total=False):
+    cal_api_key: Required[str]
+    """
+    Cal.com Api key that have access to the cal.com event you want to book
+    appointment.
+    """
+
+    event_type_id: Required[float]
+    """
+    Cal.com event type id number for the cal.com event you want to book appointment.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["book_appointment_cal"]]
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    timezone: str
+    """
+    Timezone to be used when booking appointment, must be in
+    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+    If not specified, will check if user specified timezone in call, and if not,
+    will use the timezone of the Retell servers.
+    """
+
+    tool_id: str
+    """Unique identifier for the tool"""
+
+
+ComponentTool: TypeAlias = Union[
+    ComponentToolConversationFlowCustomTool, ComponentToolCheckAvailabilityCalTool, ComponentToolBookAppointmentCalTool
+]
+
+
+class Component(TypedDict, total=False):
+    name: Required[str]
+    """Name of the component"""
+
+    nodes: Required[Iterable[ComponentNode]]
+    """Nodes that make up the component"""
+
+    begin_tag_display_position: Optional[ComponentBeginTagDisplayPosition]
+    """Display position for the begin tag in the frontend"""
+
+    start_node_id: Optional[str]
+    """ID of the starting node"""
+
+    tools: Optional[Iterable[ComponentTool]]
+    """Tools available within the component"""
 
 
 class KBConfig(TypedDict, total=False):
@@ -2928,6 +6223,227 @@ class NodeMcpNode(TypedDict, total=False):
     """If true, will speak during execution"""
 
 
+class NodeComponentNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeComponentNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeComponentNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeComponentNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class NodeComponentNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+NodeComponentNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeComponentNodeElseEdgeTransitionConditionPromptCondition,
+    NodeComponentNodeElseEdgeTransitionConditionEquationCondition,
+    NodeComponentNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeComponentNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeComponentNodeElseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class NodeComponentNodeDisplayPosition(TypedDict, total=False):
+    x: float
+
+    y: float
+
+
+class NodeComponentNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeComponentNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeComponentNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeComponentNodeEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeComponentNodeEdgeTransitionCondition: TypeAlias = Union[
+    NodeComponentNodeEdgeTransitionConditionPromptCondition, NodeComponentNodeEdgeTransitionConditionEquationCondition
+]
+
+
+class NodeComponentNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeComponentNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class NodeComponentNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class NodeComponentNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class NodeComponentNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    negative_finetune_examples: Iterable[NodeComponentNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[NodeComponentNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class NodeComponentNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    component_id: Required[str]
+    """The reference ID of the component"""
+
+    component_type: Required[Literal["local", "shared"]]
+    """Type of component:
+
+    - local: stored in conversation flow's components array
+    - shared: stored in stand-alone conversation-flow-component table
+    """
+
+    else_edge: Required[NodeComponentNodeElseEdge]
+    """Default edge when no other conditions are met"""
+
+    type: Required[Literal["component"]]
+    """Type of the node"""
+
+    display_position: NodeComponentNodeDisplayPosition
+    """Position for frontend display"""
+
+    edges: Iterable[NodeComponentNodeEdge]
+    """Array of edges for conditional transitions"""
+
+    global_node_setting: NodeComponentNodeGlobalNodeSetting
+
+    name: str
+    """Optional name for display purposes"""
+
+
 Node: TypeAlias = Union[
     NodeConversationNode,
     NodeEndNode,
@@ -2939,6 +6455,7 @@ Node: TypeAlias = Union[
     NodeExtractDynamicVariablesNode,
     NodeAgentSwapNode,
     NodeMcpNode,
+    NodeComponentNode,
 ]
 
 
