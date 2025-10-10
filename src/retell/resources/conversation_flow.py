@@ -57,6 +57,7 @@ class ConversationFlowResource(SyncAPIResource):
         nodes: Iterable[conversation_flow_create_params.Node],
         start_speaker: Literal["user", "agent"],
         begin_tag_display_position: Optional[conversation_flow_create_params.BeginTagDisplayPosition] | Omit = omit,
+        components: Optional[Iterable[conversation_flow_create_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
         kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
@@ -86,6 +87,8 @@ class ConversationFlowResource(SyncAPIResource):
           start_speaker: Who starts the conversation - user or agent.
 
           begin_tag_display_position: Display position for the begin tag in the frontend.
+
+          components: Local components embedded within the conversation flow.
 
           default_dynamic_variables: Default dynamic variables that can be referenced throughout the conversation
               flow.
@@ -124,6 +127,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "nodes": nodes,
                     "start_speaker": start_speaker,
                     "begin_tag_display_position": begin_tag_display_position,
+                    "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
                     "global_prompt": global_prompt,
                     "kb_config": kb_config,
@@ -190,6 +194,7 @@ class ConversationFlowResource(SyncAPIResource):
         *,
         version: str | Omit = omit,
         begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition] | Omit = omit,
+        components: Optional[Iterable[conversation_flow_update_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
         kb_config: conversation_flow_update_params.KBConfig | Omit = omit,
@@ -216,6 +221,8 @@ class ConversationFlowResource(SyncAPIResource):
           version: Version of the conversation flow to update
 
           begin_tag_display_position: Display position for the begin tag in the frontend.
+
+          components: Local components embedded within the conversation flow.
 
           default_dynamic_variables: Default dynamic variables that can be referenced throughout the conversation
               flow.
@@ -261,6 +268,7 @@ class ConversationFlowResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "begin_tag_display_position": begin_tag_display_position,
+                    "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
                     "global_prompt": global_prompt,
                     "kb_config": kb_config,
@@ -409,6 +417,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         nodes: Iterable[conversation_flow_create_params.Node],
         start_speaker: Literal["user", "agent"],
         begin_tag_display_position: Optional[conversation_flow_create_params.BeginTagDisplayPosition] | Omit = omit,
+        components: Optional[Iterable[conversation_flow_create_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
         kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
@@ -438,6 +447,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
           start_speaker: Who starts the conversation - user or agent.
 
           begin_tag_display_position: Display position for the begin tag in the frontend.
+
+          components: Local components embedded within the conversation flow.
 
           default_dynamic_variables: Default dynamic variables that can be referenced throughout the conversation
               flow.
@@ -476,6 +487,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "nodes": nodes,
                     "start_speaker": start_speaker,
                     "begin_tag_display_position": begin_tag_display_position,
+                    "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
                     "global_prompt": global_prompt,
                     "kb_config": kb_config,
@@ -542,6 +554,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         *,
         version: str | Omit = omit,
         begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition] | Omit = omit,
+        components: Optional[Iterable[conversation_flow_update_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
         kb_config: conversation_flow_update_params.KBConfig | Omit = omit,
@@ -568,6 +581,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
           version: Version of the conversation flow to update
 
           begin_tag_display_position: Display position for the begin tag in the frontend.
+
+          components: Local components embedded within the conversation flow.
 
           default_dynamic_variables: Default dynamic variables that can be referenced throughout the conversation
               flow.
@@ -613,6 +628,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "begin_tag_display_position": begin_tag_display_position,
+                    "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
                     "global_prompt": global_prompt,
                     "kb_config": kb_config,
