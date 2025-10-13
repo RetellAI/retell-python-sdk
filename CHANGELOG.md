@@ -1,5 +1,23 @@
 # Changelog
 
+## 4.49.0 (2025-10-13)
+
+Full Changelog: [v4.48.0...v4.49.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.48.0...v4.49.0)
+
+### Features
+
+* **api:** api update ([f61da0d](https://github.com/RetellAI/retell-python-sdk/commit/f61da0df6bbd9c83dbd526d6b0a370f269a495ab))
+* **api:** api update ([b690a39](https://github.com/RetellAI/retell-python-sdk/commit/b690a39c1380b64c04b2eab685fb57247f935767))
+* **api:** api update ([9171253](https://github.com/RetellAI/retell-python-sdk/commit/91712537911d12922ba06e1bb66c76c955cd1c2b))
+* **api:** api update ([1944f6b](https://github.com/RetellAI/retell-python-sdk/commit/1944f6b140c57495507d664961e724100c099454))
+* **api:** api update ([24b4692](https://github.com/RetellAI/retell-python-sdk/commit/24b46926518ef898da7b6ae8534cc38e33453611))
+
+
+### Chores
+
+* **internal:** detect missing future annotations with ruff ([9c3fa8a](https://github.com/RetellAI/retell-python-sdk/commit/9c3fa8a4896028473e97027ce2adaa311aa6282a))
+* **tests:** disable tests with false negative ([7e9744e](https://github.com/RetellAI/retell-python-sdk/commit/7e9744ee187b802f612152905b08bbe84f2a1bc2))
+
 ## 4.48.0 (2025-09-24)
 
 Full Changelog: [v4.47.0...v4.48.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.47.0...v4.48.0)
