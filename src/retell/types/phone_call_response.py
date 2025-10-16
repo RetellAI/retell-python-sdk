@@ -521,6 +521,9 @@ class PhoneCallResponse(BaseModel):
     to_number: str
     """The callee number."""
 
+    agent_name: Optional[str] = None
+    """Name of the agent."""
+
     call_analysis: Optional[CallAnalysis] = None
     """
     Post call analysis that includes information such as sentiment, status, summary,
