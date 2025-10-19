@@ -236,6 +236,14 @@ class GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefine
     {{extension}}.
     """
 
+    ignore_e164_validation: bool
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
+    """
+
 
 class GeneralToolTransferCallToolTransferDestinationTransferDestinationInferred(TypedDict, total=False):
     prompt: Required[str]
@@ -897,6 +905,14 @@ class StateToolTransferCallToolTransferDestinationTransferDestinationPredefined(
 
     Sent via DTMF. Allow digits, '\\**', '#', or a dynamic variable like
     {{extension}}.
+    """
+
+    ignore_e164_validation: bool
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
     """
 
 
