@@ -117,14 +117,6 @@ class GeneralToolTransferCallToolTransferDestinationTransferDestinationPredefine
     {{extension}}.
     """
 
-    ignore_e164_validation: Optional[bool] = None
-    """If true, the e.164 validation will be ignored for the from_number.
-
-    This can be useful when you want to dial to internal pseudo numbers. This only
-    applies when you are using custom telephony and does not apply when you are
-    using Retell Telephony. If omitted, the default value is false.
-    """
-
 
 class GeneralToolTransferCallToolTransferDestinationTransferDestinationInferred(BaseModel):
     prompt: str
@@ -293,6 +285,14 @@ class GeneralToolTransferCallTool(BaseModel):
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
+    """
+
+    ignore_e164_validation: Optional[bool] = None
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
     """
 
 
@@ -792,14 +792,6 @@ class StateToolTransferCallToolTransferDestinationTransferDestinationPredefined(
     {{extension}}.
     """
 
-    ignore_e164_validation: Optional[bool] = None
-    """If true, the e.164 validation will be ignored for the from_number.
-
-    This can be useful when you want to dial to internal pseudo numbers. This only
-    applies when you are using custom telephony and does not apply when you are
-    using Retell Telephony. If omitted, the default value is false.
-    """
-
 
 class StateToolTransferCallToolTransferDestinationTransferDestinationInferred(BaseModel):
     prompt: str
@@ -966,6 +958,14 @@ class StateToolTransferCallTool(BaseModel):
     """
     Describes what the tool does, sometimes can also include information about when
     to call the tool.
+    """
+
+    ignore_e164_validation: Optional[bool] = None
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
     """
 
 
