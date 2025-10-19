@@ -1414,14 +1414,6 @@ class ComponentNodeTransferCallNodeTransferDestinationTransferDestinationPredefi
     {{extension}}.
     """
 
-    ignore_e164_validation: Optional[bool] = None
-    """If true, the e.164 validation will be ignored for the from_number.
-
-    This can be useful when you want to dial to internal pseudo numbers. This only
-    applies when you are using custom telephony and does not apply when you are
-    using Retell Telephony. If omitted, the default value is false.
-    """
-
 
 class ComponentNodeTransferCallNodeTransferDestinationTransferDestinationInferred(BaseModel):
     prompt: str
@@ -1708,6 +1700,14 @@ class ComponentNodeTransferCallNode(BaseModel):
     """Position for frontend display"""
 
     global_node_setting: Optional[ComponentNodeTransferCallNodeGlobalNodeSetting] = None
+
+    ignore_e164_validation: Optional[bool] = None
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
+    """
 
     api_model_choice: Optional[ComponentNodeTransferCallNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
@@ -4417,14 +4417,6 @@ class NodeTransferCallNodeTransferDestinationTransferDestinationPredefined(BaseM
     {{extension}}.
     """
 
-    ignore_e164_validation: Optional[bool] = None
-    """If true, the e.164 validation will be ignored for the from_number.
-
-    This can be useful when you want to dial to internal pseudo numbers. This only
-    applies when you are using custom telephony and does not apply when you are
-    using Retell Telephony. If omitted, the default value is false.
-    """
-
 
 class NodeTransferCallNodeTransferDestinationTransferDestinationInferred(BaseModel):
     prompt: str
@@ -4703,6 +4695,14 @@ class NodeTransferCallNode(BaseModel):
     """Position for frontend display"""
 
     global_node_setting: Optional[NodeTransferCallNodeGlobalNodeSetting] = None
+
+    ignore_e164_validation: Optional[bool] = None
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
+    """
 
     api_model_choice: Optional[NodeTransferCallNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 

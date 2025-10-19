@@ -1486,14 +1486,6 @@ class NodeTransferCallNodeTransferDestinationTransferDestinationPredefined(Typed
     {{extension}}.
     """
 
-    ignore_e164_validation: bool
-    """If true, the e.164 validation will be ignored for the from_number.
-
-    This can be useful when you want to dial to internal pseudo numbers. This only
-    applies when you are using custom telephony and does not apply when you are
-    using Retell Telephony. If omitted, the default value is false.
-    """
-
 
 class NodeTransferCallNodeTransferDestinationTransferDestinationInferred(TypedDict, total=False):
     prompt: Required[str]
@@ -1774,6 +1766,14 @@ class NodeTransferCallNode(TypedDict, total=False):
     """Position for frontend display"""
 
     global_node_setting: NodeTransferCallNodeGlobalNodeSetting
+
+    ignore_e164_validation: bool
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
+    """
 
     model_choice: NodeTransferCallNodeModelChoice
 
@@ -4284,14 +4284,6 @@ class ComponentNodeTransferCallNodeTransferDestinationTransferDestinationPredefi
     {{extension}}.
     """
 
-    ignore_e164_validation: bool
-    """If true, the e.164 validation will be ignored for the from_number.
-
-    This can be useful when you want to dial to internal pseudo numbers. This only
-    applies when you are using custom telephony and does not apply when you are
-    using Retell Telephony. If omitted, the default value is false.
-    """
-
 
 class ComponentNodeTransferCallNodeTransferDestinationTransferDestinationInferred(TypedDict, total=False):
     prompt: Required[str]
@@ -4584,6 +4576,14 @@ class ComponentNodeTransferCallNode(TypedDict, total=False):
     """Position for frontend display"""
 
     global_node_setting: ComponentNodeTransferCallNodeGlobalNodeSetting
+
+    ignore_e164_validation: bool
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
+    """
 
     model_choice: ComponentNodeTransferCallNodeModelChoice
 

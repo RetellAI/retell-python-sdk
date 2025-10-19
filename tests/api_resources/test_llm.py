@@ -73,7 +73,6 @@ class TestLlm:
                                 "number": "16175551212",
                                 "type": "predefined",
                                 "extension": "123*456#",
-                                "ignore_e164_validation": False,
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
@@ -82,6 +81,7 @@ class TestLlm:
                             "type": "transfer_call",
                             "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
+                            "ignore_e164_validation": False,
                         }
                     ],
                 },
@@ -242,7 +242,6 @@ class TestLlm:
                                 "number": "16175551212",
                                 "type": "predefined",
                                 "extension": "123*456#",
-                                "ignore_e164_validation": False,
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
@@ -251,6 +250,7 @@ class TestLlm:
                             "type": "transfer_call",
                             "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
+                            "ignore_e164_validation": False,
                         }
                     ],
                 },
@@ -450,7 +450,6 @@ class TestAsyncLlm:
                                 "number": "16175551212",
                                 "type": "predefined",
                                 "extension": "123*456#",
-                                "ignore_e164_validation": False,
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
@@ -459,6 +458,7 @@ class TestAsyncLlm:
                             "type": "transfer_call",
                             "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
+                            "ignore_e164_validation": False,
                         }
                     ],
                 },
@@ -619,7 +619,6 @@ class TestAsyncLlm:
                                 "number": "16175551212",
                                 "type": "predefined",
                                 "extension": "123*456#",
-                                "ignore_e164_validation": False,
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
@@ -628,6 +627,7 @@ class TestAsyncLlm:
                             "type": "transfer_call",
                             "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
+                            "ignore_e164_validation": False,
                         }
                     ],
                 },
