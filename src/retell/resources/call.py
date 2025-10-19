@@ -246,6 +246,7 @@ class CallResource(SyncAPIResource):
         from_number: str,
         to_number: str,
         custom_sip_headers: Dict[str, str] | Omit = omit,
+        ignore_e164_validation: bool | Omit = omit,
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
         override_agent_version: int | Omit = omit,
@@ -268,6 +269,11 @@ class CallResource(SyncAPIResource):
               Retell, only US numbers are supported as destination.
 
           custom_sip_headers: Add optional custom SIP headers to the call.
+
+          ignore_e164_validation: If true, the e.164 validation will be ignored for the from_number. This can be
+              useful when you want to dial to internal pseudo numbers. This only applies when
+              you are using custom telephony and does not apply when you are using Retell
+              Telephony. If omitted, the default value is false.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
@@ -299,6 +305,7 @@ class CallResource(SyncAPIResource):
                     "from_number": from_number,
                     "to_number": to_number,
                     "custom_sip_headers": custom_sip_headers,
+                    "ignore_e164_validation": ignore_e164_validation,
                     "metadata": metadata,
                     "override_agent_id": override_agent_id,
                     "override_agent_version": override_agent_version,
@@ -650,6 +657,7 @@ class AsyncCallResource(AsyncAPIResource):
         from_number: str,
         to_number: str,
         custom_sip_headers: Dict[str, str] | Omit = omit,
+        ignore_e164_validation: bool | Omit = omit,
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
         override_agent_version: int | Omit = omit,
@@ -672,6 +680,11 @@ class AsyncCallResource(AsyncAPIResource):
               Retell, only US numbers are supported as destination.
 
           custom_sip_headers: Add optional custom SIP headers to the call.
+
+          ignore_e164_validation: If true, the e.164 validation will be ignored for the from_number. This can be
+              useful when you want to dial to internal pseudo numbers. This only applies when
+              you are using custom telephony and does not apply when you are using Retell
+              Telephony. If omitted, the default value is false.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
@@ -703,6 +716,7 @@ class AsyncCallResource(AsyncAPIResource):
                     "from_number": from_number,
                     "to_number": to_number,
                     "custom_sip_headers": custom_sip_headers,
+                    "ignore_e164_validation": ignore_e164_validation,
                     "metadata": metadata,
                     "override_agent_id": override_agent_id,
                     "override_agent_version": override_agent_version,

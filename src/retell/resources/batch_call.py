@@ -48,6 +48,7 @@ class BatchCallResource(SyncAPIResource):
         *,
         from_number: str,
         tasks: Iterable[batch_call_create_batch_call_params.Task],
+        ignore_e164_validation: bool | Omit = omit,
         name: str | Omit = omit,
         trigger_timestamp: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -70,6 +71,11 @@ class BatchCallResource(SyncAPIResource):
               recipient's phone number and optional dynamic variables to personalize the call
               content.
 
+          ignore_e164_validation: If true, the e.164 validation will be ignored for the from_number. This can be
+              useful when you want to dial to internal pseudo numbers. This only applies when
+              you are using custom telephony and does not apply when you are using Retell
+              Telephony. If omitted, the default value is false.
+
           name: The name of the batch call. Only used for your own reference.
 
           trigger_timestamp: The scheduled time for sending the batch call, represented as a Unix timestamp
@@ -89,6 +95,7 @@ class BatchCallResource(SyncAPIResource):
                 {
                     "from_number": from_number,
                     "tasks": tasks,
+                    "ignore_e164_validation": ignore_e164_validation,
                     "name": name,
                     "trigger_timestamp": trigger_timestamp,
                 },
@@ -126,6 +133,7 @@ class AsyncBatchCallResource(AsyncAPIResource):
         *,
         from_number: str,
         tasks: Iterable[batch_call_create_batch_call_params.Task],
+        ignore_e164_validation: bool | Omit = omit,
         name: str | Omit = omit,
         trigger_timestamp: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -148,6 +156,11 @@ class AsyncBatchCallResource(AsyncAPIResource):
               recipient's phone number and optional dynamic variables to personalize the call
               content.
 
+          ignore_e164_validation: If true, the e.164 validation will be ignored for the from_number. This can be
+              useful when you want to dial to internal pseudo numbers. This only applies when
+              you are using custom telephony and does not apply when you are using Retell
+              Telephony. If omitted, the default value is false.
+
           name: The name of the batch call. Only used for your own reference.
 
           trigger_timestamp: The scheduled time for sending the batch call, represented as a Unix timestamp
@@ -167,6 +180,7 @@ class AsyncBatchCallResource(AsyncAPIResource):
                 {
                     "from_number": from_number,
                     "tasks": tasks,
+                    "ignore_e164_validation": ignore_e164_validation,
                     "name": name,
                     "trigger_timestamp": trigger_timestamp,
                 },
