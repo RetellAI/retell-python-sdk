@@ -1,5 +1,21 @@
 # Changelog
 
+## 4.50.0 (2025-10-19)
+
+Full Changelog: [v4.49.0...v4.50.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.49.0...v4.50.0)
+
+### Features
+
+* **api:** api update ([8f9401f](https://github.com/RetellAI/retell-python-sdk/commit/8f9401f56d255b885af845966e1d5b2d46037a37))
+* **api:** api update ([2e140f9](https://github.com/RetellAI/retell-python-sdk/commit/2e140f932d8aefba5012263a388e5f28bc769f6e))
+* **api:** api update ([750603a](https://github.com/RetellAI/retell-python-sdk/commit/750603a0e4ce3497478d793f0f6bb4a82acb0e40))
+* **api:** api update ([23d0271](https://github.com/RetellAI/retell-python-sdk/commit/23d0271e0120b33beb057d8b0317dc0f9ce748ac))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([be21ea7](https://github.com/RetellAI/retell-python-sdk/commit/be21ea7c09a99de1442acfff7ebf208f522c52b7))
+
 ## 4.49.0 (2025-10-13)
 
 Full Changelog: [v4.48.0...v4.49.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.48.0...v4.49.0)

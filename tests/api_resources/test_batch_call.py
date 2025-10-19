@@ -35,6 +35,7 @@ class TestBatchCall:
                     "retell_llm_dynamic_variables": {"customer_name": "bar"},
                 }
             ],
+            ignore_e164_validation=True,
             name="First batch call",
             trigger_timestamp=1735718400000,
         )
@@ -90,6 +91,7 @@ class TestAsyncBatchCall:
                     "retell_llm_dynamic_variables": {"customer_name": "bar"},
                 }
             ],
+            ignore_e164_validation=True,
             name="First batch call",
             trigger_timestamp=1735718400000,
         )
