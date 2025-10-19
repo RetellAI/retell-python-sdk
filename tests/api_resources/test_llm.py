@@ -73,6 +73,7 @@ class TestLlm:
                                 "number": "16175551212",
                                 "type": "predefined",
                                 "extension": "123*456#",
+                                "ignore_e164_validation": False,
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
@@ -241,6 +242,7 @@ class TestLlm:
                                 "number": "16175551212",
                                 "type": "predefined",
                                 "extension": "123*456#",
+                                "ignore_e164_validation": False,
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
@@ -448,6 +450,7 @@ class TestAsyncLlm:
                                 "number": "16175551212",
                                 "type": "predefined",
                                 "extension": "123*456#",
+                                "ignore_e164_validation": False,
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
@@ -616,6 +619,7 @@ class TestAsyncLlm:
                                 "number": "16175551212",
                                 "type": "predefined",
                                 "extension": "123*456#",
+                                "ignore_e164_validation": False,
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
