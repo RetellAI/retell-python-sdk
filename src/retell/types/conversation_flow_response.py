@@ -1441,9 +1441,8 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionColdTransfer(Base
     show_transferee_as_caller: Optional[bool] = None
     """
     If set to true, will show transferee (the user, not the AI agent) as caller when
-    transferring, requires the telephony side to support SIP REFER to PSTN. This is
-    only applicable for cold transfer, so if warm transfer option is specified, this
-    field will be ignored. Default to false (default to show AI agent as caller).
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
     """
 
 
@@ -1546,6 +1545,13 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(Base
     If set, when transfer is successful, will say the handoff message to both the
     transferee and the agent receiving the transfer. Can leave either a static
     message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: Optional[bool] = None
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
     """
 
 
@@ -4430,9 +4436,8 @@ class NodeTransferCallNodeTransferOptionTransferOptionColdTransfer(BaseModel):
     show_transferee_as_caller: Optional[bool] = None
     """
     If set to true, will show transferee (the user, not the AI agent) as caller when
-    transferring, requires the telephony side to support SIP REFER to PSTN. This is
-    only applicable for cold transfer, so if warm transfer option is specified, this
-    field will be ignored. Default to false (default to show AI agent as caller).
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
     """
 
 
@@ -4531,6 +4536,13 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(BaseModel):
     If set, when transfer is successful, will say the handoff message to both the
     transferee and the agent receiving the transfer. Can leave either a static
     message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: Optional[bool] = None
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
     """
 
 
