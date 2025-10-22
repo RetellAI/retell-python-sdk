@@ -136,6 +136,7 @@ class TestConversationFlow:
                 }
             ],
             start_speaker="agent",
+            begin_after_user_silence_ms=2000,
             begin_tag_display_position={
                 "x": 100,
                 "y": 200,
@@ -412,6 +413,7 @@ class TestConversationFlow:
         conversation_flow = client.conversation_flow.update(
             conversation_flow_id="conversation_flow_id",
             version="version",
+            begin_after_user_silence_ms=2000,
             begin_tag_display_position={
                 "x": 100,
                 "y": 200,
@@ -895,6 +897,7 @@ class TestAsyncConversationFlow:
                 }
             ],
             start_speaker="agent",
+            begin_after_user_silence_ms=2000,
             begin_tag_display_position={
                 "x": 100,
                 "y": 200,
@@ -1171,6 +1174,7 @@ class TestAsyncConversationFlow:
         conversation_flow = await async_client.conversation_flow.update(
             conversation_flow_id="conversation_flow_id",
             version="version",
+            begin_after_user_silence_ms=2000,
             begin_tag_display_position={
                 "x": 100,
                 "y": 200,
