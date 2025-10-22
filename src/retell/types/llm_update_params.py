@@ -93,6 +93,14 @@ class LlmUpdateParams(TypedDict, total=False):
     query_version: Annotated[int, PropertyInfo(alias="version")]
     """Optional version of the API to use for this request. Default to latest version."""
 
+    begin_after_user_silence_ms: Optional[int]
+    """
+    If set, the AI will begin the conversation after waiting for the user for the
+    duration (in milliseconds) specified by this attribute. This only applies if the
+    agent is configured to wait for the user to speak first. If not set, the agent
+    will wait indefinitely for the user to speak.
+    """
+
     begin_message: Optional[str]
     """First utterance said by the agent in the call.
 

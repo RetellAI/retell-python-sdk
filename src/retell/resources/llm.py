@@ -49,6 +49,7 @@ class LlmResource(SyncAPIResource):
         self,
         *,
         start_speaker: Literal["user", "agent"],
+        begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         general_prompt: Optional[str] | Omit = omit,
@@ -96,6 +97,11 @@ class LlmResource(SyncAPIResource):
         Args:
           start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
               'agent'.
+
+          begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
+              duration (in milliseconds) specified by this attribute. This only applies if the
+              agent is configured to wait for the user to speak first. If not set, the agent
+              will wait indefinitely for the user to speak.
 
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
@@ -165,6 +171,7 @@ class LlmResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "start_speaker": start_speaker,
+                    "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
@@ -234,6 +241,7 @@ class LlmResource(SyncAPIResource):
         *,
         start_speaker: Literal["user", "agent"],
         query_version: int | Omit = omit,
+        begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         general_prompt: Optional[str] | Omit = omit,
@@ -281,6 +289,11 @@ class LlmResource(SyncAPIResource):
               'agent'.
 
           query_version: Optional version of the API to use for this request. Default to latest version.
+
+          begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
+              duration (in milliseconds) specified by this attribute. This only applies if the
+              agent is configured to wait for the user to speak first. If not set, the agent
+              will wait indefinitely for the user to speak.
 
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
@@ -352,6 +365,7 @@ class LlmResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "start_speaker": start_speaker,
+                    "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
@@ -493,6 +507,7 @@ class AsyncLlmResource(AsyncAPIResource):
         self,
         *,
         start_speaker: Literal["user", "agent"],
+        begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         general_prompt: Optional[str] | Omit = omit,
@@ -540,6 +555,11 @@ class AsyncLlmResource(AsyncAPIResource):
         Args:
           start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
               'agent'.
+
+          begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
+              duration (in milliseconds) specified by this attribute. This only applies if the
+              agent is configured to wait for the user to speak first. If not set, the agent
+              will wait indefinitely for the user to speak.
 
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
@@ -609,6 +629,7 @@ class AsyncLlmResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "start_speaker": start_speaker,
+                    "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
@@ -678,6 +699,7 @@ class AsyncLlmResource(AsyncAPIResource):
         *,
         start_speaker: Literal["user", "agent"],
         query_version: int | Omit = omit,
+        begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         general_prompt: Optional[str] | Omit = omit,
@@ -725,6 +747,11 @@ class AsyncLlmResource(AsyncAPIResource):
               'agent'.
 
           query_version: Optional version of the API to use for this request. Default to latest version.
+
+          begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
+              duration (in milliseconds) specified by this attribute. This only applies if the
+              agent is configured to wait for the user to speak first. If not set, the agent
+              will wait indefinitely for the user to speak.
 
           begin_message: First utterance said by the agent in the call. If not set, LLM will dynamically
               generate a message. If set to "", agent will wait for user to speak first.
@@ -796,6 +823,7 @@ class AsyncLlmResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "start_speaker": start_speaker,
+                    "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,

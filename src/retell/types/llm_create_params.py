@@ -89,6 +89,14 @@ class LlmCreateParams(TypedDict, total=False):
     Required. Must be either 'user' or 'agent'.
     """
 
+    begin_after_user_silence_ms: Optional[int]
+    """
+    If set, the AI will begin the conversation after waiting for the user for the
+    duration (in milliseconds) specified by this attribute. This only applies if the
+    agent is configured to wait for the user to speak first. If not set, the agent
+    will wait indefinitely for the user to speak.
+    """
+
     begin_message: Optional[str]
     """First utterance said by the agent in the call.
 

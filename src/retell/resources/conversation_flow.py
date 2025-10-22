@@ -56,6 +56,7 @@ class ConversationFlowResource(SyncAPIResource):
         model_choice: conversation_flow_create_params.ModelChoice,
         nodes: Iterable[conversation_flow_create_params.Node],
         start_speaker: Literal["user", "agent"],
+        begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_tag_display_position: Optional[conversation_flow_create_params.BeginTagDisplayPosition] | Omit = omit,
         components: Optional[Iterable[conversation_flow_create_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -85,6 +86,11 @@ class ConversationFlowResource(SyncAPIResource):
           nodes: Array of nodes in the conversation flow.
 
           start_speaker: Who starts the conversation - user or agent.
+
+          begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
+              duration (in milliseconds) specified by this attribute. This only applies if the
+              agent is configured to wait for the user to speak first. If not set, the agent
+              will wait indefinitely for the user to speak.
 
           begin_tag_display_position: Display position for the begin tag in the frontend.
 
@@ -126,6 +132,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "model_choice": model_choice,
                     "nodes": nodes,
                     "start_speaker": start_speaker,
+                    "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_tag_display_position": begin_tag_display_position,
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -193,6 +200,7 @@ class ConversationFlowResource(SyncAPIResource):
         conversation_flow_id: str,
         *,
         version: str | Omit = omit,
+        begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition] | Omit = omit,
         components: Optional[Iterable[conversation_flow_update_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -219,6 +227,11 @@ class ConversationFlowResource(SyncAPIResource):
 
         Args:
           version: Version of the conversation flow to update
+
+          begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
+              duration (in milliseconds) specified by this attribute. This only applies if the
+              agent is configured to wait for the user to speak first. If not set, the agent
+              will wait indefinitely for the user to speak.
 
           begin_tag_display_position: Display position for the begin tag in the frontend.
 
@@ -267,6 +280,7 @@ class ConversationFlowResource(SyncAPIResource):
             f"/update-conversation-flow/{conversation_flow_id}",
             body=maybe_transform(
                 {
+                    "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_tag_display_position": begin_tag_display_position,
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -416,6 +430,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         model_choice: conversation_flow_create_params.ModelChoice,
         nodes: Iterable[conversation_flow_create_params.Node],
         start_speaker: Literal["user", "agent"],
+        begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_tag_display_position: Optional[conversation_flow_create_params.BeginTagDisplayPosition] | Omit = omit,
         components: Optional[Iterable[conversation_flow_create_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -445,6 +460,11 @@ class AsyncConversationFlowResource(AsyncAPIResource):
           nodes: Array of nodes in the conversation flow.
 
           start_speaker: Who starts the conversation - user or agent.
+
+          begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
+              duration (in milliseconds) specified by this attribute. This only applies if the
+              agent is configured to wait for the user to speak first. If not set, the agent
+              will wait indefinitely for the user to speak.
 
           begin_tag_display_position: Display position for the begin tag in the frontend.
 
@@ -486,6 +506,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "model_choice": model_choice,
                     "nodes": nodes,
                     "start_speaker": start_speaker,
+                    "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_tag_display_position": begin_tag_display_position,
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -553,6 +574,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         conversation_flow_id: str,
         *,
         version: str | Omit = omit,
+        begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition] | Omit = omit,
         components: Optional[Iterable[conversation_flow_update_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -579,6 +601,11 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
         Args:
           version: Version of the conversation flow to update
+
+          begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
+              duration (in milliseconds) specified by this attribute. This only applies if the
+              agent is configured to wait for the user to speak first. If not set, the agent
+              will wait indefinitely for the user to speak.
 
           begin_tag_display_position: Display position for the begin tag in the frontend.
 
@@ -627,6 +654,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
             f"/update-conversation-flow/{conversation_flow_id}",
             body=await async_maybe_transform(
                 {
+                    "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_tag_display_position": begin_tag_display_position,
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
