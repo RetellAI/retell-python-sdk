@@ -49,6 +49,26 @@ class Task(TypedDict, total=False):
     destination.
     """
 
+    ignore_e164_validation: bool
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
+    """
+
+    override_agent_id: str
+    """For this particular call, override the agent used with this agent id.
+
+    This does not bind the agent to this number, this is for one time override.
+    """
+
+    override_agent_version: int
+    """For this particular call, override the agent version used with this version.
+
+    This does not bind the agent to this number, this is for one time override.
+    """
+
     retell_llm_dynamic_variables: Dict[str, object]
     """
     Add optional dynamic variables in key value pairs of string that injects into
