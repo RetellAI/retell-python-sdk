@@ -32,6 +32,9 @@ class TestBatchCall:
             tasks=[
                 {
                     "to_number": "+12137774445",
+                    "ignore_e164_validation": False,
+                    "override_agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "override_agent_version": 1,
                     "retell_llm_dynamic_variables": {"customer_name": "bar"},
                 }
             ],
@@ -88,6 +91,9 @@ class TestAsyncBatchCall:
             tasks=[
                 {
                     "to_number": "+12137774445",
+                    "ignore_e164_validation": False,
+                    "override_agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "override_agent_version": 1,
                     "retell_llm_dynamic_variables": {"customer_name": "bar"},
                 }
             ],
