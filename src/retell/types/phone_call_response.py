@@ -66,7 +66,7 @@ class CallCostProductCost(BaseModel):
     product: str
     """Product name that has a cost associated with it."""
 
-    unit_price: float
+    unit_price: Optional[float] = None
     """Unit price of the product in cents per second."""
 
 
