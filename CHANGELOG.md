@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.55.1 (2025-10-31)
+
+Full Changelog: [v4.55.0...v4.55.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.55.0...v4.55.1)
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([9eef086](https://github.com/RetellAI/retell-python-sdk/commit/9eef086374c3a3847c5f7d1909d6a6f8551684d2))
+
+
+### Chores
+
+* **internal/tests:** avoid race condition with implicit client cleanup ([9f09ef1](https://github.com/RetellAI/retell-python-sdk/commit/9f09ef18f2591a5868e41521e6467ab1755453c3))
+
 ## 4.55.0 (2025-10-29)
 
 Full Changelog: [v4.54.0...v4.55.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.54.0...v4.55.0)
