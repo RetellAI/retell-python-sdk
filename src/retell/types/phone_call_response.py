@@ -581,7 +581,7 @@ class PhoneCallResponse(BaseModel):
     ] = None
     """The reason for the disconnection of the call.
 
-    Read details desciption about reasons listed here at
+    Read detailed description about reasons listed here at
     [Disconnection Reason Doc](/reliability/debug-call-disconnect#understanding-disconnection-reasons).
     """
 
