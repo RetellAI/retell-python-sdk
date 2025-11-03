@@ -94,7 +94,7 @@ class AgentUpdateParams(TypedDict, total=False):
     backchannel words will apply. Check out
     [backchannel default words](/agent/interaction-configuration#backchannel) for
     more details. Note that certain voices do not work too well with certain words,
-    so it's recommended to expeirment before adding any words.
+    so it's recommended to experiment before adding any words.
     """
 
     begin_message_delay_ms: int
