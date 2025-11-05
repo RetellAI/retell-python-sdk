@@ -22,6 +22,7 @@ from .agent_create_params import AgentCreateParams as AgentCreateParams
 from .agent_list_response import AgentListResponse as AgentListResponse
 from .agent_update_params import AgentUpdateParams as AgentUpdateParams
 from .batch_call_response import BatchCallResponse as BatchCallResponse
+from .batch_test_response import BatchTestResponse as BatchTestResponse
 from .llm_retrieve_params import LlmRetrieveParams as LlmRetrieveParams
 from .mcp_tool_definition import McpToolDefinition as McpToolDefinition
 from .phone_call_response import PhoneCallResponse as PhoneCallResponse
@@ -43,6 +44,7 @@ from .call_create_phone_call_params import CallCreatePhoneCallParams as CallCrea
 from .concurrency_retrieve_response import ConcurrencyRetrieveResponse as ConcurrencyRetrieveResponse
 from .conversation_flow_list_params import ConversationFlowListParams as ConversationFlowListParams
 from .mcp_tool_get_mcp_tools_params import McpToolGetMcpToolsParams as McpToolGetMcpToolsParams
+from .test_create_batch_test_params import TestCreateBatchTestParams as TestCreateBatchTestParams
 from .call_register_phone_call_params import CallRegisterPhoneCallParams as CallRegisterPhoneCallParams
 from .conversation_flow_create_params import ConversationFlowCreateParams as ConversationFlowCreateParams
 from .conversation_flow_list_response import ConversationFlowListResponse as ConversationFlowListResponse

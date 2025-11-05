@@ -162,6 +162,10 @@ Types:
 from retell.types import BatchTestResponse
 ```
 
+Methods:
+
+- <code title="post /create-batch-test">client.tests.<a href="./src/retell/resources/tests.py">create_batch_test</a>(\*\*<a href="src/retell/types/test_create_batch_test_params.py">params</a>) -> <a href="./src/retell/types/batch_test_response.py">BatchTestResponse</a></code>
+
 # McpTool
 
 Types:

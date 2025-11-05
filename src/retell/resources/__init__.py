@@ -32,6 +32,14 @@ from .agent import (
     AgentResourceWithStreamingResponse,
     AsyncAgentResourceWithStreamingResponse,
 )
+from .tests import (
+    TestsResource,
+    AsyncTestsResource,
+    TestsResourceWithRawResponse,
+    AsyncTestsResourceWithRawResponse,
+    TestsResourceWithStreamingResponse,
+    AsyncTestsResourceWithStreamingResponse,
+)
 from .voice import (
     VoiceResource,
     AsyncVoiceResource,
@@ -150,6 +158,12 @@ __all__ = [
     "AsyncBatchCallResourceWithRawResponse",
     "BatchCallResourceWithStreamingResponse",
     "AsyncBatchCallResourceWithStreamingResponse",
+    "TestsResource",
+    "AsyncTestsResource",
+    "TestsResourceWithRawResponse",
+    "AsyncTestsResourceWithRawResponse",
+    "TestsResourceWithStreamingResponse",
+    "AsyncTestsResourceWithStreamingResponse",
     "McpToolResource",
     "AsyncMcpToolResource",
     "McpToolResourceWithRawResponse",
