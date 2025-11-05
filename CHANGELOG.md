@@ -1,5 +1,27 @@
 # Changelog
 
+## 4.56.0 (2025-11-05)
+
+Full Changelog: [v4.55.0...v4.56.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.55.0...v4.56.0)
+
+### Features
+
+* **api:** api update ([ab156d8](https://github.com/RetellAI/retell-python-sdk/commit/ab156d888e27e0a68f6d9cc92f4fa71ffd701da3))
+* **api:** api update ([9286214](https://github.com/RetellAI/retell-python-sdk/commit/9286214d209714acf3ce8a4e48cfcc07d241db8a))
+* **api:** api update ([4cd5e95](https://github.com/RetellAI/retell-python-sdk/commit/4cd5e95cb8e3aef1e9fa1097d4acca8de8267391))
+* **api:** api update ([2d20923](https://github.com/RetellAI/retell-python-sdk/commit/2d209232d0e6606bbe35d3ef0630a261febb9f41))
+
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([9eef086](https://github.com/RetellAI/retell-python-sdk/commit/9eef086374c3a3847c5f7d1909d6a6f8551684d2))
+
+
+### Chores
+
+* **internal/tests:** avoid race condition with implicit client cleanup ([9f09ef1](https://github.com/RetellAI/retell-python-sdk/commit/9f09ef18f2591a5868e41521e6467ab1755453c3))
+* **internal:** grammar fix (it's -&gt; its) ([9b05703](https://github.com/RetellAI/retell-python-sdk/commit/9b057033bfcab34bcd97035b6a7e92486053a99b))
+
 ## 4.55.0 (2025-10-29)
 
 Full Changelog: [v4.54.0...v4.55.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.54.0...v4.55.0)

@@ -154,6 +154,18 @@ Methods:
 
 - <code title="post /create-batch-call">client.batch_call.<a href="./src/retell/resources/batch_call.py">create_batch_call</a>(\*\*<a href="src/retell/types/batch_call_create_batch_call_params.py">params</a>) -> <a href="./src/retell/types/batch_call_response.py">BatchCallResponse</a></code>
 
+# Tests
+
+Types:
+
+```python
+from retell.types import BatchTestResponse
+```
+
+Methods:
+
+- <code title="post /create-batch-test">client.tests.<a href="./src/retell/resources/tests.py">create_batch_test</a>(\*\*<a href="src/retell/types/test_create_batch_test_params.py">params</a>) -> <a href="./src/retell/types/batch_test_response.py">BatchTestResponse</a></code>
+
 # McpTool
 
 Types:

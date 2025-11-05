@@ -220,7 +220,7 @@ class AgentResource(SyncAPIResource):
               Check out
               [backchannel default words](/agent/interaction-configuration#backchannel) for
               more details. Note that certain voices do not work too well with certain words,
-              so it's recommended to expeirment before adding any words.
+              so it's recommended to experiment before adding any words.
 
           begin_message_delay_ms: If set, will delay the first message by the specified amount of milliseconds, so
               that it gives user more time to prepare to take the call. Valid range is [0,
@@ -622,7 +622,7 @@ class AgentResource(SyncAPIResource):
               Check out
               [backchannel default words](/agent/interaction-configuration#backchannel) for
               more details. Note that certain voices do not work too well with certain words,
-              so it's recommended to expeirment before adding any words.
+              so it's recommended to experiment before adding any words.
 
           begin_message_delay_ms: If set, will delay the first message by the specified amount of milliseconds, so
               that it gives user more time to prepare to take the call. Valid range is [0,
@@ -1178,7 +1178,7 @@ class AsyncAgentResource(AsyncAPIResource):
               Check out
               [backchannel default words](/agent/interaction-configuration#backchannel) for
               more details. Note that certain voices do not work too well with certain words,
-              so it's recommended to expeirment before adding any words.
+              so it's recommended to experiment before adding any words.
 
           begin_message_delay_ms: If set, will delay the first message by the specified amount of milliseconds, so
               that it gives user more time to prepare to take the call. Valid range is [0,
@@ -1580,7 +1580,7 @@ class AsyncAgentResource(AsyncAPIResource):
               Check out
               [backchannel default words](/agent/interaction-configuration#backchannel) for
               more details. Note that certain voices do not work too well with certain words,
-              so it's recommended to expeirment before adding any words.
+              so it's recommended to experiment before adding any words.
 
           begin_message_delay_ms: If set, will delay the first message by the specified amount of milliseconds, so
               that it gives user more time to prepare to take the call. Valid range is [0,
