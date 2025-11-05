@@ -26,6 +26,7 @@ from .resources import (
     call,
     chat,
     agent,
+    tests,
     voice,
     mcp_tool,
     batch_call,
@@ -56,6 +57,7 @@ class Retell(SyncAPIClient):
     voice: voice.VoiceResource
     concurrency: concurrency.ConcurrencyResource
     batch_call: batch_call.BatchCallResource
+    tests: tests.TestsResource
     mcp_tool: mcp_tool.McpToolResource
     with_raw_response: RetellWithRawResponse
     with_streaming_response: RetellWithStreamedResponse
@@ -115,6 +117,7 @@ class Retell(SyncAPIClient):
         self.voice = voice.VoiceResource(self)
         self.concurrency = concurrency.ConcurrencyResource(self)
         self.batch_call = batch_call.BatchCallResource(self)
+        self.tests = tests.TestsResource(self)
         self.mcp_tool = mcp_tool.McpToolResource(self)
         self.with_raw_response = RetellWithRawResponse(self)
         self.with_streaming_response = RetellWithStreamedResponse(self)
@@ -235,6 +238,7 @@ class AsyncRetell(AsyncAPIClient):
     voice: voice.AsyncVoiceResource
     concurrency: concurrency.AsyncConcurrencyResource
     batch_call: batch_call.AsyncBatchCallResource
+    tests: tests.AsyncTestsResource
     mcp_tool: mcp_tool.AsyncMcpToolResource
     with_raw_response: AsyncRetellWithRawResponse
     with_streaming_response: AsyncRetellWithStreamedResponse
@@ -294,6 +298,7 @@ class AsyncRetell(AsyncAPIClient):
         self.voice = voice.AsyncVoiceResource(self)
         self.concurrency = concurrency.AsyncConcurrencyResource(self)
         self.batch_call = batch_call.AsyncBatchCallResource(self)
+        self.tests = tests.AsyncTestsResource(self)
         self.mcp_tool = mcp_tool.AsyncMcpToolResource(self)
         self.with_raw_response = AsyncRetellWithRawResponse(self)
         self.with_streaming_response = AsyncRetellWithStreamedResponse(self)
@@ -415,6 +420,7 @@ class RetellWithRawResponse:
         self.voice = voice.VoiceResourceWithRawResponse(client.voice)
         self.concurrency = concurrency.ConcurrencyResourceWithRawResponse(client.concurrency)
         self.batch_call = batch_call.BatchCallResourceWithRawResponse(client.batch_call)
+        self.tests = tests.TestsResourceWithRawResponse(client.tests)
         self.mcp_tool = mcp_tool.McpToolResourceWithRawResponse(client.mcp_tool)
 
 
@@ -432,6 +438,7 @@ class AsyncRetellWithRawResponse:
         self.voice = voice.AsyncVoiceResourceWithRawResponse(client.voice)
         self.concurrency = concurrency.AsyncConcurrencyResourceWithRawResponse(client.concurrency)
         self.batch_call = batch_call.AsyncBatchCallResourceWithRawResponse(client.batch_call)
+        self.tests = tests.AsyncTestsResourceWithRawResponse(client.tests)
         self.mcp_tool = mcp_tool.AsyncMcpToolResourceWithRawResponse(client.mcp_tool)
 
 
@@ -449,6 +456,7 @@ class RetellWithStreamedResponse:
         self.voice = voice.VoiceResourceWithStreamingResponse(client.voice)
         self.concurrency = concurrency.ConcurrencyResourceWithStreamingResponse(client.concurrency)
         self.batch_call = batch_call.BatchCallResourceWithStreamingResponse(client.batch_call)
+        self.tests = tests.TestsResourceWithStreamingResponse(client.tests)
         self.mcp_tool = mcp_tool.McpToolResourceWithStreamingResponse(client.mcp_tool)
 
 
@@ -466,6 +474,7 @@ class AsyncRetellWithStreamedResponse:
         self.voice = voice.AsyncVoiceResourceWithStreamingResponse(client.voice)
         self.concurrency = concurrency.AsyncConcurrencyResourceWithStreamingResponse(client.concurrency)
         self.batch_call = batch_call.AsyncBatchCallResourceWithStreamingResponse(client.batch_call)
+        self.tests = tests.AsyncTestsResourceWithStreamingResponse(client.tests)
         self.mcp_tool = mcp_tool.AsyncMcpToolResourceWithStreamingResponse(client.mcp_tool)
 
 
