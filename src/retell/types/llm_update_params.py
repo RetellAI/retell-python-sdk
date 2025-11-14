@@ -44,6 +44,7 @@ __all__ = [
     "GeneralToolSendSMSToolSMSContentSMSContentPredefined",
     "GeneralToolSendSMSToolSMSContentSMSContentInferred",
     "KBConfig",
+    "Mcp",
     "State",
     "StateEdge",
     "StateEdgeParameters",
@@ -84,12 +85,6 @@ __all__ = [
 
 
 class LlmUpdateParams(TypedDict, total=False):
-    start_speaker: Required[Literal["user", "agent"]]
-    """The speaker who starts the conversation.
-
-    Required. Must be either 'user' or 'agent'.
-    """
-
     query_version: Annotated[int, PropertyInfo(alias="version")]
     """Optional version of the API to use for this request. Default to latest version."""
 
@@ -138,10 +133,10 @@ class LlmUpdateParams(TypedDict, total=False):
     """Knowledge base configuration for RAG retrieval."""
 
     knowledge_base_ids: Optional[SequenceNotStr[str]]
-    """A list of knowledge base ids to use for this resource.
+    """A list of knowledge base ids to use for this resource."""
 
-    Set to null to remove all knowledge bases.
-    """
+    mcps: Optional[Iterable[Mcp]]
+    """A list of MCPs to use for this LLM."""
 
     model: Optional[
         Literal[
@@ -184,6 +179,12 @@ class LlmUpdateParams(TypedDict, total=False):
     Can only set this or model, not both.
     """
 
+    start_speaker: Literal["user", "agent"]
+    """The speaker who starts the conversation.
+
+    Required. Must be either 'user' or 'agent'.
+    """
+
     starting_state: Optional[str]
     """Name of the starting state. Required if states is not empty."""
 
@@ -205,8 +206,8 @@ class LlmUpdateParams(TypedDict, total=False):
     longer as additional processing is needed. Default to false.
     """
 
-    body_version: Annotated[Optional[float], PropertyInfo(alias="version")]
-    """Version of the Retell LLM."""
+    body_version: Annotated[Optional[int], PropertyInfo(alias="version")]
+    """The version of the LLM."""
 
 
 class GeneralToolEndCallTool(TypedDict, total=False):
@@ -834,6 +835,25 @@ class KBConfig(TypedDict, total=False):
 
     top_k: int
     """Max number of knowledge base chunks to retrieve"""
+
+
+class Mcp(TypedDict, total=False):
+    name: Required[str]
+
+    url: Required[str]
+    """The URL of the MCP server."""
+
+    headers: Dict[str, str]
+    """Headers to add to the MCP connection request."""
+
+    query_params: Dict[str, str]
+    """Query parameters to append to the MCP connection request URL."""
+
+    timeout_ms: int
+    """Maximum time to wait for a connection to be established (in milliseconds).
+
+    Default to 120,000 ms (2 minutes).
+    """
 
 
 class StateEdgeParameters(TypedDict, total=False):

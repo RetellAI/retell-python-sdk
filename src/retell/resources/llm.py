@@ -48,7 +48,6 @@ class LlmResource(SyncAPIResource):
     def create(
         self,
         *,
-        start_speaker: Literal["user", "agent"],
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -56,6 +55,7 @@ class LlmResource(SyncAPIResource):
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | Omit = omit,
         kb_config: Optional[llm_create_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        mcps: Optional[Iterable[llm_create_params.Mcp]] | Omit = omit,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -78,10 +78,11 @@ class LlmResource(SyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
-        version: Optional[float] | Omit = omit,
+        version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -95,9 +96,6 @@ class LlmResource(SyncAPIResource):
         is used to generate response output for the agent.
 
         Args:
-          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
-              'agent'.
-
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
               agent is configured to wait for the user to speak first. If not set, the agent
@@ -126,8 +124,9 @@ class LlmResource(SyncAPIResource):
 
           kb_config: Knowledge base configuration for RAG retrieval.
 
-          knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
-              knowledge bases.
+          knowledge_base_ids: A list of knowledge base ids to use for this resource.
+
+          mcps: A list of MCPs to use for this LLM.
 
           model: Select the underlying text LLM. If not set, would default to gpt-4.1.
 
@@ -143,6 +142,9 @@ class LlmResource(SyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -156,7 +158,7 @@ class LlmResource(SyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
-          version: Version of the Retell LLM.
+          version: The version of the LLM.
 
           extra_headers: Send extra headers
 
@@ -170,7 +172,6 @@ class LlmResource(SyncAPIResource):
             "/create-retell-llm",
             body=maybe_transform(
                 {
-                    "start_speaker": start_speaker,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -178,10 +179,12 @@ class LlmResource(SyncAPIResource):
                     "general_tools": general_tools,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
+                    "mcps": mcps,
                     "model": model,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
+                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
@@ -239,7 +242,6 @@ class LlmResource(SyncAPIResource):
         self,
         llm_id: str,
         *,
-        start_speaker: Literal["user", "agent"],
         query_version: int | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
@@ -248,6 +250,7 @@ class LlmResource(SyncAPIResource):
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | Omit = omit,
         kb_config: Optional[llm_update_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        mcps: Optional[Iterable[llm_update_params.Mcp]] | Omit = omit,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -270,10 +273,11 @@ class LlmResource(SyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
-        body_version: Optional[float] | Omit = omit,
+        body_version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -285,9 +289,6 @@ class LlmResource(SyncAPIResource):
         Update an existing Retell LLM Response Engine
 
         Args:
-          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
-              'agent'.
-
           query_version: Optional version of the API to use for this request. Default to latest version.
 
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
@@ -318,8 +319,9 @@ class LlmResource(SyncAPIResource):
 
           kb_config: Knowledge base configuration for RAG retrieval.
 
-          knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
-              knowledge bases.
+          knowledge_base_ids: A list of knowledge base ids to use for this resource.
+
+          mcps: A list of MCPs to use for this LLM.
 
           model: Select the underlying text LLM. If not set, would default to gpt-4.1.
 
@@ -335,6 +337,9 @@ class LlmResource(SyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -348,7 +353,7 @@ class LlmResource(SyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
-          body_version: Version of the Retell LLM.
+          body_version: The version of the LLM.
 
           extra_headers: Send extra headers
 
@@ -364,7 +369,6 @@ class LlmResource(SyncAPIResource):
             f"/update-retell-llm/{llm_id}",
             body=maybe_transform(
                 {
-                    "start_speaker": start_speaker,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -372,10 +376,12 @@ class LlmResource(SyncAPIResource):
                     "general_tools": general_tools,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
+                    "mcps": mcps,
                     "model": model,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
+                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
@@ -506,7 +512,6 @@ class AsyncLlmResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        start_speaker: Literal["user", "agent"],
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -514,6 +519,7 @@ class AsyncLlmResource(AsyncAPIResource):
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | Omit = omit,
         kb_config: Optional[llm_create_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        mcps: Optional[Iterable[llm_create_params.Mcp]] | Omit = omit,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -536,10 +542,11 @@ class AsyncLlmResource(AsyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
-        version: Optional[float] | Omit = omit,
+        version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -553,9 +560,6 @@ class AsyncLlmResource(AsyncAPIResource):
         is used to generate response output for the agent.
 
         Args:
-          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
-              'agent'.
-
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
               agent is configured to wait for the user to speak first. If not set, the agent
@@ -584,8 +588,9 @@ class AsyncLlmResource(AsyncAPIResource):
 
           kb_config: Knowledge base configuration for RAG retrieval.
 
-          knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
-              knowledge bases.
+          knowledge_base_ids: A list of knowledge base ids to use for this resource.
+
+          mcps: A list of MCPs to use for this LLM.
 
           model: Select the underlying text LLM. If not set, would default to gpt-4.1.
 
@@ -601,6 +606,9 @@ class AsyncLlmResource(AsyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -614,7 +622,7 @@ class AsyncLlmResource(AsyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
-          version: Version of the Retell LLM.
+          version: The version of the LLM.
 
           extra_headers: Send extra headers
 
@@ -628,7 +636,6 @@ class AsyncLlmResource(AsyncAPIResource):
             "/create-retell-llm",
             body=await async_maybe_transform(
                 {
-                    "start_speaker": start_speaker,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -636,10 +643,12 @@ class AsyncLlmResource(AsyncAPIResource):
                     "general_tools": general_tools,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
+                    "mcps": mcps,
                     "model": model,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
+                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
@@ -697,7 +706,6 @@ class AsyncLlmResource(AsyncAPIResource):
         self,
         llm_id: str,
         *,
-        start_speaker: Literal["user", "agent"],
         query_version: int | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
@@ -706,6 +714,7 @@ class AsyncLlmResource(AsyncAPIResource):
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | Omit = omit,
         kb_config: Optional[llm_update_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        mcps: Optional[Iterable[llm_update_params.Mcp]] | Omit = omit,
         model: Optional[
             Literal[
                 "gpt-5",
@@ -728,10 +737,11 @@ class AsyncLlmResource(AsyncAPIResource):
         model_high_priority: bool | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
+        start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
         tool_call_strict_mode: bool | Omit = omit,
-        body_version: Optional[float] | Omit = omit,
+        body_version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -743,9 +753,6 @@ class AsyncLlmResource(AsyncAPIResource):
         Update an existing Retell LLM Response Engine
 
         Args:
-          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
-              'agent'.
-
           query_version: Optional version of the API to use for this request. Default to latest version.
 
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
@@ -776,8 +783,9 @@ class AsyncLlmResource(AsyncAPIResource):
 
           kb_config: Knowledge base configuration for RAG retrieval.
 
-          knowledge_base_ids: A list of knowledge base ids to use for this resource. Set to null to remove all
-              knowledge bases.
+          knowledge_base_ids: A list of knowledge base ids to use for this resource.
+
+          mcps: A list of MCPs to use for this LLM.
 
           model: Select the underlying text LLM. If not set, would default to gpt-4.1.
 
@@ -793,6 +801,9 @@ class AsyncLlmResource(AsyncAPIResource):
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
+          start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
+              'agent'.
+
           starting_state: Name of the starting state. Required if states is not empty.
 
           states: States of the LLM. This is to help reduce prompt length and tool choices when
@@ -806,7 +817,7 @@ class AsyncLlmResource(AsyncAPIResource):
               time to save a new tool or change to a tool will be longer as additional
               processing is needed. Default to false.
 
-          body_version: Version of the Retell LLM.
+          body_version: The version of the LLM.
 
           extra_headers: Send extra headers
 
@@ -822,7 +833,6 @@ class AsyncLlmResource(AsyncAPIResource):
             f"/update-retell-llm/{llm_id}",
             body=await async_maybe_transform(
                 {
-                    "start_speaker": start_speaker,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -830,10 +840,12 @@ class AsyncLlmResource(AsyncAPIResource):
                     "general_tools": general_tools,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
+                    "mcps": mcps,
                     "model": model,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "s2s_model": s2s_model,
+                    "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
