@@ -261,6 +261,7 @@ class TestConversationFlow:
                 "support_hours": "9 AM - 5 PM",
             },
             global_prompt="You are a helpful customer service agent.",
+            is_transfer_llm=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,
@@ -538,6 +539,7 @@ class TestConversationFlow:
                 "support_hours": "9 AM - 5 PM",
             },
             global_prompt="You are a helpful customer service agent.",
+            is_transfer_llm=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,
@@ -1022,6 +1024,7 @@ class TestAsyncConversationFlow:
                 "support_hours": "9 AM - 5 PM",
             },
             global_prompt="You are a helpful customer service agent.",
+            is_transfer_llm=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,
@@ -1299,6 +1302,7 @@ class TestAsyncConversationFlow:
                 "support_hours": "9 AM - 5 PM",
             },
             global_prompt="You are a helpful customer service agent.",
+            is_transfer_llm=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,

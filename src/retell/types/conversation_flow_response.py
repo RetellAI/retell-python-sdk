@@ -6564,6 +6564,9 @@ class ConversationFlowResponse(BaseModel):
     global_prompt: Optional[str] = None
     """Global prompt used in every node of the conversation flow."""
 
+    is_transfer_llm: Optional[bool] = None
+    """Whether this conversation flow is used for transfer LLM."""
+
     kb_config: Optional[KBConfig] = None
     """Knowledge base configuration for RAG retrieval."""
 

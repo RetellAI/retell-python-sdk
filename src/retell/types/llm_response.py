@@ -43,6 +43,7 @@ __all__ = [
     "GeneralToolSendSMSToolSMSContentSMSContentPredefined",
     "GeneralToolSendSMSToolSMSContentSMSContentInferred",
     "KBConfig",
+    "Mcp",
     "State",
     "StateEdge",
     "StateEdgeParameters",
@@ -711,6 +712,25 @@ class KBConfig(BaseModel):
 
     top_k: Optional[int] = None
     """Max number of knowledge base chunks to retrieve"""
+
+
+class Mcp(BaseModel):
+    name: str
+
+    url: str
+    """The URL of the MCP server."""
+
+    headers: Optional[Dict[str, str]] = None
+    """Headers to add to the MCP connection request."""
+
+    query_params: Optional[Dict[str, str]] = None
+    """Query parameters to append to the MCP connection request URL."""
+
+    timeout_ms: Optional[int] = None
+    """Maximum time to wait for a connection to be established (in milliseconds).
+
+    Default to 120,000 ms (2 minutes).
+    """
 
 
 class StateEdgeParameters(BaseModel):
@@ -1416,12 +1436,6 @@ class LlmResponse(BaseModel):
     llm_id: str
     """Unique id of Retell LLM Response Engine."""
 
-    start_speaker: Literal["user", "agent"]
-    """The speaker who starts the conversation.
-
-    Required. Must be either 'user' or 'agent'.
-    """
-
     begin_after_user_silence_ms: Optional[int] = None
     """
     If set, the AI will begin the conversation after waiting for the user for the
@@ -1470,10 +1484,10 @@ class LlmResponse(BaseModel):
     """Knowledge base configuration for RAG retrieval."""
 
     knowledge_base_ids: Optional[List[str]] = None
-    """A list of knowledge base ids to use for this resource.
+    """A list of knowledge base ids to use for this resource."""
 
-    Set to null to remove all knowledge bases.
-    """
+    mcps: Optional[List[Mcp]] = None
+    """A list of MCPs to use for this LLM."""
 
     model: Optional[
         Literal[
@@ -1516,6 +1530,12 @@ class LlmResponse(BaseModel):
     Can only set this or model, not both.
     """
 
+    start_speaker: Optional[Literal["user", "agent"]] = None
+    """The speaker who starts the conversation.
+
+    Required. Must be either 'user' or 'agent'.
+    """
+
     starting_state: Optional[str] = None
     """Name of the starting state. Required if states is not empty."""
 
@@ -1537,5 +1557,5 @@ class LlmResponse(BaseModel):
     longer as additional processing is needed. Default to false.
     """
 
-    version: Optional[object] = None
-    """Version of the Retell LLM."""
+    version: Optional[int] = None
+    """The version of the LLM."""
