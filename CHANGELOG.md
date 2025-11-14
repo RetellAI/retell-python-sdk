@@ -1,5 +1,28 @@
 # Changelog
 
+## 4.57.0 (2025-11-14)
+
+Full Changelog: [v4.56.0...v4.57.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.56.0...v4.57.0)
+
+### Features
+
+* **api:** api update ([8945e6b](https://github.com/RetellAI/retell-python-sdk/commit/8945e6bf185cfe9696ed4ce6576e3acc3750df81))
+* **api:** api update ([8e40bd5](https://github.com/RetellAI/retell-python-sdk/commit/8e40bd550c1b52d698053f674ee150b9ba1a3cc3))
+* **api:** api update ([3568431](https://github.com/RetellAI/retell-python-sdk/commit/35684317d8bde04c22fe91ef9c849a0abf72d473))
+* **api:** api update ([35b1dc0](https://github.com/RetellAI/retell-python-sdk/commit/35b1dc0ef2aba54eb60b98a55e4ee3c1caeafaee))
+* **api:** api update ([14663d1](https://github.com/RetellAI/retell-python-sdk/commit/14663d133d07d839e2d800563985d375454011d5))
+
+
+### Bug Fixes
+
+* compat with Python 3.14 ([849536b](https://github.com/RetellAI/retell-python-sdk/commit/849536bee0e2831d8c05e45d7829ccd61c3d3e8d))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([17f7ff5](https://github.com/RetellAI/retell-python-sdk/commit/17f7ff53bdadee805b3292a12453f6e1d1ccf420))
+
+
+### Chores
+
+* **package:** drop Python 3.8 support ([4867404](https://github.com/RetellAI/retell-python-sdk/commit/4867404155096db1f2783960753cf92ca1d31dd4))
+
 ## 4.56.0 (2025-11-05)
 
 Full Changelog: [v4.55.0...v4.56.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.55.0...v4.56.0)

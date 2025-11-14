@@ -1,10 +1,11 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Dict, List, Union, Optional
-from typing_extensions import Literal, TypeAlias
+from typing_extensions import Literal, Annotated, TypeAlias
 
 from pydantic import Field as FieldInfo
 
+from .._utils import PropertyInfo
 from .._models import BaseModel
 
 __all__ = [
@@ -3395,18 +3396,21 @@ class ComponentNodeComponentNode(BaseModel):
     """Optional name for display purposes"""
 
 
-ComponentNode: TypeAlias = Union[
-    ComponentNodeConversationNode,
-    ComponentNodeEndNode,
-    ComponentNodeFunctionNode,
-    ComponentNodeTransferCallNode,
-    ComponentNodePressDigitNode,
-    ComponentNodeBranchNode,
-    ComponentNodeSMSNode,
-    ComponentNodeExtractDynamicVariablesNode,
-    ComponentNodeAgentSwapNode,
-    ComponentNodeMcpNode,
-    ComponentNodeComponentNode,
+ComponentNode: TypeAlias = Annotated[
+    Union[
+        ComponentNodeConversationNode,
+        ComponentNodeEndNode,
+        ComponentNodeFunctionNode,
+        ComponentNodeTransferCallNode,
+        ComponentNodePressDigitNode,
+        ComponentNodeBranchNode,
+        ComponentNodeSMSNode,
+        ComponentNodeExtractDynamicVariablesNode,
+        ComponentNodeAgentSwapNode,
+        ComponentNodeMcpNode,
+        ComponentNodeComponentNode,
+    ],
+    PropertyInfo(discriminator="type"),
 ]
 
 
@@ -6372,18 +6376,21 @@ class NodeComponentNode(BaseModel):
     """Optional name for display purposes"""
 
 
-Node: TypeAlias = Union[
-    NodeConversationNode,
-    NodeEndNode,
-    NodeFunctionNode,
-    NodeTransferCallNode,
-    NodePressDigitNode,
-    NodeBranchNode,
-    NodeSMSNode,
-    NodeExtractDynamicVariablesNode,
-    NodeAgentSwapNode,
-    NodeMcpNode,
-    NodeComponentNode,
+Node: TypeAlias = Annotated[
+    Union[
+        NodeConversationNode,
+        NodeEndNode,
+        NodeFunctionNode,
+        NodeTransferCallNode,
+        NodePressDigitNode,
+        NodeBranchNode,
+        NodeSMSNode,
+        NodeExtractDynamicVariablesNode,
+        NodeAgentSwapNode,
+        NodeMcpNode,
+        NodeComponentNode,
+    ],
+    PropertyInfo(discriminator="type"),
 ]
 
 
@@ -6556,6 +6563,9 @@ class ConversationFlowResponse(BaseModel):
 
     global_prompt: Optional[str] = None
     """Global prompt used in every node of the conversation flow."""
+
+    is_transfer_llm: Optional[bool] = None
+    """Whether this conversation flow is used for transfer LLM."""
 
     kb_config: Optional[KBConfig] = None
     """Knowledge base configuration for RAG retrieval."""

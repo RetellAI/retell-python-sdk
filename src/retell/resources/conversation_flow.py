@@ -61,6 +61,7 @@ class ConversationFlowResource(SyncAPIResource):
         components: Optional[Iterable[conversation_flow_create_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
+        is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | Omit = omit,
@@ -101,6 +102,8 @@ class ConversationFlowResource(SyncAPIResource):
 
           global_prompt: Global prompt used in every node of the conversation flow.
 
+          is_transfer_llm: Whether this conversation flow is used for transfer LLM.
+
           kb_config: Knowledge base configuration for RAG retrieval.
 
           knowledge_base_ids: Knowledge base IDs for RAG (Retrieval-Augmented Generation).
@@ -137,6 +140,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
                     "global_prompt": global_prompt,
+                    "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
@@ -205,6 +209,7 @@ class ConversationFlowResource(SyncAPIResource):
         components: Optional[Iterable[conversation_flow_update_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
+        is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_update_params.KBConfig | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_update_params.Mcp]] | Omit = omit,
@@ -241,6 +246,8 @@ class ConversationFlowResource(SyncAPIResource):
               flow.
 
           global_prompt: Global prompt used in every node of the conversation flow.
+
+          is_transfer_llm: Whether this conversation flow is used for transfer LLM.
 
           kb_config: Knowledge base configuration for RAG retrieval.
 
@@ -285,6 +292,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
                     "global_prompt": global_prompt,
+                    "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
@@ -435,6 +443,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         components: Optional[Iterable[conversation_flow_create_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
+        is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | Omit = omit,
@@ -475,6 +484,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           global_prompt: Global prompt used in every node of the conversation flow.
 
+          is_transfer_llm: Whether this conversation flow is used for transfer LLM.
+
           kb_config: Knowledge base configuration for RAG retrieval.
 
           knowledge_base_ids: Knowledge base IDs for RAG (Retrieval-Augmented Generation).
@@ -511,6 +522,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
                     "global_prompt": global_prompt,
+                    "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
@@ -579,6 +591,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         components: Optional[Iterable[conversation_flow_update_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
+        is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_update_params.KBConfig | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_update_params.Mcp]] | Omit = omit,
@@ -615,6 +628,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
               flow.
 
           global_prompt: Global prompt used in every node of the conversation flow.
+
+          is_transfer_llm: Whether this conversation flow is used for transfer LLM.
 
           kb_config: Knowledge base configuration for RAG retrieval.
 
@@ -659,6 +674,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
                     "global_prompt": global_prompt,
+                    "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,

@@ -245,6 +245,7 @@ class CallResource(SyncAPIResource):
         *,
         from_number: str,
         to_number: str,
+        agent_override: call_create_phone_call_params.AgentOverride | Omit = omit,
         custom_sip_headers: Dict[str, str] | Omit = omit,
         ignore_e164_validation: bool | Omit = omit,
         metadata: object | Omit = omit,
@@ -267,6 +268,9 @@ class CallResource(SyncAPIResource):
 
           to_number: The number you want to call, in E.164 format. If using a number purchased from
               Retell, only US numbers are supported as destination.
+
+          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
+              a specific call.
 
           custom_sip_headers: Add optional custom SIP headers to the call.
 
@@ -304,6 +308,7 @@ class CallResource(SyncAPIResource):
                 {
                     "from_number": from_number,
                     "to_number": to_number,
+                    "agent_override": agent_override,
                     "custom_sip_headers": custom_sip_headers,
                     "ignore_e164_validation": ignore_e164_validation,
                     "metadata": metadata,
@@ -323,6 +328,7 @@ class CallResource(SyncAPIResource):
         self,
         *,
         agent_id: str,
+        agent_override: call_create_web_call_params.AgentOverride | Omit = omit,
         agent_version: int | Omit = omit,
         metadata: object | Omit = omit,
         retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
@@ -340,6 +346,9 @@ class CallResource(SyncAPIResource):
 
         Your agent would contain the LLM Websocket
               url used for this call.
+
+          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
+              a specific call.
 
           agent_version: The version of the agent to use for the call.
 
@@ -364,6 +373,7 @@ class CallResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "agent_id": agent_id,
+                    "agent_override": agent_override,
                     "agent_version": agent_version,
                     "metadata": metadata,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
@@ -380,6 +390,7 @@ class CallResource(SyncAPIResource):
         self,
         *,
         agent_id: str,
+        agent_override: call_register_phone_call_params.AgentOverride | Omit = omit,
         agent_version: int | Omit = omit,
         direction: Literal["inbound", "outbound"] | Omit = omit,
         from_number: str | Omit = omit,
@@ -398,6 +409,9 @@ class CallResource(SyncAPIResource):
 
         Args:
           agent_id: The agent to use for the call.
+
+          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
+              a specific call.
 
           agent_version: The version of the agent to use for the call.
 
@@ -428,6 +442,7 @@ class CallResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "agent_id": agent_id,
+                    "agent_override": agent_override,
                     "agent_version": agent_version,
                     "direction": direction,
                     "from_number": from_number,
@@ -656,6 +671,7 @@ class AsyncCallResource(AsyncAPIResource):
         *,
         from_number: str,
         to_number: str,
+        agent_override: call_create_phone_call_params.AgentOverride | Omit = omit,
         custom_sip_headers: Dict[str, str] | Omit = omit,
         ignore_e164_validation: bool | Omit = omit,
         metadata: object | Omit = omit,
@@ -678,6 +694,9 @@ class AsyncCallResource(AsyncAPIResource):
 
           to_number: The number you want to call, in E.164 format. If using a number purchased from
               Retell, only US numbers are supported as destination.
+
+          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
+              a specific call.
 
           custom_sip_headers: Add optional custom SIP headers to the call.
 
@@ -715,6 +734,7 @@ class AsyncCallResource(AsyncAPIResource):
                 {
                     "from_number": from_number,
                     "to_number": to_number,
+                    "agent_override": agent_override,
                     "custom_sip_headers": custom_sip_headers,
                     "ignore_e164_validation": ignore_e164_validation,
                     "metadata": metadata,
@@ -734,6 +754,7 @@ class AsyncCallResource(AsyncAPIResource):
         self,
         *,
         agent_id: str,
+        agent_override: call_create_web_call_params.AgentOverride | Omit = omit,
         agent_version: int | Omit = omit,
         metadata: object | Omit = omit,
         retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
@@ -751,6 +772,9 @@ class AsyncCallResource(AsyncAPIResource):
 
         Your agent would contain the LLM Websocket
               url used for this call.
+
+          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
+              a specific call.
 
           agent_version: The version of the agent to use for the call.
 
@@ -775,6 +799,7 @@ class AsyncCallResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "agent_id": agent_id,
+                    "agent_override": agent_override,
                     "agent_version": agent_version,
                     "metadata": metadata,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
@@ -791,6 +816,7 @@ class AsyncCallResource(AsyncAPIResource):
         self,
         *,
         agent_id: str,
+        agent_override: call_register_phone_call_params.AgentOverride | Omit = omit,
         agent_version: int | Omit = omit,
         direction: Literal["inbound", "outbound"] | Omit = omit,
         from_number: str | Omit = omit,
@@ -809,6 +835,9 @@ class AsyncCallResource(AsyncAPIResource):
 
         Args:
           agent_id: The agent to use for the call.
+
+          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
+              a specific call.
 
           agent_version: The version of the agent to use for the call.
 
@@ -839,6 +868,7 @@ class AsyncCallResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "agent_id": agent_id,
+                    "agent_override": agent_override,
                     "agent_version": agent_version,
                     "direction": direction,
                     "from_number": from_number,

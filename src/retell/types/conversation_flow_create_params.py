@@ -645,6 +645,9 @@ class ConversationFlowCreateParams(TypedDict, total=False):
     global_prompt: Optional[str]
     """Global prompt used in every node of the conversation flow."""
 
+    is_transfer_llm: Optional[bool]
+    """Whether this conversation flow is used for transfer LLM."""
+
     kb_config: KBConfig
     """Knowledge base configuration for RAG retrieval."""
 
