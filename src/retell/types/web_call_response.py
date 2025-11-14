@@ -684,3 +684,12 @@ class WebCallResponse(BaseModel):
     It precisely captures when (at what utterance, which word) the tool was invoked
     and what was the result. Available after call ends.
     """
+
+    transfer_destination: Optional[str] = None
+    """The destination number or identifier where the call was transferred to.
+
+    Only populated when the disconnection reason was `call_transfer`. Can be a phone
+    number or a SIP URI. SIP URIs are prefixed with "sip:" and may include a
+    ";transport=..." portion (if transport is known) where the transport type can be
+    "tls", "tcp", "udp", or "auto".
+    """
