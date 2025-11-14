@@ -967,7 +967,7 @@ class ComponentNodeConversationNode(BaseModel):
     knowledge_base_ids: Optional[List[str]] = None
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
-    llm_choice: Optional[ComponentNodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[ComponentNodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -1333,7 +1333,7 @@ class ComponentNodeFunctionNode(BaseModel):
 
     interruption_sensitivity: Optional[float] = None
 
-    llm_choice: Optional[ComponentNodeFunctionNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[ComponentNodeFunctionNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -1710,7 +1710,7 @@ class ComponentNodeTransferCallNode(BaseModel):
     using Retell Telephony. If omitted, the default value is false.
     """
 
-    llm_choice: Optional[ComponentNodeTransferCallNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[ComponentNodeTransferCallNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -1951,7 +1951,7 @@ class ComponentNodePressDigitNode(BaseModel):
 
     global_node_setting: Optional[ComponentNodePressDigitNodeGlobalNodeSetting] = None
 
-    llm_choice: Optional[ComponentNodePressDigitNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[ComponentNodePressDigitNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -2739,7 +2739,7 @@ class ComponentNodeExtractDynamicVariablesNode(BaseModel):
 
     global_node_setting: Optional[ComponentNodeExtractDynamicVariablesNodeGlobalNodeSetting] = None
 
-    llm_choice: Optional[ComponentNodeExtractDynamicVariablesNodeModelChoice] = FieldInfo(
+    api_model_choice: Optional[ComponentNodeExtractDynamicVariablesNodeModelChoice] = FieldInfo(
         alias="model_choice", default=None
     )
 
@@ -3975,7 +3975,7 @@ class NodeConversationNode(BaseModel):
     knowledge_base_ids: Optional[List[str]] = None
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
-    llm_choice: Optional[NodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[NodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -4339,7 +4339,7 @@ class NodeFunctionNode(BaseModel):
 
     interruption_sensitivity: Optional[float] = None
 
-    llm_choice: Optional[NodeFunctionNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[NodeFunctionNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -4708,7 +4708,7 @@ class NodeTransferCallNode(BaseModel):
     using Retell Telephony. If omitted, the default value is false.
     """
 
-    llm_choice: Optional[NodeTransferCallNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[NodeTransferCallNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -4944,7 +4944,7 @@ class NodePressDigitNode(BaseModel):
 
     global_node_setting: Optional[NodePressDigitNodeGlobalNodeSetting] = None
 
-    llm_choice: Optional[NodePressDigitNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[NodePressDigitNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -5729,7 +5729,9 @@ class NodeExtractDynamicVariablesNode(BaseModel):
 
     global_node_setting: Optional[NodeExtractDynamicVariablesNodeGlobalNodeSetting] = None
 
-    llm_choice: Optional[NodeExtractDynamicVariablesNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[NodeExtractDynamicVariablesNodeModelChoice] = FieldInfo(
+        alias="model_choice", default=None
+    )
 
     name: Optional[str] = None
     """Optional name for display purposes"""
