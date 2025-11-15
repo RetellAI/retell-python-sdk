@@ -672,7 +672,7 @@ class ConversationFlowUpdateParams(TypedDict, total=False):
     tool_call_strict_mode: Optional[bool]
     """Whether to use strict mode for tool calls.
 
-    Only applicable when using structured output models.
+    Only applicable when using certain supported models.
     """
 
     tools: Optional[Iterable[Tool]]

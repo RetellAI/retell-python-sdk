@@ -115,8 +115,8 @@ class ConversationFlowResource(SyncAPIResource):
 
           start_node_id: ID of the start node in the conversation flow.
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using structured
-              output models.
+          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
+              supported models.
 
           tools: Tools available in the conversation flow.
 
@@ -266,8 +266,8 @@ class ConversationFlowResource(SyncAPIResource):
 
           start_speaker: Who starts the conversation - user or agent.
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using structured
-              output models.
+          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
+              supported models.
 
           tools: Tools available in the conversation flow.
 
@@ -497,8 +497,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           start_node_id: ID of the start node in the conversation flow.
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using structured
-              output models.
+          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
+              supported models.
 
           tools: Tools available in the conversation flow.
 
@@ -648,8 +648,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           start_speaker: Who starts the conversation - user or agent.
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using structured
-              output models.
+          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
+              supported models.
 
           tools: Tools available in the conversation flow.
 
