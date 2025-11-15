@@ -6597,7 +6597,7 @@ class ConversationFlowResponse(BaseModel):
     tool_call_strict_mode: Optional[bool] = None
     """Whether to use strict mode for tool calls.
 
-    Only applicable when using structured output models.
+    Only applicable when using certain supported models.
     """
 
     tools: Optional[List[Tool]] = None

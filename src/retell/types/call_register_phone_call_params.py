@@ -41,9 +41,10 @@ class CallRegisterPhoneCallParams(TypedDict, total=False):
     """The agent to use for the call."""
 
     agent_override: AgentOverride
-    """
-    Override configuration for agent, retell LLM, or conversation flow settings for
-    a specific call.
+    """For this particular call, override agent configuration with these settings.
+
+    This allows you to customize agent behavior for individual calls without
+    modifying the base agent.
     """
 
     agent_version: int
@@ -680,6 +681,12 @@ class AgentOverrideConversationFlow(TypedDict, total=False):
     start_speaker: Literal["user", "agent"]
     """Who starts the conversation - user or agent."""
 
+    tool_call_strict_mode: Optional[bool]
+    """Whether to use strict mode for tool calls.
+
+    Only applicable when using certain supported models.
+    """
+
 
 class AgentOverrideRetellLlmKBConfig(TypedDict, total=False):
     filter_score: float
@@ -731,6 +738,13 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
     ]
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""
 
+    model_high_priority: Optional[bool]
+    """
+    If set to true, will use high priority pool with more dedicated resource to
+    ensure lower and more consistent latency, default to false. This feature usually
+    comes with a higher cost.
+    """
+
     model_temperature: float
     """If set, will control the randomness of the response.
 
@@ -751,6 +765,12 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
     Required. Must be either 'user' or 'agent'.
     """
 
+    tool_call_strict_mode: Optional[bool]
+    """Whether to use strict mode for tool calls.
+
+    Only applicable when using certain supported models.
+    """
+
 
 class AgentOverride(TypedDict, total=False):
     agent: AgentOverrideAgent
@@ -764,14 +784,15 @@ class AgentOverride(TypedDict, total=False):
     """Override conversation flow configuration settings.
 
     Only applicable when using conversation flow as the response engine. Supported
-    attributes - model_choice, model_temperature, knowledge_base_ids, kb_config,
-    start_speaker, begin_after_user_silence_ms.
+    attributes - model_choice, model_temperature, tool_call_strict_mode,
+    knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms.
     """
 
     retell_llm: AgentOverrideRetellLlm
     """Override Retell LLM configuration settings.
 
     Only applicable when using Retell LLM as the response engine. Supported
-    attributes - model, s2s_model, model_temperature, knowledge_base_ids, kb_config,
-    start_speaker, begin_after_user_silence_ms, begin_message.
+    attributes - model, s2s_model, model_temperature, model_high_priority,
+    tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker,
+    begin_after_user_silence_ms, begin_message.
     """
