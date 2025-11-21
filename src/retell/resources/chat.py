@@ -2,11 +2,17 @@
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Optional
+from typing_extensions import Literal
 
 import httpx
 
-from ..types import chat_create_params, chat_create_sms_chat_params, chat_create_chat_completion_params
+from ..types import (
+    chat_create_params,
+    chat_update_params,
+    chat_create_sms_chat_params,
+    chat_create_chat_completion_params,
+)
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -128,6 +134,64 @@ class ChatResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `chat_id` but received {chat_id!r}")
         return self._get(
             f"/get-chat/{chat_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ChatResponse,
+        )
+
+    def update(
+        self,
+        chat_id: str,
+        *,
+        data_storage_setting: Literal["everything", "basic_attributes_only"] | Omit = omit,
+        metadata: object | Omit = omit,
+        override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ChatResponse:
+        """
+        Update metadata and sensitive data storage settings for an existing chat.
+
+        Args:
+          data_storage_setting: Data storage setting for this chat. Overrides the agent's default setting.
+              "everything" stores all data, "basic_attributes_only" stores only metadata.
+              Cannot be downgraded from more restrictive to less restrictive settings.
+
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the chat. Not used for processing. You
+              can later get this field from the chat object. Size limited to 50kB max.
+
+          override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
+              this will override or add the dynamic variables set in the agent during the
+              call. Only need to set the delta where you want to override, no need to set the
+              entire dynamic variables object. Setting this to null will remove any existing
+              override.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not chat_id:
+            raise ValueError(f"Expected a non-empty value for `chat_id` but received {chat_id!r}")
+        return self._patch(
+            f"/update-chat/{chat_id}",
+            body=maybe_transform(
+                {
+                    "data_storage_setting": data_storage_setting,
+                    "metadata": metadata,
+                    "override_dynamic_variables": override_dynamic_variables,
+                },
+                chat_update_params.ChatUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -409,6 +473,64 @@ class AsyncChatResource(AsyncAPIResource):
             cast_to=ChatResponse,
         )
 
+    async def update(
+        self,
+        chat_id: str,
+        *,
+        data_storage_setting: Literal["everything", "basic_attributes_only"] | Omit = omit,
+        metadata: object | Omit = omit,
+        override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ChatResponse:
+        """
+        Update metadata and sensitive data storage settings for an existing chat.
+
+        Args:
+          data_storage_setting: Data storage setting for this chat. Overrides the agent's default setting.
+              "everything" stores all data, "basic_attributes_only" stores only metadata.
+              Cannot be downgraded from more restrictive to less restrictive settings.
+
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the chat. Not used for processing. You
+              can later get this field from the chat object. Size limited to 50kB max.
+
+          override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
+              this will override or add the dynamic variables set in the agent during the
+              call. Only need to set the delta where you want to override, no need to set the
+              entire dynamic variables object. Setting this to null will remove any existing
+              override.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not chat_id:
+            raise ValueError(f"Expected a non-empty value for `chat_id` but received {chat_id!r}")
+        return await self._patch(
+            f"/update-chat/{chat_id}",
+            body=await async_maybe_transform(
+                {
+                    "data_storage_setting": data_storage_setting,
+                    "metadata": metadata,
+                    "override_dynamic_variables": override_dynamic_variables,
+                },
+                chat_update_params.ChatUpdateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ChatResponse,
+        )
+
     async def list(
         self,
         *,
@@ -585,6 +707,9 @@ class ChatResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             chat.retrieve,
         )
+        self.update = to_raw_response_wrapper(
+            chat.update,
+        )
         self.list = to_raw_response_wrapper(
             chat.list,
         )
@@ -608,6 +733,9 @@ class AsyncChatResourceWithRawResponse:
         )
         self.retrieve = async_to_raw_response_wrapper(
             chat.retrieve,
+        )
+        self.update = async_to_raw_response_wrapper(
+            chat.update,
         )
         self.list = async_to_raw_response_wrapper(
             chat.list,
@@ -633,6 +761,9 @@ class ChatResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             chat.retrieve,
         )
+        self.update = to_streamed_response_wrapper(
+            chat.update,
+        )
         self.list = to_streamed_response_wrapper(
             chat.list,
         )
@@ -656,6 +787,9 @@ class AsyncChatResourceWithStreamingResponse:
         )
         self.retrieve = async_to_streamed_response_wrapper(
             chat.retrieve,
+        )
+        self.update = async_to_streamed_response_wrapper(
+            chat.update,
         )
         self.list = async_to_streamed_response_wrapper(
             chat.list,

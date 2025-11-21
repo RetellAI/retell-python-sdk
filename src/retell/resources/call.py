@@ -119,7 +119,8 @@ class CallResource(SyncAPIResource):
           override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
               this will override or add the dynamic variables set in the agent during the
               call. Only need to set the delta where you want to override, no need to set the
-              entire dynamic variables object.
+              entire dynamic variables object. Setting this to null will remove any existing
+              override.
 
           extra_headers: Send extra headers
 
@@ -548,7 +549,8 @@ class AsyncCallResource(AsyncAPIResource):
           override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
               this will override or add the dynamic variables set in the agent during the
               call. Only need to set the delta where you want to override, no need to set the
-              entire dynamic variables object.
+              entire dynamic variables object. Setting this to null will remove any existing
+              override.
 
           extra_headers: Send extra headers
 

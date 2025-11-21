@@ -18,6 +18,7 @@ from .call_list_response import CallListResponse as CallListResponse
 from .call_update_params import CallUpdateParams as CallUpdateParams
 from .chat_create_params import ChatCreateParams as ChatCreateParams
 from .chat_list_response import ChatListResponse as ChatListResponse
+from .chat_update_params import ChatUpdateParams as ChatUpdateParams
 from .agent_create_params import AgentCreateParams as AgentCreateParams
 from .agent_list_response import AgentListResponse as AgentListResponse
 from .agent_update_params import AgentUpdateParams as AgentUpdateParams

@@ -5,24 +5,23 @@ from __future__ import annotations
 from typing import Dict, Optional
 from typing_extensions import Literal, TypedDict
 
-__all__ = ["CallUpdateParams"]
+__all__ = ["ChatUpdateParams"]
 
 
-class CallUpdateParams(TypedDict, total=False):
-    data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
-    """Data storage setting for this call.
+class ChatUpdateParams(TypedDict, total=False):
+    data_storage_setting: Literal["everything", "basic_attributes_only"]
+    """Data storage setting for this chat.
 
     Overrides the agent's default setting. "everything" stores all data,
-    "everything_except_pii" excludes PII when possible, "basic_attributes_only"
-    stores only metadata. Cannot be downgraded from more restrictive to less
-    restrictive settings.
+    "basic_attributes_only" stores only metadata. Cannot be downgraded from more
+    restrictive to less restrictive settings.
     """
 
     metadata: object
     """An arbitrary object for storage purpose only.
 
     You can put anything here like your internal customer id associated with the
-    call. Not used for processing. You can later get this field from the call
+    chat. Not used for processing. You can later get this field from the chat
     object. Size limited to 50kB max.
     """
 
