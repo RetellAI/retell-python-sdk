@@ -158,11 +158,11 @@ class LlmUpdateParams(TypedDict, total=False):
     ]
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""
 
-    model_high_priority: bool
+    model_high_priority: Optional[bool]
     """
-    If set to true, will enable fast tier, which uses high priority pool with more
-    dedicated resource to ensure lower and more consistent latency, default to
-    false. This feature usually comes with a higher cost.
+    If set to true, will use high priority pool with more dedicated resource to
+    ensure lower and more consistent latency, default to false. This feature usually
+    comes with a higher cost.
     """
 
     model_temperature: float
@@ -198,12 +198,10 @@ class LlmUpdateParams(TypedDict, total=False):
     one state).
     """
 
-    tool_call_strict_mode: bool
-    """Only applicable when model is gpt-4o or gpt-4o mini.
+    tool_call_strict_mode: Optional[bool]
+    """Whether to use strict mode for tool calls.
 
-    If set to true, will use structured output to make sure tool call arguments
-    follow the json schema. The time to save a new tool or change to a tool will be
-    longer as additional processing is needed. Default to false.
+    Only applicable when using certain supported models.
     """
 
     body_version: Annotated[Optional[int], PropertyInfo(alias="version")]

@@ -101,6 +101,57 @@ class TestChat:
             )
 
     @parametrize
+    def test_method_update(self, client: Retell) -> None:
+        chat = client.chat.update(
+            chat_id="chat_98c1a2157aa0559144d67bb0729",
+        )
+        assert_matches_type(ChatResponse, chat, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Retell) -> None:
+        chat = client.chat.update(
+            chat_id="chat_98c1a2157aa0559144d67bb0729",
+            data_storage_setting="everything",
+            metadata={
+                "customer_id": "cust_123",
+                "notes": "Follow-up required",
+            },
+            override_dynamic_variables={"additional_discount": "15%"},
+        )
+        assert_matches_type(ChatResponse, chat, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: Retell) -> None:
+        response = client.chat.with_raw_response.update(
+            chat_id="chat_98c1a2157aa0559144d67bb0729",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat = response.parse()
+        assert_matches_type(ChatResponse, chat, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Retell) -> None:
+        with client.chat.with_streaming_response.update(
+            chat_id="chat_98c1a2157aa0559144d67bb0729",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat = response.parse()
+            assert_matches_type(ChatResponse, chat, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
+            client.chat.with_raw_response.update(
+                chat_id="",
+            )
+
+    @parametrize
     def test_method_list(self, client: Retell) -> None:
         chat = client.chat.list()
         assert_matches_type(ChatListResponse, chat, path=["response"])
@@ -326,6 +377,57 @@ class TestAsyncChat:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
             await async_client.chat.with_raw_response.retrieve(
                 "",
+            )
+
+    @parametrize
+    async def test_method_update(self, async_client: AsyncRetell) -> None:
+        chat = await async_client.chat.update(
+            chat_id="chat_98c1a2157aa0559144d67bb0729",
+        )
+        assert_matches_type(ChatResponse, chat, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
+        chat = await async_client.chat.update(
+            chat_id="chat_98c1a2157aa0559144d67bb0729",
+            data_storage_setting="everything",
+            metadata={
+                "customer_id": "cust_123",
+                "notes": "Follow-up required",
+            },
+            override_dynamic_variables={"additional_discount": "15%"},
+        )
+        assert_matches_type(ChatResponse, chat, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncRetell) -> None:
+        response = await async_client.chat.with_raw_response.update(
+            chat_id="chat_98c1a2157aa0559144d67bb0729",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat = await response.parse()
+        assert_matches_type(ChatResponse, chat, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncRetell) -> None:
+        async with async_client.chat.with_streaming_response.update(
+            chat_id="chat_98c1a2157aa0559144d67bb0729",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat = await response.parse()
+            assert_matches_type(ChatResponse, chat, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
+            await async_client.chat.with_raw_response.update(
+                chat_id="",
             )
 
     @parametrize

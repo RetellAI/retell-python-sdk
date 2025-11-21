@@ -2,10 +2,39 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable
-from typing_extensions import Required, TypedDict
+from typing import Dict, List, Union, Iterable, Optional
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
-__all__ = ["BatchCallCreateBatchCallParams", "Task"]
+from .._types import SequenceNotStr
+
+__all__ = [
+    "BatchCallCreateBatchCallParams",
+    "Task",
+    "TaskAgentOverride",
+    "TaskAgentOverrideAgent",
+    "TaskAgentOverrideAgentPiiConfig",
+    "TaskAgentOverrideAgentPostCallAnalysisData",
+    "TaskAgentOverrideAgentPostCallAnalysisDataStringAnalysisData",
+    "TaskAgentOverrideAgentPostCallAnalysisDataEnumAnalysisData",
+    "TaskAgentOverrideAgentPostCallAnalysisDataBooleanAnalysisData",
+    "TaskAgentOverrideAgentPostCallAnalysisDataNumberAnalysisData",
+    "TaskAgentOverrideAgentPronunciationDictionary",
+    "TaskAgentOverrideAgentResponseEngine",
+    "TaskAgentOverrideAgentResponseEngineResponseEngineRetellLm",
+    "TaskAgentOverrideAgentResponseEngineResponseEngineCustomLm",
+    "TaskAgentOverrideAgentResponseEngineResponseEngineConversationFlow",
+    "TaskAgentOverrideAgentUserDtmfOptions",
+    "TaskAgentOverrideAgentVoicemailOption",
+    "TaskAgentOverrideAgentVoicemailOptionAction",
+    "TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionPrompt",
+    "TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionStaticText",
+    "TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionHangup",
+    "TaskAgentOverrideConversationFlow",
+    "TaskAgentOverrideConversationFlowKBConfig",
+    "TaskAgentOverrideConversationFlowModelChoice",
+    "TaskAgentOverrideRetellLlm",
+    "TaskAgentOverrideRetellLlmKBConfig",
+]
 
 
 class BatchCallCreateBatchCallParams(TypedDict, total=False):
@@ -33,12 +62,742 @@ class BatchCallCreateBatchCallParams(TypedDict, total=False):
     """
 
 
+class TaskAgentOverrideAgentPiiConfig(TypedDict, total=False):
+    categories: Required[
+        List[
+            Literal[
+                "person_name",
+                "address",
+                "email",
+                "phone_number",
+                "ssn",
+                "passport",
+                "driver_license",
+                "credit_card",
+                "bank_account",
+                "password",
+                "pin",
+                "medical_id",
+                "date_of_birth",
+            ]
+        ]
+    ]
+    """List of PII categories to scrub from transcripts and recordings."""
+
+    mode: Required[Literal["post_call"]]
+    """The processing mode for PII scrubbing. Currently only post-call is supported."""
+
+
+class TaskAgentOverrideAgentPostCallAnalysisDataStringAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["string"]]
+    """Type of the variable to extract."""
+
+    examples: SequenceNotStr[str]
+    """Examples of the variable value to teach model the style and syntax."""
+
+
+class TaskAgentOverrideAgentPostCallAnalysisDataEnumAnalysisData(TypedDict, total=False):
+    choices: Required[SequenceNotStr[str]]
+    """The possible values of the variable, must be non empty array."""
+
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["enum"]]
+    """Type of the variable to extract."""
+
+
+class TaskAgentOverrideAgentPostCallAnalysisDataBooleanAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["boolean"]]
+    """Type of the variable to extract."""
+
+
+class TaskAgentOverrideAgentPostCallAnalysisDataNumberAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["number"]]
+    """Type of the variable to extract."""
+
+
+TaskAgentOverrideAgentPostCallAnalysisData: TypeAlias = Union[
+    TaskAgentOverrideAgentPostCallAnalysisDataStringAnalysisData,
+    TaskAgentOverrideAgentPostCallAnalysisDataEnumAnalysisData,
+    TaskAgentOverrideAgentPostCallAnalysisDataBooleanAnalysisData,
+    TaskAgentOverrideAgentPostCallAnalysisDataNumberAnalysisData,
+]
+
+
+class TaskAgentOverrideAgentPronunciationDictionary(TypedDict, total=False):
+    alphabet: Required[Literal["ipa", "cmu"]]
+    """The phonetic alphabet to be used for pronunciation."""
+
+    phoneme: Required[str]
+    """Pronunciation of the word in the format of a IPA / CMU pronunciation."""
+
+    word: Required[str]
+    """The string of word / phrase to be annotated with pronunciation."""
+
+
+class TaskAgentOverrideAgentResponseEngineResponseEngineRetellLm(TypedDict, total=False):
+    llm_id: Required[str]
+    """id of the Retell LLM Response Engine."""
+
+    type: Required[Literal["retell-llm"]]
+    """type of the Response Engine."""
+
+    version: Optional[float]
+    """Version of the Retell LLM Response Engine."""
+
+
+class TaskAgentOverrideAgentResponseEngineResponseEngineCustomLm(TypedDict, total=False):
+    llm_websocket_url: Required[str]
+    """LLM websocket url of the custom LLM."""
+
+    type: Required[Literal["custom-llm"]]
+    """type of the Response Engine."""
+
+
+class TaskAgentOverrideAgentResponseEngineResponseEngineConversationFlow(TypedDict, total=False):
+    conversation_flow_id: Required[str]
+    """ID of the Conversation Flow Response Engine."""
+
+    type: Required[Literal["conversation-flow"]]
+    """type of the Response Engine."""
+
+    version: Optional[float]
+    """Version of the Conversation Flow Response Engine."""
+
+
+TaskAgentOverrideAgentResponseEngine: TypeAlias = Union[
+    TaskAgentOverrideAgentResponseEngineResponseEngineRetellLm,
+    TaskAgentOverrideAgentResponseEngineResponseEngineCustomLm,
+    TaskAgentOverrideAgentResponseEngineResponseEngineConversationFlow,
+]
+
+
+class TaskAgentOverrideAgentUserDtmfOptions(TypedDict, total=False):
+    digit_limit: Optional[int]
+    """
+    The maximum number of digits allowed in the user's DTMF (Dual-Tone
+    Multi-Frequency) input per turn. Once this limit is reached, the input is
+    considered complete and a response will be generated immediately.
+    """
+
+    termination_key: Optional[str]
+    """A single key that signals the end of DTMF input.
+
+    Acceptable values include any digit (0–9), the pound/hash symbol (#), or the
+    asterisk (\\**).
+    """
+
+    timeout_ms: int
+    """The time (in milliseconds) to wait for user DTMF input before timing out.
+
+    The timer resets with each digit received.
+    """
+
+
+class TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """
+    The prompt used to generate the text to be spoken when the call is detected to
+    be in voicemail.
+    """
+
+    type: Required[Literal["prompt"]]
+
+
+class TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The text to be spoken when the call is detected to be in voicemail."""
+
+    type: Required[Literal["static_text"]]
+
+
+class TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionHangup(TypedDict, total=False):
+    type: Required[Literal["hangup"]]
+
+
+TaskAgentOverrideAgentVoicemailOptionAction: TypeAlias = Union[
+    TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionPrompt,
+    TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionStaticText,
+    TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionHangup,
+]
+
+
+class TaskAgentOverrideAgentVoicemailOption(TypedDict, total=False):
+    action: Required[TaskAgentOverrideAgentVoicemailOptionAction]
+
+
+class TaskAgentOverrideAgent(TypedDict, total=False):
+    agent_name: Optional[str]
+    """The name of the agent. Only used for your own reference."""
+
+    allow_user_dtmf: bool
+    """If set to true, DTMF input will be accepted and processed.
+
+    If false, any DTMF input will be ignored. Default to true.
+    """
+
+    ambient_sound: Optional[
+        Literal["coffee-shop", "convention-hall", "summer-outdoor", "mountain-outdoor", "static-noise", "call-center"]
+    ]
+    """
+    If set, will add ambient environment sound to the call to make experience more
+    realistic. Currently supports the following options:
+
+    - `coffee-shop`: Coffee shop ambience with people chatting in background.
+      [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/coffee-shop.wav)
+
+    - `convention-hall`: Convention hall ambience, with some echo and people
+      chatting in background.
+      [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/convention-hall.wav)
+
+    - `summer-outdoor`: Summer outdoor ambience with cicada chirping.
+      [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/summer-outdoor.wav)
+
+    - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
+      [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
+
+    - `static-noise`: Constant static noise.
+      [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
+
+    - `call-center`: Call center work noise.
+      [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
+
+    Set to `null` to remove ambient sound from this agent.
+    """
+
+    ambient_sound_volume: float
+    """If set, will control the volume of the ambient sound.
+
+    Value ranging from [0,2]. Lower value means quieter ambient sound, while higher
+    value means louder ambient sound. If unset, default value 1 will apply.
+    """
+
+    backchannel_frequency: float
+    """Only applicable when enable_backchannel is true.
+
+    Controls how often the agent would backchannel when a backchannel is possible.
+    Value ranging from [0,1]. Lower value means less frequent backchannel, while
+    higher value means more frequent backchannel. If unset, default value 0.8 will
+    apply.
+    """
+
+    backchannel_words: Optional[SequenceNotStr[str]]
+    """Only applicable when enable_backchannel is true.
+
+    A list of words that the agent would use as backchannel. If not set, default
+    backchannel words will apply. Check out
+    [backchannel default words](/agent/interaction-configuration#backchannel) for
+    more details. Note that certain voices do not work too well with certain words,
+    so it's recommended to experiment before adding any words.
+    """
+
+    begin_message_delay_ms: int
+    """
+    If set, will delay the first message by the specified amount of milliseconds, so
+    that it gives user more time to prepare to take the call. Valid range is [0,
+    5000]. If not set or set to 0, agent will speak immediately. Only applicable
+    when agent speaks first.
+    """
+
+    boosted_keywords: Optional[SequenceNotStr[str]]
+    """
+    Provide a customized list of keywords to bias the transcriber model, so that
+    these words are more likely to get transcribed. Commonly used for names, brands,
+    street, etc.
+    """
+
+    data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
+    """
+    Granular setting to manage how Retell stores sensitive data (transcripts,
+    recordings, logs, etc.). This replaces the deprecated
+    `opt_out_sensitive_data_storage` field.
+
+    - `everything`: Store all data including transcripts, recordings, and logs.
+    - `everything_except_pii`: Store data without PII when PII is detected.
+    - `basic_attributes_only`: Store only basic attributes; no
+      transcripts/recordings/logs. If not set, default value of "everything" will
+      apply.
+    """
+
+    denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"]
+    """If set, determines what denoising mode to use. Default to noise-cancellation."""
+
+    enable_backchannel: bool
+    """
+    Controls whether the agent would backchannel (agent interjects the speaker with
+    phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
+    when enabled tends to show up more in longer user utterances. If not set, agent
+    will not backchannel.
+    """
+
+    end_call_after_silence_ms: int
+    """If users stay silent for a period after agent speech, end the call.
+
+    The minimum value allowed is 10,000 ms (10 s). By default, this is set to 600000
+    (10 min).
+    """
+
+    fallback_voice_ids: Optional[SequenceNotStr[str]]
+    """
+    When TTS provider for the selected voice is experiencing outages, we would use
+    fallback voices listed here for the agent. Voice id and the fallback voice ids
+    must be from different TTS providers. The system would go through the list in
+    order, if the first one in the list is also having outage, it would use the next
+    one. Set to null to remove voice fallback for the agent.
+    """
+
+    interruption_sensitivity: float
+    """Controls how sensitive the agent is to user interruptions.
+
+    Value ranging from [0,1]. Lower value means it will take longer / more words for
+    user to interrupt agent, while higher value means it's easier for user to
+    interrupt agent. If unset, default value 1 will apply. When this is set to 0,
+    agent would never be interrupted.
+    """
+
+    language: Literal[
+        "en-US",
+        "en-IN",
+        "en-GB",
+        "en-AU",
+        "en-NZ",
+        "de-DE",
+        "es-ES",
+        "es-419",
+        "hi-IN",
+        "fr-FR",
+        "fr-CA",
+        "ja-JP",
+        "pt-PT",
+        "pt-BR",
+        "zh-CN",
+        "ru-RU",
+        "it-IT",
+        "ko-KR",
+        "nl-NL",
+        "nl-BE",
+        "pl-PL",
+        "tr-TR",
+        "th-TH",
+        "vi-VN",
+        "ro-RO",
+        "bg-BG",
+        "ca-ES",
+        "da-DK",
+        "fi-FI",
+        "el-GR",
+        "hu-HU",
+        "id-ID",
+        "no-NO",
+        "sk-SK",
+        "sv-SE",
+        "multi",
+    ]
+    """Specifies what language (and dialect) the speech recognition will operate in.
+
+    For instance, selecting `en-GB` optimizes speech recognition for British
+    English. If unset, will use default value `en-US`. Select `multi` for
+    multilingual support, currently this supports Spanish and English.
+    """
+
+    max_call_duration_ms: int
+    """Maximum allowed length for the call, will force end the call if reached.
+
+    The minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
+    7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
+    """
+
+    normalize_for_speech: bool
+    """
+    If set to true, will normalize the some part of text (number, currency, date,
+    etc) to spoken to its spoken form for more consistent speech synthesis
+    (sometimes the voice synthesize system itself might read these wrong with the
+    raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
+    2024 for the $24.12 payment" to "Call my number two one three seven one one two
+    three four two on july fifth, twenty twenty four for the twenty four dollars
+    twelve cents payment" before starting audio generation.
+    """
+
+    opt_in_signed_url: bool
+    """Whether this agent opts in for signed URLs for public logs and recordings.
+
+    When enabled, the generated URLs will include security signatures that restrict
+    access and automatically expire after 24 hours.
+    """
+
+    pii_config: TaskAgentOverrideAgentPiiConfig
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
+    post_call_analysis_data: Optional[Iterable[TaskAgentOverrideAgentPostCallAnalysisData]]
+    """Post call analysis data to extract from the call.
+
+    This data will augment the pre-defined variables extracted in the call analysis.
+    This will be available after the call ends.
+    """
+
+    post_call_analysis_model: Literal[
+        "gpt-4o",
+        "gpt-4o-mini",
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-4.1-nano",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "claude-4.5-sonnet",
+        "claude-4.0-sonnet",
+        "claude-3.7-sonnet",
+        "claude-3.5-haiku",
+        "gemini-2.0-flash",
+        "gemini-2.0-flash-lite",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+    ]
+    """The model to use for post call analysis. Default to gpt-4o-mini."""
+
+    pronunciation_dictionary: Optional[Iterable[TaskAgentOverrideAgentPronunciationDictionary]]
+    """
+    A list of words / phrases and their pronunciation to be used to guide the audio
+    synthesize for consistent pronunciation. Currently only supported for English &
+    11labs voices. Set to null to remove pronunciation dictionary from this agent.
+    """
+
+    reminder_max_count: int
+    """
+    If set, controls how many times agent would remind user when user is
+    unresponsive. Must be a non negative integer. If unset, default value of 1 will
+    apply (remind once). Set to 0 to disable agent from reminding.
+    """
+
+    reminder_trigger_ms: float
+    """
+    If set (in milliseconds), will trigger a reminder to the agent to speak if the
+    user has been silent for the specified duration after some agent speech. Must be
+    a positive number. If unset, default value of 10000 ms (10 s) will apply.
+    """
+
+    response_engine: TaskAgentOverrideAgentResponseEngine
+    """The Response Engine to attach to the agent.
+
+    It is used to generate responses for the agent. You need to create a Response
+    Engine first before attaching it to an agent.
+    """
+
+    responsiveness: float
+    """Controls how responsive is the agent.
+
+    Value ranging from [0,1]. Lower value means less responsive agent (wait more,
+    respond slower), while higher value means faster exchanges (respond when it
+    can). If unset, default value 1 will apply.
+    """
+
+    ring_duration_ms: int
+    """If set, the phone ringing will last for the specified amount of milliseconds.
+
+    This applies for both outbound call ringtime, and call transfer ringtime.
+    Default to 30000 (30 s). Valid range is [5000, 90000].
+    """
+
+    stt_mode: Literal["fast", "accurate"]
+    """If set, determines whether speech to text should focus on latency or accuracy.
+
+    Default to fast mode.
+    """
+
+    user_dtmf_options: Optional[TaskAgentOverrideAgentUserDtmfOptions]
+
+    vocab_specialization: Literal["general", "medical"]
+    """If set, determines the vocabulary set to use for transcription.
+
+    This setting only applies for English agents, for non English agent, this
+    setting is a no-op. Default to general.
+    """
+
+    voice_id: str
+    """Unique voice id used for the agent.
+
+    Find list of available voices and their preview in Dashboard.
+    """
+
+    voice_model: Optional[
+        Literal[
+            "eleven_turbo_v2",
+            "eleven_flash_v2",
+            "eleven_turbo_v2_5",
+            "eleven_flash_v2_5",
+            "eleven_multilingual_v2",
+            "tts-1",
+            "gpt-4o-mini-tts",
+        ]
+    ]
+    """Optionally set the voice model used for the selected voice.
+
+    Currently only elevenlab voices have voice model selections. Set to null to
+    remove voice model selection, and default ones will apply. Check out the
+    dashboard for details on each voice model.
+    """
+
+    voice_speed: float
+    """Controls speed of voice.
+
+    Value ranging from [0.5,2]. Lower value means slower speech, while higher value
+    means faster speech rate. If unset, default value 1 will apply.
+    """
+
+    voice_temperature: float
+    """Controls how stable the voice is.
+
+    Value ranging from [0,2]. Lower value means more stable, and higher value means
+    more variant speech generation. Currently this setting only applies to `11labs`
+    voices. If unset, default value 1 will apply.
+    """
+
+    voicemail_option: Optional[TaskAgentOverrideAgentVoicemailOption]
+    """
+    If this option is set, the call will try to detect voicemail in the first 3
+    minutes of the call. Actions defined (hangup, or leave a message) will be
+    applied when the voicemail is detected. Set this to null to disable voicemail
+    detection.
+    """
+
+    volume: float
+    """If set, will control the volume of the agent.
+
+    Value ranging from [0,2]. Lower value means quieter agent speech, while higher
+    value means louder agent speech. If unset, default value 1 will apply.
+    """
+
+    webhook_timeout_ms: int
+    """The timeout for the webhook in milliseconds.
+
+    If not set, default value of 10000 will apply.
+    """
+
+    webhook_url: Optional[str]
+    """The webhook for agent to listen to call events.
+
+    See what events it would get at [webhook doc](/features/webhook). If set, will
+    binds webhook events for this agent to the specified url, and will ignore the
+    account level webhook for this agent. Set to `null` to remove webhook url from
+    this agent.
+    """
+
+
+class TaskAgentOverrideConversationFlowKBConfig(TypedDict, total=False):
+    filter_score: float
+    """Similarity threshold for filtering search results"""
+
+    top_k: int
+    """Max number of knowledge base chunks to retrieve"""
+
+
+class TaskAgentOverrideConversationFlowModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-4o",
+            "gpt-4o-mini",
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "claude-3.7-sonnet",
+            "claude-3.5-haiku",
+            "gemini-2.0-flash",
+            "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class TaskAgentOverrideConversationFlow(TypedDict, total=False):
+    begin_after_user_silence_ms: Optional[int]
+    """
+    If set, the AI will begin the conversation after waiting for the user for the
+    duration (in milliseconds) specified by this attribute. This only applies if the
+    agent is configured to wait for the user to speak first. If not set, the agent
+    will wait indefinitely for the user to speak.
+    """
+
+    kb_config: TaskAgentOverrideConversationFlowKBConfig
+    """Knowledge base configuration for RAG retrieval."""
+
+    knowledge_base_ids: Optional[SequenceNotStr[str]]
+    """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
+
+    model_choice: TaskAgentOverrideConversationFlowModelChoice
+    """The model choice for the conversation flow."""
+
+    model_temperature: Optional[float]
+    """Controls the randomness of the model's responses.
+
+    Lower values make responses more deterministic.
+    """
+
+    start_speaker: Literal["user", "agent"]
+    """Who starts the conversation - user or agent."""
+
+    tool_call_strict_mode: Optional[bool]
+    """Whether to use strict mode for tool calls.
+
+    Only applicable when using certain supported models.
+    """
+
+
+class TaskAgentOverrideRetellLlmKBConfig(TypedDict, total=False):
+    filter_score: float
+    """Similarity threshold for filtering search results"""
+
+    top_k: int
+    """Max number of knowledge base chunks to retrieve"""
+
+
+class TaskAgentOverrideRetellLlm(TypedDict, total=False):
+    begin_after_user_silence_ms: Optional[int]
+    """
+    If set, the AI will begin the conversation after waiting for the user for the
+    duration (in milliseconds) specified by this attribute. This only applies if the
+    agent is configured to wait for the user to speak first. If not set, the agent
+    will wait indefinitely for the user to speak.
+    """
+
+    begin_message: Optional[str]
+    """First utterance said by the agent in the call.
+
+    If not set, LLM will dynamically generate a message. If set to "", agent will
+    wait for user to speak first.
+    """
+
+    kb_config: Optional[TaskAgentOverrideRetellLlmKBConfig]
+    """Knowledge base configuration for RAG retrieval."""
+
+    knowledge_base_ids: Optional[SequenceNotStr[str]]
+    """A list of knowledge base ids to use for this resource."""
+
+    model: Optional[
+        Literal[
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-4o",
+            "gpt-4o-mini",
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "claude-3.7-sonnet",
+            "claude-3.5-haiku",
+            "gemini-2.0-flash",
+            "gemini-2.0-flash-lite",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+        ]
+    ]
+    """Select the underlying text LLM. If not set, would default to gpt-4.1."""
+
+    model_high_priority: Optional[bool]
+    """
+    If set to true, will use high priority pool with more dedicated resource to
+    ensure lower and more consistent latency, default to false. This feature usually
+    comes with a higher cost.
+    """
+
+    model_temperature: float
+    """If set, will control the randomness of the response.
+
+    Value ranging from [0,1]. Lower value means more deterministic, while higher
+    value means more random. If unset, default value 0 will apply. Note that for
+    tool calling, a lower value is recommended.
+    """
+
+    s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]]
+    """Select the underlying speech to speech model.
+
+    Can only set this or model, not both.
+    """
+
+    start_speaker: Literal["user", "agent"]
+    """The speaker who starts the conversation.
+
+    Required. Must be either 'user' or 'agent'.
+    """
+
+    tool_call_strict_mode: Optional[bool]
+    """Whether to use strict mode for tool calls.
+
+    Only applicable when using certain supported models.
+    """
+
+
+class TaskAgentOverride(TypedDict, total=False):
+    agent: TaskAgentOverrideAgent
+    """Override agent configuration settings.
+
+    Any properties specified here will override the base agent configuration for
+    this call.
+    """
+
+    conversation_flow: TaskAgentOverrideConversationFlow
+    """Override conversation flow configuration settings.
+
+    Only applicable when using conversation flow as the response engine. Supported
+    attributes - model_choice, model_temperature, tool_call_strict_mode,
+    knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms.
+    """
+
+    retell_llm: TaskAgentOverrideRetellLlm
+    """Override Retell LLM configuration settings.
+
+    Only applicable when using Retell LLM as the response engine. Supported
+    attributes - model, s2s_model, model_temperature, model_high_priority,
+    tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker,
+    begin_after_user_silence_ms, begin_message.
+    """
+
+
 class Task(TypedDict, total=False):
     to_number: Required[str]
     """The The number you want to call, in E.164 format.
 
     If using a number purchased from Retell, only US numbers are supported as
     destination.
+    """
+
+    agent_override: TaskAgentOverride
+    """For this particular call, override agent configuration with these settings.
+
+    This allows you to customize agent behavior for individual calls without
+    modifying the base agent.
     """
 
     ignore_e164_validation: bool

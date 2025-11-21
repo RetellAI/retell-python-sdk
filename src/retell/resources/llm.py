@@ -75,13 +75,13 @@ class LlmResource(SyncAPIResource):
             ]
         ]
         | Omit = omit,
-        model_high_priority: bool | Omit = omit,
+        model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
-        tool_call_strict_mode: bool | Omit = omit,
+        tool_call_strict_mode: Optional[bool] | Omit = omit,
         version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -130,9 +130,9 @@ class LlmResource(SyncAPIResource):
 
           model: Select the underlying text LLM. If not set, would default to gpt-4.1.
 
-          model_high_priority: If set to true, will enable fast tier, which uses high priority pool with more
-              dedicated resource to ensure lower and more consistent latency, default to
-              false. This feature usually comes with a higher cost.
+          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
+              ensure lower and more consistent latency, default to false. This feature usually
+              comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -153,10 +153,8 @@ class LlmResource(SyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
-          tool_call_strict_mode: Only applicable when model is gpt-4o or gpt-4o mini. If set to true, will use
-              structured output to make sure tool call arguments follow the json schema. The
-              time to save a new tool or change to a tool will be longer as additional
-              processing is needed. Default to false.
+          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
+              supported models.
 
           version: The version of the LLM.
 
@@ -270,13 +268,13 @@ class LlmResource(SyncAPIResource):
             ]
         ]
         | Omit = omit,
-        model_high_priority: bool | Omit = omit,
+        model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
-        tool_call_strict_mode: bool | Omit = omit,
+        tool_call_strict_mode: Optional[bool] | Omit = omit,
         body_version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -325,9 +323,9 @@ class LlmResource(SyncAPIResource):
 
           model: Select the underlying text LLM. If not set, would default to gpt-4.1.
 
-          model_high_priority: If set to true, will enable fast tier, which uses high priority pool with more
-              dedicated resource to ensure lower and more consistent latency, default to
-              false. This feature usually comes with a higher cost.
+          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
+              ensure lower and more consistent latency, default to false. This feature usually
+              comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -348,10 +346,8 @@ class LlmResource(SyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
-          tool_call_strict_mode: Only applicable when model is gpt-4o or gpt-4o mini. If set to true, will use
-              structured output to make sure tool call arguments follow the json schema. The
-              time to save a new tool or change to a tool will be longer as additional
-              processing is needed. Default to false.
+          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
+              supported models.
 
           body_version: The version of the LLM.
 
@@ -539,13 +535,13 @@ class AsyncLlmResource(AsyncAPIResource):
             ]
         ]
         | Omit = omit,
-        model_high_priority: bool | Omit = omit,
+        model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
-        tool_call_strict_mode: bool | Omit = omit,
+        tool_call_strict_mode: Optional[bool] | Omit = omit,
         version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -594,9 +590,9 @@ class AsyncLlmResource(AsyncAPIResource):
 
           model: Select the underlying text LLM. If not set, would default to gpt-4.1.
 
-          model_high_priority: If set to true, will enable fast tier, which uses high priority pool with more
-              dedicated resource to ensure lower and more consistent latency, default to
-              false. This feature usually comes with a higher cost.
+          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
+              ensure lower and more consistent latency, default to false. This feature usually
+              comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -617,10 +613,8 @@ class AsyncLlmResource(AsyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
-          tool_call_strict_mode: Only applicable when model is gpt-4o or gpt-4o mini. If set to true, will use
-              structured output to make sure tool call arguments follow the json schema. The
-              time to save a new tool or change to a tool will be longer as additional
-              processing is needed. Default to false.
+          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
+              supported models.
 
           version: The version of the LLM.
 
@@ -734,13 +728,13 @@ class AsyncLlmResource(AsyncAPIResource):
             ]
         ]
         | Omit = omit,
-        model_high_priority: bool | Omit = omit,
+        model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
         s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]] | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
-        tool_call_strict_mode: bool | Omit = omit,
+        tool_call_strict_mode: Optional[bool] | Omit = omit,
         body_version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -789,9 +783,9 @@ class AsyncLlmResource(AsyncAPIResource):
 
           model: Select the underlying text LLM. If not set, would default to gpt-4.1.
 
-          model_high_priority: If set to true, will enable fast tier, which uses high priority pool with more
-              dedicated resource to ensure lower and more consistent latency, default to
-              false. This feature usually comes with a higher cost.
+          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
+              ensure lower and more consistent latency, default to false. This feature usually
+              comes with a higher cost.
 
           model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
               Lower value means more deterministic, while higher value means more random. If
@@ -812,10 +806,8 @@ class AsyncLlmResource(AsyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
-          tool_call_strict_mode: Only applicable when model is gpt-4o or gpt-4o mini. If set to true, will use
-              structured output to make sure tool call arguments follow the json schema. The
-              time to save a new tool or change to a tool will be longer as additional
-              processing is needed. Default to false.
+          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
+              supported models.
 
           body_version: The version of the LLM.
 

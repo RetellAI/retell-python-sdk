@@ -119,7 +119,8 @@ class CallResource(SyncAPIResource):
           override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
               this will override or add the dynamic variables set in the agent during the
               call. Only need to set the delta where you want to override, no need to set the
-              entire dynamic variables object.
+              entire dynamic variables object. Setting this to null will remove any existing
+              override.
 
           extra_headers: Send extra headers
 
@@ -269,8 +270,9 @@ class CallResource(SyncAPIResource):
           to_number: The number you want to call, in E.164 format. If using a number purchased from
               Retell, only US numbers are supported as destination.
 
-          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
-              a specific call.
+          agent_override: For this particular call, override agent configuration with these settings. This
+              allows you to customize agent behavior for individual calls without modifying
+              the base agent.
 
           custom_sip_headers: Add optional custom SIP headers to the call.
 
@@ -347,8 +349,9 @@ class CallResource(SyncAPIResource):
         Your agent would contain the LLM Websocket
               url used for this call.
 
-          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
-              a specific call.
+          agent_override: For this particular call, override agent configuration with these settings. This
+              allows you to customize agent behavior for individual calls without modifying
+              the base agent.
 
           agent_version: The version of the agent to use for the call.
 
@@ -410,8 +413,9 @@ class CallResource(SyncAPIResource):
         Args:
           agent_id: The agent to use for the call.
 
-          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
-              a specific call.
+          agent_override: For this particular call, override agent configuration with these settings. This
+              allows you to customize agent behavior for individual calls without modifying
+              the base agent.
 
           agent_version: The version of the agent to use for the call.
 
@@ -545,7 +549,8 @@ class AsyncCallResource(AsyncAPIResource):
           override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
               this will override or add the dynamic variables set in the agent during the
               call. Only need to set the delta where you want to override, no need to set the
-              entire dynamic variables object.
+              entire dynamic variables object. Setting this to null will remove any existing
+              override.
 
           extra_headers: Send extra headers
 
@@ -695,8 +700,9 @@ class AsyncCallResource(AsyncAPIResource):
           to_number: The number you want to call, in E.164 format. If using a number purchased from
               Retell, only US numbers are supported as destination.
 
-          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
-              a specific call.
+          agent_override: For this particular call, override agent configuration with these settings. This
+              allows you to customize agent behavior for individual calls without modifying
+              the base agent.
 
           custom_sip_headers: Add optional custom SIP headers to the call.
 
@@ -773,8 +779,9 @@ class AsyncCallResource(AsyncAPIResource):
         Your agent would contain the LLM Websocket
               url used for this call.
 
-          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
-              a specific call.
+          agent_override: For this particular call, override agent configuration with these settings. This
+              allows you to customize agent behavior for individual calls without modifying
+              the base agent.
 
           agent_version: The version of the agent to use for the call.
 
@@ -836,8 +843,9 @@ class AsyncCallResource(AsyncAPIResource):
         Args:
           agent_id: The agent to use for the call.
 
-          agent_override: Override configuration for agent, retell LLM, or conversation flow settings for
-              a specific call.
+          agent_override: For this particular call, override agent configuration with these settings. This
+              allows you to customize agent behavior for individual calls without modifying
+              the base agent.
 
           agent_version: The version of the agent to use for the call.
 
