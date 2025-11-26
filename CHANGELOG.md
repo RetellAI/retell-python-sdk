@@ -1,5 +1,21 @@
 # Changelog
 
+## 4.59.0 (2025-11-26)
+
+Full Changelog: [v4.58.0...v4.59.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.58.0...v4.59.0)
+
+### Features
+
+* **api:** api update ([9497b37](https://github.com/RetellAI/retell-python-sdk/commit/9497b37dc2941c39e05f5f6d4ade9f8b2a85e44b))
+* **api:** api update ([8e3e786](https://github.com/RetellAI/retell-python-sdk/commit/8e3e7869bee87279ee0cb97cd842e9ae9febf94e))
+* **api:** api update ([958289c](https://github.com/RetellAI/retell-python-sdk/commit/958289ce7ba9bede1a046fdbc1a6a7959bfd81a2))
+* **api:** api update ([b2b9455](https://github.com/RetellAI/retell-python-sdk/commit/b2b94553d5fc20b6efa68b63b42ac27539004da6))
+
+
+### Chores
+
+* add Python 3.14 classifier and testing ([19db41b](https://github.com/RetellAI/retell-python-sdk/commit/19db41b3a6a9d77604fb06e60ad68aebf6351569))
+
 ## 4.58.0 (2025-11-21)
 
 Full Changelog: [v4.57.0...v4.58.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.57.0...v4.58.0)
