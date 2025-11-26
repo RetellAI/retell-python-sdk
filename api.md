@@ -74,7 +74,7 @@ Methods:
 Types:
 
 ```python
-from retell.types import AgentResponse
+from retell.types import ChatAgentResponse
 ```
 
 # Llm
