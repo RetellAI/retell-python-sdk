@@ -246,6 +246,44 @@ class TestChatAgent:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_delete(self, client: Retell) -> None:
+        chat_agent = client.chat_agent.delete(
+            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+        assert chat_agent is None
+
+    @parametrize
+    def test_raw_response_delete(self, client: Retell) -> None:
+        response = client.chat_agent.with_raw_response.delete(
+            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat_agent = response.parse()
+        assert chat_agent is None
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Retell) -> None:
+        with client.chat_agent.with_streaming_response.delete(
+            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat_agent = response.parse()
+            assert chat_agent is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            client.chat_agent.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
     def test_method_get_versions(self, client: Retell) -> None:
         chat_agent = client.chat_agent.get_versions(
             "16b980523634a6dc504898cda492e939",
@@ -280,6 +318,44 @@ class TestChatAgent:
     def test_path_params_get_versions(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             client.chat_agent.with_raw_response.get_versions(
+                "",
+            )
+
+    @parametrize
+    def test_method_publish(self, client: Retell) -> None:
+        chat_agent = client.chat_agent.publish(
+            "16b980523634a6dc504898cda492e939",
+        )
+        assert chat_agent is None
+
+    @parametrize
+    def test_raw_response_publish(self, client: Retell) -> None:
+        response = client.chat_agent.with_raw_response.publish(
+            "16b980523634a6dc504898cda492e939",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat_agent = response.parse()
+        assert chat_agent is None
+
+    @parametrize
+    def test_streaming_response_publish(self, client: Retell) -> None:
+        with client.chat_agent.with_streaming_response.publish(
+            "16b980523634a6dc504898cda492e939",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat_agent = response.parse()
+            assert chat_agent is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_publish(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            client.chat_agent.with_raw_response.publish(
                 "",
             )
 
@@ -514,6 +590,44 @@ class TestAsyncChatAgent:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_method_delete(self, async_client: AsyncRetell) -> None:
+        chat_agent = await async_client.chat_agent.delete(
+            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+        assert chat_agent is None
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncRetell) -> None:
+        response = await async_client.chat_agent.with_raw_response.delete(
+            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat_agent = await response.parse()
+        assert chat_agent is None
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncRetell) -> None:
+        async with async_client.chat_agent.with_streaming_response.delete(
+            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat_agent = await response.parse()
+            assert chat_agent is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            await async_client.chat_agent.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
     async def test_method_get_versions(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.get_versions(
             "16b980523634a6dc504898cda492e939",
@@ -548,5 +662,43 @@ class TestAsyncChatAgent:
     async def test_path_params_get_versions(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             await async_client.chat_agent.with_raw_response.get_versions(
+                "",
+            )
+
+    @parametrize
+    async def test_method_publish(self, async_client: AsyncRetell) -> None:
+        chat_agent = await async_client.chat_agent.publish(
+            "16b980523634a6dc504898cda492e939",
+        )
+        assert chat_agent is None
+
+    @parametrize
+    async def test_raw_response_publish(self, async_client: AsyncRetell) -> None:
+        response = await async_client.chat_agent.with_raw_response.publish(
+            "16b980523634a6dc504898cda492e939",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat_agent = await response.parse()
+        assert chat_agent is None
+
+    @parametrize
+    async def test_streaming_response_publish(self, async_client: AsyncRetell) -> None:
+        async with async_client.chat_agent.with_streaming_response.publish(
+            "16b980523634a6dc504898cda492e939",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat_agent = await response.parse()
+            assert chat_agent is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_publish(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            await async_client.chat_agent.with_raw_response.publish(
                 "",
             )
