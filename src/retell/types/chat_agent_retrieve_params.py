@@ -1,0 +1,15 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import TypedDict
+
+__all__ = ["ChatAgentRetrieveParams"]
+
+
+class ChatAgentRetrieveParams(TypedDict, total=False):
+    version: int
+    """Optional version of the API to use for this request.
+
+    If not provided, will default to latest version.
+    """
