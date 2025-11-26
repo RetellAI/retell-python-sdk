@@ -74,8 +74,15 @@ Methods:
 Types:
 
 ```python
-from retell.types import ChatAgentResponse
+from retell.types import ChatAgentResponse, ChatAgentListResponse
 ```
+
+Methods:
+
+- <code title="post /create-chat-agent">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">create</a>(\*\*<a href="src/retell/types/chat_agent_create_params.py">params</a>) -> <a href="./src/retell/types/chat_agent_response.py">ChatAgentResponse</a></code>
+- <code title="get /get-chat-agent/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">retrieve</a>(agent_id, \*\*<a href="src/retell/types/chat_agent_retrieve_params.py">params</a>) -> <a href="./src/retell/types/chat_agent_response.py">ChatAgentResponse</a></code>
+- <code title="patch /update-chat-agent/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">update</a>(agent_id, \*\*<a href="src/retell/types/chat_agent_update_params.py">params</a>) -> <a href="./src/retell/types/chat_agent_response.py">ChatAgentResponse</a></code>
+- <code title="get /list-chat-agents">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">list</a>(\*\*<a href="src/retell/types/chat_agent_list_params.py">params</a>) -> <a href="./src/retell/types/chat_agent_list_response.py">ChatAgentListResponse</a></code>
 
 # Llm
 
