@@ -30,6 +30,7 @@ from .resources import (
     voice,
     mcp_tool,
     batch_call,
+    chat_agent,
     concurrency,
     phone_number,
     knowledge_base,
@@ -52,6 +53,7 @@ class Retell(SyncAPIClient):
     chat: chat.ChatResource
     phone_number: phone_number.PhoneNumberResource
     agent: agent.AgentResource
+    chat_agent: chat_agent.ChatAgentResource
     llm: llm.LlmResource
     conversation_flow: conversation_flow.ConversationFlowResource
     knowledge_base: knowledge_base.KnowledgeBaseResource
@@ -112,6 +114,7 @@ class Retell(SyncAPIClient):
         self.chat = chat.ChatResource(self)
         self.phone_number = phone_number.PhoneNumberResource(self)
         self.agent = agent.AgentResource(self)
+        self.chat_agent = chat_agent.ChatAgentResource(self)
         self.llm = llm.LlmResource(self)
         self.conversation_flow = conversation_flow.ConversationFlowResource(self)
         self.knowledge_base = knowledge_base.KnowledgeBaseResource(self)
@@ -235,6 +238,7 @@ class AsyncRetell(AsyncAPIClient):
     chat: chat.AsyncChatResource
     phone_number: phone_number.AsyncPhoneNumberResource
     agent: agent.AsyncAgentResource
+    chat_agent: chat_agent.AsyncChatAgentResource
     llm: llm.AsyncLlmResource
     conversation_flow: conversation_flow.AsyncConversationFlowResource
     knowledge_base: knowledge_base.AsyncKnowledgeBaseResource
@@ -295,6 +299,7 @@ class AsyncRetell(AsyncAPIClient):
         self.chat = chat.AsyncChatResource(self)
         self.phone_number = phone_number.AsyncPhoneNumberResource(self)
         self.agent = agent.AsyncAgentResource(self)
+        self.chat_agent = chat_agent.AsyncChatAgentResource(self)
         self.llm = llm.AsyncLlmResource(self)
         self.conversation_flow = conversation_flow.AsyncConversationFlowResource(self)
         self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResource(self)
@@ -417,6 +422,7 @@ class RetellWithRawResponse:
         self.chat = chat.ChatResourceWithRawResponse(client.chat)
         self.phone_number = phone_number.PhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = agent.AgentResourceWithRawResponse(client.agent)
+        self.chat_agent = chat_agent.ChatAgentResourceWithRawResponse(client.chat_agent)
         self.llm = llm.LlmResourceWithRawResponse(client.llm)
         self.conversation_flow = conversation_flow.ConversationFlowResourceWithRawResponse(client.conversation_flow)
         self.knowledge_base = knowledge_base.KnowledgeBaseResourceWithRawResponse(client.knowledge_base)
@@ -433,6 +439,7 @@ class AsyncRetellWithRawResponse:
         self.chat = chat.AsyncChatResourceWithRawResponse(client.chat)
         self.phone_number = phone_number.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
         self.agent = agent.AsyncAgentResourceWithRawResponse(client.agent)
+        self.chat_agent = chat_agent.AsyncChatAgentResourceWithRawResponse(client.chat_agent)
         self.llm = llm.AsyncLlmResourceWithRawResponse(client.llm)
         self.conversation_flow = conversation_flow.AsyncConversationFlowResourceWithRawResponse(
             client.conversation_flow
@@ -451,6 +458,7 @@ class RetellWithStreamedResponse:
         self.chat = chat.ChatResourceWithStreamingResponse(client.chat)
         self.phone_number = phone_number.PhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = agent.AgentResourceWithStreamingResponse(client.agent)
+        self.chat_agent = chat_agent.ChatAgentResourceWithStreamingResponse(client.chat_agent)
         self.llm = llm.LlmResourceWithStreamingResponse(client.llm)
         self.conversation_flow = conversation_flow.ConversationFlowResourceWithStreamingResponse(
             client.conversation_flow
@@ -469,6 +477,7 @@ class AsyncRetellWithStreamedResponse:
         self.chat = chat.AsyncChatResourceWithStreamingResponse(client.chat)
         self.phone_number = phone_number.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
         self.agent = agent.AsyncAgentResourceWithStreamingResponse(client.agent)
+        self.chat_agent = chat_agent.AsyncChatAgentResourceWithStreamingResponse(client.chat_agent)
         self.llm = llm.AsyncLlmResourceWithStreamingResponse(client.llm)
         self.conversation_flow = conversation_flow.AsyncConversationFlowResourceWithStreamingResponse(
             client.conversation_flow

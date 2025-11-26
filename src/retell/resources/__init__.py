@@ -64,6 +64,14 @@ from .batch_call import (
     BatchCallResourceWithStreamingResponse,
     AsyncBatchCallResourceWithStreamingResponse,
 )
+from .chat_agent import (
+    ChatAgentResource,
+    AsyncChatAgentResource,
+    ChatAgentResourceWithRawResponse,
+    AsyncChatAgentResourceWithRawResponse,
+    ChatAgentResourceWithStreamingResponse,
+    AsyncChatAgentResourceWithStreamingResponse,
+)
 from .concurrency import (
     ConcurrencyResource,
     AsyncConcurrencyResource,
@@ -122,6 +130,12 @@ __all__ = [
     "AsyncAgentResourceWithRawResponse",
     "AgentResourceWithStreamingResponse",
     "AsyncAgentResourceWithStreamingResponse",
+    "ChatAgentResource",
+    "AsyncChatAgentResource",
+    "ChatAgentResourceWithRawResponse",
+    "AsyncChatAgentResourceWithRawResponse",
+    "ChatAgentResourceWithStreamingResponse",
+    "AsyncChatAgentResourceWithStreamingResponse",
     "LlmResource",
     "AsyncLlmResource",
     "LlmResourceWithRawResponse",
