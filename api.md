@@ -69,6 +69,14 @@ Methods:
 - <code title="get /get-agent-versions/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">get_versions</a>(agent_id) -> <a href="./src/retell/types/agent_get_versions_response.py">AgentGetVersionsResponse</a></code>
 - <code title="post /publish-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">publish</a>(agent_id) -> None</code>
 
+# ChatAgent
+
+Types:
+
+```python
+from retell.types import AgentResponse
+```
+
 # Llm
 
 Types:
