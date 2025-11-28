@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.60.1 (2025-11-28)
+
+Full Changelog: [v4.60.0...v4.60.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.60.0...v4.60.1)
+
+### Bug Fixes
+
+* ensure streams are always closed ([102420e](https://github.com/RetellAI/retell-python-sdk/commit/102420e885e9d61d057de541169521a31b095c35))
+
 ## 4.60.0 (2025-11-26)
 
 Full Changelog: [v4.59.0...v4.60.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.59.0...v4.60.0)
