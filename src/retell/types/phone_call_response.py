@@ -640,7 +640,7 @@ class PhoneCallResponse(BaseModel):
     """
 
     recording_multi_channel_url: Optional[str] = None
-    """Recording of the call, with each party’s audio stored in a separate channel.
+    """Recording of the call, with each party's audio stored in a separate channel.
 
     Available after the call ends.
     """
@@ -657,7 +657,7 @@ class PhoneCallResponse(BaseModel):
 
     scrubbed_recording_multi_channel_url: Optional[str] = None
     """
-    Recording of the call without PII, with each party’s audio stored in a separate
+    Recording of the call without PII, with each party's audio stored in a separate
     channel. Available after the call ends.
     """
 
