@@ -111,6 +111,12 @@ __all__ = [
     "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOption",
     "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
     "ComponentNodeTransferCallNodeDisplayPosition",
     "ComponentNodeTransferCallNodeGlobalNodeSetting",
     "ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample",
@@ -412,6 +418,12 @@ __all__ = [
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOption",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
     "NodeTransferCallNodeDisplayPosition",
     "NodeTransferCallNodeGlobalNodeSetting",
     "NodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample",
@@ -1556,9 +1568,100 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(Base
     """
 
 
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
+    BaseModel
+):
+    agent_id: str
+    """The agent ID of the transfer agent.
+
+    This agent must have isTransferAgent set to true and should use bridge_transfer
+    and cancel_transfer tools (for Retell LLM) or BridgeTransferNode and
+    CancelTransferNode (for Conversation Flow).
+    """
+
+    agent_version: float
+    """The version of the transfer agent to use."""
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(BaseModel):
+    action_on_timeout: Optional[Literal["bridge_transfer", "cancel_transfer"]] = None
+    """The action to take when the transfer agent times out without making a decision.
+
+    Defaults to cancel_transfer.
+    """
+
+    transfer_agent: Optional[
+        ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
+    ] = None
+    """The agent that will mediate the transfer decision."""
+
+    transfer_timeout_ms: Optional[float] = None
+    """
+    The maximum time to wait for the transfer agent to make a decision, in
+    milliseconds. Defaults to 30000 (30 seconds).
+    """
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    BaseModel
+):
+    prompt: Optional[str] = None
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["prompt"]] = None
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    BaseModel
+):
+    message: Optional[str] = None
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["static_message"]] = None
+
+
+ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer(BaseModel):
+    agentic_transfer_config: (
+        ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
+    )
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
+    type: Literal["agentic_warm_transfer"]
+    """The type of the transfer."""
+
+    enable_bridge_audio_cue: Optional[bool] = None
+    """Whether to play an audio cue when bridging the call. Defaults to true."""
+
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
+    """The music to play while the caller is being transferred."""
+
+    public_handoff_option: Optional[
+        ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
+    ] = None
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: Optional[bool] = None
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
+    """
+
+
 ComponentNodeTransferCallNodeTransferOption: TypeAlias = Union[
     ComponentNodeTransferCallNodeTransferOptionTransferOptionColdTransfer,
     ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer,
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer,
 ]
 
 
@@ -4558,9 +4661,96 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(BaseModel):
     """
 
 
+class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(BaseModel):
+    agent_id: str
+    """The agent ID of the transfer agent.
+
+    This agent must have isTransferAgent set to true and should use bridge_transfer
+    and cancel_transfer tools (for Retell LLM) or BridgeTransferNode and
+    CancelTransferNode (for Conversation Flow).
+    """
+
+    agent_version: float
+    """The version of the transfer agent to use."""
+
+
+class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(BaseModel):
+    action_on_timeout: Optional[Literal["bridge_transfer", "cancel_transfer"]] = None
+    """The action to take when the transfer agent times out without making a decision.
+
+    Defaults to cancel_transfer.
+    """
+
+    transfer_agent: Optional[
+        NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
+    ] = None
+    """The agent that will mediate the transfer decision."""
+
+    transfer_timeout_ms: Optional[float] = None
+    """
+    The maximum time to wait for the transfer agent to make a decision, in
+    milliseconds. Defaults to 30000 (30 seconds).
+    """
+
+
+class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    BaseModel
+):
+    prompt: Optional[str] = None
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["prompt"]] = None
+
+
+class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    BaseModel
+):
+    message: Optional[str] = None
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["static_message"]] = None
+
+
+NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
+    NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer(BaseModel):
+    agentic_transfer_config: NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
+    type: Literal["agentic_warm_transfer"]
+    """The type of the transfer."""
+
+    enable_bridge_audio_cue: Optional[bool] = None
+    """Whether to play an audio cue when bridging the call. Defaults to true."""
+
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
+    """The music to play while the caller is being transferred."""
+
+    public_handoff_option: Optional[
+        NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
+    ] = None
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: Optional[bool] = None
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
+    """
+
+
 NodeTransferCallNodeTransferOption: TypeAlias = Union[
     NodeTransferCallNodeTransferOptionTransferOptionColdTransfer,
     NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer,
+    NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer,
 ]
 
 
