@@ -367,7 +367,7 @@ class TestConversationFlow:
     def test_method_retrieve_with_all_params(self, client: Retell) -> None:
         conversation_flow = client.conversation_flow.retrieve(
             conversation_flow_id="conversation_flow_id",
-            version="version",
+            version=1,
         )
         assert_matches_type(ConversationFlowResponse, conversation_flow, path=["response"])
 
@@ -413,7 +413,7 @@ class TestConversationFlow:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         conversation_flow = client.conversation_flow.update(
             conversation_flow_id="conversation_flow_id",
-            version="version",
+            version=1,
             begin_after_user_silence_ms=2000,
             begin_tag_display_position={
                 "x": 100,
@@ -1130,7 +1130,7 @@ class TestAsyncConversationFlow:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncRetell) -> None:
         conversation_flow = await async_client.conversation_flow.retrieve(
             conversation_flow_id="conversation_flow_id",
-            version="version",
+            version=1,
         )
         assert_matches_type(ConversationFlowResponse, conversation_flow, path=["response"])
 
@@ -1176,7 +1176,7 @@ class TestAsyncConversationFlow:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         conversation_flow = await async_client.conversation_flow.update(
             conversation_flow_id="conversation_flow_id",
-            version="version",
+            version=1,
             begin_after_user_silence_ms=2000,
             begin_tag_display_position={
                 "x": 100,
