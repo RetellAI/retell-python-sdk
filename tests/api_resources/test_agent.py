@@ -45,6 +45,8 @@ class TestAgent:
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
+            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
+            analysis_summary_prompt="Summarize the call in a few sentences.",
             backchannel_frequency=0.9,
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
@@ -71,7 +73,7 @@ class TestAgent:
                     "examples": ["John Doe", "Jane Smith"],
                 }
             ],
-            post_call_analysis_model="gpt-4o-mini",
+            post_call_analysis_model="gpt-4.1-mini",
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
@@ -83,6 +85,7 @@ class TestAgent:
             reminder_trigger_ms=10000,
             responsiveness=1,
             ring_duration_ms=30000,
+            signed_url_expiration_ms=86400000,
             stt_mode="fast",
             user_dtmf_options={
                 "digit_limit": 1,
@@ -199,6 +202,8 @@ class TestAgent:
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
+            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
+            analysis_summary_prompt="Summarize the call in a few sentences.",
             backchannel_frequency=0.9,
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
@@ -225,7 +230,7 @@ class TestAgent:
                     "examples": ["John Doe", "Jane Smith"],
                 }
             ],
-            post_call_analysis_model="gpt-4o-mini",
+            post_call_analysis_model="gpt-4.1-mini",
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
@@ -242,6 +247,7 @@ class TestAgent:
             },
             responsiveness=1,
             ring_duration_ms=30000,
+            signed_url_expiration_ms=86400000,
             stt_mode="fast",
             user_dtmf_options={
                 "digit_limit": 1,
@@ -474,6 +480,8 @@ class TestAsyncAgent:
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
+            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
+            analysis_summary_prompt="Summarize the call in a few sentences.",
             backchannel_frequency=0.9,
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
@@ -500,7 +508,7 @@ class TestAsyncAgent:
                     "examples": ["John Doe", "Jane Smith"],
                 }
             ],
-            post_call_analysis_model="gpt-4o-mini",
+            post_call_analysis_model="gpt-4.1-mini",
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
@@ -512,6 +520,7 @@ class TestAsyncAgent:
             reminder_trigger_ms=10000,
             responsiveness=1,
             ring_duration_ms=30000,
+            signed_url_expiration_ms=86400000,
             stt_mode="fast",
             user_dtmf_options={
                 "digit_limit": 1,
@@ -628,6 +637,8 @@ class TestAsyncAgent:
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
+            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
+            analysis_summary_prompt="Summarize the call in a few sentences.",
             backchannel_frequency=0.9,
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
@@ -654,7 +665,7 @@ class TestAsyncAgent:
                     "examples": ["John Doe", "Jane Smith"],
                 }
             ],
-            post_call_analysis_model="gpt-4o-mini",
+            post_call_analysis_model="gpt-4.1-mini",
             pronunciation_dictionary=[
                 {
                     "alphabet": "ipa",
@@ -671,6 +682,7 @@ class TestAsyncAgent:
             },
             responsiveness=1,
             ring_duration_ms=30000,
+            signed_url_expiration_ms=86400000,
             stt_mode="fast",
             user_dtmf_options={
                 "digit_limit": 1,
