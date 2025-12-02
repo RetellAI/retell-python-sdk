@@ -104,6 +104,14 @@ from .conversation_flow import (
     ConversationFlowResourceWithStreamingResponse,
     AsyncConversationFlowResourceWithStreamingResponse,
 )
+from .conversation_flow_component import (
+    ConversationFlowComponentResource,
+    AsyncConversationFlowComponentResource,
+    ConversationFlowComponentResourceWithRawResponse,
+    AsyncConversationFlowComponentResourceWithRawResponse,
+    ConversationFlowComponentResourceWithStreamingResponse,
+    AsyncConversationFlowComponentResourceWithStreamingResponse,
+)
 
 __all__ = [
     "CallResource",
@@ -148,6 +156,12 @@ __all__ = [
     "AsyncConversationFlowResourceWithRawResponse",
     "ConversationFlowResourceWithStreamingResponse",
     "AsyncConversationFlowResourceWithStreamingResponse",
+    "ConversationFlowComponentResource",
+    "AsyncConversationFlowComponentResource",
+    "ConversationFlowComponentResourceWithRawResponse",
+    "AsyncConversationFlowComponentResourceWithRawResponse",
+    "ConversationFlowComponentResourceWithStreamingResponse",
+    "AsyncConversationFlowComponentResourceWithStreamingResponse",
     "KnowledgeBaseResource",
     "AsyncKnowledgeBaseResource",
     "KnowledgeBaseResourceWithRawResponse",

@@ -163,6 +163,18 @@ class ChatAgentResponse(BaseModel):
     agent_name: Optional[str] = None
     """The name of the chat agent. Only used for your own reference."""
 
+    analysis_successful_prompt: Optional[str] = None
+    """
+    The prompt to use for post call analysis to evaluate whether the call is
+    successful. Set to null to use the default prompt.
+    """
+
+    analysis_summary_prompt: Optional[str] = None
+    """The prompt to use for post call analysis to summarize the call.
+
+    Set to null to use the default prompt.
+    """
+
     auto_close_message: Optional[str] = None
     """Message to display when the chat is automatically closed."""
 
@@ -250,26 +262,26 @@ class ChatAgentResponse(BaseModel):
 
     post_chat_analysis_model: Optional[
         Literal[
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
-            "gpt-5.1",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
-            "claude-4.0-sonnet",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
     ] = None
     """The model to use for post chat analysis. Default to gpt-4.1-mini."""
+
+    signed_url_expiration_ms: Optional[int] = None
+    """The expiration time for the signed url in milliseconds.
+
+    Only applicable when opt_in_signed_url is true. If not set, default value of
+    86400000 (24 hours) will apply.
+    """
 
     version: Optional[int] = None
     """The version of the chat agent."""

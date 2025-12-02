@@ -109,6 +109,12 @@ __all__ = [
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOption",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "NodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
     "NodeTransferCallNodeDisplayPosition",
     "NodeTransferCallNodeGlobalNodeSetting",
     "NodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample",
@@ -403,6 +409,12 @@ __all__ = [
     "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOption",
     "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
     "ComponentNodeTransferCallNodeDisplayPosition",
     "ComponentNodeTransferCallNodeGlobalNodeSetting",
     "ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample",
@@ -679,18 +691,14 @@ class ConversationFlowCreateParams(TypedDict, total=False):
 class ModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -943,18 +951,14 @@ class NodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
 class NodeConversationNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -1361,18 +1365,14 @@ NodeFunctionNodeInstruction: TypeAlias = Union[
 class NodeFunctionNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -1634,9 +1634,98 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(TypedDict, to
     """
 
 
+class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
+    TypedDict, total=False
+):
+    agent_id: Required[str]
+    """The agent ID of the transfer agent.
+
+    This agent must have isTransferAgent set to true and should use bridge_transfer
+    and cancel_transfer tools (for Retell LLM) or BridgeTransferNode and
+    CancelTransferNode (for Conversation Flow).
+    """
+
+    agent_version: Required[float]
+    """The version of the transfer agent to use."""
+
+
+class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(TypedDict, total=False):
+    action_on_timeout: Literal["bridge_transfer", "cancel_transfer"]
+    """The action to take when the transfer agent times out without making a decision.
+
+    Defaults to cancel_transfer.
+    """
+
+    transfer_agent: (
+        NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
+    )
+    """The agent that will mediate the transfer decision."""
+
+    transfer_timeout_ms: float
+    """
+    The maximum time to wait for the transfer agent to make a decision, in
+    milliseconds. Defaults to 30000 (30 seconds).
+    """
+
+
+class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
+    NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer(TypedDict, total=False):
+    agentic_transfer_config: Required[
+        NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
+    ]
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
+    type: Required[Literal["agentic_warm_transfer"]]
+    """The type of the transfer."""
+
+    enable_bridge_audio_cue: bool
+    """Whether to play an audio cue when bridging the call. Defaults to true."""
+
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
+    """The music to play while the caller is being transferred."""
+
+    public_handoff_option: NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: bool
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
+    """
+
+
 NodeTransferCallNodeTransferOption: TypeAlias = Union[
     NodeTransferCallNodeTransferOptionTransferOptionColdTransfer,
     NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer,
+    NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer,
 ]
 
 
@@ -1732,18 +1821,14 @@ class NodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
 class NodeTransferCallNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -1978,18 +2063,14 @@ class NodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
 class NodePressDigitNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -2776,18 +2857,14 @@ class NodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total=False):
 class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -3737,18 +3814,14 @@ class ComponentNodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
 class ComponentNodeConversationNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -4159,18 +4232,14 @@ ComponentNodeFunctionNodeInstruction: TypeAlias = Union[
 class ComponentNodeFunctionNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -4432,9 +4501,102 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(Type
     """
 
 
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
+    TypedDict, total=False
+):
+    agent_id: Required[str]
+    """The agent ID of the transfer agent.
+
+    This agent must have isTransferAgent set to true and should use bridge_transfer
+    and cancel_transfer tools (for Retell LLM) or BridgeTransferNode and
+    CancelTransferNode (for Conversation Flow).
+    """
+
+    agent_version: Required[float]
+    """The version of the transfer agent to use."""
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(
+    TypedDict, total=False
+):
+    action_on_timeout: Literal["bridge_transfer", "cancel_transfer"]
+    """The action to take when the transfer agent times out without making a decision.
+
+    Defaults to cancel_transfer.
+    """
+
+    transfer_agent: (
+        ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
+    )
+    """The agent that will mediate the transfer decision."""
+
+    transfer_timeout_ms: float
+    """
+    The maximum time to wait for the transfer agent to make a decision, in
+    milliseconds. Defaults to 30000 (30 seconds).
+    """
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer(TypedDict, total=False):
+    agentic_transfer_config: Required[
+        ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
+    ]
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
+    type: Required[Literal["agentic_warm_transfer"]]
+    """The type of the transfer."""
+
+    enable_bridge_audio_cue: bool
+    """Whether to play an audio cue when bridging the call. Defaults to true."""
+
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
+    """The music to play while the caller is being transferred."""
+
+    public_handoff_option: (
+        ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
+    )
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: bool
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
+    """
+
+
 ComponentNodeTransferCallNodeTransferOption: TypeAlias = Union[
     ComponentNodeTransferCallNodeTransferOptionTransferOptionColdTransfer,
     ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer,
+    ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer,
 ]
 
 
@@ -4542,18 +4704,14 @@ class ComponentNodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
 class ComponentNodeTransferCallNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -4789,18 +4947,14 @@ class ComponentNodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
 class ComponentNodePressDigitNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -5598,18 +5752,14 @@ class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total
 class ComponentNodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]

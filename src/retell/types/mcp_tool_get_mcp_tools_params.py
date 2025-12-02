@@ -12,4 +12,7 @@ class McpToolGetMcpToolsParams(TypedDict, total=False):
     """The ID of the MCP server to get tools from."""
 
     version: int
-    """Optional version of the API to use for this request."""
+    """Optional version of the agent to use for this request.
+
+    Default to latest version.
+    """

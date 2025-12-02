@@ -35,6 +35,7 @@ from .resources import (
     phone_number,
     knowledge_base,
     conversation_flow,
+    conversation_flow_component,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
@@ -56,6 +57,7 @@ class Retell(SyncAPIClient):
     chat_agent: chat_agent.ChatAgentResource
     llm: llm.LlmResource
     conversation_flow: conversation_flow.ConversationFlowResource
+    conversation_flow_component: conversation_flow_component.ConversationFlowComponentResource
     knowledge_base: knowledge_base.KnowledgeBaseResource
     voice: voice.VoiceResource
     concurrency: concurrency.ConcurrencyResource
@@ -117,6 +119,7 @@ class Retell(SyncAPIClient):
         self.chat_agent = chat_agent.ChatAgentResource(self)
         self.llm = llm.LlmResource(self)
         self.conversation_flow = conversation_flow.ConversationFlowResource(self)
+        self.conversation_flow_component = conversation_flow_component.ConversationFlowComponentResource(self)
         self.knowledge_base = knowledge_base.KnowledgeBaseResource(self)
         self.voice = voice.VoiceResource(self)
         self.concurrency = concurrency.ConcurrencyResource(self)
@@ -241,6 +244,7 @@ class AsyncRetell(AsyncAPIClient):
     chat_agent: chat_agent.AsyncChatAgentResource
     llm: llm.AsyncLlmResource
     conversation_flow: conversation_flow.AsyncConversationFlowResource
+    conversation_flow_component: conversation_flow_component.AsyncConversationFlowComponentResource
     knowledge_base: knowledge_base.AsyncKnowledgeBaseResource
     voice: voice.AsyncVoiceResource
     concurrency: concurrency.AsyncConcurrencyResource
@@ -302,6 +306,7 @@ class AsyncRetell(AsyncAPIClient):
         self.chat_agent = chat_agent.AsyncChatAgentResource(self)
         self.llm = llm.AsyncLlmResource(self)
         self.conversation_flow = conversation_flow.AsyncConversationFlowResource(self)
+        self.conversation_flow_component = conversation_flow_component.AsyncConversationFlowComponentResource(self)
         self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResource(self)
         self.voice = voice.AsyncVoiceResource(self)
         self.concurrency = concurrency.AsyncConcurrencyResource(self)
@@ -425,6 +430,9 @@ class RetellWithRawResponse:
         self.chat_agent = chat_agent.ChatAgentResourceWithRawResponse(client.chat_agent)
         self.llm = llm.LlmResourceWithRawResponse(client.llm)
         self.conversation_flow = conversation_flow.ConversationFlowResourceWithRawResponse(client.conversation_flow)
+        self.conversation_flow_component = conversation_flow_component.ConversationFlowComponentResourceWithRawResponse(
+            client.conversation_flow_component
+        )
         self.knowledge_base = knowledge_base.KnowledgeBaseResourceWithRawResponse(client.knowledge_base)
         self.voice = voice.VoiceResourceWithRawResponse(client.voice)
         self.concurrency = concurrency.ConcurrencyResourceWithRawResponse(client.concurrency)
@@ -443,6 +451,11 @@ class AsyncRetellWithRawResponse:
         self.llm = llm.AsyncLlmResourceWithRawResponse(client.llm)
         self.conversation_flow = conversation_flow.AsyncConversationFlowResourceWithRawResponse(
             client.conversation_flow
+        )
+        self.conversation_flow_component = (
+            conversation_flow_component.AsyncConversationFlowComponentResourceWithRawResponse(
+                client.conversation_flow_component
+            )
         )
         self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResourceWithRawResponse(client.knowledge_base)
         self.voice = voice.AsyncVoiceResourceWithRawResponse(client.voice)
@@ -463,6 +476,11 @@ class RetellWithStreamedResponse:
         self.conversation_flow = conversation_flow.ConversationFlowResourceWithStreamingResponse(
             client.conversation_flow
         )
+        self.conversation_flow_component = (
+            conversation_flow_component.ConversationFlowComponentResourceWithStreamingResponse(
+                client.conversation_flow_component
+            )
+        )
         self.knowledge_base = knowledge_base.KnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
         self.voice = voice.VoiceResourceWithStreamingResponse(client.voice)
         self.concurrency = concurrency.ConcurrencyResourceWithStreamingResponse(client.concurrency)
@@ -481,6 +499,11 @@ class AsyncRetellWithStreamedResponse:
         self.llm = llm.AsyncLlmResourceWithStreamingResponse(client.llm)
         self.conversation_flow = conversation_flow.AsyncConversationFlowResourceWithStreamingResponse(
             client.conversation_flow
+        )
+        self.conversation_flow_component = (
+            conversation_flow_component.AsyncConversationFlowComponentResourceWithStreamingResponse(
+                client.conversation_flow_component
+            )
         )
         self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
         self.voice = voice.AsyncVoiceResourceWithStreamingResponse(client.voice)

@@ -228,6 +228,8 @@ class TestCall:
                     "allow_user_dtmf": True,
                     "ambient_sound": "coffee-shop",
                     "ambient_sound_volume": 1,
+                    "analysis_successful_prompt": "The agent finished the task and the call was complete without being cutoff.",
+                    "analysis_summary_prompt": "Summarize the call in a few sentences.",
                     "backchannel_frequency": 0.9,
                     "backchannel_words": ["yeah", "uh-huh"],
                     "begin_message_delay_ms": 1000,
@@ -254,7 +256,7 @@ class TestCall:
                             "examples": ["John Doe", "Jane Smith"],
                         }
                     ],
-                    "post_call_analysis_model": "gpt-4o-mini",
+                    "post_call_analysis_model": "gpt-4.1-mini",
                     "pronunciation_dictionary": [
                         {
                             "alphabet": "ipa",
@@ -271,6 +273,7 @@ class TestCall:
                     },
                     "responsiveness": 1,
                     "ring_duration_ms": 30000,
+                    "signed_url_expiration_ms": 86400000,
                     "stt_mode": "fast",
                     "user_dtmf_options": {
                         "digit_limit": 1,
@@ -300,7 +303,7 @@ class TestCall:
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
-                        "model": "gpt-5",
+                        "model": "gpt-4.1",
                         "type": "cascading",
                         "high_priority": True,
                     },
@@ -376,6 +379,8 @@ class TestCall:
                     "allow_user_dtmf": True,
                     "ambient_sound": "coffee-shop",
                     "ambient_sound_volume": 1,
+                    "analysis_successful_prompt": "The agent finished the task and the call was complete without being cutoff.",
+                    "analysis_summary_prompt": "Summarize the call in a few sentences.",
                     "backchannel_frequency": 0.9,
                     "backchannel_words": ["yeah", "uh-huh"],
                     "begin_message_delay_ms": 1000,
@@ -402,7 +407,7 @@ class TestCall:
                             "examples": ["John Doe", "Jane Smith"],
                         }
                     ],
-                    "post_call_analysis_model": "gpt-4o-mini",
+                    "post_call_analysis_model": "gpt-4.1-mini",
                     "pronunciation_dictionary": [
                         {
                             "alphabet": "ipa",
@@ -419,6 +424,7 @@ class TestCall:
                     },
                     "responsiveness": 1,
                     "ring_duration_ms": 30000,
+                    "signed_url_expiration_ms": 86400000,
                     "stt_mode": "fast",
                     "user_dtmf_options": {
                         "digit_limit": 1,
@@ -448,7 +454,7 @@ class TestCall:
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
-                        "model": "gpt-5",
+                        "model": "gpt-4.1",
                         "type": "cascading",
                         "high_priority": True,
                     },
@@ -519,6 +525,8 @@ class TestCall:
                     "allow_user_dtmf": True,
                     "ambient_sound": "coffee-shop",
                     "ambient_sound_volume": 1,
+                    "analysis_successful_prompt": "The agent finished the task and the call was complete without being cutoff.",
+                    "analysis_summary_prompt": "Summarize the call in a few sentences.",
                     "backchannel_frequency": 0.9,
                     "backchannel_words": ["yeah", "uh-huh"],
                     "begin_message_delay_ms": 1000,
@@ -545,7 +553,7 @@ class TestCall:
                             "examples": ["John Doe", "Jane Smith"],
                         }
                     ],
-                    "post_call_analysis_model": "gpt-4o-mini",
+                    "post_call_analysis_model": "gpt-4.1-mini",
                     "pronunciation_dictionary": [
                         {
                             "alphabet": "ipa",
@@ -562,6 +570,7 @@ class TestCall:
                     },
                     "responsiveness": 1,
                     "ring_duration_ms": 30000,
+                    "signed_url_expiration_ms": 86400000,
                     "stt_mode": "fast",
                     "user_dtmf_options": {
                         "digit_limit": 1,
@@ -591,7 +600,7 @@ class TestCall:
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
-                        "model": "gpt-5",
+                        "model": "gpt-4.1",
                         "type": "cascading",
                         "high_priority": True,
                     },
@@ -860,6 +869,8 @@ class TestAsyncCall:
                     "allow_user_dtmf": True,
                     "ambient_sound": "coffee-shop",
                     "ambient_sound_volume": 1,
+                    "analysis_successful_prompt": "The agent finished the task and the call was complete without being cutoff.",
+                    "analysis_summary_prompt": "Summarize the call in a few sentences.",
                     "backchannel_frequency": 0.9,
                     "backchannel_words": ["yeah", "uh-huh"],
                     "begin_message_delay_ms": 1000,
@@ -886,7 +897,7 @@ class TestAsyncCall:
                             "examples": ["John Doe", "Jane Smith"],
                         }
                     ],
-                    "post_call_analysis_model": "gpt-4o-mini",
+                    "post_call_analysis_model": "gpt-4.1-mini",
                     "pronunciation_dictionary": [
                         {
                             "alphabet": "ipa",
@@ -903,6 +914,7 @@ class TestAsyncCall:
                     },
                     "responsiveness": 1,
                     "ring_duration_ms": 30000,
+                    "signed_url_expiration_ms": 86400000,
                     "stt_mode": "fast",
                     "user_dtmf_options": {
                         "digit_limit": 1,
@@ -932,7 +944,7 @@ class TestAsyncCall:
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
-                        "model": "gpt-5",
+                        "model": "gpt-4.1",
                         "type": "cascading",
                         "high_priority": True,
                     },
@@ -1008,6 +1020,8 @@ class TestAsyncCall:
                     "allow_user_dtmf": True,
                     "ambient_sound": "coffee-shop",
                     "ambient_sound_volume": 1,
+                    "analysis_successful_prompt": "The agent finished the task and the call was complete without being cutoff.",
+                    "analysis_summary_prompt": "Summarize the call in a few sentences.",
                     "backchannel_frequency": 0.9,
                     "backchannel_words": ["yeah", "uh-huh"],
                     "begin_message_delay_ms": 1000,
@@ -1034,7 +1048,7 @@ class TestAsyncCall:
                             "examples": ["John Doe", "Jane Smith"],
                         }
                     ],
-                    "post_call_analysis_model": "gpt-4o-mini",
+                    "post_call_analysis_model": "gpt-4.1-mini",
                     "pronunciation_dictionary": [
                         {
                             "alphabet": "ipa",
@@ -1051,6 +1065,7 @@ class TestAsyncCall:
                     },
                     "responsiveness": 1,
                     "ring_duration_ms": 30000,
+                    "signed_url_expiration_ms": 86400000,
                     "stt_mode": "fast",
                     "user_dtmf_options": {
                         "digit_limit": 1,
@@ -1080,7 +1095,7 @@ class TestAsyncCall:
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
-                        "model": "gpt-5",
+                        "model": "gpt-4.1",
                         "type": "cascading",
                         "high_priority": True,
                     },
@@ -1151,6 +1166,8 @@ class TestAsyncCall:
                     "allow_user_dtmf": True,
                     "ambient_sound": "coffee-shop",
                     "ambient_sound_volume": 1,
+                    "analysis_successful_prompt": "The agent finished the task and the call was complete without being cutoff.",
+                    "analysis_summary_prompt": "Summarize the call in a few sentences.",
                     "backchannel_frequency": 0.9,
                     "backchannel_words": ["yeah", "uh-huh"],
                     "begin_message_delay_ms": 1000,
@@ -1177,7 +1194,7 @@ class TestAsyncCall:
                             "examples": ["John Doe", "Jane Smith"],
                         }
                     ],
-                    "post_call_analysis_model": "gpt-4o-mini",
+                    "post_call_analysis_model": "gpt-4.1-mini",
                     "pronunciation_dictionary": [
                         {
                             "alphabet": "ipa",
@@ -1194,6 +1211,7 @@ class TestAsyncCall:
                     },
                     "responsiveness": 1,
                     "ring_duration_ms": 30000,
+                    "signed_url_expiration_ms": 86400000,
                     "stt_mode": "fast",
                     "user_dtmf_options": {
                         "digit_limit": 1,
@@ -1223,7 +1241,7 @@ class TestAsyncCall:
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
-                        "model": "gpt-5",
+                        "model": "gpt-4.1",
                         "type": "cascading",
                         "high_priority": True,
                     },

@@ -25,6 +25,12 @@ __all__ = [
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
     "GeneralToolCheckAvailabilityCalTool",
     "GeneralToolBookAppointmentCalTool",
     "GeneralToolPressDigitTool",
@@ -63,6 +69,12 @@ __all__ = [
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "StateToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer",
+    "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
+    "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
+    "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
+    "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
     "StateToolCheckAvailabilityCalTool",
     "StateToolBookAppointmentCalTool",
     "StateToolPressDigitTool",
@@ -259,9 +271,100 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMo
     """
 
 
+class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
+    BaseModel
+):
+    agent_id: str
+    """The agent ID of the transfer agent.
+
+    This agent must have isTransferAgent set to true and should use bridge_transfer
+    and cancel_transfer tools (for Retell LLM) or BridgeTransferNode and
+    CancelTransferNode (for Conversation Flow).
+    """
+
+    agent_version: float
+    """The version of the transfer agent to use."""
+
+
+class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(BaseModel):
+    action_on_timeout: Optional[Literal["bridge_transfer", "cancel_transfer"]] = None
+    """The action to take when the transfer agent times out without making a decision.
+
+    Defaults to cancel_transfer.
+    """
+
+    transfer_agent: Optional[
+        GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
+    ] = None
+    """The agent that will mediate the transfer decision."""
+
+    transfer_timeout_ms: Optional[float] = None
+    """
+    The maximum time to wait for the transfer agent to make a decision, in
+    milliseconds. Defaults to 30000 (30 seconds).
+    """
+
+
+class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    BaseModel
+):
+    prompt: Optional[str] = None
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["prompt"]] = None
+
+
+class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    BaseModel
+):
+    message: Optional[str] = None
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["static_message"]] = None
+
+
+GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
+    GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(BaseModel):
+    agentic_transfer_config: (
+        GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
+    )
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
+    type: Literal["agentic_warm_transfer"]
+    """The type of the transfer."""
+
+    enable_bridge_audio_cue: Optional[bool] = None
+    """Whether to play an audio cue when bridging the call. Defaults to true."""
+
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
+    """The music to play while the caller is being transferred."""
+
+    public_handoff_option: Optional[
+        GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
+    ] = None
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: Optional[bool] = None
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
+    """
+
+
 GeneralToolTransferCallToolTransferOption: TypeAlias = Union[
     GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer,
     GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer,
+    GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer,
 ]
 
 
@@ -951,9 +1054,100 @@ class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMode
     """
 
 
+class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
+    BaseModel
+):
+    agent_id: str
+    """The agent ID of the transfer agent.
+
+    This agent must have isTransferAgent set to true and should use bridge_transfer
+    and cancel_transfer tools (for Retell LLM) or BridgeTransferNode and
+    CancelTransferNode (for Conversation Flow).
+    """
+
+    agent_version: float
+    """The version of the transfer agent to use."""
+
+
+class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(BaseModel):
+    action_on_timeout: Optional[Literal["bridge_transfer", "cancel_transfer"]] = None
+    """The action to take when the transfer agent times out without making a decision.
+
+    Defaults to cancel_transfer.
+    """
+
+    transfer_agent: Optional[
+        StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
+    ] = None
+    """The agent that will mediate the transfer decision."""
+
+    transfer_timeout_ms: Optional[float] = None
+    """
+    The maximum time to wait for the transfer agent to make a decision, in
+    milliseconds. Defaults to 30000 (30 seconds).
+    """
+
+
+class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    BaseModel
+):
+    prompt: Optional[str] = None
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["prompt"]] = None
+
+
+class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    BaseModel
+):
+    message: Optional[str] = None
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Optional[Literal["static_message"]] = None
+
+
+StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
+    StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(BaseModel):
+    agentic_transfer_config: (
+        StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
+    )
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
+    type: Literal["agentic_warm_transfer"]
+    """The type of the transfer."""
+
+    enable_bridge_audio_cue: Optional[bool] = None
+    """Whether to play an audio cue when bridging the call. Defaults to true."""
+
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
+    """The music to play while the caller is being transferred."""
+
+    public_handoff_option: Optional[
+        StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
+    ] = None
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: Optional[bool] = None
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
+    """
+
+
 StateToolTransferCallToolTransferOption: TypeAlias = Union[
     StateToolTransferCallToolTransferOptionTransferOptionColdTransfer,
     StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer,
+    StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer,
 ]
 
 
@@ -1491,18 +1685,14 @@ class LlmResponse(BaseModel):
 
     model: Optional[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
