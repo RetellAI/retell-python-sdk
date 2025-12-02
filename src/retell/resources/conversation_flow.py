@@ -161,7 +161,7 @@ class ConversationFlowResource(SyncAPIResource):
         self,
         conversation_flow_id: str,
         *,
-        version: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -173,6 +173,9 @@ class ConversationFlowResource(SyncAPIResource):
         Retrieve details of a specific Conversation Flow
 
         Args:
+          version: Optional version of the conversation flow to retrieve. Default to latest
+              version.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -203,7 +206,7 @@ class ConversationFlowResource(SyncAPIResource):
         self,
         conversation_flow_id: str,
         *,
-        version: str | Omit = omit,
+        version: int | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition] | Omit = omit,
         components: Optional[Iterable[conversation_flow_update_params.Component]] | Omit = omit,
@@ -231,7 +234,7 @@ class ConversationFlowResource(SyncAPIResource):
         Update an existing conversation flow
 
         Args:
-          version: Version of the conversation flow to update
+          version: Optional version of the conversation flow to update. Default to latest version.
 
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
@@ -543,7 +546,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         self,
         conversation_flow_id: str,
         *,
-        version: str | Omit = omit,
+        version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -555,6 +558,9 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         Retrieve details of a specific Conversation Flow
 
         Args:
+          version: Optional version of the conversation flow to retrieve. Default to latest
+              version.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -585,7 +591,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         self,
         conversation_flow_id: str,
         *,
-        version: str | Omit = omit,
+        version: int | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition] | Omit = omit,
         components: Optional[Iterable[conversation_flow_update_params.Component]] | Omit = omit,
@@ -613,7 +619,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         Update an existing conversation flow
 
         Args:
-          version: Version of the conversation flow to update
+          version: Optional version of the conversation flow to update. Default to latest version.
 
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the

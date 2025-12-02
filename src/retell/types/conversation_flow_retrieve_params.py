@@ -8,4 +8,8 @@ __all__ = ["ConversationFlowRetrieveParams"]
 
 
 class ConversationFlowRetrieveParams(TypedDict, total=False):
-    version: str
+    version: int
+    """Optional version of the conversation flow to retrieve.
+
+    Default to latest version.
+    """

@@ -63,3 +63,13 @@ from .knowledge_base_add_sources_params import KnowledgeBaseAddSourcesParams as 
 from .chat_create_chat_completion_params import ChatCreateChatCompletionParams as ChatCreateChatCompletionParams
 from .batch_call_create_batch_call_params import BatchCallCreateBatchCallParams as BatchCallCreateBatchCallParams
 from .chat_create_chat_completion_response import ChatCreateChatCompletionResponse as ChatCreateChatCompletionResponse
+from .conversation_flow_component_response import ConversationFlowComponentResponse as ConversationFlowComponentResponse
+from .conversation_flow_component_create_params import (
+    ConversationFlowComponentCreateParams as ConversationFlowComponentCreateParams,
+)
+from .conversation_flow_component_list_response import (
+    ConversationFlowComponentListResponse as ConversationFlowComponentListResponse,
+)
+from .conversation_flow_component_update_params import (
+    ConversationFlowComponentUpdateParams as ConversationFlowComponentUpdateParams,
+)

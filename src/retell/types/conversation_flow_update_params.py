@@ -625,8 +625,8 @@ __all__ = [
 
 
 class ConversationFlowUpdateParams(TypedDict, total=False):
-    version: str
-    """Version of the conversation flow to update"""
+    version: int
+    """Optional version of the conversation flow to update. Default to latest version."""
 
     begin_after_user_silence_ms: Optional[int]
     """

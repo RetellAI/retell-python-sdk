@@ -119,6 +119,22 @@ Methods:
 - <code title="get /list-conversation-flows">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">list</a>(\*\*<a href="src/retell/types/conversation_flow_list_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_list_response.py">ConversationFlowListResponse</a></code>
 - <code title="delete /delete-conversation-flow/{conversation_flow_id}">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">delete</a>(conversation_flow_id) -> None</code>
 
+# ConversationFlowComponent
+
+Types:
+
+```python
+from retell.types import ConversationFlowComponentResponse, ConversationFlowComponentListResponse
+```
+
+Methods:
+
+- <code title="post /create-conversation-flow-component">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">create</a>(\*\*<a href="src/retell/types/conversation_flow_component_create_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_component_response.py">ConversationFlowComponentResponse</a></code>
+- <code title="get /get-conversation-flow-component/{conversation_flow_component_id}">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">retrieve</a>(conversation_flow_component_id) -> <a href="./src/retell/types/conversation_flow_component_response.py">ConversationFlowComponentResponse</a></code>
+- <code title="patch /update-conversation-flow-component/{conversation_flow_component_id}">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">update</a>(conversation_flow_component_id, \*\*<a href="src/retell/types/conversation_flow_component_update_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_component_response.py">ConversationFlowComponentResponse</a></code>
+- <code title="get /list-conversation-flow-components">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">list</a>() -> <a href="./src/retell/types/conversation_flow_component_list_response.py">ConversationFlowComponentListResponse</a></code>
+- <code title="delete /delete-conversation-flow-component/{conversation_flow_component_id}">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">delete</a>(conversation_flow_component_id) -> None</code>
+
 # KnowledgeBase
 
 Types:

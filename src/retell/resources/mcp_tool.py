@@ -60,7 +60,8 @@ class McpToolResource(SyncAPIResource):
         Args:
           mcp_id: The ID of the MCP server to get tools from.
 
-          version: Optional version of the API to use for this request.
+          version: Optional version of the agent to use for this request. Default to latest
+              version.
 
           extra_headers: Send extra headers
 
@@ -130,7 +131,8 @@ class AsyncMcpToolResource(AsyncAPIResource):
         Args:
           mcp_id: The ID of the MCP server to get tools from.
 
-          version: Optional version of the API to use for this request.
+          version: Optional version of the agent to use for this request. Default to latest
+              version.
 
           extra_headers: Send extra headers
 
