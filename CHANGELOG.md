@@ -1,5 +1,21 @@
 # Changelog
 
+## 4.63.0 (2025-12-02)
+
+Full Changelog: [v4.60.1...v4.63.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.60.1...v4.63.0)
+
+### Features
+
+* **api:** api update ([a147528](https://github.com/RetellAI/retell-python-sdk/commit/a14752869c5fa86b7234614e51734225cfae5b69))
+* **api:** api update ([7e46a58](https://github.com/RetellAI/retell-python-sdk/commit/7e46a58e213dbb4da872590d294d28aaa6b63660))
+* **api:** api update ([6f56e26](https://github.com/RetellAI/retell-python-sdk/commit/6f56e264c85e1b96969c86248500b24bb947670c))
+* **api:** api update ([8aee10e](https://github.com/RetellAI/retell-python-sdk/commit/8aee10e0566455997c7873b3ff232e1ed7a237a3))
+
+
+### Chores
+
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([5c84059](https://github.com/RetellAI/retell-python-sdk/commit/5c84059b970eb0530509cba2e128f8997920d1b8))
+
 ## 4.60.1 (2025-11-28)
 
 Full Changelog: [v4.60.0...v4.60.1](https://github.com/RetellAI/retell-python-sdk/compare/v4.60.0...v4.60.1)
