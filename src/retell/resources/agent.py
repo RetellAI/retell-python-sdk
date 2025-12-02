@@ -60,6 +60,8 @@ class AgentResource(SyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
+        analysis_successful_prompt: Optional[str] | Omit = omit,
+        analysis_summary_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -114,23 +116,19 @@ class AgentResource(SyncAPIResource):
         opt_in_signed_url: bool | Omit = omit,
         pii_config: agent_create_params.PiiConfig | Omit = omit,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | Omit = omit,
-        post_call_analysis_model: Literal[
-            "gpt-4o",
-            "gpt-4o-mini",
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-4.1-nano",
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "claude-4.5-sonnet",
-            "claude-4.0-sonnet",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
-            "gemini-2.5-flash",
-            "gemini-2.5-flash-lite",
+        post_call_analysis_model: Optional[
+            Literal[
+                "gpt-4.1",
+                "gpt-4.1-mini",
+                "gpt-4.1-nano",
+                "gpt-5",
+                "gpt-5-mini",
+                "gpt-5-nano",
+                "claude-4.5-sonnet",
+                "claude-4.5-haiku",
+                "gemini-2.5-flash",
+                "gemini-2.5-flash-lite",
+            ]
         ]
         | Omit = omit,
         pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]] | Omit = omit,
@@ -138,6 +136,7 @@ class AgentResource(SyncAPIResource):
         reminder_trigger_ms: float | Omit = omit,
         responsiveness: float | Omit = omit,
         ring_duration_ms: int | Omit = omit,
+        signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate"] | Omit = omit,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -209,6 +208,13 @@ class AgentResource(SyncAPIResource):
           ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
+
+          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
+              interaction as successful. Set to null to use the default prompt.
+
+          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
+              When unset, the default system prompt is used. Set to null to use the default
+              prompt.
 
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
@@ -290,7 +296,7 @@ class AgentResource(SyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4o-mini.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
@@ -312,6 +318,10 @@ class AgentResource(SyncAPIResource):
           ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
               This applies for both outbound call ringtime, and call transfer ringtime.
               Default to 30000 (30 s). Valid range is [5000, 90000].
+
+          signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
+              opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
+              apply.
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
@@ -369,6 +379,8 @@ class AgentResource(SyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
+                    "analysis_successful_prompt": analysis_successful_prompt,
+                    "analysis_summary_prompt": analysis_summary_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -391,6 +403,7 @@ class AgentResource(SyncAPIResource):
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
+                    "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
                     "vocab_specialization": vocab_specialization,
@@ -465,6 +478,8 @@ class AgentResource(SyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
+        analysis_successful_prompt: Optional[str] | Omit = omit,
+        analysis_summary_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -519,23 +534,19 @@ class AgentResource(SyncAPIResource):
         opt_in_signed_url: bool | Omit = omit,
         pii_config: agent_update_params.PiiConfig | Omit = omit,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | Omit = omit,
-        post_call_analysis_model: Literal[
-            "gpt-4o",
-            "gpt-4o-mini",
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-4.1-nano",
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "claude-4.5-sonnet",
-            "claude-4.0-sonnet",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
-            "gemini-2.5-flash",
-            "gemini-2.5-flash-lite",
+        post_call_analysis_model: Optional[
+            Literal[
+                "gpt-4.1",
+                "gpt-4.1-mini",
+                "gpt-4.1-nano",
+                "gpt-5",
+                "gpt-5-mini",
+                "gpt-5-nano",
+                "claude-4.5-sonnet",
+                "claude-4.5-haiku",
+                "gemini-2.5-flash",
+                "gemini-2.5-flash-lite",
+            ]
         ]
         | Omit = omit,
         pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]] | Omit = omit,
@@ -544,6 +555,7 @@ class AgentResource(SyncAPIResource):
         response_engine: agent_update_params.ResponseEngine | Omit = omit,
         responsiveness: float | Omit = omit,
         ring_duration_ms: int | Omit = omit,
+        signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate"] | Omit = omit,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -611,6 +623,13 @@ class AgentResource(SyncAPIResource):
           ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
+
+          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
+              interaction as successful. Set to null to use the default prompt.
+
+          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
+              When unset, the default system prompt is used. Set to null to use the default
+              prompt.
 
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
@@ -692,7 +711,7 @@ class AgentResource(SyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4o-mini.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
@@ -718,6 +737,10 @@ class AgentResource(SyncAPIResource):
           ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
               This applies for both outbound call ringtime, and call transfer ringtime.
               Default to 30000 (30 s). Valid range is [5000, 90000].
+
+          signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
+              opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
+              apply.
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
@@ -778,6 +801,8 @@ class AgentResource(SyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
+                    "analysis_successful_prompt": analysis_successful_prompt,
+                    "analysis_summary_prompt": analysis_summary_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -801,6 +826,7 @@ class AgentResource(SyncAPIResource):
                     "response_engine": response_engine,
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
+                    "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
                     "vocab_specialization": vocab_specialization,
@@ -1018,6 +1044,8 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
+        analysis_successful_prompt: Optional[str] | Omit = omit,
+        analysis_summary_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -1072,23 +1100,19 @@ class AsyncAgentResource(AsyncAPIResource):
         opt_in_signed_url: bool | Omit = omit,
         pii_config: agent_create_params.PiiConfig | Omit = omit,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | Omit = omit,
-        post_call_analysis_model: Literal[
-            "gpt-4o",
-            "gpt-4o-mini",
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-4.1-nano",
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "claude-4.5-sonnet",
-            "claude-4.0-sonnet",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
-            "gemini-2.5-flash",
-            "gemini-2.5-flash-lite",
+        post_call_analysis_model: Optional[
+            Literal[
+                "gpt-4.1",
+                "gpt-4.1-mini",
+                "gpt-4.1-nano",
+                "gpt-5",
+                "gpt-5-mini",
+                "gpt-5-nano",
+                "claude-4.5-sonnet",
+                "claude-4.5-haiku",
+                "gemini-2.5-flash",
+                "gemini-2.5-flash-lite",
+            ]
         ]
         | Omit = omit,
         pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]] | Omit = omit,
@@ -1096,6 +1120,7 @@ class AsyncAgentResource(AsyncAPIResource):
         reminder_trigger_ms: float | Omit = omit,
         responsiveness: float | Omit = omit,
         ring_duration_ms: int | Omit = omit,
+        signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate"] | Omit = omit,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -1167,6 +1192,13 @@ class AsyncAgentResource(AsyncAPIResource):
           ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
+
+          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
+              interaction as successful. Set to null to use the default prompt.
+
+          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
+              When unset, the default system prompt is used. Set to null to use the default
+              prompt.
 
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
@@ -1248,7 +1280,7 @@ class AsyncAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4o-mini.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
@@ -1270,6 +1302,10 @@ class AsyncAgentResource(AsyncAPIResource):
           ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
               This applies for both outbound call ringtime, and call transfer ringtime.
               Default to 30000 (30 s). Valid range is [5000, 90000].
+
+          signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
+              opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
+              apply.
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
@@ -1327,6 +1363,8 @@ class AsyncAgentResource(AsyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
+                    "analysis_successful_prompt": analysis_successful_prompt,
+                    "analysis_summary_prompt": analysis_summary_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -1349,6 +1387,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "reminder_trigger_ms": reminder_trigger_ms,
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
+                    "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
                     "vocab_specialization": vocab_specialization,
@@ -1423,6 +1462,8 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
+        analysis_successful_prompt: Optional[str] | Omit = omit,
+        analysis_summary_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -1477,23 +1518,19 @@ class AsyncAgentResource(AsyncAPIResource):
         opt_in_signed_url: bool | Omit = omit,
         pii_config: agent_update_params.PiiConfig | Omit = omit,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | Omit = omit,
-        post_call_analysis_model: Literal[
-            "gpt-4o",
-            "gpt-4o-mini",
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-4.1-nano",
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "claude-4.5-sonnet",
-            "claude-4.0-sonnet",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
-            "gemini-2.5-flash",
-            "gemini-2.5-flash-lite",
+        post_call_analysis_model: Optional[
+            Literal[
+                "gpt-4.1",
+                "gpt-4.1-mini",
+                "gpt-4.1-nano",
+                "gpt-5",
+                "gpt-5-mini",
+                "gpt-5-nano",
+                "claude-4.5-sonnet",
+                "claude-4.5-haiku",
+                "gemini-2.5-flash",
+                "gemini-2.5-flash-lite",
+            ]
         ]
         | Omit = omit,
         pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]] | Omit = omit,
@@ -1502,6 +1539,7 @@ class AsyncAgentResource(AsyncAPIResource):
         response_engine: agent_update_params.ResponseEngine | Omit = omit,
         responsiveness: float | Omit = omit,
         ring_duration_ms: int | Omit = omit,
+        signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate"] | Omit = omit,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -1569,6 +1607,13 @@ class AsyncAgentResource(AsyncAPIResource):
           ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
+
+          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
+              interaction as successful. Set to null to use the default prompt.
+
+          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
+              When unset, the default system prompt is used. Set to null to use the default
+              prompt.
 
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
@@ -1650,7 +1695,7 @@ class AsyncAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4o-mini.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Currently only supported for English &
@@ -1676,6 +1721,10 @@ class AsyncAgentResource(AsyncAPIResource):
           ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
               This applies for both outbound call ringtime, and call transfer ringtime.
               Default to 30000 (30 s). Valid range is [5000, 90000].
+
+          signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
+              opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
+              apply.
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
@@ -1736,6 +1785,8 @@ class AsyncAgentResource(AsyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
+                    "analysis_successful_prompt": analysis_successful_prompt,
+                    "analysis_summary_prompt": analysis_summary_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -1759,6 +1810,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "response_engine": response_engine,
                     "responsiveness": responsiveness,
                     "ring_duration_ms": ring_duration_ms,
+                    "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
                     "vocab_specialization": vocab_specialization,

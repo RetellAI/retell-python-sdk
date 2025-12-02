@@ -40,6 +40,8 @@ class TestChatAgent:
                 "version": 0,
             },
             agent_name="Jarvis",
+            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
+            analysis_summary_prompt="Summarize the call in a few sentences.",
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
@@ -58,6 +60,7 @@ class TestChatAgent:
                 }
             ],
             post_chat_analysis_model="gpt-4.1-mini",
+            signed_url_expiration_ms=86400000,
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
@@ -152,6 +155,8 @@ class TestChatAgent:
             agent_id="16b980523634a6dc504898cda492e939",
             version=1,
             agent_name="Jarvis",
+            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
+            analysis_summary_prompt="Summarize the call in a few sentences.",
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
@@ -175,6 +180,7 @@ class TestChatAgent:
                 "type": "retell-llm",
                 "version": 0,
             },
+            signed_url_expiration_ms=86400000,
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
@@ -384,6 +390,8 @@ class TestAsyncChatAgent:
                 "version": 0,
             },
             agent_name="Jarvis",
+            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
+            analysis_summary_prompt="Summarize the call in a few sentences.",
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
@@ -402,6 +410,7 @@ class TestAsyncChatAgent:
                 }
             ],
             post_chat_analysis_model="gpt-4.1-mini",
+            signed_url_expiration_ms=86400000,
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
@@ -496,6 +505,8 @@ class TestAsyncChatAgent:
             agent_id="16b980523634a6dc504898cda492e939",
             version=1,
             agent_name="Jarvis",
+            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
+            analysis_summary_prompt="Summarize the call in a few sentences.",
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
@@ -519,6 +530,7 @@ class TestAsyncChatAgent:
                 "type": "retell-llm",
                 "version": 0,
             },
+            signed_url_expiration_ms=86400000,
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )

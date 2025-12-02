@@ -56,6 +56,8 @@ class ChatAgentResource(SyncAPIResource):
         *,
         response_engine: chat_agent_create_params.ResponseEngine,
         agent_name: Optional[str] | Omit = omit,
+        analysis_successful_prompt: Optional[str] | Omit = omit,
+        analysis_summary_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
@@ -102,26 +104,22 @@ class ChatAgentResource(SyncAPIResource):
         opt_in_signed_url: bool | Omit = omit,
         pii_config: chat_agent_create_params.PiiConfig | Omit = omit,
         post_chat_analysis_data: Optional[Iterable[chat_agent_create_params.PostChatAnalysisData]] | Omit = omit,
-        post_chat_analysis_model: Literal[
-            "gpt-4o",
-            "gpt-4o-mini",
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-4.1-nano",
-            "gpt-5",
-            "gpt-5.1",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "claude-4.5-sonnet",
-            "claude-4.0-sonnet",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
-            "gemini-2.5-flash",
-            "gemini-2.5-flash-lite",
+        post_chat_analysis_model: Optional[
+            Literal[
+                "gpt-4.1",
+                "gpt-4.1-mini",
+                "gpt-4.1-nano",
+                "gpt-5",
+                "gpt-5-mini",
+                "gpt-5-nano",
+                "claude-4.5-sonnet",
+                "claude-4.5-haiku",
+                "gemini-2.5-flash",
+                "gemini-2.5-flash-lite",
+            ]
         ]
         | Omit = omit,
+        signed_url_expiration_ms: Optional[int] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -140,6 +138,12 @@ class ChatAgentResource(SyncAPIResource):
               agent.
 
           agent_name: The name of the chat agent. Only used for your own reference.
+
+          analysis_successful_prompt: The prompt to use for post call analysis to evaluate whether the call is
+              successful. Set to null to use the default prompt.
+
+          analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
+              use the default prompt.
 
           auto_close_message: Message to display when the chat is automatically closed.
 
@@ -168,6 +172,10 @@ class ChatAgentResource(SyncAPIResource):
 
           post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1-mini.
 
+          signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
+              opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
+              apply.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -190,6 +198,8 @@ class ChatAgentResource(SyncAPIResource):
                 {
                     "response_engine": response_engine,
                     "agent_name": agent_name,
+                    "analysis_successful_prompt": analysis_successful_prompt,
+                    "analysis_summary_prompt": analysis_summary_prompt,
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
@@ -198,6 +208,7 @@ class ChatAgentResource(SyncAPIResource):
                     "pii_config": pii_config,
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
+                    "signed_url_expiration_ms": signed_url_expiration_ms,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
@@ -256,6 +267,8 @@ class ChatAgentResource(SyncAPIResource):
         *,
         version: int | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
+        analysis_successful_prompt: Optional[str] | Omit = omit,
+        analysis_summary_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
@@ -302,27 +315,23 @@ class ChatAgentResource(SyncAPIResource):
         opt_in_signed_url: bool | Omit = omit,
         pii_config: chat_agent_update_params.PiiConfig | Omit = omit,
         post_chat_analysis_data: Optional[Iterable[chat_agent_update_params.PostChatAnalysisData]] | Omit = omit,
-        post_chat_analysis_model: Literal[
-            "gpt-4o",
-            "gpt-4o-mini",
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-4.1-nano",
-            "gpt-5",
-            "gpt-5.1",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "claude-4.5-sonnet",
-            "claude-4.0-sonnet",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
-            "gemini-2.5-flash",
-            "gemini-2.5-flash-lite",
+        post_chat_analysis_model: Optional[
+            Literal[
+                "gpt-4.1",
+                "gpt-4.1-mini",
+                "gpt-4.1-nano",
+                "gpt-5",
+                "gpt-5-mini",
+                "gpt-5-nano",
+                "claude-4.5-sonnet",
+                "claude-4.5-haiku",
+                "gemini-2.5-flash",
+                "gemini-2.5-flash-lite",
+            ]
         ]
         | Omit = omit,
         response_engine: chat_agent_update_params.ResponseEngine | Omit = omit,
+        signed_url_expiration_ms: Optional[int] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -339,6 +348,12 @@ class ChatAgentResource(SyncAPIResource):
           version: Optional version of the API to use for this request. Default to latest version.
 
           agent_name: The name of the chat agent. Only used for your own reference.
+
+          analysis_successful_prompt: The prompt to use for post call analysis to evaluate whether the call is
+              successful. Set to null to use the default prompt.
+
+          analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
+              use the default prompt.
 
           auto_close_message: Message to display when the chat is automatically closed.
 
@@ -371,6 +386,10 @@ class ChatAgentResource(SyncAPIResource):
               the agent. You need to create a Response Engine first before attaching it to an
               agent.
 
+          signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
+              opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
+              apply.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -394,6 +413,8 @@ class ChatAgentResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "agent_name": agent_name,
+                    "analysis_successful_prompt": analysis_successful_prompt,
+                    "analysis_summary_prompt": analysis_summary_prompt,
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
@@ -403,6 +424,7 @@ class ChatAgentResource(SyncAPIResource):
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "response_engine": response_engine,
+                    "signed_url_expiration_ms": signed_url_expiration_ms,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
@@ -601,6 +623,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
         *,
         response_engine: chat_agent_create_params.ResponseEngine,
         agent_name: Optional[str] | Omit = omit,
+        analysis_successful_prompt: Optional[str] | Omit = omit,
+        analysis_summary_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
@@ -647,26 +671,22 @@ class AsyncChatAgentResource(AsyncAPIResource):
         opt_in_signed_url: bool | Omit = omit,
         pii_config: chat_agent_create_params.PiiConfig | Omit = omit,
         post_chat_analysis_data: Optional[Iterable[chat_agent_create_params.PostChatAnalysisData]] | Omit = omit,
-        post_chat_analysis_model: Literal[
-            "gpt-4o",
-            "gpt-4o-mini",
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-4.1-nano",
-            "gpt-5",
-            "gpt-5.1",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "claude-4.5-sonnet",
-            "claude-4.0-sonnet",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
-            "gemini-2.5-flash",
-            "gemini-2.5-flash-lite",
+        post_chat_analysis_model: Optional[
+            Literal[
+                "gpt-4.1",
+                "gpt-4.1-mini",
+                "gpt-4.1-nano",
+                "gpt-5",
+                "gpt-5-mini",
+                "gpt-5-nano",
+                "claude-4.5-sonnet",
+                "claude-4.5-haiku",
+                "gemini-2.5-flash",
+                "gemini-2.5-flash-lite",
+            ]
         ]
         | Omit = omit,
+        signed_url_expiration_ms: Optional[int] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -685,6 +705,12 @@ class AsyncChatAgentResource(AsyncAPIResource):
               agent.
 
           agent_name: The name of the chat agent. Only used for your own reference.
+
+          analysis_successful_prompt: The prompt to use for post call analysis to evaluate whether the call is
+              successful. Set to null to use the default prompt.
+
+          analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
+              use the default prompt.
 
           auto_close_message: Message to display when the chat is automatically closed.
 
@@ -713,6 +739,10 @@ class AsyncChatAgentResource(AsyncAPIResource):
 
           post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1-mini.
 
+          signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
+              opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
+              apply.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -735,6 +765,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 {
                     "response_engine": response_engine,
                     "agent_name": agent_name,
+                    "analysis_successful_prompt": analysis_successful_prompt,
+                    "analysis_summary_prompt": analysis_summary_prompt,
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
@@ -743,6 +775,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "pii_config": pii_config,
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
+                    "signed_url_expiration_ms": signed_url_expiration_ms,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
@@ -803,6 +836,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
         *,
         version: int | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
+        analysis_successful_prompt: Optional[str] | Omit = omit,
+        analysis_summary_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
@@ -849,27 +884,23 @@ class AsyncChatAgentResource(AsyncAPIResource):
         opt_in_signed_url: bool | Omit = omit,
         pii_config: chat_agent_update_params.PiiConfig | Omit = omit,
         post_chat_analysis_data: Optional[Iterable[chat_agent_update_params.PostChatAnalysisData]] | Omit = omit,
-        post_chat_analysis_model: Literal[
-            "gpt-4o",
-            "gpt-4o-mini",
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-4.1-nano",
-            "gpt-5",
-            "gpt-5.1",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "claude-4.5-sonnet",
-            "claude-4.0-sonnet",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
-            "gemini-2.5-flash",
-            "gemini-2.5-flash-lite",
+        post_chat_analysis_model: Optional[
+            Literal[
+                "gpt-4.1",
+                "gpt-4.1-mini",
+                "gpt-4.1-nano",
+                "gpt-5",
+                "gpt-5-mini",
+                "gpt-5-nano",
+                "claude-4.5-sonnet",
+                "claude-4.5-haiku",
+                "gemini-2.5-flash",
+                "gemini-2.5-flash-lite",
+            ]
         ]
         | Omit = omit,
         response_engine: chat_agent_update_params.ResponseEngine | Omit = omit,
+        signed_url_expiration_ms: Optional[int] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -886,6 +917,12 @@ class AsyncChatAgentResource(AsyncAPIResource):
           version: Optional version of the API to use for this request. Default to latest version.
 
           agent_name: The name of the chat agent. Only used for your own reference.
+
+          analysis_successful_prompt: The prompt to use for post call analysis to evaluate whether the call is
+              successful. Set to null to use the default prompt.
+
+          analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
+              use the default prompt.
 
           auto_close_message: Message to display when the chat is automatically closed.
 
@@ -918,6 +955,10 @@ class AsyncChatAgentResource(AsyncAPIResource):
               the agent. You need to create a Response Engine first before attaching it to an
               agent.
 
+          signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
+              opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
+              apply.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -941,6 +982,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "agent_name": agent_name,
+                    "analysis_successful_prompt": analysis_successful_prompt,
+                    "analysis_summary_prompt": analysis_summary_prompt,
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
@@ -950,6 +993,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "response_engine": response_engine,
+                    "signed_url_expiration_ms": signed_url_expiration_ms,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },

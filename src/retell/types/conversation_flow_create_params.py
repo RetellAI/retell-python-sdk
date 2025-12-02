@@ -691,18 +691,14 @@ class ConversationFlowCreateParams(TypedDict, total=False):
 class ModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -955,18 +951,14 @@ class NodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
 class NodeConversationNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -1373,18 +1365,14 @@ NodeFunctionNodeInstruction: TypeAlias = Union[
 class NodeFunctionNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -1833,18 +1821,14 @@ class NodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
 class NodeTransferCallNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -2079,18 +2063,14 @@ class NodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
 class NodePressDigitNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -2877,18 +2857,14 @@ class NodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total=False):
 class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -3838,18 +3814,14 @@ class ComponentNodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
 class ComponentNodeConversationNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -4260,18 +4232,14 @@ ComponentNodeFunctionNodeInstruction: TypeAlias = Union[
 class ComponentNodeFunctionNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -4736,18 +4704,14 @@ class ComponentNodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
 class ComponentNodeTransferCallNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -4983,18 +4947,14 @@ class ComponentNodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
 class ComponentNodePressDigitNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]
@@ -5792,18 +5752,14 @@ class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total
 class ComponentNodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-4o",
-            "gpt-4o-mini",
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
-            "claude-3.7-sonnet",
-            "claude-3.5-haiku",
-            "gemini-2.0-flash",
-            "gemini-2.0-flash-lite",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
         ]

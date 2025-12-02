@@ -11,6 +11,7 @@ __all__ = [
     "CallCost",
     "CallCostProductCost",
     "Latency",
+    "LatencyAsr",
     "LatencyE2E",
     "LatencyKnowledgeBase",
     "LatencyLlm",
@@ -81,6 +82,32 @@ class CallCost(BaseModel):
 
     total_duration_unit_price: float
     """Total unit duration price of all products in cents per second"""
+
+
+class LatencyAsr(BaseModel):
+    max: Optional[float] = None
+    """Maximum latency in the call, measured in milliseconds."""
+
+    min: Optional[float] = None
+    """Minimum latency in the call, measured in milliseconds."""
+
+    num: Optional[float] = None
+    """Number of data points (number of times latency is tracked)."""
+
+    p50: Optional[float] = None
+    """50 percentile of latency, measured in milliseconds."""
+
+    p90: Optional[float] = None
+    """90 percentile of latency, measured in milliseconds."""
+
+    p95: Optional[float] = None
+    """95 percentile of latency, measured in milliseconds."""
+
+    p99: Optional[float] = None
+    """99 percentile of latency, measured in milliseconds."""
+
+    values: Optional[List[float]] = None
+    """All the latency data points in the call, measured in milliseconds."""
 
 
 class LatencyE2E(BaseModel):
@@ -240,6 +267,12 @@ class LatencyTts(BaseModel):
 
 
 class Latency(BaseModel):
+    asr: Optional[LatencyAsr] = None
+    """
+    Transcription latency (diff between the duration of the chunks streamed and the
+    durations of the transcribed part) tracking of the call.
+    """
+
     e2e: Optional[LatencyE2E] = None
     """
     End to end latency (from user stops talking to agent start talking) tracking of

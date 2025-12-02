@@ -88,6 +88,19 @@ class AgentCreateParams(TypedDict, total=False):
     value means louder ambient sound. If unset, default value 1 will apply.
     """
 
+    analysis_successful_prompt: Optional[str]
+    """
+    Prompt to determine whether the post call or chat analysis should mark the
+    interaction as successful. Set to null to use the default prompt.
+    """
+
+    analysis_summary_prompt: Optional[str]
+    """Prompt to guide how the post call or chat analysis summary should be generated.
+
+    When unset, the default system prompt is used. Set to null to use the default
+    prompt.
+    """
+
     backchannel_frequency: float
     """Only applicable when enable_backchannel is true.
 
@@ -251,25 +264,21 @@ class AgentCreateParams(TypedDict, total=False):
     This will be available after the call ends.
     """
 
-    post_call_analysis_model: Literal[
-        "gpt-4o",
-        "gpt-4o-mini",
-        "gpt-4.1",
-        "gpt-4.1-mini",
-        "gpt-4.1-nano",
-        "gpt-5",
-        "gpt-5-mini",
-        "gpt-5-nano",
-        "claude-4.5-sonnet",
-        "claude-4.0-sonnet",
-        "claude-3.7-sonnet",
-        "claude-3.5-haiku",
-        "gemini-2.0-flash",
-        "gemini-2.0-flash-lite",
-        "gemini-2.5-flash",
-        "gemini-2.5-flash-lite",
+    post_call_analysis_model: Optional[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.5-haiku",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+        ]
     ]
-    """The model to use for post call analysis. Default to gpt-4o-mini."""
+    """The model to use for post call analysis. Default to gpt-4.1-mini."""
 
     pronunciation_dictionary: Optional[Iterable[PronunciationDictionary]]
     """
@@ -305,6 +314,13 @@ class AgentCreateParams(TypedDict, total=False):
 
     This applies for both outbound call ringtime, and call transfer ringtime.
     Default to 30000 (30 s). Valid range is [5000, 90000].
+    """
+
+    signed_url_expiration_ms: Optional[int]
+    """The expiration time for the signed url in milliseconds.
+
+    Only applicable when opt_in_signed_url is true. If not set, default value of
+    86400000 (24 hours) will apply.
     """
 
     stt_mode: Literal["fast", "accurate"]
