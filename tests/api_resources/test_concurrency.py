@@ -17,11 +17,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestConcurrency:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Retell) -> None:
         concurrency = client.concurrency.retrieve()
         assert_matches_type(ConcurrencyRetrieveResponse, concurrency, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.concurrency.with_raw_response.retrieve()
@@ -31,6 +33,7 @@ class TestConcurrency:
         concurrency = response.parse()
         assert_matches_type(ConcurrencyRetrieveResponse, concurrency, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.concurrency.with_streaming_response.retrieve() as response:
@@ -48,11 +51,13 @@ class TestAsyncConcurrency:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         concurrency = await async_client.concurrency.retrieve()
         assert_matches_type(ConcurrencyRetrieveResponse, concurrency, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.concurrency.with_raw_response.retrieve()
@@ -62,6 +67,7 @@ class TestAsyncConcurrency:
         concurrency = await response.parse()
         assert_matches_type(ConcurrencyRetrieveResponse, concurrency, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.concurrency.with_streaming_response.retrieve() as response:
