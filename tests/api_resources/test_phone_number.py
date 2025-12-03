@@ -20,11 +20,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestPhoneNumber:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Retell) -> None:
         phone_number = client.phone_number.create()
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Retell) -> None:
         phone_number = client.phone_number.create(
@@ -42,6 +44,7 @@ class TestPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.create()
@@ -51,6 +54,7 @@ class TestPhoneNumber:
         phone_number = response.parse()
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.create() as response:
@@ -62,6 +66,7 @@ class TestPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Retell) -> None:
         phone_number = client.phone_number.retrieve(
@@ -69,6 +74,7 @@ class TestPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.retrieve(
@@ -80,6 +86,7 @@ class TestPhoneNumber:
         phone_number = response.parse()
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.retrieve(
@@ -93,6 +100,7 @@ class TestPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
@@ -100,6 +108,7 @@ class TestPhoneNumber:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Retell) -> None:
         phone_number = client.phone_number.update(
@@ -107,6 +116,7 @@ class TestPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Retell) -> None:
         phone_number = client.phone_number.update(
@@ -120,6 +130,7 @@ class TestPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.update(
@@ -131,6 +142,7 @@ class TestPhoneNumber:
         phone_number = response.parse()
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.update(
@@ -144,6 +156,7 @@ class TestPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_update(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
@@ -151,11 +164,13 @@ class TestPhoneNumber:
                 phone_number="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Retell) -> None:
         phone_number = client.phone_number.list()
         assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.list()
@@ -165,6 +180,7 @@ class TestPhoneNumber:
         phone_number = response.parse()
         assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.list() as response:
@@ -176,6 +192,7 @@ class TestPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Retell) -> None:
         phone_number = client.phone_number.delete(
@@ -183,6 +200,7 @@ class TestPhoneNumber:
         )
         assert phone_number is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.delete(
@@ -194,6 +212,7 @@ class TestPhoneNumber:
         phone_number = response.parse()
         assert phone_number is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.delete(
@@ -207,6 +226,7 @@ class TestPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
@@ -214,6 +234,7 @@ class TestPhoneNumber:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_import(self, client: Retell) -> None:
         phone_number = client.phone_number.import_(
@@ -222,6 +243,7 @@ class TestPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_import_with_all_params(self, client: Retell) -> None:
         phone_number = client.phone_number.import_(
@@ -238,6 +260,7 @@ class TestPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_import(self, client: Retell) -> None:
         response = client.phone_number.with_raw_response.import_(
@@ -250,6 +273,7 @@ class TestPhoneNumber:
         phone_number = response.parse()
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_import(self, client: Retell) -> None:
         with client.phone_number.with_streaming_response.import_(
@@ -270,11 +294,13 @@ class TestAsyncPhoneNumber:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.create()
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.create(
@@ -292,6 +318,7 @@ class TestAsyncPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.create()
@@ -301,6 +328,7 @@ class TestAsyncPhoneNumber:
         phone_number = await response.parse()
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.create() as response:
@@ -312,6 +340,7 @@ class TestAsyncPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.retrieve(
@@ -319,6 +348,7 @@ class TestAsyncPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.retrieve(
@@ -330,6 +360,7 @@ class TestAsyncPhoneNumber:
         phone_number = await response.parse()
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.retrieve(
@@ -343,6 +374,7 @@ class TestAsyncPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
@@ -350,6 +382,7 @@ class TestAsyncPhoneNumber:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.update(
@@ -357,6 +390,7 @@ class TestAsyncPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.update(
@@ -370,6 +404,7 @@ class TestAsyncPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.update(
@@ -381,6 +416,7 @@ class TestAsyncPhoneNumber:
         phone_number = await response.parse()
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.update(
@@ -394,6 +430,7 @@ class TestAsyncPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
@@ -401,11 +438,13 @@ class TestAsyncPhoneNumber:
                 phone_number="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.list()
         assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.list()
@@ -415,6 +454,7 @@ class TestAsyncPhoneNumber:
         phone_number = await response.parse()
         assert_matches_type(PhoneNumberListResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.list() as response:
@@ -426,6 +466,7 @@ class TestAsyncPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.delete(
@@ -433,6 +474,7 @@ class TestAsyncPhoneNumber:
         )
         assert phone_number is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.delete(
@@ -444,6 +486,7 @@ class TestAsyncPhoneNumber:
         phone_number = await response.parse()
         assert phone_number is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.delete(
@@ -457,6 +500,7 @@ class TestAsyncPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `phone_number` but received ''"):
@@ -464,6 +508,7 @@ class TestAsyncPhoneNumber:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_import(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.import_(
@@ -472,6 +517,7 @@ class TestAsyncPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_import_with_all_params(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.import_(
@@ -488,6 +534,7 @@ class TestAsyncPhoneNumber:
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_import(self, async_client: AsyncRetell) -> None:
         response = await async_client.phone_number.with_raw_response.import_(
@@ -500,6 +547,7 @@ class TestAsyncPhoneNumber:
         phone_number = await response.parse()
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_import(self, async_client: AsyncRetell) -> None:
         async with async_client.phone_number.with_streaming_response.import_(

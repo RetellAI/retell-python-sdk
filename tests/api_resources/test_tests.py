@@ -17,6 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestTests:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_batch_test(self, client: Retell) -> None:
         test = client.tests.create_batch_test(
@@ -28,6 +29,7 @@ class TestTests:
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_batch_test_with_all_params(self, client: Retell) -> None:
         test = client.tests.create_batch_test(
@@ -40,6 +42,7 @@ class TestTests:
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create_batch_test(self, client: Retell) -> None:
         response = client.tests.with_raw_response.create_batch_test(
@@ -55,6 +58,7 @@ class TestTests:
         test = response.parse()
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create_batch_test(self, client: Retell) -> None:
         with client.tests.with_streaming_response.create_batch_test(
@@ -78,6 +82,7 @@ class TestAsyncTests:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_batch_test(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.create_batch_test(
@@ -89,6 +94,7 @@ class TestAsyncTests:
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_batch_test_with_all_params(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.create_batch_test(
@@ -101,6 +107,7 @@ class TestAsyncTests:
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create_batch_test(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.create_batch_test(
@@ -116,6 +123,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create_batch_test(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.create_batch_test(

@@ -71,6 +71,7 @@ class TestKnowledgeBase:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Retell) -> None:
         knowledge_base = client.knowledge_base.retrieve(
@@ -78,6 +79,7 @@ class TestKnowledgeBase:
         )
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.knowledge_base.with_raw_response.retrieve(
@@ -89,6 +91,7 @@ class TestKnowledgeBase:
         knowledge_base = response.parse()
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.knowledge_base.with_streaming_response.retrieve(
@@ -102,6 +105,7 @@ class TestKnowledgeBase:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `knowledge_base_id` but received ''"):
@@ -109,11 +113,13 @@ class TestKnowledgeBase:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Retell) -> None:
         knowledge_base = client.knowledge_base.list()
         assert_matches_type(KnowledgeBaseListResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
         response = client.knowledge_base.with_raw_response.list()
@@ -123,6 +129,7 @@ class TestKnowledgeBase:
         knowledge_base = response.parse()
         assert_matches_type(KnowledgeBaseListResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Retell) -> None:
         with client.knowledge_base.with_streaming_response.list() as response:
@@ -134,6 +141,7 @@ class TestKnowledgeBase:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Retell) -> None:
         knowledge_base = client.knowledge_base.delete(
@@ -141,6 +149,7 @@ class TestKnowledgeBase:
         )
         assert knowledge_base is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Retell) -> None:
         response = client.knowledge_base.with_raw_response.delete(
@@ -152,6 +161,7 @@ class TestKnowledgeBase:
         knowledge_base = response.parse()
         assert knowledge_base is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Retell) -> None:
         with client.knowledge_base.with_streaming_response.delete(
@@ -165,6 +175,7 @@ class TestKnowledgeBase:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `knowledge_base_id` but received ''"):
@@ -230,6 +241,7 @@ class TestKnowledgeBase:
                 knowledge_base_id="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete_source(self, client: Retell) -> None:
         knowledge_base = client.knowledge_base.delete_source(
@@ -238,6 +250,7 @@ class TestKnowledgeBase:
         )
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete_source(self, client: Retell) -> None:
         response = client.knowledge_base.with_raw_response.delete_source(
@@ -250,6 +263,7 @@ class TestKnowledgeBase:
         knowledge_base = response.parse()
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete_source(self, client: Retell) -> None:
         with client.knowledge_base.with_streaming_response.delete_source(
@@ -264,6 +278,7 @@ class TestKnowledgeBase:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_delete_source(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `knowledge_base_id` but received ''"):
@@ -335,6 +350,7 @@ class TestAsyncKnowledgeBase:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         knowledge_base = await async_client.knowledge_base.retrieve(
@@ -342,6 +358,7 @@ class TestAsyncKnowledgeBase:
         )
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.knowledge_base.with_raw_response.retrieve(
@@ -353,6 +370,7 @@ class TestAsyncKnowledgeBase:
         knowledge_base = await response.parse()
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.knowledge_base.with_streaming_response.retrieve(
@@ -366,6 +384,7 @@ class TestAsyncKnowledgeBase:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `knowledge_base_id` but received ''"):
@@ -373,11 +392,13 @@ class TestAsyncKnowledgeBase:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
         knowledge_base = await async_client.knowledge_base.list()
         assert_matches_type(KnowledgeBaseListResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
         response = await async_client.knowledge_base.with_raw_response.list()
@@ -387,6 +408,7 @@ class TestAsyncKnowledgeBase:
         knowledge_base = await response.parse()
         assert_matches_type(KnowledgeBaseListResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
         async with async_client.knowledge_base.with_streaming_response.list() as response:
@@ -398,6 +420,7 @@ class TestAsyncKnowledgeBase:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncRetell) -> None:
         knowledge_base = await async_client.knowledge_base.delete(
@@ -405,6 +428,7 @@ class TestAsyncKnowledgeBase:
         )
         assert knowledge_base is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncRetell) -> None:
         response = await async_client.knowledge_base.with_raw_response.delete(
@@ -416,6 +440,7 @@ class TestAsyncKnowledgeBase:
         knowledge_base = await response.parse()
         assert knowledge_base is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncRetell) -> None:
         async with async_client.knowledge_base.with_streaming_response.delete(
@@ -429,6 +454,7 @@ class TestAsyncKnowledgeBase:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `knowledge_base_id` but received ''"):
@@ -494,6 +520,7 @@ class TestAsyncKnowledgeBase:
                 knowledge_base_id="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete_source(self, async_client: AsyncRetell) -> None:
         knowledge_base = await async_client.knowledge_base.delete_source(
@@ -502,6 +529,7 @@ class TestAsyncKnowledgeBase:
         )
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete_source(self, async_client: AsyncRetell) -> None:
         response = await async_client.knowledge_base.with_raw_response.delete_source(
@@ -514,6 +542,7 @@ class TestAsyncKnowledgeBase:
         knowledge_base = await response.parse()
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete_source(self, async_client: AsyncRetell) -> None:
         async with async_client.knowledge_base.with_streaming_response.delete_source(
@@ -528,6 +557,7 @@ class TestAsyncKnowledgeBase:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_delete_source(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `knowledge_base_id` but received ''"):
