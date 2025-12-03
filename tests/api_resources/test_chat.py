@@ -21,6 +21,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestChat:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Retell) -> None:
         chat = client.chat.create(
@@ -28,6 +29,7 @@ class TestChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Retell) -> None:
         chat = client.chat.create(
@@ -38,6 +40,7 @@ class TestChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Retell) -> None:
         response = client.chat.with_raw_response.create(
@@ -49,6 +52,7 @@ class TestChat:
         chat = response.parse()
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Retell) -> None:
         with client.chat.with_streaming_response.create(
@@ -62,6 +66,7 @@ class TestChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Retell) -> None:
         chat = client.chat.retrieve(
@@ -69,6 +74,7 @@ class TestChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.chat.with_raw_response.retrieve(
@@ -80,6 +86,7 @@ class TestChat:
         chat = response.parse()
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.chat.with_streaming_response.retrieve(
@@ -93,6 +100,7 @@ class TestChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
@@ -100,6 +108,7 @@ class TestChat:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Retell) -> None:
         chat = client.chat.update(
@@ -107,6 +116,7 @@ class TestChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Retell) -> None:
         chat = client.chat.update(
@@ -120,6 +130,7 @@ class TestChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Retell) -> None:
         response = client.chat.with_raw_response.update(
@@ -131,6 +142,7 @@ class TestChat:
         chat = response.parse()
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Retell) -> None:
         with client.chat.with_streaming_response.update(
@@ -144,6 +156,7 @@ class TestChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_update(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
@@ -151,11 +164,13 @@ class TestChat:
                 chat_id="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Retell) -> None:
         chat = client.chat.list()
         assert_matches_type(ChatListResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
         response = client.chat.with_raw_response.list()
@@ -165,6 +180,7 @@ class TestChat:
         chat = response.parse()
         assert_matches_type(ChatListResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Retell) -> None:
         with client.chat.with_streaming_response.list() as response:
@@ -176,6 +192,7 @@ class TestChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_chat_completion(self, client: Retell) -> None:
         chat = client.chat.create_chat_completion(
@@ -184,6 +201,7 @@ class TestChat:
         )
         assert_matches_type(ChatCreateChatCompletionResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create_chat_completion(self, client: Retell) -> None:
         response = client.chat.with_raw_response.create_chat_completion(
@@ -196,6 +214,7 @@ class TestChat:
         chat = response.parse()
         assert_matches_type(ChatCreateChatCompletionResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create_chat_completion(self, client: Retell) -> None:
         with client.chat.with_streaming_response.create_chat_completion(
@@ -210,6 +229,7 @@ class TestChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_sms_chat(self, client: Retell) -> None:
         chat = client.chat.create_sms_chat(
@@ -218,6 +238,7 @@ class TestChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_sms_chat_with_all_params(self, client: Retell) -> None:
         chat = client.chat.create_sms_chat(
@@ -230,6 +251,7 @@ class TestChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create_sms_chat(self, client: Retell) -> None:
         response = client.chat.with_raw_response.create_sms_chat(
@@ -242,6 +264,7 @@ class TestChat:
         chat = response.parse()
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create_sms_chat(self, client: Retell) -> None:
         with client.chat.with_streaming_response.create_sms_chat(
@@ -256,6 +279,7 @@ class TestChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_end(self, client: Retell) -> None:
         chat = client.chat.end(
@@ -263,6 +287,7 @@ class TestChat:
         )
         assert chat is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_end(self, client: Retell) -> None:
         response = client.chat.with_raw_response.end(
@@ -274,6 +299,7 @@ class TestChat:
         chat = response.parse()
         assert chat is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_end(self, client: Retell) -> None:
         with client.chat.with_streaming_response.end(
@@ -287,6 +313,7 @@ class TestChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_end(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
@@ -300,6 +327,7 @@ class TestAsyncChat:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.create(
@@ -307,6 +335,7 @@ class TestAsyncChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.create(
@@ -317,6 +346,7 @@ class TestAsyncChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat.with_raw_response.create(
@@ -328,6 +358,7 @@ class TestAsyncChat:
         chat = await response.parse()
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncRetell) -> None:
         async with async_client.chat.with_streaming_response.create(
@@ -341,6 +372,7 @@ class TestAsyncChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.retrieve(
@@ -348,6 +380,7 @@ class TestAsyncChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat.with_raw_response.retrieve(
@@ -359,6 +392,7 @@ class TestAsyncChat:
         chat = await response.parse()
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.chat.with_streaming_response.retrieve(
@@ -372,6 +406,7 @@ class TestAsyncChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
@@ -379,6 +414,7 @@ class TestAsyncChat:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.update(
@@ -386,6 +422,7 @@ class TestAsyncChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.update(
@@ -399,6 +436,7 @@ class TestAsyncChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat.with_raw_response.update(
@@ -410,6 +448,7 @@ class TestAsyncChat:
         chat = await response.parse()
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncRetell) -> None:
         async with async_client.chat.with_streaming_response.update(
@@ -423,6 +462,7 @@ class TestAsyncChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
@@ -430,11 +470,13 @@ class TestAsyncChat:
                 chat_id="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.list()
         assert_matches_type(ChatListResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat.with_raw_response.list()
@@ -444,6 +486,7 @@ class TestAsyncChat:
         chat = await response.parse()
         assert_matches_type(ChatListResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
         async with async_client.chat.with_streaming_response.list() as response:
@@ -455,6 +498,7 @@ class TestAsyncChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_chat_completion(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.create_chat_completion(
@@ -463,6 +507,7 @@ class TestAsyncChat:
         )
         assert_matches_type(ChatCreateChatCompletionResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create_chat_completion(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat.with_raw_response.create_chat_completion(
@@ -475,6 +520,7 @@ class TestAsyncChat:
         chat = await response.parse()
         assert_matches_type(ChatCreateChatCompletionResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create_chat_completion(self, async_client: AsyncRetell) -> None:
         async with async_client.chat.with_streaming_response.create_chat_completion(
@@ -489,6 +535,7 @@ class TestAsyncChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_sms_chat(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.create_sms_chat(
@@ -497,6 +544,7 @@ class TestAsyncChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_sms_chat_with_all_params(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.create_sms_chat(
@@ -509,6 +557,7 @@ class TestAsyncChat:
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create_sms_chat(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat.with_raw_response.create_sms_chat(
@@ -521,6 +570,7 @@ class TestAsyncChat:
         chat = await response.parse()
         assert_matches_type(ChatResponse, chat, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create_sms_chat(self, async_client: AsyncRetell) -> None:
         async with async_client.chat.with_streaming_response.create_sms_chat(
@@ -535,6 +585,7 @@ class TestAsyncChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_end(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.end(
@@ -542,6 +593,7 @@ class TestAsyncChat:
         )
         assert chat is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_end(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat.with_raw_response.end(
@@ -553,6 +605,7 @@ class TestAsyncChat:
         chat = await response.parse()
         assert chat is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_end(self, async_client: AsyncRetell) -> None:
         async with async_client.chat.with_streaming_response.end(
@@ -566,6 +619,7 @@ class TestAsyncChat:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_end(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):

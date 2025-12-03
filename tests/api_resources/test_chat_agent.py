@@ -21,6 +21,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestChatAgent:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: Retell) -> None:
         chat_agent = client.chat_agent.create(
@@ -31,6 +32,7 @@ class TestChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Retell) -> None:
         chat_agent = client.chat_agent.create(
@@ -66,6 +68,7 @@ class TestChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Retell) -> None:
         response = client.chat_agent.with_raw_response.create(
@@ -80,6 +83,7 @@ class TestChatAgent:
         chat_agent = response.parse()
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Retell) -> None:
         with client.chat_agent.with_streaming_response.create(
@@ -96,6 +100,7 @@ class TestChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Retell) -> None:
         chat_agent = client.chat_agent.retrieve(
@@ -103,6 +108,7 @@ class TestChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve_with_all_params(self, client: Retell) -> None:
         chat_agent = client.chat_agent.retrieve(
@@ -111,6 +117,7 @@ class TestChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.chat_agent.with_raw_response.retrieve(
@@ -122,6 +129,7 @@ class TestChatAgent:
         chat_agent = response.parse()
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.chat_agent.with_streaming_response.retrieve(
@@ -135,6 +143,7 @@ class TestChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
@@ -142,6 +151,7 @@ class TestChatAgent:
                 agent_id="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Retell) -> None:
         chat_agent = client.chat_agent.update(
@@ -149,6 +159,7 @@ class TestChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Retell) -> None:
         chat_agent = client.chat_agent.update(
@@ -186,6 +197,7 @@ class TestChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Retell) -> None:
         response = client.chat_agent.with_raw_response.update(
@@ -197,6 +209,7 @@ class TestChatAgent:
         chat_agent = response.parse()
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Retell) -> None:
         with client.chat_agent.with_streaming_response.update(
@@ -210,6 +223,7 @@ class TestChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_update(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
@@ -217,11 +231,13 @@ class TestChatAgent:
                 agent_id="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: Retell) -> None:
         chat_agent = client.chat_agent.list()
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
         chat_agent = client.chat_agent.list(
@@ -231,6 +247,7 @@ class TestChatAgent:
         )
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
         response = client.chat_agent.with_raw_response.list()
@@ -240,6 +257,7 @@ class TestChatAgent:
         chat_agent = response.parse()
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Retell) -> None:
         with client.chat_agent.with_streaming_response.list() as response:
@@ -251,6 +269,7 @@ class TestChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: Retell) -> None:
         chat_agent = client.chat_agent.delete(
@@ -258,6 +277,7 @@ class TestChatAgent:
         )
         assert chat_agent is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: Retell) -> None:
         response = client.chat_agent.with_raw_response.delete(
@@ -269,6 +289,7 @@ class TestChatAgent:
         chat_agent = response.parse()
         assert chat_agent is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: Retell) -> None:
         with client.chat_agent.with_streaming_response.delete(
@@ -282,6 +303,7 @@ class TestChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
@@ -289,6 +311,7 @@ class TestChatAgent:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_versions(self, client: Retell) -> None:
         chat_agent = client.chat_agent.get_versions(
@@ -296,6 +319,7 @@ class TestChatAgent:
         )
         assert_matches_type(ChatAgentGetVersionsResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_versions(self, client: Retell) -> None:
         response = client.chat_agent.with_raw_response.get_versions(
@@ -307,6 +331,7 @@ class TestChatAgent:
         chat_agent = response.parse()
         assert_matches_type(ChatAgentGetVersionsResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_versions(self, client: Retell) -> None:
         with client.chat_agent.with_streaming_response.get_versions(
@@ -320,6 +345,7 @@ class TestChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_get_versions(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
@@ -327,6 +353,7 @@ class TestChatAgent:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_publish(self, client: Retell) -> None:
         chat_agent = client.chat_agent.publish(
@@ -334,6 +361,7 @@ class TestChatAgent:
         )
         assert chat_agent is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_publish(self, client: Retell) -> None:
         response = client.chat_agent.with_raw_response.publish(
@@ -345,6 +373,7 @@ class TestChatAgent:
         chat_agent = response.parse()
         assert chat_agent is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_publish(self, client: Retell) -> None:
         with client.chat_agent.with_streaming_response.publish(
@@ -358,6 +387,7 @@ class TestChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_publish(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
@@ -371,6 +401,7 @@ class TestAsyncChatAgent:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.create(
@@ -381,6 +412,7 @@ class TestAsyncChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.create(
@@ -416,6 +448,7 @@ class TestAsyncChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat_agent.with_raw_response.create(
@@ -430,6 +463,7 @@ class TestAsyncChatAgent:
         chat_agent = await response.parse()
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncRetell) -> None:
         async with async_client.chat_agent.with_streaming_response.create(
@@ -446,6 +480,7 @@ class TestAsyncChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.retrieve(
@@ -453,6 +488,7 @@ class TestAsyncChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.retrieve(
@@ -461,6 +497,7 @@ class TestAsyncChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat_agent.with_raw_response.retrieve(
@@ -472,6 +509,7 @@ class TestAsyncChatAgent:
         chat_agent = await response.parse()
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.chat_agent.with_streaming_response.retrieve(
@@ -485,6 +523,7 @@ class TestAsyncChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
@@ -492,6 +531,7 @@ class TestAsyncChatAgent:
                 agent_id="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.update(
@@ -499,6 +539,7 @@ class TestAsyncChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.update(
@@ -536,6 +577,7 @@ class TestAsyncChatAgent:
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat_agent.with_raw_response.update(
@@ -547,6 +589,7 @@ class TestAsyncChatAgent:
         chat_agent = await response.parse()
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncRetell) -> None:
         async with async_client.chat_agent.with_streaming_response.update(
@@ -560,6 +603,7 @@ class TestAsyncChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
@@ -567,11 +611,13 @@ class TestAsyncChatAgent:
                 agent_id="",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.list()
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.list(
@@ -581,6 +627,7 @@ class TestAsyncChatAgent:
         )
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat_agent.with_raw_response.list()
@@ -590,6 +637,7 @@ class TestAsyncChatAgent:
         chat_agent = await response.parse()
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
         async with async_client.chat_agent.with_streaming_response.list() as response:
@@ -601,6 +649,7 @@ class TestAsyncChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.delete(
@@ -608,6 +657,7 @@ class TestAsyncChatAgent:
         )
         assert chat_agent is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat_agent.with_raw_response.delete(
@@ -619,6 +669,7 @@ class TestAsyncChatAgent:
         chat_agent = await response.parse()
         assert chat_agent is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncRetell) -> None:
         async with async_client.chat_agent.with_streaming_response.delete(
@@ -632,6 +683,7 @@ class TestAsyncChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
@@ -639,6 +691,7 @@ class TestAsyncChatAgent:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_versions(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.get_versions(
@@ -646,6 +699,7 @@ class TestAsyncChatAgent:
         )
         assert_matches_type(ChatAgentGetVersionsResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_versions(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat_agent.with_raw_response.get_versions(
@@ -657,6 +711,7 @@ class TestAsyncChatAgent:
         chat_agent = await response.parse()
         assert_matches_type(ChatAgentGetVersionsResponse, chat_agent, path=["response"])
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_versions(self, async_client: AsyncRetell) -> None:
         async with async_client.chat_agent.with_streaming_response.get_versions(
@@ -670,6 +725,7 @@ class TestAsyncChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_get_versions(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
@@ -677,6 +733,7 @@ class TestAsyncChatAgent:
                 "",
             )
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_publish(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.publish(
@@ -684,6 +741,7 @@ class TestAsyncChatAgent:
         )
         assert chat_agent is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_publish(self, async_client: AsyncRetell) -> None:
         response = await async_client.chat_agent.with_raw_response.publish(
@@ -695,6 +753,7 @@ class TestAsyncChatAgent:
         chat_agent = await response.parse()
         assert chat_agent is None
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_publish(self, async_client: AsyncRetell) -> None:
         async with async_client.chat_agent.with_streaming_response.publish(
@@ -708,6 +767,7 @@ class TestAsyncChatAgent:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_publish(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
