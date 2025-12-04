@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..types import test_create_batch_test_params
-from .._types import Body, Query, Headers, NotGiven, SequenceNotStr, not_given
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,6 +48,7 @@ class TestsResource(SyncAPIResource):
         *,
         response_engine: test_create_batch_test_params.ResponseEngine,
         test_case_definition_ids: SequenceNotStr[str],
+        reserved_concurrency: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -63,6 +64,8 @@ class TestsResource(SyncAPIResource):
 
           test_case_definition_ids: Array of test case definition IDs to run
 
+          reserved_concurrency: Reserve a portion of your org concurrency for batch processing.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -77,6 +80,7 @@ class TestsResource(SyncAPIResource):
                 {
                     "response_engine": response_engine,
                     "test_case_definition_ids": test_case_definition_ids,
+                    "reserved_concurrency": reserved_concurrency,
                 },
                 test_create_batch_test_params.TestCreateBatchTestParams,
             ),
@@ -112,6 +116,7 @@ class AsyncTestsResource(AsyncAPIResource):
         *,
         response_engine: test_create_batch_test_params.ResponseEngine,
         test_case_definition_ids: SequenceNotStr[str],
+        reserved_concurrency: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -127,6 +132,8 @@ class AsyncTestsResource(AsyncAPIResource):
 
           test_case_definition_ids: Array of test case definition IDs to run
 
+          reserved_concurrency: Reserve a portion of your org concurrency for batch processing.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -141,6 +148,7 @@ class AsyncTestsResource(AsyncAPIResource):
                 {
                     "response_engine": response_engine,
                     "test_case_definition_ids": test_case_definition_ids,
+                    "reserved_concurrency": reserved_concurrency,
                 },
                 test_create_batch_test_params.TestCreateBatchTestParams,
             ),

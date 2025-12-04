@@ -39,6 +39,7 @@ class TestTests:
                 "version": 0,
             },
             test_case_definition_ids=["string"],
+            reserved_concurrency=0,
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
@@ -104,6 +105,7 @@ class TestAsyncTests:
                 "version": 0,
             },
             test_case_definition_ids=["string"],
+            reserved_concurrency=0,
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
