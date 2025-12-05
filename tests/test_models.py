@@ -174,6 +174,11 @@ def test_aliases() -> None:
 
     m = Model.construct(myField=1)
     assert m.my_field == 1
+    assert not hasattr(m, "myField")
+    assert m.model_dump() == {"my_field": 1}
+    # our serialiser methods uses the "API" naming
+    assert m.to_dict() == {"myField": 1}
+    assert m.to_json() == '{\n  "myField": 1\n}'
 
     # mismatched types
     m = Model.construct(myField={"hello": False})
