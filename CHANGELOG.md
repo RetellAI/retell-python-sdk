@@ -1,5 +1,17 @@
 # Changelog
 
+## 5.0.0 (2025-12-05)
+
+Full Changelog: [v4.65.0...v5.0.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.65.0...v5.0.0)
+
+### ⚠ BREAKING CHANGES
+
+* correctly set model alias fields
+
+### Bug Fixes
+
+* correctly set model alias fields ([fe59c0f](https://github.com/RetellAI/retell-python-sdk/commit/fe59c0f76295c26a03e371f689f9bda6fdc92e01))
+
 ## 4.65.0 (2025-12-04)
 
 Full Changelog: [v4.64.0...v4.65.0](https://github.com/RetellAI/retell-python-sdk/compare/v4.64.0...v4.65.0)
