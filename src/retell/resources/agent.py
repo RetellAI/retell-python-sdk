@@ -95,11 +95,11 @@ class AgentResource(SyncAPIResource):
             "nl-BE",
             "pl-PL",
             "tr-TR",
-            "th-TH",
             "vi-VN",
             "ro-RO",
             "bg-BG",
             "ca-ES",
+            "th-TH",
             "da-DK",
             "fi-FI",
             "el-GR",
@@ -108,6 +108,31 @@ class AgentResource(SyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "ms-MY",
+            "af-ZA",
+            "ar-SA",
+            "az-AZ",
+            "bs-BA",
+            "cy-GB",
+            "fa-IR",
+            "fil-PH",
+            "gl-ES",
+            "he-IL",
+            "hr-HR",
+            "hy-AM",
+            "is-IS",
+            "kk-KZ",
+            "kn-IN",
+            "mk-MK",
+            "mr-IN",
+            "ne-NP",
+            "sl-SI",
+            "sr-RS",
+            "sw-KE",
+            "ta-IN",
+            "ur-IN",
+            "yue-CN",
+            "uk-UA",
             "multi",
         ]
         | Omit = omit,
@@ -272,7 +297,7 @@ class AgentResource(SyncAPIResource):
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
-              multilingual support, currently this supports Spanish and English.
+              multilingual support.
 
           max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
@@ -513,11 +538,11 @@ class AgentResource(SyncAPIResource):
             "nl-BE",
             "pl-PL",
             "tr-TR",
-            "th-TH",
             "vi-VN",
             "ro-RO",
             "bg-BG",
             "ca-ES",
+            "th-TH",
             "da-DK",
             "fi-FI",
             "el-GR",
@@ -526,6 +551,31 @@ class AgentResource(SyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "ms-MY",
+            "af-ZA",
+            "ar-SA",
+            "az-AZ",
+            "bs-BA",
+            "cy-GB",
+            "fa-IR",
+            "fil-PH",
+            "gl-ES",
+            "he-IL",
+            "hr-HR",
+            "hy-AM",
+            "is-IS",
+            "kk-KZ",
+            "kn-IN",
+            "mk-MK",
+            "mr-IN",
+            "ne-NP",
+            "sl-SI",
+            "sr-RS",
+            "sw-KE",
+            "ta-IN",
+            "ur-IN",
+            "yue-CN",
+            "uk-UA",
             "multi",
         ]
         | Omit = omit,
@@ -687,7 +737,7 @@ class AgentResource(SyncAPIResource):
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
-              multilingual support, currently this supports Spanish and English.
+              multilingual support.
 
           max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
@@ -1079,11 +1129,11 @@ class AsyncAgentResource(AsyncAPIResource):
             "nl-BE",
             "pl-PL",
             "tr-TR",
-            "th-TH",
             "vi-VN",
             "ro-RO",
             "bg-BG",
             "ca-ES",
+            "th-TH",
             "da-DK",
             "fi-FI",
             "el-GR",
@@ -1092,6 +1142,31 @@ class AsyncAgentResource(AsyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "ms-MY",
+            "af-ZA",
+            "ar-SA",
+            "az-AZ",
+            "bs-BA",
+            "cy-GB",
+            "fa-IR",
+            "fil-PH",
+            "gl-ES",
+            "he-IL",
+            "hr-HR",
+            "hy-AM",
+            "is-IS",
+            "kk-KZ",
+            "kn-IN",
+            "mk-MK",
+            "mr-IN",
+            "ne-NP",
+            "sl-SI",
+            "sr-RS",
+            "sw-KE",
+            "ta-IN",
+            "ur-IN",
+            "yue-CN",
+            "uk-UA",
             "multi",
         ]
         | Omit = omit,
@@ -1256,7 +1331,7 @@ class AsyncAgentResource(AsyncAPIResource):
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
-              multilingual support, currently this supports Spanish and English.
+              multilingual support.
 
           max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
@@ -1497,11 +1572,11 @@ class AsyncAgentResource(AsyncAPIResource):
             "nl-BE",
             "pl-PL",
             "tr-TR",
-            "th-TH",
             "vi-VN",
             "ro-RO",
             "bg-BG",
             "ca-ES",
+            "th-TH",
             "da-DK",
             "fi-FI",
             "el-GR",
@@ -1510,6 +1585,31 @@ class AsyncAgentResource(AsyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "ms-MY",
+            "af-ZA",
+            "ar-SA",
+            "az-AZ",
+            "bs-BA",
+            "cy-GB",
+            "fa-IR",
+            "fil-PH",
+            "gl-ES",
+            "he-IL",
+            "hr-HR",
+            "hy-AM",
+            "is-IS",
+            "kk-KZ",
+            "kn-IN",
+            "mk-MK",
+            "mr-IN",
+            "ne-NP",
+            "sl-SI",
+            "sr-RS",
+            "sw-KE",
+            "ta-IN",
+            "ur-IN",
+            "yue-CN",
+            "uk-UA",
             "multi",
         ]
         | Omit = omit,
@@ -1671,7 +1771,7 @@ class AsyncAgentResource(AsyncAPIResource):
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
-              multilingual support, currently this supports Spanish and English.
+              multilingual support.
 
           max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
