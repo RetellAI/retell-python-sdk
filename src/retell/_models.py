@@ -204,7 +204,7 @@ class BaseModel(pydantic.BaseModel):
                 key = name
 
             if key in values:
-                fields_values[name] = _construct_field(value=values[key], field=field, key=key)
+                fields_values[name] = _construct_field(value=values.pop(key), field=field, key=key)
                 _fields_set.add(name)
             else:
                 fields_values[name] = field_get_default(field)
