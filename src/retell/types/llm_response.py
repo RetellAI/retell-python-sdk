@@ -163,6 +163,11 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseMo
 
 
 class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
     prompt: Optional[str] = None
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
 
@@ -274,6 +279,8 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMo
 class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     BaseModel
 ):
+    """The agent that will mediate the transfer decision."""
+
     agent_id: str
     """The agent ID of the transfer agent.
 
@@ -287,6 +294,8 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer
 
 
 class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(BaseModel):
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
     action_on_timeout: Optional[Literal["bridge_transfer", "cancel_transfer"]] = None
     """The action to take when the transfer agent times out without making a decision.
 
@@ -501,6 +510,11 @@ class GeneralToolPressDigitTool(BaseModel):
 
 
 class GeneralToolCustomToolParameters(BaseModel):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
     properties: Dict[str, object]
     """
     The value of properties is an object, where each key is the name of a property
@@ -810,6 +824,8 @@ GeneralTool: TypeAlias = Union[
 
 
 class KBConfig(BaseModel):
+    """Knowledge base configuration for RAG retrieval."""
+
     filter_score: Optional[float] = None
     """Similarity threshold for filtering search results"""
 
@@ -837,6 +853,11 @@ class Mcp(BaseModel):
 
 
 class StateEdgeParameters(BaseModel):
+    """Describes what parameters you want to extract out when the transition changes.
+
+    The parameters extracted here can be referenced in prompts & function descriptions of later states via dynamic variables. The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+    """
+
     properties: Dict[str, object]
     """
     The value of properties is an object, where each key is the name of a property
@@ -948,6 +969,11 @@ class StateToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseMode
 
 
 class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
     prompt: Optional[str] = None
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
 
@@ -1057,6 +1083,8 @@ class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMode
 class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     BaseModel
 ):
+    """The agent that will mediate the transfer decision."""
+
     agent_id: str
     """The agent ID of the transfer agent.
 
@@ -1070,6 +1098,8 @@ class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAg
 
 
 class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(BaseModel):
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
     action_on_timeout: Optional[Literal["bridge_transfer", "cancel_transfer"]] = None
     """The action to take when the transfer agent times out without making a decision.
 
@@ -1284,6 +1314,11 @@ class StateToolPressDigitTool(BaseModel):
 
 
 class StateToolCustomToolParameters(BaseModel):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
     properties: Dict[str, object]
     """
     The value of properties is an object, where each key is the name of a property

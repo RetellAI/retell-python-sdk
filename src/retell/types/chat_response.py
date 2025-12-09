@@ -20,6 +20,10 @@ __all__ = [
 
 
 class ChatAnalysis(BaseModel):
+    """
+    Post chat analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after chat ends. Subscribe to `chat_analyzed` webhook event type to receive it once ready.
+    """
+
     chat_successful: Optional[bool] = None
     """
     Whether the agent seems to have a successful chat with the user, where the agent

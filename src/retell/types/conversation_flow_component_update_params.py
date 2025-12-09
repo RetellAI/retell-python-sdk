@@ -334,6 +334,8 @@ class ConversationFlowComponentUpdateParams(TypedDict, total=False):
 
 
 class BeginTagDisplayPosition(TypedDict, total=False):
+    """Display position for the begin tag in the frontend"""
+
     x: float
 
     y: float
@@ -361,6 +363,8 @@ NodeConversationNodeInstruction: TypeAlias = Union[
 
 
 class NodeConversationNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -689,6 +693,8 @@ class NodeConversationNode(TypedDict, total=False):
 
 
 class NodeEndNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -794,6 +800,8 @@ class NodeEndNode(TypedDict, total=False):
 
 
 class NodeFunctionNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -1157,6 +1165,11 @@ class NodeTransferCallNodeTransferOptionTransferOptionColdTransfer(TypedDict, to
 
 
 class NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption(TypedDict, total=False):
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
     prompt: str
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
 
@@ -1264,6 +1277,8 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(TypedDict, to
 class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     TypedDict, total=False
 ):
+    """The agent that will mediate the transfer decision."""
+
     agent_id: Required[str]
     """The agent ID of the transfer agent.
 
@@ -1277,6 +1292,8 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgentic
 
 
 class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(TypedDict, total=False):
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
     action_on_timeout: Literal["bridge_transfer", "cancel_transfer"]
     """The action to take when the transfer agent times out without making a decision.
 
@@ -1357,6 +1374,8 @@ NodeTransferCallNodeTransferOption: TypeAlias = Union[
 
 
 class NodeTransferCallNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -1513,6 +1532,8 @@ class NodePressDigitNodeInstruction(TypedDict, total=False):
 
 
 class NodePressDigitNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -1795,6 +1816,8 @@ class NodeBranchNodeElseEdge(TypedDict, total=False):
 
 
 class NodeBranchNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -2125,6 +2148,8 @@ class NodeSMSNodeSuccessEdge(TypedDict, total=False):
 
 
 class NodeSMSNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -2294,6 +2319,8 @@ NodeExtractDynamicVariablesNodeVariable: TypeAlias = Union[
 
 
 class NodeExtractDynamicVariablesNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -2576,6 +2603,8 @@ NodeAgentSwapNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeAgentSwapNodeEdge(TypedDict, total=False):
+    """Edge to transition to if agent swap fails"""
+
     id: Required[str]
     """Unique identifier for the edge"""
 
@@ -2586,6 +2615,8 @@ class NodeAgentSwapNodeEdge(TypedDict, total=False):
 
 
 class NodeAgentSwapNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -2709,6 +2740,8 @@ class NodeAgentSwapNode(TypedDict, total=False):
 
 
 class NodeMcpNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -2994,6 +3027,8 @@ NodeComponentNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeComponentNodeElseEdge(TypedDict, total=False):
+    """Default edge when no other conditions are met"""
+
     id: Required[str]
     """Unique identifier for the edge"""
 
@@ -3004,6 +3039,8 @@ class NodeComponentNodeElseEdge(TypedDict, total=False):
 
 
 class NodeComponentNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -3184,6 +3221,8 @@ Node: TypeAlias = Union[
 
 
 class ToolConversationFlowCustomToolParameters(TypedDict, total=False):
+    """Tool parameters schema"""
+
     properties: Required[Dict[str, object]]
     """
     The value of properties is an object, where each key is the name of a property
