@@ -626,6 +626,8 @@ __all__ = [
 
 
 class BeginTagDisplayPosition(BaseModel):
+    """Display position for the begin tag in the frontend."""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -654,6 +656,8 @@ ComponentNodeConversationNodeInstruction: TypeAlias = Union[
 
 
 class ComponentNodeConversationNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -984,6 +988,8 @@ class ComponentNodeConversationNode(BaseModel):
 
 
 class ComponentNodeEndNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -1089,6 +1095,8 @@ class ComponentNodeEndNode(BaseModel):
 
 
 class ComponentNodeFunctionNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -1452,6 +1460,11 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionColdTransfer(Base
 
 
 class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
     prompt: Optional[str] = None
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
 
@@ -1563,6 +1576,8 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(Base
 class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     BaseModel
 ):
+    """The agent that will mediate the transfer decision."""
+
     agent_id: str
     """The agent ID of the transfer agent.
 
@@ -1576,6 +1591,8 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransf
 
 
 class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(BaseModel):
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
     action_on_timeout: Optional[Literal["bridge_transfer", "cancel_transfer"]] = None
     """The action to take when the transfer agent times out without making a decision.
 
@@ -1658,6 +1675,8 @@ ComponentNodeTransferCallNodeTransferOption: TypeAlias = Union[
 
 
 class ComponentNodeTransferCallNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -1816,6 +1835,8 @@ class ComponentNodePressDigitNodeInstruction(BaseModel):
 
 
 class ComponentNodePressDigitNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -2101,6 +2122,8 @@ class ComponentNodeBranchNodeElseEdge(BaseModel):
 
 
 class ComponentNodeBranchNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -2432,6 +2455,8 @@ class ComponentNodeSMSNodeSuccessEdge(BaseModel):
 
 
 class ComponentNodeSMSNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -2601,6 +2626,8 @@ ComponentNodeExtractDynamicVariablesNodeVariable: TypeAlias = Union[
 
 
 class ComponentNodeExtractDynamicVariablesNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -2877,6 +2904,8 @@ ComponentNodeAgentSwapNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class ComponentNodeAgentSwapNodeEdge(BaseModel):
+    """Edge to transition to if agent swap fails"""
+
     id: str
     """Unique identifier for the edge"""
 
@@ -2887,6 +2916,8 @@ class ComponentNodeAgentSwapNodeEdge(BaseModel):
 
 
 class ComponentNodeAgentSwapNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -3014,6 +3045,8 @@ class ComponentNodeAgentSwapNode(BaseModel):
 
 
 class ComponentNodeMcpNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -3300,6 +3333,8 @@ ComponentNodeComponentNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class ComponentNodeComponentNodeElseEdge(BaseModel):
+    """Default edge when no other conditions are met"""
+
     id: str
     """Unique identifier for the edge"""
 
@@ -3310,6 +3345,8 @@ class ComponentNodeComponentNodeElseEdge(BaseModel):
 
 
 class ComponentNodeComponentNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -3498,12 +3535,16 @@ ComponentNode: TypeAlias = Annotated[
 
 
 class ComponentBeginTagDisplayPosition(BaseModel):
+    """Display position for the begin tag in the frontend"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
 
 
 class ComponentToolConversationFlowCustomToolParameters(BaseModel):
+    """Tool parameters schema"""
+
     properties: Dict[str, object]
     """
     The value of properties is an object, where each key is the name of a property
@@ -3663,6 +3704,8 @@ class Component(BaseModel):
 
 
 class KBConfig(BaseModel):
+    """Knowledge base configuration for RAG retrieval."""
+
     filter_score: Optional[float] = None
     """Similarity threshold for filtering search results"""
 
@@ -3690,6 +3733,8 @@ class Mcp(BaseModel):
 
 
 class ModelChoice(BaseModel):
+    """The model choice for the conversation flow."""
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -3733,6 +3778,8 @@ NodeConversationNodeInstruction: TypeAlias = Union[
 
 
 class NodeConversationNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -4059,6 +4106,8 @@ class NodeConversationNode(BaseModel):
 
 
 class NodeEndNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -4164,6 +4213,8 @@ class NodeEndNode(BaseModel):
 
 
 class NodeFunctionNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -4525,6 +4576,11 @@ class NodeTransferCallNodeTransferOptionTransferOptionColdTransfer(BaseModel):
 
 
 class NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
     prompt: Optional[str] = None
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
 
@@ -4630,6 +4686,8 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(BaseModel):
 
 
 class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(BaseModel):
+    """The agent that will mediate the transfer decision."""
+
     agent_id: str
     """The agent ID of the transfer agent.
 
@@ -4643,6 +4701,8 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgentic
 
 
 class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(BaseModel):
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
     action_on_timeout: Optional[Literal["bridge_transfer", "cancel_transfer"]] = None
     """The action to take when the transfer agent times out without making a decision.
 
@@ -4723,6 +4783,8 @@ NodeTransferCallNodeTransferOption: TypeAlias = Union[
 
 
 class NodeTransferCallNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -4877,6 +4939,8 @@ class NodePressDigitNodeInstruction(BaseModel):
 
 
 class NodePressDigitNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -5157,6 +5221,8 @@ class NodeBranchNodeElseEdge(BaseModel):
 
 
 class NodeBranchNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -5487,6 +5553,8 @@ class NodeSMSNodeSuccessEdge(BaseModel):
 
 
 class NodeSMSNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -5656,6 +5724,8 @@ NodeExtractDynamicVariablesNodeVariable: TypeAlias = Union[
 
 
 class NodeExtractDynamicVariablesNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -5930,6 +6000,8 @@ NodeAgentSwapNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeAgentSwapNodeEdge(BaseModel):
+    """Edge to transition to if agent swap fails"""
+
     id: str
     """Unique identifier for the edge"""
 
@@ -5940,6 +6012,8 @@ class NodeAgentSwapNodeEdge(BaseModel):
 
 
 class NodeAgentSwapNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -6063,6 +6137,8 @@ class NodeAgentSwapNode(BaseModel):
 
 
 class NodeMcpNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -6348,6 +6424,8 @@ NodeComponentNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeComponentNodeElseEdge(BaseModel):
+    """Default edge when no other conditions are met"""
+
     id: str
     """Unique identifier for the edge"""
 
@@ -6358,6 +6436,8 @@ class NodeComponentNodeElseEdge(BaseModel):
 
 
 class NodeComponentNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
     x: Optional[float] = None
 
     y: Optional[float] = None
@@ -6541,6 +6621,8 @@ Node: TypeAlias = Annotated[
 
 
 class ToolConversationFlowCustomToolParameters(BaseModel):
+    """Tool parameters schema"""
+
     properties: Dict[str, object]
     """
     The value of properties is an object, where each key is the name of a property

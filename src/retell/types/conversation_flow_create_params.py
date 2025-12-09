@@ -689,6 +689,8 @@ class ConversationFlowCreateParams(TypedDict, total=False):
 
 
 class ModelChoice(TypedDict, total=False):
+    """The model choice for the conversation flow."""
+
     model: Required[
         Literal[
             "gpt-4.1",
@@ -734,6 +736,8 @@ NodeConversationNodeInstruction: TypeAlias = Union[
 
 
 class NodeConversationNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -1062,6 +1066,8 @@ class NodeConversationNode(TypedDict, total=False):
 
 
 class NodeEndNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -1167,6 +1173,8 @@ class NodeEndNode(TypedDict, total=False):
 
 
 class NodeFunctionNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -1530,6 +1538,11 @@ class NodeTransferCallNodeTransferOptionTransferOptionColdTransfer(TypedDict, to
 
 
 class NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption(TypedDict, total=False):
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
     prompt: str
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
 
@@ -1637,6 +1650,8 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(TypedDict, to
 class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     TypedDict, total=False
 ):
+    """The agent that will mediate the transfer decision."""
+
     agent_id: Required[str]
     """The agent ID of the transfer agent.
 
@@ -1650,6 +1665,8 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgentic
 
 
 class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(TypedDict, total=False):
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
     action_on_timeout: Literal["bridge_transfer", "cancel_transfer"]
     """The action to take when the transfer agent times out without making a decision.
 
@@ -1730,6 +1747,8 @@ NodeTransferCallNodeTransferOption: TypeAlias = Union[
 
 
 class NodeTransferCallNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -1886,6 +1905,8 @@ class NodePressDigitNodeInstruction(TypedDict, total=False):
 
 
 class NodePressDigitNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -2168,6 +2189,8 @@ class NodeBranchNodeElseEdge(TypedDict, total=False):
 
 
 class NodeBranchNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -2498,6 +2521,8 @@ class NodeSMSNodeSuccessEdge(TypedDict, total=False):
 
 
 class NodeSMSNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -2667,6 +2692,8 @@ NodeExtractDynamicVariablesNodeVariable: TypeAlias = Union[
 
 
 class NodeExtractDynamicVariablesNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -2949,6 +2976,8 @@ NodeAgentSwapNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeAgentSwapNodeEdge(TypedDict, total=False):
+    """Edge to transition to if agent swap fails"""
+
     id: Required[str]
     """Unique identifier for the edge"""
 
@@ -2959,6 +2988,8 @@ class NodeAgentSwapNodeEdge(TypedDict, total=False):
 
 
 class NodeAgentSwapNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -3082,6 +3113,8 @@ class NodeAgentSwapNode(TypedDict, total=False):
 
 
 class NodeMcpNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -3367,6 +3400,8 @@ NodeComponentNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeComponentNodeElseEdge(TypedDict, total=False):
+    """Default edge when no other conditions are met"""
+
     id: Required[str]
     """Unique identifier for the edge"""
 
@@ -3377,6 +3412,8 @@ class NodeComponentNodeElseEdge(TypedDict, total=False):
 
 
 class NodeComponentNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -3557,6 +3594,8 @@ Node: TypeAlias = Union[
 
 
 class BeginTagDisplayPosition(TypedDict, total=False):
+    """Display position for the begin tag in the frontend."""
+
     x: float
 
     y: float
@@ -3585,6 +3624,8 @@ ComponentNodeConversationNodeInstruction: TypeAlias = Union[
 
 
 class ComponentNodeConversationNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -3927,6 +3968,8 @@ class ComponentNodeConversationNode(TypedDict, total=False):
 
 
 class ComponentNodeEndNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -4032,6 +4075,8 @@ class ComponentNodeEndNode(TypedDict, total=False):
 
 
 class ComponentNodeFunctionNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -4397,6 +4442,11 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionColdTransfer(Type
 
 
 class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption(TypedDict, total=False):
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
     prompt: str
     """The prompt to be used for warm handoff. Can contain dynamic variables."""
 
@@ -4504,6 +4554,8 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(Type
 class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     TypedDict, total=False
 ):
+    """The agent that will mediate the transfer decision."""
+
     agent_id: Required[str]
     """The agent ID of the transfer agent.
 
@@ -4519,6 +4571,8 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransf
 class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(
     TypedDict, total=False
 ):
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
     action_on_timeout: Literal["bridge_transfer", "cancel_transfer"]
     """The action to take when the transfer agent times out without making a decision.
 
@@ -4601,6 +4655,8 @@ ComponentNodeTransferCallNodeTransferOption: TypeAlias = Union[
 
 
 class ComponentNodeTransferCallNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -4769,6 +4825,8 @@ class ComponentNodePressDigitNodeInstruction(TypedDict, total=False):
 
 
 class ComponentNodePressDigitNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -5052,6 +5110,8 @@ class ComponentNodeBranchNodeElseEdge(TypedDict, total=False):
 
 
 class ComponentNodeBranchNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -5383,6 +5443,8 @@ class ComponentNodeSMSNodeSuccessEdge(TypedDict, total=False):
 
 
 class ComponentNodeSMSNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -5552,6 +5614,8 @@ ComponentNodeExtractDynamicVariablesNodeVariable: TypeAlias = Union[
 
 
 class ComponentNodeExtractDynamicVariablesNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -5844,6 +5908,8 @@ ComponentNodeAgentSwapNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class ComponentNodeAgentSwapNodeEdge(TypedDict, total=False):
+    """Edge to transition to if agent swap fails"""
+
     id: Required[str]
     """Unique identifier for the edge"""
 
@@ -5854,6 +5920,8 @@ class ComponentNodeAgentSwapNodeEdge(TypedDict, total=False):
 
 
 class ComponentNodeAgentSwapNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -5977,6 +6045,8 @@ class ComponentNodeAgentSwapNode(TypedDict, total=False):
 
 
 class ComponentNodeMcpNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -6263,6 +6333,8 @@ ComponentNodeComponentNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class ComponentNodeComponentNodeElseEdge(TypedDict, total=False):
+    """Default edge when no other conditions are met"""
+
     id: Required[str]
     """Unique identifier for the edge"""
 
@@ -6273,6 +6345,8 @@ class ComponentNodeComponentNodeElseEdge(TypedDict, total=False):
 
 
 class ComponentNodeComponentNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
     x: float
 
     y: float
@@ -6454,12 +6528,16 @@ ComponentNode: TypeAlias = Union[
 
 
 class ComponentBeginTagDisplayPosition(TypedDict, total=False):
+    """Display position for the begin tag in the frontend"""
+
     x: float
 
     y: float
 
 
 class ComponentToolConversationFlowCustomToolParameters(TypedDict, total=False):
+    """Tool parameters schema"""
+
     properties: Required[Dict[str, object]]
     """
     The value of properties is an object, where each key is the name of a property
@@ -6619,6 +6697,8 @@ class Component(TypedDict, total=False):
 
 
 class KBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval."""
+
     filter_score: float
     """Similarity threshold for filtering search results"""
 
@@ -6646,6 +6726,8 @@ class Mcp(TypedDict, total=False):
 
 
 class ToolConversationFlowCustomToolParameters(TypedDict, total=False):
+    """Tool parameters schema"""
+
     properties: Required[Dict[str, object]]
     """
     The value of properties is an object, where each key is the name of a property

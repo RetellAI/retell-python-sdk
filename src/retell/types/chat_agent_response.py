@@ -62,6 +62,8 @@ ResponseEngine: TypeAlias = Annotated[
 
 
 class PiiConfig(BaseModel):
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     categories: List[
         Literal[
             "person_name",

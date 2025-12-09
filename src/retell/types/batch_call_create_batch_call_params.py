@@ -63,6 +63,8 @@ class BatchCallCreateBatchCallParams(TypedDict, total=False):
 
 
 class TaskAgentOverrideAgentPiiConfig(TypedDict, total=False):
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     categories: Required[
         List[
             Literal[
@@ -245,10 +247,19 @@ TaskAgentOverrideAgentVoicemailOptionAction: TypeAlias = Union[
 
 
 class TaskAgentOverrideAgentVoicemailOption(TypedDict, total=False):
+    """
+    If this option is set, the call will try to detect voicemail in the first 3 minutes of the call. Actions defined (hangup, or leave a message) will be applied when the voicemail is detected. Set this to null to disable voicemail detection.
+    """
+
     action: Required[TaskAgentOverrideAgentVoicemailOptionAction]
 
 
 class TaskAgentOverrideAgent(TypedDict, total=False):
+    """Override agent configuration settings.
+
+    Any properties specified here will override the base agent configuration for this call.
+    """
+
     agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
 
@@ -647,6 +658,8 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
 
 
 class TaskAgentOverrideConversationFlowKBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval."""
+
     filter_score: float
     """Similarity threshold for filtering search results"""
 
@@ -655,6 +668,8 @@ class TaskAgentOverrideConversationFlowKBConfig(TypedDict, total=False):
 
 
 class TaskAgentOverrideConversationFlowModelChoice(TypedDict, total=False):
+    """The model choice for the conversation flow."""
+
     model: Required[
         Literal[
             "gpt-4.1",
@@ -679,6 +694,11 @@ class TaskAgentOverrideConversationFlowModelChoice(TypedDict, total=False):
 
 
 class TaskAgentOverrideConversationFlow(TypedDict, total=False):
+    """Override conversation flow configuration settings.
+
+    Only applicable when using conversation flow as the response engine. Supported attributes - model_choice, model_temperature, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms.
+    """
+
     begin_after_user_silence_ms: Optional[int]
     """
     If set, the AI will begin the conversation after waiting for the user for the
@@ -713,6 +733,8 @@ class TaskAgentOverrideConversationFlow(TypedDict, total=False):
 
 
 class TaskAgentOverrideRetellLlmKBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval."""
+
     filter_score: float
     """Similarity threshold for filtering search results"""
 
@@ -721,6 +743,11 @@ class TaskAgentOverrideRetellLlmKBConfig(TypedDict, total=False):
 
 
 class TaskAgentOverrideRetellLlm(TypedDict, total=False):
+    """Override Retell LLM configuration settings.
+
+    Only applicable when using Retell LLM as the response engine. Supported attributes - model, s2s_model, model_temperature, model_high_priority, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message.
+    """
+
     begin_after_user_silence_ms: Optional[int]
     """
     If set, the AI will begin the conversation after waiting for the user for the
@@ -793,6 +820,11 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
 
 
 class TaskAgentOverride(TypedDict, total=False):
+    """For this particular call, override agent configuration with these settings.
+
+    This allows you to customize agent behavior for individual calls without modifying the base agent.
+    """
+
     agent: TaskAgentOverrideAgent
     """Override agent configuration settings.
 

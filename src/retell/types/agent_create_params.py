@@ -465,6 +465,8 @@ ResponseEngine: TypeAlias = Union[
 
 
 class PiiConfig(TypedDict, total=False):
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     categories: Required[
         List[
             Literal[
@@ -610,4 +612,8 @@ VoicemailOptionAction: TypeAlias = Union[
 
 
 class VoicemailOption(TypedDict, total=False):
+    """
+    If this option is set, the call will try to detect voicemail in the first 3 minutes of the call. Actions defined (hangup, or leave a message) will be applied when the voicemail is detected. Set this to null to disable voicemail detection.
+    """
+
     action: Required[VoicemailOptionAction]

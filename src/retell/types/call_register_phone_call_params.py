@@ -76,6 +76,8 @@ class CallRegisterPhoneCallParams(TypedDict, total=False):
 
 
 class AgentOverrideAgentPiiConfig(TypedDict, total=False):
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     categories: Required[
         List[
             Literal[
@@ -258,10 +260,19 @@ AgentOverrideAgentVoicemailOptionAction: TypeAlias = Union[
 
 
 class AgentOverrideAgentVoicemailOption(TypedDict, total=False):
+    """
+    If this option is set, the call will try to detect voicemail in the first 3 minutes of the call. Actions defined (hangup, or leave a message) will be applied when the voicemail is detected. Set this to null to disable voicemail detection.
+    """
+
     action: Required[AgentOverrideAgentVoicemailOptionAction]
 
 
 class AgentOverrideAgent(TypedDict, total=False):
+    """Override agent configuration settings.
+
+    Any properties specified here will override the base agent configuration for this call.
+    """
+
     agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
 
@@ -660,6 +671,8 @@ class AgentOverrideAgent(TypedDict, total=False):
 
 
 class AgentOverrideConversationFlowKBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval."""
+
     filter_score: float
     """Similarity threshold for filtering search results"""
 
@@ -668,6 +681,8 @@ class AgentOverrideConversationFlowKBConfig(TypedDict, total=False):
 
 
 class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
+    """The model choice for the conversation flow."""
+
     model: Required[
         Literal[
             "gpt-4.1",
@@ -692,6 +707,11 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
 
 
 class AgentOverrideConversationFlow(TypedDict, total=False):
+    """Override conversation flow configuration settings.
+
+    Only applicable when using conversation flow as the response engine. Supported attributes - model_choice, model_temperature, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms.
+    """
+
     begin_after_user_silence_ms: Optional[int]
     """
     If set, the AI will begin the conversation after waiting for the user for the
@@ -726,6 +746,8 @@ class AgentOverrideConversationFlow(TypedDict, total=False):
 
 
 class AgentOverrideRetellLlmKBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval."""
+
     filter_score: float
     """Similarity threshold for filtering search results"""
 
@@ -734,6 +756,11 @@ class AgentOverrideRetellLlmKBConfig(TypedDict, total=False):
 
 
 class AgentOverrideRetellLlm(TypedDict, total=False):
+    """Override Retell LLM configuration settings.
+
+    Only applicable when using Retell LLM as the response engine. Supported attributes - model, s2s_model, model_temperature, model_high_priority, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message.
+    """
+
     begin_after_user_silence_ms: Optional[int]
     """
     If set, the AI will begin the conversation after waiting for the user for the
@@ -806,6 +833,11 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
 
 
 class AgentOverride(TypedDict, total=False):
+    """For this particular call, override agent configuration with these settings.
+
+    This allows you to customize agent behavior for individual calls without modifying the base agent.
+    """
+
     agent: AgentOverrideAgent
     """Override agent configuration settings.
 

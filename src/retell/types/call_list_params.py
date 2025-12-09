@@ -43,6 +43,8 @@ class CallListParams(TypedDict, total=False):
 
 
 class FilterCriteriaDurationMs(TypedDict, total=False):
+    """Only retrieve calls with specific range of duration(s)."""
+
     lower_threshold: int
 
     upper_threshold: int
@@ -55,12 +57,16 @@ class FilterCriteriaE2ELatencyP50(TypedDict, total=False):
 
 
 class FilterCriteriaStartTimestamp(TypedDict, total=False):
+    """Only retrieve calls with specific range of start timestamp(s)."""
+
     lower_threshold: int
 
     upper_threshold: int
 
 
 class FilterCriteria(TypedDict, total=False):
+    """Filter criteria for the calls to retrieve."""
+
     agent_id: SequenceNotStr[str]
     """Only retrieve calls that are made with specific agent(s)."""
 

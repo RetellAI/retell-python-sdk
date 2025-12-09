@@ -168,6 +168,8 @@ class ChatAgentUpdateParams(TypedDict, total=False):
 
 
 class PiiConfig(TypedDict, total=False):
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     categories: Required[
         List[
             Literal[
