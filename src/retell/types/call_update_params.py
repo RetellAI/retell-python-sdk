@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Literal, TypedDict
 
 __all__ = ["CallUpdateParams"]
 
 
 class CallUpdateParams(TypedDict, total=False):
+    custom_attributes: Dict[str, Union[str, float, bool]]
+    """Custom attributes for the call"""
+
     data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
     """Data storage setting for this call.
 

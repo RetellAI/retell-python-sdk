@@ -1,9 +1,8 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Union, Optional
-from typing_extensions import Literal, Annotated, TypeAlias
+from typing_extensions import Literal, TypeAlias
 
-from .._utils import PropertyInfo
 from .._models import BaseModel
 
 __all__ = [
@@ -51,17 +50,16 @@ class ResponseEngineResponseEngineConversationFlow(BaseModel):
     """Version of the Conversation Flow Response Engine."""
 
 
-ResponseEngine: TypeAlias = Annotated[
-    Union[
-        ResponseEngineResponseEngineRetellLm,
-        ResponseEngineResponseEngineCustomLm,
-        ResponseEngineResponseEngineConversationFlow,
-    ],
-    PropertyInfo(discriminator="type"),
+ResponseEngine: TypeAlias = Union[
+    ResponseEngineResponseEngineRetellLm,
+    ResponseEngineResponseEngineCustomLm,
+    ResponseEngineResponseEngineConversationFlow,
 ]
 
 
 class PiiConfig(BaseModel):
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     categories: List[
         Literal[
             "person_name",
@@ -77,6 +75,7 @@ class PiiConfig(BaseModel):
             "pin",
             "medical_id",
             "date_of_birth",
+            "customer_account_number",
         ]
     ]
     """List of PII categories to scrub from transcripts and recordings."""
@@ -266,6 +265,8 @@ class ChatAgentResponse(BaseModel):
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",

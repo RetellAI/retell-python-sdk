@@ -12,7 +12,7 @@ class VoiceResponse(BaseModel):
     gender: Literal["male", "female"]
     """Gender of voice."""
 
-    provider: Literal["elevenlabs", "openai", "deepgram"]
+    provider: Literal["elevenlabs", "openai", "deepgram", "cartesia", "minimax"]
     """Indicates the provider of voice."""
 
     voice_id: str

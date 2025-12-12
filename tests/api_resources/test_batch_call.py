@@ -41,7 +41,7 @@ class TestBatchCall:
                             "ambient_sound": "coffee-shop",
                             "ambient_sound_volume": 1,
                             "analysis_successful_prompt": "The agent finished the task and the call was complete without being cutoff.",
-                            "analysis_summary_prompt": "Summarize the call in a few sentences.",
+                            "analysis_summary_prompt": "Summarize the outcome of the conversation in two sentences.",
                             "backchannel_frequency": 0.9,
                             "backchannel_words": ["yeah", "uh-huh"],
                             "begin_message_delay_ms": 1000,
@@ -49,6 +49,7 @@ class TestBatchCall:
                             "data_storage_setting": "everything",
                             "denoising_mode": "noise-cancellation",
                             "enable_backchannel": True,
+                            "enable_voicemail_detection": True,
                             "end_call_after_silence_ms": 600000,
                             "fallback_voice_ids": ["openai-Alloy", "deepgram-Angus"],
                             "interruption_sensitivity": 1,
@@ -92,11 +93,14 @@ class TestBatchCall:
                                 "termination_key": "#",
                                 "timeout_ms": 1000,
                             },
+                            "version_description": "Customer support agent for handling product inquiries",
                             "vocab_specialization": "general",
                             "voice_id": "11labs-Adrian",
                             "voice_model": "eleven_turbo_v2",
                             "voice_speed": 1,
                             "voice_temperature": 1,
+                            "voicemail_detection_timeout_ms": 30000,
+                            "voicemail_message": "Hi, please give us a callback.",
                             "voicemail_option": {
                                 "action": {
                                     "text": "Please give us a callback tomorrow at 10am.",
@@ -145,7 +149,18 @@ class TestBatchCall:
                     "retell_llm_dynamic_variables": {"customer_name": "bar"},
                 }
             ],
+            call_time_window={
+                "windows": [
+                    {
+                        "end": 1020,
+                        "start": 540,
+                    }
+                ],
+                "day": ["Monday"],
+                "timezone": "timezone",
+            },
             name="First batch call",
+            reserved_concurrency=0,
             trigger_timestamp=1735718400000,
         )
         assert_matches_type(BatchCallResponse, batch_call, path=["response"])
@@ -208,7 +223,7 @@ class TestAsyncBatchCall:
                             "ambient_sound": "coffee-shop",
                             "ambient_sound_volume": 1,
                             "analysis_successful_prompt": "The agent finished the task and the call was complete without being cutoff.",
-                            "analysis_summary_prompt": "Summarize the call in a few sentences.",
+                            "analysis_summary_prompt": "Summarize the outcome of the conversation in two sentences.",
                             "backchannel_frequency": 0.9,
                             "backchannel_words": ["yeah", "uh-huh"],
                             "begin_message_delay_ms": 1000,
@@ -216,6 +231,7 @@ class TestAsyncBatchCall:
                             "data_storage_setting": "everything",
                             "denoising_mode": "noise-cancellation",
                             "enable_backchannel": True,
+                            "enable_voicemail_detection": True,
                             "end_call_after_silence_ms": 600000,
                             "fallback_voice_ids": ["openai-Alloy", "deepgram-Angus"],
                             "interruption_sensitivity": 1,
@@ -259,11 +275,14 @@ class TestAsyncBatchCall:
                                 "termination_key": "#",
                                 "timeout_ms": 1000,
                             },
+                            "version_description": "Customer support agent for handling product inquiries",
                             "vocab_specialization": "general",
                             "voice_id": "11labs-Adrian",
                             "voice_model": "eleven_turbo_v2",
                             "voice_speed": 1,
                             "voice_temperature": 1,
+                            "voicemail_detection_timeout_ms": 30000,
+                            "voicemail_message": "Hi, please give us a callback.",
                             "voicemail_option": {
                                 "action": {
                                     "text": "Please give us a callback tomorrow at 10am.",
@@ -312,7 +331,18 @@ class TestAsyncBatchCall:
                     "retell_llm_dynamic_variables": {"customer_name": "bar"},
                 }
             ],
+            call_time_window={
+                "windows": [
+                    {
+                        "end": 1020,
+                        "start": 540,
+                    }
+                ],
+                "day": ["Monday"],
+                "timezone": "timezone",
+            },
             name="First batch call",
+            reserved_concurrency=0,
             trigger_timestamp=1735718400000,
         )
         assert_matches_type(BatchCallResponse, batch_call, path=["response"])

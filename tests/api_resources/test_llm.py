@@ -39,6 +39,8 @@ class TestLlm:
                     "name": "end_call",
                     "type": "end_call",
                     "description": "End the call with user.",
+                    "execution_message_description": "execution_message_description",
+                    "speak_during_execution": True,
                 }
             ],
             kb_config={
@@ -94,7 +96,9 @@ class TestLlm:
                             "type": "transfer_call",
                             "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
+                            "execution_message_description": "execution_message_description",
                             "ignore_e164_validation": False,
+                            "speak_during_execution": True,
                         }
                     ],
                 },
@@ -225,6 +229,8 @@ class TestLlm:
                     "name": "end_call",
                     "type": "end_call",
                     "description": "End the call with user.",
+                    "execution_message_description": "execution_message_description",
+                    "speak_during_execution": True,
                 }
             ],
             kb_config={
@@ -280,7 +286,9 @@ class TestLlm:
                             "type": "transfer_call",
                             "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
+                            "execution_message_description": "execution_message_description",
                             "ignore_e164_validation": False,
+                            "speak_during_execution": True,
                         }
                     ],
                 },
@@ -454,6 +462,8 @@ class TestAsyncLlm:
                     "name": "end_call",
                     "type": "end_call",
                     "description": "End the call with user.",
+                    "execution_message_description": "execution_message_description",
+                    "speak_during_execution": True,
                 }
             ],
             kb_config={
@@ -509,7 +519,9 @@ class TestAsyncLlm:
                             "type": "transfer_call",
                             "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
+                            "execution_message_description": "execution_message_description",
                             "ignore_e164_validation": False,
+                            "speak_during_execution": True,
                         }
                     ],
                 },
@@ -640,6 +652,8 @@ class TestAsyncLlm:
                     "name": "end_call",
                     "type": "end_call",
                     "description": "End the call with user.",
+                    "execution_message_description": "execution_message_description",
+                    "speak_during_execution": True,
                 }
             ],
             kb_config={
@@ -695,7 +709,9 @@ class TestAsyncLlm:
                             "type": "transfer_call",
                             "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
                             "description": "Transfer to the support team.",
+                            "execution_message_description": "execution_message_description",
                             "ignore_e164_validation": False,
+                            "speak_during_execution": True,
                         }
                     ],
                 },

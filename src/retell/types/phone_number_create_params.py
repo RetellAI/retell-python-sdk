@@ -5,6 +5,8 @@ from __future__ import annotations
 from typing import Optional
 from typing_extensions import Literal, TypedDict
 
+from .._types import SequenceNotStr
+
 __all__ = ["PhoneNumberCreateParams"]
 
 
@@ -34,6 +36,12 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     If not provided, will default to latest version.
     """
 
+    inbound_allowed_countries: Optional[SequenceNotStr[str]]
+    """List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed.
+
+    If not set or empty, calls from all countries are allowed.
+    """
+
     inbound_webhook_url: Optional[str]
     """
     If set, will send a webhook for inbound calls, where you can to override agent
@@ -58,6 +66,12 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     """Version of the outbound agent to bind to the number.
 
     If not provided, will default to latest version.
+    """
+
+    outbound_allowed_countries: Optional[SequenceNotStr[str]]
+    """List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed.
+
+    If not set or empty, calls to all countries are allowed.
     """
 
     phone_number: str

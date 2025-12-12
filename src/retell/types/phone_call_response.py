@@ -24,6 +24,7 @@ __all__ = [
     "ScrubbedTranscriptWithToolCallUtteranceWord",
     "ScrubbedTranscriptWithToolCallToolCallInvocationUtterance",
     "ScrubbedTranscriptWithToolCallToolCallResultUtterance",
+    "ScrubbedTranscriptWithToolCallNodeTransitionUtterance",
     "ScrubbedTranscriptWithToolCallDtmfUtterance",
     "TelephonyIdentifier",
     "TranscriptObject",
@@ -33,11 +34,16 @@ __all__ = [
     "TranscriptWithToolCallUtteranceWord",
     "TranscriptWithToolCallToolCallInvocationUtterance",
     "TranscriptWithToolCallToolCallResultUtterance",
+    "TranscriptWithToolCallNodeTransitionUtterance",
     "TranscriptWithToolCallDtmfUtterance",
 ]
 
 
 class CallAnalysis(BaseModel):
+    """
+    Post call analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook event type to receive it once ready.
+    """
+
     call_successful: Optional[bool] = None
     """
     Whether the agent seems to have a successful call with the user, where the agent
@@ -72,6 +78,8 @@ class CallCostProductCost(BaseModel):
 
 
 class CallCost(BaseModel):
+    """Cost of the call, including all the products and their costs and discount."""
+
     combined_cost: float
     """Combined cost of all individual costs in cents"""
 
@@ -86,6 +94,10 @@ class CallCost(BaseModel):
 
 
 class LatencyAsr(BaseModel):
+    """
+    Transcription latency (diff between the duration of the chunks streamed and the durations of the transcribed part) tracking of the call.
+    """
+
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -112,6 +124,10 @@ class LatencyAsr(BaseModel):
 
 
 class LatencyE2E(BaseModel):
+    """
+    End to end latency (from user stops talking to agent start talking) tracking of the call. This latency does not account for the network trip time from Retell server to user frontend. The latency is tracked every time turn change between user and agent.
+    """
+
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -138,6 +154,10 @@ class LatencyE2E(BaseModel):
 
 
 class LatencyKnowledgeBase(BaseModel):
+    """
+    Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
+    """
+
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -164,6 +184,10 @@ class LatencyKnowledgeBase(BaseModel):
 
 
 class LatencyLlm(BaseModel):
+    """
+    LLM latency (from issue of LLM call to first speakable chunk received) tracking of the call. When using custom LLM. this latency includes LLM websocket roundtrip time between user server and Retell server.
+    """
+
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -190,6 +214,10 @@ class LatencyLlm(BaseModel):
 
 
 class LatencyLlmWebsocketNetworkRtt(BaseModel):
+    """
+    LLM websocket roundtrip latency (between user server and Retell server) tracking of the call. Only populated for calls using custom LLM.
+    """
+
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -216,6 +244,10 @@ class LatencyLlmWebsocketNetworkRtt(BaseModel):
 
 
 class LatencyS2s(BaseModel):
+    """
+    Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
+    """
+
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -242,6 +274,10 @@ class LatencyS2s(BaseModel):
 
 
 class LatencyTts(BaseModel):
+    """
+    Text-to-speech latency (from the triggering of TTS to first byte received) tracking of the call.
+    """
+
     max: Optional[float] = None
     """Maximum latency in the call, measured in milliseconds."""
 
@@ -268,6 +304,11 @@ class LatencyTts(BaseModel):
 
 
 class Latency(BaseModel):
+    """Latency tracking of the call, available after call ends.
+
+    Not all fields here will be available, as it depends on the type of call and feature used.
+    """
+
     asr: Optional[LatencyAsr] = None
     """
     Transcription latency (diff between the duration of the chunks streamed and the
@@ -317,6 +358,11 @@ class Latency(BaseModel):
 
 
 class LlmTokenUsage(BaseModel):
+    """LLM token usage of the call, available after call ends.
+
+    Not populated if using custom LLM, realtime API, or no LLM call is made.
+    """
+
     average: float
     """Average token count of the call."""
 
@@ -384,6 +430,23 @@ class ScrubbedTranscriptWithToolCallToolCallResultUtterance(BaseModel):
     """Tool call id, globally unique."""
 
 
+class ScrubbedTranscriptWithToolCallNodeTransitionUtterance(BaseModel):
+    former_node_id: str
+    """Former node id"""
+
+    former_node_name: str
+    """Former node name"""
+
+    new_node_id: str
+    """New node id"""
+
+    new_node_name: str
+    """New node name"""
+
+    role: Literal["node_transition"]
+    """This is result of a node transition"""
+
+
 class ScrubbedTranscriptWithToolCallDtmfUtterance(BaseModel):
     digit: str
     """The digit pressed by the user.
@@ -399,11 +462,17 @@ ScrubbedTranscriptWithToolCall: TypeAlias = Union[
     ScrubbedTranscriptWithToolCallUtterance,
     ScrubbedTranscriptWithToolCallToolCallInvocationUtterance,
     ScrubbedTranscriptWithToolCallToolCallResultUtterance,
+    ScrubbedTranscriptWithToolCallNodeTransitionUtterance,
     ScrubbedTranscriptWithToolCallDtmfUtterance,
 ]
 
 
 class TelephonyIdentifier(BaseModel):
+    """Telephony identifier of the call, populated when available.
+
+    Tracking purposes only.
+    """
+
     twilio_call_sid: Optional[str] = None
     """Twilio call sid."""
 
@@ -497,6 +566,23 @@ class TranscriptWithToolCallToolCallResultUtterance(BaseModel):
     """Tool call id, globally unique."""
 
 
+class TranscriptWithToolCallNodeTransitionUtterance(BaseModel):
+    former_node_id: str
+    """Former node id"""
+
+    former_node_name: str
+    """Former node name"""
+
+    new_node_id: str
+    """New node id"""
+
+    new_node_name: str
+    """New node name"""
+
+    role: Literal["node_transition"]
+    """This is result of a node transition"""
+
+
 class TranscriptWithToolCallDtmfUtterance(BaseModel):
     digit: str
     """The digit pressed by the user.
@@ -512,6 +598,7 @@ TranscriptWithToolCall: TypeAlias = Union[
     TranscriptWithToolCallUtterance,
     TranscriptWithToolCallToolCallInvocationUtterance,
     TranscriptWithToolCallToolCallResultUtterance,
+    TranscriptWithToolCallNodeTransitionUtterance,
     TranscriptWithToolCallDtmfUtterance,
 ]
 

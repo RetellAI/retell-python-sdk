@@ -69,6 +69,7 @@ class AgentResource(SyncAPIResource):
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
@@ -147,6 +148,8 @@ class AgentResource(SyncAPIResource):
                 "gpt-4.1-mini",
                 "gpt-4.1-nano",
                 "gpt-5",
+                "gpt-5.1",
+                "gpt-5.2",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -164,6 +167,7 @@ class AgentResource(SyncAPIResource):
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate"] | Omit = omit,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
+        version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
         voice_model: Optional[
             Literal[
@@ -172,13 +176,19 @@ class AgentResource(SyncAPIResource):
                 "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
+                "sonic-2",
+                "sonic-3",
+                "sonic-turbo",
                 "tts-1",
                 "gpt-4o-mini-tts",
+                "speech-02-turbo",
             ]
         ]
         | Omit = omit,
         voice_speed: float | Omit = omit,
         voice_temperature: float | Omit = omit,
+        voicemail_detection_timeout_ms: int | Omit = omit,
+        voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_create_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
@@ -279,6 +289,9 @@ class AgentResource(SyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
+              feature is only available for phone calls.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -351,14 +364,16 @@ class AgentResource(SyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
+          version_description: Optional description of the agent version. Used for your own reference and
+              documentation.
+
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
 
-          voice_model: Optionally set the voice model used for the selected voice. Currently only
-              elevenlab voices have voice model selections. Set to null to remove voice model
-              selection, and default ones will apply. Check out the dashboard for details on
-              each voice model.
+          voice_model: Select the voice model used for the selected voice. Each provider has a set of
+              available voice models. Set to null to remove voice model selection, and default
+              ones will apply. Check out dashboard for more details of each voice model.
 
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
@@ -368,6 +383,15 @@ class AgentResource(SyncAPIResource):
               more stable, and higher value means more variant speech generation. Currently
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
+
+          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
+              hit voicemail after a couple minutes, and keep running it will only have
+              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
+
+          voicemail_message: The message to be played when the call enters a voicemail. Note that this
+              feature is only available for phone calls. If you want to hangup after hitting
+              voicemail, set this to empty string.
 
           voicemail_option: If this option is set, the call will try to detect voicemail in the first 3
               minutes of the call. Actions defined (hangup, or leave a message) will be
@@ -413,6 +437,7 @@ class AgentResource(SyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -431,10 +456,13 @@ class AgentResource(SyncAPIResource):
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
+                    "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
+                    "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
                     "webhook_timeout_ms": webhook_timeout_ms,
@@ -512,6 +540,7 @@ class AgentResource(SyncAPIResource):
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
@@ -590,6 +619,8 @@ class AgentResource(SyncAPIResource):
                 "gpt-4.1-mini",
                 "gpt-4.1-nano",
                 "gpt-5",
+                "gpt-5.1",
+                "gpt-5.2",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -608,6 +639,7 @@ class AgentResource(SyncAPIResource):
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate"] | Omit = omit,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
+        version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
         voice_id: str | Omit = omit,
         voice_model: Optional[
@@ -617,13 +649,19 @@ class AgentResource(SyncAPIResource):
                 "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
+                "sonic-2",
+                "sonic-3",
+                "sonic-turbo",
                 "tts-1",
                 "gpt-4o-mini-tts",
+                "speech-02-turbo",
             ]
         ]
         | Omit = omit,
         voice_speed: float | Omit = omit,
         voice_temperature: float | Omit = omit,
+        voicemail_detection_timeout_ms: int | Omit = omit,
+        voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_update_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
@@ -719,6 +757,9 @@ class AgentResource(SyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
+              feature is only available for phone calls.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -795,6 +836,9 @@ class AgentResource(SyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
+          version_description: Optional description of the agent version. Used for your own reference and
+              documentation.
+
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
@@ -802,10 +846,9 @@ class AgentResource(SyncAPIResource):
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
-          voice_model: Optionally set the voice model used for the selected voice. Currently only
-              elevenlab voices have voice model selections. Set to null to remove voice model
-              selection, and default ones will apply. Check out the dashboard for details on
-              each voice model.
+          voice_model: Select the voice model used for the selected voice. Each provider has a set of
+              available voice models. Set to null to remove voice model selection, and default
+              ones will apply. Check out dashboard for more details of each voice model.
 
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
@@ -815,6 +858,15 @@ class AgentResource(SyncAPIResource):
               more stable, and higher value means more variant speech generation. Currently
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
+
+          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
+              hit voicemail after a couple minutes, and keep running it will only have
+              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
+
+          voicemail_message: The message to be played when the call enters a voicemail. Note that this
+              feature is only available for phone calls. If you want to hangup after hitting
+              voicemail, set this to empty string.
 
           voicemail_option: If this option is set, the call will try to detect voicemail in the first 3
               minutes of the call. Actions defined (hangup, or leave a message) will be
@@ -860,6 +912,7 @@ class AgentResource(SyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -879,11 +932,14 @@ class AgentResource(SyncAPIResource):
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
+                    "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
+                    "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
                     "webhook_timeout_ms": webhook_timeout_ms,
@@ -1103,6 +1159,7 @@ class AsyncAgentResource(AsyncAPIResource):
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
@@ -1181,6 +1238,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-4.1-mini",
                 "gpt-4.1-nano",
                 "gpt-5",
+                "gpt-5.1",
+                "gpt-5.2",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -1198,6 +1257,7 @@ class AsyncAgentResource(AsyncAPIResource):
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate"] | Omit = omit,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
+        version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
         voice_model: Optional[
             Literal[
@@ -1206,13 +1266,19 @@ class AsyncAgentResource(AsyncAPIResource):
                 "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
+                "sonic-2",
+                "sonic-3",
+                "sonic-turbo",
                 "tts-1",
                 "gpt-4o-mini-tts",
+                "speech-02-turbo",
             ]
         ]
         | Omit = omit,
         voice_speed: float | Omit = omit,
         voice_temperature: float | Omit = omit,
+        voicemail_detection_timeout_ms: int | Omit = omit,
+        voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_create_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
@@ -1313,6 +1379,9 @@ class AsyncAgentResource(AsyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
+              feature is only available for phone calls.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -1385,14 +1454,16 @@ class AsyncAgentResource(AsyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
+          version_description: Optional description of the agent version. Used for your own reference and
+              documentation.
+
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
 
-          voice_model: Optionally set the voice model used for the selected voice. Currently only
-              elevenlab voices have voice model selections. Set to null to remove voice model
-              selection, and default ones will apply. Check out the dashboard for details on
-              each voice model.
+          voice_model: Select the voice model used for the selected voice. Each provider has a set of
+              available voice models. Set to null to remove voice model selection, and default
+              ones will apply. Check out dashboard for more details of each voice model.
 
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
@@ -1402,6 +1473,15 @@ class AsyncAgentResource(AsyncAPIResource):
               more stable, and higher value means more variant speech generation. Currently
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
+
+          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
+              hit voicemail after a couple minutes, and keep running it will only have
+              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
+
+          voicemail_message: The message to be played when the call enters a voicemail. Note that this
+              feature is only available for phone calls. If you want to hangup after hitting
+              voicemail, set this to empty string.
 
           voicemail_option: If this option is set, the call will try to detect voicemail in the first 3
               minutes of the call. Actions defined (hangup, or leave a message) will be
@@ -1447,6 +1527,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -1465,10 +1546,13 @@ class AsyncAgentResource(AsyncAPIResource):
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
+                    "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
+                    "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
                     "webhook_timeout_ms": webhook_timeout_ms,
@@ -1546,6 +1630,7 @@ class AsyncAgentResource(AsyncAPIResource):
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
@@ -1624,6 +1709,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-4.1-mini",
                 "gpt-4.1-nano",
                 "gpt-5",
+                "gpt-5.1",
+                "gpt-5.2",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -1642,6 +1729,7 @@ class AsyncAgentResource(AsyncAPIResource):
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate"] | Omit = omit,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
+        version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
         voice_id: str | Omit = omit,
         voice_model: Optional[
@@ -1651,13 +1739,19 @@ class AsyncAgentResource(AsyncAPIResource):
                 "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
+                "sonic-2",
+                "sonic-3",
+                "sonic-turbo",
                 "tts-1",
                 "gpt-4o-mini-tts",
+                "speech-02-turbo",
             ]
         ]
         | Omit = omit,
         voice_speed: float | Omit = omit,
         voice_temperature: float | Omit = omit,
+        voicemail_detection_timeout_ms: int | Omit = omit,
+        voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_update_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
@@ -1753,6 +1847,9 @@ class AsyncAgentResource(AsyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
+              feature is only available for phone calls.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -1829,6 +1926,9 @@ class AsyncAgentResource(AsyncAPIResource):
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode.
 
+          version_description: Optional description of the agent version. Used for your own reference and
+              documentation.
+
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
@@ -1836,10 +1936,9 @@ class AsyncAgentResource(AsyncAPIResource):
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
-          voice_model: Optionally set the voice model used for the selected voice. Currently only
-              elevenlab voices have voice model selections. Set to null to remove voice model
-              selection, and default ones will apply. Check out the dashboard for details on
-              each voice model.
+          voice_model: Select the voice model used for the selected voice. Each provider has a set of
+              available voice models. Set to null to remove voice model selection, and default
+              ones will apply. Check out dashboard for more details of each voice model.
 
           voice_speed: Controls speed of voice. Value ranging from [0.5,2]. Lower value means slower
               speech, while higher value means faster speech rate. If unset, default value 1
@@ -1849,6 +1948,15 @@ class AsyncAgentResource(AsyncAPIResource):
               more stable, and higher value means more variant speech generation. Currently
               this setting only applies to `11labs` voices. If unset, default value 1 will
               apply.
+
+          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
+              hit voicemail after a couple minutes, and keep running it will only have
+              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
+
+          voicemail_message: The message to be played when the call enters a voicemail. Note that this
+              feature is only available for phone calls. If you want to hangup after hitting
+              voicemail, set this to empty string.
 
           voicemail_option: If this option is set, the call will try to detect voicemail in the first 3
               minutes of the call. Actions defined (hangup, or leave a message) will be
@@ -1894,6 +2002,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
@@ -1913,11 +2022,14 @@ class AsyncAgentResource(AsyncAPIResource):
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
                     "user_dtmf_options": user_dtmf_options,
+                    "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
+                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
+                    "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
                     "webhook_timeout_ms": webhook_timeout_ms,

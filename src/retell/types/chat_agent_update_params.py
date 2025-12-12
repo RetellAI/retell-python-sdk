@@ -127,6 +127,8 @@ class ChatAgentUpdateParams(TypedDict, total=False):
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -168,6 +170,8 @@ class ChatAgentUpdateParams(TypedDict, total=False):
 
 
 class PiiConfig(TypedDict, total=False):
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     categories: Required[
         List[
             Literal[
@@ -184,6 +188,7 @@ class PiiConfig(TypedDict, total=False):
                 "pin",
                 "medical_id",
                 "date_of_birth",
+                "customer_account_number",
             ]
         ]
     ]

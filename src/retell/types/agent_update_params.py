@@ -26,6 +26,7 @@ __all__ = [
     "VoicemailOptionActionVoicemailActionPrompt",
     "VoicemailOptionActionVoicemailActionStaticText",
     "VoicemailOptionActionVoicemailActionHangup",
+    "VoicemailOptionActionVoicemailActionBridgeTransfer",
 ]
 
 
@@ -147,6 +148,12 @@ class AgentUpdateParams(TypedDict, total=False):
     phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
     when enabled tends to show up more in longer user utterances. If not set, agent
     will not backchannel.
+    """
+
+    enable_voicemail_detection: bool
+    """If set to true, will detect whether the call enters a voicemail.
+
+    Note that this feature is only available for phone calls.
     """
 
     end_call_after_silence_ms: int
@@ -285,6 +292,8 @@ class AgentUpdateParams(TypedDict, total=False):
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -353,6 +362,12 @@ class AgentUpdateParams(TypedDict, total=False):
 
     user_dtmf_options: Optional[UserDtmfOptions]
 
+    version_description: Optional[str]
+    """Optional description of the agent version.
+
+    Used for your own reference and documentation.
+    """
+
     vocab_specialization: Literal["general", "medical"]
     """If set, determines the vocabulary set to use for transcription.
 
@@ -373,15 +388,19 @@ class AgentUpdateParams(TypedDict, total=False):
             "eleven_turbo_v2_5",
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
+            "sonic-2",
+            "sonic-3",
+            "sonic-turbo",
             "tts-1",
             "gpt-4o-mini-tts",
+            "speech-02-turbo",
         ]
     ]
-    """Optionally set the voice model used for the selected voice.
+    """Select the voice model used for the selected voice.
 
-    Currently only elevenlab voices have voice model selections. Set to null to
-    remove voice model selection, and default ones will apply. Check out the
-    dashboard for details on each voice model.
+    Each provider has a set of available voice models. Set to null to remove voice
+    model selection, and default ones will apply. Check out dashboard for more
+    details of each voice model.
     """
 
     voice_speed: float
@@ -397,6 +416,21 @@ class AgentUpdateParams(TypedDict, total=False):
     Value ranging from [0,2]. Lower value means more stable, and higher value means
     more variant speech generation. Currently this setting only applies to `11labs`
     voices. If unset, default value 1 will apply.
+    """
+
+    voicemail_detection_timeout_ms: int
+    """
+    Configures when to stop running voicemail detection, as it becomes unlikely to
+    hit voicemail after a couple minutes, and keep running it will only have
+    negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+    allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
+    """
+
+    voicemail_message: str
+    """The message to be played when the call enters a voicemail.
+
+    Note that this feature is only available for phone calls. If you want to hangup
+    after hitting voicemail, set this to empty string.
     """
 
     voicemail_option: Optional[VoicemailOption]
@@ -431,6 +465,8 @@ class AgentUpdateParams(TypedDict, total=False):
 
 
 class PiiConfig(TypedDict, total=False):
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     categories: Required[
         List[
             Literal[
@@ -447,6 +483,7 @@ class PiiConfig(TypedDict, total=False):
                 "pin",
                 "medical_id",
                 "date_of_birth",
+                "customer_account_number",
             ]
         ]
     ]
@@ -563,7 +600,7 @@ ResponseEngine: TypeAlias = Union[
 
 
 class UserDtmfOptions(TypedDict, total=False):
-    digit_limit: Optional[int]
+    digit_limit: Optional[float]
     """
     The maximum number of digits allowed in the user's DTMF (Dual-Tone
     Multi-Frequency) input per turn. Once this limit is reached, the input is
@@ -605,12 +642,21 @@ class VoicemailOptionActionVoicemailActionHangup(TypedDict, total=False):
     type: Required[Literal["hangup"]]
 
 
+class VoicemailOptionActionVoicemailActionBridgeTransfer(TypedDict, total=False):
+    type: Required[Literal["bridge_transfer"]]
+
+
 VoicemailOptionAction: TypeAlias = Union[
     VoicemailOptionActionVoicemailActionPrompt,
     VoicemailOptionActionVoicemailActionStaticText,
     VoicemailOptionActionVoicemailActionHangup,
+    VoicemailOptionActionVoicemailActionBridgeTransfer,
 ]
 
 
 class VoicemailOption(TypedDict, total=False):
+    """
+    If this option is set, the call will try to detect voicemail in the first 3 minutes of the call. Actions defined (hangup, or leave a message) will be applied when the voicemail is detected. Set this to null to disable voicemail detection.
+    """
+
     action: Required[VoicemailOptionAction]

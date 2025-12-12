@@ -67,11 +67,12 @@ class KnowledgeBaseResponse(BaseModel):
     knowledge_base_name: str
     """Name of the knowledge base. Must be less than 40 characters."""
 
-    status: Literal["in_progress", "complete", "error"]
+    status: Literal["in_progress", "complete", "error", "refreshing_in_progress"]
     """Status of the knowledge base.
 
     When it's created and being processed, it's "in_progress". When the processing
     is done, it's "complete". When there's an error in processing, it's "error".
+    When it is during kb updating, it's "refreshing_in_progress".
     """
 
     enable_auto_refresh: Optional[bool] = None
