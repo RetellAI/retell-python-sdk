@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -144,6 +144,7 @@ class ChatResource(SyncAPIResource):
         self,
         chat_id: str,
         *,
+        custom_attributes: Dict[str, Union[str, float, bool]] | Omit = omit,
         data_storage_setting: Literal["everything", "basic_attributes_only"] | Omit = omit,
         metadata: object | Omit = omit,
         override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -158,6 +159,8 @@ class ChatResource(SyncAPIResource):
         Update metadata and sensitive data storage settings for an existing chat.
 
         Args:
+          custom_attributes: Custom attributes for the chat
+
           data_storage_setting: Data storage setting for this chat. Overrides the agent's default setting.
               "everything" stores all data, "basic_attributes_only" stores only metadata.
               Cannot be downgraded from more restrictive to less restrictive settings.
@@ -186,6 +189,7 @@ class ChatResource(SyncAPIResource):
             f"/update-chat/{chat_id}",
             body=maybe_transform(
                 {
+                    "custom_attributes": custom_attributes,
                     "data_storage_setting": data_storage_setting,
                     "metadata": metadata,
                     "override_dynamic_variables": override_dynamic_variables,
@@ -477,6 +481,7 @@ class AsyncChatResource(AsyncAPIResource):
         self,
         chat_id: str,
         *,
+        custom_attributes: Dict[str, Union[str, float, bool]] | Omit = omit,
         data_storage_setting: Literal["everything", "basic_attributes_only"] | Omit = omit,
         metadata: object | Omit = omit,
         override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -491,6 +496,8 @@ class AsyncChatResource(AsyncAPIResource):
         Update metadata and sensitive data storage settings for an existing chat.
 
         Args:
+          custom_attributes: Custom attributes for the chat
+
           data_storage_setting: Data storage setting for this chat. Overrides the agent's default setting.
               "everything" stores all data, "basic_attributes_only" stores only metadata.
               Cannot be downgraded from more restrictive to less restrictive settings.
@@ -519,6 +526,7 @@ class AsyncChatResource(AsyncAPIResource):
             f"/update-chat/{chat_id}",
             body=await async_maybe_transform(
                 {
+                    "custom_attributes": custom_attributes,
                     "data_storage_setting": data_storage_setting,
                     "metadata": metadata,
                     "override_dynamic_variables": override_dynamic_variables,
