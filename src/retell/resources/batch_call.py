@@ -48,7 +48,9 @@ class BatchCallResource(SyncAPIResource):
         *,
         from_number: str,
         tasks: Iterable[batch_call_create_batch_call_params.Task],
+        call_time_window: batch_call_create_batch_call_params.CallTimeWindow | Omit = omit,
         name: str | Omit = omit,
+        reserved_concurrency: int | Omit = omit,
         trigger_timestamp: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -70,7 +72,14 @@ class BatchCallResource(SyncAPIResource):
               recipient's phone number and optional dynamic variables to personalize the call
               content.
 
+          call_time_window: Allowed calling windows in a specific timezone. Each window is a half-open
+              interval [startMin, endMin) in minutes since 00:00 local time. Cross-midnight
+              windows are NOT allowed (must satisfy startMin < endMin). `endMin = 1440`
+              (24:00) is valid.
+
           name: The name of the batch call. Only used for your own reference.
+
+          reserved_concurrency: Reserve a portion of your org concurrency for batch processing.
 
           trigger_timestamp: The scheduled time for sending the batch call, represented as a Unix timestamp
               in milliseconds. If omitted, the call will be sent immediately.
@@ -89,7 +98,9 @@ class BatchCallResource(SyncAPIResource):
                 {
                     "from_number": from_number,
                     "tasks": tasks,
+                    "call_time_window": call_time_window,
                     "name": name,
+                    "reserved_concurrency": reserved_concurrency,
                     "trigger_timestamp": trigger_timestamp,
                 },
                 batch_call_create_batch_call_params.BatchCallCreateBatchCallParams,
@@ -126,7 +137,9 @@ class AsyncBatchCallResource(AsyncAPIResource):
         *,
         from_number: str,
         tasks: Iterable[batch_call_create_batch_call_params.Task],
+        call_time_window: batch_call_create_batch_call_params.CallTimeWindow | Omit = omit,
         name: str | Omit = omit,
+        reserved_concurrency: int | Omit = omit,
         trigger_timestamp: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -148,7 +161,14 @@ class AsyncBatchCallResource(AsyncAPIResource):
               recipient's phone number and optional dynamic variables to personalize the call
               content.
 
+          call_time_window: Allowed calling windows in a specific timezone. Each window is a half-open
+              interval [startMin, endMin) in minutes since 00:00 local time. Cross-midnight
+              windows are NOT allowed (must satisfy startMin < endMin). `endMin = 1440`
+              (24:00) is valid.
+
           name: The name of the batch call. Only used for your own reference.
+
+          reserved_concurrency: Reserve a portion of your org concurrency for batch processing.
 
           trigger_timestamp: The scheduled time for sending the batch call, represented as a Unix timestamp
               in milliseconds. If omitted, the call will be sent immediately.
@@ -167,7 +187,9 @@ class AsyncBatchCallResource(AsyncAPIResource):
                 {
                     "from_number": from_number,
                     "tasks": tasks,
+                    "call_time_window": call_time_window,
                     "name": name,
+                    "reserved_concurrency": reserved_concurrency,
                     "trigger_timestamp": trigger_timestamp,
                 },
                 batch_call_create_batch_call_params.BatchCallCreateBatchCallParams,

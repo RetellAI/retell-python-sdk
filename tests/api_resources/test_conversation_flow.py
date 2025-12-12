@@ -236,12 +236,25 @@ class TestConversationFlow:
                         "x": 100,
                         "y": 200,
                     },
+                    "mcps": [
+                        {
+                            "name": "name",
+                            "url": "url",
+                            "headers": {"Authorization": "Bearer 1234567890"},
+                            "query_params": {
+                                "index": "1",
+                                "key": "value",
+                            },
+                            "timeout_ms": 0,
+                        }
+                    ],
                     "start_node_id": "collect_info",
                     "tools": [
                         {
                             "name": "get_customer_info",
                             "type": "custom",
                             "url": "https://api.example.com/customer",
+                            "args_at_root": True,
                             "description": "Get customer information from database",
                             "headers": {"foo": "string"},
                             "method": "GET",
@@ -289,6 +302,7 @@ class TestConversationFlow:
                     "name": "get_customer_info",
                     "type": "custom",
                     "url": "https://api.example.com/customer",
+                    "args_at_root": True,
                     "description": "Get customer information from database",
                     "headers": {"foo": "string"},
                     "method": "GET",
@@ -523,12 +537,25 @@ class TestConversationFlow:
                         "x": 100,
                         "y": 200,
                     },
+                    "mcps": [
+                        {
+                            "name": "name",
+                            "url": "url",
+                            "headers": {"Authorization": "Bearer 1234567890"},
+                            "query_params": {
+                                "index": "1",
+                                "key": "value",
+                            },
+                            "timeout_ms": 0,
+                        }
+                    ],
                     "start_node_id": "collect_info",
                     "tools": [
                         {
                             "name": "get_customer_info",
                             "type": "custom",
                             "url": "https://api.example.com/customer",
+                            "args_at_root": True,
                             "description": "Get customer information from database",
                             "headers": {"foo": "string"},
                             "method": "GET",
@@ -668,6 +695,7 @@ class TestConversationFlow:
                     "name": "get_customer_info",
                     "type": "custom",
                     "url": "https://api.example.com/customer",
+                    "args_at_root": True,
                     "description": "Get customer information from database",
                     "headers": {"foo": "string"},
                     "method": "GET",
@@ -1021,12 +1049,25 @@ class TestAsyncConversationFlow:
                         "x": 100,
                         "y": 200,
                     },
+                    "mcps": [
+                        {
+                            "name": "name",
+                            "url": "url",
+                            "headers": {"Authorization": "Bearer 1234567890"},
+                            "query_params": {
+                                "index": "1",
+                                "key": "value",
+                            },
+                            "timeout_ms": 0,
+                        }
+                    ],
                     "start_node_id": "collect_info",
                     "tools": [
                         {
                             "name": "get_customer_info",
                             "type": "custom",
                             "url": "https://api.example.com/customer",
+                            "args_at_root": True,
                             "description": "Get customer information from database",
                             "headers": {"foo": "string"},
                             "method": "GET",
@@ -1074,6 +1115,7 @@ class TestAsyncConversationFlow:
                     "name": "get_customer_info",
                     "type": "custom",
                     "url": "https://api.example.com/customer",
+                    "args_at_root": True,
                     "description": "Get customer information from database",
                     "headers": {"foo": "string"},
                     "method": "GET",
@@ -1308,12 +1350,25 @@ class TestAsyncConversationFlow:
                         "x": 100,
                         "y": 200,
                     },
+                    "mcps": [
+                        {
+                            "name": "name",
+                            "url": "url",
+                            "headers": {"Authorization": "Bearer 1234567890"},
+                            "query_params": {
+                                "index": "1",
+                                "key": "value",
+                            },
+                            "timeout_ms": 0,
+                        }
+                    ],
                     "start_node_id": "collect_info",
                     "tools": [
                         {
                             "name": "get_customer_info",
                             "type": "custom",
                             "url": "https://api.example.com/customer",
+                            "args_at_root": True,
                             "description": "Get customer information from database",
                             "headers": {"foo": "string"},
                             "method": "GET",
@@ -1453,6 +1508,7 @@ class TestAsyncConversationFlow:
                     "name": "get_customer_info",
                     "type": "custom",
                     "url": "https://api.example.com/customer",
+                    "args_at_root": True,
                     "description": "Get customer information from database",
                     "headers": {"foo": "string"},
                     "method": "GET",

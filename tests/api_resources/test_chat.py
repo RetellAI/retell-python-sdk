@@ -121,6 +121,10 @@ class TestChat:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         chat = client.chat.update(
             chat_id="chat_98c1a2157aa0559144d67bb0729",
+            custom_attributes={
+                "custom_attribute_1": "value1",
+                "custom_attribute_2": "value2",
+            },
             data_storage_setting="everything",
             metadata={
                 "customer_id": "cust_123",
@@ -427,6 +431,10 @@ class TestAsyncChat:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.update(
             chat_id="chat_98c1a2157aa0559144d67bb0729",
+            custom_attributes={
+                "custom_attribute_1": "value1",
+                "custom_attribute_2": "value2",
+            },
             data_storage_setting="everything",
             metadata={
                 "customer_id": "cust_123",

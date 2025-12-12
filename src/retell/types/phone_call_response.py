@@ -24,6 +24,7 @@ __all__ = [
     "ScrubbedTranscriptWithToolCallUtteranceWord",
     "ScrubbedTranscriptWithToolCallToolCallInvocationUtterance",
     "ScrubbedTranscriptWithToolCallToolCallResultUtterance",
+    "ScrubbedTranscriptWithToolCallNodeTransitionUtterance",
     "ScrubbedTranscriptWithToolCallDtmfUtterance",
     "TelephonyIdentifier",
     "TranscriptObject",
@@ -33,6 +34,7 @@ __all__ = [
     "TranscriptWithToolCallUtteranceWord",
     "TranscriptWithToolCallToolCallInvocationUtterance",
     "TranscriptWithToolCallToolCallResultUtterance",
+    "TranscriptWithToolCallNodeTransitionUtterance",
     "TranscriptWithToolCallDtmfUtterance",
 ]
 
@@ -428,6 +430,23 @@ class ScrubbedTranscriptWithToolCallToolCallResultUtterance(BaseModel):
     """Tool call id, globally unique."""
 
 
+class ScrubbedTranscriptWithToolCallNodeTransitionUtterance(BaseModel):
+    former_node_id: str
+    """Former node id"""
+
+    former_node_name: str
+    """Former node name"""
+
+    new_node_id: str
+    """New node id"""
+
+    new_node_name: str
+    """New node name"""
+
+    role: Literal["node_transition"]
+    """This is result of a node transition"""
+
+
 class ScrubbedTranscriptWithToolCallDtmfUtterance(BaseModel):
     digit: str
     """The digit pressed by the user.
@@ -443,6 +462,7 @@ ScrubbedTranscriptWithToolCall: TypeAlias = Union[
     ScrubbedTranscriptWithToolCallUtterance,
     ScrubbedTranscriptWithToolCallToolCallInvocationUtterance,
     ScrubbedTranscriptWithToolCallToolCallResultUtterance,
+    ScrubbedTranscriptWithToolCallNodeTransitionUtterance,
     ScrubbedTranscriptWithToolCallDtmfUtterance,
 ]
 
@@ -546,6 +566,23 @@ class TranscriptWithToolCallToolCallResultUtterance(BaseModel):
     """Tool call id, globally unique."""
 
 
+class TranscriptWithToolCallNodeTransitionUtterance(BaseModel):
+    former_node_id: str
+    """Former node id"""
+
+    former_node_name: str
+    """Former node name"""
+
+    new_node_id: str
+    """New node id"""
+
+    new_node_name: str
+    """New node name"""
+
+    role: Literal["node_transition"]
+    """This is result of a node transition"""
+
+
 class TranscriptWithToolCallDtmfUtterance(BaseModel):
     digit: str
     """The digit pressed by the user.
@@ -561,6 +598,7 @@ TranscriptWithToolCall: TypeAlias = Union[
     TranscriptWithToolCallUtterance,
     TranscriptWithToolCallToolCallInvocationUtterance,
     TranscriptWithToolCallToolCallResultUtterance,
+    TranscriptWithToolCallNodeTransitionUtterance,
     TranscriptWithToolCallDtmfUtterance,
 ]
 

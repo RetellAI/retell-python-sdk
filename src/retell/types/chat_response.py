@@ -189,8 +189,14 @@ class ChatResponse(BaseModel):
 
     chat_cost: Optional[ChatCost] = None
 
+    chat_type: Optional[Literal["api_chat", "sms_chat"]] = None
+    """Type of the chat"""
+
     collected_dynamic_variables: Optional[Dict[str, object]] = None
     """Dynamic variables collected from the chat. Only available after the chat ends."""
+
+    custom_attributes: Optional[Dict[str, Union[str, float, bool]]] = None
+    """Custom attributes for the chat"""
 
     end_timestamp: Optional[int] = None
     """End timestamp (milliseconds since epoch) of the chat.
@@ -224,3 +230,6 @@ class ChatResponse(BaseModel):
 
     transcript: Optional[str] = None
     """Transcription of the chat."""
+
+    version: Optional[int] = None
+    """The version of the agent"""

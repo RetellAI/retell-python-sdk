@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, cast
+from typing import Any, Dict, Union, Optional, cast
 from typing_extensions import Literal
 
 import httpx
@@ -93,6 +93,7 @@ class CallResource(SyncAPIResource):
         self,
         call_id: str,
         *,
+        custom_attributes: Dict[str, Union[str, float, bool]] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         metadata: object | Omit = omit,
         override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -107,6 +108,8 @@ class CallResource(SyncAPIResource):
         Update metadata and sensitive data storage settings for an existing call.
 
         Args:
+          custom_attributes: Custom attributes for the call
+
           data_storage_setting: Data storage setting for this call. Overrides the agent's default setting.
               "everything" stores all data, "everything_except_pii" excludes PII when
               possible, "basic_attributes_only" stores only metadata. Cannot be downgraded
@@ -138,6 +141,7 @@ class CallResource(SyncAPIResource):
                 f"/v2/update-call/{call_id}",
                 body=maybe_transform(
                     {
+                        "custom_attributes": custom_attributes,
                         "data_storage_setting": data_storage_setting,
                         "metadata": metadata,
                         "override_dynamic_variables": override_dynamic_variables,
@@ -523,6 +527,7 @@ class AsyncCallResource(AsyncAPIResource):
         self,
         call_id: str,
         *,
+        custom_attributes: Dict[str, Union[str, float, bool]] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         metadata: object | Omit = omit,
         override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -537,6 +542,8 @@ class AsyncCallResource(AsyncAPIResource):
         Update metadata and sensitive data storage settings for an existing call.
 
         Args:
+          custom_attributes: Custom attributes for the call
+
           data_storage_setting: Data storage setting for this call. Overrides the agent's default setting.
               "everything" stores all data, "everything_except_pii" excludes PII when
               possible, "basic_attributes_only" stores only metadata. Cannot be downgraded
@@ -568,6 +575,7 @@ class AsyncCallResource(AsyncAPIResource):
                 f"/v2/update-call/{call_id}",
                 body=await async_maybe_transform(
                     {
+                        "custom_attributes": custom_attributes,
                         "data_storage_setting": data_storage_setting,
                         "metadata": metadata,
                         "override_dynamic_variables": override_dynamic_variables,

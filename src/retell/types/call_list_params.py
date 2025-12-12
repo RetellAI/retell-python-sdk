@@ -12,6 +12,7 @@ __all__ = [
     "FilterCriteria",
     "FilterCriteriaDurationMs",
     "FilterCriteriaE2ELatencyP50",
+    "FilterCriteriaEndTimestamp",
     "FilterCriteriaStartTimestamp",
 ]
 
@@ -51,6 +52,14 @@ class FilterCriteriaDurationMs(TypedDict, total=False):
 
 
 class FilterCriteriaE2ELatencyP50(TypedDict, total=False):
+    lower_threshold: int
+
+    upper_threshold: int
+
+
+class FilterCriteriaEndTimestamp(TypedDict, total=False):
+    """Only retrieve calls with specific range of end timestamp(s)."""
+
     lower_threshold: int
 
     upper_threshold: int
@@ -123,6 +132,9 @@ class FilterCriteria(TypedDict, total=False):
     """Only retrieve calls with specific range of duration(s)."""
 
     e2e_latency_p50: FilterCriteriaE2ELatencyP50
+
+    end_timestamp: FilterCriteriaEndTimestamp
+    """Only retrieve calls with specific range of end timestamp(s)."""
 
     from_number: SequenceNotStr[str]
     """Only retrieve calls with specific from number(s)."""
