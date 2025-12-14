@@ -20,6 +20,10 @@ __all__ = [
 
 
 class ChatAnalysis(BaseModel):
+    """
+    Post chat analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after chat ends. Subscribe to `chat_analyzed` webhook event type to receive it once ready.
+    """
+
     chat_successful: Optional[bool] = None
     """
     Whether the agent seems to have a successful chat with the user, where the agent
@@ -185,8 +189,14 @@ class ChatResponse(BaseModel):
 
     chat_cost: Optional[ChatCost] = None
 
+    chat_type: Optional[Literal["api_chat", "sms_chat"]] = None
+    """Type of the chat"""
+
     collected_dynamic_variables: Optional[Dict[str, object]] = None
     """Dynamic variables collected from the chat. Only available after the chat ends."""
+
+    custom_attributes: Optional[Dict[str, Union[str, float, bool]]] = None
+    """Custom attributes for the chat"""
 
     end_timestamp: Optional[int] = None
     """End timestamp (milliseconds since epoch) of the chat.
@@ -220,3 +230,6 @@ class ChatResponse(BaseModel):
 
     transcript: Optional[str] = None
     """Transcription of the chat."""
+
+    version: Optional[int] = None
+    """The version of the agent"""

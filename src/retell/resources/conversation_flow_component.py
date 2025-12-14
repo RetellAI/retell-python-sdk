@@ -51,6 +51,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         nodes: Iterable[conversation_flow_component_create_params.Node],
         begin_tag_display_position: Optional[conversation_flow_component_create_params.BeginTagDisplayPosition]
         | Omit = omit,
+        mcps: Optional[Iterable[conversation_flow_component_create_params.Mcp]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_component_create_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -69,6 +70,8 @@ class ConversationFlowComponentResource(SyncAPIResource):
           nodes: Nodes that make up the component
 
           begin_tag_display_position: Display position for the begin tag in the frontend
+
+          mcps: A list of MCP server configurations to use for this component
 
           start_node_id: ID of the starting node
 
@@ -89,6 +92,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
                     "name": name,
                     "nodes": nodes,
                     "begin_tag_display_position": begin_tag_display_position,
+                    "mcps": mcps,
                     "start_node_id": start_node_id,
                     "tools": tools,
                 },
@@ -141,6 +145,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         *,
         begin_tag_display_position: Optional[conversation_flow_component_update_params.BeginTagDisplayPosition]
         | Omit = omit,
+        mcps: Optional[Iterable[conversation_flow_component_update_params.Mcp]] | Omit = omit,
         name: str | Omit = omit,
         nodes: Iterable[conversation_flow_component_update_params.Node] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
@@ -157,6 +162,8 @@ class ConversationFlowComponentResource(SyncAPIResource):
 
         Args:
           begin_tag_display_position: Display position for the begin tag in the frontend
+
+          mcps: A list of MCP server configurations to use for this component
 
           name: Name of the component
 
@@ -183,6 +190,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "begin_tag_display_position": begin_tag_display_position,
+                    "mcps": mcps,
                     "name": name,
                     "nodes": nodes,
                     "start_node_id": start_node_id,
@@ -281,6 +289,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         nodes: Iterable[conversation_flow_component_create_params.Node],
         begin_tag_display_position: Optional[conversation_flow_component_create_params.BeginTagDisplayPosition]
         | Omit = omit,
+        mcps: Optional[Iterable[conversation_flow_component_create_params.Mcp]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_component_create_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -299,6 +308,8 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
           nodes: Nodes that make up the component
 
           begin_tag_display_position: Display position for the begin tag in the frontend
+
+          mcps: A list of MCP server configurations to use for this component
 
           start_node_id: ID of the starting node
 
@@ -319,6 +330,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                     "name": name,
                     "nodes": nodes,
                     "begin_tag_display_position": begin_tag_display_position,
+                    "mcps": mcps,
                     "start_node_id": start_node_id,
                     "tools": tools,
                 },
@@ -371,6 +383,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         *,
         begin_tag_display_position: Optional[conversation_flow_component_update_params.BeginTagDisplayPosition]
         | Omit = omit,
+        mcps: Optional[Iterable[conversation_flow_component_update_params.Mcp]] | Omit = omit,
         name: str | Omit = omit,
         nodes: Iterable[conversation_flow_component_update_params.Node] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
@@ -387,6 +400,8 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
 
         Args:
           begin_tag_display_position: Display position for the begin tag in the frontend
+
+          mcps: A list of MCP server configurations to use for this component
 
           name: Name of the component
 
@@ -413,6 +428,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "begin_tag_display_position": begin_tag_display_position,
+                    "mcps": mcps,
                     "name": name,
                     "nodes": nodes,
                     "start_node_id": start_node_id,

@@ -12,6 +12,7 @@ __all__ = [
     "FilterCriteria",
     "FilterCriteriaDurationMs",
     "FilterCriteriaE2ELatencyP50",
+    "FilterCriteriaEndTimestamp",
     "FilterCriteriaStartTimestamp",
 ]
 
@@ -43,6 +44,8 @@ class CallListParams(TypedDict, total=False):
 
 
 class FilterCriteriaDurationMs(TypedDict, total=False):
+    """Only retrieve calls with specific range of duration(s)."""
+
     lower_threshold: int
 
     upper_threshold: int
@@ -54,13 +57,25 @@ class FilterCriteriaE2ELatencyP50(TypedDict, total=False):
     upper_threshold: int
 
 
+class FilterCriteriaEndTimestamp(TypedDict, total=False):
+    """Only retrieve calls with specific range of end timestamp(s)."""
+
+    lower_threshold: int
+
+    upper_threshold: int
+
+
 class FilterCriteriaStartTimestamp(TypedDict, total=False):
+    """Only retrieve calls with specific range of start timestamp(s)."""
+
     lower_threshold: int
 
     upper_threshold: int
 
 
 class FilterCriteria(TypedDict, total=False):
+    """Filter criteria for the calls to retrieve."""
+
     agent_id: SequenceNotStr[str]
     """Only retrieve calls that are made with specific agent(s)."""
 
@@ -117,6 +132,9 @@ class FilterCriteria(TypedDict, total=False):
     """Only retrieve calls with specific range of duration(s)."""
 
     e2e_latency_p50: FilterCriteriaE2ELatencyP50
+
+    end_timestamp: FilterCriteriaEndTimestamp
+    """Only retrieve calls with specific range of end timestamp(s)."""
 
     from_number: SequenceNotStr[str]
     """Only retrieve calls with specific from number(s)."""

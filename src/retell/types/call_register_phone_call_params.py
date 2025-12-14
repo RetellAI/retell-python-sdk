@@ -28,6 +28,7 @@ __all__ = [
     "AgentOverrideAgentVoicemailOptionActionVoicemailActionPrompt",
     "AgentOverrideAgentVoicemailOptionActionVoicemailActionStaticText",
     "AgentOverrideAgentVoicemailOptionActionVoicemailActionHangup",
+    "AgentOverrideAgentVoicemailOptionActionVoicemailActionBridgeTransfer",
     "AgentOverrideConversationFlow",
     "AgentOverrideConversationFlowKBConfig",
     "AgentOverrideConversationFlowModelChoice",
@@ -76,6 +77,8 @@ class CallRegisterPhoneCallParams(TypedDict, total=False):
 
 
 class AgentOverrideAgentPiiConfig(TypedDict, total=False):
+    """Configuration for PII scrubbing from transcripts and recordings."""
+
     categories: Required[
         List[
             Literal[
@@ -92,6 +95,7 @@ class AgentOverrideAgentPiiConfig(TypedDict, total=False):
                 "pin",
                 "medical_id",
                 "date_of_birth",
+                "customer_account_number",
             ]
         ]
     ]
@@ -208,7 +212,7 @@ AgentOverrideAgentResponseEngine: TypeAlias = Union[
 
 
 class AgentOverrideAgentUserDtmfOptions(TypedDict, total=False):
-    digit_limit: Optional[int]
+    digit_limit: Optional[float]
     """
     The maximum number of digits allowed in the user's DTMF (Dual-Tone
     Multi-Frequency) input per turn. Once this limit is reached, the input is
@@ -250,18 +254,32 @@ class AgentOverrideAgentVoicemailOptionActionVoicemailActionHangup(TypedDict, to
     type: Required[Literal["hangup"]]
 
 
+class AgentOverrideAgentVoicemailOptionActionVoicemailActionBridgeTransfer(TypedDict, total=False):
+    type: Required[Literal["bridge_transfer"]]
+
+
 AgentOverrideAgentVoicemailOptionAction: TypeAlias = Union[
     AgentOverrideAgentVoicemailOptionActionVoicemailActionPrompt,
     AgentOverrideAgentVoicemailOptionActionVoicemailActionStaticText,
     AgentOverrideAgentVoicemailOptionActionVoicemailActionHangup,
+    AgentOverrideAgentVoicemailOptionActionVoicemailActionBridgeTransfer,
 ]
 
 
 class AgentOverrideAgentVoicemailOption(TypedDict, total=False):
+    """
+    If this option is set, the call will try to detect voicemail in the first 3 minutes of the call. Actions defined (hangup, or leave a message) will be applied when the voicemail is detected. Set this to null to disable voicemail detection.
+    """
+
     action: Required[AgentOverrideAgentVoicemailOptionAction]
 
 
 class AgentOverrideAgent(TypedDict, total=False):
+    """Override agent configuration settings.
+
+    Any properties specified here will override the base agent configuration for this call.
+    """
+
     agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
 
@@ -376,6 +394,12 @@ class AgentOverrideAgent(TypedDict, total=False):
     phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
     when enabled tends to show up more in longer user utterances. If not set, agent
     will not backchannel.
+    """
+
+    enable_voicemail_detection: bool
+    """If set to true, will detect whether the call enters a voicemail.
+
+    Note that this feature is only available for phone calls.
     """
 
     end_call_after_silence_ms: int
@@ -514,6 +538,8 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -582,6 +608,12 @@ class AgentOverrideAgent(TypedDict, total=False):
 
     user_dtmf_options: Optional[AgentOverrideAgentUserDtmfOptions]
 
+    version_description: Optional[str]
+    """Optional description of the agent version.
+
+    Used for your own reference and documentation.
+    """
+
     vocab_specialization: Literal["general", "medical"]
     """If set, determines the vocabulary set to use for transcription.
 
@@ -602,15 +634,19 @@ class AgentOverrideAgent(TypedDict, total=False):
             "eleven_turbo_v2_5",
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
+            "sonic-2",
+            "sonic-3",
+            "sonic-turbo",
             "tts-1",
             "gpt-4o-mini-tts",
+            "speech-02-turbo",
         ]
     ]
-    """Optionally set the voice model used for the selected voice.
+    """Select the voice model used for the selected voice.
 
-    Currently only elevenlab voices have voice model selections. Set to null to
-    remove voice model selection, and default ones will apply. Check out the
-    dashboard for details on each voice model.
+    Each provider has a set of available voice models. Set to null to remove voice
+    model selection, and default ones will apply. Check out dashboard for more
+    details of each voice model.
     """
 
     voice_speed: float
@@ -626,6 +662,21 @@ class AgentOverrideAgent(TypedDict, total=False):
     Value ranging from [0,2]. Lower value means more stable, and higher value means
     more variant speech generation. Currently this setting only applies to `11labs`
     voices. If unset, default value 1 will apply.
+    """
+
+    voicemail_detection_timeout_ms: int
+    """
+    Configures when to stop running voicemail detection, as it becomes unlikely to
+    hit voicemail after a couple minutes, and keep running it will only have
+    negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
+    allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
+    """
+
+    voicemail_message: str
+    """The message to be played when the call enters a voicemail.
+
+    Note that this feature is only available for phone calls. If you want to hangup
+    after hitting voicemail, set this to empty string.
     """
 
     voicemail_option: Optional[AgentOverrideAgentVoicemailOption]
@@ -660,6 +711,8 @@ class AgentOverrideAgent(TypedDict, total=False):
 
 
 class AgentOverrideConversationFlowKBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval."""
+
     filter_score: float
     """Similarity threshold for filtering search results"""
 
@@ -668,12 +721,16 @@ class AgentOverrideConversationFlowKBConfig(TypedDict, total=False):
 
 
 class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
+    """The model choice for the conversation flow."""
+
     model: Required[
         Literal[
             "gpt-4.1",
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -692,6 +749,11 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
 
 
 class AgentOverrideConversationFlow(TypedDict, total=False):
+    """Override conversation flow configuration settings.
+
+    Only applicable when using conversation flow as the response engine. Supported attributes - model_choice, model_temperature, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms.
+    """
+
     begin_after_user_silence_ms: Optional[int]
     """
     If set, the AI will begin the conversation after waiting for the user for the
@@ -726,6 +788,8 @@ class AgentOverrideConversationFlow(TypedDict, total=False):
 
 
 class AgentOverrideRetellLlmKBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval."""
+
     filter_score: float
     """Similarity threshold for filtering search results"""
 
@@ -734,6 +798,11 @@ class AgentOverrideRetellLlmKBConfig(TypedDict, total=False):
 
 
 class AgentOverrideRetellLlm(TypedDict, total=False):
+    """Override Retell LLM configuration settings.
+
+    Only applicable when using Retell LLM as the response engine. Supported attributes - model, s2s_model, model_temperature, model_high_priority, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message.
+    """
+
     begin_after_user_silence_ms: Optional[int]
     """
     If set, the AI will begin the conversation after waiting for the user for the
@@ -761,6 +830,8 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -786,7 +857,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime"]]
+    s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime", "gpt-realtime-mini"]]
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.
@@ -806,6 +877,11 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
 
 
 class AgentOverride(TypedDict, total=False):
+    """For this particular call, override agent configuration with these settings.
+
+    This allows you to customize agent behavior for individual calls without modifying the base agent.
+    """
+
     agent: AgentOverrideAgent
     """Override agent configuration settings.
 
