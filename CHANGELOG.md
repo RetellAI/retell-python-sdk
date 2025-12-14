@@ -1,5 +1,23 @@
 # Changelog
 
+## 5.2.0 (2025-12-14)
+
+Full Changelog: [v5.1.0...v5.2.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.1.0...v5.2.0)
+
+### Features
+
+* **api:** api update ([023b418](https://github.com/RetellAI/retell-python-sdk/commit/023b418fbb94e56f0ce2f710f3c5712246ca8a87))
+
+
+### Bug Fixes
+
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([a52aadc](https://github.com/RetellAI/retell-python-sdk/commit/a52aadc9feb9b70d8e5e055b9ce522bdc271ad36))
+
+
+### Chores
+
+* add missing docstrings ([41ee635](https://github.com/RetellAI/retell-python-sdk/commit/41ee635d9f5c46ccdae09fdc41346a9d568dba10))
+
 ## 5.1.0 (2025-12-08)
 
 Full Changelog: [v5.0.0...v5.1.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.0.0...v5.1.0)
