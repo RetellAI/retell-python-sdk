@@ -43,6 +43,7 @@ class TestPhoneNumber:
             outbound_allowed_countries=["US", "CA"],
             phone_number="+14157774444",
             toll_free=True,
+            transport="TCP",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -123,6 +124,8 @@ class TestPhoneNumber:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         phone_number = client.phone_number.update(
             phone_number="+14157774444",
+            auth_password="123456",
+            auth_username="username",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_agent_version=1,
             inbound_allowed_countries=["US", "CA", "GB"],
@@ -131,6 +134,8 @@ class TestPhoneNumber:
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             outbound_agent_version=1,
             outbound_allowed_countries=["US", "CA"],
+            termination_uri="someuri.pstn.twilio.com",
+            transport="TCP",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -263,6 +268,7 @@ class TestPhoneNumber:
             outbound_allowed_countries=["US", "CA"],
             sip_trunk_auth_password="123456",
             sip_trunk_auth_username="username",
+            transport="TCP",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -323,6 +329,7 @@ class TestAsyncPhoneNumber:
             outbound_allowed_countries=["US", "CA"],
             phone_number="+14157774444",
             toll_free=True,
+            transport="TCP",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -403,6 +410,8 @@ class TestAsyncPhoneNumber:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         phone_number = await async_client.phone_number.update(
             phone_number="+14157774444",
+            auth_password="123456",
+            auth_username="username",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_agent_version=1,
             inbound_allowed_countries=["US", "CA", "GB"],
@@ -411,6 +420,8 @@ class TestAsyncPhoneNumber:
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             outbound_agent_version=1,
             outbound_allowed_countries=["US", "CA"],
+            termination_uri="someuri.pstn.twilio.com",
+            transport="TCP",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 
@@ -543,6 +554,7 @@ class TestAsyncPhoneNumber:
             outbound_allowed_countries=["US", "CA"],
             sip_trunk_auth_password="123456",
             sip_trunk_auth_username="username",
+            transport="TCP",
         )
         assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
 

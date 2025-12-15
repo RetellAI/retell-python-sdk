@@ -78,3 +78,9 @@ class PhoneNumberImportParams(TypedDict, total=False):
 
     sip_trunk_auth_username: str
     """The username used for authentication for the SIP trunk."""
+
+    transport: Optional[str]
+    """Outbound transport protocol to update for the phone number.
+
+    Valid values are "TLS", "TCP" and "UDP". Default is "TCP".
+    """
