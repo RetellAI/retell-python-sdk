@@ -11,6 +11,18 @@ __all__ = ["PhoneNumberUpdateParams"]
 
 
 class PhoneNumberUpdateParams(TypedDict, total=False):
+    auth_password: str
+    """
+    The password used for authentication for the SIP trunk to update for the phone
+    number.
+    """
+
+    auth_username: str
+    """
+    The username used for authentication for the SIP trunk to update for the phone
+    number.
+    """
+
     inbound_agent_id: Optional[str]
     """Unique id of agent to bind to the number.
 
@@ -57,4 +69,16 @@ class PhoneNumberUpdateParams(TypedDict, total=False):
     """List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed.
 
     If not set or empty, calls to all countries are allowed.
+    """
+
+    termination_uri: str
+    """The termination uri to update for the phone number.
+
+    This is used for outbound calls.
+    """
+
+    transport: Optional[str]
+    """Outbound transport protocol to update for the phone number.
+
+    Valid values are "TLS", "TCP" and "UDP". Default is "TCP".
     """
