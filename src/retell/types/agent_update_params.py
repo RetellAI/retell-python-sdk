@@ -9,6 +9,7 @@ from .._types import SequenceNotStr
 
 __all__ = [
     "AgentUpdateParams",
+    "CustomSttConfig",
     "PiiConfig",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
@@ -125,6 +126,9 @@ class AgentUpdateParams(TypedDict, total=False):
     these words are more likely to get transcribed. Commonly used for names, brands,
     street, etc.
     """
+
+    custom_stt_config: CustomSttConfig
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
 
     data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
     """
@@ -354,10 +358,10 @@ class AgentUpdateParams(TypedDict, total=False):
     86400000 (24 hours) will apply.
     """
 
-    stt_mode: Literal["fast", "accurate"]
+    stt_mode: Literal["fast", "accurate", "custom"]
     """If set, determines whether speech to text should focus on latency or accuracy.
 
-    Default to fast mode.
+    Default to fast mode. When set to custom, custom_stt_config must be provided.
     """
 
     user_dtmf_options: Optional[UserDtmfOptions]
@@ -462,6 +466,16 @@ class AgentUpdateParams(TypedDict, total=False):
     account level webhook for this agent. Set to `null` to remove webhook url from
     this agent.
     """
+
+
+class CustomSttConfig(TypedDict, total=False):
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
+
+    endpointing_ms: Required[int]
+    """Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram."""
+
+    provider: Required[Literal["azure", "deepgram"]]
+    """The STT provider to use."""
 
 
 class PiiConfig(TypedDict, total=False):

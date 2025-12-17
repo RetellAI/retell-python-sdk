@@ -129,12 +129,12 @@ agent_response = client.agent.create(
         "type": "retell-llm",
     },
     voice_id="11labs-Adrian",
-    pii_config={
-        "categories": ["person_name"],
-        "mode": "post_call",
+    custom_stt_config={
+        "endpointing_ms": 0,
+        "provider": "azure",
     },
 )
-print(agent_response.pii_config)
+print(agent_response.custom_stt_config)
 ```
 
 ## Handling errors

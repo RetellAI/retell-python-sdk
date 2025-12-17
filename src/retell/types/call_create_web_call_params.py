@@ -11,6 +11,7 @@ __all__ = [
     "CallCreateWebCallParams",
     "AgentOverride",
     "AgentOverrideAgent",
+    "AgentOverrideAgentCustomSttConfig",
     "AgentOverrideAgentPiiConfig",
     "AgentOverrideAgentPostCallAnalysisData",
     "AgentOverrideAgentPostCallAnalysisDataStringAnalysisData",
@@ -68,6 +69,16 @@ class CallCreateWebCallParams(TypedDict, total=False):
     your Response Engine prompt and tool description. Only applicable for Response
     Engine.
     """
+
+
+class AgentOverrideAgentCustomSttConfig(TypedDict, total=False):
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
+
+    endpointing_ms: Required[int]
+    """Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram."""
+
+    provider: Required[Literal["azure", "deepgram"]]
+    """The STT provider to use."""
 
 
 class AgentOverrideAgentPiiConfig(TypedDict, total=False):
@@ -366,6 +377,9 @@ class AgentOverrideAgent(TypedDict, total=False):
     street, etc.
     """
 
+    custom_stt_config: AgentOverrideAgentCustomSttConfig
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
+
     data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
     """
     Granular setting to manage how Retell stores sensitive data (transcripts,
@@ -594,10 +608,10 @@ class AgentOverrideAgent(TypedDict, total=False):
     86400000 (24 hours) will apply.
     """
 
-    stt_mode: Literal["fast", "accurate"]
+    stt_mode: Literal["fast", "accurate", "custom"]
     """If set, determines whether speech to text should focus on latency or accuracy.
 
-    Default to fast mode.
+    Default to fast mode. When set to custom, custom_stt_config must be provided.
     """
 
     user_dtmf_options: Optional[AgentOverrideAgentUserDtmfOptions]

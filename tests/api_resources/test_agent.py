@@ -53,6 +53,10 @@ class TestAgent:
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
             boosted_keywords=["retell", "kroger"],
+            custom_stt_config={
+                "endpointing_ms": 0,
+                "provider": "azure",
+            },
             data_storage_setting="everything",
             denoising_mode="noise-cancellation",
             enable_backchannel=True,
@@ -223,6 +227,10 @@ class TestAgent:
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
             boosted_keywords=["retell", "kroger"],
+            custom_stt_config={
+                "endpointing_ms": 0,
+                "provider": "azure",
+            },
             data_storage_setting="everything",
             denoising_mode="noise-cancellation",
             enable_backchannel=True,
@@ -526,6 +534,10 @@ class TestAsyncAgent:
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
             boosted_keywords=["retell", "kroger"],
+            custom_stt_config={
+                "endpointing_ms": 0,
+                "provider": "azure",
+            },
             data_storage_setting="everything",
             denoising_mode="noise-cancellation",
             enable_backchannel=True,
@@ -696,6 +708,10 @@ class TestAsyncAgent:
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
             boosted_keywords=["retell", "kroger"],
+            custom_stt_config={
+                "endpointing_ms": 0,
+                "provider": "azure",
+            },
             data_storage_setting="everything",
             denoising_mode="noise-cancellation",
             enable_backchannel=True,
