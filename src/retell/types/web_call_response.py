@@ -806,5 +806,5 @@ class WebCallResponse(BaseModel):
     Only populated when the disconnection reason was `call_transfer`. Can be a phone
     number or a SIP URI. SIP URIs are prefixed with "sip:" and may include a
     ";transport=..." portion (if transport is known) where the transport type can be
-    "tls", "tcp", "udp", or "auto".
+    "tls", "tcp" or "udp".
     """

@@ -82,3 +82,9 @@ class PhoneNumberCreateParams(TypedDict, total=False):
 
     toll_free: bool
     """Whether to purchase a toll-free number. Toll-free numbers incur higher costs."""
+
+    transport: Optional[str]
+    """Outbound transport protocol to use for the phone number.
+
+    Valid values are "TLS", "TCP" and "UDP". Default is "TCP".
+    """
