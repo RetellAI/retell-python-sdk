@@ -5,7 +5,27 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["PhoneNumberResponse"]
+__all__ = ["PhoneNumberResponse", "SipOutboundTrunkConfig"]
+
+
+class SipOutboundTrunkConfig(BaseModel):
+    auth_username: Optional[str] = None
+    """
+    The username used for authentication for the SIP trunk to update for the phone
+    number.
+    """
+
+    termination_uri: Optional[str] = None
+    """The termination uri to update for the phone number.
+
+    This is used for outbound calls.
+    """
+
+    transport: Optional[str] = None
+    """Outbound transport protocol to update for the phone number.
+
+    Valid values are "TLS", "TCP" and "UDP". Default is "TCP".
+    """
 
 
 class PhoneNumberResponse(BaseModel):
@@ -80,3 +100,5 @@ class PhoneNumberResponse(BaseModel):
 
     phone_number_pretty: Optional[str] = None
     """Pretty printed phone number, provided for your reference."""
+
+    sip_outbound_trunk_config: Optional[SipOutboundTrunkConfig] = None

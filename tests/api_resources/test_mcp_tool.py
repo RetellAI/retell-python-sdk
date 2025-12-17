@@ -32,6 +32,7 @@ class TestMcpTool:
         mcp_tool = client.mcp_tool.get_mcp_tools(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             mcp_id="mcp-server-1",
+            component_id="component-123",
             version=1,
         )
         assert_matches_type(McpToolGetMcpToolsResponse, mcp_tool, path=["response"])
@@ -94,6 +95,7 @@ class TestAsyncMcpTool:
         mcp_tool = await async_client.mcp_tool.get_mcp_tools(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             mcp_id="mcp-server-1",
+            component_id="component-123",
             version=1,
         )
         assert_matches_type(McpToolGetMcpToolsResponse, mcp_tool, path=["response"])
