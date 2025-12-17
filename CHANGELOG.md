@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.3.0 (2025-12-17)
+
+Full Changelog: [v5.2.0...v5.3.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.2.0...v5.3.0)
+
+### Features
+
+* **api:** api update ([d8d306c](https://github.com/RetellAI/retell-python-sdk/commit/d8d306cfafad3209bf46940abac06fd196dc7a9c))
+* **api:** api update ([4a5f7fc](https://github.com/RetellAI/retell-python-sdk/commit/4a5f7fc6687ced775d3d5f2ff74c671746f09165))
+
+
+### Chores
+
+* **internal:** add missing files argument to base client ([29cd4f9](https://github.com/RetellAI/retell-python-sdk/commit/29cd4f9a77c30ff91c1959e14201932b14237071))
+
 ## 5.2.0 (2025-12-14)
 
 Full Changelog: [v5.1.0...v5.2.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.1.0...v5.2.0)
