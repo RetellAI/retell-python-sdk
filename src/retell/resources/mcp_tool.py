@@ -46,6 +46,7 @@ class McpToolResource(SyncAPIResource):
         agent_id: str,
         *,
         mcp_id: str,
+        component_id: str | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -59,6 +60,8 @@ class McpToolResource(SyncAPIResource):
 
         Args:
           mcp_id: The ID of the MCP server to get tools from.
+
+          component_id: The ID of the component if the MCP server is configured under a component.
 
           version: Optional version of the agent to use for this request. Default to latest
               version.
@@ -83,6 +86,7 @@ class McpToolResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "mcp_id": mcp_id,
+                        "component_id": component_id,
                         "version": version,
                     },
                     mcp_tool_get_mcp_tools_params.McpToolGetMcpToolsParams,
@@ -117,6 +121,7 @@ class AsyncMcpToolResource(AsyncAPIResource):
         agent_id: str,
         *,
         mcp_id: str,
+        component_id: str | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -130,6 +135,8 @@ class AsyncMcpToolResource(AsyncAPIResource):
 
         Args:
           mcp_id: The ID of the MCP server to get tools from.
+
+          component_id: The ID of the component if the MCP server is configured under a component.
 
           version: Optional version of the agent to use for this request. Default to latest
               version.
@@ -154,6 +161,7 @@ class AsyncMcpToolResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "mcp_id": mcp_id,
+                        "component_id": component_id,
                         "version": version,
                     },
                     mcp_tool_get_mcp_tools_params.McpToolGetMcpToolsParams,
