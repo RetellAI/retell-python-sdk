@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -20,23 +20,8 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
-from .resources import (
-    llm,
-    call,
-    chat,
-    agent,
-    tests,
-    voice,
-    mcp_tool,
-    batch_call,
-    chat_agent,
-    concurrency,
-    phone_number,
-    knowledge_base,
-    conversation_flow,
-    conversation_flow_component,
-)
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -45,27 +30,45 @@ from ._base_client import (
     AsyncAPIClient,
 )
 
+if TYPE_CHECKING:
+    from .resources import (
+        llm,
+        call,
+        chat,
+        agent,
+        tests,
+        voice,
+        mcp_tool,
+        batch_call,
+        chat_agent,
+        concurrency,
+        phone_number,
+        knowledge_base,
+        conversation_flow,
+        conversation_flow_component,
+    )
+    from .resources.llm import LlmResource, AsyncLlmResource
+    from .resources.call import CallResource, AsyncCallResource
+    from .resources.chat import ChatResource, AsyncChatResource
+    from .resources.agent import AgentResource, AsyncAgentResource
+    from .resources.tests import TestsResource, AsyncTestsResource
+    from .resources.voice import VoiceResource, AsyncVoiceResource
+    from .resources.mcp_tool import McpToolResource, AsyncMcpToolResource
+    from .resources.batch_call import BatchCallResource, AsyncBatchCallResource
+    from .resources.chat_agent import ChatAgentResource, AsyncChatAgentResource
+    from .resources.concurrency import ConcurrencyResource, AsyncConcurrencyResource
+    from .resources.phone_number import PhoneNumberResource, AsyncPhoneNumberResource
+    from .resources.knowledge_base import KnowledgeBaseResource, AsyncKnowledgeBaseResource
+    from .resources.conversation_flow import ConversationFlowResource, AsyncConversationFlowResource
+    from .resources.conversation_flow_component import (
+        ConversationFlowComponentResource,
+        AsyncConversationFlowComponentResource,
+    )
+
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Retell", "AsyncRetell", "Client", "AsyncClient"]
 
 
 class Retell(SyncAPIClient):
-    call: call.CallResource
-    chat: chat.ChatResource
-    phone_number: phone_number.PhoneNumberResource
-    agent: agent.AgentResource
-    chat_agent: chat_agent.ChatAgentResource
-    llm: llm.LlmResource
-    conversation_flow: conversation_flow.ConversationFlowResource
-    conversation_flow_component: conversation_flow_component.ConversationFlowComponentResource
-    knowledge_base: knowledge_base.KnowledgeBaseResource
-    voice: voice.VoiceResource
-    concurrency: concurrency.ConcurrencyResource
-    batch_call: batch_call.BatchCallResource
-    tests: tests.TestsResource
-    mcp_tool: mcp_tool.McpToolResource
-    with_raw_response: RetellWithRawResponse
-    with_streaming_response: RetellWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -111,22 +114,97 @@ class Retell(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.call = call.CallResource(self)
-        self.chat = chat.ChatResource(self)
-        self.phone_number = phone_number.PhoneNumberResource(self)
-        self.agent = agent.AgentResource(self)
-        self.chat_agent = chat_agent.ChatAgentResource(self)
-        self.llm = llm.LlmResource(self)
-        self.conversation_flow = conversation_flow.ConversationFlowResource(self)
-        self.conversation_flow_component = conversation_flow_component.ConversationFlowComponentResource(self)
-        self.knowledge_base = knowledge_base.KnowledgeBaseResource(self)
-        self.voice = voice.VoiceResource(self)
-        self.concurrency = concurrency.ConcurrencyResource(self)
-        self.batch_call = batch_call.BatchCallResource(self)
-        self.tests = tests.TestsResource(self)
-        self.mcp_tool = mcp_tool.McpToolResource(self)
-        self.with_raw_response = RetellWithRawResponse(self)
-        self.with_streaming_response = RetellWithStreamedResponse(self)
+    @cached_property
+    def call(self) -> CallResource:
+        from .resources.call import CallResource
+
+        return CallResource(self)
+
+    @cached_property
+    def chat(self) -> ChatResource:
+        from .resources.chat import ChatResource
+
+        return ChatResource(self)
+
+    @cached_property
+    def phone_number(self) -> PhoneNumberResource:
+        from .resources.phone_number import PhoneNumberResource
+
+        return PhoneNumberResource(self)
+
+    @cached_property
+    def agent(self) -> AgentResource:
+        from .resources.agent import AgentResource
+
+        return AgentResource(self)
+
+    @cached_property
+    def chat_agent(self) -> ChatAgentResource:
+        from .resources.chat_agent import ChatAgentResource
+
+        return ChatAgentResource(self)
+
+    @cached_property
+    def llm(self) -> LlmResource:
+        from .resources.llm import LlmResource
+
+        return LlmResource(self)
+
+    @cached_property
+    def conversation_flow(self) -> ConversationFlowResource:
+        from .resources.conversation_flow import ConversationFlowResource
+
+        return ConversationFlowResource(self)
+
+    @cached_property
+    def conversation_flow_component(self) -> ConversationFlowComponentResource:
+        from .resources.conversation_flow_component import ConversationFlowComponentResource
+
+        return ConversationFlowComponentResource(self)
+
+    @cached_property
+    def knowledge_base(self) -> KnowledgeBaseResource:
+        from .resources.knowledge_base import KnowledgeBaseResource
+
+        return KnowledgeBaseResource(self)
+
+    @cached_property
+    def voice(self) -> VoiceResource:
+        from .resources.voice import VoiceResource
+
+        return VoiceResource(self)
+
+    @cached_property
+    def concurrency(self) -> ConcurrencyResource:
+        from .resources.concurrency import ConcurrencyResource
+
+        return ConcurrencyResource(self)
+
+    @cached_property
+    def batch_call(self) -> BatchCallResource:
+        from .resources.batch_call import BatchCallResource
+
+        return BatchCallResource(self)
+
+    @cached_property
+    def tests(self) -> TestsResource:
+        from .resources.tests import TestsResource
+
+        return TestsResource(self)
+
+    @cached_property
+    def mcp_tool(self) -> McpToolResource:
+        from .resources.mcp_tool import McpToolResource
+
+        return McpToolResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> RetellWithRawResponse:
+        return RetellWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> RetellWithStreamedResponse:
+        return RetellWithStreamedResponse(self)
 
     @property
     @override
@@ -234,23 +312,6 @@ class Retell(SyncAPIClient):
 
 
 class AsyncRetell(AsyncAPIClient):
-    call: call.AsyncCallResource
-    chat: chat.AsyncChatResource
-    phone_number: phone_number.AsyncPhoneNumberResource
-    agent: agent.AsyncAgentResource
-    chat_agent: chat_agent.AsyncChatAgentResource
-    llm: llm.AsyncLlmResource
-    conversation_flow: conversation_flow.AsyncConversationFlowResource
-    conversation_flow_component: conversation_flow_component.AsyncConversationFlowComponentResource
-    knowledge_base: knowledge_base.AsyncKnowledgeBaseResource
-    voice: voice.AsyncVoiceResource
-    concurrency: concurrency.AsyncConcurrencyResource
-    batch_call: batch_call.AsyncBatchCallResource
-    tests: tests.AsyncTestsResource
-    mcp_tool: mcp_tool.AsyncMcpToolResource
-    with_raw_response: AsyncRetellWithRawResponse
-    with_streaming_response: AsyncRetellWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -296,22 +357,97 @@ class AsyncRetell(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.call = call.AsyncCallResource(self)
-        self.chat = chat.AsyncChatResource(self)
-        self.phone_number = phone_number.AsyncPhoneNumberResource(self)
-        self.agent = agent.AsyncAgentResource(self)
-        self.chat_agent = chat_agent.AsyncChatAgentResource(self)
-        self.llm = llm.AsyncLlmResource(self)
-        self.conversation_flow = conversation_flow.AsyncConversationFlowResource(self)
-        self.conversation_flow_component = conversation_flow_component.AsyncConversationFlowComponentResource(self)
-        self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResource(self)
-        self.voice = voice.AsyncVoiceResource(self)
-        self.concurrency = concurrency.AsyncConcurrencyResource(self)
-        self.batch_call = batch_call.AsyncBatchCallResource(self)
-        self.tests = tests.AsyncTestsResource(self)
-        self.mcp_tool = mcp_tool.AsyncMcpToolResource(self)
-        self.with_raw_response = AsyncRetellWithRawResponse(self)
-        self.with_streaming_response = AsyncRetellWithStreamedResponse(self)
+    @cached_property
+    def call(self) -> AsyncCallResource:
+        from .resources.call import AsyncCallResource
+
+        return AsyncCallResource(self)
+
+    @cached_property
+    def chat(self) -> AsyncChatResource:
+        from .resources.chat import AsyncChatResource
+
+        return AsyncChatResource(self)
+
+    @cached_property
+    def phone_number(self) -> AsyncPhoneNumberResource:
+        from .resources.phone_number import AsyncPhoneNumberResource
+
+        return AsyncPhoneNumberResource(self)
+
+    @cached_property
+    def agent(self) -> AsyncAgentResource:
+        from .resources.agent import AsyncAgentResource
+
+        return AsyncAgentResource(self)
+
+    @cached_property
+    def chat_agent(self) -> AsyncChatAgentResource:
+        from .resources.chat_agent import AsyncChatAgentResource
+
+        return AsyncChatAgentResource(self)
+
+    @cached_property
+    def llm(self) -> AsyncLlmResource:
+        from .resources.llm import AsyncLlmResource
+
+        return AsyncLlmResource(self)
+
+    @cached_property
+    def conversation_flow(self) -> AsyncConversationFlowResource:
+        from .resources.conversation_flow import AsyncConversationFlowResource
+
+        return AsyncConversationFlowResource(self)
+
+    @cached_property
+    def conversation_flow_component(self) -> AsyncConversationFlowComponentResource:
+        from .resources.conversation_flow_component import AsyncConversationFlowComponentResource
+
+        return AsyncConversationFlowComponentResource(self)
+
+    @cached_property
+    def knowledge_base(self) -> AsyncKnowledgeBaseResource:
+        from .resources.knowledge_base import AsyncKnowledgeBaseResource
+
+        return AsyncKnowledgeBaseResource(self)
+
+    @cached_property
+    def voice(self) -> AsyncVoiceResource:
+        from .resources.voice import AsyncVoiceResource
+
+        return AsyncVoiceResource(self)
+
+    @cached_property
+    def concurrency(self) -> AsyncConcurrencyResource:
+        from .resources.concurrency import AsyncConcurrencyResource
+
+        return AsyncConcurrencyResource(self)
+
+    @cached_property
+    def batch_call(self) -> AsyncBatchCallResource:
+        from .resources.batch_call import AsyncBatchCallResource
+
+        return AsyncBatchCallResource(self)
+
+    @cached_property
+    def tests(self) -> AsyncTestsResource:
+        from .resources.tests import AsyncTestsResource
+
+        return AsyncTestsResource(self)
+
+    @cached_property
+    def mcp_tool(self) -> AsyncMcpToolResource:
+        from .resources.mcp_tool import AsyncMcpToolResource
+
+        return AsyncMcpToolResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncRetellWithRawResponse:
+        return AsyncRetellWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncRetellWithStreamedResponse:
+        return AsyncRetellWithStreamedResponse(self)
 
     @property
     @override
@@ -419,95 +555,375 @@ class AsyncRetell(AsyncAPIClient):
 
 
 class RetellWithRawResponse:
+    _client: Retell
+
     def __init__(self, client: Retell) -> None:
-        self.call = call.CallResourceWithRawResponse(client.call)
-        self.chat = chat.ChatResourceWithRawResponse(client.chat)
-        self.phone_number = phone_number.PhoneNumberResourceWithRawResponse(client.phone_number)
-        self.agent = agent.AgentResourceWithRawResponse(client.agent)
-        self.chat_agent = chat_agent.ChatAgentResourceWithRawResponse(client.chat_agent)
-        self.llm = llm.LlmResourceWithRawResponse(client.llm)
-        self.conversation_flow = conversation_flow.ConversationFlowResourceWithRawResponse(client.conversation_flow)
-        self.conversation_flow_component = conversation_flow_component.ConversationFlowComponentResourceWithRawResponse(
-            client.conversation_flow_component
-        )
-        self.knowledge_base = knowledge_base.KnowledgeBaseResourceWithRawResponse(client.knowledge_base)
-        self.voice = voice.VoiceResourceWithRawResponse(client.voice)
-        self.concurrency = concurrency.ConcurrencyResourceWithRawResponse(client.concurrency)
-        self.batch_call = batch_call.BatchCallResourceWithRawResponse(client.batch_call)
-        self.tests = tests.TestsResourceWithRawResponse(client.tests)
-        self.mcp_tool = mcp_tool.McpToolResourceWithRawResponse(client.mcp_tool)
+        self._client = client
+
+    @cached_property
+    def call(self) -> call.CallResourceWithRawResponse:
+        from .resources.call import CallResourceWithRawResponse
+
+        return CallResourceWithRawResponse(self._client.call)
+
+    @cached_property
+    def chat(self) -> chat.ChatResourceWithRawResponse:
+        from .resources.chat import ChatResourceWithRawResponse
+
+        return ChatResourceWithRawResponse(self._client.chat)
+
+    @cached_property
+    def phone_number(self) -> phone_number.PhoneNumberResourceWithRawResponse:
+        from .resources.phone_number import PhoneNumberResourceWithRawResponse
+
+        return PhoneNumberResourceWithRawResponse(self._client.phone_number)
+
+    @cached_property
+    def agent(self) -> agent.AgentResourceWithRawResponse:
+        from .resources.agent import AgentResourceWithRawResponse
+
+        return AgentResourceWithRawResponse(self._client.agent)
+
+    @cached_property
+    def chat_agent(self) -> chat_agent.ChatAgentResourceWithRawResponse:
+        from .resources.chat_agent import ChatAgentResourceWithRawResponse
+
+        return ChatAgentResourceWithRawResponse(self._client.chat_agent)
+
+    @cached_property
+    def llm(self) -> llm.LlmResourceWithRawResponse:
+        from .resources.llm import LlmResourceWithRawResponse
+
+        return LlmResourceWithRawResponse(self._client.llm)
+
+    @cached_property
+    def conversation_flow(self) -> conversation_flow.ConversationFlowResourceWithRawResponse:
+        from .resources.conversation_flow import ConversationFlowResourceWithRawResponse
+
+        return ConversationFlowResourceWithRawResponse(self._client.conversation_flow)
+
+    @cached_property
+    def conversation_flow_component(
+        self,
+    ) -> conversation_flow_component.ConversationFlowComponentResourceWithRawResponse:
+        from .resources.conversation_flow_component import ConversationFlowComponentResourceWithRawResponse
+
+        return ConversationFlowComponentResourceWithRawResponse(self._client.conversation_flow_component)
+
+    @cached_property
+    def knowledge_base(self) -> knowledge_base.KnowledgeBaseResourceWithRawResponse:
+        from .resources.knowledge_base import KnowledgeBaseResourceWithRawResponse
+
+        return KnowledgeBaseResourceWithRawResponse(self._client.knowledge_base)
+
+    @cached_property
+    def voice(self) -> voice.VoiceResourceWithRawResponse:
+        from .resources.voice import VoiceResourceWithRawResponse
+
+        return VoiceResourceWithRawResponse(self._client.voice)
+
+    @cached_property
+    def concurrency(self) -> concurrency.ConcurrencyResourceWithRawResponse:
+        from .resources.concurrency import ConcurrencyResourceWithRawResponse
+
+        return ConcurrencyResourceWithRawResponse(self._client.concurrency)
+
+    @cached_property
+    def batch_call(self) -> batch_call.BatchCallResourceWithRawResponse:
+        from .resources.batch_call import BatchCallResourceWithRawResponse
+
+        return BatchCallResourceWithRawResponse(self._client.batch_call)
+
+    @cached_property
+    def tests(self) -> tests.TestsResourceWithRawResponse:
+        from .resources.tests import TestsResourceWithRawResponse
+
+        return TestsResourceWithRawResponse(self._client.tests)
+
+    @cached_property
+    def mcp_tool(self) -> mcp_tool.McpToolResourceWithRawResponse:
+        from .resources.mcp_tool import McpToolResourceWithRawResponse
+
+        return McpToolResourceWithRawResponse(self._client.mcp_tool)
 
 
 class AsyncRetellWithRawResponse:
+    _client: AsyncRetell
+
     def __init__(self, client: AsyncRetell) -> None:
-        self.call = call.AsyncCallResourceWithRawResponse(client.call)
-        self.chat = chat.AsyncChatResourceWithRawResponse(client.chat)
-        self.phone_number = phone_number.AsyncPhoneNumberResourceWithRawResponse(client.phone_number)
-        self.agent = agent.AsyncAgentResourceWithRawResponse(client.agent)
-        self.chat_agent = chat_agent.AsyncChatAgentResourceWithRawResponse(client.chat_agent)
-        self.llm = llm.AsyncLlmResourceWithRawResponse(client.llm)
-        self.conversation_flow = conversation_flow.AsyncConversationFlowResourceWithRawResponse(
-            client.conversation_flow
-        )
-        self.conversation_flow_component = (
-            conversation_flow_component.AsyncConversationFlowComponentResourceWithRawResponse(
-                client.conversation_flow_component
-            )
-        )
-        self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResourceWithRawResponse(client.knowledge_base)
-        self.voice = voice.AsyncVoiceResourceWithRawResponse(client.voice)
-        self.concurrency = concurrency.AsyncConcurrencyResourceWithRawResponse(client.concurrency)
-        self.batch_call = batch_call.AsyncBatchCallResourceWithRawResponse(client.batch_call)
-        self.tests = tests.AsyncTestsResourceWithRawResponse(client.tests)
-        self.mcp_tool = mcp_tool.AsyncMcpToolResourceWithRawResponse(client.mcp_tool)
+        self._client = client
+
+    @cached_property
+    def call(self) -> call.AsyncCallResourceWithRawResponse:
+        from .resources.call import AsyncCallResourceWithRawResponse
+
+        return AsyncCallResourceWithRawResponse(self._client.call)
+
+    @cached_property
+    def chat(self) -> chat.AsyncChatResourceWithRawResponse:
+        from .resources.chat import AsyncChatResourceWithRawResponse
+
+        return AsyncChatResourceWithRawResponse(self._client.chat)
+
+    @cached_property
+    def phone_number(self) -> phone_number.AsyncPhoneNumberResourceWithRawResponse:
+        from .resources.phone_number import AsyncPhoneNumberResourceWithRawResponse
+
+        return AsyncPhoneNumberResourceWithRawResponse(self._client.phone_number)
+
+    @cached_property
+    def agent(self) -> agent.AsyncAgentResourceWithRawResponse:
+        from .resources.agent import AsyncAgentResourceWithRawResponse
+
+        return AsyncAgentResourceWithRawResponse(self._client.agent)
+
+    @cached_property
+    def chat_agent(self) -> chat_agent.AsyncChatAgentResourceWithRawResponse:
+        from .resources.chat_agent import AsyncChatAgentResourceWithRawResponse
+
+        return AsyncChatAgentResourceWithRawResponse(self._client.chat_agent)
+
+    @cached_property
+    def llm(self) -> llm.AsyncLlmResourceWithRawResponse:
+        from .resources.llm import AsyncLlmResourceWithRawResponse
+
+        return AsyncLlmResourceWithRawResponse(self._client.llm)
+
+    @cached_property
+    def conversation_flow(self) -> conversation_flow.AsyncConversationFlowResourceWithRawResponse:
+        from .resources.conversation_flow import AsyncConversationFlowResourceWithRawResponse
+
+        return AsyncConversationFlowResourceWithRawResponse(self._client.conversation_flow)
+
+    @cached_property
+    def conversation_flow_component(
+        self,
+    ) -> conversation_flow_component.AsyncConversationFlowComponentResourceWithRawResponse:
+        from .resources.conversation_flow_component import AsyncConversationFlowComponentResourceWithRawResponse
+
+        return AsyncConversationFlowComponentResourceWithRawResponse(self._client.conversation_flow_component)
+
+    @cached_property
+    def knowledge_base(self) -> knowledge_base.AsyncKnowledgeBaseResourceWithRawResponse:
+        from .resources.knowledge_base import AsyncKnowledgeBaseResourceWithRawResponse
+
+        return AsyncKnowledgeBaseResourceWithRawResponse(self._client.knowledge_base)
+
+    @cached_property
+    def voice(self) -> voice.AsyncVoiceResourceWithRawResponse:
+        from .resources.voice import AsyncVoiceResourceWithRawResponse
+
+        return AsyncVoiceResourceWithRawResponse(self._client.voice)
+
+    @cached_property
+    def concurrency(self) -> concurrency.AsyncConcurrencyResourceWithRawResponse:
+        from .resources.concurrency import AsyncConcurrencyResourceWithRawResponse
+
+        return AsyncConcurrencyResourceWithRawResponse(self._client.concurrency)
+
+    @cached_property
+    def batch_call(self) -> batch_call.AsyncBatchCallResourceWithRawResponse:
+        from .resources.batch_call import AsyncBatchCallResourceWithRawResponse
+
+        return AsyncBatchCallResourceWithRawResponse(self._client.batch_call)
+
+    @cached_property
+    def tests(self) -> tests.AsyncTestsResourceWithRawResponse:
+        from .resources.tests import AsyncTestsResourceWithRawResponse
+
+        return AsyncTestsResourceWithRawResponse(self._client.tests)
+
+    @cached_property
+    def mcp_tool(self) -> mcp_tool.AsyncMcpToolResourceWithRawResponse:
+        from .resources.mcp_tool import AsyncMcpToolResourceWithRawResponse
+
+        return AsyncMcpToolResourceWithRawResponse(self._client.mcp_tool)
 
 
 class RetellWithStreamedResponse:
+    _client: Retell
+
     def __init__(self, client: Retell) -> None:
-        self.call = call.CallResourceWithStreamingResponse(client.call)
-        self.chat = chat.ChatResourceWithStreamingResponse(client.chat)
-        self.phone_number = phone_number.PhoneNumberResourceWithStreamingResponse(client.phone_number)
-        self.agent = agent.AgentResourceWithStreamingResponse(client.agent)
-        self.chat_agent = chat_agent.ChatAgentResourceWithStreamingResponse(client.chat_agent)
-        self.llm = llm.LlmResourceWithStreamingResponse(client.llm)
-        self.conversation_flow = conversation_flow.ConversationFlowResourceWithStreamingResponse(
-            client.conversation_flow
-        )
-        self.conversation_flow_component = (
-            conversation_flow_component.ConversationFlowComponentResourceWithStreamingResponse(
-                client.conversation_flow_component
-            )
-        )
-        self.knowledge_base = knowledge_base.KnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
-        self.voice = voice.VoiceResourceWithStreamingResponse(client.voice)
-        self.concurrency = concurrency.ConcurrencyResourceWithStreamingResponse(client.concurrency)
-        self.batch_call = batch_call.BatchCallResourceWithStreamingResponse(client.batch_call)
-        self.tests = tests.TestsResourceWithStreamingResponse(client.tests)
-        self.mcp_tool = mcp_tool.McpToolResourceWithStreamingResponse(client.mcp_tool)
+        self._client = client
+
+    @cached_property
+    def call(self) -> call.CallResourceWithStreamingResponse:
+        from .resources.call import CallResourceWithStreamingResponse
+
+        return CallResourceWithStreamingResponse(self._client.call)
+
+    @cached_property
+    def chat(self) -> chat.ChatResourceWithStreamingResponse:
+        from .resources.chat import ChatResourceWithStreamingResponse
+
+        return ChatResourceWithStreamingResponse(self._client.chat)
+
+    @cached_property
+    def phone_number(self) -> phone_number.PhoneNumberResourceWithStreamingResponse:
+        from .resources.phone_number import PhoneNumberResourceWithStreamingResponse
+
+        return PhoneNumberResourceWithStreamingResponse(self._client.phone_number)
+
+    @cached_property
+    def agent(self) -> agent.AgentResourceWithStreamingResponse:
+        from .resources.agent import AgentResourceWithStreamingResponse
+
+        return AgentResourceWithStreamingResponse(self._client.agent)
+
+    @cached_property
+    def chat_agent(self) -> chat_agent.ChatAgentResourceWithStreamingResponse:
+        from .resources.chat_agent import ChatAgentResourceWithStreamingResponse
+
+        return ChatAgentResourceWithStreamingResponse(self._client.chat_agent)
+
+    @cached_property
+    def llm(self) -> llm.LlmResourceWithStreamingResponse:
+        from .resources.llm import LlmResourceWithStreamingResponse
+
+        return LlmResourceWithStreamingResponse(self._client.llm)
+
+    @cached_property
+    def conversation_flow(self) -> conversation_flow.ConversationFlowResourceWithStreamingResponse:
+        from .resources.conversation_flow import ConversationFlowResourceWithStreamingResponse
+
+        return ConversationFlowResourceWithStreamingResponse(self._client.conversation_flow)
+
+    @cached_property
+    def conversation_flow_component(
+        self,
+    ) -> conversation_flow_component.ConversationFlowComponentResourceWithStreamingResponse:
+        from .resources.conversation_flow_component import ConversationFlowComponentResourceWithStreamingResponse
+
+        return ConversationFlowComponentResourceWithStreamingResponse(self._client.conversation_flow_component)
+
+    @cached_property
+    def knowledge_base(self) -> knowledge_base.KnowledgeBaseResourceWithStreamingResponse:
+        from .resources.knowledge_base import KnowledgeBaseResourceWithStreamingResponse
+
+        return KnowledgeBaseResourceWithStreamingResponse(self._client.knowledge_base)
+
+    @cached_property
+    def voice(self) -> voice.VoiceResourceWithStreamingResponse:
+        from .resources.voice import VoiceResourceWithStreamingResponse
+
+        return VoiceResourceWithStreamingResponse(self._client.voice)
+
+    @cached_property
+    def concurrency(self) -> concurrency.ConcurrencyResourceWithStreamingResponse:
+        from .resources.concurrency import ConcurrencyResourceWithStreamingResponse
+
+        return ConcurrencyResourceWithStreamingResponse(self._client.concurrency)
+
+    @cached_property
+    def batch_call(self) -> batch_call.BatchCallResourceWithStreamingResponse:
+        from .resources.batch_call import BatchCallResourceWithStreamingResponse
+
+        return BatchCallResourceWithStreamingResponse(self._client.batch_call)
+
+    @cached_property
+    def tests(self) -> tests.TestsResourceWithStreamingResponse:
+        from .resources.tests import TestsResourceWithStreamingResponse
+
+        return TestsResourceWithStreamingResponse(self._client.tests)
+
+    @cached_property
+    def mcp_tool(self) -> mcp_tool.McpToolResourceWithStreamingResponse:
+        from .resources.mcp_tool import McpToolResourceWithStreamingResponse
+
+        return McpToolResourceWithStreamingResponse(self._client.mcp_tool)
 
 
 class AsyncRetellWithStreamedResponse:
+    _client: AsyncRetell
+
     def __init__(self, client: AsyncRetell) -> None:
-        self.call = call.AsyncCallResourceWithStreamingResponse(client.call)
-        self.chat = chat.AsyncChatResourceWithStreamingResponse(client.chat)
-        self.phone_number = phone_number.AsyncPhoneNumberResourceWithStreamingResponse(client.phone_number)
-        self.agent = agent.AsyncAgentResourceWithStreamingResponse(client.agent)
-        self.chat_agent = chat_agent.AsyncChatAgentResourceWithStreamingResponse(client.chat_agent)
-        self.llm = llm.AsyncLlmResourceWithStreamingResponse(client.llm)
-        self.conversation_flow = conversation_flow.AsyncConversationFlowResourceWithStreamingResponse(
-            client.conversation_flow
-        )
-        self.conversation_flow_component = (
-            conversation_flow_component.AsyncConversationFlowComponentResourceWithStreamingResponse(
-                client.conversation_flow_component
-            )
-        )
-        self.knowledge_base = knowledge_base.AsyncKnowledgeBaseResourceWithStreamingResponse(client.knowledge_base)
-        self.voice = voice.AsyncVoiceResourceWithStreamingResponse(client.voice)
-        self.concurrency = concurrency.AsyncConcurrencyResourceWithStreamingResponse(client.concurrency)
-        self.batch_call = batch_call.AsyncBatchCallResourceWithStreamingResponse(client.batch_call)
-        self.tests = tests.AsyncTestsResourceWithStreamingResponse(client.tests)
-        self.mcp_tool = mcp_tool.AsyncMcpToolResourceWithStreamingResponse(client.mcp_tool)
+        self._client = client
+
+    @cached_property
+    def call(self) -> call.AsyncCallResourceWithStreamingResponse:
+        from .resources.call import AsyncCallResourceWithStreamingResponse
+
+        return AsyncCallResourceWithStreamingResponse(self._client.call)
+
+    @cached_property
+    def chat(self) -> chat.AsyncChatResourceWithStreamingResponse:
+        from .resources.chat import AsyncChatResourceWithStreamingResponse
+
+        return AsyncChatResourceWithStreamingResponse(self._client.chat)
+
+    @cached_property
+    def phone_number(self) -> phone_number.AsyncPhoneNumberResourceWithStreamingResponse:
+        from .resources.phone_number import AsyncPhoneNumberResourceWithStreamingResponse
+
+        return AsyncPhoneNumberResourceWithStreamingResponse(self._client.phone_number)
+
+    @cached_property
+    def agent(self) -> agent.AsyncAgentResourceWithStreamingResponse:
+        from .resources.agent import AsyncAgentResourceWithStreamingResponse
+
+        return AsyncAgentResourceWithStreamingResponse(self._client.agent)
+
+    @cached_property
+    def chat_agent(self) -> chat_agent.AsyncChatAgentResourceWithStreamingResponse:
+        from .resources.chat_agent import AsyncChatAgentResourceWithStreamingResponse
+
+        return AsyncChatAgentResourceWithStreamingResponse(self._client.chat_agent)
+
+    @cached_property
+    def llm(self) -> llm.AsyncLlmResourceWithStreamingResponse:
+        from .resources.llm import AsyncLlmResourceWithStreamingResponse
+
+        return AsyncLlmResourceWithStreamingResponse(self._client.llm)
+
+    @cached_property
+    def conversation_flow(self) -> conversation_flow.AsyncConversationFlowResourceWithStreamingResponse:
+        from .resources.conversation_flow import AsyncConversationFlowResourceWithStreamingResponse
+
+        return AsyncConversationFlowResourceWithStreamingResponse(self._client.conversation_flow)
+
+    @cached_property
+    def conversation_flow_component(
+        self,
+    ) -> conversation_flow_component.AsyncConversationFlowComponentResourceWithStreamingResponse:
+        from .resources.conversation_flow_component import AsyncConversationFlowComponentResourceWithStreamingResponse
+
+        return AsyncConversationFlowComponentResourceWithStreamingResponse(self._client.conversation_flow_component)
+
+    @cached_property
+    def knowledge_base(self) -> knowledge_base.AsyncKnowledgeBaseResourceWithStreamingResponse:
+        from .resources.knowledge_base import AsyncKnowledgeBaseResourceWithStreamingResponse
+
+        return AsyncKnowledgeBaseResourceWithStreamingResponse(self._client.knowledge_base)
+
+    @cached_property
+    def voice(self) -> voice.AsyncVoiceResourceWithStreamingResponse:
+        from .resources.voice import AsyncVoiceResourceWithStreamingResponse
+
+        return AsyncVoiceResourceWithStreamingResponse(self._client.voice)
+
+    @cached_property
+    def concurrency(self) -> concurrency.AsyncConcurrencyResourceWithStreamingResponse:
+        from .resources.concurrency import AsyncConcurrencyResourceWithStreamingResponse
+
+        return AsyncConcurrencyResourceWithStreamingResponse(self._client.concurrency)
+
+    @cached_property
+    def batch_call(self) -> batch_call.AsyncBatchCallResourceWithStreamingResponse:
+        from .resources.batch_call import AsyncBatchCallResourceWithStreamingResponse
+
+        return AsyncBatchCallResourceWithStreamingResponse(self._client.batch_call)
+
+    @cached_property
+    def tests(self) -> tests.AsyncTestsResourceWithStreamingResponse:
+        from .resources.tests import AsyncTestsResourceWithStreamingResponse
+
+        return AsyncTestsResourceWithStreamingResponse(self._client.tests)
+
+    @cached_property
+    def mcp_tool(self) -> mcp_tool.AsyncMcpToolResourceWithStreamingResponse:
+        from .resources.mcp_tool import AsyncMcpToolResourceWithStreamingResponse
+
+        return AsyncMcpToolResourceWithStreamingResponse(self._client.mcp_tool)
 
 
 Client = Retell
