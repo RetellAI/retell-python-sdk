@@ -11,6 +11,7 @@ __all__ = [
     "ResponseEngineResponseEngineRetellLm",
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
+    "CustomSttConfig",
     "PiiConfig",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
@@ -63,6 +64,16 @@ ResponseEngine: TypeAlias = Union[
     ResponseEngineResponseEngineCustomLm,
     ResponseEngineResponseEngineConversationFlow,
 ]
+
+
+class CustomSttConfig(BaseModel):
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
+
+    endpointing_ms: int
+    """Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram."""
+
+    provider: Literal["azure", "deepgram"]
+    """The STT provider to use."""
 
 
 class PiiConfig(BaseModel):
@@ -342,6 +353,9 @@ class AgentResponse(BaseModel):
     street, etc.
     """
 
+    custom_stt_config: Optional[CustomSttConfig] = None
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
+
     data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]] = None
     """
     Granular setting to manage how Retell stores sensitive data (transcripts,
@@ -568,10 +582,10 @@ class AgentResponse(BaseModel):
     86400000 (24 hours) will apply.
     """
 
-    stt_mode: Optional[Literal["fast", "accurate"]] = None
+    stt_mode: Optional[Literal["fast", "accurate", "custom"]] = None
     """If set, determines whether speech to text should focus on latency or accuracy.
 
-    Default to fast mode.
+    Default to fast mode. When set to custom, custom_stt_config must be provided.
     """
 
     user_dtmf_options: Optional[UserDtmfOptions] = None
