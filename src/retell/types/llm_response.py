@@ -1880,6 +1880,7 @@ class LlmResponse(BaseModel):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ] = None
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""

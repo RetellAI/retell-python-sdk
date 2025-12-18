@@ -110,6 +110,8 @@ class AgentResource(SyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -157,6 +159,7 @@ class AgentResource(SyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
@@ -585,6 +588,8 @@ class AgentResource(SyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -632,6 +637,7 @@ class AgentResource(SyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
@@ -1208,6 +1214,8 @@ class AsyncAgentResource(AsyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -1255,6 +1263,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
@@ -1683,6 +1692,8 @@ class AsyncAgentResource(AsyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -1730,6 +1741,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
