@@ -477,6 +477,8 @@ class AgentOverrideAgent(TypedDict, total=False):
         "no-NO",
         "sk-SK",
         "sv-SE",
+        "lt-LT",
+        "lv-LV",
         "ms-MY",
         "af-ZA",
         "ar-SA",
@@ -560,6 +562,7 @@ class AgentOverrideAgent(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ]
     """The model to use for post call analysis. Default to gpt-4.1-mini."""
@@ -751,6 +754,7 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ]
     """The LLM model to use"""
@@ -852,6 +856,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ]
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""

@@ -98,6 +98,8 @@ class ChatAgentResource(SyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "multi",
         ]
         | Omit = omit,
@@ -118,6 +120,7 @@ class ChatAgentResource(SyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
@@ -311,6 +314,8 @@ class ChatAgentResource(SyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "multi",
         ]
         | Omit = omit,
@@ -331,6 +336,7 @@ class ChatAgentResource(SyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
@@ -669,6 +675,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "multi",
         ]
         | Omit = omit,
@@ -689,6 +697,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
@@ -884,6 +893,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "multi",
         ]
         | Omit = omit,
@@ -904,6 +915,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,

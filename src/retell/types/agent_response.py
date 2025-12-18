@@ -451,6 +451,8 @@ class AgentResponse(BaseModel):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -535,6 +537,7 @@ class AgentResponse(BaseModel):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ] = None
     """The model to use for post call analysis. Default to gpt-4.1-mini."""
