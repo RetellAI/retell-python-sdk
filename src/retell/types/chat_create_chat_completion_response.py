@@ -24,7 +24,7 @@ class MessageMessage(BaseModel):
     """Create timestamp of the message"""
 
     message_id: str
-    """Unique id ot the message"""
+    """Unique id of the message"""
 
     role: Literal["agent", "user"]
     """Documents whether this message is sent by agent or user."""
@@ -35,7 +35,7 @@ class MessageToolCallInvocationMessage(BaseModel):
     """Arguments for this tool call, it's a stringified JSON object."""
 
     message_id: str
-    """Unique id ot the message"""
+    """Unique id of the message"""
 
     name: str
     """Name of the function in this tool call."""
@@ -58,10 +58,10 @@ class MessageToolCallResultMessage(BaseModel):
     """Create timestamp of the message"""
 
     message_id: str
-    """Unique id ot the message"""
+    """Unique id of the message"""
 
     role: Literal["tool_call_result"]
-    """This is result of a tool call."""
+    """This is the result of a tool call."""
 
     tool_call_id: str
     """Tool call id, globally unique."""
@@ -72,10 +72,10 @@ class MessageNodeTransitionMessage(BaseModel):
     """Create timestamp of the message"""
 
     message_id: str
-    """Unique id ot the message"""
+    """Unique id of the message"""
 
     role: Literal["node_transition"]
-    """This is node transition."""
+    """This is a node transition."""
 
     former_node_id: Optional[str] = None
     """Former node id"""
@@ -95,10 +95,10 @@ class MessageStateTransitionMessage(BaseModel):
     """Create timestamp of the message"""
 
     message_id: str
-    """Unique id ot the message"""
+    """Unique id of the message"""
 
     role: Literal["state_transition"]
-    """This is state transition for ."""
+    """This is a state transition."""
 
     former_state_name: Optional[str] = None
     """Former state name"""
