@@ -11,6 +11,7 @@ __all__ = [
     "CallCreateWebCallParams",
     "AgentOverride",
     "AgentOverrideAgent",
+    "AgentOverrideAgentCustomSttConfig",
     "AgentOverrideAgentPiiConfig",
     "AgentOverrideAgentPostCallAnalysisData",
     "AgentOverrideAgentPostCallAnalysisDataStringAnalysisData",
@@ -68,6 +69,16 @@ class CallCreateWebCallParams(TypedDict, total=False):
     your Response Engine prompt and tool description. Only applicable for Response
     Engine.
     """
+
+
+class AgentOverrideAgentCustomSttConfig(TypedDict, total=False):
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
+
+    endpointing_ms: Required[int]
+    """Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram."""
+
+    provider: Required[Literal["azure", "deepgram"]]
+    """The STT provider to use."""
 
 
 class AgentOverrideAgentPiiConfig(TypedDict, total=False):
@@ -216,7 +227,7 @@ class AgentOverrideAgentUserDtmfOptions(TypedDict, total=False):
     termination_key: Optional[str]
     """A single key that signals the end of DTMF input.
 
-    Acceptable values include any digit (0–9), the pound/hash symbol (#), or the
+    Acceptable values include any digit (0-9), the pound/hash symbol (#), or the
     asterisk (\\**).
     """
 
@@ -292,24 +303,18 @@ class AgentOverrideAgent(TypedDict, total=False):
 
     - `coffee-shop`: Coffee shop ambience with people chatting in background.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/coffee-shop.wav)
-
     - `convention-hall`: Convention hall ambience, with some echo and people
       chatting in background.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/convention-hall.wav)
-
     - `summer-outdoor`: Summer outdoor ambience with cicada chirping.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/summer-outdoor.wav)
-
     - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
-
     - `static-noise`: Constant static noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
-
     - `call-center`: Call center work noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
-
-    Set to `null` to remove ambient sound from this agent.
+      Set to `null` to remove ambient sound from this agent.
     """
 
     ambient_sound_volume: float
@@ -365,6 +370,9 @@ class AgentOverrideAgent(TypedDict, total=False):
     these words are more likely to get transcribed. Commonly used for names, brands,
     street, etc.
     """
+
+    custom_stt_config: AgentOverrideAgentCustomSttConfig
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
 
     data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
     """
@@ -457,6 +465,8 @@ class AgentOverrideAgent(TypedDict, total=False):
         "no-NO",
         "sk-SK",
         "sv-SE",
+        "lt-LT",
+        "lv-LV",
         "ms-MY",
         "af-ZA",
         "ar-SA",
@@ -540,6 +550,7 @@ class AgentOverrideAgent(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ]
     """The model to use for post call analysis. Default to gpt-4.1-mini."""
@@ -594,10 +605,10 @@ class AgentOverrideAgent(TypedDict, total=False):
     86400000 (24 hours) will apply.
     """
 
-    stt_mode: Literal["fast", "accurate"]
+    stt_mode: Literal["fast", "accurate", "custom"]
     """If set, determines whether speech to text should focus on latency or accuracy.
 
-    Default to fast mode.
+    Default to fast mode. When set to custom, custom_stt_config must be provided.
     """
 
     user_dtmf_options: Optional[AgentOverrideAgentUserDtmfOptions]
@@ -731,6 +742,7 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ]
     """The LLM model to use"""
@@ -832,6 +844,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ]
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""

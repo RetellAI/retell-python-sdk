@@ -11,6 +11,7 @@ __all__ = [
     "ResponseEngineResponseEngineRetellLm",
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
+    "CustomSttConfig",
     "PiiConfig",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
@@ -63,6 +64,16 @@ ResponseEngine: TypeAlias = Union[
     ResponseEngineResponseEngineCustomLm,
     ResponseEngineResponseEngineConversationFlow,
 ]
+
+
+class CustomSttConfig(BaseModel):
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
+
+    endpointing_ms: int
+    """Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram."""
+
+    provider: Literal["azure", "deepgram"]
+    """The STT provider to use."""
 
 
 class PiiConfig(BaseModel):
@@ -172,7 +183,7 @@ class UserDtmfOptions(BaseModel):
     termination_key: Optional[str] = None
     """A single key that signals the end of DTMF input.
 
-    Acceptable values include any digit (0–9), the pound/hash symbol (#), or the
+    Acceptable values include any digit (0-9), the pound/hash symbol (#), or the
     asterisk (\\**).
     """
 
@@ -268,24 +279,18 @@ class AgentResponse(BaseModel):
 
     - `coffee-shop`: Coffee shop ambience with people chatting in background.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/coffee-shop.wav)
-
     - `convention-hall`: Convention hall ambience, with some echo and people
       chatting in background.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/convention-hall.wav)
-
     - `summer-outdoor`: Summer outdoor ambience with cicada chirping.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/summer-outdoor.wav)
-
     - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
-
     - `static-noise`: Constant static noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
-
     - `call-center`: Call center work noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
-
-    Set to `null` to remove ambient sound from this agent.
+      Set to `null` to remove ambient sound from this agent.
     """
 
     ambient_sound_volume: Optional[float] = None
@@ -341,6 +346,9 @@ class AgentResponse(BaseModel):
     these words are more likely to get transcribed. Commonly used for names, brands,
     street, etc.
     """
+
+    custom_stt_config: Optional[CustomSttConfig] = None
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
 
     data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]] = None
     """
@@ -437,6 +445,8 @@ class AgentResponse(BaseModel):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -521,6 +531,7 @@ class AgentResponse(BaseModel):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ] = None
     """The model to use for post call analysis. Default to gpt-4.1-mini."""
@@ -568,10 +579,10 @@ class AgentResponse(BaseModel):
     86400000 (24 hours) will apply.
     """
 
-    stt_mode: Optional[Literal["fast", "accurate"]] = None
+    stt_mode: Optional[Literal["fast", "accurate", "custom"]] = None
     """If set, determines whether speech to text should focus on latency or accuracy.
 
-    Default to fast mode.
+    Default to fast mode. When set to custom, custom_stt_config must be provided.
     """
 
     user_dtmf_options: Optional[UserDtmfOptions] = None

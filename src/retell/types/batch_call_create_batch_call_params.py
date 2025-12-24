@@ -12,6 +12,7 @@ __all__ = [
     "Task",
     "TaskAgentOverride",
     "TaskAgentOverrideAgent",
+    "TaskAgentOverrideAgentCustomSttConfig",
     "TaskAgentOverrideAgentPiiConfig",
     "TaskAgentOverrideAgentPostCallAnalysisData",
     "TaskAgentOverrideAgentPostCallAnalysisDataStringAnalysisData",
@@ -67,13 +68,26 @@ class BatchCallCreateBatchCallParams(TypedDict, total=False):
     """The name of the batch call. Only used for your own reference."""
 
     reserved_concurrency: int
-    """Reserve a portion of your org concurrency for batch processing."""
+    """
+    Number of concurrency reserved for all other calls that are not triggered by
+    batch calls, such as inbound calls.
+    """
 
     trigger_timestamp: float
     """
     The scheduled time for sending the batch call, represented as a Unix timestamp
     in milliseconds. If omitted, the call will be sent immediately.
     """
+
+
+class TaskAgentOverrideAgentCustomSttConfig(TypedDict, total=False):
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
+
+    endpointing_ms: Required[int]
+    """Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram."""
+
+    provider: Required[Literal["azure", "deepgram"]]
+    """The STT provider to use."""
 
 
 class TaskAgentOverrideAgentPiiConfig(TypedDict, total=False):
@@ -222,7 +236,7 @@ class TaskAgentOverrideAgentUserDtmfOptions(TypedDict, total=False):
     termination_key: Optional[str]
     """A single key that signals the end of DTMF input.
 
-    Acceptable values include any digit (0–9), the pound/hash symbol (#), or the
+    Acceptable values include any digit (0-9), the pound/hash symbol (#), or the
     asterisk (\\**).
     """
 
@@ -298,24 +312,18 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
 
     - `coffee-shop`: Coffee shop ambience with people chatting in background.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/coffee-shop.wav)
-
     - `convention-hall`: Convention hall ambience, with some echo and people
       chatting in background.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/convention-hall.wav)
-
     - `summer-outdoor`: Summer outdoor ambience with cicada chirping.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/summer-outdoor.wav)
-
     - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
-
     - `static-noise`: Constant static noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
-
     - `call-center`: Call center work noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
-
-    Set to `null` to remove ambient sound from this agent.
+      Set to `null` to remove ambient sound from this agent.
     """
 
     ambient_sound_volume: float
@@ -371,6 +379,9 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     these words are more likely to get transcribed. Commonly used for names, brands,
     street, etc.
     """
+
+    custom_stt_config: TaskAgentOverrideAgentCustomSttConfig
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
 
     data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
     """
@@ -463,6 +474,8 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
         "no-NO",
         "sk-SK",
         "sv-SE",
+        "lt-LT",
+        "lv-LV",
         "ms-MY",
         "af-ZA",
         "ar-SA",
@@ -546,6 +559,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ]
     """The model to use for post call analysis. Default to gpt-4.1-mini."""
@@ -600,10 +614,10 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     86400000 (24 hours) will apply.
     """
 
-    stt_mode: Literal["fast", "accurate"]
+    stt_mode: Literal["fast", "accurate", "custom"]
     """If set, determines whether speech to text should focus on latency or accuracy.
 
-    Default to fast mode.
+    Default to fast mode. When set to custom, custom_stt_config must be provided.
     """
 
     user_dtmf_options: Optional[TaskAgentOverrideAgentUserDtmfOptions]
@@ -737,6 +751,7 @@ class TaskAgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ]
     """The LLM model to use"""
@@ -838,6 +853,7 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ]
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""

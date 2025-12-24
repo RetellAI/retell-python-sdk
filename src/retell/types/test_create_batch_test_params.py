@@ -23,7 +23,10 @@ class TestCreateBatchTestParams(TypedDict, total=False):
     """Array of test case definition IDs to run"""
 
     reserved_concurrency: int
-    """Reserve a portion of your org concurrency for batch processing."""
+    """
+    Number of concurrency reserved for all other calls that are not triggered by
+    batch calls, such as inbound calls.
+    """
 
 
 class ResponseEngineResponseEngineRetellLm(TypedDict, total=False):

@@ -66,6 +66,7 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        custom_stt_config: agent_create_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
@@ -109,6 +110,8 @@ class AgentResource(SyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -156,6 +159,7 @@ class AgentResource(SyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
@@ -165,7 +169,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | Omit = omit,
         ring_duration_ms: int | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
-        stt_mode: Literal["fast", "accurate"] | Omit = omit,
+        stt_mode: Literal["fast", "accurate", "custom"] | Omit = omit,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -221,24 +225,18 @@ class AgentResource(SyncAPIResource):
 
               - `coffee-shop`: Coffee shop ambience with people chatting in background.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/coffee-shop.wav)
-
               - `convention-hall`: Convention hall ambience, with some echo and people
                 chatting in background.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/convention-hall.wav)
-
               - `summer-outdoor`: Summer outdoor ambience with cicada chirping.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/summer-outdoor.wav)
-
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
-
               - `static-noise`: Constant static noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
-
               - `call-center`: Call center work noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
-
-              Set to `null` to remove ambient sound from this agent.
+                Set to `null` to remove ambient sound from this agent.
 
           ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
               Lower value means quieter ambient sound, while higher value means louder ambient
@@ -271,6 +269,8 @@ class AgentResource(SyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
           data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
               recordings, logs, etc.). This replaces the deprecated
@@ -362,7 +362,7 @@ class AgentResource(SyncAPIResource):
               apply.
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
-              Default to fast mode.
+              Default to fast mode. When set to custom, custom_stt_config must be provided.
 
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
@@ -434,6 +434,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "custom_stt_config": custom_stt_config,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
@@ -537,6 +538,7 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        custom_stt_config: agent_update_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
@@ -580,6 +582,8 @@ class AgentResource(SyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -627,6 +631,7 @@ class AgentResource(SyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
@@ -637,7 +642,7 @@ class AgentResource(SyncAPIResource):
         responsiveness: float | Omit = omit,
         ring_duration_ms: int | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
-        stt_mode: Literal["fast", "accurate"] | Omit = omit,
+        stt_mode: Literal["fast", "accurate", "custom"] | Omit = omit,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -689,24 +694,18 @@ class AgentResource(SyncAPIResource):
 
               - `coffee-shop`: Coffee shop ambience with people chatting in background.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/coffee-shop.wav)
-
               - `convention-hall`: Convention hall ambience, with some echo and people
                 chatting in background.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/convention-hall.wav)
-
               - `summer-outdoor`: Summer outdoor ambience with cicada chirping.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/summer-outdoor.wav)
-
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
-
               - `static-noise`: Constant static noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
-
               - `call-center`: Call center work noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
-
-              Set to `null` to remove ambient sound from this agent.
+                Set to `null` to remove ambient sound from this agent.
 
           ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
               Lower value means quieter ambient sound, while higher value means louder ambient
@@ -739,6 +738,8 @@ class AgentResource(SyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
           data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
               recordings, logs, etc.). This replaces the deprecated
@@ -834,7 +835,7 @@ class AgentResource(SyncAPIResource):
               apply.
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
-              Default to fast mode.
+              Default to fast mode. When set to custom, custom_stt_config must be provided.
 
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
@@ -909,6 +910,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "custom_stt_config": custom_stt_config,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
@@ -1156,6 +1158,7 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        custom_stt_config: agent_create_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
@@ -1199,6 +1202,8 @@ class AsyncAgentResource(AsyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -1246,6 +1251,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
@@ -1255,7 +1261,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | Omit = omit,
         ring_duration_ms: int | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
-        stt_mode: Literal["fast", "accurate"] | Omit = omit,
+        stt_mode: Literal["fast", "accurate", "custom"] | Omit = omit,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -1311,24 +1317,18 @@ class AsyncAgentResource(AsyncAPIResource):
 
               - `coffee-shop`: Coffee shop ambience with people chatting in background.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/coffee-shop.wav)
-
               - `convention-hall`: Convention hall ambience, with some echo and people
                 chatting in background.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/convention-hall.wav)
-
               - `summer-outdoor`: Summer outdoor ambience with cicada chirping.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/summer-outdoor.wav)
-
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
-
               - `static-noise`: Constant static noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
-
               - `call-center`: Call center work noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
-
-              Set to `null` to remove ambient sound from this agent.
+                Set to `null` to remove ambient sound from this agent.
 
           ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
               Lower value means quieter ambient sound, while higher value means louder ambient
@@ -1361,6 +1361,8 @@ class AsyncAgentResource(AsyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
           data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
               recordings, logs, etc.). This replaces the deprecated
@@ -1452,7 +1454,7 @@ class AsyncAgentResource(AsyncAPIResource):
               apply.
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
-              Default to fast mode.
+              Default to fast mode. When set to custom, custom_stt_config must be provided.
 
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
@@ -1524,6 +1526,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "custom_stt_config": custom_stt_config,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
@@ -1627,6 +1630,7 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        custom_stt_config: agent_update_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
@@ -1670,6 +1674,8 @@ class AsyncAgentResource(AsyncAPIResource):
             "no-NO",
             "sk-SK",
             "sv-SE",
+            "lt-LT",
+            "lv-LV",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -1717,6 +1723,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
+                "gemini-3.0-flash",
             ]
         ]
         | Omit = omit,
@@ -1727,7 +1734,7 @@ class AsyncAgentResource(AsyncAPIResource):
         responsiveness: float | Omit = omit,
         ring_duration_ms: int | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
-        stt_mode: Literal["fast", "accurate"] | Omit = omit,
+        stt_mode: Literal["fast", "accurate", "custom"] | Omit = omit,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -1779,24 +1786,18 @@ class AsyncAgentResource(AsyncAPIResource):
 
               - `coffee-shop`: Coffee shop ambience with people chatting in background.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/coffee-shop.wav)
-
               - `convention-hall`: Convention hall ambience, with some echo and people
                 chatting in background.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/convention-hall.wav)
-
               - `summer-outdoor`: Summer outdoor ambience with cicada chirping.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/summer-outdoor.wav)
-
               - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
-
               - `static-noise`: Constant static noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
-
               - `call-center`: Call center work noise.
                 [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
-
-              Set to `null` to remove ambient sound from this agent.
+                Set to `null` to remove ambient sound from this agent.
 
           ambient_sound_volume: If set, will control the volume of the ambient sound. Value ranging from [0,2].
               Lower value means quieter ambient sound, while higher value means louder ambient
@@ -1829,6 +1830,8 @@ class AsyncAgentResource(AsyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
           data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
               recordings, logs, etc.). This replaces the deprecated
@@ -1924,7 +1927,7 @@ class AsyncAgentResource(AsyncAPIResource):
               apply.
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
-              Default to fast mode.
+              Default to fast mode. When set to custom, custom_stt_config must be provided.
 
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
@@ -1999,6 +2002,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "custom_stt_config": custom_stt_config,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,

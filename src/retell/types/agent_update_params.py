@@ -9,6 +9,7 @@ from .._types import SequenceNotStr
 
 __all__ = [
     "AgentUpdateParams",
+    "CustomSttConfig",
     "PiiConfig",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
@@ -52,24 +53,18 @@ class AgentUpdateParams(TypedDict, total=False):
 
     - `coffee-shop`: Coffee shop ambience with people chatting in background.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/coffee-shop.wav)
-
     - `convention-hall`: Convention hall ambience, with some echo and people
       chatting in background.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/convention-hall.wav)
-
     - `summer-outdoor`: Summer outdoor ambience with cicada chirping.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/summer-outdoor.wav)
-
     - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
-
     - `static-noise`: Constant static noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
-
     - `call-center`: Call center work noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
-
-    Set to `null` to remove ambient sound from this agent.
+      Set to `null` to remove ambient sound from this agent.
     """
 
     ambient_sound_volume: float
@@ -125,6 +120,9 @@ class AgentUpdateParams(TypedDict, total=False):
     these words are more likely to get transcribed. Commonly used for names, brands,
     street, etc.
     """
+
+    custom_stt_config: CustomSttConfig
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
 
     data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
     """
@@ -217,6 +215,8 @@ class AgentUpdateParams(TypedDict, total=False):
         "no-NO",
         "sk-SK",
         "sv-SE",
+        "lt-LT",
+        "lv-LV",
         "ms-MY",
         "af-ZA",
         "ar-SA",
@@ -300,6 +300,7 @@ class AgentUpdateParams(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
         ]
     ]
     """The model to use for post call analysis. Default to gpt-4.1-mini."""
@@ -354,10 +355,10 @@ class AgentUpdateParams(TypedDict, total=False):
     86400000 (24 hours) will apply.
     """
 
-    stt_mode: Literal["fast", "accurate"]
+    stt_mode: Literal["fast", "accurate", "custom"]
     """If set, determines whether speech to text should focus on latency or accuracy.
 
-    Default to fast mode.
+    Default to fast mode. When set to custom, custom_stt_config must be provided.
     """
 
     user_dtmf_options: Optional[UserDtmfOptions]
@@ -462,6 +463,16 @@ class AgentUpdateParams(TypedDict, total=False):
     account level webhook for this agent. Set to `null` to remove webhook url from
     this agent.
     """
+
+
+class CustomSttConfig(TypedDict, total=False):
+    """Custom STT configuration. Only used when stt_mode is set to custom."""
+
+    endpointing_ms: Required[int]
+    """Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram."""
+
+    provider: Required[Literal["azure", "deepgram"]]
+    """The STT provider to use."""
 
 
 class PiiConfig(TypedDict, total=False):
@@ -610,7 +621,7 @@ class UserDtmfOptions(TypedDict, total=False):
     termination_key: Optional[str]
     """A single key that signals the end of DTMF input.
 
-    Acceptable values include any digit (0–9), the pound/hash symbol (#), or the
+    Acceptable values include any digit (0-9), the pound/hash symbol (#), or the
     asterisk (\\**).
     """
 

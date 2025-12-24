@@ -79,7 +79,8 @@ class BatchCallResource(SyncAPIResource):
 
           name: The name of the batch call. Only used for your own reference.
 
-          reserved_concurrency: Reserve a portion of your org concurrency for batch processing.
+          reserved_concurrency: Number of concurrency reserved for all other calls that are not triggered by
+              batch calls, such as inbound calls.
 
           trigger_timestamp: The scheduled time for sending the batch call, represented as a Unix timestamp
               in milliseconds. If omitted, the call will be sent immediately.
@@ -168,7 +169,8 @@ class AsyncBatchCallResource(AsyncAPIResource):
 
           name: The name of the batch call. Only used for your own reference.
 
-          reserved_concurrency: Reserve a portion of your org concurrency for batch processing.
+          reserved_concurrency: Number of concurrency reserved for all other calls that are not triggered by
+              batch calls, such as inbound calls.
 
           trigger_timestamp: The scheduled time for sending the batch call, represented as a Unix timestamp
               in milliseconds. If omitted, the call will be sent immediately.

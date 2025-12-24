@@ -64,7 +64,8 @@ class TestsResource(SyncAPIResource):
 
           test_case_definition_ids: Array of test case definition IDs to run
 
-          reserved_concurrency: Reserve a portion of your org concurrency for batch processing.
+          reserved_concurrency: Number of concurrency reserved for all other calls that are not triggered by
+              batch calls, such as inbound calls.
 
           extra_headers: Send extra headers
 
@@ -132,7 +133,8 @@ class AsyncTestsResource(AsyncAPIResource):
 
           test_case_definition_ids: Array of test case definition IDs to run
 
-          reserved_concurrency: Reserve a portion of your org concurrency for batch processing.
+          reserved_concurrency: Number of concurrency reserved for all other calls that are not triggered by
+              batch calls, such as inbound calls.
 
           extra_headers: Send extra headers
 
