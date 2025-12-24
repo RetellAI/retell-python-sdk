@@ -130,7 +130,6 @@ class LlmUpdateParams(TypedDict, total=False):
     """General prompt appended to system prompt no matter what state the agent is in.
 
     - System prompt (with state) = general prompt + state prompt.
-
     - System prompt (no state) = general prompt.
     """
 
@@ -138,10 +137,9 @@ class LlmUpdateParams(TypedDict, total=False):
     """A list of tools the model may call (to get external knowledge, call API, etc).
 
     You can select from some common predefined tools like end call, transfer call,
-    etc; or you can create your own custom tool (last option) for the LLM to use.
+    etc; or you can create your own custom tool for the LLM to use.
 
     - Tools of LLM (with state) = general tools + state tools + state transitions
-
     - Tools of LLM (no state) = general tools
     """
 
@@ -1914,8 +1912,8 @@ class State(TypedDict, total=False):
     """
     A list of tools specific to this state the model may call (to get external
     knowledge, call API, etc). You can select from some common predefined tools like
-    end call, transfer call, etc; or you can create your own custom tool (last
-    option) for the LLM to use.
+    end call, transfer call, etc; or you can create your own custom tool for the LLM
+    to use.
 
     - Tools of LLM = general tools + state tools + state transitions
     """

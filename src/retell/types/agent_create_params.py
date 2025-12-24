@@ -63,24 +63,18 @@ class AgentCreateParams(TypedDict, total=False):
 
     - `coffee-shop`: Coffee shop ambience with people chatting in background.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/coffee-shop.wav)
-
     - `convention-hall`: Convention hall ambience, with some echo and people
       chatting in background.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/convention-hall.wav)
-
     - `summer-outdoor`: Summer outdoor ambience with cicada chirping.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/summer-outdoor.wav)
-
     - `mountain-outdoor`: Mountain outdoor ambience with birds singing.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/mountain-outdoor.wav)
-
     - `static-noise`: Constant static noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/static-noise.wav)
-
     - `call-center`: Call center work noise.
       [Listen to Ambience](https://retell-utils-public.s3.us-west-2.amazonaws.com/call-center.wav)
-
-    Set to `null` to remove ambient sound from this agent.
+      Set to `null` to remove ambient sound from this agent.
     """
 
     ambient_sound_volume: float
@@ -624,7 +618,7 @@ class UserDtmfOptions(TypedDict, total=False):
     termination_key: Optional[str]
     """A single key that signals the end of DTMF input.
 
-    Acceptable values include any digit (0–9), the pound/hash symbol (#), or the
+    Acceptable values include any digit (0-9), the pound/hash symbol (#), or the
     asterisk (\\**).
     """
 

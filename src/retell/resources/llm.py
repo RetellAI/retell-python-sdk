@@ -111,15 +111,13 @@ class LlmResource(SyncAPIResource):
           general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
               - System prompt (with state) = general prompt + state prompt.
-
               - System prompt (no state) = general prompt.
 
           general_tools: A list of tools the model may call (to get external knowledge, call API, etc).
               You can select from some common predefined tools like end call, transfer call,
-              etc; or you can create your own custom tool (last option) for the LLM to use.
+              etc; or you can create your own custom tool for the LLM to use.
 
               - Tools of LLM (with state) = general tools + state tools + state transitions
-
               - Tools of LLM (no state) = general tools
 
           kb_config: Knowledge base configuration for RAG retrieval.
@@ -304,15 +302,13 @@ class LlmResource(SyncAPIResource):
           general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
               - System prompt (with state) = general prompt + state prompt.
-
               - System prompt (no state) = general prompt.
 
           general_tools: A list of tools the model may call (to get external knowledge, call API, etc).
               You can select from some common predefined tools like end call, transfer call,
-              etc; or you can create your own custom tool (last option) for the LLM to use.
+              etc; or you can create your own custom tool for the LLM to use.
 
               - Tools of LLM (with state) = general tools + state tools + state transitions
-
               - Tools of LLM (no state) = general tools
 
           kb_config: Knowledge base configuration for RAG retrieval.
@@ -571,15 +567,13 @@ class AsyncLlmResource(AsyncAPIResource):
           general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
               - System prompt (with state) = general prompt + state prompt.
-
               - System prompt (no state) = general prompt.
 
           general_tools: A list of tools the model may call (to get external knowledge, call API, etc).
               You can select from some common predefined tools like end call, transfer call,
-              etc; or you can create your own custom tool (last option) for the LLM to use.
+              etc; or you can create your own custom tool for the LLM to use.
 
               - Tools of LLM (with state) = general tools + state tools + state transitions
-
               - Tools of LLM (no state) = general tools
 
           kb_config: Knowledge base configuration for RAG retrieval.
@@ -764,15 +758,13 @@ class AsyncLlmResource(AsyncAPIResource):
           general_prompt: General prompt appended to system prompt no matter what state the agent is in.
 
               - System prompt (with state) = general prompt + state prompt.
-
               - System prompt (no state) = general prompt.
 
           general_tools: A list of tools the model may call (to get external knowledge, call API, etc).
               You can select from some common predefined tools like end call, transfer call,
-              etc; or you can create your own custom tool (last option) for the LLM to use.
+              etc; or you can create your own custom tool for the LLM to use.
 
               - Tools of LLM (with state) = general tools + state tools + state transitions
-
               - Tools of LLM (no state) = general tools
 
           kb_config: Knowledge base configuration for RAG retrieval.

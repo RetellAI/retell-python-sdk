@@ -423,7 +423,7 @@ class ScrubbedTranscriptWithToolCallToolCallResultUtterance(BaseModel):
     """Result of the tool call, can be a string, a stringified json, etc."""
 
     role: Literal["tool_call_result"]
-    """This is result of a tool call."""
+    """This is the result of a tool call."""
 
     tool_call_id: str
     """Tool call id, globally unique."""
@@ -454,7 +454,7 @@ class ScrubbedTranscriptWithToolCallDtmfUtterance(BaseModel):
     """
 
     role: Literal["dtmf"]
-    """This is user pressed digit from their phone keypad."""
+    """Digit pressed by the user from their phone keypad."""
 
 
 ScrubbedTranscriptWithToolCall: TypeAlias = Union[
@@ -549,7 +549,7 @@ class TranscriptWithToolCallToolCallResultUtterance(BaseModel):
     """Result of the tool call, can be a string, a stringified json, etc."""
 
     role: Literal["tool_call_result"]
-    """This is result of a tool call."""
+    """This is the result of a tool call."""
 
     tool_call_id: str
     """Tool call id, globally unique."""
@@ -580,7 +580,7 @@ class TranscriptWithToolCallDtmfUtterance(BaseModel):
     """
 
     role: Literal["dtmf"]
-    """This is user pressed digit from their phone keypad."""
+    """Digit pressed by the user from their phone keypad."""
 
 
 TranscriptWithToolCall: TypeAlias = Union[
@@ -608,19 +608,17 @@ class WebCallResponse(BaseModel):
     call_id: str
     """Unique id of the call.
 
-    Used to identify in LLM websocket and used to authenticate in audio websocket.
+    Used to identify the call in the LLM websocket and used to authenticate in the
+    audio websocket.
     """
 
     call_status: Literal["registered", "not_connected", "ongoing", "ended", "error"]
     """Status of call.
 
     - `registered`: Call id issued, starting to make a call using this id.
-
     - `ongoing`: Call connected and ongoing.
-
     - `ended`: The underlying websocket has ended for the call. Either user or agent
-      hanged up, or call transferred.
-
+      hung up, or call transferred.
     - `error`: Call encountered error.
     """
 

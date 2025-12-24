@@ -70,7 +70,7 @@ class MessageWithToolCallMessage(BaseModel):
     """Create timestamp of the message"""
 
     message_id: str
-    """Unique id ot the message"""
+    """Unique id of the message"""
 
     role: Literal["agent", "user"]
     """Documents whether this message is sent by agent or user."""
@@ -81,7 +81,7 @@ class MessageWithToolCallToolCallInvocationMessage(BaseModel):
     """Arguments for this tool call, it's a stringified JSON object."""
 
     message_id: str
-    """Unique id ot the message"""
+    """Unique id of the message"""
 
     name: str
     """Name of the function in this tool call."""
@@ -104,10 +104,10 @@ class MessageWithToolCallToolCallResultMessage(BaseModel):
     """Create timestamp of the message"""
 
     message_id: str
-    """Unique id ot the message"""
+    """Unique id of the message"""
 
     role: Literal["tool_call_result"]
-    """This is result of a tool call."""
+    """This is the result of a tool call."""
 
     tool_call_id: str
     """Tool call id, globally unique."""
@@ -118,10 +118,10 @@ class MessageWithToolCallNodeTransitionMessage(BaseModel):
     """Create timestamp of the message"""
 
     message_id: str
-    """Unique id ot the message"""
+    """Unique id of the message"""
 
     role: Literal["node_transition"]
-    """This is node transition."""
+    """This is a node transition."""
 
     former_node_id: Optional[str] = None
     """Former node id"""
@@ -141,10 +141,10 @@ class MessageWithToolCallStateTransitionMessage(BaseModel):
     """Create timestamp of the message"""
 
     message_id: str
-    """Unique id ot the message"""
+    """Unique id of the message"""
 
     role: Literal["state_transition"]
-    """This is state transition for ."""
+    """This is a state transition."""
 
     former_state_name: Optional[str] = None
     """Former state name"""
@@ -174,9 +174,7 @@ class ChatResponse(BaseModel):
 
     - `ongoing`: Chat session is ongoing, chat agent can receive new message and
       generate response.
-
-    - `ended`: Chat session has ended can not generate new response.
-
+    - `ended`: Chat session has ended, and no longer can generate new response.
     - `error`: Chat encountered error.
     """
 
