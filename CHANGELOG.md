@@ -1,5 +1,26 @@
 # Changelog
 
+## 5.4.0 (2025-12-24)
+
+Full Changelog: [v5.3.0...v5.4.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.3.0...v5.4.0)
+
+### Features
+
+* **api:** api update ([2349a95](https://github.com/RetellAI/retell-python-sdk/commit/2349a951f16fad0863621012d264487ad247bfb5))
+* **api:** api update ([572f310](https://github.com/RetellAI/retell-python-sdk/commit/572f31000ac585e64af52f23c3799463e70559c8))
+* **api:** api update ([7b3351c](https://github.com/RetellAI/retell-python-sdk/commit/7b3351c253578fac17777f0b0b301e473f188685))
+
+
+### Bug Fixes
+
+* use async_to_httpx_files in patch method ([6a0645f](https://github.com/RetellAI/retell-python-sdk/commit/6a0645fe7b74dffd8900cbb314e663aadf1f8248))
+
+
+### Chores
+
+* **internal:** add `--fix` argument to lint script ([82d5236](https://github.com/RetellAI/retell-python-sdk/commit/82d52361f1cfe228720f3129e8cf66a26feb91ec))
+* speedup initial import ([d030f0c](https://github.com/RetellAI/retell-python-sdk/commit/d030f0c4a48f5e7e8547c9530f445742bacd0358))
+
 ## 5.3.0 (2025-12-17)
 
 Full Changelog: [v5.2.0...v5.3.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.2.0...v5.3.0)
