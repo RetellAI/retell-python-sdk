@@ -6,10 +6,10 @@ from typing_extensions import Literal, Required, TypedDict
 
 from .._types import FileTypes, SequenceNotStr
 
-__all__ = ["VoiceAddSourcesParams"]
+__all__ = ["VoiceCloneParams"]
 
 
-class VoiceAddSourcesParams(TypedDict, total=False):
+class VoiceCloneParams(TypedDict, total=False):
     files: Required[SequenceNotStr[FileTypes]]
     """Audio files to use for voice cloning.
 
