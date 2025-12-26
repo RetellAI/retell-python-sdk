@@ -380,8 +380,6 @@ class CallResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
-            timeout = 120
         return self._post(
             "/v2/create-web-call",
             body=maybe_transform(
@@ -820,8 +818,6 @@ class AsyncCallResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
-            timeout = 120
         return await self._post(
             "/v2/create-web-call",
             body=await async_maybe_transform(
