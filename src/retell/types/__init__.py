@@ -19,6 +19,7 @@ from .call_update_params import CallUpdateParams as CallUpdateParams
 from .chat_create_params import ChatCreateParams as ChatCreateParams
 from .chat_list_response import ChatListResponse as ChatListResponse
 from .chat_update_params import ChatUpdateParams as ChatUpdateParams
+from .voice_clone_params import VoiceCloneParams as VoiceCloneParams
 from .agent_create_params import AgentCreateParams as AgentCreateParams
 from .agent_list_response import AgentListResponse as AgentListResponse
 from .agent_update_params import AgentUpdateParams as AgentUpdateParams
@@ -38,7 +39,7 @@ from .knowledge_base_response import KnowledgeBaseResponse as KnowledgeBaseRespo
 from .chat_agent_create_params import ChatAgentCreateParams as ChatAgentCreateParams
 from .chat_agent_list_response import ChatAgentListResponse as ChatAgentListResponse
 from .chat_agent_update_params import ChatAgentUpdateParams as ChatAgentUpdateParams
-from .voice_add_sources_params import VoiceAddSourcesParams as VoiceAddSourcesParams
+from .voice_add_resource_params import VoiceAddResourceParams as VoiceAddResourceParams
 from .chat_agent_retrieve_params import ChatAgentRetrieveParams as ChatAgentRetrieveParams
 from .conversation_flow_response import ConversationFlowResponse as ConversationFlowResponse
 from .phone_number_create_params import PhoneNumberCreateParams as PhoneNumberCreateParams

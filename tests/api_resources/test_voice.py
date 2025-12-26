@@ -93,8 +93,56 @@ class TestVoice:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_add_sources(self, client: Retell) -> None:
-        voice = client.voice.add_sources(
+    def test_method_add_resource(self, client: Retell) -> None:
+        voice = client.voice.add_resource(
+            provider_voice_id="provider_voice_id",
+            voice_name="x",
+        )
+        assert_matches_type(VoiceResponse, voice, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_add_resource_with_all_params(self, client: Retell) -> None:
+        voice = client.voice.add_resource(
+            provider_voice_id="provider_voice_id",
+            voice_name="x",
+            public_user_id="public_user_id",
+            voice_provider="elevenlabs",
+        )
+        assert_matches_type(VoiceResponse, voice, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_raw_response_add_resource(self, client: Retell) -> None:
+        response = client.voice.with_raw_response.add_resource(
+            provider_voice_id="provider_voice_id",
+            voice_name="x",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        voice = response.parse()
+        assert_matches_type(VoiceResponse, voice, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_streaming_response_add_resource(self, client: Retell) -> None:
+        with client.voice.with_streaming_response.add_resource(
+            provider_voice_id="provider_voice_id",
+            voice_name="x",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            voice = response.parse()
+            assert_matches_type(VoiceResponse, voice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    def test_method_clone(self, client: Retell) -> None:
+        voice = client.voice.clone(
             files=[b"raw file contents"],
             voice_name="x",
         )
@@ -102,8 +150,8 @@ class TestVoice:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_method_add_sources_with_all_params(self, client: Retell) -> None:
-        voice = client.voice.add_sources(
+    def test_method_clone_with_all_params(self, client: Retell) -> None:
+        voice = client.voice.clone(
             files=[b"raw file contents"],
             voice_name="x",
             voice_provider="elevenlabs",
@@ -112,8 +160,8 @@ class TestVoice:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_raw_response_add_sources(self, client: Retell) -> None:
-        response = client.voice.with_raw_response.add_sources(
+    def test_raw_response_clone(self, client: Retell) -> None:
+        response = client.voice.with_raw_response.clone(
             files=[b"raw file contents"],
             voice_name="x",
         )
@@ -125,8 +173,8 @@ class TestVoice:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    def test_streaming_response_add_sources(self, client: Retell) -> None:
-        with client.voice.with_streaming_response.add_sources(
+    def test_streaming_response_clone(self, client: Retell) -> None:
+        with client.voice.with_streaming_response.clone(
             files=[b"raw file contents"],
             voice_name="x",
         ) as response:
@@ -259,8 +307,56 @@ class TestAsyncVoice:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_add_sources(self, async_client: AsyncRetell) -> None:
-        voice = await async_client.voice.add_sources(
+    async def test_method_add_resource(self, async_client: AsyncRetell) -> None:
+        voice = await async_client.voice.add_resource(
+            provider_voice_id="provider_voice_id",
+            voice_name="x",
+        )
+        assert_matches_type(VoiceResponse, voice, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_add_resource_with_all_params(self, async_client: AsyncRetell) -> None:
+        voice = await async_client.voice.add_resource(
+            provider_voice_id="provider_voice_id",
+            voice_name="x",
+            public_user_id="public_user_id",
+            voice_provider="elevenlabs",
+        )
+        assert_matches_type(VoiceResponse, voice, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_raw_response_add_resource(self, async_client: AsyncRetell) -> None:
+        response = await async_client.voice.with_raw_response.add_resource(
+            provider_voice_id="provider_voice_id",
+            voice_name="x",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        voice = await response.parse()
+        assert_matches_type(VoiceResponse, voice, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_streaming_response_add_resource(self, async_client: AsyncRetell) -> None:
+        async with async_client.voice.with_streaming_response.add_resource(
+            provider_voice_id="provider_voice_id",
+            voice_name="x",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            voice = await response.parse()
+            assert_matches_type(VoiceResponse, voice, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_clone(self, async_client: AsyncRetell) -> None:
+        voice = await async_client.voice.clone(
             files=[b"raw file contents"],
             voice_name="x",
         )
@@ -268,8 +364,8 @@ class TestAsyncVoice:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_method_add_sources_with_all_params(self, async_client: AsyncRetell) -> None:
-        voice = await async_client.voice.add_sources(
+    async def test_method_clone_with_all_params(self, async_client: AsyncRetell) -> None:
+        voice = await async_client.voice.clone(
             files=[b"raw file contents"],
             voice_name="x",
             voice_provider="elevenlabs",
@@ -278,8 +374,8 @@ class TestAsyncVoice:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_raw_response_add_sources(self, async_client: AsyncRetell) -> None:
-        response = await async_client.voice.with_raw_response.add_sources(
+    async def test_raw_response_clone(self, async_client: AsyncRetell) -> None:
+        response = await async_client.voice.with_raw_response.clone(
             files=[b"raw file contents"],
             voice_name="x",
         )
@@ -291,8 +387,8 @@ class TestAsyncVoice:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
-    async def test_streaming_response_add_sources(self, async_client: AsyncRetell) -> None:
-        async with async_client.voice.with_streaming_response.add_sources(
+    async def test_streaming_response_clone(self, async_client: AsyncRetell) -> None:
+        async with async_client.voice.with_streaming_response.clone(
             files=[b"raw file contents"],
             voice_name="x",
         ) as response:

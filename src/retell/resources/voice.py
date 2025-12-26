@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import voice_search_params, voice_add_sources_params
+from ..types import voice_clone_params, voice_search_params, voice_add_resource_params
 from .._types import Body, Omit, Query, Headers, NotGiven, FileTypes, SequenceNotStr, omit, not_given
 from .._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
 from .._compat import cached_property
@@ -98,7 +98,58 @@ class VoiceResource(SyncAPIResource):
             cast_to=VoiceListResponse,
         )
 
-    def add_sources(
+    def add_resource(
+        self,
+        *,
+        provider_voice_id: str,
+        voice_name: str,
+        public_user_id: str | Omit = omit,
+        voice_provider: Literal["elevenlabs", "cartesia", "minimax"] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> VoiceResponse:
+        """
+        Add a community voice to the voice library
+
+        Args:
+          provider_voice_id: Voice id assigned by the provider.
+
+          voice_name: A custom name for the voice.
+
+          public_user_id: Required for ElevenLabs only. User id of the voice owner.
+
+          voice_provider: Voice provider to add the voice from.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/add-community-voice",
+            body=maybe_transform(
+                {
+                    "provider_voice_id": provider_voice_id,
+                    "voice_name": voice_name,
+                    "public_user_id": public_user_id,
+                    "voice_provider": voice_provider,
+                },
+                voice_add_resource_params.VoiceAddResourceParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=VoiceResponse,
+        )
+
+    def clone(
         self,
         *,
         files: SequenceNotStr[FileTypes],
@@ -144,7 +195,7 @@ class VoiceResource(SyncAPIResource):
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
             "/clone-voice",
-            body=maybe_transform(body, voice_add_sources_params.VoiceAddSourcesParams),
+            body=maybe_transform(body, voice_clone_params.VoiceCloneParams),
             files=extracted_files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -268,7 +319,58 @@ class AsyncVoiceResource(AsyncAPIResource):
             cast_to=VoiceListResponse,
         )
 
-    async def add_sources(
+    async def add_resource(
+        self,
+        *,
+        provider_voice_id: str,
+        voice_name: str,
+        public_user_id: str | Omit = omit,
+        voice_provider: Literal["elevenlabs", "cartesia", "minimax"] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> VoiceResponse:
+        """
+        Add a community voice to the voice library
+
+        Args:
+          provider_voice_id: Voice id assigned by the provider.
+
+          voice_name: A custom name for the voice.
+
+          public_user_id: Required for ElevenLabs only. User id of the voice owner.
+
+          voice_provider: Voice provider to add the voice from.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/add-community-voice",
+            body=await async_maybe_transform(
+                {
+                    "provider_voice_id": provider_voice_id,
+                    "voice_name": voice_name,
+                    "public_user_id": public_user_id,
+                    "voice_provider": voice_provider,
+                },
+                voice_add_resource_params.VoiceAddResourceParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=VoiceResponse,
+        )
+
+    async def clone(
         self,
         *,
         files: SequenceNotStr[FileTypes],
@@ -314,7 +416,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
             "/clone-voice",
-            body=await async_maybe_transform(body, voice_add_sources_params.VoiceAddSourcesParams),
+            body=await async_maybe_transform(body, voice_clone_params.VoiceCloneParams),
             files=extracted_files,
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -376,8 +478,11 @@ class VoiceResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             voice.list,
         )
-        self.add_sources = to_raw_response_wrapper(
-            voice.add_sources,
+        self.add_resource = to_raw_response_wrapper(
+            voice.add_resource,
+        )
+        self.clone = to_raw_response_wrapper(
+            voice.clone,
         )
         self.search = to_raw_response_wrapper(
             voice.search,
@@ -394,8 +499,11 @@ class AsyncVoiceResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             voice.list,
         )
-        self.add_sources = async_to_raw_response_wrapper(
-            voice.add_sources,
+        self.add_resource = async_to_raw_response_wrapper(
+            voice.add_resource,
+        )
+        self.clone = async_to_raw_response_wrapper(
+            voice.clone,
         )
         self.search = async_to_raw_response_wrapper(
             voice.search,
@@ -412,8 +520,11 @@ class VoiceResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             voice.list,
         )
-        self.add_sources = to_streamed_response_wrapper(
-            voice.add_sources,
+        self.add_resource = to_streamed_response_wrapper(
+            voice.add_resource,
+        )
+        self.clone = to_streamed_response_wrapper(
+            voice.clone,
         )
         self.search = to_streamed_response_wrapper(
             voice.search,
@@ -430,8 +541,11 @@ class AsyncVoiceResourceWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             voice.list,
         )
-        self.add_sources = async_to_streamed_response_wrapper(
-            voice.add_sources,
+        self.add_resource = async_to_streamed_response_wrapper(
+            voice.add_resource,
+        )
+        self.clone = async_to_streamed_response_wrapper(
+            voice.clone,
         )
         self.search = async_to_streamed_response_wrapper(
             voice.search,
