@@ -15,7 +15,7 @@ from ..types import (
     call_register_phone_call_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import is_given, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -24,6 +24,7 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
+from .._constants import DEFAULT_TIMEOUT
 from .._base_client import make_request_options
 from ..types.call_response import CallResponse
 from ..types.web_call_response import WebCallResponse
@@ -194,6 +195,8 @@ class CallResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
+            timeout = 300
         return self._post(
             "/v2/list-calls",
             body=maybe_transform(
@@ -308,6 +311,8 @@ class CallResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
+            timeout = 120
         return self._post(
             "/v2/create-phone-call",
             body=maybe_transform(
@@ -375,6 +380,8 @@ class CallResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
+            timeout = 120
         return self._post(
             "/v2/create-web-call",
             body=maybe_transform(
@@ -628,6 +635,8 @@ class AsyncCallResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
+            timeout = 300
         return await self._post(
             "/v2/list-calls",
             body=await async_maybe_transform(
@@ -742,6 +751,8 @@ class AsyncCallResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
+            timeout = 120
         return await self._post(
             "/v2/create-phone-call",
             body=await async_maybe_transform(
@@ -809,6 +820,8 @@ class AsyncCallResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
+            timeout = 120
         return await self._post(
             "/v2/create-web-call",
             body=await async_maybe_transform(
