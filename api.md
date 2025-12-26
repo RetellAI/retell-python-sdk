@@ -157,13 +157,15 @@ Methods:
 Types:
 
 ```python
-from retell.types import VoiceResponse, VoiceListResponse
+from retell.types import VoiceResponse, VoiceListResponse, VoiceSearchResponse
 ```
 
 Methods:
 
 - <code title="get /get-voice/{voice_id}">client.voice.<a href="./src/retell/resources/voice.py">retrieve</a>(voice_id) -> <a href="./src/retell/types/voice_response.py">VoiceResponse</a></code>
 - <code title="get /list-voices">client.voice.<a href="./src/retell/resources/voice.py">list</a>() -> <a href="./src/retell/types/voice_list_response.py">VoiceListResponse</a></code>
+- <code title="post /clone-voice">client.voice.<a href="./src/retell/resources/voice.py">add_sources</a>(\*\*<a href="src/retell/types/voice_add_sources_params.py">params</a>) -> <a href="./src/retell/types/voice_response.py">VoiceResponse</a></code>
+- <code title="post /search-community-voice">client.voice.<a href="./src/retell/resources/voice.py">search</a>(\*\*<a href="src/retell/types/voice_search_params.py">params</a>) -> <a href="./src/retell/types/voice_search_response.py">VoiceSearchResponse</a></code>
 
 # Concurrency
 

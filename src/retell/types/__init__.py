@@ -29,13 +29,16 @@ from .llm_retrieve_params import LlmRetrieveParams as LlmRetrieveParams
 from .mcp_tool_definition import McpToolDefinition as McpToolDefinition
 from .phone_call_response import PhoneCallResponse as PhoneCallResponse
 from .voice_list_response import VoiceListResponse as VoiceListResponse
+from .voice_search_params import VoiceSearchParams as VoiceSearchParams
 from .agent_retrieve_params import AgentRetrieveParams as AgentRetrieveParams
 from .phone_number_response import PhoneNumberResponse as PhoneNumberResponse
+from .voice_search_response import VoiceSearchResponse as VoiceSearchResponse
 from .chat_agent_list_params import ChatAgentListParams as ChatAgentListParams
 from .knowledge_base_response import KnowledgeBaseResponse as KnowledgeBaseResponse
 from .chat_agent_create_params import ChatAgentCreateParams as ChatAgentCreateParams
 from .chat_agent_list_response import ChatAgentListResponse as ChatAgentListResponse
 from .chat_agent_update_params import ChatAgentUpdateParams as ChatAgentUpdateParams
+from .voice_add_sources_params import VoiceAddSourcesParams as VoiceAddSourcesParams
 from .chat_agent_retrieve_params import ChatAgentRetrieveParams as ChatAgentRetrieveParams
 from .conversation_flow_response import ConversationFlowResponse as ConversationFlowResponse
 from .phone_number_create_params import PhoneNumberCreateParams as PhoneNumberCreateParams
