@@ -213,7 +213,7 @@ client.with_options(max_retries=5).agent.create(
 
 ### Timeouts
 
-By default requests time out after 2 minutes. You can configure this with a `timeout` option,
+By default requests time out after 1 minute. You can configure this with a `timeout` option,
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
@@ -221,7 +221,7 @@ from retell import Retell
 
 # Configure the default for all requests:
 client = Retell(
-    # 20 seconds (default is 2 minutes)
+    # 20 seconds (default is 1 minute)
     timeout=20.0,
 )
 
