@@ -95,6 +95,13 @@ class MessageWithToolCallToolCallInvocationMessage(BaseModel):
     created_timestamp: Optional[int] = None
     """Create timestamp of the message"""
 
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
+
 
 class MessageWithToolCallToolCallResultMessage(BaseModel):
     content: str

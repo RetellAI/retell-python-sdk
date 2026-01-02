@@ -62,6 +62,7 @@ class ChatAgentResource(SyncAPIResource):
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
+        is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -161,6 +162,9 @@ class ChatAgentResource(SyncAPIResource):
               value allowed is 360,000 ms (0.1 hours). The maximum value allowed is
               259,200,000 ms (72 hours). By default, this is set to 3,600,000 (1 hour).
 
+          is_public: Whether the agent is public. When set to true, the agent is available for public
+              agent preview link.
+
           language: Specifies what language (and dialect) the chat will operate in. For instance,
               selecting `en-GB` optimizes for British English. If unset, will use default
               value `en-US`. Select `multi` for multilingual support, currently this supports
@@ -208,6 +212,7 @@ class ChatAgentResource(SyncAPIResource):
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
+                    "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,
@@ -278,6 +283,7 @@ class ChatAgentResource(SyncAPIResource):
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
+        is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -376,6 +382,9 @@ class ChatAgentResource(SyncAPIResource):
               value allowed is 360,000 ms (0.1 hours). The maximum value allowed is
               259,200,000 ms (72 hours). By default, this is set to 3,600,000 (1 hour).
 
+          is_public: Whether the agent is public. When set to true, the agent is available for public
+              agent preview link.
+
           language: Specifies what language (and dialect) the chat will operate in. For instance,
               selecting `en-GB` optimizes for British English. If unset, will use default
               value `en-US`. Select `multi` for multilingual support, currently this supports
@@ -428,6 +437,7 @@ class ChatAgentResource(SyncAPIResource):
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
+                    "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,
@@ -639,6 +649,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
+        is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -738,6 +749,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
               value allowed is 360,000 ms (0.1 hours). The maximum value allowed is
               259,200,000 ms (72 hours). By default, this is set to 3,600,000 (1 hour).
 
+          is_public: Whether the agent is public. When set to true, the agent is available for public
+              agent preview link.
+
           language: Specifies what language (and dialect) the chat will operate in. For instance,
               selecting `en-GB` optimizes for British English. If unset, will use default
               value `en-US`. Select `multi` for multilingual support, currently this supports
@@ -785,6 +799,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
+                    "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,
@@ -857,6 +872,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
+        is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -955,6 +971,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
               value allowed is 360,000 ms (0.1 hours). The maximum value allowed is
               259,200,000 ms (72 hours). By default, this is set to 3,600,000 (1 hour).
 
+          is_public: Whether the agent is public. When set to true, the agent is available for public
+              agent preview link.
+
           language: Specifies what language (and dialect) the chat will operate in. For instance,
               selecting `en-GB` optimizes for British English. If unset, will use default
               value `en-US`. Select `multi` for multilingual support, currently this supports
@@ -1007,6 +1026,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
+                    "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,

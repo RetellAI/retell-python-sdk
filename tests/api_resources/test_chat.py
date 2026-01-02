@@ -176,6 +176,16 @@ class TestChat:
 
     @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
+    def test_method_list_with_all_params(self, client: Retell) -> None:
+        chat = client.chat.list(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+        )
+        assert_matches_type(ChatListResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
         response = client.chat.with_raw_response.list()
 
@@ -482,6 +492,16 @@ class TestAsyncChat:
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.list()
+        assert_matches_type(ChatListResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Prism tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
+        chat = await async_client.chat.list(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+        )
         assert_matches_type(ChatListResponse, chat, path=["response"])
 
     @pytest.mark.skip(reason="Prism tests are disabled")

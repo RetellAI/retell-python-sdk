@@ -74,6 +74,7 @@ class AgentResource(SyncAPIResource):
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
+        is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -307,6 +308,9 @@ class AgentResource(SyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
+          is_public: Whether the agent is public. When set to true, the agent is available for public
+              agent preview link.
+
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
@@ -442,6 +446,7 @@ class AgentResource(SyncAPIResource):
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
+                    "is_public": is_public,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
@@ -546,6 +551,7 @@ class AgentResource(SyncAPIResource):
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
+        is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -776,6 +782,9 @@ class AgentResource(SyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
+          is_public: Whether the agent is public. When set to true, the agent is available for public
+              agent preview link.
+
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
@@ -918,6 +927,7 @@ class AgentResource(SyncAPIResource):
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
+                    "is_public": is_public,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
@@ -1166,6 +1176,7 @@ class AsyncAgentResource(AsyncAPIResource):
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
+        is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -1399,6 +1410,9 @@ class AsyncAgentResource(AsyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
+          is_public: Whether the agent is public. When set to true, the agent is available for public
+              agent preview link.
+
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
@@ -1534,6 +1548,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
+                    "is_public": is_public,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
@@ -1638,6 +1653,7 @@ class AsyncAgentResource(AsyncAPIResource):
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
+        is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -1868,6 +1884,9 @@ class AsyncAgentResource(AsyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
+          is_public: Whether the agent is public. When set to true, the agent is available for public
+              agent preview link.
+
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
@@ -2010,6 +2029,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
+                    "is_public": is_public,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,

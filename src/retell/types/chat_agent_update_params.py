@@ -60,6 +60,12 @@ class ChatAgentUpdateParams(TypedDict, total=False):
     is 259,200,000 ms (72 hours). By default, this is set to 3,600,000 (1 hour).
     """
 
+    is_public: Optional[bool]
+    """Whether the agent is public.
+
+    When set to true, the agent is available for public agent preview link.
+    """
+
     language: Literal[
         "en-US",
         "en-IN",

@@ -8,6 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    chat_list_params,
     chat_create_params,
     chat_update_params,
     chat_create_sms_chat_params,
@@ -206,6 +207,9 @@ class ChatResource(SyncAPIResource):
     def list(
         self,
         *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -213,13 +217,47 @@ class ChatResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatListResponse:
-        """List all chats"""
+        """List all chats
+
+        Args:
+          limit: Limit the number of chats returned.
+
+        Default 50, Max 1000. To retrieve more than
+              1000, use pagination_key to continue fetching the next page.
+
+          pagination_key: The pagination key to continue fetching the next page of chats. Pagination key
+              is represented by a chat id here, and it's exclusive (not included in the
+              fetched chats). The last chat id from the list chats is usually used as
+              pagination key here. If not set, will start from the beginning.
+
+          sort_order: The chats will be sorted by `start_timestamp`, whether to return the chats in
+              ascending or descending order.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 300
         return self._get(
             "/list-chat",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "sort_order": sort_order,
+                    },
+                    chat_list_params.ChatListParams,
+                ),
             ),
             cast_to=ChatListResponse,
         )
@@ -547,6 +585,9 @@ class AsyncChatResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -554,13 +595,47 @@ class AsyncChatResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatListResponse:
-        """List all chats"""
+        """List all chats
+
+        Args:
+          limit: Limit the number of chats returned.
+
+        Default 50, Max 1000. To retrieve more than
+              1000, use pagination_key to continue fetching the next page.
+
+          pagination_key: The pagination key to continue fetching the next page of chats. Pagination key
+              is represented by a chat id here, and it's exclusive (not included in the
+              fetched chats). The last chat id from the list chats is usually used as
+              pagination key here. If not set, will start from the beginning.
+
+          sort_order: The chats will be sorted by `start_timestamp`, whether to return the chats in
+              ascending or descending order.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 300
         return await self._get(
             "/list-chat",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "sort_order": sort_order,
+                    },
+                    chat_list_params.ChatListParams,
+                ),
             ),
             cast_to=ChatListResponse,
         )
