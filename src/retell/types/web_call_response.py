@@ -417,6 +417,13 @@ class ScrubbedTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
     tool_call_id: str
     """Tool call id, globally unique."""
 
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
+
 
 class ScrubbedTranscriptWithToolCallToolCallResultUtterance(BaseModel):
     content: str
@@ -542,6 +549,13 @@ class TranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
 
     tool_call_id: str
     """Tool call id, globally unique."""
+
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
 
 
 class TranscriptWithToolCallToolCallResultUtterance(BaseModel):

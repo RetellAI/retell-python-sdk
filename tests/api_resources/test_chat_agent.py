@@ -47,6 +47,7 @@ class TestChatAgent:
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
+            is_public=False,
             language="en-US",
             opt_in_signed_url=True,
             pii_config={
@@ -171,6 +172,7 @@ class TestChatAgent:
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
+            is_public=False,
             language="en-US",
             opt_in_signed_url=True,
             pii_config={
@@ -427,6 +429,7 @@ class TestAsyncChatAgent:
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
+            is_public=False,
             language="en-US",
             opt_in_signed_url=True,
             pii_config={
@@ -551,6 +554,7 @@ class TestAsyncChatAgent:
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
+            is_public=False,
             language="en-US",
             opt_in_signed_url=True,
             pii_config={

@@ -405,6 +405,12 @@ class AgentResponse(BaseModel):
     agent would never be interrupted.
     """
 
+    is_public: Optional[bool] = None
+    """Whether the agent is public.
+
+    When set to true, the agent is available for public agent preview link.
+    """
+
     is_published: Optional[bool] = None
     """Whether the agent is published."""
 

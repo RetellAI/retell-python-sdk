@@ -438,6 +438,12 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     agent would never be interrupted.
     """
 
+    is_public: Optional[bool]
+    """Whether the agent is public.
+
+    When set to true, the agent is available for public agent preview link.
+    """
+
     language: Literal[
         "en-US",
         "en-IN",
