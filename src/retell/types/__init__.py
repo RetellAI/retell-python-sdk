@@ -9,6 +9,7 @@ from .agent_response import AgentResponse as AgentResponse
 from .voice_response import VoiceResponse as VoiceResponse
 from .llm_list_params import LlmListParams as LlmListParams
 from .call_list_params import CallListParams as CallListParams
+from .chat_list_params import ChatListParams as ChatListParams
 from .agent_list_params import AgentListParams as AgentListParams
 from .llm_create_params import LlmCreateParams as LlmCreateParams
 from .llm_list_response import LlmListResponse as LlmListResponse
