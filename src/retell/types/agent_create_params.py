@@ -394,6 +394,7 @@ class AgentCreateParams(TypedDict, total=False):
             "eleven_multilingual_v2",
             "sonic-2",
             "sonic-3",
+            "sonic-3-latest",
             "sonic-turbo",
             "tts-1",
             "gpt-4o-mini-tts",
