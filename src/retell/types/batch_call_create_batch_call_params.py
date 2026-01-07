@@ -656,6 +656,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "eleven_multilingual_v2",
             "sonic-2",
             "sonic-3",
+            "sonic-3-latest",
             "sonic-turbo",
             "tts-1",
             "gpt-4o-mini-tts",
@@ -950,6 +951,14 @@ class Task(TypedDict, total=False):
     This can be useful when you want to dial to internal pseudo numbers. This only
     applies when you are using custom telephony and does not apply when you are
     using Retell Telephony. If omitted, the default value is false.
+    """
+
+    metadata: object
+    """An arbitrary object for storage purpose only.
+
+    You can put anything here like your internal customer id associated with the
+    chat. Not used for processing. You can later get this field from the call
+    object.
     """
 
     override_agent_id: str
