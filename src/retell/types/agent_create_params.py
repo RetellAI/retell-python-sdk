@@ -14,6 +14,8 @@ __all__ = [
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
     "CustomSttConfig",
+    "IvrOption",
+    "IvrOptionAction",
     "PiiConfig",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
@@ -193,6 +195,13 @@ class AgentCreateParams(TypedDict, total=False):
     """Whether the agent is public.
 
     When set to true, the agent is available for public agent preview link.
+    """
+
+    ivr_option: Optional[IvrOption]
+    """
+    If this option is set, the call will try to detect IVR in the first 3 minutes of
+    the call. Actions defined will be applied when the IVR is detected. Set this to
+    null to disable IVR detection.
     """
 
     language: Literal[
@@ -514,6 +523,18 @@ class CustomSttConfig(TypedDict, total=False):
 
     provider: Required[Literal["azure", "deepgram"]]
     """The STT provider to use."""
+
+
+class IvrOptionAction(TypedDict, total=False):
+    type: Required[Literal["hangup"]]
+
+
+class IvrOption(TypedDict, total=False):
+    """
+    If this option is set, the call will try to detect IVR in the first 3 minutes of the call. Actions defined will be applied when the IVR is detected. Set this to null to disable IVR detection.
+    """
+
+    action: Required[IvrOptionAction]
 
 
 class PiiConfig(TypedDict, total=False):
