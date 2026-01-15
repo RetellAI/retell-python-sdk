@@ -12,6 +12,8 @@ __all__ = [
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
     "CustomSttConfig",
+    "IvrOption",
+    "IvrOptionAction",
     "PiiConfig",
     "PostCallAnalysisData",
     "PostCallAnalysisDataStringAnalysisData",
@@ -74,6 +76,18 @@ class CustomSttConfig(BaseModel):
 
     provider: Literal["azure", "deepgram"]
     """The STT provider to use."""
+
+
+class IvrOptionAction(BaseModel):
+    type: Literal["hangup"]
+
+
+class IvrOption(BaseModel):
+    """
+    If this option is set, the call will try to detect IVR in the first 3 minutes of the call. Actions defined will be applied when the IVR is detected. Set this to null to disable IVR detection.
+    """
+
+    action: IvrOptionAction
 
 
 class PiiConfig(BaseModel):
@@ -413,6 +427,13 @@ class AgentResponse(BaseModel):
 
     is_published: Optional[bool] = None
     """Whether the agent is published."""
+
+    ivr_option: Optional[IvrOption] = None
+    """
+    If this option is set, the call will try to detect IVR in the first 3 minutes of
+    the call. Actions defined will be applied when the IVR is detected. Set this to
+    null to disable IVR detection.
+    """
 
     language: Optional[
         Literal[
