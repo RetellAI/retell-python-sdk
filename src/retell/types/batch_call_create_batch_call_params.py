@@ -13,6 +13,8 @@ __all__ = [
     "TaskAgentOverride",
     "TaskAgentOverrideAgent",
     "TaskAgentOverrideAgentCustomSttConfig",
+    "TaskAgentOverrideAgentIvrOption",
+    "TaskAgentOverrideAgentIvrOptionAction",
     "TaskAgentOverrideAgentPiiConfig",
     "TaskAgentOverrideAgentPostCallAnalysisData",
     "TaskAgentOverrideAgentPostCallAnalysisDataStringAnalysisData",
@@ -88,6 +90,18 @@ class TaskAgentOverrideAgentCustomSttConfig(TypedDict, total=False):
 
     provider: Required[Literal["azure", "deepgram"]]
     """The STT provider to use."""
+
+
+class TaskAgentOverrideAgentIvrOptionAction(TypedDict, total=False):
+    type: Required[Literal["hangup"]]
+
+
+class TaskAgentOverrideAgentIvrOption(TypedDict, total=False):
+    """
+    If this option is set, the call will try to detect IVR in the first 3 minutes of the call. Actions defined will be applied when the IVR is detected. Set this to null to disable IVR detection.
+    """
+
+    action: Required[TaskAgentOverrideAgentIvrOptionAction]
 
 
 class TaskAgentOverrideAgentPiiConfig(TypedDict, total=False):
@@ -442,6 +456,13 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     """Whether the agent is public.
 
     When set to true, the agent is available for public agent preview link.
+    """
+
+    ivr_option: Optional[TaskAgentOverrideAgentIvrOption]
+    """
+    If this option is set, the call will try to detect IVR in the first 3 minutes of
+    the call. Actions defined will be applied when the IVR is detected. Set this to
+    null to disable IVR detection.
     """
 
     language: Literal[
@@ -957,7 +978,7 @@ class Task(TypedDict, total=False):
     """An arbitrary object for storage purpose only.
 
     You can put anything here like your internal customer id associated with the
-    chat. Not used for processing. You can later get this field from the call
+    call. Not used for processing. You can later get this field from the call
     object.
     """
 

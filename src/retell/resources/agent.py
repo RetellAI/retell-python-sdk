@@ -75,6 +75,7 @@ class AgentResource(SyncAPIResource):
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
+        ivr_option: Optional[agent_create_params.IvrOption] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -312,6 +313,10 @@ class AgentResource(SyncAPIResource):
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
 
+          ivr_option: If this option is set, the call will try to detect IVR in the first 3 minutes of
+              the call. Actions defined will be applied when the IVR is detected. Set this to
+              null to disable IVR detection.
+
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
@@ -448,6 +453,7 @@ class AgentResource(SyncAPIResource):
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
+                    "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
@@ -553,6 +559,7 @@ class AgentResource(SyncAPIResource):
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
+        ivr_option: Optional[agent_update_params.IvrOption] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -787,6 +794,10 @@ class AgentResource(SyncAPIResource):
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
 
+          ivr_option: If this option is set, the call will try to detect IVR in the first 3 minutes of
+              the call. Actions defined will be applied when the IVR is detected. Set this to
+              null to disable IVR detection.
+
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
@@ -930,6 +941,7 @@ class AgentResource(SyncAPIResource):
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
+                    "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
@@ -1179,6 +1191,7 @@ class AsyncAgentResource(AsyncAPIResource):
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
+        ivr_option: Optional[agent_create_params.IvrOption] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -1416,6 +1429,10 @@ class AsyncAgentResource(AsyncAPIResource):
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
 
+          ivr_option: If this option is set, the call will try to detect IVR in the first 3 minutes of
+              the call. Actions defined will be applied when the IVR is detected. Set this to
+              null to disable IVR detection.
+
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
@@ -1552,6 +1569,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
+                    "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
@@ -1657,6 +1675,7 @@ class AsyncAgentResource(AsyncAPIResource):
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
+        ivr_option: Optional[agent_update_params.IvrOption] | Omit = omit,
         language: Literal[
             "en-US",
             "en-IN",
@@ -1891,6 +1910,10 @@ class AsyncAgentResource(AsyncAPIResource):
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
 
+          ivr_option: If this option is set, the call will try to detect IVR in the first 3 minutes of
+              the call. Actions defined will be applied when the IVR is detected. Set this to
+              null to disable IVR detection.
+
           language: Specifies what language (and dialect) the speech recognition will operate in.
               For instance, selecting `en-GB` optimizes speech recognition for British
               English. If unset, will use default value `en-US`. Select `multi` for
@@ -2034,6 +2057,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "fallback_voice_ids": fallback_voice_ids,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
+                    "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
                     "normalize_for_speech": normalize_for_speech,
