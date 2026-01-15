@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.9.0 (2026-01-15)
+
+Full Changelog: [v5.8.0...v5.9.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.8.0...v5.9.0)
+
+### Features
+
+* **api:** api update ([c61099d](https://github.com/RetellAI/retell-python-sdk/commit/c61099dd740a54e03363304ebd13a17069c28466))
+* **client:** add support for binary request streaming ([09485ad](https://github.com/RetellAI/retell-python-sdk/commit/09485adc30476d0f7ae8677356cf72ad1393af8f))
+
 ## 5.8.0 (2026-01-07)
 
 Full Changelog: [v5.7.0...v5.8.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.7.0...v5.8.0)
