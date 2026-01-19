@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Dict, List, Iterable
 from typing_extensions import Literal, TypedDict
 
 from .._types import SequenceNotStr
@@ -131,6 +131,12 @@ class FilterCriteria(TypedDict, total=False):
     duration_ms: FilterCriteriaDurationMs
     """Only retrieve calls with specific range of duration(s)."""
 
+    dynamic_variables: Dict[str, SequenceNotStr[str]]
+    """
+    Filter by dynamic variables using dot notation (e.g., `dynamic_variables.name`).
+    Values are matched exactly as strings.
+    """
+
     e2e_latency_p50: FilterCriteriaE2ELatencyP50
 
     end_timestamp: FilterCriteriaEndTimestamp
@@ -141,6 +147,12 @@ class FilterCriteria(TypedDict, total=False):
 
     in_voicemail: Iterable[bool]
     """Only retrieve calls that are in voicemail or not in voicemail."""
+
+    metadata: Dict[str, SequenceNotStr[str]]
+    """
+    Filter by metadata fields using dot notation (e.g., `metadata.customer_id`).
+    Values are matched exactly as strings.
+    """
 
     start_timestamp: FilterCriteriaStartTimestamp
     """Only retrieve calls with specific range of start timestamp(s)."""

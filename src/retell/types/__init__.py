@@ -36,6 +36,7 @@ from .agent_retrieve_params import AgentRetrieveParams as AgentRetrieveParams
 from .phone_number_response import PhoneNumberResponse as PhoneNumberResponse
 from .voice_search_response import VoiceSearchResponse as VoiceSearchResponse
 from .chat_agent_list_params import ChatAgentListParams as ChatAgentListParams
+from .test_case_job_response import TestCaseJobResponse as TestCaseJobResponse
 from .knowledge_base_response import KnowledgeBaseResponse as KnowledgeBaseResponse
 from .chat_agent_create_params import ChatAgentCreateParams as ChatAgentCreateParams
 from .chat_agent_list_response import ChatAgentListResponse as ChatAgentListResponse
@@ -52,11 +53,15 @@ from .call_create_web_call_params import CallCreateWebCallParams as CallCreateWe
 from .chat_create_sms_chat_params import ChatCreateSMSChatParams as ChatCreateSMSChatParams
 from .knowledge_base_create_params import KnowledgeBaseCreateParams as KnowledgeBaseCreateParams
 from .knowledge_base_list_response import KnowledgeBaseListResponse as KnowledgeBaseListResponse
+from .test_list_batch_tests_params import TestListBatchTestsParams as TestListBatchTestsParams
+from .test_list_test_runs_response import TestListTestRunsResponse as TestListTestRunsResponse
 from .call_create_phone_call_params import CallCreatePhoneCallParams as CallCreatePhoneCallParams
 from .concurrency_retrieve_response import ConcurrencyRetrieveResponse as ConcurrencyRetrieveResponse
 from .conversation_flow_list_params import ConversationFlowListParams as ConversationFlowListParams
 from .mcp_tool_get_mcp_tools_params import McpToolGetMcpToolsParams as McpToolGetMcpToolsParams
+from .test_case_definition_response import TestCaseDefinitionResponse as TestCaseDefinitionResponse
 from .test_create_batch_test_params import TestCreateBatchTestParams as TestCreateBatchTestParams
+from .test_list_batch_tests_response import TestListBatchTestsResponse as TestListBatchTestsResponse
 from .call_register_phone_call_params import CallRegisterPhoneCallParams as CallRegisterPhoneCallParams
 from .conversation_flow_create_params import ConversationFlowCreateParams as ConversationFlowCreateParams
 from .conversation_flow_list_response import ConversationFlowListResponse as ConversationFlowListResponse
@@ -69,6 +74,18 @@ from .chat_create_chat_completion_params import ChatCreateChatCompletionParams a
 from .batch_call_create_batch_call_params import BatchCallCreateBatchCallParams as BatchCallCreateBatchCallParams
 from .chat_create_chat_completion_response import ChatCreateChatCompletionResponse as ChatCreateChatCompletionResponse
 from .conversation_flow_component_response import ConversationFlowComponentResponse as ConversationFlowComponentResponse
+from .test_list_test_case_definitions_params import (
+    TestListTestCaseDefinitionsParams as TestListTestCaseDefinitionsParams,
+)
+from .test_create_test_case_definition_params import (
+    TestCreateTestCaseDefinitionParams as TestCreateTestCaseDefinitionParams,
+)
+from .test_update_test_case_definition_params import (
+    TestUpdateTestCaseDefinitionParams as TestUpdateTestCaseDefinitionParams,
+)
+from .test_list_test_case_definitions_response import (
+    TestListTestCaseDefinitionsResponse as TestListTestCaseDefinitionsResponse,
+)
 from .conversation_flow_component_create_params import (
     ConversationFlowComponentCreateParams as ConversationFlowComponentCreateParams,
 )

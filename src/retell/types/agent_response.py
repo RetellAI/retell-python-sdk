@@ -627,6 +627,13 @@ class AgentResponse(BaseModel):
     setting is a no-op. Default to general.
     """
 
+    voice_emotion: Optional[str] = None
+    """Controls the emotional tone of the agent's voice.
+
+    Currently supported for Cartesia and Minimax TTS providers. If unset, no emotion
+    will be used.
+    """
+
     voice_model: Optional[
         Literal[
             "eleven_turbo_v2",

@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.10.0 (2026-01-19)
+
+Full Changelog: [v5.9.0...v5.10.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.9.0...v5.10.0)
+
+### Features
+
+* **api:** api update ([5fb1ee5](https://github.com/RetellAI/retell-python-sdk/commit/5fb1ee5d2399c6aa2c5f7ae7be5d9112442777fb))
+* **api:** api update ([c330aab](https://github.com/RetellAI/retell-python-sdk/commit/c330aabd867fd37b4191b30f141eb018964eed94))
+
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([90aae9c](https://github.com/RetellAI/retell-python-sdk/commit/90aae9c66c2a5203da40df71fb41edcbc66b1670))
+
 ## 5.9.0 (2026-01-15)
 
 Full Changelog: [v5.8.0...v5.9.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.8.0...v5.9.0)
