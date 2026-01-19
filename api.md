@@ -197,12 +197,28 @@ Methods:
 Types:
 
 ```python
-from retell.types import BatchTestResponse
+from retell.types import (
+    BatchTestResponse,
+    TestCaseDefinitionResponse,
+    TestCaseJobResponse,
+    TestListBatchTestsResponse,
+    TestListTestCaseDefinitionsResponse,
+    TestListTestRunsResponse,
+)
 ```
 
 Methods:
 
 - <code title="post /create-batch-test">client.tests.<a href="./src/retell/resources/tests.py">create_batch_test</a>(\*\*<a href="src/retell/types/test_create_batch_test_params.py">params</a>) -> <a href="./src/retell/types/batch_test_response.py">BatchTestResponse</a></code>
+- <code title="post /create-test-case-definition">client.tests.<a href="./src/retell/resources/tests.py">create_test_case_definition</a>(\*\*<a href="src/retell/types/test_create_test_case_definition_params.py">params</a>) -> <a href="./src/retell/types/test_case_definition_response.py">TestCaseDefinitionResponse</a></code>
+- <code title="delete /delete-test-case-definition/{test_case_definition_id}">client.tests.<a href="./src/retell/resources/tests.py">delete_test_case_definition</a>(test_case_definition_id) -> None</code>
+- <code title="get /get-batch-test/{test_case_batch_job_id}">client.tests.<a href="./src/retell/resources/tests.py">get_batch_test</a>(test_case_batch_job_id) -> <a href="./src/retell/types/batch_test_response.py">BatchTestResponse</a></code>
+- <code title="get /get-test-case-definition/{test_case_definition_id}">client.tests.<a href="./src/retell/resources/tests.py">get_test_case_definition</a>(test_case_definition_id) -> <a href="./src/retell/types/test_case_definition_response.py">TestCaseDefinitionResponse</a></code>
+- <code title="get /get-test-run/{test_case_job_id}">client.tests.<a href="./src/retell/resources/tests.py">get_test_run</a>(test_case_job_id) -> <a href="./src/retell/types/test_case_job_response.py">TestCaseJobResponse</a></code>
+- <code title="get /list-batch-tests">client.tests.<a href="./src/retell/resources/tests.py">list_batch_tests</a>(\*\*<a href="src/retell/types/test_list_batch_tests_params.py">params</a>) -> <a href="./src/retell/types/test_list_batch_tests_response.py">TestListBatchTestsResponse</a></code>
+- <code title="get /list-test-case-definitions">client.tests.<a href="./src/retell/resources/tests.py">list_test_case_definitions</a>(\*\*<a href="src/retell/types/test_list_test_case_definitions_params.py">params</a>) -> <a href="./src/retell/types/test_list_test_case_definitions_response.py">TestListTestCaseDefinitionsResponse</a></code>
+- <code title="get /list-test-runs/{test_case_batch_job_id}">client.tests.<a href="./src/retell/resources/tests.py">list_test_runs</a>(test_case_batch_job_id) -> <a href="./src/retell/types/test_list_test_runs_response.py">TestListTestRunsResponse</a></code>
+- <code title="put /update-test-case-definition/{test_case_definition_id}">client.tests.<a href="./src/retell/resources/tests.py">update_test_case_definition</a>(test_case_definition_id, \*\*<a href="src/retell/types/test_update_test_case_definition_params.py">params</a>) -> <a href="./src/retell/types/test_case_definition_response.py">TestCaseDefinitionResponse</a></code>
 
 # McpTool
 
