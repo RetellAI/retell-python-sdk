@@ -175,6 +175,7 @@ class AgentResource(SyncAPIResource):
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
+        voice_emotion: Optional[str] | Omit = omit,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -381,6 +382,9 @@ class AgentResource(SyncAPIResource):
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
 
+          voice_emotion: Controls the emotional tone of the agent's voice. Currently supported for
+              Cartesia and Minimax TTS providers. If unset, no emotion will be used.
+
           voice_model: Select the voice model used for the selected voice. Each provider has a set of
               available voice models. Set to null to remove voice model selection, and default
               ones will apply. Check out dashboard for more details of each voice model.
@@ -471,6 +475,7 @@ class AgentResource(SyncAPIResource):
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
+                    "voice_emotion": voice_emotion,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -660,6 +665,7 @@ class AgentResource(SyncAPIResource):
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
+        voice_emotion: Optional[str] | Omit = omit,
         voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
@@ -866,6 +872,9 @@ class AgentResource(SyncAPIResource):
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
 
+          voice_emotion: Controls the emotional tone of the agent's voice. Currently supported for
+              Cartesia and Minimax TTS providers. If unset, no emotion will be used.
+
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
@@ -960,6 +969,7 @@ class AgentResource(SyncAPIResource):
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
+                    "voice_emotion": voice_emotion,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -1291,6 +1301,7 @@ class AsyncAgentResource(AsyncAPIResource):
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
+        voice_emotion: Optional[str] | Omit = omit,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -1497,6 +1508,9 @@ class AsyncAgentResource(AsyncAPIResource):
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
 
+          voice_emotion: Controls the emotional tone of the agent's voice. Currently supported for
+              Cartesia and Minimax TTS providers. If unset, no emotion will be used.
+
           voice_model: Select the voice model used for the selected voice. Each provider has a set of
               available voice models. Set to null to remove voice model selection, and default
               ones will apply. Check out dashboard for more details of each voice model.
@@ -1587,6 +1601,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
+                    "voice_emotion": voice_emotion,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -1776,6 +1791,7 @@ class AsyncAgentResource(AsyncAPIResource):
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
+        voice_emotion: Optional[str] | Omit = omit,
         voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
@@ -1982,6 +1998,9 @@ class AsyncAgentResource(AsyncAPIResource):
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
 
+          voice_emotion: Controls the emotional tone of the agent's voice. Currently supported for
+              Cartesia and Minimax TTS providers. If unset, no emotion will be used.
+
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
 
@@ -2076,6 +2095,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
+                    "voice_emotion": voice_emotion,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
