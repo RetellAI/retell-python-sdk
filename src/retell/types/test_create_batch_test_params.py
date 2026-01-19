@@ -22,12 +22,6 @@ class TestCreateBatchTestParams(TypedDict, total=False):
     test_case_definition_ids: Required[SequenceNotStr[str]]
     """Array of test case definition IDs to run"""
 
-    reserved_concurrency: int
-    """
-    Number of concurrency reserved for all other calls that are not triggered by
-    batch calls, such as inbound calls.
-    """
-
 
 class ResponseEngineResponseEngineRetellLm(TypedDict, total=False):
     llm_id: Required[str]
