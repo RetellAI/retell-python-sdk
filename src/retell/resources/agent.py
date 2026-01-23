@@ -68,7 +68,7 @@ class AgentResource(SyncAPIResource):
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_create_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
-        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        denoising_mode: Literal["none", "noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
@@ -175,7 +175,8 @@ class AgentResource(SyncAPIResource):
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
-        voice_emotion: Optional[str] | Omit = omit,
+        voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
+        | Omit = omit,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -286,7 +287,8 @@ class AgentResource(SyncAPIResource):
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
 
-          denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
+          denoising_mode: If set, determines what denoising mode to use. Use "none" to bypass all audio
+              denoising. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
@@ -557,7 +559,7 @@ class AgentResource(SyncAPIResource):
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_update_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
-        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        denoising_mode: Literal["none", "noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
@@ -665,7 +667,8 @@ class AgentResource(SyncAPIResource):
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
-        voice_emotion: Optional[str] | Omit = omit,
+        voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
+        | Omit = omit,
         voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
@@ -772,7 +775,8 @@ class AgentResource(SyncAPIResource):
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
 
-          denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
+          denoising_mode: If set, determines what denoising mode to use. Use "none" to bypass all audio
+              denoising. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
@@ -1194,7 +1198,7 @@ class AsyncAgentResource(AsyncAPIResource):
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_create_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
-        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        denoising_mode: Literal["none", "noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
@@ -1301,7 +1305,8 @@ class AsyncAgentResource(AsyncAPIResource):
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
-        voice_emotion: Optional[str] | Omit = omit,
+        voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
+        | Omit = omit,
         voice_model: Optional[
             Literal[
                 "eleven_turbo_v2",
@@ -1412,7 +1417,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
 
-          denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
+          denoising_mode: If set, determines what denoising mode to use. Use "none" to bypass all audio
+              denoising. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
@@ -1683,7 +1689,7 @@ class AsyncAgentResource(AsyncAPIResource):
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_update_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
-        denoising_mode: Literal["noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        denoising_mode: Literal["none", "noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
         enable_backchannel: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
@@ -1791,7 +1797,8 @@ class AsyncAgentResource(AsyncAPIResource):
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
-        voice_emotion: Optional[str] | Omit = omit,
+        voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
+        | Omit = omit,
         voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
@@ -1898,7 +1905,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
 
-          denoising_mode: If set, determines what denoising mode to use. Default to noise-cancellation.
+          denoising_mode: If set, determines what denoising mode to use. Use "none" to bypass all audio
+              denoising. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
