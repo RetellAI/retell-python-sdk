@@ -11,6 +11,18 @@ __all__ = ["PhoneNumberUpdateParams"]
 
 
 class PhoneNumberUpdateParams(TypedDict, total=False):
+    allowed_inbound_country_list: Optional[SequenceNotStr[str]]
+    """List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed.
+
+    If not set or empty, calls from all countries are allowed.
+    """
+
+    allowed_outbound_country_list: Optional[SequenceNotStr[str]]
+    """List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed.
+
+    If not set or empty, calls to all countries are allowed.
+    """
+
     auth_password: str
     """
     The password used for authentication for the SIP trunk to update for the phone
@@ -36,12 +48,6 @@ class PhoneNumberUpdateParams(TypedDict, total=False):
     If not provided, will default to latest version.
     """
 
-    inbound_allowed_countries: Optional[SequenceNotStr[str]]
-    """List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed.
-
-    If not set or empty, calls from all countries are allowed.
-    """
-
     inbound_webhook_url: Optional[str]
     """
     If set, will send a webhook for inbound calls, where you can to override agent
@@ -63,12 +69,6 @@ class PhoneNumberUpdateParams(TypedDict, total=False):
     """Version of the outbound agent to bind to the number.
 
     If not provided, will default to latest version.
-    """
-
-    outbound_allowed_countries: Optional[SequenceNotStr[str]]
-    """List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed.
-
-    If not set or empty, calls to all countries are allowed.
     """
 
     termination_uri: str

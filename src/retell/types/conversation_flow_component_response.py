@@ -1196,11 +1196,21 @@ class NodeTransferCallNodeTransferOptionTransferOptionColdTransfer(BaseModel):
     type: Literal["cold_transfer"]
     """The type of the transfer."""
 
+    cold_transfer_mode: Optional[Literal["sip_refer", "sip_invite"]] = None
+    """The mode of the cold transfer.
+
+    If set to `sip_refer`, will use SIP REFER to transfer the call. If set to
+    `sip_invite`, will use SIP INVITE to transfer the call.
+    """
+
     show_transferee_as_caller: Optional[bool] = None
     """
     If set to true, will show transferee (the user, not the AI agent) as caller when
-    transferring, requires the telephony side to support caller id override. Retell
-    Twilio numbers support this option.
+    transferring. Requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option. This parameter takes effect only when
+    `cold_transfer_mode` is set to `sip_invite`. When using `sip_refer`, this option
+    is not available. Retell Twilio numbers always use user's number as the caller
+    id when using `sip refer` cold transfer mode.
     """
 
 

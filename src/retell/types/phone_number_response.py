@@ -38,6 +38,18 @@ class PhoneNumberResponse(BaseModel):
     phone_number_type: Literal["retell-twilio", "retell-telnyx", "custom"]
     """Type of the phone number."""
 
+    allowed_inbound_country_list: Optional[List[str]] = None
+    """List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed.
+
+    If not set or empty, calls from all countries are allowed.
+    """
+
+    allowed_outbound_country_list: Optional[List[str]] = None
+    """List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed.
+
+    If not set or empty, calls to all countries are allowed.
+    """
+
     area_code: Optional[int] = None
     """Area code of the number to obtain.
 
@@ -55,12 +67,6 @@ class PhoneNumberResponse(BaseModel):
     """Version of the inbound agent to bind to the number.
 
     If not provided, will default to latest version.
-    """
-
-    inbound_allowed_countries: Optional[List[str]] = None
-    """List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed.
-
-    If not set or empty, calls from all countries are allowed.
     """
 
     inbound_webhook_url: Optional[str] = None
@@ -84,12 +90,6 @@ class PhoneNumberResponse(BaseModel):
     """Version of the outbound agent to bind to the number.
 
     If not provided, will default to latest version.
-    """
-
-    outbound_allowed_countries: Optional[List[str]] = None
-    """List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed.
-
-    If not set or empty, calls to all countries are allowed.
     """
 
     phone_number_pretty: Optional[str] = None

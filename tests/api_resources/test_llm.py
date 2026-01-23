@@ -91,6 +91,7 @@ class TestLlm:
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
+                                "cold_transfer_mode": "sip_refer",
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
@@ -281,6 +282,7 @@ class TestLlm:
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
+                                "cold_transfer_mode": "sip_refer",
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
@@ -514,6 +516,7 @@ class TestAsyncLlm:
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
+                                "cold_transfer_mode": "sip_refer",
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
@@ -704,6 +707,7 @@ class TestAsyncLlm:
                             },
                             "transfer_option": {
                                 "type": "cold_transfer",
+                                "cold_transfer_mode": "sip_refer",
                                 "show_transferee_as_caller": False,
                             },
                             "type": "transfer_call",
