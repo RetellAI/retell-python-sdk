@@ -377,8 +377,11 @@ class AgentResponse(BaseModel):
       apply.
     """
 
-    denoising_mode: Optional[Literal["noise-cancellation", "noise-and-background-speech-cancellation"]] = None
-    """If set, determines what denoising mode to use. Default to noise-cancellation."""
+    denoising_mode: Optional[Literal["none", "noise-cancellation", "noise-and-background-speech-cancellation"]] = None
+    """If set, determines what denoising mode to use.
+
+    Use "none" to bypass all audio denoising. Default to noise-cancellation.
+    """
 
     enable_backchannel: Optional[bool] = None
     """
@@ -627,7 +630,7 @@ class AgentResponse(BaseModel):
     setting is a no-op. Default to general.
     """
 
-    voice_emotion: Optional[str] = None
+    voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]] = None
     """Controls the emotional tone of the agent's voice.
 
     Currently supported for Cartesia and Minimax TTS providers. If unset, no emotion

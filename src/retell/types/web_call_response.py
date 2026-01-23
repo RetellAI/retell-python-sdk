@@ -820,3 +820,9 @@ class WebCallResponse(BaseModel):
     ";transport=..." portion (if transport is known) where the transport type can be
     "tls", "tcp" or "udp".
     """
+
+    transfer_end_timestamp: Optional[int] = None
+    """Transfer end timestamp (milliseconds since epoch) of the call.
+
+    Available after transfer call ends.
+    """

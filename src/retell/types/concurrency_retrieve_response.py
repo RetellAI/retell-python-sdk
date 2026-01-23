@@ -11,6 +11,20 @@ class ConcurrencyRetrieveResponse(BaseModel):
     base_concurrency: Optional[int] = None
     """The free concurrency limit of the org."""
 
+    concurrency_burst_enabled: Optional[bool] = None
+    """Whether burst concurrency mode is enabled.
+
+    When enabled, allows the org to exceed their normal concurrency limit with a
+    surcharge.
+    """
+
+    concurrency_burst_limit: Optional[int] = None
+    """The maximum concurrency limit when burst mode is enabled.
+
+    This is calculated as min(3x normal limit, normal limit + 300). Returns 0 if
+    burst mode is disabled.
+    """
+
     concurrency_limit: Optional[int] = None
     """
     The total concurrency limit (at max how many ongoing calls one can make) of the
