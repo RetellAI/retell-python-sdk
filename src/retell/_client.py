@@ -98,6 +98,7 @@ class Retell(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous Retell client instance."""
         self.api_key = api_key
+        self.verify = verify  # type: ignore
 
         if base_url is None:
             base_url = os.environ.get("RETELL_BASE_URL")
@@ -206,8 +207,6 @@ class Retell(SyncAPIClient):
     @cached_property
     def with_streaming_response(self) -> RetellWithStreamedResponse:
         return RetellWithStreamedResponse(self)
-
-        self.verify = verify  # type: ignore
 
     @property
     @override
