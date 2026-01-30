@@ -1,5 +1,23 @@
 # Changelog
 
+## 5.11.0 (2026-01-30)
+
+Full Changelog: [v5.10.0...v5.11.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.10.0...v5.11.0)
+
+### Features
+
+* **api:** api update ([1561c6f](https://github.com/RetellAI/retell-python-sdk/commit/1561c6fda52082ac5fce51ae4f94b2ad5de4e53b))
+
+
+### Bug Fixes
+
+* move verify back into init ([bed6088](https://github.com/RetellAI/retell-python-sdk/commit/bed60887fe24dd4f62151d53cc515ce17cc9ea0f))
+
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([46aaa5d](https://github.com/RetellAI/retell-python-sdk/commit/46aaa5de15bf0b42c48ceecf133c40c08a17acd9))
+
 ## 5.10.0 (2026-01-19)
 
 Full Changelog: [v5.9.0...v5.10.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.9.0...v5.10.0)
