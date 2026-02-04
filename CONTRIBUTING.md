@@ -62,7 +62,7 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ pip install git+ssh://git@github.com/RetellAI/retell-python-sdk#main.git
+$ pip install git+ssh://git@github.com/RetellAI/retell-python-sdk.git
 ```
 
 Alternatively, you can build from source and install the wheel file:
