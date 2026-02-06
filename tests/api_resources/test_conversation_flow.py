@@ -59,6 +59,14 @@ class TestConversationFlow:
                         "type": "prompt",
                     },
                     "type": "conversation",
+                    "always_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "display_position": {
                         "x": 0,
                         "y": 0,
@@ -135,6 +143,17 @@ class TestConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "tool_ids": ["string"],
+                    "tools": [
+                        {
+                            "name": "name",
+                            "type": "end_call",
+                            "description": "description",
+                            "execution_message_description": "execution_message_description",
+                            "execution_message_type": "prompt",
+                            "speak_during_execution": True,
+                        }
+                    ],
                 }
             ],
             start_speaker="agent",
@@ -154,6 +173,14 @@ class TestConversationFlow:
                                 "type": "prompt",
                             },
                             "type": "conversation",
+                            "always_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "display_position": {
                                 "x": 0,
                                 "y": 0,
@@ -230,6 +257,17 @@ class TestConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "tool_ids": ["string"],
+                            "tools": [
+                                {
+                                    "name": "name",
+                                    "type": "end_call",
+                                    "description": "description",
+                                    "execution_message_description": "execution_message_description",
+                                    "execution_message_type": "prompt",
+                                    "speak_during_execution": True,
+                                }
+                            ],
                         }
                     ],
                     "begin_tag_display_position": {
@@ -256,16 +294,23 @@ class TestConversationFlow:
                             "url": "https://api.example.com/customer",
                             "args_at_root": True,
                             "description": "Get customer information from database",
-                            "headers": {"foo": "string"},
+                            "execution_message_description": "execution_message_description",
+                            "execution_message_type": "prompt",
+                            "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
                                 "required": ["string"],
                             },
-                            "query_params": {"foo": "string"},
-                            "response_variables": {"foo": "string"},
-                            "timeout_ms": 1000,
+                            "query_params": {
+                                "page": "1",
+                                "sort": "asc",
+                            },
+                            "response_variables": {"user_name": "data.user.name"},
+                            "speak_after_execution": True,
+                            "speak_during_execution": True,
+                            "timeout_ms": 0,
                             "tool_id": "tool_001",
                         }
                     ],
@@ -304,16 +349,23 @@ class TestConversationFlow:
                     "url": "https://api.example.com/customer",
                     "args_at_root": True,
                     "description": "Get customer information from database",
-                    "headers": {"foo": "string"},
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
                     "parameters": {
                         "properties": {"foo": "bar"},
                         "type": "object",
                         "required": ["string"],
                     },
-                    "query_params": {"foo": "string"},
-                    "response_variables": {"foo": "string"},
-                    "timeout_ms": 1000,
+                    "query_params": {
+                        "page": "1",
+                        "sort": "asc",
+                    },
+                    "response_variables": {"user_name": "data.user.name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                    "timeout_ms": 0,
                     "tool_id": "tool_001",
                 }
             ],
@@ -455,6 +507,14 @@ class TestConversationFlow:
                                 "type": "prompt",
                             },
                             "type": "conversation",
+                            "always_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "display_position": {
                                 "x": 0,
                                 "y": 0,
@@ -531,6 +591,17 @@ class TestConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "tool_ids": ["string"],
+                            "tools": [
+                                {
+                                    "name": "name",
+                                    "type": "end_call",
+                                    "description": "description",
+                                    "execution_message_description": "execution_message_description",
+                                    "execution_message_type": "prompt",
+                                    "speak_during_execution": True,
+                                }
+                            ],
                         }
                     ],
                     "begin_tag_display_position": {
@@ -557,16 +628,23 @@ class TestConversationFlow:
                             "url": "https://api.example.com/customer",
                             "args_at_root": True,
                             "description": "Get customer information from database",
-                            "headers": {"foo": "string"},
+                            "execution_message_description": "execution_message_description",
+                            "execution_message_type": "prompt",
+                            "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
                                 "required": ["string"],
                             },
-                            "query_params": {"foo": "string"},
-                            "response_variables": {"foo": "string"},
-                            "timeout_ms": 1000,
+                            "query_params": {
+                                "page": "1",
+                                "sort": "asc",
+                            },
+                            "response_variables": {"user_name": "data.user.name"},
+                            "speak_after_execution": True,
+                            "speak_during_execution": True,
+                            "timeout_ms": 0,
                             "tool_id": "tool_001",
                         }
                     ],
@@ -609,6 +687,14 @@ class TestConversationFlow:
                         "type": "prompt",
                     },
                     "type": "conversation",
+                    "always_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "display_position": {
                         "x": 0,
                         "y": 0,
@@ -685,6 +771,17 @@ class TestConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "tool_ids": ["string"],
+                    "tools": [
+                        {
+                            "name": "name",
+                            "type": "end_call",
+                            "description": "description",
+                            "execution_message_description": "execution_message_description",
+                            "execution_message_type": "prompt",
+                            "speak_during_execution": True,
+                        }
+                    ],
                 }
             ],
             start_node_id="start",
@@ -697,16 +794,23 @@ class TestConversationFlow:
                     "url": "https://api.example.com/customer",
                     "args_at_root": True,
                     "description": "Get customer information from database",
-                    "headers": {"foo": "string"},
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
                     "parameters": {
                         "properties": {"foo": "bar"},
                         "type": "object",
                         "required": ["string"],
                     },
-                    "query_params": {"foo": "string"},
-                    "response_variables": {"foo": "string"},
-                    "timeout_ms": 1000,
+                    "query_params": {
+                        "page": "1",
+                        "sort": "asc",
+                    },
+                    "response_variables": {"user_name": "data.user.name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                    "timeout_ms": 0,
                     "tool_id": "tool_001",
                 }
             ],
@@ -872,6 +976,14 @@ class TestAsyncConversationFlow:
                         "type": "prompt",
                     },
                     "type": "conversation",
+                    "always_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "display_position": {
                         "x": 0,
                         "y": 0,
@@ -948,6 +1060,17 @@ class TestAsyncConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "tool_ids": ["string"],
+                    "tools": [
+                        {
+                            "name": "name",
+                            "type": "end_call",
+                            "description": "description",
+                            "execution_message_description": "execution_message_description",
+                            "execution_message_type": "prompt",
+                            "speak_during_execution": True,
+                        }
+                    ],
                 }
             ],
             start_speaker="agent",
@@ -967,6 +1090,14 @@ class TestAsyncConversationFlow:
                                 "type": "prompt",
                             },
                             "type": "conversation",
+                            "always_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "display_position": {
                                 "x": 0,
                                 "y": 0,
@@ -1043,6 +1174,17 @@ class TestAsyncConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "tool_ids": ["string"],
+                            "tools": [
+                                {
+                                    "name": "name",
+                                    "type": "end_call",
+                                    "description": "description",
+                                    "execution_message_description": "execution_message_description",
+                                    "execution_message_type": "prompt",
+                                    "speak_during_execution": True,
+                                }
+                            ],
                         }
                     ],
                     "begin_tag_display_position": {
@@ -1069,16 +1211,23 @@ class TestAsyncConversationFlow:
                             "url": "https://api.example.com/customer",
                             "args_at_root": True,
                             "description": "Get customer information from database",
-                            "headers": {"foo": "string"},
+                            "execution_message_description": "execution_message_description",
+                            "execution_message_type": "prompt",
+                            "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
                                 "required": ["string"],
                             },
-                            "query_params": {"foo": "string"},
-                            "response_variables": {"foo": "string"},
-                            "timeout_ms": 1000,
+                            "query_params": {
+                                "page": "1",
+                                "sort": "asc",
+                            },
+                            "response_variables": {"user_name": "data.user.name"},
+                            "speak_after_execution": True,
+                            "speak_during_execution": True,
+                            "timeout_ms": 0,
                             "tool_id": "tool_001",
                         }
                     ],
@@ -1117,16 +1266,23 @@ class TestAsyncConversationFlow:
                     "url": "https://api.example.com/customer",
                     "args_at_root": True,
                     "description": "Get customer information from database",
-                    "headers": {"foo": "string"},
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
                     "parameters": {
                         "properties": {"foo": "bar"},
                         "type": "object",
                         "required": ["string"],
                     },
-                    "query_params": {"foo": "string"},
-                    "response_variables": {"foo": "string"},
-                    "timeout_ms": 1000,
+                    "query_params": {
+                        "page": "1",
+                        "sort": "asc",
+                    },
+                    "response_variables": {"user_name": "data.user.name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                    "timeout_ms": 0,
                     "tool_id": "tool_001",
                 }
             ],
@@ -1268,6 +1424,14 @@ class TestAsyncConversationFlow:
                                 "type": "prompt",
                             },
                             "type": "conversation",
+                            "always_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "display_position": {
                                 "x": 0,
                                 "y": 0,
@@ -1344,6 +1508,17 @@ class TestAsyncConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "tool_ids": ["string"],
+                            "tools": [
+                                {
+                                    "name": "name",
+                                    "type": "end_call",
+                                    "description": "description",
+                                    "execution_message_description": "execution_message_description",
+                                    "execution_message_type": "prompt",
+                                    "speak_during_execution": True,
+                                }
+                            ],
                         }
                     ],
                     "begin_tag_display_position": {
@@ -1370,16 +1545,23 @@ class TestAsyncConversationFlow:
                             "url": "https://api.example.com/customer",
                             "args_at_root": True,
                             "description": "Get customer information from database",
-                            "headers": {"foo": "string"},
+                            "execution_message_description": "execution_message_description",
+                            "execution_message_type": "prompt",
+                            "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
                             "parameters": {
                                 "properties": {"foo": "bar"},
                                 "type": "object",
                                 "required": ["string"],
                             },
-                            "query_params": {"foo": "string"},
-                            "response_variables": {"foo": "string"},
-                            "timeout_ms": 1000,
+                            "query_params": {
+                                "page": "1",
+                                "sort": "asc",
+                            },
+                            "response_variables": {"user_name": "data.user.name"},
+                            "speak_after_execution": True,
+                            "speak_during_execution": True,
+                            "timeout_ms": 0,
                             "tool_id": "tool_001",
                         }
                     ],
@@ -1422,6 +1604,14 @@ class TestAsyncConversationFlow:
                         "type": "prompt",
                     },
                     "type": "conversation",
+                    "always_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "display_position": {
                         "x": 0,
                         "y": 0,
@@ -1498,6 +1688,17 @@ class TestAsyncConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "tool_ids": ["string"],
+                    "tools": [
+                        {
+                            "name": "name",
+                            "type": "end_call",
+                            "description": "description",
+                            "execution_message_description": "execution_message_description",
+                            "execution_message_type": "prompt",
+                            "speak_during_execution": True,
+                        }
+                    ],
                 }
             ],
             start_node_id="start",
@@ -1510,16 +1711,23 @@ class TestAsyncConversationFlow:
                     "url": "https://api.example.com/customer",
                     "args_at_root": True,
                     "description": "Get customer information from database",
-                    "headers": {"foo": "string"},
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
                     "parameters": {
                         "properties": {"foo": "bar"},
                         "type": "object",
                         "required": ["string"],
                     },
-                    "query_params": {"foo": "string"},
-                    "response_variables": {"foo": "string"},
-                    "timeout_ms": 1000,
+                    "query_params": {
+                        "page": "1",
+                        "sort": "asc",
+                    },
+                    "response_variables": {"user_name": "data.user.name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                    "timeout_ms": 0,
                     "tool_id": "tool_001",
                 }
             ],

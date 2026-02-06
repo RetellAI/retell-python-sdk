@@ -12,6 +12,7 @@ __all__ = [
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
     "CustomSttConfig",
+    "GuardrailConfig",
     "IvrOption",
     "IvrOptionAction",
     "PiiConfig",
@@ -76,6 +77,40 @@ class CustomSttConfig(BaseModel):
 
     provider: Literal["azure", "deepgram"]
     """The STT provider to use."""
+
+
+class GuardrailConfig(BaseModel):
+    """
+    Configuration for guardrail checks to detect and prevent prohibited topics in agent output and user input.
+    """
+
+    input_topics: Optional[List[Literal["platform_integrity_jailbreaking"]]] = None
+    """Selected prohibited user topic categories to check.
+
+    When user messages contain these topics, the agent will respond with a
+    placeholder message instead of processing the request.
+    """
+
+    output_topics: Optional[
+        List[
+            Literal[
+                "harassment",
+                "self_harm",
+                "sexual_exploitation",
+                "violence",
+                "defense_and_national_security",
+                "illicit_and_harmful_activity",
+                "gambling",
+                "regulated_professional_advice",
+                "child_safety_and_exploitation",
+            ]
+        ]
+    ] = None
+    """Selected prohibited agent topic categories to check.
+
+    When agent messages contain these topics, they will be replaced with a
+    placeholder message.
+    """
 
 
 class IvrOptionAction(BaseModel):
@@ -377,10 +412,12 @@ class AgentResponse(BaseModel):
       apply.
     """
 
-    denoising_mode: Optional[Literal["none", "noise-cancellation", "noise-and-background-speech-cancellation"]] = None
+    denoising_mode: Optional[
+        Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
+    ] = None
     """If set, determines what denoising mode to use.
 
-    Use "none" to bypass all audio denoising. Default to noise-cancellation.
+    Use "no-denoise" to bypass all audio denoising. Default to noise-cancellation.
     """
 
     enable_backchannel: Optional[bool] = None
@@ -389,6 +426,12 @@ class AgentResponse(BaseModel):
     phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
     when enabled tends to show up more in longer user utterances. If not set, agent
     will not backchannel.
+    """
+
+    enable_dynamic_voice_speed: Optional[bool] = None
+    """
+    If set to true, will enable dynamic voice speed adjustment based on the user's
+    speech rate and conversation context. If unset, default value false will apply.
     """
 
     enable_voicemail_detection: Optional[bool] = None
@@ -411,6 +454,12 @@ class AgentResponse(BaseModel):
     must be from different TTS providers. The system would go through the list in
     order, if the first one in the list is also having outage, it would use the next
     one. Set to null to remove voice fallback for the agent.
+    """
+
+    guardrail_config: Optional[GuardrailConfig] = None
+    """
+    Configuration for guardrail checks to detect and prevent prohibited topics in
+    agent output and user input.
     """
 
     interruption_sensitivity: Optional[float] = None

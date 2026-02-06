@@ -240,6 +240,14 @@ class GeneralToolEndCallTool(TypedDict, total=False):
     Only applicable when speak_during_execution is true.
     """
 
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
     speak_during_execution: bool
     """If true, will speak during execution."""
 
@@ -546,6 +554,14 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
     Only applicable when speak_during_execution is true.
     """
 
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
     ignore_e164_validation: bool
     """If true, the e.164 validation will be ignored for the from_number.
 
@@ -565,10 +581,11 @@ class GeneralToolCheckAvailabilityCalTool(TypedDict, total=False):
     availability for.
     """
 
-    event_type_id: Required[float]
+    event_type_id: Required[Union[float, str]]
     """
     Cal.com event type id number for the cal.com event you want to check
-    availability for.
+    availability for. Can be a number or a dynamic variable in the format
+    `{{variable_name}}` that will be resolved at runtime.
     """
 
     name: Required[str]
@@ -591,8 +608,9 @@ class GeneralToolCheckAvailabilityCalTool(TypedDict, total=False):
     """
     Timezone to be used when checking availability, must be in
     [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    If not specified, will check if user specified timezone in call, and if not,
-    will use the timezone of the Retell servers.
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
     """
 
 
@@ -603,9 +621,11 @@ class GeneralToolBookAppointmentCalTool(TypedDict, total=False):
     appointment.
     """
 
-    event_type_id: Required[float]
-    """
-    Cal.com event type id number for the cal.com event you want to book appointment.
+    event_type_id: Required[Union[float, str]]
+    """Cal.com event type id number for the cal.com event you want to book appointment.
+
+    Can be a number or a dynamic variable in the format `{{variable_name}}` that
+    will be resolved at runtime.
     """
 
     name: Required[str]
@@ -628,8 +648,9 @@ class GeneralToolBookAppointmentCalTool(TypedDict, total=False):
     """
     Timezone to be used when booking appointment, must be in
     [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    If not specified, will check if user specified timezone in call, and if not,
-    will use the timezone of the Retell servers.
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
     """
 
 
@@ -663,6 +684,14 @@ class GeneralToolAgentSwapTool(TypedDict, total=False):
 
     execution_message_description: str
     """The message for the agent to speak when executing agent swap."""
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
 
     speak_during_execution: bool
 
@@ -761,22 +790,12 @@ class GeneralToolCustomToolParameters(TypedDict, total=False):
 
 
 class GeneralToolCustomTool(TypedDict, total=False):
-    description: Required[str]
-    """Describes what this tool does and when to call this tool."""
-
     name: Required[str]
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
     tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    speak_after_execution: Required[bool]
-    """
-    Determines whether the agent would call LLM another time and speak when the
-    result of function is obtained. Usually this needs to get turned on so user can
-    get update for the function call.
     """
 
     type: Required[Literal["custom"]]
@@ -793,12 +812,23 @@ class GeneralToolCustomTool(TypedDict, total=False):
     of nested under "args".
     """
 
+    description: str
+    """Describes what this tool does and when to call this tool."""
+
     execution_message_description: str
     """The description for the sentence agent say during execution.
 
     Only applicable when speak_during_execution is true. Can write what to say or
     even provide examples. The default is "The message you will say to callee when
     calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
     """
 
     headers: Dict[str, str]
@@ -823,6 +853,13 @@ class GeneralToolCustomTool(TypedDict, total=False):
 
     These values will be extracted from the response and made available as dynamic
     variables for use.
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
     """
 
     speak_during_execution: bool
@@ -979,6 +1016,14 @@ class GeneralToolMcpTool(TypedDict, total=False):
     calling this tool. Make sure it fits into the conversation smoothly.".
     """
 
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
     input_schema: Dict[str, str]
     """The input schema of the MCP tool."""
 
@@ -1122,6 +1167,14 @@ class StateToolEndCallTool(TypedDict, total=False):
     """Describes what to say to user when ending the call.
 
     Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
     """
 
     speak_during_execution: bool
@@ -1430,6 +1483,14 @@ class StateToolTransferCallTool(TypedDict, total=False):
     Only applicable when speak_during_execution is true.
     """
 
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
     ignore_e164_validation: bool
     """If true, the e.164 validation will be ignored for the from_number.
 
@@ -1449,10 +1510,11 @@ class StateToolCheckAvailabilityCalTool(TypedDict, total=False):
     availability for.
     """
 
-    event_type_id: Required[float]
+    event_type_id: Required[Union[float, str]]
     """
     Cal.com event type id number for the cal.com event you want to check
-    availability for.
+    availability for. Can be a number or a dynamic variable in the format
+    `{{variable_name}}` that will be resolved at runtime.
     """
 
     name: Required[str]
@@ -1475,8 +1537,9 @@ class StateToolCheckAvailabilityCalTool(TypedDict, total=False):
     """
     Timezone to be used when checking availability, must be in
     [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    If not specified, will check if user specified timezone in call, and if not,
-    will use the timezone of the Retell servers.
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
     """
 
 
@@ -1487,9 +1550,11 @@ class StateToolBookAppointmentCalTool(TypedDict, total=False):
     appointment.
     """
 
-    event_type_id: Required[float]
-    """
-    Cal.com event type id number for the cal.com event you want to book appointment.
+    event_type_id: Required[Union[float, str]]
+    """Cal.com event type id number for the cal.com event you want to book appointment.
+
+    Can be a number or a dynamic variable in the format `{{variable_name}}` that
+    will be resolved at runtime.
     """
 
     name: Required[str]
@@ -1512,8 +1577,9 @@ class StateToolBookAppointmentCalTool(TypedDict, total=False):
     """
     Timezone to be used when booking appointment, must be in
     [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    If not specified, will check if user specified timezone in call, and if not,
-    will use the timezone of the Retell servers.
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
     """
 
 
@@ -1547,6 +1613,14 @@ class StateToolAgentSwapTool(TypedDict, total=False):
 
     execution_message_description: str
     """The message for the agent to speak when executing agent swap."""
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
 
     speak_during_execution: bool
 
@@ -1645,22 +1719,12 @@ class StateToolCustomToolParameters(TypedDict, total=False):
 
 
 class StateToolCustomTool(TypedDict, total=False):
-    description: Required[str]
-    """Describes what this tool does and when to call this tool."""
-
     name: Required[str]
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
     tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    speak_after_execution: Required[bool]
-    """
-    Determines whether the agent would call LLM another time and speak when the
-    result of function is obtained. Usually this needs to get turned on so user can
-    get update for the function call.
     """
 
     type: Required[Literal["custom"]]
@@ -1677,12 +1741,23 @@ class StateToolCustomTool(TypedDict, total=False):
     of nested under "args".
     """
 
+    description: str
+    """Describes what this tool does and when to call this tool."""
+
     execution_message_description: str
     """The description for the sentence agent say during execution.
 
     Only applicable when speak_during_execution is true. Can write what to say or
     even provide examples. The default is "The message you will say to callee when
     calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
     """
 
     headers: Dict[str, str]
@@ -1707,6 +1782,13 @@ class StateToolCustomTool(TypedDict, total=False):
 
     These values will be extracted from the response and made available as dynamic
     variables for use.
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
     """
 
     speak_during_execution: bool
@@ -1861,6 +1943,14 @@ class StateToolMcpTool(TypedDict, total=False):
     Only applicable when speak_during_execution is true. Can write what to say or
     even provide examples. The default is "The message you will say to callee when
     calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
     """
 
     input_schema: Dict[str, str]

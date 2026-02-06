@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Iterable, Optional
 from typing_extensions import Required, TypedDict
 
 from .._types import SequenceNotStr
 
-__all__ = ["PhoneNumberImportParams"]
+__all__ = ["PhoneNumberImportParams", "InboundAgent", "OutboundAgent"]
 
 
 class PhoneNumberImportParams(TypedDict, total=False):
@@ -50,6 +50,14 @@ class PhoneNumberImportParams(TypedDict, total=False):
     If not provided, will default to latest version.
     """
 
+    inbound_agents: Optional[Iterable[InboundAgent]]
+    """Inbound agents to bind to the number with weights.
+
+    If set and non-empty, one agent will be picked randomly for each inbound call,
+    with probability proportional to the weight. Total weights must add up to 1. If
+    not set or empty, fallback to inbound_agent_id.
+    """
+
     inbound_webhook_url: Optional[str]
     """
     If set, will send a webhook for inbound calls, where you can to override agent
@@ -73,6 +81,14 @@ class PhoneNumberImportParams(TypedDict, total=False):
     If not provided, will default to latest version.
     """
 
+    outbound_agents: Optional[Iterable[OutboundAgent]]
+    """Outbound agents to bind to the number with weights.
+
+    If set and non-empty, one agent will be picked randomly for each outbound call,
+    with probability proportional to the weight. Total weights must add up to 1. If
+    not set or empty, fallback to outbound_agent_id.
+    """
+
     sip_trunk_auth_password: str
     """The password used for authentication for the SIP trunk."""
 
@@ -84,3 +100,27 @@ class PhoneNumberImportParams(TypedDict, total=False):
 
     Valid values are "TLS", "TCP" and "UDP". Default is "TCP".
     """
+
+
+class InboundAgent(TypedDict, total=False):
+    agent_id: Required[str]
+
+    weight: Required[float]
+    """The weight of the agent.
+
+    When used in a list of agents, the total weights must add up to 1.
+    """
+
+    agent_version: int
+
+
+class OutboundAgent(TypedDict, total=False):
+    agent_id: Required[str]
+
+    weight: Required[float]
+    """The weight of the agent.
+
+    When used in a list of agents, the total weights must add up to 1.
+    """
+
+    agent_version: int

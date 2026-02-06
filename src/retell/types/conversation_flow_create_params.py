@@ -15,6 +15,12 @@ __all__ = [
     "NodeConversationNodeInstruction",
     "NodeConversationNodeInstructionNodeInstructionPrompt",
     "NodeConversationNodeInstructionNodeInstructionStaticText",
+    "NodeConversationNodeAlwaysEdge",
+    "NodeConversationNodeAlwaysEdgeTransitionCondition",
+    "NodeConversationNodeAlwaysEdgeTransitionConditionPromptCondition",
+    "NodeConversationNodeAlwaysEdgeTransitionConditionEquationCondition",
+    "NodeConversationNodeAlwaysEdgeTransitionConditionEquationConditionEquation",
+    "NodeConversationNodeAlwaysEdgeTransitionConditionUnionMember2",
     "NodeConversationNodeDisplayPosition",
     "NodeConversationNodeEdge",
     "NodeConversationNodeEdgeTransitionCondition",
@@ -49,6 +55,47 @@ __all__ = [
     "NodeConversationNodeSkipResponseEdgeTransitionConditionEquationCondition",
     "NodeConversationNodeSkipResponseEdgeTransitionConditionEquationConditionEquation",
     "NodeConversationNodeSkipResponseEdgeTransitionConditionUnionMember2",
+    "NodeConversationNodeTool",
+    "NodeConversationNodeToolEndCallTool",
+    "NodeConversationNodeToolTransferCallTool",
+    "NodeConversationNodeToolTransferCallToolTransferDestination",
+    "NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined",
+    "NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred",
+    "NodeConversationNodeToolTransferCallToolTransferOption",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "NodeConversationNodeToolCheckAvailabilityCalTool",
+    "NodeConversationNodeToolBookAppointmentCalTool",
+    "NodeConversationNodeToolAgentSwapTool",
+    "NodeConversationNodeToolPressDigitTool",
+    "NodeConversationNodeToolSendSMSTool",
+    "NodeConversationNodeToolSendSMSToolSMSContent",
+    "NodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined",
+    "NodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred",
+    "NodeConversationNodeToolCustomTool",
+    "NodeConversationNodeToolCustomToolParameters",
+    "NodeConversationNodeToolExtractDynamicVariableTool",
+    "NodeConversationNodeToolExtractDynamicVariableToolVariable",
+    "NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData",
+    "NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData",
+    "NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData",
+    "NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData",
+    "NodeConversationNodeToolBridgeTransferTool",
+    "NodeConversationNodeToolCancelTransferTool",
+    "NodeConversationNodeToolMcpTool",
     "NodeEndNode",
     "NodeEndNodeDisplayPosition",
     "NodeEndNodeGlobalNodeSetting",
@@ -72,6 +119,12 @@ __all__ = [
     "NodeFunctionNodeEdgeTransitionConditionPromptCondition",
     "NodeFunctionNodeEdgeTransitionConditionEquationCondition",
     "NodeFunctionNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeFunctionNodeElseEdge",
+    "NodeFunctionNodeElseEdgeTransitionCondition",
+    "NodeFunctionNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeFunctionNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeFunctionNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeFunctionNodeElseEdgeTransitionConditionUnionMember2",
     "NodeFunctionNodeFinetuneTransitionExample",
     "NodeFunctionNodeFinetuneTransitionExampleTranscript",
     "NodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember0",
@@ -228,6 +281,12 @@ __all__ = [
     "NodeExtractDynamicVariablesNodeEdgeTransitionConditionPromptCondition",
     "NodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationCondition",
     "NodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeExtractDynamicVariablesNodeElseEdge",
+    "NodeExtractDynamicVariablesNodeElseEdgeTransitionCondition",
+    "NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionUnionMember2",
     "NodeExtractDynamicVariablesNodeFinetuneTransitionExample",
     "NodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscript",
     "NodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember0",
@@ -350,6 +409,12 @@ __all__ = [
     "ComponentNodeConversationNodeInstruction",
     "ComponentNodeConversationNodeInstructionNodeInstructionPrompt",
     "ComponentNodeConversationNodeInstructionNodeInstructionStaticText",
+    "ComponentNodeConversationNodeAlwaysEdge",
+    "ComponentNodeConversationNodeAlwaysEdgeTransitionCondition",
+    "ComponentNodeConversationNodeAlwaysEdgeTransitionConditionPromptCondition",
+    "ComponentNodeConversationNodeAlwaysEdgeTransitionConditionEquationCondition",
+    "ComponentNodeConversationNodeAlwaysEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeConversationNodeAlwaysEdgeTransitionConditionUnionMember2",
     "ComponentNodeConversationNodeDisplayPosition",
     "ComponentNodeConversationNodeEdge",
     "ComponentNodeConversationNodeEdgeTransitionCondition",
@@ -384,6 +449,47 @@ __all__ = [
     "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionEquationCondition",
     "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionEquationConditionEquation",
     "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionUnionMember2",
+    "ComponentNodeConversationNodeTool",
+    "ComponentNodeConversationNodeToolEndCallTool",
+    "ComponentNodeConversationNodeToolTransferCallTool",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferDestination",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOption",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "ComponentNodeConversationNodeToolCheckAvailabilityCalTool",
+    "ComponentNodeConversationNodeToolBookAppointmentCalTool",
+    "ComponentNodeConversationNodeToolAgentSwapTool",
+    "ComponentNodeConversationNodeToolPressDigitTool",
+    "ComponentNodeConversationNodeToolSendSMSTool",
+    "ComponentNodeConversationNodeToolSendSMSToolSMSContent",
+    "ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined",
+    "ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred",
+    "ComponentNodeConversationNodeToolCustomTool",
+    "ComponentNodeConversationNodeToolCustomToolParameters",
+    "ComponentNodeConversationNodeToolExtractDynamicVariableTool",
+    "ComponentNodeConversationNodeToolExtractDynamicVariableToolVariable",
+    "ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData",
+    "ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData",
+    "ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData",
+    "ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData",
+    "ComponentNodeConversationNodeToolBridgeTransferTool",
+    "ComponentNodeConversationNodeToolCancelTransferTool",
+    "ComponentNodeConversationNodeToolMcpTool",
     "ComponentNodeEndNode",
     "ComponentNodeEndNodeDisplayPosition",
     "ComponentNodeEndNodeGlobalNodeSetting",
@@ -407,6 +513,12 @@ __all__ = [
     "ComponentNodeFunctionNodeEdgeTransitionConditionPromptCondition",
     "ComponentNodeFunctionNodeEdgeTransitionConditionEquationCondition",
     "ComponentNodeFunctionNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeFunctionNodeElseEdge",
+    "ComponentNodeFunctionNodeElseEdgeTransitionCondition",
+    "ComponentNodeFunctionNodeElseEdgeTransitionConditionPromptCondition",
+    "ComponentNodeFunctionNodeElseEdgeTransitionConditionEquationCondition",
+    "ComponentNodeFunctionNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeFunctionNodeElseEdgeTransitionConditionUnionMember2",
     "ComponentNodeFunctionNodeFinetuneTransitionExample",
     "ComponentNodeFunctionNodeFinetuneTransitionExampleTranscript",
     "ComponentNodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember0",
@@ -563,6 +675,12 @@ __all__ = [
     "ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionPromptCondition",
     "ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationCondition",
     "ComponentNodeExtractDynamicVariablesNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeExtractDynamicVariablesNodeElseEdge",
+    "ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionCondition",
+    "ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionPromptCondition",
+    "ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationCondition",
+    "ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionUnionMember2",
     "ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExample",
     "ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscript",
     "ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember0",
@@ -681,15 +799,15 @@ __all__ = [
     "ComponentBeginTagDisplayPosition",
     "ComponentMcp",
     "ComponentTool",
-    "ComponentToolConversationFlowCustomTool",
-    "ComponentToolConversationFlowCustomToolParameters",
+    "ComponentToolCustomTool",
+    "ComponentToolCustomToolParameters",
     "ComponentToolCheckAvailabilityCalTool",
     "ComponentToolBookAppointmentCalTool",
     "KBConfig",
     "Mcp",
     "Tool",
-    "ToolConversationFlowCustomTool",
-    "ToolConversationFlowCustomToolParameters",
+    "ToolCustomTool",
+    "ToolCustomToolParameters",
     "ToolCheckAvailabilityCalTool",
     "ToolBookAppointmentCalTool",
 ]
@@ -807,6 +925,62 @@ class NodeConversationNodeInstructionNodeInstructionStaticText(TypedDict, total=
 NodeConversationNodeInstruction: TypeAlias = Union[
     NodeConversationNodeInstructionNodeInstructionPrompt, NodeConversationNodeInstructionNodeInstructionStaticText
 ]
+
+
+class NodeConversationNodeAlwaysEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeConversationNodeAlwaysEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeConversationNodeAlwaysEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeConversationNodeAlwaysEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Always"]
+    """Must be "Always" for always edge"""
+
+
+class NodeConversationNodeAlwaysEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Always"]]
+    """Must be "Always" for always edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+NodeConversationNodeAlwaysEdgeTransitionCondition: TypeAlias = Union[
+    NodeConversationNodeAlwaysEdgeTransitionConditionPromptCondition,
+    NodeConversationNodeAlwaysEdgeTransitionConditionEquationCondition,
+    NodeConversationNodeAlwaysEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeConversationNodeAlwaysEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeConversationNodeAlwaysEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
 
 
 class NodeConversationNodeDisplayPosition(TypedDict, total=False):
@@ -1109,6 +1283,862 @@ class NodeConversationNodeSkipResponseEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class NodeConversationNodeToolEndCallTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["end_call"]]
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    execution_message_description: str
+    """Describes what to say to user when ending the call.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution."""
+
+
+class NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined(TypedDict, total=False):
+    number: Required[str]
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
+    """
+
+    type: Required[Literal["predefined"]]
+    """The type of transfer destination."""
+
+    extension: str
+    """Extension digits to dial after the main number connects.
+
+    Sent via DTMF. Allow digits, '\\**', '#', or a dynamic variable like
+    {{extension}}.
+    """
+
+
+class NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred(TypedDict, total=False):
+    prompt: Required[str]
+    """The prompt to be used to help infer the transfer destination.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right number to transfer to. Can contain dynamic
+    variables.
+    """
+
+    type: Required[Literal["inferred"]]
+    """The type of transfer destination."""
+
+
+NodeConversationNodeToolTransferCallToolTransferDestination: TypeAlias = Union[
+    NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined,
+    NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred,
+]
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer(TypedDict, total=False):
+    type: Required[Literal["cold_transfer"]]
+    """The type of the transfer."""
+
+    cold_transfer_mode: Literal["sip_refer", "sip_invite"]
+    """The mode of the cold transfer.
+
+    If set to `sip_refer`, will use SIP REFER to transfer the call. If set to
+    `sip_invite`, will use SIP INVITE to transfer the call.
+    """
+
+    show_transferee_as_caller: bool
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring. Requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option. This parameter takes effect only when
+    `cold_transfer_mode` is set to `sip_invite`. When using `sip_refer`, this option
+    is not available. Retell Twilio numbers always use user's number as the caller
+    id when using `sip refer` cold transfer mode.
+    """
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(TypedDict, total=False):
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption: TypeAlias = Union[
+    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt,
+    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption: TypeAlias = Union[
+    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedDict, total=False):
+    type: Required[Literal["warm_transfer"]]
+    """The type of the transfer."""
+
+    agent_detection_timeout_ms: float
+    """The time to wait before considering transfer fails."""
+
+    enable_bridge_audio_cue: bool
+    """Whether to play an audio cue when bridging the call. Defaults to true."""
+
+    ivr_option: NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
+    """The music to play while the caller is being transferred."""
+
+    opt_out_human_detection: bool
+    """If set to true, will not perform human detection for the transfer.
+
+    Default to false.
+    """
+
+    opt_out_initial_message: bool
+    """If set to true, AI will not say "Hello" after connecting the call.
+
+    Default to false.
+    """
+
+    private_handoff_option: (
+        NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption
+    )
+    """
+    If set, when transfer is connected, will say the handoff message only to the
+    agent receiving the transfer. Can leave either a static message or a dynamic one
+    based on prompt. Set to null to disable warm handoff.
+    """
+
+    public_handoff_option: (
+        NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption
+    )
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: bool
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
+    """
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
+    TypedDict, total=False
+):
+    """The agent that will mediate the transfer decision."""
+
+    agent_id: Required[str]
+    """The agent ID of the transfer agent.
+
+    This agent must have isTransferAgent set to true and should use bridge_transfer
+    and cancel_transfer tools (for Retell LLM) or BridgeTransferNode and
+    CancelTransferNode (for Conversation Flow).
+    """
+
+    agent_version: Required[float]
+    """The version of the transfer agent to use."""
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(
+    TypedDict, total=False
+):
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
+    action_on_timeout: Literal["bridge_transfer", "cancel_transfer"]
+    """The action to take when the transfer agent times out without making a decision.
+
+    Defaults to cancel_transfer.
+    """
+
+    transfer_agent: NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
+    """The agent that will mediate the transfer decision."""
+
+    transfer_timeout_ms: float
+    """
+    The maximum time to wait for the transfer agent to make a decision, in
+    milliseconds. Defaults to 30000 (30 seconds).
+    """
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
+    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(TypedDict, total=False):
+    agentic_transfer_config: Required[
+        NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
+    ]
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
+    type: Required[Literal["agentic_warm_transfer"]]
+    """The type of the transfer."""
+
+    enable_bridge_audio_cue: bool
+    """Whether to play an audio cue when bridging the call. Defaults to true."""
+
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
+    """The music to play while the caller is being transferred."""
+
+    public_handoff_option: (
+        NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
+    )
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: bool
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
+    """
+
+
+NodeConversationNodeToolTransferCallToolTransferOption: TypeAlias = Union[
+    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer,
+    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer,
+    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer,
+]
+
+
+class NodeConversationNodeToolTransferCallTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    transfer_destination: Required[NodeConversationNodeToolTransferCallToolTransferDestination]
+
+    transfer_option: Required[NodeConversationNodeToolTransferCallToolTransferOption]
+
+    type: Required[Literal["transfer_call"]]
+
+    custom_sip_headers: Dict[str, str]
+    """Custom SIP headers to be added to the call."""
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    execution_message_description: str
+    """Describes what to say to user when transferring the call.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    ignore_e164_validation: bool
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution."""
+
+
+class NodeConversationNodeToolCheckAvailabilityCalTool(TypedDict, total=False):
+    cal_api_key: Required[str]
+    """
+    Cal.com Api key that have access to the cal.com event you want to check
+    availability for.
+    """
+
+    event_type_id: Required[Union[float, str]]
+    """
+    Cal.com event type id number for the cal.com event you want to check
+    availability for. Can be a number or a dynamic variable in the format
+    `{{variable_name}}` that will be resolved at runtime.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["check_availability_cal"]]
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    timezone: str
+    """
+    Timezone to be used when checking availability, must be in
+    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
+    """
+
+
+class NodeConversationNodeToolBookAppointmentCalTool(TypedDict, total=False):
+    cal_api_key: Required[str]
+    """
+    Cal.com Api key that have access to the cal.com event you want to book
+    appointment.
+    """
+
+    event_type_id: Required[Union[float, str]]
+    """Cal.com event type id number for the cal.com event you want to book appointment.
+
+    Can be a number or a dynamic variable in the format `{{variable_name}}` that
+    will be resolved at runtime.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["book_appointment_cal"]]
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    timezone: str
+    """
+    Timezone to be used when booking appointment, must be in
+    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
+    """
+
+
+class NodeConversationNodeToolAgentSwapTool(TypedDict, total=False):
+    agent_id: Required[str]
+    """The id of the agent to swap to."""
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    post_call_analysis_setting: Required[Literal["both_agents", "only_destination_agent"]]
+    """Post call analysis setting for the agent swap."""
+
+    type: Required[Literal["agent_swap"]]
+
+    agent_version: float
+    """The version of the agent to swap to.
+
+    If not specified, will use the latest version.
+    """
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    execution_message_description: str
+    """The message for the agent to speak when executing agent swap."""
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: bool
+
+    webhook_setting: Literal["both_agents", "only_destination_agent", "only_source_agent"]
+    """Webhook setting for the agent swap, defaults to only source."""
+
+
+class NodeConversationNodeToolPressDigitTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["press_digit"]]
+
+    delay_ms: int
+    """
+    Delay in milliseconds before pressing the digit, because a lot of IVR systems
+    speak very slowly, and a delay can make sure the agent hears the full menu.
+    Default to 1000 ms (1s). Valid range is 0 to 5000 ms (inclusive).
+    """
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+
+class NodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined(TypedDict, total=False):
+    content: str
+    """The static message to be sent in the SMS. Can contain dynamic variables."""
+
+    type: Literal["predefined"]
+
+
+class NodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred(TypedDict, total=False):
+    prompt: str
+    """The prompt to be used to help infer the SMS content.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right message to send. Can contain dynamic variables.
+    """
+
+    type: Literal["inferred"]
+
+
+NodeConversationNodeToolSendSMSToolSMSContent: TypeAlias = Union[
+    NodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined,
+    NodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred,
+]
+
+
+class NodeConversationNodeToolSendSMSTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    sms_content: Required[NodeConversationNodeToolSendSMSToolSMSContent]
+
+    type: Required[Literal["send_sms"]]
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+
+class NodeConversationNodeToolCustomToolParameters(TypedDict, total=False):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
+    properties: Required[Dict[str, object]]
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Required[Literal["object"]]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: SequenceNotStr[str]
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class NodeConversationNodeToolCustomTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["custom"]]
+
+    url: Required[str]
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    args_at_root: bool
+    """
+    If set to true, the parameters will be passed as root level JSON object instead
+    of nested under "args".
+    """
+
+    description: str
+    """Describes what this tool does and when to call this tool."""
+
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true. Can write what to say or
+    even provide examples. The default is "The message you will say to callee when
+    calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    headers: Dict[str, str]
+    """Headers to add to the request."""
+
+    method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
+    """Method to use for the request, default to POST."""
+
+    parameters: NodeConversationNodeToolCustomToolParameters
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
+    for documentation about the format. Omitting parameters defines a function with
+    an empty parameter list.
+    """
+
+    query_params: Dict[str, str]
+    """Query parameters to append to the request URL."""
+
+    response_variables: Dict[str, str]
+    """A mapping of variable names to JSON paths in the response body.
+
+    These values will be extracted from the response and made available as dynamic
+    variables for use.
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
+    """
+
+    timeout_ms: int
+    """The maximum time in milliseconds the tool can run before it's considered
+    timeout.
+
+    If the tool times out, the agent would have that info. The minimum value allowed
+    is 1000 ms (1 s), and maximum value allowed is 600,000 ms (10 min). By default,
+    this is set to 120,000 ms (2 min).
+    """
+
+
+class NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["string"]]
+    """Type of the variable to extract."""
+
+    examples: SequenceNotStr[str]
+    """Examples of the variable value to teach model the style and syntax."""
+
+
+class NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData(TypedDict, total=False):
+    choices: Required[SequenceNotStr[str]]
+    """The possible values of the variable, must be non empty array."""
+
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["enum"]]
+    """Type of the variable to extract."""
+
+
+class NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["boolean"]]
+    """Type of the variable to extract."""
+
+
+class NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["number"]]
+    """Type of the variable to extract."""
+
+
+NodeConversationNodeToolExtractDynamicVariableToolVariable: TypeAlias = Union[
+    NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData,
+    NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData,
+    NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData,
+    NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData,
+]
+
+
+class NodeConversationNodeToolExtractDynamicVariableTool(TypedDict, total=False):
+    description: Required[str]
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["extract_dynamic_variable"]]
+
+    variables: Required[Iterable[NodeConversationNodeToolExtractDynamicVariableToolVariable]]
+    """The variables to be extracted."""
+
+
+class NodeConversationNodeToolBridgeTransferTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["bridge_transfer"]]
+
+    description: str
+    """Describes what the tool does.
+
+    This tool is only available to transfer agents (agents with isTransferAgent set
+    to true) in agentic warm transfer mode. When invoked, it bridges the original
+    caller to the transfer target and ends the transfer agent call.
+    """
+
+
+class NodeConversationNodeToolCancelTransferTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["cancel_transfer"]]
+
+    description: str
+    """Describes what the tool does.
+
+    This tool is only available to transfer agents (agents with isTransferAgent set
+    to true) in agentic warm transfer mode. When invoked, it cancels the transfer,
+    returns the original caller to the main agent, and ends the transfer agent call.
+    """
+
+
+class NodeConversationNodeToolMcpTool(TypedDict, total=False):
+    description: Required[str]
+    """Description of the MCP tool."""
+
+    name: Required[str]
+    """Name of the MCP tool."""
+
+    type: Required[Literal["mcp"]]
+
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true. Can write what to say or
+    even provide examples. The default is "The message you will say to callee when
+    calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    input_schema: Dict[str, str]
+    """The input schema of the MCP tool."""
+
+    mcp_id: str
+    """Unique id of the MCP."""
+
+    response_variables: Dict[str, str]
+    """
+    Response variables to add to dynamic variables, key is the variable name, value
+    is the path to the variable in the response
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
+    """
+
+
+NodeConversationNodeTool: TypeAlias = Union[
+    NodeConversationNodeToolEndCallTool,
+    NodeConversationNodeToolTransferCallTool,
+    NodeConversationNodeToolCheckAvailabilityCalTool,
+    NodeConversationNodeToolBookAppointmentCalTool,
+    NodeConversationNodeToolAgentSwapTool,
+    NodeConversationNodeToolPressDigitTool,
+    NodeConversationNodeToolSendSMSTool,
+    NodeConversationNodeToolCustomTool,
+    NodeConversationNodeToolExtractDynamicVariableTool,
+    NodeConversationNodeToolBridgeTransferTool,
+    NodeConversationNodeToolCancelTransferTool,
+    NodeConversationNodeToolMcpTool,
+]
+
+
 class NodeConversationNode(TypedDict, total=False):
     id: Required[str]
     """Unique identifier for the node"""
@@ -1117,6 +2147,8 @@ class NodeConversationNode(TypedDict, total=False):
 
     type: Required[Literal["conversation"]]
     """Type of the node"""
+
+    always_edge: NodeConversationNodeAlwaysEdge
 
     display_position: NodeConversationNodeDisplayPosition
     """Position for frontend display"""
@@ -1140,6 +2172,18 @@ class NodeConversationNode(TypedDict, total=False):
     """Optional name for display purposes"""
 
     skip_response_edge: NodeConversationNodeSkipResponseEdge
+
+    tool_ids: Optional[SequenceNotStr[str]]
+    """
+    The tool ids of the tools defined in main conversation flow or component that
+    can be used in this conversation node.
+    """
+
+    tools: Optional[Iterable[NodeConversationNodeTool]]
+    """The tools owned by this conversation node.
+
+    This includes other tool types like transfer_call, agent_swap, etc.
+    """
 
 
 class NodeEndNodeDisplayPosition(TypedDict, total=False):
@@ -1323,6 +2367,62 @@ class NodeFunctionNodeEdge(TypedDict, total=False):
     """Unique identifier for the edge"""
 
     transition_condition: Required[NodeFunctionNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class NodeFunctionNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeFunctionNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeFunctionNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeFunctionNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class NodeFunctionNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+NodeFunctionNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeFunctionNodeElseEdgeTransitionConditionPromptCondition,
+    NodeFunctionNodeElseEdgeTransitionConditionEquationCondition,
+    NodeFunctionNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeFunctionNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeFunctionNodeElseEdgeTransitionCondition]
 
     destination_node_id: str
     """ID of the destination node"""
@@ -1521,6 +2621,8 @@ class NodeFunctionNode(TypedDict, total=False):
     """Position for frontend display"""
 
     edges: Iterable[NodeFunctionNodeEdge]
+
+    else_edge: NodeFunctionNodeElseEdge
 
     finetune_transition_examples: Iterable[NodeFunctionNodeFinetuneTransitionExample]
 
@@ -2897,6 +3999,62 @@ class NodeExtractDynamicVariablesNodeEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+NodeExtractDynamicVariablesNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionPromptCondition,
+    NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationCondition,
+    NodeExtractDynamicVariablesNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeExtractDynamicVariablesNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeExtractDynamicVariablesNodeElseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -3074,6 +4232,8 @@ class NodeExtractDynamicVariablesNode(TypedDict, total=False):
     """Position for frontend display"""
 
     edges: Iterable[NodeExtractDynamicVariablesNodeEdge]
+
+    else_edge: NodeExtractDynamicVariablesNodeElseEdge
 
     finetune_transition_examples: Iterable[NodeExtractDynamicVariablesNodeFinetuneTransitionExample]
 
@@ -4022,6 +5182,62 @@ ComponentNodeConversationNodeInstruction: TypeAlias = Union[
 ]
 
 
+class ComponentNodeConversationNodeAlwaysEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeConversationNodeAlwaysEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeConversationNodeAlwaysEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeConversationNodeAlwaysEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Always"]
+    """Must be "Always" for always edge"""
+
+
+class ComponentNodeConversationNodeAlwaysEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Always"]]
+    """Must be "Always" for always edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeConversationNodeAlwaysEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeConversationNodeAlwaysEdgeTransitionConditionPromptCondition,
+    ComponentNodeConversationNodeAlwaysEdgeTransitionConditionEquationCondition,
+    ComponentNodeConversationNodeAlwaysEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeConversationNodeAlwaysEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeConversationNodeAlwaysEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class ComponentNodeConversationNodeDisplayPosition(TypedDict, total=False):
     """Position for frontend display"""
 
@@ -4336,6 +5552,868 @@ class ComponentNodeConversationNodeSkipResponseEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class ComponentNodeConversationNodeToolEndCallTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["end_call"]]
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    execution_message_description: str
+    """Describes what to say to user when ending the call.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution."""
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined(
+    TypedDict, total=False
+):
+    number: Required[str]
+    """
+    The number to transfer to in E.164 format or a dynamic variable like
+    {{transfer_number}}.
+    """
+
+    type: Required[Literal["predefined"]]
+    """The type of transfer destination."""
+
+    extension: str
+    """Extension digits to dial after the main number connects.
+
+    Sent via DTMF. Allow digits, '\\**', '#', or a dynamic variable like
+    {{extension}}.
+    """
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred(
+    TypedDict, total=False
+):
+    prompt: Required[str]
+    """The prompt to be used to help infer the transfer destination.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right number to transfer to. Can contain dynamic
+    variables.
+    """
+
+    type: Required[Literal["inferred"]]
+    """The type of transfer destination."""
+
+
+ComponentNodeConversationNodeToolTransferCallToolTransferDestination: TypeAlias = Union[
+    ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined,
+    ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred,
+]
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer(TypedDict, total=False):
+    type: Required[Literal["cold_transfer"]]
+    """The type of the transfer."""
+
+    cold_transfer_mode: Literal["sip_refer", "sip_invite"]
+    """The mode of the cold transfer.
+
+    If set to `sip_refer`, will use SIP REFER to transfer the call. If set to
+    `sip_invite`, will use SIP INVITE to transfer the call.
+    """
+
+    show_transferee_as_caller: bool
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring. Requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option. This parameter takes effect only when
+    `cold_transfer_mode` is set to `sip_invite`. When using `sip_refer`, this option
+    is not available. Retell Twilio numbers always use user's number as the caller
+    id when using `sip refer` cold transfer mode.
+    """
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(
+    TypedDict, total=False
+):
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption: TypeAlias = Union[
+    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt,
+    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption: TypeAlias = Union[
+    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedDict, total=False):
+    type: Required[Literal["warm_transfer"]]
+    """The type of the transfer."""
+
+    agent_detection_timeout_ms: float
+    """The time to wait before considering transfer fails."""
+
+    enable_bridge_audio_cue: bool
+    """Whether to play an audio cue when bridging the call. Defaults to true."""
+
+    ivr_option: ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption
+    """IVR navigation option to run when doing human detection.
+
+    This prompt will guide the AI on how to navigate the IVR system.
+    """
+
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
+    """The music to play while the caller is being transferred."""
+
+    opt_out_human_detection: bool
+    """If set to true, will not perform human detection for the transfer.
+
+    Default to false.
+    """
+
+    opt_out_initial_message: bool
+    """If set to true, AI will not say "Hello" after connecting the call.
+
+    Default to false.
+    """
+
+    private_handoff_option: (
+        ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption
+    )
+    """
+    If set, when transfer is connected, will say the handoff message only to the
+    agent receiving the transfer. Can leave either a static message or a dynamic one
+    based on prompt. Set to null to disable warm handoff.
+    """
+
+    public_handoff_option: (
+        ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption
+    )
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: bool
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
+    """
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
+    TypedDict, total=False
+):
+    """The agent that will mediate the transfer decision."""
+
+    agent_id: Required[str]
+    """The agent ID of the transfer agent.
+
+    This agent must have isTransferAgent set to true and should use bridge_transfer
+    and cancel_transfer tools (for Retell LLM) or BridgeTransferNode and
+    CancelTransferNode (for Conversation Flow).
+    """
+
+    agent_version: Required[float]
+    """The version of the transfer agent to use."""
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(
+    TypedDict, total=False
+):
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
+    action_on_timeout: Literal["bridge_transfer", "cancel_transfer"]
+    """The action to take when the transfer agent times out without making a decision.
+
+    Defaults to cancel_transfer.
+    """
+
+    transfer_agent: ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
+    """The agent that will mediate the transfer decision."""
+
+    transfer_timeout_ms: float
+    """
+    The maximum time to wait for the transfer agent to make a decision, in
+    milliseconds. Defaults to 30000 (30 seconds).
+    """
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
+    TypedDict, total=False
+):
+    prompt: str
+    """The prompt to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+    TypedDict, total=False
+):
+    message: str
+    """The static message to be used for warm handoff. Can contain dynamic variables."""
+
+    type: Literal["static_message"]
+
+
+ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
+    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+]
+
+
+class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(
+    TypedDict, total=False
+):
+    agentic_transfer_config: Required[
+        ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
+    ]
+    """Configuration for agentic warm transfer. Required for agentic warm transfer."""
+
+    type: Required[Literal["agentic_warm_transfer"]]
+    """The type of the transfer."""
+
+    enable_bridge_audio_cue: bool
+    """Whether to play an audio cue when bridging the call. Defaults to true."""
+
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
+    """The music to play while the caller is being transferred."""
+
+    public_handoff_option: ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
+    """
+    If set, when transfer is successful, will say the handoff message to both the
+    transferee and the agent receiving the transfer. Can leave either a static
+    message or a dynamic one based on prompt. Set to null to disable warm handoff.
+    """
+
+    show_transferee_as_caller: bool
+    """
+    If set to true, will show transferee (the user, not the AI agent) as caller when
+    transferring, requires the telephony side to support caller id override. Retell
+    Twilio numbers support this option.
+    """
+
+
+ComponentNodeConversationNodeToolTransferCallToolTransferOption: TypeAlias = Union[
+    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer,
+    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer,
+    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer,
+]
+
+
+class ComponentNodeConversationNodeToolTransferCallTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    transfer_destination: Required[ComponentNodeConversationNodeToolTransferCallToolTransferDestination]
+
+    transfer_option: Required[ComponentNodeConversationNodeToolTransferCallToolTransferOption]
+
+    type: Required[Literal["transfer_call"]]
+
+    custom_sip_headers: Dict[str, str]
+    """Custom SIP headers to be added to the call."""
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    execution_message_description: str
+    """Describes what to say to user when transferring the call.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    ignore_e164_validation: bool
+    """If true, the e.164 validation will be ignored for the from_number.
+
+    This can be useful when you want to dial to internal pseudo numbers. This only
+    applies when you are using custom telephony and does not apply when you are
+    using Retell Telephony. If omitted, the default value is false.
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution."""
+
+
+class ComponentNodeConversationNodeToolCheckAvailabilityCalTool(TypedDict, total=False):
+    cal_api_key: Required[str]
+    """
+    Cal.com Api key that have access to the cal.com event you want to check
+    availability for.
+    """
+
+    event_type_id: Required[Union[float, str]]
+    """
+    Cal.com event type id number for the cal.com event you want to check
+    availability for. Can be a number or a dynamic variable in the format
+    `{{variable_name}}` that will be resolved at runtime.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["check_availability_cal"]]
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    timezone: str
+    """
+    Timezone to be used when checking availability, must be in
+    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
+    """
+
+
+class ComponentNodeConversationNodeToolBookAppointmentCalTool(TypedDict, total=False):
+    cal_api_key: Required[str]
+    """
+    Cal.com Api key that have access to the cal.com event you want to book
+    appointment.
+    """
+
+    event_type_id: Required[Union[float, str]]
+    """Cal.com event type id number for the cal.com event you want to book appointment.
+
+    Can be a number or a dynamic variable in the format `{{variable_name}}` that
+    will be resolved at runtime.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["book_appointment_cal"]]
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    timezone: str
+    """
+    Timezone to be used when booking appointment, must be in
+    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
+    """
+
+
+class ComponentNodeConversationNodeToolAgentSwapTool(TypedDict, total=False):
+    agent_id: Required[str]
+    """The id of the agent to swap to."""
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    post_call_analysis_setting: Required[Literal["both_agents", "only_destination_agent"]]
+    """Post call analysis setting for the agent swap."""
+
+    type: Required[Literal["agent_swap"]]
+
+    agent_version: float
+    """The version of the agent to swap to.
+
+    If not specified, will use the latest version.
+    """
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    execution_message_description: str
+    """The message for the agent to speak when executing agent swap."""
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: bool
+
+    webhook_setting: Literal["both_agents", "only_destination_agent", "only_source_agent"]
+    """Webhook setting for the agent swap, defaults to only source."""
+
+
+class ComponentNodeConversationNodeToolPressDigitTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["press_digit"]]
+
+    delay_ms: int
+    """
+    Delay in milliseconds before pressing the digit, because a lot of IVR systems
+    speak very slowly, and a delay can make sure the agent hears the full menu.
+    Default to 1000 ms (1s). Valid range is 0 to 5000 ms (inclusive).
+    """
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+
+class ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined(TypedDict, total=False):
+    content: str
+    """The static message to be sent in the SMS. Can contain dynamic variables."""
+
+    type: Literal["predefined"]
+
+
+class ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred(TypedDict, total=False):
+    prompt: str
+    """The prompt to be used to help infer the SMS content.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right message to send. Can contain dynamic variables.
+    """
+
+    type: Literal["inferred"]
+
+
+ComponentNodeConversationNodeToolSendSMSToolSMSContent: TypeAlias = Union[
+    ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined,
+    ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred,
+]
+
+
+class ComponentNodeConversationNodeToolSendSMSTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    sms_content: Required[ComponentNodeConversationNodeToolSendSMSToolSMSContent]
+
+    type: Required[Literal["send_sms"]]
+
+    description: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+
+class ComponentNodeConversationNodeToolCustomToolParameters(TypedDict, total=False):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
+    properties: Required[Dict[str, object]]
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Required[Literal["object"]]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: SequenceNotStr[str]
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class ComponentNodeConversationNodeToolCustomTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["custom"]]
+
+    url: Required[str]
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    args_at_root: bool
+    """
+    If set to true, the parameters will be passed as root level JSON object instead
+    of nested under "args".
+    """
+
+    description: str
+    """Describes what this tool does and when to call this tool."""
+
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true. Can write what to say or
+    even provide examples. The default is "The message you will say to callee when
+    calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    headers: Dict[str, str]
+    """Headers to add to the request."""
+
+    method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
+    """Method to use for the request, default to POST."""
+
+    parameters: ComponentNodeConversationNodeToolCustomToolParameters
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
+    for documentation about the format. Omitting parameters defines a function with
+    an empty parameter list.
+    """
+
+    query_params: Dict[str, str]
+    """Query parameters to append to the request URL."""
+
+    response_variables: Dict[str, str]
+    """A mapping of variable names to JSON paths in the response body.
+
+    These values will be extracted from the response and made available as dynamic
+    variables for use.
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
+    """
+
+    timeout_ms: int
+    """The maximum time in milliseconds the tool can run before it's considered
+    timeout.
+
+    If the tool times out, the agent would have that info. The minimum value allowed
+    is 1000 ms (1 s), and maximum value allowed is 600,000 ms (10 min). By default,
+    this is set to 120,000 ms (2 min).
+    """
+
+
+class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["string"]]
+    """Type of the variable to extract."""
+
+    examples: SequenceNotStr[str]
+    """Examples of the variable value to teach model the style and syntax."""
+
+
+class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData(TypedDict, total=False):
+    choices: Required[SequenceNotStr[str]]
+    """The possible values of the variable, must be non empty array."""
+
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["enum"]]
+    """Type of the variable to extract."""
+
+
+class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["boolean"]]
+    """Type of the variable to extract."""
+
+
+class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData(TypedDict, total=False):
+    description: Required[str]
+    """Description of the variable."""
+
+    name: Required[str]
+    """Name of the variable."""
+
+    type: Required[Literal["number"]]
+    """Type of the variable to extract."""
+
+
+ComponentNodeConversationNodeToolExtractDynamicVariableToolVariable: TypeAlias = Union[
+    ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData,
+    ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData,
+    ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData,
+    ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData,
+]
+
+
+class ComponentNodeConversationNodeToolExtractDynamicVariableTool(TypedDict, total=False):
+    description: Required[str]
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["extract_dynamic_variable"]]
+
+    variables: Required[Iterable[ComponentNodeConversationNodeToolExtractDynamicVariableToolVariable]]
+    """The variables to be extracted."""
+
+
+class ComponentNodeConversationNodeToolBridgeTransferTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["bridge_transfer"]]
+
+    description: str
+    """Describes what the tool does.
+
+    This tool is only available to transfer agents (agents with isTransferAgent set
+    to true) in agentic warm transfer mode. When invoked, it bridges the original
+    caller to the transfer target and ends the transfer agent call.
+    """
+
+
+class ComponentNodeConversationNodeToolCancelTransferTool(TypedDict, total=False):
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["cancel_transfer"]]
+
+    description: str
+    """Describes what the tool does.
+
+    This tool is only available to transfer agents (agents with isTransferAgent set
+    to true) in agentic warm transfer mode. When invoked, it cancels the transfer,
+    returns the original caller to the main agent, and ends the transfer agent call.
+    """
+
+
+class ComponentNodeConversationNodeToolMcpTool(TypedDict, total=False):
+    description: Required[str]
+    """Description of the MCP tool."""
+
+    name: Required[str]
+    """Name of the MCP tool."""
+
+    type: Required[Literal["mcp"]]
+
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true. Can write what to say or
+    even provide examples. The default is "The message you will say to callee when
+    calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    input_schema: Dict[str, str]
+    """The input schema of the MCP tool."""
+
+    mcp_id: str
+    """Unique id of the MCP."""
+
+    response_variables: Dict[str, str]
+    """
+    Response variables to add to dynamic variables, key is the variable name, value
+    is the path to the variable in the response
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
+    """
+
+
+ComponentNodeConversationNodeTool: TypeAlias = Union[
+    ComponentNodeConversationNodeToolEndCallTool,
+    ComponentNodeConversationNodeToolTransferCallTool,
+    ComponentNodeConversationNodeToolCheckAvailabilityCalTool,
+    ComponentNodeConversationNodeToolBookAppointmentCalTool,
+    ComponentNodeConversationNodeToolAgentSwapTool,
+    ComponentNodeConversationNodeToolPressDigitTool,
+    ComponentNodeConversationNodeToolSendSMSTool,
+    ComponentNodeConversationNodeToolCustomTool,
+    ComponentNodeConversationNodeToolExtractDynamicVariableTool,
+    ComponentNodeConversationNodeToolBridgeTransferTool,
+    ComponentNodeConversationNodeToolCancelTransferTool,
+    ComponentNodeConversationNodeToolMcpTool,
+]
+
+
 class ComponentNodeConversationNode(TypedDict, total=False):
     id: Required[str]
     """Unique identifier for the node"""
@@ -4344,6 +6422,8 @@ class ComponentNodeConversationNode(TypedDict, total=False):
 
     type: Required[Literal["conversation"]]
     """Type of the node"""
+
+    always_edge: ComponentNodeConversationNodeAlwaysEdge
 
     display_position: ComponentNodeConversationNodeDisplayPosition
     """Position for frontend display"""
@@ -4367,6 +6447,18 @@ class ComponentNodeConversationNode(TypedDict, total=False):
     """Optional name for display purposes"""
 
     skip_response_edge: ComponentNodeConversationNodeSkipResponseEdge
+
+    tool_ids: Optional[SequenceNotStr[str]]
+    """
+    The tool ids of the tools defined in main conversation flow or component that
+    can be used in this conversation node.
+    """
+
+    tools: Optional[Iterable[ComponentNodeConversationNodeTool]]
+    """The tools owned by this conversation node.
+
+    This includes other tool types like transfer_call, agent_swap, etc.
+    """
 
 
 class ComponentNodeEndNodeDisplayPosition(TypedDict, total=False):
@@ -4551,6 +6643,62 @@ class ComponentNodeFunctionNodeEdge(TypedDict, total=False):
     """Unique identifier for the edge"""
 
     transition_condition: Required[ComponentNodeFunctionNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeFunctionNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeFunctionNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeFunctionNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeFunctionNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class ComponentNodeFunctionNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeFunctionNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeFunctionNodeElseEdgeTransitionConditionPromptCondition,
+    ComponentNodeFunctionNodeElseEdgeTransitionConditionEquationCondition,
+    ComponentNodeFunctionNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeFunctionNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeFunctionNodeElseEdgeTransitionCondition]
 
     destination_node_id: str
     """ID of the destination node"""
@@ -4750,6 +6898,8 @@ class ComponentNodeFunctionNode(TypedDict, total=False):
     """Position for frontend display"""
 
     edges: Iterable[ComponentNodeFunctionNodeEdge]
+
+    else_edge: ComponentNodeFunctionNodeElseEdge
 
     finetune_transition_examples: Iterable[ComponentNodeFunctionNodeFinetuneTransitionExample]
 
@@ -6147,6 +8297,66 @@ class ComponentNodeExtractDynamicVariablesNodeEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionPromptCondition,
+    ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionEquationCondition,
+    ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeExtractDynamicVariablesNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeExtractDynamicVariablesNodeElseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -6332,6 +8542,8 @@ class ComponentNodeExtractDynamicVariablesNode(TypedDict, total=False):
     """Position for frontend display"""
 
     edges: Iterable[ComponentNodeExtractDynamicVariablesNodeEdge]
+
+    else_edge: ComponentNodeExtractDynamicVariablesNodeElseEdge
 
     finetune_transition_examples: Iterable[ComponentNodeExtractDynamicVariablesNodeFinetuneTransitionExample]
 
@@ -7304,8 +9516,11 @@ class ComponentMcp(TypedDict, total=False):
     """
 
 
-class ComponentToolConversationFlowCustomToolParameters(TypedDict, total=False):
-    """Tool parameters schema"""
+class ComponentToolCustomToolParameters(TypedDict, total=False):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
 
     properties: Required[Dict[str, object]]
     """
@@ -7324,46 +9539,95 @@ class ComponentToolConversationFlowCustomToolParameters(TypedDict, total=False):
     """
 
 
-class ComponentToolConversationFlowCustomTool(TypedDict, total=False):
+class ComponentToolCustomTool(TypedDict, total=False):
     name: Required[str]
-    """Name of the tool"""
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
 
     type: Required[Literal["custom"]]
-    """Type of the tool"""
 
     url: Required[str]
-    """Server URL to call the tool. Dynamic variables can be used in the URL."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
     args_at_root: bool
-    """If true, the tool arguments will be passed at the root level of the request
-    body.
-
-    If false, they will be nested under "args".
+    """
+    If set to true, the parameters will be passed as root level JSON object instead
+    of nested under "args".
     """
 
     description: str
-    """Description of the tool"""
+    """Describes what this tool does and when to call this tool."""
+
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true. Can write what to say or
+    even provide examples. The default is "The message you will say to callee when
+    calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
 
     headers: Dict[str, str]
-    """Headers to add to the request"""
+    """Headers to add to the request."""
 
     method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
-    """HTTP method to use for the request, defaults to POST"""
+    """Method to use for the request, default to POST."""
 
-    parameters: ComponentToolConversationFlowCustomToolParameters
-    """Tool parameters schema"""
+    parameters: ComponentToolCustomToolParameters
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
+    for documentation about the format. Omitting parameters defines a function with
+    an empty parameter list.
+    """
 
     query_params: Dict[str, str]
-    """Query parameters to add to the request"""
+    """Query parameters to append to the request URL."""
 
     response_variables: Dict[str, str]
+    """A mapping of variable names to JSON paths in the response body.
+
+    These values will be extracted from the response and made available as dynamic
+    variables for use.
     """
-    Response variables to add to the dynamic variables, key is the variable name,
-    value is the path to the variable in the response
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
     """
 
     timeout_ms: int
-    """Timeout in milliseconds for the function call, defaults to 2 min"""
+    """The maximum time in milliseconds the tool can run before it's considered
+    timeout.
+
+    If the tool times out, the agent would have that info. The minimum value allowed
+    is 1000 ms (1 s), and maximum value allowed is 600,000 ms (10 min). By default,
+    this is set to 120,000 ms (2 min).
+    """
 
     tool_id: str
     """Unique identifier for the tool"""
@@ -7376,10 +9640,11 @@ class ComponentToolCheckAvailabilityCalTool(TypedDict, total=False):
     availability for.
     """
 
-    event_type_id: Required[float]
+    event_type_id: Required[Union[float, str]]
     """
     Cal.com event type id number for the cal.com event you want to check
-    availability for.
+    availability for. Can be a number or a dynamic variable in the format
+    `{{variable_name}}` that will be resolved at runtime.
     """
 
     name: Required[str]
@@ -7402,8 +9667,9 @@ class ComponentToolCheckAvailabilityCalTool(TypedDict, total=False):
     """
     Timezone to be used when checking availability, must be in
     [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    If not specified, will check if user specified timezone in call, and if not,
-    will use the timezone of the Retell servers.
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
     """
 
     tool_id: str
@@ -7417,9 +9683,11 @@ class ComponentToolBookAppointmentCalTool(TypedDict, total=False):
     appointment.
     """
 
-    event_type_id: Required[float]
-    """
-    Cal.com event type id number for the cal.com event you want to book appointment.
+    event_type_id: Required[Union[float, str]]
+    """Cal.com event type id number for the cal.com event you want to book appointment.
+
+    Can be a number or a dynamic variable in the format `{{variable_name}}` that
+    will be resolved at runtime.
     """
 
     name: Required[str]
@@ -7442,8 +9710,9 @@ class ComponentToolBookAppointmentCalTool(TypedDict, total=False):
     """
     Timezone to be used when booking appointment, must be in
     [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    If not specified, will check if user specified timezone in call, and if not,
-    will use the timezone of the Retell servers.
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
     """
 
     tool_id: str
@@ -7451,7 +9720,7 @@ class ComponentToolBookAppointmentCalTool(TypedDict, total=False):
 
 
 ComponentTool: TypeAlias = Union[
-    ComponentToolConversationFlowCustomTool, ComponentToolCheckAvailabilityCalTool, ComponentToolBookAppointmentCalTool
+    ComponentToolCustomTool, ComponentToolCheckAvailabilityCalTool, ComponentToolBookAppointmentCalTool
 ]
 
 
@@ -7504,8 +9773,11 @@ class Mcp(TypedDict, total=False):
     """
 
 
-class ToolConversationFlowCustomToolParameters(TypedDict, total=False):
-    """Tool parameters schema"""
+class ToolCustomToolParameters(TypedDict, total=False):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
 
     properties: Required[Dict[str, object]]
     """
@@ -7524,46 +9796,95 @@ class ToolConversationFlowCustomToolParameters(TypedDict, total=False):
     """
 
 
-class ToolConversationFlowCustomTool(TypedDict, total=False):
+class ToolCustomTool(TypedDict, total=False):
     name: Required[str]
-    """Name of the tool"""
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
 
     type: Required[Literal["custom"]]
-    """Type of the tool"""
 
     url: Required[str]
-    """Server URL to call the tool. Dynamic variables can be used in the URL."""
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
 
     args_at_root: bool
-    """If true, the tool arguments will be passed at the root level of the request
-    body.
-
-    If false, they will be nested under "args".
+    """
+    If set to true, the parameters will be passed as root level JSON object instead
+    of nested under "args".
     """
 
     description: str
-    """Description of the tool"""
+    """Describes what this tool does and when to call this tool."""
+
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true. Can write what to say or
+    even provide examples. The default is "The message you will say to callee when
+    calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
 
     headers: Dict[str, str]
-    """Headers to add to the request"""
+    """Headers to add to the request."""
 
     method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
-    """HTTP method to use for the request, defaults to POST"""
+    """Method to use for the request, default to POST."""
 
-    parameters: ToolConversationFlowCustomToolParameters
-    """Tool parameters schema"""
+    parameters: ToolCustomToolParameters
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
+    for documentation about the format. Omitting parameters defines a function with
+    an empty parameter list.
+    """
 
     query_params: Dict[str, str]
-    """Query parameters to add to the request"""
+    """Query parameters to append to the request URL."""
 
     response_variables: Dict[str, str]
+    """A mapping of variable names to JSON paths in the response body.
+
+    These values will be extracted from the response and made available as dynamic
+    variables for use.
     """
-    Response variables to add to the dynamic variables, key is the variable name,
-    value is the path to the variable in the response
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
     """
 
     timeout_ms: int
-    """Timeout in milliseconds for the function call, defaults to 2 min"""
+    """The maximum time in milliseconds the tool can run before it's considered
+    timeout.
+
+    If the tool times out, the agent would have that info. The minimum value allowed
+    is 1000 ms (1 s), and maximum value allowed is 600,000 ms (10 min). By default,
+    this is set to 120,000 ms (2 min).
+    """
 
     tool_id: str
     """Unique identifier for the tool"""
@@ -7576,10 +9897,11 @@ class ToolCheckAvailabilityCalTool(TypedDict, total=False):
     availability for.
     """
 
-    event_type_id: Required[float]
+    event_type_id: Required[Union[float, str]]
     """
     Cal.com event type id number for the cal.com event you want to check
-    availability for.
+    availability for. Can be a number or a dynamic variable in the format
+    `{{variable_name}}` that will be resolved at runtime.
     """
 
     name: Required[str]
@@ -7602,8 +9924,9 @@ class ToolCheckAvailabilityCalTool(TypedDict, total=False):
     """
     Timezone to be used when checking availability, must be in
     [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    If not specified, will check if user specified timezone in call, and if not,
-    will use the timezone of the Retell servers.
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
     """
 
     tool_id: str
@@ -7617,9 +9940,11 @@ class ToolBookAppointmentCalTool(TypedDict, total=False):
     appointment.
     """
 
-    event_type_id: Required[float]
-    """
-    Cal.com event type id number for the cal.com event you want to book appointment.
+    event_type_id: Required[Union[float, str]]
+    """Cal.com event type id number for the cal.com event you want to book appointment.
+
+    Can be a number or a dynamic variable in the format `{{variable_name}}` that
+    will be resolved at runtime.
     """
 
     name: Required[str]
@@ -7642,12 +9967,13 @@ class ToolBookAppointmentCalTool(TypedDict, total=False):
     """
     Timezone to be used when booking appointment, must be in
     [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    If not specified, will check if user specified timezone in call, and if not,
-    will use the timezone of the Retell servers.
+    Can also be a dynamic variable in the format `{{variable_name}}` that will be
+    resolved at runtime. If not specified, will check if user specified timezone in
+    call, and if not, will use the timezone of the Retell servers.
     """
 
     tool_id: str
     """Unique identifier for the tool"""
 
 
-Tool: TypeAlias = Union[ToolConversationFlowCustomTool, ToolCheckAvailabilityCalTool, ToolBookAppointmentCalTool]
+Tool: TypeAlias = Union[ToolCustomTool, ToolCheckAvailabilityCalTool, ToolBookAppointmentCalTool]
