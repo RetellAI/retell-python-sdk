@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -52,13 +52,16 @@ class PhoneNumberResource(SyncAPIResource):
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         area_code: int | Omit = omit,
         country_code: Literal["US", "CA"] | Omit = omit,
+        fallback_number: Optional[str] | Omit = omit,
         inbound_agent_id: Optional[str] | Omit = omit,
         inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_agents: Optional[Iterable[phone_number_create_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: str | Omit = omit,
         number_provider: Literal["twilio", "telnyx"] | Omit = omit,
         outbound_agent_id: Optional[str] | Omit = omit,
         outbound_agent_version: Optional[int] | Omit = omit,
+        outbound_agents: Optional[Iterable[phone_number_create_params.OutboundAgent]] | Omit = omit,
         phone_number: str | Omit = omit,
         toll_free: bool | Omit = omit,
         transport: Optional[str] | Omit = omit,
@@ -85,12 +88,22 @@ class PhoneNumberResource(SyncAPIResource):
           country_code: The ISO 3166-1 alpha-2 country code of the number you are trying to purchase. If
               left empty, will default to "US".
 
+          fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
+              in outage mode. Can be either a Retell phone number or an external number.
+              Cannot be the same as this phone number, and cannot be a number that already has
+              its own fallback configured (prevents nested forwarding).
+
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
               default to latest version.
+
+          inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each inbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to inbound_agent_id.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -105,6 +118,11 @@ class PhoneNumberResource(SyncAPIResource):
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
               default to latest version.
+
+          outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each outbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to outbound_agent_id.
 
           phone_number: The number you are trying to purchase in E.164 format of the number (+country
               code then number with no space and no special characters).
@@ -130,13 +148,16 @@ class PhoneNumberResource(SyncAPIResource):
                     "allowed_outbound_country_list": allowed_outbound_country_list,
                     "area_code": area_code,
                     "country_code": country_code,
+                    "fallback_number": fallback_number,
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_agent_version": inbound_agent_version,
+                    "inbound_agents": inbound_agents,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "number_provider": number_provider,
                     "outbound_agent_id": outbound_agent_id,
                     "outbound_agent_version": outbound_agent_version,
+                    "outbound_agents": outbound_agents,
                     "phone_number": phone_number,
                     "toll_free": toll_free,
                     "transport": transport,
@@ -190,12 +211,18 @@ class PhoneNumberResource(SyncAPIResource):
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         auth_password: str | Omit = omit,
         auth_username: str | Omit = omit,
+        fallback_number: Optional[str] | Omit = omit,
         inbound_agent_id: Optional[str] | Omit = omit,
         inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_agents: Optional[Iterable[phone_number_update_params.InboundAgent]] | Omit = omit,
+        inbound_sms_agents: Optional[Iterable[phone_number_update_params.InboundSMSAgent]] | Omit = omit,
+        inbound_sms_webhook_url: Optional[str] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: Optional[str] | Omit = omit,
         outbound_agent_id: Optional[str] | Omit = omit,
         outbound_agent_version: Optional[int] | Omit = omit,
+        outbound_agents: Optional[Iterable[phone_number_update_params.OutboundAgent]] | Omit = omit,
+        outbound_sms_agents: Optional[Iterable[phone_number_update_params.OutboundSMSAgent]] | Omit = omit,
         termination_uri: str | Omit = omit,
         transport: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -221,12 +248,31 @@ class PhoneNumberResource(SyncAPIResource):
           auth_username: The username used for authentication for the SIP trunk to update for the phone
               number.
 
+          fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
+              in outage mode. Can be either a Retell phone number or an external number. Set
+              to null to remove. Cannot be the same as this phone number, and cannot be a
+              number that already has its own fallback configured (prevents nested
+              forwarding).
+
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If set to null, this number would not accept
               inbound call.
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
               default to latest version.
+
+          inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each inbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to inbound_agent_id.
+
+          inbound_sms_agents: Inbound SMS agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each inbound SMS, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to inbound_sms_agent_id.
+
+          inbound_sms_webhook_url: If set, will send a webhook for inbound SMS, where you can override agent id,
+              set dynamic variables and other fields specific to that chat.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -239,6 +285,16 @@ class PhoneNumberResource(SyncAPIResource):
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
               default to latest version.
+
+          outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each outbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to outbound_agent_id.
+
+          outbound_sms_agents: Outbound SMS agents to bind to the number with weights. If set and non-empty,
+              one agent will be picked randomly for each outbound SMS, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to outbound_sms_agent_id.
 
           termination_uri: The termination uri to update for the phone number. This is used for outbound
               calls.
@@ -264,12 +320,18 @@ class PhoneNumberResource(SyncAPIResource):
                     "allowed_outbound_country_list": allowed_outbound_country_list,
                     "auth_password": auth_password,
                     "auth_username": auth_username,
+                    "fallback_number": fallback_number,
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_agent_version": inbound_agent_version,
+                    "inbound_agents": inbound_agents,
+                    "inbound_sms_agents": inbound_sms_agents,
+                    "inbound_sms_webhook_url": inbound_sms_webhook_url,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                     "outbound_agent_version": outbound_agent_version,
+                    "outbound_agents": outbound_agents,
+                    "outbound_sms_agents": outbound_sms_agents,
                     "termination_uri": termination_uri,
                     "transport": transport,
                 },
@@ -343,10 +405,12 @@ class PhoneNumberResource(SyncAPIResource):
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         inbound_agent_id: Optional[str] | Omit = omit,
         inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_agents: Optional[Iterable[phone_number_import_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: str | Omit = omit,
         outbound_agent_id: Optional[str] | Omit = omit,
         outbound_agent_version: Optional[int] | Omit = omit,
+        outbound_agents: Optional[Iterable[phone_number_import_params.OutboundAgent]] | Omit = omit,
         sip_trunk_auth_password: str | Omit = omit,
         sip_trunk_auth_username: str | Omit = omit,
         transport: Optional[str] | Omit = omit,
@@ -382,6 +446,11 @@ class PhoneNumberResource(SyncAPIResource):
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
               default to latest version.
 
+          inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each inbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to inbound_agent_id.
+
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
 
@@ -393,6 +462,11 @@ class PhoneNumberResource(SyncAPIResource):
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
               default to latest version.
+
+          outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each outbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to outbound_agent_id.
 
           sip_trunk_auth_password: The password used for authentication for the SIP trunk.
 
@@ -419,10 +493,12 @@ class PhoneNumberResource(SyncAPIResource):
                     "allowed_outbound_country_list": allowed_outbound_country_list,
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_agent_version": inbound_agent_version,
+                    "inbound_agents": inbound_agents,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                     "outbound_agent_version": outbound_agent_version,
+                    "outbound_agents": outbound_agents,
                     "sip_trunk_auth_password": sip_trunk_auth_password,
                     "sip_trunk_auth_username": sip_trunk_auth_username,
                     "transport": transport,
@@ -463,13 +539,16 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         area_code: int | Omit = omit,
         country_code: Literal["US", "CA"] | Omit = omit,
+        fallback_number: Optional[str] | Omit = omit,
         inbound_agent_id: Optional[str] | Omit = omit,
         inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_agents: Optional[Iterable[phone_number_create_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: str | Omit = omit,
         number_provider: Literal["twilio", "telnyx"] | Omit = omit,
         outbound_agent_id: Optional[str] | Omit = omit,
         outbound_agent_version: Optional[int] | Omit = omit,
+        outbound_agents: Optional[Iterable[phone_number_create_params.OutboundAgent]] | Omit = omit,
         phone_number: str | Omit = omit,
         toll_free: bool | Omit = omit,
         transport: Optional[str] | Omit = omit,
@@ -496,12 +575,22 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           country_code: The ISO 3166-1 alpha-2 country code of the number you are trying to purchase. If
               left empty, will default to "US".
 
+          fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
+              in outage mode. Can be either a Retell phone number or an external number.
+              Cannot be the same as this phone number, and cannot be a number that already has
+              its own fallback configured (prevents nested forwarding).
+
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
               inbound call.
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
               default to latest version.
+
+          inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each inbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to inbound_agent_id.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -516,6 +605,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
               default to latest version.
+
+          outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each outbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to outbound_agent_id.
 
           phone_number: The number you are trying to purchase in E.164 format of the number (+country
               code then number with no space and no special characters).
@@ -541,13 +635,16 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "allowed_outbound_country_list": allowed_outbound_country_list,
                     "area_code": area_code,
                     "country_code": country_code,
+                    "fallback_number": fallback_number,
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_agent_version": inbound_agent_version,
+                    "inbound_agents": inbound_agents,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "number_provider": number_provider,
                     "outbound_agent_id": outbound_agent_id,
                     "outbound_agent_version": outbound_agent_version,
+                    "outbound_agents": outbound_agents,
                     "phone_number": phone_number,
                     "toll_free": toll_free,
                     "transport": transport,
@@ -601,12 +698,18 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         auth_password: str | Omit = omit,
         auth_username: str | Omit = omit,
+        fallback_number: Optional[str] | Omit = omit,
         inbound_agent_id: Optional[str] | Omit = omit,
         inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_agents: Optional[Iterable[phone_number_update_params.InboundAgent]] | Omit = omit,
+        inbound_sms_agents: Optional[Iterable[phone_number_update_params.InboundSMSAgent]] | Omit = omit,
+        inbound_sms_webhook_url: Optional[str] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: Optional[str] | Omit = omit,
         outbound_agent_id: Optional[str] | Omit = omit,
         outbound_agent_version: Optional[int] | Omit = omit,
+        outbound_agents: Optional[Iterable[phone_number_update_params.OutboundAgent]] | Omit = omit,
+        outbound_sms_agents: Optional[Iterable[phone_number_update_params.OutboundSMSAgent]] | Omit = omit,
         termination_uri: str | Omit = omit,
         transport: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -632,12 +735,31 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           auth_username: The username used for authentication for the SIP trunk to update for the phone
               number.
 
+          fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
+              in outage mode. Can be either a Retell phone number or an external number. Set
+              to null to remove. Cannot be the same as this phone number, and cannot be a
+              number that already has its own fallback configured (prevents nested
+              forwarding).
+
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If set to null, this number would not accept
               inbound call.
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
               default to latest version.
+
+          inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each inbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to inbound_agent_id.
+
+          inbound_sms_agents: Inbound SMS agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each inbound SMS, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to inbound_sms_agent_id.
+
+          inbound_sms_webhook_url: If set, will send a webhook for inbound SMS, where you can override agent id,
+              set dynamic variables and other fields specific to that chat.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -650,6 +772,16 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
               default to latest version.
+
+          outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each outbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to outbound_agent_id.
+
+          outbound_sms_agents: Outbound SMS agents to bind to the number with weights. If set and non-empty,
+              one agent will be picked randomly for each outbound SMS, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to outbound_sms_agent_id.
 
           termination_uri: The termination uri to update for the phone number. This is used for outbound
               calls.
@@ -675,12 +807,18 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "allowed_outbound_country_list": allowed_outbound_country_list,
                     "auth_password": auth_password,
                     "auth_username": auth_username,
+                    "fallback_number": fallback_number,
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_agent_version": inbound_agent_version,
+                    "inbound_agents": inbound_agents,
+                    "inbound_sms_agents": inbound_sms_agents,
+                    "inbound_sms_webhook_url": inbound_sms_webhook_url,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                     "outbound_agent_version": outbound_agent_version,
+                    "outbound_agents": outbound_agents,
+                    "outbound_sms_agents": outbound_sms_agents,
                     "termination_uri": termination_uri,
                     "transport": transport,
                 },
@@ -754,10 +892,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         inbound_agent_id: Optional[str] | Omit = omit,
         inbound_agent_version: Optional[int] | Omit = omit,
+        inbound_agents: Optional[Iterable[phone_number_import_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: str | Omit = omit,
         outbound_agent_id: Optional[str] | Omit = omit,
         outbound_agent_version: Optional[int] | Omit = omit,
+        outbound_agents: Optional[Iterable[phone_number_import_params.OutboundAgent]] | Omit = omit,
         sip_trunk_auth_password: str | Omit = omit,
         sip_trunk_auth_username: str | Omit = omit,
         transport: Optional[str] | Omit = omit,
@@ -793,6 +933,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
               default to latest version.
 
+          inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each inbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to inbound_agent_id.
+
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
 
@@ -804,6 +949,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
               default to latest version.
+
+          outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
+              agent will be picked randomly for each outbound call, with probability
+              proportional to the weight. Total weights must add up to 1. If not set or empty,
+              fallback to outbound_agent_id.
 
           sip_trunk_auth_password: The password used for authentication for the SIP trunk.
 
@@ -830,10 +980,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "allowed_outbound_country_list": allowed_outbound_country_list,
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_agent_version": inbound_agent_version,
+                    "inbound_agents": inbound_agents,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "outbound_agent_id": outbound_agent_id,
                     "outbound_agent_version": outbound_agent_version,
+                    "outbound_agents": outbound_agents,
                     "sip_trunk_auth_password": sip_trunk_auth_password,
                     "sip_trunk_auth_username": sip_trunk_auth_username,
                     "transport": transport,

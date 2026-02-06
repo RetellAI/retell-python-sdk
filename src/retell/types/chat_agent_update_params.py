@@ -9,6 +9,7 @@ from .._types import SequenceNotStr
 
 __all__ = [
     "ChatAgentUpdateParams",
+    "GuardrailConfig",
     "PiiConfig",
     "PostChatAnalysisData",
     "PostChatAnalysisDataStringAnalysisData",
@@ -56,8 +57,14 @@ class ChatAgentUpdateParams(TypedDict, total=False):
     end_chat_after_silence_ms: int
     """If users stay silent for a period after agent speech, end the chat.
 
-    The minimum value allowed is 360,000 ms (0.1 hours). The maximum value allowed
+    The minimum value allowed is 120,000 ms (2 minutes). The maximum value allowed
     is 259,200,000 ms (72 hours). By default, this is set to 3,600,000 (1 hour).
+    """
+
+    guardrail_config: GuardrailConfig
+    """
+    Configuration for guardrail checks to detect and prevent prohibited topics in
+    agent output and user input.
     """
 
     is_public: Optional[bool]
@@ -175,6 +182,40 @@ class ChatAgentUpdateParams(TypedDict, total=False):
     binds webhook events for this agent to the specified url, and will ignore the
     account level webhook for this agent. Set to `null` to remove webhook url from
     this agent.
+    """
+
+
+class GuardrailConfig(TypedDict, total=False):
+    """
+    Configuration for guardrail checks to detect and prevent prohibited topics in agent output and user input.
+    """
+
+    input_topics: Optional[List[Literal["platform_integrity_jailbreaking"]]]
+    """Selected prohibited user topic categories to check.
+
+    When user messages contain these topics, the agent will respond with a
+    placeholder message instead of processing the request.
+    """
+
+    output_topics: Optional[
+        List[
+            Literal[
+                "harassment",
+                "self_harm",
+                "sexual_exploitation",
+                "violence",
+                "defense_and_national_security",
+                "illicit_and_harmful_activity",
+                "gambling",
+                "regulated_professional_advice",
+                "child_safety_and_exploitation",
+            ]
+        ]
+    ]
+    """Selected prohibited agent topic categories to check.
+
+    When agent messages contain these topics, they will be replaced with a
+    placeholder message.
     """
 
 
