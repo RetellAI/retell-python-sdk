@@ -34,13 +34,28 @@ class TestPhoneNumber:
             allowed_outbound_country_list=["US", "CA"],
             area_code=415,
             country_code="US",
+            fallback_number="+14155551234",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_agent_version=1,
+            inbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             number_provider="twilio",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             outbound_agent_version=1,
+            outbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
             phone_number="+14157774444",
             toll_free=True,
             transport="TCP",
@@ -128,12 +143,42 @@ class TestPhoneNumber:
             allowed_outbound_country_list=["US", "CA"],
             auth_password="123456",
             auth_username="username",
+            fallback_number="+14155551234",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_agent_version=1,
+            inbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
+            inbound_sms_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
+            inbound_sms_webhook_url="https://example.com/inbound-sms-webhook",
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             outbound_agent_version=1,
+            outbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
+            outbound_sms_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
             termination_uri="someuri.pstn.twilio.com",
             transport="TCP",
         )
@@ -262,10 +307,24 @@ class TestPhoneNumber:
             allowed_outbound_country_list=["US", "CA"],
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_agent_version=1,
+            inbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             outbound_agent_version=1,
+            outbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
             sip_trunk_auth_password="123456",
             sip_trunk_auth_username="username",
             transport="TCP",
@@ -320,13 +379,28 @@ class TestAsyncPhoneNumber:
             allowed_outbound_country_list=["US", "CA"],
             area_code=415,
             country_code="US",
+            fallback_number="+14155551234",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_agent_version=1,
+            inbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             number_provider="twilio",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             outbound_agent_version=1,
+            outbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
             phone_number="+14157774444",
             toll_free=True,
             transport="TCP",
@@ -414,12 +488,42 @@ class TestAsyncPhoneNumber:
             allowed_outbound_country_list=["US", "CA"],
             auth_password="123456",
             auth_username="username",
+            fallback_number="+14155551234",
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_agent_version=1,
+            inbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
+            inbound_sms_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
+            inbound_sms_webhook_url="https://example.com/inbound-sms-webhook",
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             outbound_agent_version=1,
+            outbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
+            outbound_sms_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
             termination_uri="someuri.pstn.twilio.com",
             transport="TCP",
         )
@@ -548,10 +652,24 @@ class TestAsyncPhoneNumber:
             allowed_outbound_country_list=["US", "CA"],
             inbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             inbound_agent_version=1,
+            inbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
             inbound_webhook_url="https://example.com/inbound-webhook",
             nickname="Frontdesk Number",
             outbound_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             outbound_agent_version=1,
+            outbound_agents=[
+                {
+                    "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+                    "weight": 0.5,
+                    "agent_version": 1,
+                }
+            ],
             sip_trunk_auth_password="123456",
             sip_trunk_auth_username="username",
             transport="TCP",

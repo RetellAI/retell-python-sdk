@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.12.0 (2026-02-06)
+
+Full Changelog: [v5.11.0...v5.12.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.11.0...v5.12.0)
+
+### Features
+
+* **api:** api update ([2d7e23c](https://github.com/RetellAI/retell-python-sdk/commit/2d7e23c33de6f991a240c92da3f8b0adfb4e97ba))
+* **client:** add custom JSON encoder for extended type support ([c5a154a](https://github.com/RetellAI/retell-python-sdk/commit/c5a154ab7ac549e06a52bbb38b75b61e3aa77215))
+
+
+### Chores
+
+* **docs:** remove www prefix ([0d73db3](https://github.com/RetellAI/retell-python-sdk/commit/0d73db3ec947a867c7dcc9b92111fd3e5bb5e5dd))
+
 ## 5.11.0 (2026-01-30)
 
 Full Changelog: [v5.10.0...v5.11.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.10.0...v5.11.0)

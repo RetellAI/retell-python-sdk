@@ -68,11 +68,14 @@ class AgentResource(SyncAPIResource):
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_create_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
-        denoising_mode: Literal["none", "noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
+        | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dynamic_voice_speed: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_create_params.IvrOption] | Omit = omit,
@@ -287,13 +290,16 @@ class AgentResource(SyncAPIResource):
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
 
-          denoising_mode: If set, determines what denoising mode to use. Use "none" to bypass all audio
-              denoising. Default to noise-cancellation.
+          denoising_mode: If set, determines what denoising mode to use. Use "no-denoise" to bypass all
+              audio denoising. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
+              speech rate and conversation context. If unset, default value false will apply.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -306,6 +312,9 @@ class AgentResource(SyncAPIResource):
               must be from different TTS providers. The system would go through the list in
               order, if the first one in the list is also having outage, it would use the next
               one. Set to null to remove voice fallback for the agent.
+
+          guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
+              agent output and user input.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -454,9 +463,11 @@ class AgentResource(SyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
+                    "guardrail_config": guardrail_config,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
                     "ivr_option": ivr_option,
@@ -559,11 +570,14 @@ class AgentResource(SyncAPIResource):
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_update_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
-        denoising_mode: Literal["none", "noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
+        | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dynamic_voice_speed: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        guardrail_config: agent_update_params.GuardrailConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_update_params.IvrOption] | Omit = omit,
@@ -775,13 +789,16 @@ class AgentResource(SyncAPIResource):
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
 
-          denoising_mode: If set, determines what denoising mode to use. Use "none" to bypass all audio
-              denoising. Default to noise-cancellation.
+          denoising_mode: If set, determines what denoising mode to use. Use "no-denoise" to bypass all
+              audio denoising. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
+              speech rate and conversation context. If unset, default value false will apply.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -794,6 +811,9 @@ class AgentResource(SyncAPIResource):
               must be from different TTS providers. The system would go through the list in
               order, if the first one in the list is also having outage, it would use the next
               one. Set to null to remove voice fallback for the agent.
+
+          guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
+              agent output and user input.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -949,9 +969,11 @@ class AgentResource(SyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
+                    "guardrail_config": guardrail_config,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
                     "ivr_option": ivr_option,
@@ -1198,11 +1220,14 @@ class AsyncAgentResource(AsyncAPIResource):
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_create_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
-        denoising_mode: Literal["none", "noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
+        | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dynamic_voice_speed: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_create_params.IvrOption] | Omit = omit,
@@ -1417,13 +1442,16 @@ class AsyncAgentResource(AsyncAPIResource):
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
 
-          denoising_mode: If set, determines what denoising mode to use. Use "none" to bypass all audio
-              denoising. Default to noise-cancellation.
+          denoising_mode: If set, determines what denoising mode to use. Use "no-denoise" to bypass all
+              audio denoising. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
+              speech rate and conversation context. If unset, default value false will apply.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -1436,6 +1464,9 @@ class AsyncAgentResource(AsyncAPIResource):
               must be from different TTS providers. The system would go through the list in
               order, if the first one in the list is also having outage, it would use the next
               one. Set to null to remove voice fallback for the agent.
+
+          guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
+              agent output and user input.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -1584,9 +1615,11 @@ class AsyncAgentResource(AsyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
+                    "guardrail_config": guardrail_config,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
                     "ivr_option": ivr_option,
@@ -1689,11 +1722,14 @@ class AsyncAgentResource(AsyncAPIResource):
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_update_params.CustomSttConfig | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
-        denoising_mode: Literal["none", "noise-cancellation", "noise-and-background-speech-cancellation"] | Omit = omit,
+        denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
+        | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dynamic_voice_speed: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        guardrail_config: agent_update_params.GuardrailConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_update_params.IvrOption] | Omit = omit,
@@ -1905,13 +1941,16 @@ class AsyncAgentResource(AsyncAPIResource):
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
 
-          denoising_mode: If set, determines what denoising mode to use. Use "none" to bypass all audio
-              denoising. Default to noise-cancellation.
+          denoising_mode: If set, determines what denoising mode to use. Use "no-denoise" to bypass all
+              audio denoising. Default to noise-cancellation.
 
           enable_backchannel: Controls whether the agent would backchannel (agent interjects the speaker with
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
+              speech rate and conversation context. If unset, default value false will apply.
 
           enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
               feature is only available for phone calls.
@@ -1924,6 +1963,9 @@ class AsyncAgentResource(AsyncAPIResource):
               must be from different TTS providers. The system would go through the list in
               order, if the first one in the list is also having outage, it would use the next
               one. Set to null to remove voice fallback for the agent.
+
+          guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
+              agent output and user input.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -2079,9 +2121,11 @@ class AsyncAgentResource(AsyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
+                    "guardrail_config": guardrail_config,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
                     "ivr_option": ivr_option,

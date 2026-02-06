@@ -62,6 +62,7 @@ class ChatAgentResource(SyncAPIResource):
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
+        guardrail_config: chat_agent_create_params.GuardrailConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
@@ -159,8 +160,11 @@ class ChatAgentResource(SyncAPIResource):
               stores only basic metadata. If not set, defaults to "everything".
 
           end_chat_after_silence_ms: If users stay silent for a period after agent speech, end the chat. The minimum
-              value allowed is 360,000 ms (0.1 hours). The maximum value allowed is
+              value allowed is 120,000 ms (2 minutes). The maximum value allowed is
               259,200,000 ms (72 hours). By default, this is set to 3,600,000 (1 hour).
+
+          guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
+              agent output and user input.
 
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
@@ -212,6 +216,7 @@ class ChatAgentResource(SyncAPIResource):
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
+                    "guardrail_config": guardrail_config,
                     "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
@@ -283,6 +288,7 @@ class ChatAgentResource(SyncAPIResource):
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
+        guardrail_config: chat_agent_update_params.GuardrailConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
@@ -379,8 +385,11 @@ class ChatAgentResource(SyncAPIResource):
               stores only basic metadata. If not set, defaults to "everything".
 
           end_chat_after_silence_ms: If users stay silent for a period after agent speech, end the chat. The minimum
-              value allowed is 360,000 ms (0.1 hours). The maximum value allowed is
+              value allowed is 120,000 ms (2 minutes). The maximum value allowed is
               259,200,000 ms (72 hours). By default, this is set to 3,600,000 (1 hour).
+
+          guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
+              agent output and user input.
 
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
@@ -437,6 +446,7 @@ class ChatAgentResource(SyncAPIResource):
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
+                    "guardrail_config": guardrail_config,
                     "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
@@ -649,6 +659,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
+        guardrail_config: chat_agent_create_params.GuardrailConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
@@ -746,8 +757,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
               stores only basic metadata. If not set, defaults to "everything".
 
           end_chat_after_silence_ms: If users stay silent for a period after agent speech, end the chat. The minimum
-              value allowed is 360,000 ms (0.1 hours). The maximum value allowed is
+              value allowed is 120,000 ms (2 minutes). The maximum value allowed is
               259,200,000 ms (72 hours). By default, this is set to 3,600,000 (1 hour).
+
+          guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
+              agent output and user input.
 
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
@@ -799,6 +813,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
+                    "guardrail_config": guardrail_config,
                     "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
@@ -872,6 +887,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
+        guardrail_config: chat_agent_update_params.GuardrailConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
@@ -968,8 +984,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
               stores only basic metadata. If not set, defaults to "everything".
 
           end_chat_after_silence_ms: If users stay silent for a period after agent speech, end the chat. The minimum
-              value allowed is 360,000 ms (0.1 hours). The maximum value allowed is
+              value allowed is 120,000 ms (2 minutes). The maximum value allowed is
               259,200,000 ms (72 hours). By default, this is set to 3,600,000 (1 hour).
+
+          guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
+              agent output and user input.
 
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
@@ -1026,6 +1045,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "auto_close_message": auto_close_message,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
+                    "guardrail_config": guardrail_config,
                     "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
