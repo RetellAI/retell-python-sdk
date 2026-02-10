@@ -579,6 +579,9 @@ class GeneralToolAgentSwapTool(BaseModel):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    keep_current_voice: Optional[bool] = None
+    """If true, keep the current voice when swapping agents. Defaults to false."""
+
     speak_during_execution: Optional[bool] = None
 
     webhook_setting: Optional[Literal["both_agents", "only_destination_agent", "only_source_agent"]] = None
@@ -1509,6 +1512,9 @@ class StateToolAgentSwapTool(BaseModel):
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
     """
+
+    keep_current_voice: Optional[bool] = None
+    """If true, keep the current voice when swapping agents. Defaults to false."""
 
     speak_during_execution: Optional[bool] = None
 

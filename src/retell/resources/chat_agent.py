@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import List, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -127,6 +127,7 @@ class ChatAgentResource(SyncAPIResource):
         ]
         | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
+        webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -189,6 +190,9 @@ class ChatAgentResource(SyncAPIResource):
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
               apply.
 
+          webhook_events: Which webhook events this agent should receive. If not set, defaults to
+              chat_started, chat_ended, chat_analyzed.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -224,6 +228,7 @@ class ChatAgentResource(SyncAPIResource):
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
+                    "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
@@ -354,6 +359,7 @@ class ChatAgentResource(SyncAPIResource):
         | Omit = omit,
         response_engine: chat_agent_update_params.ResponseEngine | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
+        webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -418,6 +424,9 @@ class ChatAgentResource(SyncAPIResource):
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
               apply.
 
+          webhook_events: Which webhook events this agent should receive. If not set, defaults to
+              chat_started, chat_ended, chat_analyzed.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -455,6 +464,7 @@ class ChatAgentResource(SyncAPIResource):
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "response_engine": response_engine,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
+                    "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
@@ -724,6 +734,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         ]
         | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
+        webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -786,6 +797,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
               apply.
 
+          webhook_events: Which webhook events this agent should receive. If not set, defaults to
+              chat_started, chat_ended, chat_analyzed.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -821,6 +835,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
+                    "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
@@ -953,6 +968,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         | Omit = omit,
         response_engine: chat_agent_update_params.ResponseEngine | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
+        webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1017,6 +1033,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
               apply.
 
+          webhook_events: Which webhook events this agent should receive. If not set, defaults to
+              chat_started, chat_ended, chat_analyzed.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -1054,6 +1073,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "response_engine": response_engine,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
+                    "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },

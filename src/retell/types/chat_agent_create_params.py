@@ -166,6 +166,12 @@ class ChatAgentCreateParams(TypedDict, total=False):
     86400000 (24 hours) will apply.
     """
 
+    webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]]
+    """Which webhook events this agent should receive.
+
+    If not set, defaults to chat_started, chat_ended, chat_analyzed.
+    """
+
     webhook_timeout_ms: int
     """The timeout for the webhook in milliseconds.
 

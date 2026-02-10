@@ -793,6 +793,25 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     value means louder agent speech. If unset, default value 1 will apply.
     """
 
+    webhook_events: Optional[
+        List[
+            Literal[
+                "call_started",
+                "call_ended",
+                "call_analyzed",
+                "transcript_updated",
+                "transfer_started",
+                "transfer_bridged",
+                "transfer_cancelled",
+                "transfer_ended",
+            ]
+        ]
+    ]
+    """Which webhook events this agent should receive.
+
+    If not set, defaults to call_started, call_ended, call_analyzed.
+    """
+
     webhook_timeout_ms: int
     """The timeout for the webhook in milliseconds.
 
