@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import List, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -203,6 +203,21 @@ class AgentResource(SyncAPIResource):
         voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_create_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
+        webhook_events: Optional[
+            List[
+                Literal[
+                    "call_started",
+                    "call_ended",
+                    "call_analyzed",
+                    "transcript_updated",
+                    "transfer_started",
+                    "transfer_bridged",
+                    "transfer_cancelled",
+                    "transfer_ended",
+                ]
+            ]
+        ]
+        | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -427,6 +442,9 @@ class AgentResource(SyncAPIResource):
               value means quieter agent speech, while higher value means louder agent speech.
               If unset, default value 1 will apply.
 
+          webhook_events: Which webhook events this agent should receive. If not set, defaults to
+              call_started, call_ended, call_analyzed.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -496,6 +514,7 @@ class AgentResource(SyncAPIResource):
                     "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
+                    "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
@@ -707,6 +726,21 @@ class AgentResource(SyncAPIResource):
         voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_update_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
+        webhook_events: Optional[
+            List[
+                Literal[
+                    "call_started",
+                    "call_ended",
+                    "call_analyzed",
+                    "transcript_updated",
+                    "transfer_started",
+                    "transfer_bridged",
+                    "transfer_cancelled",
+                    "transfer_ended",
+                ]
+            ]
+        ]
+        | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -933,6 +967,9 @@ class AgentResource(SyncAPIResource):
               value means quieter agent speech, while higher value means louder agent speech.
               If unset, default value 1 will apply.
 
+          webhook_events: Which webhook events this agent should receive. If not set, defaults to
+              call_started, call_ended, call_analyzed.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -1004,6 +1041,7 @@ class AgentResource(SyncAPIResource):
                     "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
+                    "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
@@ -1355,6 +1393,21 @@ class AsyncAgentResource(AsyncAPIResource):
         voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_create_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
+        webhook_events: Optional[
+            List[
+                Literal[
+                    "call_started",
+                    "call_ended",
+                    "call_analyzed",
+                    "transcript_updated",
+                    "transfer_started",
+                    "transfer_bridged",
+                    "transfer_cancelled",
+                    "transfer_ended",
+                ]
+            ]
+        ]
+        | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1579,6 +1632,9 @@ class AsyncAgentResource(AsyncAPIResource):
               value means quieter agent speech, while higher value means louder agent speech.
               If unset, default value 1 will apply.
 
+          webhook_events: Which webhook events this agent should receive. If not set, defaults to
+              call_started, call_ended, call_analyzed.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -1648,6 +1704,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
+                    "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },
@@ -1859,6 +1916,21 @@ class AsyncAgentResource(AsyncAPIResource):
         voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_update_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
+        webhook_events: Optional[
+            List[
+                Literal[
+                    "call_started",
+                    "call_ended",
+                    "call_analyzed",
+                    "transcript_updated",
+                    "transfer_started",
+                    "transfer_bridged",
+                    "transfer_cancelled",
+                    "transfer_ended",
+                ]
+            ]
+        ]
+        | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -2085,6 +2157,9 @@ class AsyncAgentResource(AsyncAPIResource):
               value means quieter agent speech, while higher value means louder agent speech.
               If unset, default value 1 will apply.
 
+          webhook_events: Which webhook events this agent should receive. If not set, defaults to
+              call_started, call_ended, call_analyzed.
+
           webhook_timeout_ms: The timeout for the webhook in milliseconds. If not set, default value of 10000
               will apply.
 
@@ -2156,6 +2231,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
+                    "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
                 },

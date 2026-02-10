@@ -121,6 +121,7 @@ class TestAgent:
                 }
             },
             volume=1,
+            webhook_events=["call_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
@@ -309,6 +310,7 @@ class TestAgent:
                 }
             },
             volume=1,
+            webhook_events=["call_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
@@ -618,6 +620,7 @@ class TestAsyncAgent:
                 }
             },
             volume=1,
+            webhook_events=["call_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
@@ -806,6 +809,7 @@ class TestAsyncAgent:
                 }
             },
             volume=1,
+            webhook_events=["call_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )

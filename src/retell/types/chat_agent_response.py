@@ -337,6 +337,12 @@ class ChatAgentResponse(BaseModel):
     version: Optional[int] = None
     """The version of the chat agent."""
 
+    webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]] = None
+    """Which webhook events this agent should receive.
+
+    If not set, defaults to chat_started, chat_ended, chat_analyzed.
+    """
+
     webhook_timeout_ms: Optional[int] = None
     """The timeout for the webhook in milliseconds.
 
