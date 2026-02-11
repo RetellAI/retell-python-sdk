@@ -111,6 +111,7 @@ class ChatAgentUpdateParams(TypedDict, total=False):
         "sv-SE",
         "lt-LT",
         "lv-LV",
+        "cs-CZ",
         "multi",
     ]
     """Specifies what language (and dialect) the chat will operate in.

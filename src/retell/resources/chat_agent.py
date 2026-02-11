@@ -102,6 +102,7 @@ class ChatAgentResource(SyncAPIResource):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "multi",
         ]
         | Omit = omit,
@@ -333,6 +334,7 @@ class ChatAgentResource(SyncAPIResource):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "multi",
         ]
         | Omit = omit,
@@ -709,6 +711,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "multi",
         ]
         | Omit = omit,
@@ -942,6 +945,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "multi",
         ]
         | Omit = omit,

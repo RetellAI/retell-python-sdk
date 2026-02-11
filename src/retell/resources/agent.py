@@ -117,6 +117,7 @@ class AgentResource(SyncAPIResource):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -194,6 +195,7 @@ class AgentResource(SyncAPIResource):
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
+                "speech-2.8-turbo",
             ]
         ]
         | Omit = omit,
@@ -638,6 +640,7 @@ class AgentResource(SyncAPIResource):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -717,6 +720,7 @@ class AgentResource(SyncAPIResource):
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
+                "speech-2.8-turbo",
             ]
         ]
         | Omit = omit,
@@ -1307,6 +1311,7 @@ class AsyncAgentResource(AsyncAPIResource):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -1384,6 +1389,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
+                "speech-2.8-turbo",
             ]
         ]
         | Omit = omit,
@@ -1828,6 +1834,7 @@ class AsyncAgentResource(AsyncAPIResource):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -1907,6 +1914,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
+                "speech-2.8-turbo",
             ]
         ]
         | Omit = omit,
