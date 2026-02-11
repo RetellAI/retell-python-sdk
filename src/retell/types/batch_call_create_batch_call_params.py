@@ -553,6 +553,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
         "sv-SE",
         "lt-LT",
         "lv-LV",
+        "cs-CZ",
         "ms-MY",
         "af-ZA",
         "ar-SA",
@@ -739,6 +740,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "tts-1",
             "gpt-4o-mini-tts",
             "speech-02-turbo",
+            "speech-2.8-turbo",
         ]
     ]
     """Select the voice model used for the selected voice.

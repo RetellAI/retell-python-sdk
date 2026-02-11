@@ -526,6 +526,7 @@ class AgentResponse(BaseModel):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -700,6 +701,7 @@ class AgentResponse(BaseModel):
             "tts-1",
             "gpt-4o-mini-tts",
             "speech-02-turbo",
+            "speech-2.8-turbo",
         ]
     ] = None
     """Select the voice model used for the selected voice.

@@ -282,6 +282,7 @@ class ChatAgentResponse(BaseModel):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "multi",
         ]
     ] = None
