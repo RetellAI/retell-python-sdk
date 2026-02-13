@@ -127,6 +127,7 @@ class TestConversationFlowComponent:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -146,6 +147,7 @@ class TestConversationFlowComponent:
                             "speak_during_execution": True,
                         }
                     ],
+                    "voice_speed": 0.5,
                 }
             ],
             begin_tag_display_position={
@@ -399,6 +401,7 @@ class TestConversationFlowComponent:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -418,6 +421,7 @@ class TestConversationFlowComponent:
                             "speak_during_execution": True,
                         }
                     ],
+                    "voice_speed": 0.5,
                 }
             ],
             start_node_id="collect_info",
@@ -672,6 +676,7 @@ class TestAsyncConversationFlowComponent:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -691,6 +696,7 @@ class TestAsyncConversationFlowComponent:
                             "speak_during_execution": True,
                         }
                     ],
+                    "voice_speed": 0.5,
                 }
             ],
             begin_tag_display_position={
@@ -944,6 +950,7 @@ class TestAsyncConversationFlowComponent:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -963,6 +970,7 @@ class TestAsyncConversationFlowComponent:
                             "speak_during_execution": True,
                         }
                     ],
+                    "voice_speed": 0.5,
                 }
             ],
             start_node_id="collect_info",

@@ -1,5 +1,21 @@
 # Changelog
 
+## 5.13.0 (2026-02-13)
+
+Full Changelog: [v5.12.0...v5.13.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.12.0...v5.13.0)
+
+### Features
+
+* **api:** api update ([56113ac](https://github.com/RetellAI/retell-python-sdk/commit/56113ac95d4fdcaa1e175c9cdf3da86c0b79794c))
+* **api:** api update ([d8a6608](https://github.com/RetellAI/retell-python-sdk/commit/d8a660807df687086f5f3e5800216b4ffe6c65d8))
+
+
+### Chores
+
+* format all `api.md` files ([5b9eb97](https://github.com/RetellAI/retell-python-sdk/commit/5b9eb974f7a011d91d5ee321fb6e50b2eb4fdca5))
+* **internal:** bump dependencies ([c64e69e](https://github.com/RetellAI/retell-python-sdk/commit/c64e69e869bc7f5d804cc4497488aedef1c92f8d))
+* **internal:** fix lint error on Python 3.14 ([b39f745](https://github.com/RetellAI/retell-python-sdk/commit/b39f745b44c8ff39511ebf924c2e8f13d9460be2))
+
 ## 5.12.0 (2026-02-06)
 
 Full Changelog: [v5.11.0...v5.12.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.11.0...v5.12.0)

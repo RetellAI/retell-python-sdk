@@ -50,6 +50,9 @@ class ChatCostProductCost(BaseModel):
     product: str
     """Product name that has a cost associated with it."""
 
+    is_transfer_leg_cost: Optional[bool] = None
+    """True if this cost item is for a transfer segment."""
+
     unit_price: Optional[float] = None
     """Unit price of the product in cents per second."""
 

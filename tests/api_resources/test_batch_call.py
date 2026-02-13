@@ -120,6 +120,7 @@ class TestBatchCall:
                                 }
                             },
                             "volume": 1,
+                            "webhook_events": ["call_started"],
                             "webhook_timeout_ms": 10000,
                             "webhook_url": "https://webhook-url-here",
                         },
@@ -315,6 +316,7 @@ class TestAsyncBatchCall:
                                 }
                             },
                             "volume": 1,
+                            "webhook_events": ["call_started"],
                             "webhook_timeout_ms": 10000,
                             "webhook_url": "https://webhook-url-here",
                         },

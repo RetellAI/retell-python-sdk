@@ -334,6 +334,12 @@ __all__ = [
     "NodeMcpNodeEdgeTransitionConditionPromptCondition",
     "NodeMcpNodeEdgeTransitionConditionEquationCondition",
     "NodeMcpNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeMcpNodeElseEdge",
+    "NodeMcpNodeElseEdgeTransitionCondition",
+    "NodeMcpNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeMcpNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeMcpNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeMcpNodeElseEdgeTransitionConditionUnionMember2",
     "NodeMcpNodeFinetuneTransitionExample",
     "NodeMcpNodeFinetuneTransitionExampleTranscript",
     "NodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember0",
@@ -1315,6 +1321,9 @@ class NodeConversationNodeToolAgentSwapTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    keep_current_voice: bool
+    """If true, keep the current voice when swapping agents. Defaults to false."""
+
     speak_during_execution: bool
 
     webhook_setting: Literal["both_agents", "only_destination_agent", "only_source_agent"]
@@ -1723,6 +1732,8 @@ class NodeConversationNode(TypedDict, total=False):
     name: str
     """Optional name for display purposes"""
 
+    responsiveness: Optional[float]
+
     skip_response_edge: NodeConversationNodeSkipResponseEdge
 
     tool_ids: Optional[SequenceNotStr[str]]
@@ -1736,6 +1747,8 @@ class NodeConversationNode(TypedDict, total=False):
 
     This includes other tool types like transfer_call, agent_swap, etc.
     """
+
+    voice_speed: Optional[float]
 
 
 class NodeEndNodeDisplayPosition(TypedDict, total=False):
@@ -2189,8 +2202,12 @@ class NodeFunctionNode(TypedDict, total=False):
     name: str
     """Optional name for display purposes"""
 
+    responsiveness: Optional[float]
+
     speak_during_execution: bool
     """Whether to speak during tool execution"""
+
+    voice_speed: Optional[float]
 
 
 class NodeTransferCallNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
@@ -3997,6 +4014,9 @@ class NodeAgentSwapNode(TypedDict, total=False):
     instruction: NodeAgentSwapNodeInstruction
     """What to say when swapping agents, only used when speak during execution"""
 
+    keep_current_voice: bool
+    """If true, keep the current voice when swapping agents. Defaults to false."""
+
     name: str
     """Optional name for display purposes"""
 
@@ -4054,6 +4074,62 @@ class NodeMcpNodeEdge(TypedDict, total=False):
     """Unique identifier for the edge"""
 
     transition_condition: Required[NodeMcpNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class NodeMcpNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeMcpNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeMcpNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeMcpNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class NodeMcpNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+NodeMcpNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeMcpNodeElseEdgeTransitionConditionPromptCondition,
+    NodeMcpNodeElseEdgeTransitionConditionEquationCondition,
+    NodeMcpNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeMcpNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeMcpNodeElseEdgeTransitionCondition]
 
     destination_node_id: str
     """ID of the destination node"""
@@ -4226,6 +4302,8 @@ class NodeMcpNode(TypedDict, total=False):
 
     edges: Iterable[NodeMcpNodeEdge]
 
+    else_edge: NodeMcpNodeElseEdge
+
     finetune_transition_examples: Iterable[NodeMcpNodeFinetuneTransitionExample]
 
     global_node_setting: NodeMcpNodeGlobalNodeSetting
@@ -4244,8 +4322,12 @@ class NodeMcpNode(TypedDict, total=False):
     is the path to the variable in the response
     """
 
+    responsiveness: Optional[float]
+
     speak_during_execution: bool
     """If true, will speak during execution"""
+
+    voice_speed: Optional[float]
 
 
 class NodeComponentNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):

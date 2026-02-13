@@ -526,6 +526,7 @@ class AgentResponse(BaseModel):
             "sv-SE",
             "lt-LT",
             "lv-LV",
+            "cs-CZ",
             "ms-MY",
             "af-ZA",
             "ar-SA",
@@ -700,6 +701,7 @@ class AgentResponse(BaseModel):
             "tts-1",
             "gpt-4o-mini-tts",
             "speech-02-turbo",
+            "speech-2.8-turbo",
         ]
     ] = None
     """Select the voice model used for the selected voice.
@@ -752,6 +754,25 @@ class AgentResponse(BaseModel):
 
     Value ranging from [0,2]. Lower value means quieter agent speech, while higher
     value means louder agent speech. If unset, default value 1 will apply.
+    """
+
+    webhook_events: Optional[
+        List[
+            Literal[
+                "call_started",
+                "call_ended",
+                "call_analyzed",
+                "transcript_updated",
+                "transfer_started",
+                "transfer_bridged",
+                "transfer_cancelled",
+                "transfer_ended",
+            ]
+        ]
+    ] = None
+    """Which webhook events this agent should receive.
+
+    If not set, defaults to call_started, call_ended, call_analyzed.
     """
 
     webhook_timeout_ms: Optional[int] = None
