@@ -68,6 +68,7 @@ class TestChatAgent:
             ],
             post_chat_analysis_model="gpt-4.1-mini",
             signed_url_expiration_ms=86400000,
+            webhook_events=["chat_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
@@ -202,6 +203,7 @@ class TestChatAgent:
                 "version": 0,
             },
             signed_url_expiration_ms=86400000,
+            webhook_events=["chat_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
@@ -458,6 +460,7 @@ class TestAsyncChatAgent:
             ],
             post_chat_analysis_model="gpt-4.1-mini",
             signed_url_expiration_ms=86400000,
+            webhook_events=["chat_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )
@@ -592,6 +595,7 @@ class TestAsyncChatAgent:
                 "version": 0,
             },
             signed_url_expiration_ms=86400000,
+            webhook_events=["chat_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
         )

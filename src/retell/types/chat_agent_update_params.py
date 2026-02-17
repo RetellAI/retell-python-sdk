@@ -111,6 +111,7 @@ class ChatAgentUpdateParams(TypedDict, total=False):
         "sv-SE",
         "lt-LT",
         "lv-LV",
+        "cs-CZ",
         "multi",
     ]
     """Specifies what language (and dialect) the chat will operate in.
@@ -167,6 +168,12 @@ class ChatAgentUpdateParams(TypedDict, total=False):
 
     Only applicable when opt_in_signed_url is true. If not set, default value of
     86400000 (24 hours) will apply.
+    """
+
+    webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]]
+    """Which webhook events this agent should receive.
+
+    If not set, defaults to chat_started, chat_ended, chat_analyzed.
     """
 
     webhook_timeout_ms: int

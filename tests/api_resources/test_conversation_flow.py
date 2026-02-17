@@ -135,6 +135,7 @@ class TestConversationFlow:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -154,6 +155,7 @@ class TestConversationFlow:
                             "speak_during_execution": True,
                         }
                     ],
+                    "voice_speed": 0.5,
                 }
             ],
             start_speaker="agent",
@@ -249,6 +251,7 @@ class TestConversationFlow:
                                 "high_priority": True,
                             },
                             "name": "name",
+                            "responsiveness": 0,
                             "skip_response_edge": {
                                 "id": "id",
                                 "transition_condition": {
@@ -268,6 +271,7 @@ class TestConversationFlow:
                                     "speak_during_execution": True,
                                 }
                             ],
+                            "voice_speed": 0.5,
                         }
                     ],
                     "begin_tag_display_position": {
@@ -583,6 +587,7 @@ class TestConversationFlow:
                                 "high_priority": True,
                             },
                             "name": "name",
+                            "responsiveness": 0,
                             "skip_response_edge": {
                                 "id": "id",
                                 "transition_condition": {
@@ -602,6 +607,7 @@ class TestConversationFlow:
                                     "speak_during_execution": True,
                                 }
                             ],
+                            "voice_speed": 0.5,
                         }
                     ],
                     "begin_tag_display_position": {
@@ -763,6 +769,7 @@ class TestConversationFlow:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -782,6 +789,7 @@ class TestConversationFlow:
                             "speak_during_execution": True,
                         }
                     ],
+                    "voice_speed": 0.5,
                 }
             ],
             start_node_id="start",
@@ -1052,6 +1060,7 @@ class TestAsyncConversationFlow:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -1071,6 +1080,7 @@ class TestAsyncConversationFlow:
                             "speak_during_execution": True,
                         }
                     ],
+                    "voice_speed": 0.5,
                 }
             ],
             start_speaker="agent",
@@ -1166,6 +1176,7 @@ class TestAsyncConversationFlow:
                                 "high_priority": True,
                             },
                             "name": "name",
+                            "responsiveness": 0,
                             "skip_response_edge": {
                                 "id": "id",
                                 "transition_condition": {
@@ -1185,6 +1196,7 @@ class TestAsyncConversationFlow:
                                     "speak_during_execution": True,
                                 }
                             ],
+                            "voice_speed": 0.5,
                         }
                     ],
                     "begin_tag_display_position": {
@@ -1500,6 +1512,7 @@ class TestAsyncConversationFlow:
                                 "high_priority": True,
                             },
                             "name": "name",
+                            "responsiveness": 0,
                             "skip_response_edge": {
                                 "id": "id",
                                 "transition_condition": {
@@ -1519,6 +1532,7 @@ class TestAsyncConversationFlow:
                                     "speak_during_execution": True,
                                 }
                             ],
+                            "voice_speed": 0.5,
                         }
                     ],
                     "begin_tag_display_position": {
@@ -1680,6 +1694,7 @@ class TestAsyncConversationFlow:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -1699,6 +1714,7 @@ class TestAsyncConversationFlow:
                             "speak_during_execution": True,
                         }
                     ],
+                    "voice_speed": 0.5,
                 }
             ],
             start_node_id="start",
