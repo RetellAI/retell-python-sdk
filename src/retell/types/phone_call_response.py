@@ -688,6 +688,7 @@ class PhoneCallResponse(BaseModel):
             "agent_hangup",
             "call_transfer",
             "voicemail_reached",
+            "ivr_reached",
             "inactivity",
             "max_duration_reached",
             "concurrency_limit_reached",
