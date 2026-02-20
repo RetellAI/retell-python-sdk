@@ -24,7 +24,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestTests:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_batch_test(self, client: Retell) -> None:
         test = client.tests.create_batch_test(
@@ -36,7 +36,7 @@ class TestTests:
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_batch_test_with_all_params(self, client: Retell) -> None:
         test = client.tests.create_batch_test(
@@ -49,7 +49,7 @@ class TestTests:
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_batch_test(self, client: Retell) -> None:
         response = client.tests.with_raw_response.create_batch_test(
@@ -65,7 +65,7 @@ class TestTests:
         test = response.parse()
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_batch_test(self, client: Retell) -> None:
         with client.tests.with_streaming_response.create_batch_test(
@@ -83,7 +83,7 @@ class TestTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_test_case_definition(self, client: Retell) -> None:
         test = client.tests.create_test_case_definition(
@@ -97,7 +97,7 @@ class TestTests:
         )
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_test_case_definition_with_all_params(self, client: Retell) -> None:
         test = client.tests.create_test_case_definition(
@@ -122,7 +122,7 @@ class TestTests:
         )
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_test_case_definition(self, client: Retell) -> None:
         response = client.tests.with_raw_response.create_test_case_definition(
@@ -140,7 +140,7 @@ class TestTests:
         test = response.parse()
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_test_case_definition(self, client: Retell) -> None:
         with client.tests.with_streaming_response.create_test_case_definition(
@@ -160,7 +160,7 @@ class TestTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_delete_test_case_definition(self, client: Retell) -> None:
         test = client.tests.delete_test_case_definition(
@@ -168,7 +168,7 @@ class TestTests:
         )
         assert test is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_delete_test_case_definition(self, client: Retell) -> None:
         response = client.tests.with_raw_response.delete_test_case_definition(
@@ -180,7 +180,7 @@ class TestTests:
         test = response.parse()
         assert test is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_delete_test_case_definition(self, client: Retell) -> None:
         with client.tests.with_streaming_response.delete_test_case_definition(
@@ -194,7 +194,7 @@ class TestTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_delete_test_case_definition(self, client: Retell) -> None:
         with pytest.raises(
@@ -204,7 +204,7 @@ class TestTests:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_batch_test(self, client: Retell) -> None:
         test = client.tests.get_batch_test(
@@ -212,7 +212,7 @@ class TestTests:
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_batch_test(self, client: Retell) -> None:
         response = client.tests.with_raw_response.get_batch_test(
@@ -224,7 +224,7 @@ class TestTests:
         test = response.parse()
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_batch_test(self, client: Retell) -> None:
         with client.tests.with_streaming_response.get_batch_test(
@@ -238,7 +238,7 @@ class TestTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_batch_test(self, client: Retell) -> None:
         with pytest.raises(
@@ -248,7 +248,7 @@ class TestTests:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_test_case_definition(self, client: Retell) -> None:
         test = client.tests.get_test_case_definition(
@@ -256,7 +256,7 @@ class TestTests:
         )
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_test_case_definition(self, client: Retell) -> None:
         response = client.tests.with_raw_response.get_test_case_definition(
@@ -268,7 +268,7 @@ class TestTests:
         test = response.parse()
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_test_case_definition(self, client: Retell) -> None:
         with client.tests.with_streaming_response.get_test_case_definition(
@@ -282,7 +282,7 @@ class TestTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_test_case_definition(self, client: Retell) -> None:
         with pytest.raises(
@@ -292,7 +292,7 @@ class TestTests:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_test_run(self, client: Retell) -> None:
         test = client.tests.get_test_run(
@@ -300,7 +300,7 @@ class TestTests:
         )
         assert_matches_type(TestCaseJobResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_test_run(self, client: Retell) -> None:
         response = client.tests.with_raw_response.get_test_run(
@@ -312,7 +312,7 @@ class TestTests:
         test = response.parse()
         assert_matches_type(TestCaseJobResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_test_run(self, client: Retell) -> None:
         with client.tests.with_streaming_response.get_test_run(
@@ -326,7 +326,7 @@ class TestTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_test_run(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `test_case_job_id` but received ''"):
@@ -334,7 +334,7 @@ class TestTests:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_batch_tests(self, client: Retell) -> None:
         test = client.tests.list_batch_tests(
@@ -342,7 +342,7 @@ class TestTests:
         )
         assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_batch_tests_with_all_params(self, client: Retell) -> None:
         test = client.tests.list_batch_tests(
@@ -353,7 +353,7 @@ class TestTests:
         )
         assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_batch_tests(self, client: Retell) -> None:
         response = client.tests.with_raw_response.list_batch_tests(
@@ -365,7 +365,7 @@ class TestTests:
         test = response.parse()
         assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_batch_tests(self, client: Retell) -> None:
         with client.tests.with_streaming_response.list_batch_tests(
@@ -379,7 +379,7 @@ class TestTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_test_case_definitions(self, client: Retell) -> None:
         test = client.tests.list_test_case_definitions(
@@ -387,7 +387,7 @@ class TestTests:
         )
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_test_case_definitions_with_all_params(self, client: Retell) -> None:
         test = client.tests.list_test_case_definitions(
@@ -398,7 +398,7 @@ class TestTests:
         )
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_test_case_definitions(self, client: Retell) -> None:
         response = client.tests.with_raw_response.list_test_case_definitions(
@@ -410,7 +410,7 @@ class TestTests:
         test = response.parse()
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_test_case_definitions(self, client: Retell) -> None:
         with client.tests.with_streaming_response.list_test_case_definitions(
@@ -424,7 +424,7 @@ class TestTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_test_runs(self, client: Retell) -> None:
         test = client.tests.list_test_runs(
@@ -432,7 +432,7 @@ class TestTests:
         )
         assert_matches_type(TestListTestRunsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_test_runs(self, client: Retell) -> None:
         response = client.tests.with_raw_response.list_test_runs(
@@ -444,7 +444,7 @@ class TestTests:
         test = response.parse()
         assert_matches_type(TestListTestRunsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_test_runs(self, client: Retell) -> None:
         with client.tests.with_streaming_response.list_test_runs(
@@ -458,7 +458,7 @@ class TestTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_list_test_runs(self, client: Retell) -> None:
         with pytest.raises(
@@ -468,7 +468,7 @@ class TestTests:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_update_test_case_definition(self, client: Retell) -> None:
         test = client.tests.update_test_case_definition(
@@ -476,7 +476,7 @@ class TestTests:
         )
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_update_test_case_definition_with_all_params(self, client: Retell) -> None:
         test = client.tests.update_test_case_definition(
@@ -502,7 +502,7 @@ class TestTests:
         )
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_update_test_case_definition(self, client: Retell) -> None:
         response = client.tests.with_raw_response.update_test_case_definition(
@@ -514,7 +514,7 @@ class TestTests:
         test = response.parse()
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_update_test_case_definition(self, client: Retell) -> None:
         with client.tests.with_streaming_response.update_test_case_definition(
@@ -528,7 +528,7 @@ class TestTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_update_test_case_definition(self, client: Retell) -> None:
         with pytest.raises(
@@ -544,7 +544,7 @@ class TestAsyncTests:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_batch_test(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.create_batch_test(
@@ -556,7 +556,7 @@ class TestAsyncTests:
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_batch_test_with_all_params(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.create_batch_test(
@@ -569,7 +569,7 @@ class TestAsyncTests:
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_batch_test(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.create_batch_test(
@@ -585,7 +585,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_batch_test(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.create_batch_test(
@@ -603,7 +603,7 @@ class TestAsyncTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_test_case_definition(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.create_test_case_definition(
@@ -617,7 +617,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_test_case_definition_with_all_params(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.create_test_case_definition(
@@ -642,7 +642,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_test_case_definition(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.create_test_case_definition(
@@ -660,7 +660,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_test_case_definition(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.create_test_case_definition(
@@ -680,7 +680,7 @@ class TestAsyncTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_delete_test_case_definition(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.delete_test_case_definition(
@@ -688,7 +688,7 @@ class TestAsyncTests:
         )
         assert test is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_delete_test_case_definition(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.delete_test_case_definition(
@@ -700,7 +700,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert test is None
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_delete_test_case_definition(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.delete_test_case_definition(
@@ -714,7 +714,7 @@ class TestAsyncTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_delete_test_case_definition(self, async_client: AsyncRetell) -> None:
         with pytest.raises(
@@ -724,7 +724,7 @@ class TestAsyncTests:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_batch_test(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.get_batch_test(
@@ -732,7 +732,7 @@ class TestAsyncTests:
         )
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_batch_test(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.get_batch_test(
@@ -744,7 +744,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert_matches_type(BatchTestResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_batch_test(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.get_batch_test(
@@ -758,7 +758,7 @@ class TestAsyncTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_batch_test(self, async_client: AsyncRetell) -> None:
         with pytest.raises(
@@ -768,7 +768,7 @@ class TestAsyncTests:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_test_case_definition(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.get_test_case_definition(
@@ -776,7 +776,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_test_case_definition(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.get_test_case_definition(
@@ -788,7 +788,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_test_case_definition(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.get_test_case_definition(
@@ -802,7 +802,7 @@ class TestAsyncTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_test_case_definition(self, async_client: AsyncRetell) -> None:
         with pytest.raises(
@@ -812,7 +812,7 @@ class TestAsyncTests:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_test_run(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.get_test_run(
@@ -820,7 +820,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestCaseJobResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_test_run(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.get_test_run(
@@ -832,7 +832,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert_matches_type(TestCaseJobResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_test_run(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.get_test_run(
@@ -846,7 +846,7 @@ class TestAsyncTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_test_run(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `test_case_job_id` but received ''"):
@@ -854,7 +854,7 @@ class TestAsyncTests:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_batch_tests(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.list_batch_tests(
@@ -862,7 +862,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_batch_tests_with_all_params(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.list_batch_tests(
@@ -873,7 +873,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_batch_tests(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.list_batch_tests(
@@ -885,7 +885,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_batch_tests(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.list_batch_tests(
@@ -899,7 +899,7 @@ class TestAsyncTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_test_case_definitions(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.list_test_case_definitions(
@@ -907,7 +907,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_test_case_definitions_with_all_params(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.list_test_case_definitions(
@@ -918,7 +918,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_test_case_definitions(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.list_test_case_definitions(
@@ -930,7 +930,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_test_case_definitions(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.list_test_case_definitions(
@@ -944,7 +944,7 @@ class TestAsyncTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_test_runs(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.list_test_runs(
@@ -952,7 +952,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestListTestRunsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_test_runs(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.list_test_runs(
@@ -964,7 +964,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert_matches_type(TestListTestRunsResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_test_runs(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.list_test_runs(
@@ -978,7 +978,7 @@ class TestAsyncTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_list_test_runs(self, async_client: AsyncRetell) -> None:
         with pytest.raises(
@@ -988,7 +988,7 @@ class TestAsyncTests:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update_test_case_definition(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.update_test_case_definition(
@@ -996,7 +996,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update_test_case_definition_with_all_params(self, async_client: AsyncRetell) -> None:
         test = await async_client.tests.update_test_case_definition(
@@ -1022,7 +1022,7 @@ class TestAsyncTests:
         )
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update_test_case_definition(self, async_client: AsyncRetell) -> None:
         response = await async_client.tests.with_raw_response.update_test_case_definition(
@@ -1034,7 +1034,7 @@ class TestAsyncTests:
         test = await response.parse()
         assert_matches_type(TestCaseDefinitionResponse, test, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_update_test_case_definition(self, async_client: AsyncRetell) -> None:
         async with async_client.tests.with_streaming_response.update_test_case_definition(
@@ -1048,7 +1048,7 @@ class TestAsyncTests:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_update_test_case_definition(self, async_client: AsyncRetell) -> None:
         with pytest.raises(

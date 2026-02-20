@@ -1,5 +1,14 @@
 # Changelog
 
+## 5.14.1 (2026-02-20)
+
+Full Changelog: [v5.14.0...v5.14.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.14.0...v5.14.1)
+
+### Chores
+
+* **internal:** remove mock server code ([c8b915f](https://github.com/RetellAI/retell-python-sdk/commit/c8b915fa1325b03023346830d1f4be67662a3594))
+* update mock server docs ([9d02f55](https://github.com/RetellAI/retell-python-sdk/commit/9d02f551c1acb858af2ece72c18bdb0311736b91))
+
 ## 5.14.0 (2026-02-18)
 
 Full Changelog: [v5.13.0...v5.14.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.13.0...v5.14.0)
