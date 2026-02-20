@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestBatchCall:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_batch_call(self, client: Retell) -> None:
         batch_call = client.batch_call.create_batch_call(
@@ -26,7 +26,7 @@ class TestBatchCall:
         )
         assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_batch_call_with_all_params(self, client: Retell) -> None:
         batch_call = client.batch_call.create_batch_call(
@@ -179,7 +179,7 @@ class TestBatchCall:
         )
         assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create_batch_call(self, client: Retell) -> None:
         response = client.batch_call.with_raw_response.create_batch_call(
@@ -192,7 +192,7 @@ class TestBatchCall:
         batch_call = response.parse()
         assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create_batch_call(self, client: Retell) -> None:
         with client.batch_call.with_streaming_response.create_batch_call(
@@ -213,7 +213,7 @@ class TestAsyncBatchCall:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_batch_call(self, async_client: AsyncRetell) -> None:
         batch_call = await async_client.batch_call.create_batch_call(
@@ -222,7 +222,7 @@ class TestAsyncBatchCall:
         )
         assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_batch_call_with_all_params(self, async_client: AsyncRetell) -> None:
         batch_call = await async_client.batch_call.create_batch_call(
@@ -375,7 +375,7 @@ class TestAsyncBatchCall:
         )
         assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create_batch_call(self, async_client: AsyncRetell) -> None:
         response = await async_client.batch_call.with_raw_response.create_batch_call(
@@ -388,7 +388,7 @@ class TestAsyncBatchCall:
         batch_call = await response.parse()
         assert_matches_type(BatchCallResponse, batch_call, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create_batch_call(self, async_client: AsyncRetell) -> None:
         async with async_client.batch_call.with_streaming_response.create_batch_call(
