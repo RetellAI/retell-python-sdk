@@ -95,10 +95,12 @@ class PhoneNumberResource(SyncAPIResource):
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
-              inbound call.
+              inbound call. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version.
+              default to latest version. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
@@ -114,10 +116,12 @@ class PhoneNumberResource(SyncAPIResource):
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
-              initiate outbound call without agent id override.
+              initiate outbound call without agent id override. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to latest version.
+              default to latest version. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
@@ -256,10 +260,12 @@ class PhoneNumberResource(SyncAPIResource):
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If set to null, this number would not accept
-              inbound call.
+              inbound call. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version.
+              default to latest version. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
@@ -281,7 +287,8 @@ class PhoneNumberResource(SyncAPIResource):
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If set to null, this number would not be
-              able to initiate outbound call without agent id override.
+              able to initiate outbound call without agent id override. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
               default to latest version.
@@ -441,10 +448,12 @@ class PhoneNumberResource(SyncAPIResource):
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
-              inbound call.
+              inbound call. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version.
+              default to latest version. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
@@ -458,10 +467,12 @@ class PhoneNumberResource(SyncAPIResource):
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
-              initiate outbound call without agent id override.
+              initiate outbound call without agent id override. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to latest version.
+              default to latest version. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
@@ -582,10 +593,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
-              inbound call.
+              inbound call. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version.
+              default to latest version. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
@@ -601,10 +614,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
-              initiate outbound call without agent id override.
+              initiate outbound call without agent id override. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to latest version.
+              default to latest version. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
@@ -743,10 +758,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If set to null, this number would not accept
-              inbound call.
+              inbound call. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version.
+              default to latest version. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
@@ -768,7 +785,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If set to null, this number would not be
-              able to initiate outbound call without agent id override.
+              able to initiate outbound call without agent id override. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
               default to latest version.
@@ -928,10 +946,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
-              inbound call.
+              inbound call. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version.
+              default to latest version. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
@@ -945,10 +965,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when conducting outbound calls. If null, this number would not be able to
-              initiate outbound call without agent id override.
+              initiate outbound call without agent id override. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to latest version.
+              default to latest version. Deprecated. See
+              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
 
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability

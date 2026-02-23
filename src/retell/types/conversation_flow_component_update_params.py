@@ -39,6 +39,11 @@ __all__ = [
     "NodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeConversationNodeGlobalNodeSetting",
+    "NodeConversationNodeGlobalNodeSettingGoBackCondition",
+    "NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeConversationNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -100,6 +105,11 @@ __all__ = [
     "NodeEndNode",
     "NodeEndNodeDisplayPosition",
     "NodeEndNodeGlobalNodeSetting",
+    "NodeEndNodeGlobalNodeSettingGoBackCondition",
+    "NodeEndNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeEndNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -132,6 +142,11 @@ __all__ = [
     "NodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeFunctionNodeGlobalNodeSetting",
+    "NodeFunctionNodeGlobalNodeSettingGoBackCondition",
+    "NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeFunctionNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -174,6 +189,11 @@ __all__ = [
     "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
     "NodeTransferCallNodeDisplayPosition",
     "NodeTransferCallNodeGlobalNodeSetting",
+    "NodeTransferCallNodeGlobalNodeSettingGoBackCondition",
+    "NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -202,6 +222,11 @@ __all__ = [
     "NodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodePressDigitNodeGlobalNodeSetting",
+    "NodePressDigitNodeGlobalNodeSettingGoBackCondition",
+    "NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodePressDigitNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -232,6 +257,11 @@ __all__ = [
     "NodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeBranchNodeGlobalNodeSetting",
+    "NodeBranchNodeGlobalNodeSettingGoBackCondition",
+    "NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeBranchNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -260,6 +290,11 @@ __all__ = [
     "NodeSMSNodeSuccessEdgeTransitionConditionUnionMember2",
     "NodeSMSNodeDisplayPosition",
     "NodeSMSNodeGlobalNodeSetting",
+    "NodeSMSNodeGlobalNodeSettingGoBackCondition",
+    "NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeSMSNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -294,6 +329,11 @@ __all__ = [
     "NodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeExtractDynamicVariablesNodeGlobalNodeSetting",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackCondition",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -314,6 +354,11 @@ __all__ = [
     "NodeAgentSwapNodeEdgeTransitionConditionUnionMember2",
     "NodeAgentSwapNodeDisplayPosition",
     "NodeAgentSwapNodeGlobalNodeSetting",
+    "NodeAgentSwapNodeGlobalNodeSettingGoBackCondition",
+    "NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -346,6 +391,11 @@ __all__ = [
     "NodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeMcpNodeGlobalNodeSetting",
+    "NodeMcpNodeGlobalNodeSettingGoBackCondition",
+    "NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeMcpNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -373,6 +423,11 @@ __all__ = [
     "NodeComponentNodeEdgeTransitionConditionEquationCondition",
     "NodeComponentNodeEdgeTransitionConditionEquationConditionEquation",
     "NodeComponentNodeGlobalNodeSetting",
+    "NodeComponentNodeGlobalNodeSettingGoBackCondition",
+    "NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeComponentNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -386,6 +441,11 @@ __all__ = [
     "NodeBridgeTransferNode",
     "NodeBridgeTransferNodeDisplayPosition",
     "NodeBridgeTransferNodeGlobalNodeSetting",
+    "NodeBridgeTransferNodeGlobalNodeSettingGoBackCondition",
+    "NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -399,6 +459,11 @@ __all__ = [
     "NodeCancelTransferNode",
     "NodeCancelTransferNodeDisplayPosition",
     "NodeCancelTransferNodeGlobalNodeSetting",
+    "NodeCancelTransferNodeGlobalNodeSettingGoBackCondition",
+    "NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
     "NodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExample",
     "NodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
     "NodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
@@ -675,6 +740,55 @@ class NodeConversationNodeFinetuneTransitionExample(TypedDict, total=False):
     """Optional destination node ID"""
 
 
+class NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeConversationNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -750,6 +864,18 @@ class NodeConversationNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, to
 class NodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeConversationNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodeConversationNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
@@ -1759,6 +1885,53 @@ class NodeEndNodeDisplayPosition(TypedDict, total=False):
     y: float
 
 
+class NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeEndNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeEndNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeEndNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -1834,6 +2007,18 @@ class NodeEndNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False
 class NodeEndNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeEndNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodeEndNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
@@ -2035,6 +2220,55 @@ class NodeFunctionNodeFinetuneTransitionExample(TypedDict, total=False):
     """Optional destination node ID"""
 
 
+class NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeFunctionNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -2110,6 +2344,18 @@ class NodeFunctionNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=
 class NodeFunctionNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeFunctionNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodeFunctionNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
@@ -2545,6 +2791,55 @@ class NodeTransferCallNodeDisplayPosition(TypedDict, total=False):
     y: float
 
 
+class NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeTransferCallNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -2620,6 +2915,18 @@ class NodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, to
 class NodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeTransferCallNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
@@ -2819,6 +3126,55 @@ class NodePressDigitNodeFinetuneTransitionExample(TypedDict, total=False):
     """Optional destination node ID"""
 
 
+class NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodePressDigitNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -2894,6 +3250,18 @@ class NodePressDigitNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, tota
 class NodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodePressDigitNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodePressDigitNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
@@ -3106,6 +3474,55 @@ class NodeBranchNodeFinetuneTransitionExample(TypedDict, total=False):
     """Optional destination node ID"""
 
 
+class NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeBranchNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -3181,6 +3598,18 @@ class NodeBranchNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=Fa
 class NodeBranchNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeBranchNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodeBranchNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
@@ -3352,6 +3781,53 @@ class NodeSMSNodeDisplayPosition(TypedDict, total=False):
     y: float
 
 
+class NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeSMSNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -3427,6 +3903,18 @@ class NodeSMSNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False
 class NodeSMSNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeSMSNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodeSMSNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
@@ -3666,6 +4154,61 @@ class NodeExtractDynamicVariablesNodeFinetuneTransitionExample(TypedDict, total=
     """Optional destination node ID"""
 
 
+class NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(
+    TypedDict, total=False
+):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(
+    TypedDict, total=False
+):
+    equations: Required[
+        Iterable[
+            NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation
+        ]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(
     TypedDict, total=False
 ):
@@ -3753,6 +4296,18 @@ class NodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExample(Ty
 class NodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
@@ -3880,6 +4435,55 @@ class NodeAgentSwapNodeDisplayPosition(TypedDict, total=False):
     y: float
 
 
+class NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeAgentSwapNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -3955,6 +4559,18 @@ class NodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total
 class NodeAgentSwapNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeAgentSwapNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
@@ -4177,6 +4793,53 @@ class NodeMcpNodeFinetuneTransitionExample(TypedDict, total=False):
     """Optional destination node ID"""
 
 
+class NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeMcpNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -4252,6 +4915,18 @@ class NodeMcpNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False
 class NodeMcpNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeMcpNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodeMcpNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
@@ -4440,6 +5115,55 @@ class NodeComponentNodeEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeComponentNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -4516,6 +5240,18 @@ class NodeComponentNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
 
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeComponentNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
+
     negative_finetune_examples: Iterable[NodeComponentNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
 
@@ -4561,6 +5297,57 @@ class NodeBridgeTransferNodeDisplayPosition(TypedDict, total=False):
     x: float
 
     y: float
+
+
+class NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(
+    TypedDict, total=False
+):
+    equations: Required[
+        Iterable[NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeBridgeTransferNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
 
 
 class NodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -4639,6 +5426,18 @@ class NodeBridgeTransferNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
 
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeBridgeTransferNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
+
     negative_finetune_examples: Iterable[NodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""
 
@@ -4668,6 +5467,57 @@ class NodeCancelTransferNodeDisplayPosition(TypedDict, total=False):
     x: float
 
     y: float
+
+
+class NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(
+    TypedDict, total=False
+):
+    equations: Required[
+        Iterable[NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeCancelTransferNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
 
 
 class NodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -4745,6 +5595,18 @@ class NodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, 
 class NodeCancelTransferNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[str]
     """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeCancelTransferNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
 
     negative_finetune_examples: Iterable[NodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExample]
     """Don't transition to this node"""

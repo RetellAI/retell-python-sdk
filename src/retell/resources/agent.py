@@ -62,11 +62,13 @@ class AgentResource(SyncAPIResource):
         ambient_sound_volume: float | Omit = omit,
         analysis_successful_prompt: Optional[str] | Omit = omit,
         analysis_summary_prompt: Optional[str] | Omit = omit,
+        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_create_params.CustomSttConfig | Omit = omit,
+        data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
@@ -196,6 +198,7 @@ class AgentResource(SyncAPIResource):
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
                 "speech-2.8-turbo",
+                "s1",
             ]
         ]
         | Omit = omit,
@@ -274,6 +277,10 @@ class AgentResource(SyncAPIResource):
               When unset, the default system prompt is used. Set to null to use the default
               prompt.
 
+          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
+              sentiment. When unset, the default system prompt is used. Set to null to use the
+              default prompt.
+
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -296,6 +303,10 @@ class AgentResource(SyncAPIResource):
               street, etc.
 
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
+
+          data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
+              between 1 and 730 days. If not set, data is retained forever (no automatic
+              deletion).
 
           data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
               recordings, logs, etc.). This replaces the deprecated
@@ -475,11 +486,13 @@ class AgentResource(SyncAPIResource):
                     "ambient_sound_volume": ambient_sound_volume,
                     "analysis_successful_prompt": analysis_successful_prompt,
                     "analysis_summary_prompt": analysis_summary_prompt,
+                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "custom_stt_config": custom_stt_config,
+                    "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
@@ -585,11 +598,13 @@ class AgentResource(SyncAPIResource):
         ambient_sound_volume: float | Omit = omit,
         analysis_successful_prompt: Optional[str] | Omit = omit,
         analysis_summary_prompt: Optional[str] | Omit = omit,
+        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_update_params.CustomSttConfig | Omit = omit,
+        data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
@@ -721,6 +736,7 @@ class AgentResource(SyncAPIResource):
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
                 "speech-2.8-turbo",
+                "s1",
             ]
         ]
         | Omit = omit,
@@ -794,6 +810,10 @@ class AgentResource(SyncAPIResource):
               When unset, the default system prompt is used. Set to null to use the default
               prompt.
 
+          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
+              sentiment. When unset, the default system prompt is used. Set to null to use the
+              default prompt.
+
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -816,6 +836,10 @@ class AgentResource(SyncAPIResource):
               street, etc.
 
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
+
+          data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
+              between 1 and 730 days. If not set, data is retained forever (no automatic
+              deletion).
 
           data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
               recordings, logs, etc.). This replaces the deprecated
@@ -1002,11 +1026,13 @@ class AgentResource(SyncAPIResource):
                     "ambient_sound_volume": ambient_sound_volume,
                     "analysis_successful_prompt": analysis_successful_prompt,
                     "analysis_summary_prompt": analysis_summary_prompt,
+                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "custom_stt_config": custom_stt_config,
+                    "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
@@ -1256,11 +1282,13 @@ class AsyncAgentResource(AsyncAPIResource):
         ambient_sound_volume: float | Omit = omit,
         analysis_successful_prompt: Optional[str] | Omit = omit,
         analysis_summary_prompt: Optional[str] | Omit = omit,
+        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_create_params.CustomSttConfig | Omit = omit,
+        data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
@@ -1390,6 +1418,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
                 "speech-2.8-turbo",
+                "s1",
             ]
         ]
         | Omit = omit,
@@ -1468,6 +1497,10 @@ class AsyncAgentResource(AsyncAPIResource):
               When unset, the default system prompt is used. Set to null to use the default
               prompt.
 
+          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
+              sentiment. When unset, the default system prompt is used. Set to null to use the
+              default prompt.
+
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -1490,6 +1523,10 @@ class AsyncAgentResource(AsyncAPIResource):
               street, etc.
 
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
+
+          data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
+              between 1 and 730 days. If not set, data is retained forever (no automatic
+              deletion).
 
           data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
               recordings, logs, etc.). This replaces the deprecated
@@ -1669,11 +1706,13 @@ class AsyncAgentResource(AsyncAPIResource):
                     "ambient_sound_volume": ambient_sound_volume,
                     "analysis_successful_prompt": analysis_successful_prompt,
                     "analysis_summary_prompt": analysis_summary_prompt,
+                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "custom_stt_config": custom_stt_config,
+                    "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
@@ -1779,11 +1818,13 @@ class AsyncAgentResource(AsyncAPIResource):
         ambient_sound_volume: float | Omit = omit,
         analysis_successful_prompt: Optional[str] | Omit = omit,
         analysis_summary_prompt: Optional[str] | Omit = omit,
+        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         custom_stt_config: agent_update_params.CustomSttConfig | Omit = omit,
+        data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
@@ -1915,6 +1956,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
                 "speech-2.8-turbo",
+                "s1",
             ]
         ]
         | Omit = omit,
@@ -1988,6 +2030,10 @@ class AsyncAgentResource(AsyncAPIResource):
               When unset, the default system prompt is used. Set to null to use the default
               prompt.
 
+          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
+              sentiment. When unset, the default system prompt is used. Set to null to use the
+              default prompt.
+
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -2010,6 +2056,10 @@ class AsyncAgentResource(AsyncAPIResource):
               street, etc.
 
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
+
+          data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
+              between 1 and 730 days. If not set, data is retained forever (no automatic
+              deletion).
 
           data_storage_setting: Granular setting to manage how Retell stores sensitive data (transcripts,
               recordings, logs, etc.). This replaces the deprecated
@@ -2196,11 +2246,13 @@ class AsyncAgentResource(AsyncAPIResource):
                     "ambient_sound_volume": ambient_sound_volume,
                     "analysis_successful_prompt": analysis_successful_prompt,
                     "analysis_summary_prompt": analysis_summary_prompt,
+                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "custom_stt_config": custom_stt_config,
+                    "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,

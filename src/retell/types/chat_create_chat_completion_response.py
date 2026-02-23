@@ -73,6 +73,9 @@ class MessageToolCallResultMessage(BaseModel):
     tool_call_id: str
     """Tool call id, globally unique."""
 
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
 
 class MessageNodeTransitionMessage(BaseModel):
     created_timestamp: int
