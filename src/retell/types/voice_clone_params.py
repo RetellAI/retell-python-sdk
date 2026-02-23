@@ -13,11 +13,12 @@ class VoiceCloneParams(TypedDict, total=False):
     files: Required[SequenceNotStr[FileTypes]]
     """Audio files to use for voice cloning.
 
-    Up to 25 files allowed. For Cartesia and MiniMax, only 1 file is supported.
+    Up to 25 files allowed. For Cartesia and MiniMax, only 1 file is supported. For
+    Inworld, up to 3 files are supported.
     """
 
     voice_name: Required[str]
     """Name for the cloned voice"""
 
-    voice_provider: Literal["elevenlabs", "cartesia", "minimax"]
-    """Voice provider to use for cloning. Defaults to elevenlabs."""
+    voice_provider: Required[Literal["elevenlabs", "cartesia", "minimax", "fish_audio"]]
+    """Voice provider to use for cloning."""

@@ -48,13 +48,15 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     """Unique id of agent to bind to the number.
 
     The number will automatically use the agent when receiving inbound calls. If
-    null, this number would not accept inbound call.
+    null, this number would not accept inbound call. Deprecated. See
+    https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
     """
 
     inbound_agent_version: Optional[int]
     """Version of the inbound agent to bind to the number.
 
-    If not provided, will default to latest version.
+    If not provided, will default to latest version. Deprecated. See
+    https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
     """
 
     inbound_agents: Optional[Iterable[InboundAgent]]
@@ -82,13 +84,15 @@ class PhoneNumberCreateParams(TypedDict, total=False):
 
     The number will automatically use the agent when conducting outbound calls. If
     null, this number would not be able to initiate outbound call without agent id
-    override.
+    override. Deprecated. See
+    https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
     """
 
     outbound_agent_version: Optional[int]
     """Version of the outbound agent to bind to the number.
 
-    If not provided, will default to latest version.
+    If not provided, will default to latest version. Deprecated. See
+    https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
     """
 
     outbound_agents: Optional[Iterable[OutboundAgent]]

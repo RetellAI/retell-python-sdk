@@ -17,5 +17,5 @@ class VoiceAddResourceParams(TypedDict, total=False):
     public_user_id: str
     """Required for ElevenLabs only. User id of the voice owner."""
 
-    voice_provider: Literal["elevenlabs", "cartesia", "minimax"]
+    voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio"]
     """Voice provider to add the voice from."""
