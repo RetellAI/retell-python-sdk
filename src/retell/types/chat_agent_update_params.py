@@ -42,8 +42,22 @@ class ChatAgentUpdateParams(TypedDict, total=False):
     Set to null to use the default prompt.
     """
 
+    analysis_user_sentiment_prompt: Optional[str]
+    """Prompt to guide how the post chat analysis should evaluate user sentiment.
+
+    When unset, the default system prompt is used. Set to null to use the default
+    prompt.
+    """
+
     auto_close_message: Optional[str]
     """Message to display when the chat is automatically closed."""
+
+    data_storage_retention_days: Optional[int]
+    """Number of days to retain call/chat data before automatic deletion.
+
+    Must be between 1 and 730 days. If not set, data is retained forever (no
+    automatic deletion).
+    """
 
     data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
     """Controls what data is stored for this agent.

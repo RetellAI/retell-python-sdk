@@ -362,6 +362,13 @@ class AgentResponse(BaseModel):
     prompt.
     """
 
+    analysis_user_sentiment_prompt: Optional[str] = None
+    """
+    Prompt to guide how the post call or chat analysis should evaluate user
+    sentiment. When unset, the default system prompt is used. Set to null to use the
+    default prompt.
+    """
+
     backchannel_frequency: Optional[float] = None
     """Only applicable when enable_backchannel is true.
 
@@ -398,6 +405,13 @@ class AgentResponse(BaseModel):
 
     custom_stt_config: Optional[CustomSttConfig] = None
     """Custom STT configuration. Only used when stt_mode is set to custom."""
+
+    data_storage_retention_days: Optional[int] = None
+    """Number of days to retain call/chat data before automatic deletion.
+
+    Must be between 1 and 730 days. If not set, data is retained forever (no
+    automatic deletion).
+    """
 
     data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]] = None
     """
@@ -702,6 +716,7 @@ class AgentResponse(BaseModel):
             "gpt-4o-mini-tts",
             "speech-02-turbo",
             "speech-2.8-turbo",
+            "s1",
         ]
     ] = None
     """Select the voice model used for the selected voice.

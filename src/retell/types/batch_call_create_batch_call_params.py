@@ -395,6 +395,13 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     prompt.
     """
 
+    analysis_user_sentiment_prompt: Optional[str]
+    """
+    Prompt to guide how the post call or chat analysis should evaluate user
+    sentiment. When unset, the default system prompt is used. Set to null to use the
+    default prompt.
+    """
+
     backchannel_frequency: float
     """Only applicable when enable_backchannel is true.
 
@@ -431,6 +438,13 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
 
     custom_stt_config: TaskAgentOverrideAgentCustomSttConfig
     """Custom STT configuration. Only used when stt_mode is set to custom."""
+
+    data_storage_retention_days: Optional[int]
+    """Number of days to retain call/chat data before automatic deletion.
+
+    Must be between 1 and 730 days. If not set, data is retained forever (no
+    automatic deletion).
+    """
 
     data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
     """
@@ -741,6 +755,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "gpt-4o-mini-tts",
             "speech-02-turbo",
             "speech-2.8-turbo",
+            "s1",
         ]
     ]
     """Select the voice model used for the selected voice.

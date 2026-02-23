@@ -145,15 +145,6 @@ class TestVoice:
         voice = client.voice.clone(
             files=[b"raw file contents"],
             voice_name="x",
-        )
-        assert_matches_type(VoiceResponse, voice, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_clone_with_all_params(self, client: Retell) -> None:
-        voice = client.voice.clone(
-            files=[b"raw file contents"],
-            voice_name="x",
             voice_provider="elevenlabs",
         )
         assert_matches_type(VoiceResponse, voice, path=["response"])
@@ -164,6 +155,7 @@ class TestVoice:
         response = client.voice.with_raw_response.clone(
             files=[b"raw file contents"],
             voice_name="x",
+            voice_provider="elevenlabs",
         )
 
         assert response.is_closed is True
@@ -177,6 +169,7 @@ class TestVoice:
         with client.voice.with_streaming_response.clone(
             files=[b"raw file contents"],
             voice_name="x",
+            voice_provider="elevenlabs",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -359,15 +352,6 @@ class TestAsyncVoice:
         voice = await async_client.voice.clone(
             files=[b"raw file contents"],
             voice_name="x",
-        )
-        assert_matches_type(VoiceResponse, voice, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_clone_with_all_params(self, async_client: AsyncRetell) -> None:
-        voice = await async_client.voice.clone(
-            files=[b"raw file contents"],
-            voice_name="x",
             voice_provider="elevenlabs",
         )
         assert_matches_type(VoiceResponse, voice, path=["response"])
@@ -378,6 +362,7 @@ class TestAsyncVoice:
         response = await async_client.voice.with_raw_response.clone(
             files=[b"raw file contents"],
             voice_name="x",
+            voice_provider="elevenlabs",
         )
 
         assert response.is_closed is True
@@ -391,6 +376,7 @@ class TestAsyncVoice:
         async with async_client.voice.with_streaming_response.clone(
             files=[b"raw file contents"],
             voice_name="x",
+            voice_provider="elevenlabs",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

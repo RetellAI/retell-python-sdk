@@ -439,6 +439,9 @@ class ScrubbedTranscriptWithToolCallToolCallResultUtterance(BaseModel):
     tool_call_id: str
     """Tool call id, globally unique."""
 
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
 
 class ScrubbedTranscriptWithToolCallNodeTransitionUtterance(BaseModel):
     former_node_id: str
@@ -582,6 +585,9 @@ class TranscriptWithToolCallToolCallResultUtterance(BaseModel):
     tool_call_id: str
     """Tool call id, globally unique."""
 
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
 
 class TranscriptWithToolCallNodeTransitionUtterance(BaseModel):
     former_node_id: str
@@ -688,7 +694,6 @@ class PhoneCallResponse(BaseModel):
             "agent_hangup",
             "call_transfer",
             "voicemail_reached",
-            "ivr_reached",
             "inactivity",
             "max_duration_reached",
             "concurrency_limit_reached",

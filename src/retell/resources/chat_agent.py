@@ -58,7 +58,9 @@ class ChatAgentResource(SyncAPIResource):
         agent_name: Optional[str] | Omit = omit,
         analysis_successful_prompt: Optional[str] | Omit = omit,
         analysis_summary_prompt: Optional[str] | Omit = omit,
+        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
+        data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
@@ -154,7 +156,14 @@ class ChatAgentResource(SyncAPIResource):
           analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
               use the default prompt.
 
+          analysis_user_sentiment_prompt: Prompt to guide how the post chat analysis should evaluate user sentiment. When
+              unset, the default system prompt is used. Set to null to use the default prompt.
+
           auto_close_message: Message to display when the chat is automatically closed.
+
+          data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
+              between 1 and 730 days. If not set, data is retained forever (no automatic
+              deletion).
 
           data_storage_setting: Controls what data is stored for this agent. "everything" stores all data
               including transcripts and recordings. "everything_except_pii" stores data but
@@ -218,7 +227,9 @@ class ChatAgentResource(SyncAPIResource):
                     "agent_name": agent_name,
                     "analysis_successful_prompt": analysis_successful_prompt,
                     "analysis_summary_prompt": analysis_summary_prompt,
+                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "auto_close_message": auto_close_message,
+                    "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
@@ -290,7 +301,9 @@ class ChatAgentResource(SyncAPIResource):
         agent_name: Optional[str] | Omit = omit,
         analysis_successful_prompt: Optional[str] | Omit = omit,
         analysis_summary_prompt: Optional[str] | Omit = omit,
+        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
+        data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
@@ -385,7 +398,14 @@ class ChatAgentResource(SyncAPIResource):
           analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
               use the default prompt.
 
+          analysis_user_sentiment_prompt: Prompt to guide how the post chat analysis should evaluate user sentiment. When
+              unset, the default system prompt is used. Set to null to use the default prompt.
+
           auto_close_message: Message to display when the chat is automatically closed.
+
+          data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
+              between 1 and 730 days. If not set, data is retained forever (no automatic
+              deletion).
 
           data_storage_setting: Controls what data is stored for this agent. "everything" stores all data
               including transcripts and recordings. "everything_except_pii" stores data but
@@ -454,7 +474,9 @@ class ChatAgentResource(SyncAPIResource):
                     "agent_name": agent_name,
                     "analysis_successful_prompt": analysis_successful_prompt,
                     "analysis_summary_prompt": analysis_summary_prompt,
+                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "auto_close_message": auto_close_message,
+                    "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
@@ -667,7 +689,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
         agent_name: Optional[str] | Omit = omit,
         analysis_successful_prompt: Optional[str] | Omit = omit,
         analysis_summary_prompt: Optional[str] | Omit = omit,
+        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
+        data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
@@ -763,7 +787,14 @@ class AsyncChatAgentResource(AsyncAPIResource):
           analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
               use the default prompt.
 
+          analysis_user_sentiment_prompt: Prompt to guide how the post chat analysis should evaluate user sentiment. When
+              unset, the default system prompt is used. Set to null to use the default prompt.
+
           auto_close_message: Message to display when the chat is automatically closed.
+
+          data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
+              between 1 and 730 days. If not set, data is retained forever (no automatic
+              deletion).
 
           data_storage_setting: Controls what data is stored for this agent. "everything" stores all data
               including transcripts and recordings. "everything_except_pii" stores data but
@@ -827,7 +858,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "agent_name": agent_name,
                     "analysis_successful_prompt": analysis_successful_prompt,
                     "analysis_summary_prompt": analysis_summary_prompt,
+                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "auto_close_message": auto_close_message,
+                    "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
@@ -901,7 +934,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
         agent_name: Optional[str] | Omit = omit,
         analysis_successful_prompt: Optional[str] | Omit = omit,
         analysis_summary_prompt: Optional[str] | Omit = omit,
+        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
+        data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
         end_chat_after_silence_ms: int | Omit = omit,
@@ -996,7 +1031,14 @@ class AsyncChatAgentResource(AsyncAPIResource):
           analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
               use the default prompt.
 
+          analysis_user_sentiment_prompt: Prompt to guide how the post chat analysis should evaluate user sentiment. When
+              unset, the default system prompt is used. Set to null to use the default prompt.
+
           auto_close_message: Message to display when the chat is automatically closed.
+
+          data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
+              between 1 and 730 days. If not set, data is retained forever (no automatic
+              deletion).
 
           data_storage_setting: Controls what data is stored for this agent. "everything" stores all data
               including transcripts and recordings. "everything_except_pii" stores data but
@@ -1065,7 +1107,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "agent_name": agent_name,
                     "analysis_successful_prompt": analysis_successful_prompt,
                     "analysis_summary_prompt": analysis_summary_prompt,
+                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "auto_close_message": auto_close_message,
+                    "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
