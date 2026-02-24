@@ -25,7 +25,7 @@ class TestVoice:
     @parametrize
     def test_method_retrieve(self, client: Retell) -> None:
         voice = client.voice.retrieve(
-            "11labs-Adrian",
+            "retell-Cimo",
         )
         assert_matches_type(VoiceResponse, voice, path=["response"])
 
@@ -33,7 +33,7 @@ class TestVoice:
     @parametrize
     def test_raw_response_retrieve(self, client: Retell) -> None:
         response = client.voice.with_raw_response.retrieve(
-            "11labs-Adrian",
+            "retell-Cimo",
         )
 
         assert response.is_closed is True
@@ -45,7 +45,7 @@ class TestVoice:
     @parametrize
     def test_streaming_response_retrieve(self, client: Retell) -> None:
         with client.voice.with_streaming_response.retrieve(
-            "11labs-Adrian",
+            "retell-Cimo",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -232,7 +232,7 @@ class TestAsyncVoice:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncRetell) -> None:
         voice = await async_client.voice.retrieve(
-            "11labs-Adrian",
+            "retell-Cimo",
         )
         assert_matches_type(VoiceResponse, voice, path=["response"])
 
@@ -240,7 +240,7 @@ class TestAsyncVoice:
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncRetell) -> None:
         response = await async_client.voice.with_raw_response.retrieve(
-            "11labs-Adrian",
+            "retell-Cimo",
         )
 
         assert response.is_closed is True
@@ -252,7 +252,7 @@ class TestAsyncVoice:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncRetell) -> None:
         async with async_client.voice.with_streaming_response.retrieve(
-            "11labs-Adrian",
+            "retell-Cimo",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
