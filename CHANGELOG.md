@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.16.0 (2026-02-24)
+
+Full Changelog: [v5.15.0...v5.16.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.15.0...v5.16.0)
+
+### Features
+
+* **api:** api update ([5c04d9c](https://github.com/RetellAI/retell-python-sdk/commit/5c04d9cc0390ac5c4b60da3fe2b0f8e0f4ba0079))
+
+
+### Chores
+
+* **internal:** add request options to SSE classes ([97eb3a7](https://github.com/RetellAI/retell-python-sdk/commit/97eb3a77c73e89326c58c32db29bff2b34cdede3))
+* **internal:** make `test_proxy_environment_variables` more resilient ([9f2422d](https://github.com/RetellAI/retell-python-sdk/commit/9f2422dd08f4d86c396449c250eccb4f5f1fb2dd))
+
 ## 5.15.0 (2026-02-23)
 
 Full Changelog: [v5.14.0...v5.15.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.14.0...v5.15.0)
