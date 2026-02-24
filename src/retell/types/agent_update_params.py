@@ -354,8 +354,9 @@ class AgentUpdateParams(TypedDict, total=False):
     pronunciation_dictionary: Optional[Iterable[PronunciationDictionary]]
     """
     A list of words / phrases and their pronunciation to be used to guide the audio
-    synthesize for consistent pronunciation. Currently only supported for English &
-    11labs voices. Set to null to remove pronunciation dictionary from this agent.
+    synthesize for consistent pronunciation. Check the dashboard to see what
+    provider supports this feature. Set to null to remove pronunciation dictionary
+    from this agent.
     """
 
     reminder_max_count: int
@@ -471,8 +472,8 @@ class AgentUpdateParams(TypedDict, total=False):
     """Controls how stable the voice is.
 
     Value ranging from [0,2]. Lower value means more stable, and higher value means
-    more variant speech generation. Currently this setting only applies to `11labs`
-    voices. If unset, default value 1 will apply.
+    more variant speech generation. Check the dashboard to see what provider
+    supports this feature. If unset, default value 1 will apply.
     """
 
     voicemail_detection_timeout_ms: int

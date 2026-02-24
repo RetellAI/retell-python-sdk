@@ -34,7 +34,7 @@ agent_response = client.agent.create(
         "llm_id": "llm_234sdertfsdsfsdf",
         "type": "retell-llm",
     },
-    voice_id="11labs-Adrian",
+    voice_id="retell-Cimo",
 )
 print(agent_response.agent_id)
 ```
@@ -58,7 +58,7 @@ async def main() -> None:
             "llm_id": "llm_234sdertfsdsfsdf",
             "type": "retell-llm",
         },
-        voice_id="11labs-Adrian",
+        voice_id="retell-Cimo",
     )
     print(agent_response.agent_id)
 
@@ -97,7 +97,7 @@ async def main() -> None:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
         )
         print(agent_response.agent_id)
 
@@ -128,7 +128,7 @@ agent_response = client.agent.create(
         "llm_id": "llm_234sdertfsdsfsdf",
         "type": "retell-llm",
     },
-    voice_id="11labs-Adrian",
+    voice_id="retell-Cimo",
     custom_stt_config={
         "endpointing_ms": 0,
         "provider": "azure",
@@ -158,7 +158,7 @@ try:
             "llm_id": "llm_234sdertfsdsfsdf",
             "type": "retell-llm",
         },
-        voice_id="11labs-Adrian",
+        voice_id="retell-Cimo",
     )
 except retell.APIConnectionError as e:
     print("The server could not be reached")
@@ -207,7 +207,7 @@ client.with_options(max_retries=5).agent.create(
         "llm_id": "llm_234sdertfsdsfsdf",
         "type": "retell-llm",
     },
-    voice_id="11labs-Adrian",
+    voice_id="retell-Cimo",
 )
 ```
 
@@ -236,7 +236,7 @@ client.with_options(timeout=5.0).agent.create(
         "llm_id": "llm_234sdertfsdsfsdf",
         "type": "retell-llm",
     },
-    voice_id="11labs-Adrian",
+    voice_id="retell-Cimo",
 )
 ```
 
@@ -283,7 +283,7 @@ response = client.agent.with_raw_response.create(
         "llm_id": "llm_234sdertfsdsfsdf",
         "type": "retell-llm",
     },
-    voice_id="11labs-Adrian",
+    voice_id="retell-Cimo",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -307,7 +307,7 @@ with client.agent.with_streaming_response.create(
         "llm_id": "llm_234sdertfsdsfsdf",
         "type": "retell-llm",
     },
-    voice_id="11labs-Adrian",
+    voice_id="retell-Cimo",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
