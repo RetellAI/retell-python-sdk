@@ -29,7 +29,7 @@ class TestAgent:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
 
@@ -42,7 +42,7 @@ class TestAgent:
                 "type": "retell-llm",
                 "version": 0,
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
             agent_name="Jarvis",
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
@@ -137,7 +137,7 @@ class TestAgent:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
         )
 
         assert response.is_closed is True
@@ -153,7 +153,7 @@ class TestAgent:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -301,7 +301,7 @@ class TestAgent:
             version_description="Customer support agent for handling product inquiries",
             vocab_specialization="general",
             voice_emotion="calm",
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
@@ -532,7 +532,7 @@ class TestAsyncAgent:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
 
@@ -545,7 +545,7 @@ class TestAsyncAgent:
                 "type": "retell-llm",
                 "version": 0,
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
             agent_name="Jarvis",
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
@@ -640,7 +640,7 @@ class TestAsyncAgent:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
         )
 
         assert response.is_closed is True
@@ -656,7 +656,7 @@ class TestAsyncAgent:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -804,7 +804,7 @@ class TestAsyncAgent:
             version_description="Customer support agent for handling product inquiries",
             vocab_specialization="general",
             voice_emotion="calm",
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,

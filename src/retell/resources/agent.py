@@ -387,8 +387,9 @@ class AgentResource(SyncAPIResource):
           post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
-              synthesize for consistent pronunciation. Currently only supported for English &
-              11labs voices. Set to null to remove pronunciation dictionary from this agent.
+              synthesize for consistent pronunciation. Check the dashboard to see what
+              provider supports this feature. Set to null to remove pronunciation dictionary
+              from this agent.
 
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
@@ -433,9 +434,9 @@ class AgentResource(SyncAPIResource):
               will apply.
 
           voice_temperature: Controls how stable the voice is. Value ranging from [0,2]. Lower value means
-              more stable, and higher value means more variant speech generation. Currently
-              this setting only applies to `11labs` voices. If unset, default value 1 will
-              apply.
+              more stable, and higher value means more variant speech generation. Check the
+              dashboard to see what provider supports this feature. If unset, default value 1
+              will apply.
 
           voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
               hit voicemail after a couple minutes, and keep running it will only have
@@ -920,8 +921,9 @@ class AgentResource(SyncAPIResource):
           post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
-              synthesize for consistent pronunciation. Currently only supported for English &
-              11labs voices. Set to null to remove pronunciation dictionary from this agent.
+              synthesize for consistent pronunciation. Check the dashboard to see what
+              provider supports this feature. Set to null to remove pronunciation dictionary
+              from this agent.
 
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
@@ -973,9 +975,9 @@ class AgentResource(SyncAPIResource):
               will apply.
 
           voice_temperature: Controls how stable the voice is. Value ranging from [0,2]. Lower value means
-              more stable, and higher value means more variant speech generation. Currently
-              this setting only applies to `11labs` voices. If unset, default value 1 will
-              apply.
+              more stable, and higher value means more variant speech generation. Check the
+              dashboard to see what provider supports this feature. If unset, default value 1
+              will apply.
 
           voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
               hit voicemail after a couple minutes, and keep running it will only have
@@ -1607,8 +1609,9 @@ class AsyncAgentResource(AsyncAPIResource):
           post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
-              synthesize for consistent pronunciation. Currently only supported for English &
-              11labs voices. Set to null to remove pronunciation dictionary from this agent.
+              synthesize for consistent pronunciation. Check the dashboard to see what
+              provider supports this feature. Set to null to remove pronunciation dictionary
+              from this agent.
 
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
@@ -1653,9 +1656,9 @@ class AsyncAgentResource(AsyncAPIResource):
               will apply.
 
           voice_temperature: Controls how stable the voice is. Value ranging from [0,2]. Lower value means
-              more stable, and higher value means more variant speech generation. Currently
-              this setting only applies to `11labs` voices. If unset, default value 1 will
-              apply.
+              more stable, and higher value means more variant speech generation. Check the
+              dashboard to see what provider supports this feature. If unset, default value 1
+              will apply.
 
           voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
               hit voicemail after a couple minutes, and keep running it will only have
@@ -2140,8 +2143,9 @@ class AsyncAgentResource(AsyncAPIResource):
           post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
-              synthesize for consistent pronunciation. Currently only supported for English &
-              11labs voices. Set to null to remove pronunciation dictionary from this agent.
+              synthesize for consistent pronunciation. Check the dashboard to see what
+              provider supports this feature. Set to null to remove pronunciation dictionary
+              from this agent.
 
           reminder_max_count: If set, controls how many times agent would remind user when user is
               unresponsive. Must be a non negative integer. If unset, default value of 1 will
@@ -2193,9 +2197,9 @@ class AsyncAgentResource(AsyncAPIResource):
               will apply.
 
           voice_temperature: Controls how stable the voice is. Value ranging from [0,2]. Lower value means
-              more stable, and higher value means more variant speech generation. Currently
-              this setting only applies to `11labs` voices. If unset, default value 1 will
-              apply.
+              more stable, and higher value means more variant speech generation. Check the
+              dashboard to see what provider supports this feature. If unset, default value 1
+              will apply.
 
           voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
               hit voicemail after a couple minutes, and keep running it will only have

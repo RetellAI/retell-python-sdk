@@ -848,7 +848,7 @@ class TestRetell:
                     "llm_id": "llm_234sdertfsdsfsdf",
                     "type": "retell-llm",
                 },
-                voice_id="11labs-Adrian",
+                voice_id="retell-Cimo",
             ).__enter__()
 
         assert _get_open_connections(client) == 0
@@ -864,7 +864,7 @@ class TestRetell:
                     "llm_id": "llm_234sdertfsdsfsdf",
                     "type": "retell-llm",
                 },
-                voice_id="11labs-Adrian",
+                voice_id="retell-Cimo",
             ).__enter__()
         assert _get_open_connections(client) == 0
 
@@ -899,7 +899,7 @@ class TestRetell:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
         )
 
         assert response.retries_taken == failures_before_success
@@ -929,7 +929,7 @@ class TestRetell:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
             extra_headers={"x-stainless-retry-count": Omit()},
         )
 
@@ -959,7 +959,7 @@ class TestRetell:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
             extra_headers={"x-stainless-retry-count": "42"},
         )
 
@@ -1771,7 +1771,7 @@ class TestAsyncRetell:
                     "llm_id": "llm_234sdertfsdsfsdf",
                     "type": "retell-llm",
                 },
-                voice_id="11labs-Adrian",
+                voice_id="retell-Cimo",
             ).__aenter__()
 
         assert _get_open_connections(async_client) == 0
@@ -1787,7 +1787,7 @@ class TestAsyncRetell:
                     "llm_id": "llm_234sdertfsdsfsdf",
                     "type": "retell-llm",
                 },
-                voice_id="11labs-Adrian",
+                voice_id="retell-Cimo",
             ).__aenter__()
         assert _get_open_connections(async_client) == 0
 
@@ -1822,7 +1822,7 @@ class TestAsyncRetell:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
         )
 
         assert response.retries_taken == failures_before_success
@@ -1852,7 +1852,7 @@ class TestAsyncRetell:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
             extra_headers={"x-stainless-retry-count": Omit()},
         )
 
@@ -1882,7 +1882,7 @@ class TestAsyncRetell:
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
             },
-            voice_id="11labs-Adrian",
+            voice_id="retell-Cimo",
             extra_headers={"x-stainless-retry-count": "42"},
         )
 
