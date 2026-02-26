@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.17.0 (2026-02-26)
+
+Full Changelog: [v5.16.0...v5.17.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.16.0...v5.17.0)
+
+### Features
+
+* **api:** api update ([e7a0bc2](https://github.com/RetellAI/retell-python-sdk/commit/e7a0bc219c32081e41b22b111c24f3ce0a504b99))
+
+
+### Chores
+
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([f83ecdb](https://github.com/RetellAI/retell-python-sdk/commit/f83ecdb08b50480772ad6620a675719760c2675e))
+
 ## 5.16.0 (2026-02-24)
 
 Full Changelog: [v5.15.0...v5.16.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.15.0...v5.16.0)
