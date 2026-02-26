@@ -92,3 +92,12 @@ class KnowledgeBaseResponse(BaseModel):
 
     Only applicable when enable_auto_refresh is true.
     """
+
+    max_chunk_size: Optional[int] = None
+    """Maximum number of characters per chunk when splitting knowledge base content."""
+
+    min_chunk_size: Optional[int] = None
+    """Minimum number of characters per chunk.
+
+    Chunks smaller than this are merged with adjacent chunks.
+    """

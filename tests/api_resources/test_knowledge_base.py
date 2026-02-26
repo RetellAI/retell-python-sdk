@@ -42,6 +42,8 @@ class TestKnowledgeBase:
                 }
             ],
             knowledge_base_urls=["https://www.example.com", "https://www.retellai.com"],
+            max_chunk_size=2000,
+            min_chunk_size=400,
         )
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 
@@ -321,6 +323,8 @@ class TestAsyncKnowledgeBase:
                 }
             ],
             knowledge_base_urls=["https://www.example.com", "https://www.retellai.com"],
+            max_chunk_size=2000,
+            min_chunk_size=400,
         )
         assert_matches_type(KnowledgeBaseResponse, knowledge_base, path=["response"])
 

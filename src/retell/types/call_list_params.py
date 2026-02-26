@@ -82,7 +82,7 @@ class FilterCriteria(TypedDict, total=False):
     batch_call_id: SequenceNotStr[str]
     """Only retrieve calls with specific batch call id(s)."""
 
-    call_status: List[Literal["registered", "not_connected", "ongoing", "ended", "error"]]
+    call_status: List[Literal["not_connected", "ongoing", "ended", "error"]]
     """Only retrieve calls with specific call status(es)."""
 
     call_successful: Iterable[bool]
@@ -100,6 +100,7 @@ class FilterCriteria(TypedDict, total=False):
             "agent_hangup",
             "call_transfer",
             "voicemail_reached",
+            "ivr_reached",
             "inactivity",
             "max_duration_reached",
             "concurrency_limit_reached",
@@ -124,6 +125,8 @@ class FilterCriteria(TypedDict, total=False):
             "error_unknown",
             "error_user_not_joined",
             "registered_call_timeout",
+            "transfer_bridged",
+            "transfer_cancelled",
         ]
     ]
     """Only retrieve calls with specific disconnection reason(s)."""

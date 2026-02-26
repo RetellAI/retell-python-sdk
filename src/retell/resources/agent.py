@@ -73,6 +73,7 @@ class AgentResource(SyncAPIResource):
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
@@ -326,6 +327,10 @@ class AgentResource(SyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_dynamic_responsiveness: If set to true, the agent will dynamically adjust how quickly it responds based
+              on the user's speech rate and past turn-taking behavior in the call. If unset,
+              default value false will apply.
+
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
 
@@ -497,6 +502,7 @@ class AgentResource(SyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
@@ -610,6 +616,7 @@ class AgentResource(SyncAPIResource):
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
@@ -860,6 +867,10 @@ class AgentResource(SyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_dynamic_responsiveness: If set to true, the agent will dynamically adjust how quickly it responds based
+              on the user's speech rate and past turn-taking behavior in the call. If unset,
+              default value false will apply.
+
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
 
@@ -1038,6 +1049,7 @@ class AgentResource(SyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
@@ -1295,6 +1307,7 @@ class AsyncAgentResource(AsyncAPIResource):
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
@@ -1548,6 +1561,10 @@ class AsyncAgentResource(AsyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_dynamic_responsiveness: If set to true, the agent will dynamically adjust how quickly it responds based
+              on the user's speech rate and past turn-taking behavior in the call. If unset,
+              default value false will apply.
+
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
 
@@ -1719,6 +1736,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
@@ -1832,6 +1850,7 @@ class AsyncAgentResource(AsyncAPIResource):
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
         enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
@@ -2082,6 +2101,10 @@ class AsyncAgentResource(AsyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_dynamic_responsiveness: If set to true, the agent will dynamically adjust how quickly it responds based
+              on the user's speech rate and past turn-taking behavior in the call. If unset,
+              default value false will apply.
+
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
 
@@ -2260,6 +2283,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
