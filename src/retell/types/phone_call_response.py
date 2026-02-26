@@ -694,6 +694,7 @@ class PhoneCallResponse(BaseModel):
             "agent_hangup",
             "call_transfer",
             "voicemail_reached",
+            "ivr_reached",
             "inactivity",
             "max_duration_reached",
             "concurrency_limit_reached",
@@ -718,6 +719,8 @@ class PhoneCallResponse(BaseModel):
             "error_unknown",
             "error_user_not_joined",
             "registered_call_timeout",
+            "transfer_bridged",
+            "transfer_cancelled",
         ]
     ] = None
     """The reason for the disconnection of the call.

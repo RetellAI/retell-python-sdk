@@ -442,6 +442,13 @@ class AgentResponse(BaseModel):
     will not backchannel.
     """
 
+    enable_dynamic_responsiveness: Optional[bool] = None
+    """
+    If set to true, the agent will dynamically adjust how quickly it responds based
+    on the user's speech rate and past turn-taking behavior in the call. If unset,
+    default value false will apply.
+    """
+
     enable_dynamic_voice_speed: Optional[bool] = None
     """
     If set to true, will enable dynamic voice speed adjustment based on the user's

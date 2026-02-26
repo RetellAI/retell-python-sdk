@@ -52,6 +52,8 @@ class KnowledgeBaseResource(SyncAPIResource):
         knowledge_base_files: SequenceNotStr[FileTypes] | Omit = omit,
         knowledge_base_texts: Iterable[knowledge_base_create_params.KnowledgeBaseText] | Omit = omit,
         knowledge_base_urls: SequenceNotStr[str] | Omit = omit,
+        max_chunk_size: int | Omit = omit,
+        min_chunk_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -75,6 +77,13 @@ class KnowledgeBaseResource(SyncAPIResource):
 
           knowledge_base_urls: URLs to be scraped and added to the knowledge base. Must be valid urls.
 
+          max_chunk_size: Maximum number of characters per chunk when splitting knowledge base. Default
+              is 2000. content. Immutable after creation.
+
+          min_chunk_size: Minimum number of characters per chunk. Chunks smaller than this will be merged
+              with adjacent chunks. Must be less than max_chunk_size. Immutable after
+              creation. Default is 400.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -90,6 +99,8 @@ class KnowledgeBaseResource(SyncAPIResource):
                 "knowledge_base_files": knowledge_base_files,
                 "knowledge_base_texts": knowledge_base_texts,
                 "knowledge_base_urls": knowledge_base_urls,
+                "max_chunk_size": max_chunk_size,
+                "min_chunk_size": min_chunk_size,
             }
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["knowledge_base_files", "<array>"]])
@@ -315,6 +326,8 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         knowledge_base_files: SequenceNotStr[FileTypes] | Omit = omit,
         knowledge_base_texts: Iterable[knowledge_base_create_params.KnowledgeBaseText] | Omit = omit,
         knowledge_base_urls: SequenceNotStr[str] | Omit = omit,
+        max_chunk_size: int | Omit = omit,
+        min_chunk_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -338,6 +351,13 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
 
           knowledge_base_urls: URLs to be scraped and added to the knowledge base. Must be valid urls.
 
+          max_chunk_size: Maximum number of characters per chunk when splitting knowledge base. Default
+              is 2000. content. Immutable after creation.
+
+          min_chunk_size: Minimum number of characters per chunk. Chunks smaller than this will be merged
+              with adjacent chunks. Must be less than max_chunk_size. Immutable after
+              creation. Default is 400.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -353,6 +373,8 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
                 "knowledge_base_files": knowledge_base_files,
                 "knowledge_base_texts": knowledge_base_texts,
                 "knowledge_base_urls": knowledge_base_urls,
+                "max_chunk_size": max_chunk_size,
+                "min_chunk_size": min_chunk_size,
             }
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["knowledge_base_files", "<array>"]])
