@@ -473,6 +473,13 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     will not backchannel.
     """
 
+    enable_dynamic_responsiveness: bool
+    """
+    If set to true, the agent will dynamically adjust how quickly it responds based
+    on the user's speech rate and past turn-taking behavior in the call. If unset,
+    default value false will apply.
+    """
+
     enable_dynamic_voice_speed: bool
     """
     If set to true, will enable dynamic voice speed adjustment based on the user's
@@ -1059,6 +1066,9 @@ class Task(TypedDict, total=False):
     This allows you to customize agent behavior for individual calls without
     modifying the base agent.
     """
+
+    custom_sip_headers: Dict[str, str]
+    """Add optional custom SIP headers to the call."""
 
     ignore_e164_validation: bool
     """If true, the e.164 validation will be ignored for the from_number.

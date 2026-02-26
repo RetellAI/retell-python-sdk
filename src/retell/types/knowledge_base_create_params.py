@@ -32,6 +32,19 @@ class KnowledgeBaseCreateParams(TypedDict, total=False):
     knowledge_base_urls: SequenceNotStr[str]
     """URLs to be scraped and added to the knowledge base. Must be valid urls."""
 
+    max_chunk_size: int
+    """Maximum number of characters per chunk when splitting knowledge base.
+
+    Default is 2000. content. Immutable after creation.
+    """
+
+    min_chunk_size: int
+    """Minimum number of characters per chunk.
+
+    Chunks smaller than this will be merged with adjacent chunks. Must be less than
+    max_chunk_size. Immutable after creation. Default is 400.
+    """
+
 
 class KnowledgeBaseText(TypedDict, total=False):
     text: Required[str]
