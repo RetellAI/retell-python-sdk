@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.17.1 (2026-03-04)
+
+Full Changelog: [v5.17.0...v5.17.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.17.0...v5.17.1)
+
+### Chores
+
+* configure new SDK language ([2ee729d](https://github.com/RetellAI/retell-python-sdk/commit/2ee729d142325660d4d2e3e98fa6b08f328ccfd6))
+
 ## 5.17.0 (2026-02-26)
 
 Full Changelog: [v5.16.0...v5.17.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.16.0...v5.17.0)
