@@ -34,7 +34,7 @@ class TestKnowledgeBase:
         knowledge_base = client.knowledge_base.create(
             knowledge_base_name="Sample KB",
             enable_auto_refresh=True,
-            knowledge_base_files=[b"raw file contents"],
+            knowledge_base_files=[b"Example data"],
             knowledge_base_texts=[
                 {
                     "text": "text",
@@ -198,7 +198,7 @@ class TestKnowledgeBase:
     def test_method_add_sources_with_all_params(self, client: Retell) -> None:
         knowledge_base = client.knowledge_base.add_sources(
             knowledge_base_id="kb_1234567890",
-            knowledge_base_files=[b"raw file contents"],
+            knowledge_base_files=[b"Example data"],
             knowledge_base_texts=[
                 {
                     "text": "text",
@@ -315,7 +315,7 @@ class TestAsyncKnowledgeBase:
         knowledge_base = await async_client.knowledge_base.create(
             knowledge_base_name="Sample KB",
             enable_auto_refresh=True,
-            knowledge_base_files=[b"raw file contents"],
+            knowledge_base_files=[b"Example data"],
             knowledge_base_texts=[
                 {
                     "text": "text",
@@ -479,7 +479,7 @@ class TestAsyncKnowledgeBase:
     async def test_method_add_sources_with_all_params(self, async_client: AsyncRetell) -> None:
         knowledge_base = await async_client.knowledge_base.add_sources(
             knowledge_base_id="kb_1234567890",
-            knowledge_base_files=[b"raw file contents"],
+            knowledge_base_files=[b"Example data"],
             knowledge_base_texts=[
                 {
                     "text": "text",
