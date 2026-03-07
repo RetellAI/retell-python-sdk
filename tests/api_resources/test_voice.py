@@ -143,7 +143,7 @@ class TestVoice:
     @parametrize
     def test_method_clone(self, client: Retell) -> None:
         voice = client.voice.clone(
-            files=[b"raw file contents"],
+            files=[b"Example data"],
             voice_name="x",
             voice_provider="elevenlabs",
         )
@@ -153,7 +153,7 @@ class TestVoice:
     @parametrize
     def test_raw_response_clone(self, client: Retell) -> None:
         response = client.voice.with_raw_response.clone(
-            files=[b"raw file contents"],
+            files=[b"Example data"],
             voice_name="x",
             voice_provider="elevenlabs",
         )
@@ -167,7 +167,7 @@ class TestVoice:
     @parametrize
     def test_streaming_response_clone(self, client: Retell) -> None:
         with client.voice.with_streaming_response.clone(
-            files=[b"raw file contents"],
+            files=[b"Example data"],
             voice_name="x",
             voice_provider="elevenlabs",
         ) as response:
@@ -350,7 +350,7 @@ class TestAsyncVoice:
     @parametrize
     async def test_method_clone(self, async_client: AsyncRetell) -> None:
         voice = await async_client.voice.clone(
-            files=[b"raw file contents"],
+            files=[b"Example data"],
             voice_name="x",
             voice_provider="elevenlabs",
         )
@@ -360,7 +360,7 @@ class TestAsyncVoice:
     @parametrize
     async def test_raw_response_clone(self, async_client: AsyncRetell) -> None:
         response = await async_client.voice.with_raw_response.clone(
-            files=[b"raw file contents"],
+            files=[b"Example data"],
             voice_name="x",
             voice_provider="elevenlabs",
         )
@@ -374,7 +374,7 @@ class TestAsyncVoice:
     @parametrize
     async def test_streaming_response_clone(self, async_client: AsyncRetell) -> None:
         async with async_client.voice.with_streaming_response.clone(
-            files=[b"raw file contents"],
+            files=[b"Example data"],
             voice_name="x",
             voice_provider="elevenlabs",
         ) as response:
