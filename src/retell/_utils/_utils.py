@@ -76,8 +76,8 @@ def _extract_items(
         if is_list(obj):
             files: list[tuple[str, FileTypes]] = []
             for entry in obj:
-                assert_is_file_content(entry, key=flattened_key + "[]" if flattened_key else "")
-                files.append((flattened_key + "[]", cast(FileTypes, entry)))
+                assert_is_file_content(entry, key=flattened_key if flattened_key else "")
+                files.append((flattened_key, cast(FileTypes, entry)))
             return files
 
         assert_is_file_content(obj, key=flattened_key)
@@ -100,12 +100,17 @@ def _extract_items(
             flattened_key = key
         else:
             flattened_key += f"[{key}]"
-        return _extract_items(
+        result = _extract_items(
             item,
             path,
             index=index,
             flattened_key=flattened_key,
         )
+        # If extraction emptied the value (e.g. <array> cleared the list),
+        # remove the key from the dict so it doesn't get serialized as '[]'
+        if result and is_list(item) and len(item) == 0 and key in obj:
+            del obj[key]
+        return result
     elif is_list(obj):
         if key != "<array>":
             return []
