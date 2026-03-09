@@ -88,6 +88,7 @@ class TestAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
+                    "required": True,
                 }
             ],
             post_call_analysis_model="gpt-4.1-mini",
@@ -274,6 +275,7 @@ class TestAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
+                    "required": True,
                 }
             ],
             post_call_analysis_model="gpt-4.1-mini",
@@ -593,6 +595,7 @@ class TestAsyncAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
+                    "required": True,
                 }
             ],
             post_call_analysis_model="gpt-4.1-mini",
@@ -779,6 +782,7 @@ class TestAsyncAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
+                    "required": True,
                 }
             ],
             post_call_analysis_model="gpt-4.1-mini",

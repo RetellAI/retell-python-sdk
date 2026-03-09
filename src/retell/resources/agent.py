@@ -67,7 +67,7 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
-        custom_stt_config: agent_create_params.CustomSttConfig | Omit = omit,
+        custom_stt_config: Optional[agent_create_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
@@ -165,6 +165,7 @@ class AgentResource(SyncAPIResource):
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
+                "claude-4.6-sonnet",
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
@@ -191,6 +192,7 @@ class AgentResource(SyncAPIResource):
                 "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
+                "eleven_v3",
                 "sonic-2",
                 "sonic-3",
                 "sonic-3-latest",
@@ -411,7 +413,7 @@ class AgentResource(SyncAPIResource):
 
           ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
               This applies for both outbound call ringtime, and call transfer ringtime.
-              Default to 30000 (30 s). Valid range is [5000, 90000].
+              Default to 30000 (30 s). Valid range is [5000, 300000].
 
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
@@ -610,7 +612,7 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
-        custom_stt_config: agent_update_params.CustomSttConfig | Omit = omit,
+        custom_stt_config: Optional[agent_update_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
@@ -708,6 +710,7 @@ class AgentResource(SyncAPIResource):
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
+                "claude-4.6-sonnet",
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
@@ -736,6 +739,7 @@ class AgentResource(SyncAPIResource):
                 "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
+                "eleven_v3",
                 "sonic-2",
                 "sonic-3",
                 "sonic-3-latest",
@@ -955,7 +959,7 @@ class AgentResource(SyncAPIResource):
 
           ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
               This applies for both outbound call ringtime, and call transfer ringtime.
-              Default to 30000 (30 s). Valid range is [5000, 90000].
+              Default to 30000 (30 s). Valid range is [5000, 300000].
 
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
@@ -1301,7 +1305,7 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
-        custom_stt_config: agent_create_params.CustomSttConfig | Omit = omit,
+        custom_stt_config: Optional[agent_create_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
@@ -1399,6 +1403,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
+                "claude-4.6-sonnet",
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
@@ -1425,6 +1430,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
+                "eleven_v3",
                 "sonic-2",
                 "sonic-3",
                 "sonic-3-latest",
@@ -1645,7 +1651,7 @@ class AsyncAgentResource(AsyncAPIResource):
 
           ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
               This applies for both outbound call ringtime, and call transfer ringtime.
-              Default to 30000 (30 s). Valid range is [5000, 90000].
+              Default to 30000 (30 s). Valid range is [5000, 300000].
 
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
@@ -1844,7 +1850,7 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
-        custom_stt_config: agent_update_params.CustomSttConfig | Omit = omit,
+        custom_stt_config: Optional[agent_update_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
@@ -1942,6 +1948,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
+                "claude-4.6-sonnet",
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
@@ -1970,6 +1977,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
+                "eleven_v3",
                 "sonic-2",
                 "sonic-3",
                 "sonic-3-latest",
@@ -2189,7 +2197,7 @@ class AsyncAgentResource(AsyncAPIResource):
 
           ring_duration_ms: If set, the phone ringing will last for the specified amount of milliseconds.
               This applies for both outbound call ringtime, and call transfer ringtime.
-              Default to 30000 (30 s). Valid range is [5000, 90000].
+              Default to 30000 (30 s). Valid range is [5000, 300000].
 
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will

@@ -132,6 +132,12 @@ class PostChatAnalysisDataStringAnalysisData(BaseModel):
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class PostChatAnalysisDataEnumAnalysisData(BaseModel):
     choices: List[str]
@@ -146,6 +152,12 @@ class PostChatAnalysisDataEnumAnalysisData(BaseModel):
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class PostChatAnalysisDataBooleanAnalysisData(BaseModel):
     description: str
@@ -157,6 +169,12 @@ class PostChatAnalysisDataBooleanAnalysisData(BaseModel):
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class PostChatAnalysisDataNumberAnalysisData(BaseModel):
     description: str
@@ -167,6 +185,12 @@ class PostChatAnalysisDataNumberAnalysisData(BaseModel):
 
     type: Literal["number"]
     """Type of the variable to extract."""
+
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
 
 
 PostChatAnalysisData: TypeAlias = Union[
@@ -334,6 +358,7 @@ class ChatAgentResponse(BaseModel):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",

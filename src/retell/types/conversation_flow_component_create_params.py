@@ -869,6 +869,7 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
@@ -1033,6 +1034,12 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTr
     id when using `sip refer` cold transfer mode.
     """
 
+    transfer_ring_duration_ms: int
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(TypedDict, total=False):
     """IVR navigation option to run when doing human detection.
@@ -1150,6 +1157,12 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     Twilio numbers support this option.
     """
 
+    transfer_ring_duration_ms: int
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     TypedDict, total=False
@@ -1242,6 +1255,12 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenti
     If set to true, will show transferee (the user, not the AI agent) as caller when
     transferring, requires the telephony side to support caller id override. Retell
     Twilio numbers support this option.
+    """
+
+    transfer_ring_duration_ms: int
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
     """
 
 
@@ -1624,6 +1643,12 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisDa
     examples: SequenceNotStr[str]
     """Examples of the variable value to teach model the style and syntax."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData(TypedDict, total=False):
     choices: Required[SequenceNotStr[str]]
@@ -1638,6 +1663,12 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData
     type: Required[Literal["enum"]]
     """Type of the variable to extract."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData(TypedDict, total=False):
     description: Required[str]
@@ -1649,6 +1680,12 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisD
     type: Required[Literal["boolean"]]
     """Type of the variable to extract."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData(TypedDict, total=False):
     description: Required[str]
@@ -1659,6 +1696,12 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisDa
 
     type: Required[Literal["number"]]
     """Type of the variable to extract."""
+
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
 
 
 NodeConversationNodeToolExtractDynamicVariableToolVariable: TypeAlias = Union[
@@ -2370,6 +2413,7 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
@@ -2543,6 +2587,12 @@ class NodeTransferCallNodeTransferOptionTransferOptionColdTransfer(TypedDict, to
     id when using `sip refer` cold transfer mode.
     """
 
+    transfer_ring_duration_ms: int
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption(TypedDict, total=False):
     """IVR navigation option to run when doing human detection.
@@ -2656,6 +2706,12 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(TypedDict, to
     Twilio numbers support this option.
     """
 
+    transfer_ring_duration_ms: int
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     TypedDict, total=False
@@ -2746,6 +2802,12 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer(TypedD
     If set to true, will show transferee (the user, not the AI agent) as caller when
     transferring, requires the telephony side to support caller id override. Retell
     Twilio numbers support this option.
+    """
+
+    transfer_ring_duration_ms: int
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
     """
 
 
@@ -2941,6 +3003,7 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
@@ -3255,6 +3318,7 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
@@ -3931,6 +3995,12 @@ class NodeExtractDynamicVariablesNodeVariableStringAnalysisData(TypedDict, total
     examples: SequenceNotStr[str]
     """Examples of the variable value to teach model the style and syntax."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeExtractDynamicVariablesNodeVariableEnumAnalysisData(TypedDict, total=False):
     choices: Required[SequenceNotStr[str]]
@@ -3945,6 +4015,12 @@ class NodeExtractDynamicVariablesNodeVariableEnumAnalysisData(TypedDict, total=F
     type: Required[Literal["enum"]]
     """Type of the variable to extract."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeExtractDynamicVariablesNodeVariableBooleanAnalysisData(TypedDict, total=False):
     description: Required[str]
@@ -3956,6 +4032,12 @@ class NodeExtractDynamicVariablesNodeVariableBooleanAnalysisData(TypedDict, tota
     type: Required[Literal["boolean"]]
     """Type of the variable to extract."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeExtractDynamicVariablesNodeVariableNumberAnalysisData(TypedDict, total=False):
     description: Required[str]
@@ -3966,6 +4048,12 @@ class NodeExtractDynamicVariablesNodeVariableNumberAnalysisData(TypedDict, total
 
     type: Required[Literal["number"]]
     """Type of the variable to extract."""
+
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
 
 
 NodeExtractDynamicVariablesNodeVariable: TypeAlias = Union[
@@ -4301,6 +4389,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",

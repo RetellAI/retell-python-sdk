@@ -96,6 +96,7 @@ class TestCaseDefinitionResponse(BaseModel):
         "gpt-5-mini",
         "gpt-5-nano",
         "claude-4.5-sonnet",
+        "claude-4.6-sonnet",
         "claude-4.5-haiku",
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
