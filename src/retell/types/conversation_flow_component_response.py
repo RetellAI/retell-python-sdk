@@ -844,6 +844,7 @@ class NodeConversationNodeModelChoice(BaseModel):
         "gpt-5-mini",
         "gpt-5-nano",
         "claude-4.5-sonnet",
+        "claude-4.6-sonnet",
         "claude-4.5-haiku",
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
@@ -1007,6 +1008,12 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTr
     id when using `sip refer` cold transfer mode.
     """
 
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
     """IVR navigation option to run when doing human detection.
@@ -1126,6 +1133,12 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     Twilio numbers support this option.
     """
 
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     BaseModel
@@ -1220,6 +1233,12 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenti
     If set to true, will show transferee (the user, not the AI agent) as caller when
     transferring, requires the telephony side to support caller id override. Retell
     Twilio numbers support this option.
+    """
+
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
     """
 
 
@@ -1602,6 +1621,12 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisDa
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     choices: List[str]
@@ -1616,6 +1641,12 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel):
     description: str
@@ -1627,6 +1658,12 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisD
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel):
     description: str
@@ -1637,6 +1674,12 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisDa
 
     type: Literal["number"]
     """Type of the variable to extract."""
+
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
 
 
 NodeConversationNodeToolExtractDynamicVariableToolVariable: TypeAlias = Union[
@@ -2341,6 +2384,7 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "gpt-5-mini",
         "gpt-5-nano",
         "claude-4.5-sonnet",
+        "claude-4.6-sonnet",
         "claude-4.5-haiku",
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
@@ -2513,6 +2557,12 @@ class NodeTransferCallNodeTransferOptionTransferOptionColdTransfer(BaseModel):
     id when using `sip refer` cold transfer mode.
     """
 
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class NodeTransferCallNodeTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
     """IVR navigation option to run when doing human detection.
@@ -2626,6 +2676,12 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(BaseModel):
     Twilio numbers support this option.
     """
 
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(BaseModel):
     """The agent that will mediate the transfer decision."""
@@ -2714,6 +2770,12 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer(BaseMo
     If set to true, will show transferee (the user, not the AI agent) as caller when
     transferring, requires the telephony side to support caller id override. Retell
     Twilio numbers support this option.
+    """
+
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
     """
 
 
@@ -2904,6 +2966,7 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "gpt-5-mini",
         "gpt-5-nano",
         "claude-4.5-sonnet",
+        "claude-4.6-sonnet",
         "claude-4.5-haiku",
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
@@ -3212,6 +3275,7 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "gpt-5-mini",
         "gpt-5-nano",
         "claude-4.5-sonnet",
+        "claude-4.6-sonnet",
         "claude-4.5-haiku",
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
@@ -3881,6 +3945,12 @@ class NodeExtractDynamicVariablesNodeVariableStringAnalysisData(BaseModel):
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeExtractDynamicVariablesNodeVariableEnumAnalysisData(BaseModel):
     choices: List[str]
@@ -3895,6 +3965,12 @@ class NodeExtractDynamicVariablesNodeVariableEnumAnalysisData(BaseModel):
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeExtractDynamicVariablesNodeVariableBooleanAnalysisData(BaseModel):
     description: str
@@ -3906,6 +3982,12 @@ class NodeExtractDynamicVariablesNodeVariableBooleanAnalysisData(BaseModel):
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class NodeExtractDynamicVariablesNodeVariableNumberAnalysisData(BaseModel):
     description: str
@@ -3916,6 +3998,12 @@ class NodeExtractDynamicVariablesNodeVariableNumberAnalysisData(BaseModel):
 
     type: Literal["number"]
     """Type of the variable to extract."""
+
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
 
 
 NodeExtractDynamicVariablesNodeVariable: TypeAlias = Union[
@@ -4236,6 +4324,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gpt-5-mini",
         "gpt-5-nano",
         "claude-4.5-sonnet",
+        "claude-4.6-sonnet",
         "claude-4.5-haiku",
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",

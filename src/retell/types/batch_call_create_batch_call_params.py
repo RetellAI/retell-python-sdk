@@ -181,6 +181,12 @@ class TaskAgentOverrideAgentPostCallAnalysisDataStringAnalysisData(TypedDict, to
     examples: SequenceNotStr[str]
     """Examples of the variable value to teach model the style and syntax."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class TaskAgentOverrideAgentPostCallAnalysisDataEnumAnalysisData(TypedDict, total=False):
     choices: Required[SequenceNotStr[str]]
@@ -195,6 +201,12 @@ class TaskAgentOverrideAgentPostCallAnalysisDataEnumAnalysisData(TypedDict, tota
     type: Required[Literal["enum"]]
     """Type of the variable to extract."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class TaskAgentOverrideAgentPostCallAnalysisDataBooleanAnalysisData(TypedDict, total=False):
     description: Required[str]
@@ -206,6 +218,12 @@ class TaskAgentOverrideAgentPostCallAnalysisDataBooleanAnalysisData(TypedDict, t
     type: Required[Literal["boolean"]]
     """Type of the variable to extract."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class TaskAgentOverrideAgentPostCallAnalysisDataNumberAnalysisData(TypedDict, total=False):
     description: Required[str]
@@ -216,6 +234,12 @@ class TaskAgentOverrideAgentPostCallAnalysisDataNumberAnalysisData(TypedDict, to
 
     type: Required[Literal["number"]]
     """Type of the variable to extract."""
+
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
 
 
 TaskAgentOverrideAgentPostCallAnalysisData: TypeAlias = Union[
@@ -436,7 +460,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     street, etc.
     """
 
-    custom_stt_config: TaskAgentOverrideAgentCustomSttConfig
+    custom_stt_config: Optional[TaskAgentOverrideAgentCustomSttConfig]
     """Custom STT configuration. Only used when stt_mode is set to custom."""
 
     data_storage_retention_days: Optional[int]
@@ -655,6 +679,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
@@ -704,7 +729,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     """If set, the phone ringing will last for the specified amount of milliseconds.
 
     This applies for both outbound call ringtime, and call transfer ringtime.
-    Default to 30000 (30 s). Valid range is [5000, 90000].
+    Default to 30000 (30 s). Valid range is [5000, 300000].
     """
 
     signed_url_expiration_ms: Optional[int]
@@ -755,6 +780,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "eleven_turbo_v2_5",
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
+            "eleven_v3",
             "sonic-2",
             "sonic-3",
             "sonic-3-latest",
@@ -877,6 +903,7 @@ class TaskAgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
@@ -979,6 +1006,7 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",

@@ -192,6 +192,12 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseMo
     id when using `sip refer` cold transfer mode.
     """
 
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
     """IVR navigation option to run when doing human detection.
@@ -309,6 +315,12 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMo
     Twilio numbers support this option.
     """
 
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     BaseModel
@@ -401,6 +413,12 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer
     If set to true, will show transferee (the user, not the AI agent) as caller when
     transferring, requires the telephony side to support caller id override. Retell
     Twilio numbers support this option.
+    """
+
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
     """
 
 
@@ -782,6 +800,12 @@ class GeneralToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel)
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class GeneralToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     choices: List[str]
@@ -796,6 +820,12 @@ class GeneralToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class GeneralToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel):
     description: str
@@ -807,6 +837,12 @@ class GeneralToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class GeneralToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel):
     description: str
@@ -817,6 +853,12 @@ class GeneralToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel)
 
     type: Literal["number"]
     """Type of the variable to extract."""
+
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
 
 
 GeneralToolExtractDynamicVariableToolVariable: TypeAlias = Union[
@@ -1128,6 +1170,12 @@ class StateToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseMode
     id when using `sip refer` cold transfer mode.
     """
 
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class StateToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
     """IVR navigation option to run when doing human detection.
@@ -1243,6 +1291,12 @@ class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMode
     Twilio numbers support this option.
     """
 
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
+    """
+
 
 class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     BaseModel
@@ -1335,6 +1389,12 @@ class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(B
     If set to true, will show transferee (the user, not the AI agent) as caller when
     transferring, requires the telephony side to support caller id override. Retell
     Twilio numbers support this option.
+    """
+
+    transfer_ring_duration_ms: Optional[int] = None
+    """Override the ring duration for this specific transfer, in milliseconds.
+
+    If not set, falls back to the agent-level `ring_duration_ms`.
     """
 
 
@@ -1716,6 +1776,12 @@ class StateToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel):
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class StateToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     choices: List[str]
@@ -1730,6 +1796,12 @@ class StateToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class StateToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel):
     description: str
@@ -1741,6 +1813,12 @@ class StateToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel):
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class StateToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel):
     description: str
@@ -1751,6 +1829,12 @@ class StateToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel):
 
     type: Literal["number"]
     """Type of the variable to extract."""
+
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
 
 
 StateToolExtractDynamicVariableToolVariable: TypeAlias = Union[
@@ -1991,6 +2075,7 @@ class LlmResponse(BaseModel):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",

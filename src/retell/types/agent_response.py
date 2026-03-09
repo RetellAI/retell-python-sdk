@@ -165,6 +165,12 @@ class PostCallAnalysisDataStringAnalysisData(BaseModel):
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class PostCallAnalysisDataEnumAnalysisData(BaseModel):
     choices: List[str]
@@ -179,6 +185,12 @@ class PostCallAnalysisDataEnumAnalysisData(BaseModel):
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class PostCallAnalysisDataBooleanAnalysisData(BaseModel):
     description: str
@@ -190,6 +202,12 @@ class PostCallAnalysisDataBooleanAnalysisData(BaseModel):
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class PostCallAnalysisDataNumberAnalysisData(BaseModel):
     description: str
@@ -200,6 +218,12 @@ class PostCallAnalysisDataNumberAnalysisData(BaseModel):
 
     type: Literal["number"]
     """Type of the variable to extract."""
+
+    required: Optional[bool] = None
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
 
 
 PostCallAnalysisData: TypeAlias = Union[
@@ -629,6 +653,7 @@ class AgentResponse(BaseModel):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
@@ -671,7 +696,7 @@ class AgentResponse(BaseModel):
     """If set, the phone ringing will last for the specified amount of milliseconds.
 
     This applies for both outbound call ringtime, and call transfer ringtime.
-    Default to 30000 (30 s). Valid range is [5000, 90000].
+    Default to 30000 (30 s). Valid range is [5000, 300000].
     """
 
     signed_url_expiration_ms: Optional[int] = None
@@ -716,6 +741,7 @@ class AgentResponse(BaseModel):
             "eleven_turbo_v2_5",
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
+            "eleven_v3",
             "sonic-2",
             "sonic-3",
             "sonic-3-latest",
