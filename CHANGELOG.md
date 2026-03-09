@@ -1,5 +1,24 @@
 # Changelog
 
+## 5.20.0 (2026-03-09)
+
+Full Changelog: [v5.19.0...v5.20.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.19.0...v5.20.0)
+
+### Features
+
+* **api:** api update ([fd891c7](https://github.com/RetellAI/retell-python-sdk/commit/fd891c792ac00c14c12cd6c53c6194cba18502a0))
+
+
+### Bug Fixes
+
+* **multipart:** correct file array field names and clean up empty arrays ([3059fa3](https://github.com/RetellAI/retell-python-sdk/commit/3059fa3b997fd4b9e542f531355ed1949365b582))
+
+
+### Chores
+
+* **ci:** skip uploading artifacts on stainless-internal branches ([f8d6bc5](https://github.com/RetellAI/retell-python-sdk/commit/f8d6bc5a03c1c76dfc86f207deaef831ef83096b))
+* update placeholder string ([078306b](https://github.com/RetellAI/retell-python-sdk/commit/078306bb3f657022bc6dc28e465e807f8164988d))
+
 ## 5.19.0 (2026-03-06)
 
 Full Changelog: [v5.18.0...v5.19.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.18.0...v5.19.0)
