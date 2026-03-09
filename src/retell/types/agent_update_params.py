@@ -131,7 +131,7 @@ class AgentUpdateParams(TypedDict, total=False):
     street, etc.
     """
 
-    custom_stt_config: CustomSttConfig
+    custom_stt_config: Optional[CustomSttConfig]
     """Custom STT configuration. Only used when stt_mode is set to custom."""
 
     data_storage_retention_days: Optional[int]
@@ -350,6 +350,7 @@ class AgentUpdateParams(TypedDict, total=False):
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
             "claude-4.5-haiku",
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
@@ -399,7 +400,7 @@ class AgentUpdateParams(TypedDict, total=False):
     """If set, the phone ringing will last for the specified amount of milliseconds.
 
     This applies for both outbound call ringtime, and call transfer ringtime.
-    Default to 30000 (30 s). Valid range is [5000, 90000].
+    Default to 30000 (30 s). Valid range is [5000, 300000].
     """
 
     signed_url_expiration_ms: Optional[int]
@@ -450,6 +451,7 @@ class AgentUpdateParams(TypedDict, total=False):
             "eleven_turbo_v2_5",
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
+            "eleven_v3",
             "sonic-2",
             "sonic-3",
             "sonic-3-latest",
@@ -646,6 +648,12 @@ class PostCallAnalysisDataStringAnalysisData(TypedDict, total=False):
     examples: SequenceNotStr[str]
     """Examples of the variable value to teach model the style and syntax."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class PostCallAnalysisDataEnumAnalysisData(TypedDict, total=False):
     choices: Required[SequenceNotStr[str]]
@@ -660,6 +668,12 @@ class PostCallAnalysisDataEnumAnalysisData(TypedDict, total=False):
     type: Required[Literal["enum"]]
     """Type of the variable to extract."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class PostCallAnalysisDataBooleanAnalysisData(TypedDict, total=False):
     description: Required[str]
@@ -671,6 +685,12 @@ class PostCallAnalysisDataBooleanAnalysisData(TypedDict, total=False):
     type: Required[Literal["boolean"]]
     """Type of the variable to extract."""
 
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
 
 class PostCallAnalysisDataNumberAnalysisData(TypedDict, total=False):
     description: Required[str]
@@ -681,6 +701,12 @@ class PostCallAnalysisDataNumberAnalysisData(TypedDict, total=False):
 
     type: Required[Literal["number"]]
     """Type of the variable to extract."""
+
+    required: bool
+    """Whether this data is required.
+
+    If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
 
 
 PostCallAnalysisData: TypeAlias = Union[

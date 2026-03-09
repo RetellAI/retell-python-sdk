@@ -66,6 +66,7 @@ class TestChatAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
+                    "required": True,
                 }
             ],
             post_chat_analysis_model="gpt-4.1-mini",
@@ -198,6 +199,7 @@ class TestChatAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
+                    "required": True,
                 }
             ],
             post_chat_analysis_model="gpt-4.1-mini",
@@ -462,6 +464,7 @@ class TestAsyncChatAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
+                    "required": True,
                 }
             ],
             post_chat_analysis_model="gpt-4.1-mini",
@@ -594,6 +597,7 @@ class TestAsyncChatAgent:
                     "name": "customer_name",
                     "type": "string",
                     "examples": ["John Doe", "Jane Smith"],
+                    "required": True,
                 }
             ],
             post_chat_analysis_model="gpt-4.1-mini",

@@ -63,7 +63,7 @@ class ChatAgentResource(SyncAPIResource):
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
-        end_chat_after_silence_ms: int | Omit = omit,
+        end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_create_params.GuardrailConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
@@ -122,6 +122,7 @@ class ChatAgentResource(SyncAPIResource):
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
+                "claude-4.6-sonnet",
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
@@ -306,7 +307,7 @@ class ChatAgentResource(SyncAPIResource):
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
-        end_chat_after_silence_ms: int | Omit = omit,
+        end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_update_params.GuardrailConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
@@ -365,6 +366,7 @@ class ChatAgentResource(SyncAPIResource):
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
+                "claude-4.6-sonnet",
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
@@ -694,7 +696,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
-        end_chat_after_silence_ms: int | Omit = omit,
+        end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_create_params.GuardrailConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
@@ -753,6 +755,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
+                "claude-4.6-sonnet",
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
@@ -939,7 +942,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
-        end_chat_after_silence_ms: int | Omit = omit,
+        end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_update_params.GuardrailConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
@@ -998,6 +1001,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
+                "claude-4.6-sonnet",
                 "claude-4.5-haiku",
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",

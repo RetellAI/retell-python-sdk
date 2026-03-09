@@ -155,14 +155,14 @@ class TestCall:
                     "lower_threshold": 0,
                     "upper_threshold": 0,
                 },
-                "from_number": ["string"],
+                "from_number": ["x"],
                 "in_voicemail": [True],
                 "metadata": {"metadata.customer_id": ["cust_123"]},
                 "start_timestamp": {
                     "lower_threshold": 1738475411000,
                     "upper_threshold": 1738475421000,
                 },
-                "to_number": ["string"],
+                "to_number": ["x"],
                 "user_sentiment": ["Positive"],
                 "version": [0],
             },
@@ -298,6 +298,7 @@ class TestCall:
                             "name": "customer_name",
                             "type": "string",
                             "examples": ["John Doe", "Jane Smith"],
+                            "required": True,
                         }
                     ],
                     "post_call_analysis_model": "gpt-4.1-mini",
@@ -473,6 +474,7 @@ class TestCall:
                             "name": "customer_name",
                             "type": "string",
                             "examples": ["John Doe", "Jane Smith"],
+                            "required": True,
                         }
                     ],
                     "post_call_analysis_model": "gpt-4.1-mini",
@@ -643,6 +645,7 @@ class TestCall:
                             "name": "customer_name",
                             "type": "string",
                             "examples": ["John Doe", "Jane Smith"],
+                            "required": True,
                         }
                     ],
                     "post_call_analysis_model": "gpt-4.1-mini",
@@ -895,14 +898,14 @@ class TestAsyncCall:
                     "lower_threshold": 0,
                     "upper_threshold": 0,
                 },
-                "from_number": ["string"],
+                "from_number": ["x"],
                 "in_voicemail": [True],
                 "metadata": {"metadata.customer_id": ["cust_123"]},
                 "start_timestamp": {
                     "lower_threshold": 1738475411000,
                     "upper_threshold": 1738475421000,
                 },
-                "to_number": ["string"],
+                "to_number": ["x"],
                 "user_sentiment": ["Positive"],
                 "version": [0],
             },
@@ -1038,6 +1041,7 @@ class TestAsyncCall:
                             "name": "customer_name",
                             "type": "string",
                             "examples": ["John Doe", "Jane Smith"],
+                            "required": True,
                         }
                     ],
                     "post_call_analysis_model": "gpt-4.1-mini",
@@ -1213,6 +1217,7 @@ class TestAsyncCall:
                             "name": "customer_name",
                             "type": "string",
                             "examples": ["John Doe", "Jane Smith"],
+                            "required": True,
                         }
                     ],
                     "post_call_analysis_model": "gpt-4.1-mini",
@@ -1383,6 +1388,7 @@ class TestAsyncCall:
                             "name": "customer_name",
                             "type": "string",
                             "examples": ["John Doe", "Jane Smith"],
+                            "required": True,
                         }
                     ],
                     "post_call_analysis_model": "gpt-4.1-mini",
