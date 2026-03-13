@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.20.1 (2026-03-13)
+
+Full Changelog: [v5.20.0...v5.20.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.20.0...v5.20.1)
+
+### Chores
+
+* **internal:** codegen related update ([af91596](https://github.com/RetellAI/retell-python-sdk/commit/af9159603b24ec07ed12cf9113f3b411d053614c))
+
 ## 5.20.0 (2026-03-09)
 
 Full Changelog: [v5.19.0...v5.20.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.19.0...v5.20.0)
