@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.20.3 (2026-03-17)
+
+Full Changelog: [v5.20.2...v5.20.3](https://github.com/RetellAI/retell-python-sdk/compare/v5.20.2...v5.20.3)
+
+### Bug Fixes
+
+* **deps:** bump minimum typing-extensions version ([d96e45b](https://github.com/RetellAI/retell-python-sdk/commit/d96e45bb1b1fc7a7bd17ca522afd33bb3cdf19bc))
+
 ## 5.20.2 (2026-03-17)
 
 Full Changelog: [v5.20.1...v5.20.2](https://github.com/RetellAI/retell-python-sdk/compare/v5.20.1...v5.20.2)
