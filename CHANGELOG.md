@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.20.2 (2026-03-17)
+
+Full Changelog: [v5.20.1...v5.20.2](https://github.com/RetellAI/retell-python-sdk/compare/v5.20.1...v5.20.2)
+
+### Bug Fixes
+
+* **pydantic:** do not pass `by_alias` unless set ([9066854](https://github.com/RetellAI/retell-python-sdk/commit/90668542c5bc6ad80a47db8074d78251f5e8ab8d))
+
 ## 5.20.1 (2026-03-13)
 
 Full Changelog: [v5.20.0...v5.20.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.20.0...v5.20.1)
