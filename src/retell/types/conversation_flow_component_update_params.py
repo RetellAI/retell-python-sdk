@@ -93,6 +93,7 @@ __all__ = [
     "NodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred",
     "NodeConversationNodeToolCustomTool",
     "NodeConversationNodeToolCustomToolParameters",
+    "NodeConversationNodeToolCodeTool",
     "NodeConversationNodeToolExtractDynamicVariableTool",
     "NodeConversationNodeToolExtractDynamicVariableToolVariable",
     "NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData",
@@ -123,6 +124,7 @@ __all__ = [
     "NodeEndNodeInstruction",
     "NodeEndNodeInstructionNodeInstructionPrompt",
     "NodeEndNodeInstructionNodeInstructionStaticText",
+    "NodeEndNodeModelChoice",
     "NodeFunctionNode",
     "NodeFunctionNodeDisplayPosition",
     "NodeFunctionNodeEdge",
@@ -161,6 +163,44 @@ __all__ = [
     "NodeFunctionNodeInstructionNodeInstructionPrompt",
     "NodeFunctionNodeInstructionNodeInstructionStaticText",
     "NodeFunctionNodeModelChoice",
+    "NodeCodeNode",
+    "NodeCodeNodeDisplayPosition",
+    "NodeCodeNodeEdge",
+    "NodeCodeNodeEdgeTransitionCondition",
+    "NodeCodeNodeEdgeTransitionConditionPromptCondition",
+    "NodeCodeNodeEdgeTransitionConditionEquationCondition",
+    "NodeCodeNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeCodeNodeElseEdge",
+    "NodeCodeNodeElseEdgeTransitionCondition",
+    "NodeCodeNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeCodeNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeCodeNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeCodeNodeElseEdgeTransitionConditionUnionMember2",
+    "NodeCodeNodeFinetuneTransitionExample",
+    "NodeCodeNodeFinetuneTransitionExampleTranscript",
+    "NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember0",
+    "NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember1",
+    "NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember2",
+    "NodeCodeNodeGlobalNodeSetting",
+    "NodeCodeNodeGlobalNodeSettingGoBackCondition",
+    "NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
+    "NodeCodeNodeGlobalNodeSettingNegativeFinetuneExample",
+    "NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "NodeCodeNodeGlobalNodeSettingPositiveFinetuneExample",
+    "NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "NodeCodeNodeInstruction",
+    "NodeCodeNodeInstructionNodeInstructionPrompt",
+    "NodeCodeNodeInstructionNodeInstructionStaticText",
+    "NodeCodeNodeModelChoice",
     "NodeTransferCallNode",
     "NodeTransferCallNodeEdge",
     "NodeTransferCallNodeEdgeTransitionCondition",
@@ -272,6 +312,7 @@ __all__ = [
     "NodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
     "NodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "NodeBranchNodeModelChoice",
     "NodeSMSNode",
     "NodeSMSNodeFailedEdge",
     "NodeSMSNodeFailedEdgeTransitionCondition",
@@ -305,6 +346,7 @@ __all__ = [
     "NodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
     "NodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "NodeSMSNodeModelChoice",
     "NodeExtractDynamicVariablesNode",
     "NodeExtractDynamicVariablesNodeVariable",
     "NodeExtractDynamicVariablesNodeVariableStringAnalysisData",
@@ -372,6 +414,7 @@ __all__ = [
     "NodeAgentSwapNodeInstruction",
     "NodeAgentSwapNodeInstructionNodeInstructionPrompt",
     "NodeAgentSwapNodeInstructionNodeInstructionStaticText",
+    "NodeAgentSwapNodeModelChoice",
     "NodeMcpNode",
     "NodeMcpNodeDisplayPosition",
     "NodeMcpNodeEdge",
@@ -409,6 +452,7 @@ __all__ = [
     "NodeMcpNodeInstruction",
     "NodeMcpNodeInstructionNodeInstructionPrompt",
     "NodeMcpNodeInstructionNodeInstructionStaticText",
+    "NodeMcpNodeModelChoice",
     "NodeComponentNode",
     "NodeComponentNodeElseEdge",
     "NodeComponentNodeElseEdgeTransitionCondition",
@@ -422,6 +466,11 @@ __all__ = [
     "NodeComponentNodeEdgeTransitionConditionPromptCondition",
     "NodeComponentNodeEdgeTransitionConditionEquationCondition",
     "NodeComponentNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeComponentNodeFinetuneTransitionExample",
+    "NodeComponentNodeFinetuneTransitionExampleTranscript",
+    "NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember0",
+    "NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember1",
+    "NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeComponentNodeGlobalNodeSetting",
     "NodeComponentNodeGlobalNodeSettingGoBackCondition",
     "NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionCondition",
@@ -456,6 +505,10 @@ __all__ = [
     "NodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
     "NodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "NodeBridgeTransferNodeInstruction",
+    "NodeBridgeTransferNodeInstructionNodeInstructionPrompt",
+    "NodeBridgeTransferNodeInstructionNodeInstructionStaticText",
+    "NodeBridgeTransferNodeModelChoice",
     "NodeCancelTransferNode",
     "NodeCancelTransferNodeDisplayPosition",
     "NodeCancelTransferNodeGlobalNodeSetting",
@@ -474,6 +527,10 @@ __all__ = [
     "NodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
     "NodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "NodeCancelTransferNodeInstruction",
+    "NodeCancelTransferNodeInstructionNodeInstructionPrompt",
+    "NodeCancelTransferNodeInstructionNodeInstructionStaticText",
+    "NodeCancelTransferNodeModelChoice",
     "Tool",
     "ToolCustomTool",
     "ToolCustomToolParameters",
@@ -893,6 +950,7 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
             "gpt-5",
             "gpt-5.1",
             "gpt-5.2",
+            "gpt-5.4",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -1149,12 +1207,6 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
 
     opt_out_human_detection: bool
     """If set to true, will not perform human detection for the transfer.
-
-    Default to false.
-    """
-
-    opt_out_initial_message: bool
-    """If set to true, AI will not say "Hello" after connecting the call.
 
     Default to false.
     """
@@ -1657,6 +1709,63 @@ class NodeConversationNodeToolCustomTool(TypedDict, total=False):
     """
 
 
+class NodeConversationNodeToolCodeTool(TypedDict, total=False):
+    code: Required[str]
+    """JavaScript code to execute in the sandbox."""
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["code"]]
+
+    description: str
+    """Describes what this tool does and when to call this tool."""
+
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    response_variables: Dict[str, str]
+    """A mapping of variable names to JSON paths in the code execution result.
+
+    These mapped values will be extracted and added as dynamic variables.
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the tool.
+    """
+
+    timeout_ms: int
+    """The maximum time in milliseconds the code can run before it's considered
+    timeout.
+
+    Defaults to 30,000 ms (30 s).
+    """
+
+
 class NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict, total=False):
     description: Required[str]
     """Description of the variable."""
@@ -1779,6 +1888,23 @@ class NodeConversationNodeToolBridgeTransferTool(TypedDict, total=False):
     caller to the transfer target and ends the transfer agent call.
     """
 
+    execution_message_description: str
+    """Describes what to say to user when bridging the transfer.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution."""
+
 
 class NodeConversationNodeToolCancelTransferTool(TypedDict, total=False):
     name: Required[str]
@@ -1798,6 +1924,23 @@ class NodeConversationNodeToolCancelTransferTool(TypedDict, total=False):
     to true) in agentic warm transfer mode. When invoked, it cancels the transfer,
     returns the original caller to the main agent, and ends the transfer agent call.
     """
+
+    execution_message_description: str
+    """Describes what to say to user when cancelling the transfer.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution."""
 
 
 class NodeConversationNodeToolMcpTool(TypedDict, total=False):
@@ -1862,6 +2005,7 @@ NodeConversationNodeTool: TypeAlias = Union[
     NodeConversationNodeToolPressDigitTool,
     NodeConversationNodeToolSendSMSTool,
     NodeConversationNodeToolCustomTool,
+    NodeConversationNodeToolCodeTool,
     NodeConversationNodeToolExtractDynamicVariableTool,
     NodeConversationNodeToolBridgeTransferTool,
     NodeConversationNodeToolCancelTransferTool,
@@ -2091,6 +2235,35 @@ NodeEndNodeInstruction: TypeAlias = Union[
 ]
 
 
+class NodeEndNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
+            "claude-4.5-haiku",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
 class NodeEndNode(TypedDict, total=False):
     id: Required[str]
     """Unique identifier for the node"""
@@ -2105,6 +2278,8 @@ class NodeEndNode(TypedDict, total=False):
 
     instruction: NodeEndNodeInstruction
     """What to say when ending the call, only used when speak during execution"""
+
+    model_choice: NodeEndNodeModelChoice
 
     name: str
     """Optional name for display purposes"""
@@ -2437,6 +2612,7 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
             "gpt-5",
             "gpt-5.1",
             "gpt-5.2",
+            "gpt-5.4",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -2485,19 +2661,403 @@ class NodeFunctionNode(TypedDict, total=False):
 
     instruction: NodeFunctionNodeInstruction
 
-    interruption_sensitivity: Optional[float]
-
     model_choice: NodeFunctionNodeModelChoice
 
     name: str
     """Optional name for display purposes"""
 
-    responsiveness: Optional[float]
-
     speak_during_execution: bool
     """Whether to speak during tool execution"""
 
-    voice_speed: Optional[float]
+
+class NodeCodeNodeDisplayPosition(TypedDict, total=False):
+    """Position for frontend display"""
+
+    x: float
+
+    y: float
+
+
+class NodeCodeNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeCodeNodeEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeCodeNodeEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeCodeNodeEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeCodeNodeEdgeTransitionCondition: TypeAlias = Union[
+    NodeCodeNodeEdgeTransitionConditionPromptCondition, NodeCodeNodeEdgeTransitionConditionEquationCondition
+]
+
+
+class NodeCodeNodeEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeCodeNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class NodeCodeNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeCodeNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeCodeNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeCodeNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class NodeCodeNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+NodeCodeNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeCodeNodeElseEdgeTransitionConditionPromptCondition,
+    NodeCodeNodeElseEdgeTransitionConditionEquationCondition,
+    NodeCodeNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeCodeNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeCodeNodeElseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+NodeCodeNodeFinetuneTransitionExampleTranscript: TypeAlias = Union[
+    NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember0,
+    NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember1,
+    NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember2,
+]
+
+
+class NodeCodeNodeFinetuneTransitionExample(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the example"""
+
+    transcript: Required[Iterable[NodeCodeNodeFinetuneTransitionExampleTranscript]]
+    """The example transcript to finetune how the node should transition."""
+
+    destination_node_id: str
+    """Optional destination node ID"""
+
+
+class NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+
+NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeCodeNodeGlobalNodeSettingGoBackCondition(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class NodeCodeNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class NodeCodeNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
+    transcript: Required[Iterable[NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
+    """Find tune the transition condition to this global node"""
+
+
+class NodeCodeNodeGlobalNodeSetting(TypedDict, total=False):
+    condition: Required[str]
+    """Condition for global node activation, cannot be empty"""
+
+    cool_down: float
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Iterable[NodeCodeNodeGlobalNodeSettingGoBackCondition]
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
+
+    negative_finetune_examples: Iterable[NodeCodeNodeGlobalNodeSettingNegativeFinetuneExample]
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Iterable[NodeCodeNodeGlobalNodeSettingPositiveFinetuneExample]
+    """Transition to this node"""
+
+
+class NodeCodeNodeInstructionNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class NodeCodeNodeInstructionNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+NodeCodeNodeInstruction: TypeAlias = Union[
+    NodeCodeNodeInstructionNodeInstructionPrompt, NodeCodeNodeInstructionNodeInstructionStaticText
+]
+
+
+class NodeCodeNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
+            "claude-4.5-haiku",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class NodeCodeNode(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the node"""
+
+    code: Required[str]
+    """JavaScript code to execute in the sandbox."""
+
+    type: Required[Literal["code"]]
+    """Type of the node"""
+
+    wait_for_result: Required[bool]
+    """Whether to wait for code execution result"""
+
+    display_position: NodeCodeNodeDisplayPosition
+    """Position for frontend display"""
+
+    edges: Iterable[NodeCodeNodeEdge]
+
+    else_edge: NodeCodeNodeElseEdge
+
+    finetune_transition_examples: Iterable[NodeCodeNodeFinetuneTransitionExample]
+
+    global_node_setting: NodeCodeNodeGlobalNodeSetting
+
+    instruction: NodeCodeNodeInstruction
+
+    model_choice: NodeCodeNodeModelChoice
+
+    name: str
+    """Optional name for display purposes"""
+
+    response_variables: Dict[str, str]
+    """A mapping of variable names to JSON paths in the code execution result.
+
+    These mapped values will be extracted and added as dynamic variables.
+    """
+
+    speak_during_execution: bool
+    """Whether to speak during code execution"""
+
+    timeout_ms: int
+    """The maximum time in milliseconds the code can run before it's considered
+    timeout.
+
+    Defaults to 30,000 ms (30 s).
+    """
 
 
 class NodeTransferCallNodeEdgeTransitionConditionPromptCondition(TypedDict, total=False):
@@ -2702,12 +3262,6 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(TypedDict, to
 
     opt_out_human_detection: bool
     """If set to true, will not perform human detection for the transfer.
-
-    Default to false.
-    """
-
-    opt_out_initial_message: bool
-    """If set to true, AI will not say "Hello" after connecting the call.
 
     Default to false.
     """
@@ -3027,6 +3581,7 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
             "gpt-5",
             "gpt-5.1",
             "gpt-5.2",
+            "gpt-5.4",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -3342,6 +3897,7 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
             "gpt-5",
             "gpt-5.1",
             "gpt-5.2",
+            "gpt-5.4",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -3682,6 +4238,35 @@ class NodeBranchNodeGlobalNodeSetting(TypedDict, total=False):
     """Transition to this node"""
 
 
+class NodeBranchNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
+            "claude-4.5-haiku",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
 class NodeBranchNode(TypedDict, total=False):
     id: Required[str]
     """Unique identifier for the node"""
@@ -3699,6 +4284,8 @@ class NodeBranchNode(TypedDict, total=False):
     finetune_transition_examples: Iterable[NodeBranchNodeFinetuneTransitionExample]
 
     global_node_setting: NodeBranchNodeGlobalNodeSetting
+
+    model_choice: NodeBranchNodeModelChoice
 
     name: str
     """Optional name for display purposes"""
@@ -3987,6 +4574,35 @@ class NodeSMSNodeGlobalNodeSetting(TypedDict, total=False):
     """Transition to this node"""
 
 
+class NodeSMSNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
+            "claude-4.5-haiku",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
 class NodeSMSNode(TypedDict, total=False):
     id: Required[str]
     """Unique identifier for the node"""
@@ -4004,6 +4620,8 @@ class NodeSMSNode(TypedDict, total=False):
     """Position for frontend display"""
 
     global_node_setting: NodeSMSNodeGlobalNodeSetting
+
+    model_choice: NodeSMSNodeModelChoice
 
     name: str
     """Optional name for display purposes"""
@@ -4413,6 +5031,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
             "gpt-5",
             "gpt-5.1",
             "gpt-5.2",
+            "gpt-5.4",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -4689,6 +5308,35 @@ NodeAgentSwapNodeInstruction: TypeAlias = Union[
 ]
 
 
+class NodeAgentSwapNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
+            "claude-4.5-haiku",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
 class NodeAgentSwapNode(TypedDict, total=False):
     id: Required[str]
     """Unique identifier for the node"""
@@ -4721,6 +5369,8 @@ class NodeAgentSwapNode(TypedDict, total=False):
 
     keep_current_voice: bool
     """If true, keep the current voice when swapping agents. Defaults to false."""
+
+    model_choice: NodeAgentSwapNodeModelChoice
 
     name: str
     """Optional name for display purposes"""
@@ -5045,6 +5695,35 @@ NodeMcpNodeInstruction: TypeAlias = Union[
 ]
 
 
+class NodeMcpNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
+            "claude-4.5-haiku",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
 class NodeMcpNode(TypedDict, total=False):
     id: Required[str]
     """Unique identifier for the node"""
@@ -5075,7 +5754,7 @@ class NodeMcpNode(TypedDict, total=False):
     instruction: NodeMcpNodeInstruction
     """What to say when calling the function, only used when speak during execution"""
 
-    interruption_sensitivity: Optional[float]
+    model_choice: NodeMcpNodeModelChoice
 
     name: str
     """Optional name for display purposes"""
@@ -5086,12 +5765,8 @@ class NodeMcpNode(TypedDict, total=False):
     is the path to the variable in the response
     """
 
-    responsiveness: Optional[float]
-
     speak_during_execution: bool
     """If true, will speak during execution"""
-
-    voice_speed: Optional[float]
 
 
 class NodeComponentNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
@@ -5202,6 +5877,48 @@ class NodeComponentNodeEdge(TypedDict, total=False):
 
     destination_node_id: str
     """ID of the destination node"""
+
+
+class NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["agent", "user"]]
+
+
+class NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember1(TypedDict, total=False):
+    arguments: Required[str]
+
+    name: Required[str]
+
+    role: Required[Literal["tool_call_invocation"]]
+
+    tool_call_id: Required[str]
+
+
+class NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember2(TypedDict, total=False):
+    content: Required[str]
+
+    role: Required[Literal["tool_call_result"]]
+
+    tool_call_id: Required[str]
+
+
+NodeComponentNodeFinetuneTransitionExampleTranscript: TypeAlias = Union[
+    NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember0,
+    NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember1,
+    NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember2,
+]
+
+
+class NodeComponentNodeFinetuneTransitionExample(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the example"""
+
+    transcript: Required[Iterable[NodeComponentNodeFinetuneTransitionExampleTranscript]]
+    """The example transcript to finetune how the node should transition."""
+
+    destination_node_id: str
+    """Optional destination node ID"""
 
 
 class NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(TypedDict, total=False):
@@ -5374,6 +6091,8 @@ class NodeComponentNode(TypedDict, total=False):
     edges: Iterable[NodeComponentNodeEdge]
     """Array of edges for conditional transitions"""
 
+    finetune_transition_examples: Iterable[NodeComponentNodeFinetuneTransitionExample]
+
     global_node_setting: NodeComponentNodeGlobalNodeSetting
 
     name: str
@@ -5534,6 +6253,56 @@ class NodeBridgeTransferNodeGlobalNodeSetting(TypedDict, total=False):
     """Transition to this node"""
 
 
+class NodeBridgeTransferNodeInstructionNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class NodeBridgeTransferNodeInstructionNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+NodeBridgeTransferNodeInstruction: TypeAlias = Union[
+    NodeBridgeTransferNodeInstructionNodeInstructionPrompt, NodeBridgeTransferNodeInstructionNodeInstructionStaticText
+]
+
+
+class NodeBridgeTransferNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
+            "claude-4.5-haiku",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
 class NodeBridgeTransferNode(TypedDict, total=False):
     id: Required[str]
     """Unique identifier for the node"""
@@ -5546,8 +6315,19 @@ class NodeBridgeTransferNode(TypedDict, total=False):
 
     global_node_setting: NodeBridgeTransferNodeGlobalNodeSetting
 
+    instruction: NodeBridgeTransferNodeInstruction
+    """Describes what to say to user when bridging the transfer.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    model_choice: NodeBridgeTransferNodeModelChoice
+
     name: str
     """Optional name for display purposes"""
+
+    speak_during_execution: bool
+    """If true, will speak during execution"""
 
 
 class NodeCancelTransferNodeDisplayPosition(TypedDict, total=False):
@@ -5704,6 +6484,56 @@ class NodeCancelTransferNodeGlobalNodeSetting(TypedDict, total=False):
     """Transition to this node"""
 
 
+class NodeCancelTransferNodeInstructionNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class NodeCancelTransferNodeInstructionNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+NodeCancelTransferNodeInstruction: TypeAlias = Union[
+    NodeCancelTransferNodeInstructionNodeInstructionPrompt, NodeCancelTransferNodeInstructionNodeInstructionStaticText
+]
+
+
+class NodeCancelTransferNodeModelChoice(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-4.1-nano",
+            "gpt-5",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "claude-4.5-sonnet",
+            "claude-4.6-sonnet",
+            "claude-4.5-haiku",
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite",
+            "gemini-3.0-flash",
+        ]
+    ]
+    """The LLM model to use"""
+
+    type: Required[Literal["cascading"]]
+    """Type of model choice"""
+
+    high_priority: bool
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
 class NodeCancelTransferNode(TypedDict, total=False):
     id: Required[str]
     """Unique identifier for the node"""
@@ -5716,14 +6546,26 @@ class NodeCancelTransferNode(TypedDict, total=False):
 
     global_node_setting: NodeCancelTransferNodeGlobalNodeSetting
 
+    instruction: NodeCancelTransferNodeInstruction
+    """Describes what to say to user when cancelling the transfer.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    model_choice: NodeCancelTransferNodeModelChoice
+
     name: str
     """Optional name for display purposes"""
+
+    speak_during_execution: bool
+    """If true, will speak during execution"""
 
 
 Node: TypeAlias = Union[
     NodeConversationNode,
     NodeEndNode,
     NodeFunctionNode,
+    NodeCodeNode,
     NodeTransferCallNode,
     NodePressDigitNode,
     NodeBranchNode,

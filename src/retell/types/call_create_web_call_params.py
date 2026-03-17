@@ -58,6 +58,21 @@ class CallCreateWebCallParams(TypedDict, total=False):
     agent_version: int
     """The version of the agent to use for the call."""
 
+    current_node_id: Optional[str]
+    """Start the call at this conversation flow node (stage).
+
+    Must be a valid node id in the agent's conversation flow. Only applicable when
+    the agent uses conversation flow as the response engine. Ignored for retell-llm
+    agents.
+    """
+
+    current_state: Optional[str]
+    """Start the conversation in this state (stage).
+
+    Must be a valid state name in the agent's Retell LLM. Only applicable when the
+    agent uses Retell LLM with states. Ignored for conversation-flow agents.
+    """
+
     metadata: object
     """An arbitrary object for storage purpose only.
 
@@ -501,12 +516,6 @@ class AgentOverrideAgent(TypedDict, total=False):
     speech rate and conversation context. If unset, default value false will apply.
     """
 
-    enable_voicemail_detection: bool
-    """If set to true, will detect whether the call enters a voicemail.
-
-    Note that this feature is only available for phone calls.
-    """
-
     end_call_after_silence_ms: int
     """If users stay silent for a period after agent speech, end the call.
 
@@ -667,6 +676,7 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gpt-5",
             "gpt-5.1",
             "gpt-5.2",
+            "gpt-5.4",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -891,6 +901,7 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "gpt-5",
             "gpt-5.1",
             "gpt-5.2",
+            "gpt-5.4",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -994,6 +1005,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-5",
             "gpt-5.1",
             "gpt-5.2",
+            "gpt-5.4",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -1021,7 +1033,9 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime", "gpt-realtime-mini"]]
+    s2s_model: Optional[
+        Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]
+    ]
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.

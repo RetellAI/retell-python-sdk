@@ -64,7 +64,6 @@ class TestAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
-            enable_voicemail_detection=True,
             end_call_after_silence_ms=600000,
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
@@ -251,7 +250,6 @@ class TestAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
-            enable_voicemail_detection=True,
             end_call_after_silence_ms=600000,
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
@@ -571,7 +569,6 @@ class TestAsyncAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
-            enable_voicemail_detection=True,
             end_call_after_silence_ms=600000,
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
@@ -758,7 +755,6 @@ class TestAsyncAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
-            enable_voicemail_detection=True,
             end_call_after_silence_ms=600000,
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={

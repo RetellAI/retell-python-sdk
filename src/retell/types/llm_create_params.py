@@ -41,6 +41,7 @@ __all__ = [
     "GeneralToolSendSMSToolSMSContentSMSContentInferred",
     "GeneralToolCustomTool",
     "GeneralToolCustomToolParameters",
+    "GeneralToolCodeTool",
     "GeneralToolExtractDynamicVariableTool",
     "GeneralToolExtractDynamicVariableToolVariable",
     "GeneralToolExtractDynamicVariableToolVariableStringAnalysisData",
@@ -87,6 +88,7 @@ __all__ = [
     "StateToolSendSMSToolSMSContentSMSContentInferred",
     "StateToolCustomTool",
     "StateToolCustomToolParameters",
+    "StateToolCodeTool",
     "StateToolExtractDynamicVariableTool",
     "StateToolExtractDynamicVariableToolVariable",
     "StateToolExtractDynamicVariableToolVariableStringAnalysisData",
@@ -156,6 +158,7 @@ class LlmCreateParams(TypedDict, total=False):
             "gpt-5",
             "gpt-5.1",
             "gpt-5.2",
+            "gpt-5.4",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",
@@ -183,7 +186,9 @@ class LlmCreateParams(TypedDict, total=False):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime", "gpt-realtime-mini"]]
+    s2s_model: Optional[
+        Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]
+    ]
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.
@@ -399,12 +404,6 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedD
 
     opt_out_human_detection: bool
     """If set to true, will not perform human detection for the transfer.
-
-    Default to false.
-    """
-
-    opt_out_initial_message: bool
-    """If set to true, AI will not say "Hello" after connecting the call.
 
     Default to false.
     """
@@ -902,6 +901,63 @@ class GeneralToolCustomTool(TypedDict, total=False):
     """
 
 
+class GeneralToolCodeTool(TypedDict, total=False):
+    code: Required[str]
+    """JavaScript code to execute in the sandbox."""
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["code"]]
+
+    description: str
+    """Describes what this tool does and when to call this tool."""
+
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    response_variables: Dict[str, str]
+    """A mapping of variable names to JSON paths in the code execution result.
+
+    These mapped values will be extracted and added as dynamic variables.
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the tool.
+    """
+
+    timeout_ms: int
+    """The maximum time in milliseconds the code can run before it's considered
+    timeout.
+
+    Defaults to 30,000 ms (30 s).
+    """
+
+
 class GeneralToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict, total=False):
     description: Required[str]
     """Description of the variable."""
@@ -1024,6 +1080,23 @@ class GeneralToolBridgeTransferTool(TypedDict, total=False):
     caller to the transfer target and ends the transfer agent call.
     """
 
+    execution_message_description: str
+    """Describes what to say to user when bridging the transfer.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution."""
+
 
 class GeneralToolCancelTransferTool(TypedDict, total=False):
     name: Required[str]
@@ -1043,6 +1116,23 @@ class GeneralToolCancelTransferTool(TypedDict, total=False):
     to true) in agentic warm transfer mode. When invoked, it cancels the transfer,
     returns the original caller to the main agent, and ends the transfer agent call.
     """
+
+    execution_message_description: str
+    """Describes what to say to user when cancelling the transfer.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution."""
 
 
 class GeneralToolMcpTool(TypedDict, total=False):
@@ -1107,6 +1197,7 @@ GeneralTool: TypeAlias = Union[
     GeneralToolPressDigitTool,
     GeneralToolSendSMSTool,
     GeneralToolCustomTool,
+    GeneralToolCodeTool,
     GeneralToolExtractDynamicVariableTool,
     GeneralToolBridgeTransferTool,
     GeneralToolCancelTransferTool,
@@ -1373,12 +1464,6 @@ class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedDic
 
     opt_out_human_detection: bool
     """If set to true, will not perform human detection for the transfer.
-
-    Default to false.
-    """
-
-    opt_out_initial_message: bool
-    """If set to true, AI will not say "Hello" after connecting the call.
 
     Default to false.
     """
@@ -1876,6 +1961,63 @@ class StateToolCustomTool(TypedDict, total=False):
     """
 
 
+class StateToolCodeTool(TypedDict, total=False):
+    code: Required[str]
+    """JavaScript code to execute in the sandbox."""
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Required[Literal["code"]]
+
+    description: str
+    """Describes what this tool does and when to call this tool."""
+
+    execution_message_description: str
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    response_variables: Dict[str, str]
+    """A mapping of variable names to JSON paths in the code execution result.
+
+    These mapped values will be extracted and added as dynamic variables.
+    """
+
+    speak_after_execution: bool
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained.
+    """
+
+    speak_during_execution: bool
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the tool.
+    """
+
+    timeout_ms: int
+    """The maximum time in milliseconds the code can run before it's considered
+    timeout.
+
+    Defaults to 30,000 ms (30 s).
+    """
+
+
 class StateToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict, total=False):
     description: Required[str]
     """Description of the variable."""
@@ -1998,6 +2140,23 @@ class StateToolBridgeTransferTool(TypedDict, total=False):
     caller to the transfer target and ends the transfer agent call.
     """
 
+    execution_message_description: str
+    """Describes what to say to user when bridging the transfer.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution."""
+
 
 class StateToolCancelTransferTool(TypedDict, total=False):
     name: Required[str]
@@ -2017,6 +2176,23 @@ class StateToolCancelTransferTool(TypedDict, total=False):
     to true) in agentic warm transfer mode. When invoked, it cancels the transfer,
     returns the original caller to the main agent, and ends the transfer agent call.
     """
+
+    execution_message_description: str
+    """Describes what to say to user when cancelling the transfer.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: bool
+    """If true, will speak during execution."""
 
 
 class StateToolMcpTool(TypedDict, total=False):
@@ -2081,6 +2257,7 @@ StateTool: TypeAlias = Union[
     StateToolPressDigitTool,
     StateToolSendSMSTool,
     StateToolCustomTool,
+    StateToolCodeTool,
     StateToolExtractDynamicVariableTool,
     StateToolBridgeTransferTool,
     StateToolCancelTransferTool,

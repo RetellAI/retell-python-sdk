@@ -479,12 +479,6 @@ class AgentResponse(BaseModel):
     speech rate and conversation context. If unset, default value false will apply.
     """
 
-    enable_voicemail_detection: Optional[bool] = None
-    """If set to true, will detect whether the call enters a voicemail.
-
-    Note that this feature is only available for phone calls.
-    """
-
     end_call_after_silence_ms: Optional[int] = None
     """If users stay silent for a period after agent speech, end the call.
 
@@ -650,6 +644,7 @@ class AgentResponse(BaseModel):
             "gpt-5",
             "gpt-5.1",
             "gpt-5.2",
+            "gpt-5.4",
             "gpt-5-mini",
             "gpt-5-nano",
             "claude-4.5-sonnet",

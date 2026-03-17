@@ -64,6 +64,7 @@ class LlmResource(SyncAPIResource):
                 "gpt-5",
                 "gpt-5.1",
                 "gpt-5.2",
+                "gpt-5.4",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -77,7 +78,9 @@ class LlmResource(SyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime", "gpt-realtime-mini"]]
+        s2s_model: Optional[
+            Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]
+        ]
         | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
@@ -256,6 +259,7 @@ class LlmResource(SyncAPIResource):
                 "gpt-5",
                 "gpt-5.1",
                 "gpt-5.2",
+                "gpt-5.4",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -269,7 +273,9 @@ class LlmResource(SyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime", "gpt-realtime-mini"]]
+        s2s_model: Optional[
+            Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]
+        ]
         | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
@@ -522,6 +528,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gpt-5",
                 "gpt-5.1",
                 "gpt-5.2",
+                "gpt-5.4",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -535,7 +542,9 @@ class AsyncLlmResource(AsyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime", "gpt-realtime-mini"]]
+        s2s_model: Optional[
+            Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]
+        ]
         | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
@@ -714,6 +723,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gpt-5",
                 "gpt-5.1",
                 "gpt-5.2",
+                "gpt-5.4",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -727,7 +737,9 @@ class AsyncLlmResource(AsyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime", "gpt-realtime-mini"]]
+        s2s_model: Optional[
+            Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]
+        ]
         | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
