@@ -274,7 +274,6 @@ class TestCall:
                     "enable_backchannel": True,
                     "enable_dynamic_responsiveness": True,
                     "enable_dynamic_voice_speed": True,
-                    "enable_voicemail_detection": True,
                     "end_call_after_silence_ms": 600000,
                     "fallback_voice_ids": ["cartesia-Cimo", "minimax-Cimo"],
                     "guardrail_config": {
@@ -450,7 +449,6 @@ class TestCall:
                     "enable_backchannel": True,
                     "enable_dynamic_responsiveness": True,
                     "enable_dynamic_voice_speed": True,
-                    "enable_voicemail_detection": True,
                     "end_call_after_silence_ms": 600000,
                     "fallback_voice_ids": ["cartesia-Cimo", "minimax-Cimo"],
                     "guardrail_config": {
@@ -554,6 +552,8 @@ class TestCall:
                 },
             },
             agent_version=1,
+            current_node_id="collect_info",
+            current_state="information_collection",
             metadata={},
             retell_llm_dynamic_variables={"customer_name": "bar"},
         )
@@ -621,7 +621,6 @@ class TestCall:
                     "enable_backchannel": True,
                     "enable_dynamic_responsiveness": True,
                     "enable_dynamic_voice_speed": True,
-                    "enable_voicemail_detection": True,
                     "end_call_after_silence_ms": 600000,
                     "fallback_voice_ids": ["cartesia-Cimo", "minimax-Cimo"],
                     "guardrail_config": {
@@ -1017,7 +1016,6 @@ class TestAsyncCall:
                     "enable_backchannel": True,
                     "enable_dynamic_responsiveness": True,
                     "enable_dynamic_voice_speed": True,
-                    "enable_voicemail_detection": True,
                     "end_call_after_silence_ms": 600000,
                     "fallback_voice_ids": ["cartesia-Cimo", "minimax-Cimo"],
                     "guardrail_config": {
@@ -1193,7 +1191,6 @@ class TestAsyncCall:
                     "enable_backchannel": True,
                     "enable_dynamic_responsiveness": True,
                     "enable_dynamic_voice_speed": True,
-                    "enable_voicemail_detection": True,
                     "end_call_after_silence_ms": 600000,
                     "fallback_voice_ids": ["cartesia-Cimo", "minimax-Cimo"],
                     "guardrail_config": {
@@ -1297,6 +1294,8 @@ class TestAsyncCall:
                 },
             },
             agent_version=1,
+            current_node_id="collect_info",
+            current_state="information_collection",
             metadata={},
             retell_llm_dynamic_variables={"customer_name": "bar"},
         )
@@ -1364,7 +1363,6 @@ class TestAsyncCall:
                     "enable_backchannel": True,
                     "enable_dynamic_responsiveness": True,
                     "enable_dynamic_voice_speed": True,
-                    "enable_voicemail_detection": True,
                     "end_call_after_silence_ms": 600000,
                     "fallback_voice_ids": ["cartesia-Cimo", "minimax-Cimo"],
                     "guardrail_config": {

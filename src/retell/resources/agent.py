@@ -75,7 +75,6 @@ class AgentResource(SyncAPIResource):
         enable_backchannel: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
-        enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
@@ -162,6 +161,7 @@ class AgentResource(SyncAPIResource):
                 "gpt-5",
                 "gpt-5.1",
                 "gpt-5.2",
+                "gpt-5.4",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -336,9 +336,6 @@ class AgentResource(SyncAPIResource):
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
 
-          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
-              feature is only available for phone calls.
-
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -506,7 +503,6 @@ class AgentResource(SyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
-                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
@@ -620,7 +616,6 @@ class AgentResource(SyncAPIResource):
         enable_backchannel: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
-        enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_update_params.GuardrailConfig | Omit = omit,
@@ -707,6 +702,7 @@ class AgentResource(SyncAPIResource):
                 "gpt-5",
                 "gpt-5.1",
                 "gpt-5.2",
+                "gpt-5.4",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -877,9 +873,6 @@ class AgentResource(SyncAPIResource):
 
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
-
-          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
-              feature is only available for phone calls.
 
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
@@ -1055,7 +1048,6 @@ class AgentResource(SyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
-                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
@@ -1313,7 +1305,6 @@ class AsyncAgentResource(AsyncAPIResource):
         enable_backchannel: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
-        enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
@@ -1400,6 +1391,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-5",
                 "gpt-5.1",
                 "gpt-5.2",
+                "gpt-5.4",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -1574,9 +1566,6 @@ class AsyncAgentResource(AsyncAPIResource):
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
 
-          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
-              feature is only available for phone calls.
-
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
 
@@ -1744,7 +1733,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
-                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
@@ -1858,7 +1846,6 @@ class AsyncAgentResource(AsyncAPIResource):
         enable_backchannel: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
-        enable_voicemail_detection: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_update_params.GuardrailConfig | Omit = omit,
@@ -1945,6 +1932,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-5",
                 "gpt-5.1",
                 "gpt-5.2",
+                "gpt-5.4",
                 "gpt-5-mini",
                 "gpt-5-nano",
                 "claude-4.5-sonnet",
@@ -2115,9 +2103,6 @@ class AsyncAgentResource(AsyncAPIResource):
 
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
-
-          enable_voicemail_detection: If set to true, will detect whether the call enters a voicemail. Note that this
-              feature is only available for phone calls.
 
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
@@ -2293,7 +2278,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
-                    "enable_voicemail_detection": enable_voicemail_detection,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,

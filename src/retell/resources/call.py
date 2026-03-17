@@ -341,6 +341,8 @@ class CallResource(SyncAPIResource):
         agent_id: str,
         agent_override: call_create_web_call_params.AgentOverride | Omit = omit,
         agent_version: int | Omit = omit,
+        current_node_id: Optional[str] | Omit = omit,
+        current_state: Optional[str] | Omit = omit,
         metadata: object | Omit = omit,
         retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -363,6 +365,14 @@ class CallResource(SyncAPIResource):
               the base agent.
 
           agent_version: The version of the agent to use for the call.
+
+          current_node_id: Start the call at this conversation flow node (stage). Must be a valid node id
+              in the agent's conversation flow. Only applicable when the agent uses
+              conversation flow as the response engine. Ignored for retell-llm agents.
+
+          current_state: Start the conversation in this state (stage). Must be a valid state name in the
+              agent's Retell LLM. Only applicable when the agent uses Retell LLM with states.
+              Ignored for conversation-flow agents.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
@@ -387,6 +397,8 @@ class CallResource(SyncAPIResource):
                     "agent_id": agent_id,
                     "agent_override": agent_override,
                     "agent_version": agent_version,
+                    "current_node_id": current_node_id,
+                    "current_state": current_state,
                     "metadata": metadata,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
@@ -779,6 +791,8 @@ class AsyncCallResource(AsyncAPIResource):
         agent_id: str,
         agent_override: call_create_web_call_params.AgentOverride | Omit = omit,
         agent_version: int | Omit = omit,
+        current_node_id: Optional[str] | Omit = omit,
+        current_state: Optional[str] | Omit = omit,
         metadata: object | Omit = omit,
         retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -801,6 +815,14 @@ class AsyncCallResource(AsyncAPIResource):
               the base agent.
 
           agent_version: The version of the agent to use for the call.
+
+          current_node_id: Start the call at this conversation flow node (stage). Must be a valid node id
+              in the agent's conversation flow. Only applicable when the agent uses
+              conversation flow as the response engine. Ignored for retell-llm agents.
+
+          current_state: Start the conversation in this state (stage). Must be a valid state name in the
+              agent's Retell LLM. Only applicable when the agent uses Retell LLM with states.
+              Ignored for conversation-flow agents.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
@@ -825,6 +847,8 @@ class AsyncCallResource(AsyncAPIResource):
                     "agent_id": agent_id,
                     "agent_override": agent_override,
                     "agent_version": agent_version,
+                    "current_node_id": current_node_id,
+                    "current_state": current_state,
                     "metadata": metadata,
                     "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
                 },
