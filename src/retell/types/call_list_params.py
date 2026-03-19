@@ -82,6 +82,9 @@ class FilterCriteria(TypedDict, total=False):
     batch_call_id: SequenceNotStr[str]
     """Only retrieve calls with specific batch call id(s)."""
 
+    call_id: SequenceNotStr[str]
+    """Only retrieve calls with specific call id(s)."""
+
     call_status: List[Literal["not_connected", "ongoing", "ended", "error"]]
     """Only retrieve calls with specific call status(es)."""
 
