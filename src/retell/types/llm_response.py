@@ -593,6 +593,9 @@ class GeneralToolAgentSwapTool(BaseModel):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    keep_current_language: Optional[bool] = None
+    """If true, keep the current language when swapping agents. Defaults to false."""
+
     keep_current_voice: Optional[bool] = None
     """If true, keep the current voice when swapping agents. Defaults to false."""
 
@@ -1655,6 +1658,9 @@ class StateToolAgentSwapTool(BaseModel):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    keep_current_language: Optional[bool] = None
+    """If true, keep the current language when swapping agents. Defaults to false."""
+
     keep_current_voice: Optional[bool] = None
     """If true, keep the current voice when swapping agents. Defaults to false."""
 
@@ -2244,11 +2250,13 @@ class LlmResponse(BaseModel):
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
             "gpt-5.1",
             "gpt-5.2",
             "gpt-5.4",
-            "gpt-5-mini",
-            "gpt-5-nano",
+            "gpt-5.4-mini",
+            "gpt-5.4-nano",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -2274,9 +2282,7 @@ class LlmResponse(BaseModel):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[
-        Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]
-    ] = None
+    s2s_model: Optional[Literal["gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]] = None
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.

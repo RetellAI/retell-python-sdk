@@ -410,6 +410,7 @@ class PhoneNumberResource(SyncAPIResource):
         termination_uri: str,
         allowed_inbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
+        ignore_e164_validation: bool | Omit = omit,
         inbound_agent_id: Optional[str] | Omit = omit,
         inbound_agent_version: Optional[int] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_import_params.InboundAgent]] | Omit = omit,
@@ -445,6 +446,11 @@ class PhoneNumberResource(SyncAPIResource):
 
           allowed_outbound_country_list: List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed. If
               not set or empty, calls to all countries are allowed.
+
+          ignore_e164_validation: If true, E.164 validation for phone_number is skipped. This is useful for
+              internal pseudo numbers when using custom telephony. If omitted, default is
+              true. Must be a boolean literal; string values like "true" or "false" are
+              invalid.
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
@@ -502,6 +508,7 @@ class PhoneNumberResource(SyncAPIResource):
                     "termination_uri": termination_uri,
                     "allowed_inbound_country_list": allowed_inbound_country_list,
                     "allowed_outbound_country_list": allowed_outbound_country_list,
+                    "ignore_e164_validation": ignore_e164_validation,
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_agent_version": inbound_agent_version,
                     "inbound_agents": inbound_agents,
@@ -908,6 +915,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         termination_uri: str,
         allowed_inbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
+        ignore_e164_validation: bool | Omit = omit,
         inbound_agent_id: Optional[str] | Omit = omit,
         inbound_agent_version: Optional[int] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_import_params.InboundAgent]] | Omit = omit,
@@ -943,6 +951,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           allowed_outbound_country_list: List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed. If
               not set or empty, calls to all countries are allowed.
+
+          ignore_e164_validation: If true, E.164 validation for phone_number is skipped. This is useful for
+              internal pseudo numbers when using custom telephony. If omitted, default is
+              true. Must be a boolean literal; string values like "true" or "false" are
+              invalid.
 
           inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
               agent when receiving inbound calls. If null, this number would not accept
@@ -1000,6 +1013,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "termination_uri": termination_uri,
                     "allowed_inbound_country_list": allowed_inbound_country_list,
                     "allowed_outbound_country_list": allowed_outbound_country_list,
+                    "ignore_e164_validation": ignore_e164_validation,
                     "inbound_agent_id": inbound_agent_id,
                     "inbound_agent_version": inbound_agent_version,
                     "inbound_agents": inbound_agents,
