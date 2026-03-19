@@ -687,11 +687,13 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
             "gpt-5.1",
             "gpt-5.2",
             "gpt-5.4",
-            "gpt-5-mini",
-            "gpt-5-nano",
+            "gpt-5.4-mini",
+            "gpt-5.4-nano",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -795,10 +797,8 @@ class AgentOverrideAgent(TypedDict, total=False):
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
             "eleven_v3",
-            "sonic-2",
             "sonic-3",
             "sonic-3-latest",
-            "sonic-turbo",
             "tts-1",
             "gpt-4o-mini-tts",
             "speech-02-turbo",
@@ -912,11 +912,13 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
             "gpt-5.1",
             "gpt-5.2",
             "gpt-5.4",
-            "gpt-5-mini",
-            "gpt-5-nano",
+            "gpt-5.4-mini",
+            "gpt-5.4-nano",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -1016,11 +1018,13 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-4.1-mini",
             "gpt-4.1-nano",
             "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
             "gpt-5.1",
             "gpt-5.2",
             "gpt-5.4",
-            "gpt-5-mini",
-            "gpt-5-nano",
+            "gpt-5.4-mini",
+            "gpt-5.4-nano",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -1046,9 +1050,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[
-        Literal["gpt-4o-realtime", "gpt-4o-mini-realtime", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]
-    ]
+    s2s_model: Optional[Literal["gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.

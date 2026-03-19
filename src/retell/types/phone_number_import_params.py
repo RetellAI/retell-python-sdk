@@ -37,6 +37,14 @@ class PhoneNumberImportParams(TypedDict, total=False):
     If not set or empty, calls to all countries are allowed.
     """
 
+    ignore_e164_validation: bool
+    """If true, E.164 validation for phone_number is skipped.
+
+    This is useful for internal pseudo numbers when using custom telephony. If
+    omitted, default is true. Must be a boolean literal; string values like "true"
+    or "false" are invalid.
+    """
+
     inbound_agent_id: Optional[str]
     """Unique id of agent to bind to the number.
 
