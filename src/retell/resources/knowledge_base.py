@@ -8,7 +8,7 @@ import httpx
 
 from ..types import knowledge_base_create_params, knowledge_base_add_sources_params
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, FileTypes, SequenceNotStr, omit, not_given
-from .._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
+from .._utils import extract_files, path_template, maybe_transform, deepcopy_minimal, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -144,7 +144,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         if not knowledge_base_id:
             raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
         return self._get(
-            f"/get-knowledge-base/{knowledge_base_id}",
+            path_template("/get-knowledge-base/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -197,7 +197,7 @@ class KnowledgeBaseResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/delete-knowledge-base/{knowledge_base_id}",
+            path_template("/delete-knowledge-base/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -252,7 +252,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return self._post(
-            f"/add-knowledge-base-sources/{knowledge_base_id}",
+            path_template("/add-knowledge-base-sources/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
             body=maybe_transform(body, knowledge_base_add_sources_params.KnowledgeBaseAddSourcesParams),
             files=files,
             options=make_request_options(
@@ -290,7 +290,11 @@ class KnowledgeBaseResource(SyncAPIResource):
         if not source_id:
             raise ValueError(f"Expected a non-empty value for `source_id` but received {source_id!r}")
         return self._delete(
-            f"/delete-knowledge-base-source/{knowledge_base_id}/source/{source_id}",
+            path_template(
+                "/delete-knowledge-base-source/{knowledge_base_id}/source/{source_id}",
+                knowledge_base_id=knowledge_base_id,
+                source_id=source_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -418,7 +422,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         if not knowledge_base_id:
             raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
         return await self._get(
-            f"/get-knowledge-base/{knowledge_base_id}",
+            path_template("/get-knowledge-base/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -471,7 +475,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/delete-knowledge-base/{knowledge_base_id}",
+            path_template("/delete-knowledge-base/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -526,7 +530,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         # multipart/form-data; boundary=---abc--
         extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
         return await self._post(
-            f"/add-knowledge-base-sources/{knowledge_base_id}",
+            path_template("/add-knowledge-base-sources/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
             body=await async_maybe_transform(body, knowledge_base_add_sources_params.KnowledgeBaseAddSourcesParams),
             files=files,
             options=make_request_options(
@@ -564,7 +568,11 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         if not source_id:
             raise ValueError(f"Expected a non-empty value for `source_id` but received {source_id!r}")
         return await self._delete(
-            f"/delete-knowledge-base-source/{knowledge_base_id}/source/{source_id}",
+            path_template(
+                "/delete-knowledge-base-source/{knowledge_base_id}/source/{source_id}",
+                knowledge_base_id=knowledge_base_id,
+                source_id=source_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

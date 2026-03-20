@@ -9,7 +9,7 @@ import httpx
 
 from ..types import voice_clone_params, voice_search_params, voice_add_resource_params
 from .._types import Body, Omit, Query, Headers, NotGiven, FileTypes, SequenceNotStr, omit, not_given
-from .._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
+from .._utils import extract_files, path_template, maybe_transform, deepcopy_minimal, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -72,7 +72,7 @@ class VoiceResource(SyncAPIResource):
         if not voice_id:
             raise ValueError(f"Expected a non-empty value for `voice_id` but received {voice_id!r}")
         return self._get(
-            f"/get-voice/{voice_id}",
+            path_template("/get-voice/{voice_id}", voice_id=voice_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -293,7 +293,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         if not voice_id:
             raise ValueError(f"Expected a non-empty value for `voice_id` but received {voice_id!r}")
         return await self._get(
-            f"/get-voice/{voice_id}",
+            path_template("/get-voice/{voice_id}", voice_id=voice_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
