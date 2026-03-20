@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.22.1 (2026-03-20)
+
+Full Changelog: [v5.22.0...v5.22.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.22.0...v5.22.1)
+
+### Bug Fixes
+
+* sanitize endpoint path params ([4bf2810](https://github.com/RetellAI/retell-python-sdk/commit/4bf2810aa3bb318f4920c3f8a5fdc881ef2c0475))
+
 ## 5.22.0 (2026-03-19)
 
 Full Changelog: [v5.21.0...v5.22.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.21.0...v5.22.0)
