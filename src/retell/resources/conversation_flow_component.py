@@ -8,7 +8,7 @@ import httpx
 
 from ..types import conversation_flow_component_create_params, conversation_flow_component_update_params
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -132,7 +132,10 @@ class ConversationFlowComponentResource(SyncAPIResource):
                 f"Expected a non-empty value for `conversation_flow_component_id` but received {conversation_flow_component_id!r}"
             )
         return self._get(
-            f"/get-conversation-flow-component/{conversation_flow_component_id}",
+            path_template(
+                "/get-conversation-flow-component/{conversation_flow_component_id}",
+                conversation_flow_component_id=conversation_flow_component_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -186,7 +189,10 @@ class ConversationFlowComponentResource(SyncAPIResource):
                 f"Expected a non-empty value for `conversation_flow_component_id` but received {conversation_flow_component_id!r}"
             )
         return self._patch(
-            f"/update-conversation-flow-component/{conversation_flow_component_id}",
+            path_template(
+                "/update-conversation-flow-component/{conversation_flow_component_id}",
+                conversation_flow_component_id=conversation_flow_component_id,
+            ),
             body=maybe_transform(
                 {
                     "begin_tag_display_position": begin_tag_display_position,
@@ -254,7 +260,10 @@ class ConversationFlowComponentResource(SyncAPIResource):
             )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/delete-conversation-flow-component/{conversation_flow_component_id}",
+            path_template(
+                "/delete-conversation-flow-component/{conversation_flow_component_id}",
+                conversation_flow_component_id=conversation_flow_component_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -370,7 +379,10 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                 f"Expected a non-empty value for `conversation_flow_component_id` but received {conversation_flow_component_id!r}"
             )
         return await self._get(
-            f"/get-conversation-flow-component/{conversation_flow_component_id}",
+            path_template(
+                "/get-conversation-flow-component/{conversation_flow_component_id}",
+                conversation_flow_component_id=conversation_flow_component_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -424,7 +436,10 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                 f"Expected a non-empty value for `conversation_flow_component_id` but received {conversation_flow_component_id!r}"
             )
         return await self._patch(
-            f"/update-conversation-flow-component/{conversation_flow_component_id}",
+            path_template(
+                "/update-conversation-flow-component/{conversation_flow_component_id}",
+                conversation_flow_component_id=conversation_flow_component_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "begin_tag_display_position": begin_tag_display_position,
@@ -492,7 +507,10 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
             )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/delete-conversation-flow-component/{conversation_flow_component_id}",
+            path_template(
+                "/delete-conversation-flow-component/{conversation_flow_component_id}",
+                conversation_flow_component_id=conversation_flow_component_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

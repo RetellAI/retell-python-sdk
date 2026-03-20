@@ -15,7 +15,7 @@ from ..types import (
     test_update_test_case_definition_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -211,7 +211,10 @@ class TestsResource(SyncAPIResource):
             )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/delete-test-case-definition/{test_case_definition_id}",
+            path_template(
+                "/delete-test-case-definition/{test_case_definition_id}",
+                test_case_definition_id=test_case_definition_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -246,7 +249,7 @@ class TestsResource(SyncAPIResource):
                 f"Expected a non-empty value for `test_case_batch_job_id` but received {test_case_batch_job_id!r}"
             )
         return self._get(
-            f"/get-batch-test/{test_case_batch_job_id}",
+            path_template("/get-batch-test/{test_case_batch_job_id}", test_case_batch_job_id=test_case_batch_job_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -281,7 +284,9 @@ class TestsResource(SyncAPIResource):
                 f"Expected a non-empty value for `test_case_definition_id` but received {test_case_definition_id!r}"
             )
         return self._get(
-            f"/get-test-case-definition/{test_case_definition_id}",
+            path_template(
+                "/get-test-case-definition/{test_case_definition_id}", test_case_definition_id=test_case_definition_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -314,7 +319,7 @@ class TestsResource(SyncAPIResource):
         if not test_case_job_id:
             raise ValueError(f"Expected a non-empty value for `test_case_job_id` but received {test_case_job_id!r}")
         return self._get(
-            f"/get-test-run/{test_case_job_id}",
+            path_template("/get-test-run/{test_case_job_id}", test_case_job_id=test_case_job_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -457,7 +462,7 @@ class TestsResource(SyncAPIResource):
                 f"Expected a non-empty value for `test_case_batch_job_id` but received {test_case_batch_job_id!r}"
             )
         return self._get(
-            f"/list-test-runs/{test_case_batch_job_id}",
+            path_template("/list-test-runs/{test_case_batch_job_id}", test_case_batch_job_id=test_case_batch_job_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -532,7 +537,10 @@ class TestsResource(SyncAPIResource):
                 f"Expected a non-empty value for `test_case_definition_id` but received {test_case_definition_id!r}"
             )
         return self._put(
-            f"/update-test-case-definition/{test_case_definition_id}",
+            path_template(
+                "/update-test-case-definition/{test_case_definition_id}",
+                test_case_definition_id=test_case_definition_id,
+            ),
             body=maybe_transform(
                 {
                     "dynamic_variables": dynamic_variables,
@@ -726,7 +734,10 @@ class AsyncTestsResource(AsyncAPIResource):
             )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/delete-test-case-definition/{test_case_definition_id}",
+            path_template(
+                "/delete-test-case-definition/{test_case_definition_id}",
+                test_case_definition_id=test_case_definition_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -761,7 +772,7 @@ class AsyncTestsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `test_case_batch_job_id` but received {test_case_batch_job_id!r}"
             )
         return await self._get(
-            f"/get-batch-test/{test_case_batch_job_id}",
+            path_template("/get-batch-test/{test_case_batch_job_id}", test_case_batch_job_id=test_case_batch_job_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -796,7 +807,9 @@ class AsyncTestsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `test_case_definition_id` but received {test_case_definition_id!r}"
             )
         return await self._get(
-            f"/get-test-case-definition/{test_case_definition_id}",
+            path_template(
+                "/get-test-case-definition/{test_case_definition_id}", test_case_definition_id=test_case_definition_id
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -829,7 +842,7 @@ class AsyncTestsResource(AsyncAPIResource):
         if not test_case_job_id:
             raise ValueError(f"Expected a non-empty value for `test_case_job_id` but received {test_case_job_id!r}")
         return await self._get(
-            f"/get-test-run/{test_case_job_id}",
+            path_template("/get-test-run/{test_case_job_id}", test_case_job_id=test_case_job_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -972,7 +985,7 @@ class AsyncTestsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `test_case_batch_job_id` but received {test_case_batch_job_id!r}"
             )
         return await self._get(
-            f"/list-test-runs/{test_case_batch_job_id}",
+            path_template("/list-test-runs/{test_case_batch_job_id}", test_case_batch_job_id=test_case_batch_job_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1047,7 +1060,10 @@ class AsyncTestsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `test_case_definition_id` but received {test_case_definition_id!r}"
             )
         return await self._put(
-            f"/update-test-case-definition/{test_case_definition_id}",
+            path_template(
+                "/update-test-case-definition/{test_case_definition_id}",
+                test_case_definition_id=test_case_definition_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "dynamic_variables": dynamic_variables,

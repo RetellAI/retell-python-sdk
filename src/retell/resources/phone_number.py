@@ -9,7 +9,7 @@ import httpx
 
 from ..types import phone_number_create_params, phone_number_import_params, phone_number_update_params
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -200,7 +200,7 @@ class PhoneNumberResource(SyncAPIResource):
         if not phone_number:
             raise ValueError(f"Expected a non-empty value for `phone_number` but received {phone_number!r}")
         return self._get(
-            f"/get-phone-number/{phone_number}",
+            path_template("/get-phone-number/{phone_number}", phone_number=phone_number),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -320,7 +320,7 @@ class PhoneNumberResource(SyncAPIResource):
         if not phone_number:
             raise ValueError(f"Expected a non-empty value for `phone_number` but received {phone_number!r}")
         return self._patch(
-            f"/update-phone-number/{phone_number}",
+            path_template("/update-phone-number/{phone_number}", phone_number=phone_number),
             body=maybe_transform(
                 {
                     "allowed_inbound_country_list": allowed_inbound_country_list,
@@ -396,7 +396,7 @@ class PhoneNumberResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `phone_number` but received {phone_number!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/delete-phone-number/{phone_number}",
+            path_template("/delete-phone-number/{phone_number}", phone_number=phone_number),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -705,7 +705,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         if not phone_number:
             raise ValueError(f"Expected a non-empty value for `phone_number` but received {phone_number!r}")
         return await self._get(
-            f"/get-phone-number/{phone_number}",
+            path_template("/get-phone-number/{phone_number}", phone_number=phone_number),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -825,7 +825,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         if not phone_number:
             raise ValueError(f"Expected a non-empty value for `phone_number` but received {phone_number!r}")
         return await self._patch(
-            f"/update-phone-number/{phone_number}",
+            path_template("/update-phone-number/{phone_number}", phone_number=phone_number),
             body=await async_maybe_transform(
                 {
                     "allowed_inbound_country_list": allowed_inbound_country_list,
@@ -901,7 +901,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `phone_number` but received {phone_number!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/delete-phone-number/{phone_number}",
+            path_template("/delete-phone-number/{phone_number}", phone_number=phone_number),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
