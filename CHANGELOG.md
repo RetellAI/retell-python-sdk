@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.22.2 (2026-03-24)
+
+Full Changelog: [v5.22.1...v5.22.2](https://github.com/RetellAI/retell-python-sdk/compare/v5.22.1...v5.22.2)
+
+### Chores
+
+* **internal:** update gitignore ([1560259](https://github.com/RetellAI/retell-python-sdk/commit/15602593b2278264cabe693f79e23cd7e3892edc))
+
 ## 5.22.1 (2026-03-20)
 
 Full Changelog: [v5.22.0...v5.22.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.22.0...v5.22.1)
