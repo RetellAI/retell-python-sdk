@@ -1,5 +1,18 @@
 # Changelog
 
+## 5.23.0 (2026-03-27)
+
+Full Changelog: [v5.22.2...v5.23.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.22.2...v5.23.0)
+
+### Features
+
+* **internal:** implement indices array format for query and form serialization ([47b841a](https://github.com/RetellAI/retell-python-sdk/commit/47b841a1bf585620190b69e685d5f6e01a36cd55))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([73e065b](https://github.com/RetellAI/retell-python-sdk/commit/73e065b3bc7d6cd7a85356dd4856efd3883d0a84))
+
 ## 5.22.2 (2026-03-24)
 
 Full Changelog: [v5.22.1...v5.22.2](https://github.com/RetellAI/retell-python-sdk/compare/v5.22.1...v5.22.2)
