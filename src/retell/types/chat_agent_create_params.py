@@ -14,12 +14,14 @@ __all__ = [
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
     "GuardrailConfig",
+    "HandbookConfig",
     "PiiConfig",
     "PostChatAnalysisData",
     "PostChatAnalysisDataStringAnalysisData",
     "PostChatAnalysisDataEnumAnalysisData",
     "PostChatAnalysisDataBooleanAnalysisData",
     "PostChatAnalysisDataNumberAnalysisData",
+    "PostChatAnalysisDataChatPresetAnalysisData",
 ]
 
 
@@ -83,6 +85,12 @@ class ChatAgentCreateParams(TypedDict, total=False):
     """
     Configuration for guardrail checks to detect and prevent prohibited topics in
     agent output and user input.
+    """
+
+    handbook_config: HandbookConfig
+    """Toggle behavior presets on/off to influence agent response style and behaviors.
+
+    Voice-only presets are not available for chat agents.
     """
 
     is_public: Optional[bool]
@@ -185,6 +193,12 @@ class ChatAgentCreateParams(TypedDict, total=False):
     86400000 (24 hours) will apply.
     """
 
+    timezone: Optional[str]
+    """IANA timezone for the agent (e.g.
+
+    America/New_York). Defaults to America/Los_Angeles if not set.
+    """
+
     webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]]
     """Which webhook events this agent should receive.
 
@@ -278,6 +292,25 @@ class GuardrailConfig(TypedDict, total=False):
     """
 
 
+class HandbookConfig(TypedDict, total=False):
+    """Toggle behavior presets on/off to influence agent response style and behaviors.
+
+    Voice-only presets are not available for chat agents.
+    """
+
+    ai_disclosure: bool
+    """When asked, acknowledge being a virtual assistant."""
+
+    default_personality: bool
+    """Professional call center rep baseline."""
+
+    high_empathy: bool
+    """Warm acknowledgment of caller concerns."""
+
+    scope_boundaries: bool
+    """Stay within prompt/context scope, don't invent details."""
+
+
 class PiiConfig(TypedDict, total=False):
     """Configuration for PII scrubbing from transcripts and recordings."""
 
@@ -317,6 +350,13 @@ class PostChatAnalysisDataStringAnalysisData(TypedDict, total=False):
     type: Required[Literal["string"]]
     """Type of the variable to extract."""
 
+    conditional_prompt: str
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     examples: SequenceNotStr[str]
     """Examples of the variable value to teach model the style and syntax."""
 
@@ -340,6 +380,13 @@ class PostChatAnalysisDataEnumAnalysisData(TypedDict, total=False):
     type: Required[Literal["enum"]]
     """Type of the variable to extract."""
 
+    conditional_prompt: str
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: bool
     """Whether this data is required.
 
@@ -356,6 +403,13 @@ class PostChatAnalysisDataBooleanAnalysisData(TypedDict, total=False):
 
     type: Required[Literal["boolean"]]
     """Type of the variable to extract."""
+
+    conditional_prompt: str
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
 
     required: bool
     """Whether this data is required.
@@ -374,10 +428,45 @@ class PostChatAnalysisDataNumberAnalysisData(TypedDict, total=False):
     type: Required[Literal["number"]]
     """Type of the variable to extract."""
 
+    conditional_prompt: str
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: bool
     """Whether this data is required.
 
     If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
+
+class PostChatAnalysisDataChatPresetAnalysisData(TypedDict, total=False):
+    """System preset for post-chat analysis (chat agents).
+
+    Use in post_chat_analysis_data to override prompts or mark fields optional.
+    """
+
+    name: Required[Literal["chat_summary", "chat_successful", "user_sentiment"]]
+    """Preset identifier for chat agent analysis."""
+
+    type: Required[Literal["system-presets"]]
+    """Identifies this item as a system preset."""
+
+    conditional_prompt: str
+    """Optional instruction to help decide whether this field needs to be populated.
+
+    If not set, the field is always included.
+    """
+
+    description: str
+    """Prompt or description for this preset."""
+
+    required: bool
+    """If false, this field is optional in the analysis.
+
+    If true or unset, the field is required.
     """
 
 
@@ -386,4 +475,5 @@ PostChatAnalysisData: TypeAlias = Union[
     PostChatAnalysisDataEnumAnalysisData,
     PostChatAnalysisDataBooleanAnalysisData,
     PostChatAnalysisDataNumberAnalysisData,
+    PostChatAnalysisDataChatPresetAnalysisData,
 ]

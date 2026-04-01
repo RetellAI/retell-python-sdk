@@ -13,6 +13,7 @@ __all__ = [
     "ResponseEngineResponseEngineConversationFlow",
     "CustomSttConfig",
     "GuardrailConfig",
+    "HandbookConfig",
     "IvrOption",
     "IvrOptionAction",
     "PiiConfig",
@@ -21,6 +22,7 @@ __all__ = [
     "PostCallAnalysisDataEnumAnalysisData",
     "PostCallAnalysisDataBooleanAnalysisData",
     "PostCallAnalysisDataNumberAnalysisData",
+    "PostCallAnalysisDataCallPresetAnalysisData",
     "PronunciationDictionary",
     "UserDtmfOptions",
     "VoicemailOption",
@@ -113,6 +115,43 @@ class GuardrailConfig(BaseModel):
     """
 
 
+class HandbookConfig(BaseModel):
+    """Toggle behavior presets on/off to influence agent response style and behaviors."""
+
+    ai_disclosure: Optional[bool] = None
+    """When asked, acknowledge being a virtual assistant."""
+
+    default_personality: Optional[bool] = None
+    """Professional call center rep baseline."""
+
+    echo_verification: Optional[bool] = None
+    """Repeat back and confirm important details (voice only)."""
+
+    high_empathy: Optional[bool] = None
+    """Warm acknowledgment of caller concerns."""
+
+    nato_phonetic_alphabet: Optional[bool] = None
+    """Spell using NATO phonetic alphabet style (voice only)."""
+
+    natural_filler_words: Optional[bool] = None
+    """
+    Sprinkle natural speech fillers like "um", "you know" for a more human,
+    conversational tone.
+    """
+
+    scope_boundaries: Optional[bool] = None
+    """Stay within prompt/context scope, don't invent details."""
+
+    smart_matching: Optional[bool] = None
+    """
+    Treat near-match similar words as same entity to reduce impact of transcription
+    error (voice only).
+    """
+
+    speech_normalization: Optional[bool] = None
+    """Convert numbers/dates/currency to spoken forms (voice only)."""
+
+
 class IvrOptionAction(BaseModel):
     type: Literal["hangup"]
 
@@ -162,6 +201,13 @@ class PostCallAnalysisDataStringAnalysisData(BaseModel):
     type: Literal["string"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
@@ -185,6 +231,13 @@ class PostCallAnalysisDataEnumAnalysisData(BaseModel):
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -201,6 +254,13 @@ class PostCallAnalysisDataBooleanAnalysisData(BaseModel):
 
     type: Literal["boolean"]
     """Type of the variable to extract."""
+
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
 
     required: Optional[bool] = None
     """Whether this data is required.
@@ -219,10 +279,45 @@ class PostCallAnalysisDataNumberAnalysisData(BaseModel):
     type: Literal["number"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
     If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
+
+class PostCallAnalysisDataCallPresetAnalysisData(BaseModel):
+    """System preset for post-call analysis (voice agents).
+
+    Use in post_call_analysis_data to override prompts or mark fields optional.
+    """
+
+    name: Literal["call_summary", "call_successful", "user_sentiment"]
+    """Preset identifier for voice agent analysis."""
+
+    type: Literal["system-presets"]
+    """Identifies this item as a system preset."""
+
+    conditional_prompt: Optional[str] = None
+    """Optional instruction to help decide whether this field needs to be populated.
+
+    If not set, the field is always included.
+    """
+
+    description: Optional[str] = None
+    """Prompt or description for this preset."""
+
+    required: Optional[bool] = None
+    """If false, this field is optional in the analysis.
+
+    If true or unset, the field is required.
     """
 
 
@@ -231,6 +326,7 @@ PostCallAnalysisData: TypeAlias = Union[
     PostCallAnalysisDataEnumAnalysisData,
     PostCallAnalysisDataBooleanAnalysisData,
     PostCallAnalysisDataNumberAnalysisData,
+    PostCallAnalysisDataCallPresetAnalysisData,
 ]
 
 
@@ -501,6 +597,9 @@ class AgentResponse(BaseModel):
     agent output and user input.
     """
 
+    handbook_config: Optional[HandbookConfig] = None
+    """Toggle behavior presets on/off to influence agent response style and behaviors."""
+
     interruption_sensitivity: Optional[float] = None
     """Controls how sensitive the agent is to user interruptions.
 
@@ -707,6 +806,12 @@ class AgentResponse(BaseModel):
     """If set, determines whether speech to text should focus on latency or accuracy.
 
     Default to fast mode. When set to custom, custom_stt_config must be provided.
+    """
+
+    timezone: Optional[str] = None
+    """IANA timezone for the agent (e.g.
+
+    America/New_York). Defaults to America/Los_Angeles if not set.
     """
 
     user_dtmf_options: Optional[UserDtmfOptions] = None

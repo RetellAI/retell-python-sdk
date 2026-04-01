@@ -61,48 +61,95 @@ __all__ = [
     "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionEquationCondition",
     "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionEquationConditionEquation",
     "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionUnionMember2",
-    "ComponentNodeConversationNodeTool",
-    "ComponentNodeConversationNodeToolEndCallTool",
-    "ComponentNodeConversationNodeToolTransferCallTool",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferDestination",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOption",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
-    "ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
-    "ComponentNodeConversationNodeToolCheckAvailabilityCalTool",
-    "ComponentNodeConversationNodeToolBookAppointmentCalTool",
-    "ComponentNodeConversationNodeToolAgentSwapTool",
-    "ComponentNodeConversationNodeToolPressDigitTool",
-    "ComponentNodeConversationNodeToolSendSMSTool",
-    "ComponentNodeConversationNodeToolSendSMSToolSMSContent",
-    "ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined",
-    "ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred",
-    "ComponentNodeConversationNodeToolCustomTool",
-    "ComponentNodeConversationNodeToolCustomToolParameters",
-    "ComponentNodeConversationNodeToolCodeTool",
-    "ComponentNodeConversationNodeToolExtractDynamicVariableTool",
-    "ComponentNodeConversationNodeToolExtractDynamicVariableToolVariable",
-    "ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData",
-    "ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData",
-    "ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData",
-    "ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData",
-    "ComponentNodeConversationNodeToolBridgeTransferTool",
-    "ComponentNodeConversationNodeToolCancelTransferTool",
-    "ComponentNodeConversationNodeToolMcpTool",
+    "ComponentNodeSubagentNode",
+    "ComponentNodeSubagentNodeInstruction",
+    "ComponentNodeSubagentNodeAlwaysEdge",
+    "ComponentNodeSubagentNodeAlwaysEdgeTransitionCondition",
+    "ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionPromptCondition",
+    "ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionEquationCondition",
+    "ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionUnionMember2",
+    "ComponentNodeSubagentNodeDisplayPosition",
+    "ComponentNodeSubagentNodeEdge",
+    "ComponentNodeSubagentNodeEdgeTransitionCondition",
+    "ComponentNodeSubagentNodeEdgeTransitionConditionPromptCondition",
+    "ComponentNodeSubagentNodeEdgeTransitionConditionEquationCondition",
+    "ComponentNodeSubagentNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeSubagentNodeFinetuneConversationExample",
+    "ComponentNodeSubagentNodeFinetuneConversationExampleTranscript",
+    "ComponentNodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember0",
+    "ComponentNodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember1",
+    "ComponentNodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember2",
+    "ComponentNodeSubagentNodeFinetuneTransitionExample",
+    "ComponentNodeSubagentNodeFinetuneTransitionExampleTranscript",
+    "ComponentNodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember0",
+    "ComponentNodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember1",
+    "ComponentNodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember2",
+    "ComponentNodeSubagentNodeGlobalNodeSetting",
+    "ComponentNodeSubagentNodeGlobalNodeSettingGoBackCondition",
+    "ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
+    "ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExample",
+    "ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExample",
+    "ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeSubagentNodeModelChoice",
+    "ComponentNodeSubagentNodeSkipResponseEdge",
+    "ComponentNodeSubagentNodeSkipResponseEdgeTransitionCondition",
+    "ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition",
+    "ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionEquationCondition",
+    "ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionUnionMember2",
+    "ComponentNodeSubagentNodeTool",
+    "ComponentNodeSubagentNodeToolEndCallTool",
+    "ComponentNodeSubagentNodeToolTransferCallTool",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferDestination",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationInferred",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOption",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "ComponentNodeSubagentNodeToolCheckAvailabilityCalTool",
+    "ComponentNodeSubagentNodeToolBookAppointmentCalTool",
+    "ComponentNodeSubagentNodeToolAgentSwapTool",
+    "ComponentNodeSubagentNodeToolPressDigitTool",
+    "ComponentNodeSubagentNodeToolSendSMSTool",
+    "ComponentNodeSubagentNodeToolSendSMSToolSMSContent",
+    "ComponentNodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined",
+    "ComponentNodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred",
+    "ComponentNodeSubagentNodeToolCustomTool",
+    "ComponentNodeSubagentNodeToolCustomToolParameters",
+    "ComponentNodeSubagentNodeToolCodeTool",
+    "ComponentNodeSubagentNodeToolExtractDynamicVariableTool",
+    "ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariable",
+    "ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableStringAnalysisData",
+    "ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableEnumAnalysisData",
+    "ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData",
+    "ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableNumberAnalysisData",
+    "ComponentNodeSubagentNodeToolBridgeTransferTool",
+    "ComponentNodeSubagentNodeToolCancelTransferTool",
+    "ComponentNodeSubagentNodeToolMcpTool",
     "ComponentNodeEndNode",
     "ComponentNodeEndNodeDisplayPosition",
     "ComponentNodeEndNodeGlobalNodeSetting",
@@ -533,6 +580,9 @@ __all__ = [
     "ComponentNodeCancelTransferNodeModelChoice",
     "ComponentBeginTagDisplayPosition",
     "ComponentMcp",
+    "ComponentNote",
+    "ComponentNoteDisplayPosition",
+    "ComponentNoteSize",
     "ComponentTool",
     "ComponentToolCustomTool",
     "ComponentToolCustomToolParameters",
@@ -591,48 +641,95 @@ __all__ = [
     "NodeConversationNodeSkipResponseEdgeTransitionConditionEquationCondition",
     "NodeConversationNodeSkipResponseEdgeTransitionConditionEquationConditionEquation",
     "NodeConversationNodeSkipResponseEdgeTransitionConditionUnionMember2",
-    "NodeConversationNodeTool",
-    "NodeConversationNodeToolEndCallTool",
-    "NodeConversationNodeToolTransferCallTool",
-    "NodeConversationNodeToolTransferCallToolTransferDestination",
-    "NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined",
-    "NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred",
-    "NodeConversationNodeToolTransferCallToolTransferOption",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
-    "NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
-    "NodeConversationNodeToolCheckAvailabilityCalTool",
-    "NodeConversationNodeToolBookAppointmentCalTool",
-    "NodeConversationNodeToolAgentSwapTool",
-    "NodeConversationNodeToolPressDigitTool",
-    "NodeConversationNodeToolSendSMSTool",
-    "NodeConversationNodeToolSendSMSToolSMSContent",
-    "NodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined",
-    "NodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred",
-    "NodeConversationNodeToolCustomTool",
-    "NodeConversationNodeToolCustomToolParameters",
-    "NodeConversationNodeToolCodeTool",
-    "NodeConversationNodeToolExtractDynamicVariableTool",
-    "NodeConversationNodeToolExtractDynamicVariableToolVariable",
-    "NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData",
-    "NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData",
-    "NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData",
-    "NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData",
-    "NodeConversationNodeToolBridgeTransferTool",
-    "NodeConversationNodeToolCancelTransferTool",
-    "NodeConversationNodeToolMcpTool",
+    "NodeSubagentNode",
+    "NodeSubagentNodeInstruction",
+    "NodeSubagentNodeAlwaysEdge",
+    "NodeSubagentNodeAlwaysEdgeTransitionCondition",
+    "NodeSubagentNodeAlwaysEdgeTransitionConditionPromptCondition",
+    "NodeSubagentNodeAlwaysEdgeTransitionConditionEquationCondition",
+    "NodeSubagentNodeAlwaysEdgeTransitionConditionEquationConditionEquation",
+    "NodeSubagentNodeAlwaysEdgeTransitionConditionUnionMember2",
+    "NodeSubagentNodeDisplayPosition",
+    "NodeSubagentNodeEdge",
+    "NodeSubagentNodeEdgeTransitionCondition",
+    "NodeSubagentNodeEdgeTransitionConditionPromptCondition",
+    "NodeSubagentNodeEdgeTransitionConditionEquationCondition",
+    "NodeSubagentNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeSubagentNodeFinetuneConversationExample",
+    "NodeSubagentNodeFinetuneConversationExampleTranscript",
+    "NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember0",
+    "NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember1",
+    "NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember2",
+    "NodeSubagentNodeFinetuneTransitionExample",
+    "NodeSubagentNodeFinetuneTransitionExampleTranscript",
+    "NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember0",
+    "NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember1",
+    "NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember2",
+    "NodeSubagentNodeGlobalNodeSetting",
+    "NodeSubagentNodeGlobalNodeSettingGoBackCondition",
+    "NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
+    "NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExample",
+    "NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExample",
+    "NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "NodeSubagentNodeModelChoice",
+    "NodeSubagentNodeSkipResponseEdge",
+    "NodeSubagentNodeSkipResponseEdgeTransitionCondition",
+    "NodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition",
+    "NodeSubagentNodeSkipResponseEdgeTransitionConditionEquationCondition",
+    "NodeSubagentNodeSkipResponseEdgeTransitionConditionEquationConditionEquation",
+    "NodeSubagentNodeSkipResponseEdgeTransitionConditionUnionMember2",
+    "NodeSubagentNodeTool",
+    "NodeSubagentNodeToolEndCallTool",
+    "NodeSubagentNodeToolTransferCallTool",
+    "NodeSubagentNodeToolTransferCallToolTransferDestination",
+    "NodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined",
+    "NodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationInferred",
+    "NodeSubagentNodeToolTransferCallToolTransferOption",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
+    "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
+    "NodeSubagentNodeToolCheckAvailabilityCalTool",
+    "NodeSubagentNodeToolBookAppointmentCalTool",
+    "NodeSubagentNodeToolAgentSwapTool",
+    "NodeSubagentNodeToolPressDigitTool",
+    "NodeSubagentNodeToolSendSMSTool",
+    "NodeSubagentNodeToolSendSMSToolSMSContent",
+    "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined",
+    "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred",
+    "NodeSubagentNodeToolCustomTool",
+    "NodeSubagentNodeToolCustomToolParameters",
+    "NodeSubagentNodeToolCodeTool",
+    "NodeSubagentNodeToolExtractDynamicVariableTool",
+    "NodeSubagentNodeToolExtractDynamicVariableToolVariable",
+    "NodeSubagentNodeToolExtractDynamicVariableToolVariableStringAnalysisData",
+    "NodeSubagentNodeToolExtractDynamicVariableToolVariableEnumAnalysisData",
+    "NodeSubagentNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData",
+    "NodeSubagentNodeToolExtractDynamicVariableToolVariableNumberAnalysisData",
+    "NodeSubagentNodeToolBridgeTransferTool",
+    "NodeSubagentNodeToolCancelTransferTool",
+    "NodeSubagentNodeToolMcpTool",
     "NodeEndNode",
     "NodeEndNodeDisplayPosition",
     "NodeEndNodeGlobalNodeSetting",
@@ -1061,6 +1158,9 @@ __all__ = [
     "NodeCancelTransferNodeInstructionNodeInstructionPrompt",
     "NodeCancelTransferNodeInstructionNodeInstructionStaticText",
     "NodeCancelTransferNodeModelChoice",
+    "Note",
+    "NoteDisplayPosition",
+    "NoteSize",
     "Tool",
     "ToolCustomTool",
     "ToolCustomToolParameters",
@@ -1522,7 +1622,471 @@ class ComponentNodeConversationNodeSkipResponseEdge(BaseModel):
     """ID of the destination node"""
 
 
-class ComponentNodeConversationNodeToolEndCallTool(BaseModel):
+class ComponentNodeConversationNode(BaseModel):
+    id: str
+    """Unique identifier for the node"""
+
+    instruction: ComponentNodeConversationNodeInstruction
+
+    type: Literal["conversation"]
+    """Type of the node"""
+
+    always_edge: Optional[ComponentNodeConversationNodeAlwaysEdge] = None
+
+    display_position: Optional[ComponentNodeConversationNodeDisplayPosition] = None
+    """Position for frontend display"""
+
+    edges: Optional[List[ComponentNodeConversationNodeEdge]] = None
+
+    finetune_conversation_examples: Optional[List[ComponentNodeConversationNodeFinetuneConversationExample]] = None
+
+    finetune_transition_examples: Optional[List[ComponentNodeConversationNodeFinetuneTransitionExample]] = None
+
+    global_node_setting: Optional[ComponentNodeConversationNodeGlobalNodeSetting] = None
+
+    interruption_sensitivity: Optional[float] = None
+
+    knowledge_base_ids: Optional[List[str]] = None
+    """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
+
+    api_model_choice: Optional[ComponentNodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+
+    name: Optional[str] = None
+    """Optional name for display purposes"""
+
+    responsiveness: Optional[float] = None
+
+    skip_response_edge: Optional[ComponentNodeConversationNodeSkipResponseEdge] = None
+
+    voice_speed: Optional[float] = None
+
+
+class ComponentNodeSubagentNodeInstruction(BaseModel):
+    text: str
+    """The prompt text for the instruction"""
+
+    type: Literal["prompt"]
+    """Type of instruction"""
+
+
+class ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Always"]] = None
+    """Must be "Always" for always edge"""
+
+
+class ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Always"]
+    """Must be "Always" for always edge"""
+
+    type: Literal["prompt"]
+
+
+ComponentNodeSubagentNodeAlwaysEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionPromptCondition,
+    ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionEquationCondition,
+    ComponentNodeSubagentNodeAlwaysEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeSubagentNodeAlwaysEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: ComponentNodeSubagentNodeAlwaysEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class ComponentNodeSubagentNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
+    x: Optional[float] = None
+
+    y: Optional[float] = None
+
+
+class ComponentNodeSubagentNodeEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeSubagentNodeEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeSubagentNodeEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[ComponentNodeSubagentNodeEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+ComponentNodeSubagentNodeEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeSubagentNodeEdgeTransitionConditionPromptCondition,
+    ComponentNodeSubagentNodeEdgeTransitionConditionEquationCondition,
+]
+
+
+class ComponentNodeSubagentNodeEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: ComponentNodeSubagentNodeEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class ComponentNodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember0(BaseModel):
+    content: str
+
+    role: Literal["agent", "user"]
+
+
+class ComponentNodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember1(BaseModel):
+    arguments: str
+
+    name: str
+
+    role: Literal["tool_call_invocation"]
+
+    tool_call_id: str
+
+
+class ComponentNodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember2(BaseModel):
+    content: str
+
+    role: Literal["tool_call_result"]
+
+    tool_call_id: str
+
+
+ComponentNodeSubagentNodeFinetuneConversationExampleTranscript: TypeAlias = Union[
+    ComponentNodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember0,
+    ComponentNodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember1,
+    ComponentNodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeSubagentNodeFinetuneConversationExample(BaseModel):
+    id: str
+    """Unique identifier for the example"""
+
+    transcript: List[ComponentNodeSubagentNodeFinetuneConversationExampleTranscript]
+    """The example transcript to finetune how the conversation should be."""
+
+
+class ComponentNodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember0(BaseModel):
+    content: str
+
+    role: Literal["agent", "user"]
+
+
+class ComponentNodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember1(BaseModel):
+    arguments: str
+
+    name: str
+
+    role: Literal["tool_call_invocation"]
+
+    tool_call_id: str
+
+
+class ComponentNodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember2(BaseModel):
+    content: str
+
+    role: Literal["tool_call_result"]
+
+    tool_call_id: str
+
+
+ComponentNodeSubagentNodeFinetuneTransitionExampleTranscript: TypeAlias = Union[
+    ComponentNodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember0,
+    ComponentNodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember1,
+    ComponentNodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeSubagentNodeFinetuneTransitionExample(BaseModel):
+    id: str
+    """Unique identifier for the example"""
+
+    transcript: List[ComponentNodeSubagentNodeFinetuneTransitionExampleTranscript]
+    """The example transcript to finetune how the node should transition."""
+
+    destination_node_id: Optional[str] = None
+    """Optional destination node ID"""
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(BaseModel):
+    equations: List[
+        ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation
+    ]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(BaseModel):
+    content: str
+
+    role: Literal["agent", "user"]
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(BaseModel):
+    arguments: str
+
+    name: str
+
+    role: Literal["tool_call_invocation"]
+
+    tool_call_id: str
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(BaseModel):
+    content: str
+
+    role: Literal["tool_call_result"]
+
+    tool_call_id: str
+
+
+ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExample(BaseModel):
+    transcript: List[ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(BaseModel):
+    content: str
+
+    role: Literal["agent", "user"]
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(BaseModel):
+    arguments: str
+
+    name: str
+
+    role: Literal["tool_call_invocation"]
+
+    tool_call_id: str
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(BaseModel):
+    content: str
+
+    role: Literal["tool_call_result"]
+
+    tool_call_id: str
+
+
+ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
+    transcript: List[ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]
+    """Find tune the transition condition to this global node"""
+
+
+class ComponentNodeSubagentNodeGlobalNodeSetting(BaseModel):
+    condition: str
+    """Condition for global node activation, cannot be empty"""
+
+    cool_down: Optional[float] = None
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Optional[List[ComponentNodeSubagentNodeGlobalNodeSettingGoBackCondition]] = None
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
+
+    negative_finetune_examples: Optional[List[ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExample]] = None
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Optional[List[ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExample]] = None
+    """Transition to this node"""
+
+
+class ComponentNodeSubagentNodeModelChoice(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-4.1-nano",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "claude-4.5-sonnet",
+        "claude-4.6-sonnet",
+        "claude-4.5-haiku",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+        "gemini-3.0-flash",
+    ]
+    """The LLM model to use"""
+
+    type: Literal["cascading"]
+    """Type of model choice"""
+
+    high_priority: Optional[bool] = None
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Skip response"]] = None
+    """Must be "Skip response" for skip response edge"""
+
+
+class ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Skip response"]
+    """Must be "Skip response" for skip response edge"""
+
+    type: Literal["prompt"]
+
+
+ComponentNodeSubagentNodeSkipResponseEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition,
+    ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionEquationCondition,
+    ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeSubagentNodeSkipResponseEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: ComponentNodeSubagentNodeSkipResponseEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class ComponentNodeSubagentNodeToolEndCallTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -1557,7 +2121,7 @@ class ComponentNodeConversationNodeToolEndCallTool(BaseModel):
     """If true, will speak during execution."""
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined(BaseModel):
+class ComponentNodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined(BaseModel):
     number: str
     """
     The number to transfer to in E.164 format or a dynamic variable like
@@ -1575,7 +2139,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransf
     """
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred(BaseModel):
+class ComponentNodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationInferred(BaseModel):
     prompt: str
     """The prompt to be used to help infer the transfer destination.
 
@@ -1588,13 +2152,13 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransf
     """The type of transfer destination."""
 
 
-ComponentNodeConversationNodeToolTransferCallToolTransferDestination: TypeAlias = Union[
-    ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined,
-    ComponentNodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred,
+ComponentNodeSubagentNodeToolTransferCallToolTransferDestination: TypeAlias = Union[
+    ComponentNodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined,
+    ComponentNodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationInferred,
 ]
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseModel):
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseModel):
     type: Literal["cold_transfer"]
     """The type of the transfer."""
 
@@ -1622,7 +2186,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     """
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
     """IVR navigation option to run when doing human detection.
 
     This prompt will guide the AI on how to navigate the IVR system.
@@ -1634,7 +2198,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     type: Optional[Literal["prompt"]] = None
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
     BaseModel
 ):
     prompt: Optional[str] = None
@@ -1643,7 +2207,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     type: Optional[Literal["prompt"]] = None
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage(
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage(
     BaseModel
 ):
     message: Optional[str] = None
@@ -1652,13 +2216,13 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     type: Optional[Literal["static_message"]] = None
 
 
-ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption: TypeAlias = Union[
-    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt,
-    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage,
+ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption: TypeAlias = Union[
+    ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt,
+    ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage,
 ]
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
     BaseModel
 ):
     prompt: Optional[str] = None
@@ -1667,7 +2231,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     type: Optional[Literal["prompt"]] = None
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
     BaseModel
 ):
     message: Optional[str] = None
@@ -1676,13 +2240,13 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     type: Optional[Literal["static_message"]] = None
 
 
-ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption: TypeAlias = Union[
-    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt,
-    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption: TypeAlias = Union[
+    ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
 ]
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseModel):
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseModel):
     type: Literal["warm_transfer"]
     """The type of the transfer."""
 
@@ -1693,7 +2257,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
     ivr_option: Optional[
-        ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption
+        ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption
     ] = None
     """IVR navigation option to run when doing human detection.
 
@@ -1710,7 +2274,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     """
 
     private_handoff_option: Optional[
-        ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption
+        ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption
     ] = None
     """
     If set, when transfer is connected, will say the handoff message only to the
@@ -1719,7 +2283,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     """
 
     public_handoff_option: Optional[
-        ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption
+        ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption
     ] = None
     """
     If set, when transfer is successful, will say the handoff message to both the
@@ -1741,7 +2305,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     """
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     BaseModel
 ):
     """The agent that will mediate the transfer decision."""
@@ -1758,7 +2322,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     """The version of the transfer agent to use."""
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(
     BaseModel
 ):
     """Configuration for agentic warm transfer. Required for agentic warm transfer."""
@@ -1770,7 +2334,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     """
 
     transfer_agent: Optional[
-        ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
+        ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
     ] = None
     """The agent that will mediate the transfer decision."""
 
@@ -1781,7 +2345,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     """
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
     BaseModel
 ):
     prompt: Optional[str] = None
@@ -1790,7 +2354,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     type: Optional[Literal["prompt"]] = None
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
     BaseModel
 ):
     message: Optional[str] = None
@@ -1799,14 +2363,14 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     type: Optional[Literal["static_message"]] = None
 
 
-ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
-    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
-    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
+    ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
 ]
 
 
-class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(BaseModel):
-    agentic_transfer_config: ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
+class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(BaseModel):
+    agentic_transfer_config: ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
     """Configuration for agentic warm transfer. Required for agentic warm transfer."""
 
     type: Literal["agentic_warm_transfer"]
@@ -1819,7 +2383,7 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     """The music to play while the caller is being transferred."""
 
     public_handoff_option: Optional[
-        ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
+        ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
     ] = None
     """
     If set, when transfer is successful, will say the handoff message to both the
@@ -1841,14 +2405,14 @@ class ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOpt
     """
 
 
-ComponentNodeConversationNodeToolTransferCallToolTransferOption: TypeAlias = Union[
-    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer,
-    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer,
-    ComponentNodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer,
+ComponentNodeSubagentNodeToolTransferCallToolTransferOption: TypeAlias = Union[
+    ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer,
+    ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer,
+    ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer,
 ]
 
 
-class ComponentNodeConversationNodeToolTransferCallTool(BaseModel):
+class ComponentNodeSubagentNodeToolTransferCallTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -1856,9 +2420,9 @@ class ComponentNodeConversationNodeToolTransferCallTool(BaseModel):
     tools + state tools + state edges).
     """
 
-    transfer_destination: ComponentNodeConversationNodeToolTransferCallToolTransferDestination
+    transfer_destination: ComponentNodeSubagentNodeToolTransferCallToolTransferDestination
 
-    transfer_option: ComponentNodeConversationNodeToolTransferCallToolTransferOption
+    transfer_option: ComponentNodeSubagentNodeToolTransferCallToolTransferOption
 
     type: Literal["transfer_call"]
 
@@ -1897,7 +2461,7 @@ class ComponentNodeConversationNodeToolTransferCallTool(BaseModel):
     """If true, will speak during execution."""
 
 
-class ComponentNodeConversationNodeToolCheckAvailabilityCalTool(BaseModel):
+class ComponentNodeSubagentNodeToolCheckAvailabilityCalTool(BaseModel):
     cal_api_key: str
     """
     Cal.com Api key that have access to the cal.com event you want to check
@@ -1937,7 +2501,7 @@ class ComponentNodeConversationNodeToolCheckAvailabilityCalTool(BaseModel):
     """
 
 
-class ComponentNodeConversationNodeToolBookAppointmentCalTool(BaseModel):
+class ComponentNodeSubagentNodeToolBookAppointmentCalTool(BaseModel):
     cal_api_key: str
     """
     Cal.com Api key that have access to the cal.com event you want to book
@@ -1977,7 +2541,7 @@ class ComponentNodeConversationNodeToolBookAppointmentCalTool(BaseModel):
     """
 
 
-class ComponentNodeConversationNodeToolAgentSwapTool(BaseModel):
+class ComponentNodeSubagentNodeToolAgentSwapTool(BaseModel):
     agent_id: str
     """The id of the agent to swap to."""
 
@@ -2028,7 +2592,7 @@ class ComponentNodeConversationNodeToolAgentSwapTool(BaseModel):
     """Webhook setting for the agent swap, defaults to only source."""
 
 
-class ComponentNodeConversationNodeToolPressDigitTool(BaseModel):
+class ComponentNodeSubagentNodeToolPressDigitTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -2053,14 +2617,14 @@ class ComponentNodeConversationNodeToolPressDigitTool(BaseModel):
     """
 
 
-class ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
+class ComponentNodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
     content: Optional[str] = None
     """The static message to be sent in the SMS. Can contain dynamic variables."""
 
     type: Optional[Literal["predefined"]] = None
 
 
-class ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred(BaseModel):
+class ComponentNodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred(BaseModel):
     prompt: Optional[str] = None
     """The prompt to be used to help infer the SMS content.
 
@@ -2071,13 +2635,13 @@ class ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred(B
     type: Optional[Literal["inferred"]] = None
 
 
-ComponentNodeConversationNodeToolSendSMSToolSMSContent: TypeAlias = Union[
-    ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined,
-    ComponentNodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred,
+ComponentNodeSubagentNodeToolSendSMSToolSMSContent: TypeAlias = Union[
+    ComponentNodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined,
+    ComponentNodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred,
 ]
 
 
-class ComponentNodeConversationNodeToolSendSMSTool(BaseModel):
+class ComponentNodeSubagentNodeToolSendSMSTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -2085,7 +2649,7 @@ class ComponentNodeConversationNodeToolSendSMSTool(BaseModel):
     tools + state tools + state edges).
     """
 
-    sms_content: ComponentNodeConversationNodeToolSendSMSToolSMSContent
+    sms_content: ComponentNodeSubagentNodeToolSendSMSToolSMSContent
 
     type: Literal["send_sms"]
 
@@ -2095,8 +2659,28 @@ class ComponentNodeConversationNodeToolSendSMSTool(BaseModel):
     to call the tool.
     """
 
+    execution_message_description: Optional[str] = None
+    """Describes what to say before sending the SMS.
 
-class ComponentNodeConversationNodeToolCustomToolParameters(BaseModel):
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """If true, the agent will speak a short line before sending the SMS.
+
+    If omitted, defaults to true (same as end_call / transfer_call tools).
+    """
+
+
+class ComponentNodeSubagentNodeToolCustomToolParameters(BaseModel):
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
@@ -2119,7 +2703,7 @@ class ComponentNodeConversationNodeToolCustomToolParameters(BaseModel):
     """
 
 
-class ComponentNodeConversationNodeToolCustomTool(BaseModel):
+class ComponentNodeSubagentNodeToolCustomTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -2167,7 +2751,7 @@ class ComponentNodeConversationNodeToolCustomTool(BaseModel):
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
 
-    parameters: Optional[ComponentNodeConversationNodeToolCustomToolParameters] = None
+    parameters: Optional[ComponentNodeSubagentNodeToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
@@ -2210,7 +2794,7 @@ class ComponentNodeConversationNodeToolCustomTool(BaseModel):
     """
 
 
-class ComponentNodeConversationNodeToolCodeTool(BaseModel):
+class ComponentNodeSubagentNodeToolCodeTool(BaseModel):
     code: str
     """JavaScript code to execute in the sandbox."""
 
@@ -2267,7 +2851,7 @@ class ComponentNodeConversationNodeToolCodeTool(BaseModel):
     """
 
 
-class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel):
+class ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel):
     description: str
     """Description of the variable."""
 
@@ -2276,6 +2860,13 @@ class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableStringA
 
     type: Literal["string"]
     """Type of the variable to extract."""
+
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
 
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
@@ -2287,7 +2878,7 @@ class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableStringA
     """
 
 
-class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
+class ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     choices: List[str]
     """The possible values of the variable, must be non empty array."""
 
@@ -2300,6 +2891,13 @@ class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableEnumAna
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -2307,7 +2905,7 @@ class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableEnumAna
     """
 
 
-class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel):
+class ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel):
     description: str
     """Description of the variable."""
 
@@ -2317,6 +2915,13 @@ class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableBoolean
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -2324,7 +2929,7 @@ class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableBoolean
     """
 
 
-class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel):
+class ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel):
     description: str
     """Description of the variable."""
 
@@ -2334,6 +2939,13 @@ class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableNumberA
     type: Literal["number"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -2341,15 +2953,15 @@ class ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableNumberA
     """
 
 
-ComponentNodeConversationNodeToolExtractDynamicVariableToolVariable: TypeAlias = Union[
-    ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData,
-    ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData,
-    ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData,
-    ComponentNodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData,
+ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariable: TypeAlias = Union[
+    ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableStringAnalysisData,
+    ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableEnumAnalysisData,
+    ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData,
+    ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableNumberAnalysisData,
 ]
 
 
-class ComponentNodeConversationNodeToolExtractDynamicVariableTool(BaseModel):
+class ComponentNodeSubagentNodeToolExtractDynamicVariableTool(BaseModel):
     description: str
     """
     Describes what the tool does, sometimes can also include information about when
@@ -2366,11 +2978,11 @@ class ComponentNodeConversationNodeToolExtractDynamicVariableTool(BaseModel):
 
     type: Literal["extract_dynamic_variable"]
 
-    variables: List[ComponentNodeConversationNodeToolExtractDynamicVariableToolVariable]
+    variables: List[ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariable]
     """The variables to be extracted."""
 
 
-class ComponentNodeConversationNodeToolBridgeTransferTool(BaseModel):
+class ComponentNodeSubagentNodeToolBridgeTransferTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -2407,7 +3019,7 @@ class ComponentNodeConversationNodeToolBridgeTransferTool(BaseModel):
     """If true, will speak during execution."""
 
 
-class ComponentNodeConversationNodeToolCancelTransferTool(BaseModel):
+class ComponentNodeSubagentNodeToolCancelTransferTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -2444,7 +3056,7 @@ class ComponentNodeConversationNodeToolCancelTransferTool(BaseModel):
     """If true, will speak during execution."""
 
 
-class ComponentNodeConversationNodeToolMcpTool(BaseModel):
+class ComponentNodeSubagentNodeToolMcpTool(BaseModel):
     description: str
     """Description of the MCP tool."""
 
@@ -2497,67 +3109,67 @@ class ComponentNodeConversationNodeToolMcpTool(BaseModel):
     """
 
 
-ComponentNodeConversationNodeTool: TypeAlias = Union[
-    ComponentNodeConversationNodeToolEndCallTool,
-    ComponentNodeConversationNodeToolTransferCallTool,
-    ComponentNodeConversationNodeToolCheckAvailabilityCalTool,
-    ComponentNodeConversationNodeToolBookAppointmentCalTool,
-    ComponentNodeConversationNodeToolAgentSwapTool,
-    ComponentNodeConversationNodeToolPressDigitTool,
-    ComponentNodeConversationNodeToolSendSMSTool,
-    ComponentNodeConversationNodeToolCustomTool,
-    ComponentNodeConversationNodeToolCodeTool,
-    ComponentNodeConversationNodeToolExtractDynamicVariableTool,
-    ComponentNodeConversationNodeToolBridgeTransferTool,
-    ComponentNodeConversationNodeToolCancelTransferTool,
-    ComponentNodeConversationNodeToolMcpTool,
+ComponentNodeSubagentNodeTool: TypeAlias = Union[
+    ComponentNodeSubagentNodeToolEndCallTool,
+    ComponentNodeSubagentNodeToolTransferCallTool,
+    ComponentNodeSubagentNodeToolCheckAvailabilityCalTool,
+    ComponentNodeSubagentNodeToolBookAppointmentCalTool,
+    ComponentNodeSubagentNodeToolAgentSwapTool,
+    ComponentNodeSubagentNodeToolPressDigitTool,
+    ComponentNodeSubagentNodeToolSendSMSTool,
+    ComponentNodeSubagentNodeToolCustomTool,
+    ComponentNodeSubagentNodeToolCodeTool,
+    ComponentNodeSubagentNodeToolExtractDynamicVariableTool,
+    ComponentNodeSubagentNodeToolBridgeTransferTool,
+    ComponentNodeSubagentNodeToolCancelTransferTool,
+    ComponentNodeSubagentNodeToolMcpTool,
 ]
 
 
-class ComponentNodeConversationNode(BaseModel):
+class ComponentNodeSubagentNode(BaseModel):
     id: str
     """Unique identifier for the node"""
 
-    instruction: ComponentNodeConversationNodeInstruction
+    instruction: ComponentNodeSubagentNodeInstruction
 
-    type: Literal["conversation"]
+    type: Literal["subagent"]
     """Type of the node"""
 
-    always_edge: Optional[ComponentNodeConversationNodeAlwaysEdge] = None
+    always_edge: Optional[ComponentNodeSubagentNodeAlwaysEdge] = None
 
-    display_position: Optional[ComponentNodeConversationNodeDisplayPosition] = None
+    display_position: Optional[ComponentNodeSubagentNodeDisplayPosition] = None
     """Position for frontend display"""
 
-    edges: Optional[List[ComponentNodeConversationNodeEdge]] = None
+    edges: Optional[List[ComponentNodeSubagentNodeEdge]] = None
 
-    finetune_conversation_examples: Optional[List[ComponentNodeConversationNodeFinetuneConversationExample]] = None
+    finetune_conversation_examples: Optional[List[ComponentNodeSubagentNodeFinetuneConversationExample]] = None
 
-    finetune_transition_examples: Optional[List[ComponentNodeConversationNodeFinetuneTransitionExample]] = None
+    finetune_transition_examples: Optional[List[ComponentNodeSubagentNodeFinetuneTransitionExample]] = None
 
-    global_node_setting: Optional[ComponentNodeConversationNodeGlobalNodeSetting] = None
+    global_node_setting: Optional[ComponentNodeSubagentNodeGlobalNodeSetting] = None
 
     interruption_sensitivity: Optional[float] = None
 
     knowledge_base_ids: Optional[List[str]] = None
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
-    api_model_choice: Optional[ComponentNodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[ComponentNodeSubagentNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None
     """Optional name for display purposes"""
 
     responsiveness: Optional[float] = None
 
-    skip_response_edge: Optional[ComponentNodeConversationNodeSkipResponseEdge] = None
+    skip_response_edge: Optional[ComponentNodeSubagentNodeSkipResponseEdge] = None
 
     tool_ids: Optional[List[str]] = None
     """
     The tool ids of the tools defined in main conversation flow or component that
-    can be used in this conversation node.
+    can be used in this subagent node.
     """
 
-    tools: Optional[List[ComponentNodeConversationNodeTool]] = None
-    """The tools owned by this conversation node.
+    tools: Optional[List[ComponentNodeSubagentNodeTool]] = None
+    """The tools owned by this subagent node.
 
     This includes other tool types like transfer_call, agent_swap, etc.
     """
@@ -5146,6 +5758,13 @@ class ComponentNodeExtractDynamicVariablesNodeVariableStringAnalysisData(BaseMod
     type: Literal["string"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
@@ -5169,6 +5788,13 @@ class ComponentNodeExtractDynamicVariablesNodeVariableEnumAnalysisData(BaseModel
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -5186,6 +5812,13 @@ class ComponentNodeExtractDynamicVariablesNodeVariableBooleanAnalysisData(BaseMo
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -5202,6 +5835,13 @@ class ComponentNodeExtractDynamicVariablesNodeVariableNumberAnalysisData(BaseMod
 
     type: Literal["number"]
     """Type of the variable to extract."""
+
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
 
     required: Optional[bool] = None
     """Whether this data is required.
@@ -7084,6 +7724,7 @@ class ComponentNodeCancelTransferNode(BaseModel):
 
 ComponentNode: TypeAlias = Union[
     ComponentNodeConversationNode,
+    ComponentNodeSubagentNode,
     ComponentNodeEndNode,
     ComponentNodeFunctionNode,
     ComponentNodeCodeNode,
@@ -7125,6 +7766,39 @@ class ComponentMcp(BaseModel):
 
     Default to 120,000 ms (2 minutes).
     """
+
+
+class ComponentNoteDisplayPosition(BaseModel):
+    """Position of the note on the canvas."""
+
+    x: Optional[float] = None
+
+    y: Optional[float] = None
+
+
+class ComponentNoteSize(BaseModel):
+    """Dimensions of the note on the canvas."""
+
+    height: Optional[float] = None
+
+    width: Optional[float] = None
+
+
+class ComponentNote(BaseModel):
+    id: str
+    """Unique identifier for the note."""
+
+    content: str
+    """
+    Text content of the note, can contain refs to images in the format
+    "<image:asset_id>"
+    """
+
+    display_position: ComponentNoteDisplayPosition
+    """Position of the note on the canvas."""
+
+    size: ComponentNoteSize
+    """Dimensions of the note on the canvas."""
 
 
 class ComponentToolCustomToolParameters(BaseModel):
@@ -7347,6 +8021,9 @@ class Component(BaseModel):
 
     mcps: Optional[List[ComponentMcp]] = None
     """A list of MCP server configurations to use for this component"""
+
+    notes: Optional[List[ComponentNote]] = None
+    """Visual annotations displayed on the flow canvas."""
 
     start_node_id: Optional[str] = None
     """ID of the starting node"""
@@ -7851,7 +8528,468 @@ class NodeConversationNodeSkipResponseEdge(BaseModel):
     """ID of the destination node"""
 
 
-class NodeConversationNodeToolEndCallTool(BaseModel):
+class NodeConversationNode(BaseModel):
+    id: str
+    """Unique identifier for the node"""
+
+    instruction: NodeConversationNodeInstruction
+
+    type: Literal["conversation"]
+    """Type of the node"""
+
+    always_edge: Optional[NodeConversationNodeAlwaysEdge] = None
+
+    display_position: Optional[NodeConversationNodeDisplayPosition] = None
+    """Position for frontend display"""
+
+    edges: Optional[List[NodeConversationNodeEdge]] = None
+
+    finetune_conversation_examples: Optional[List[NodeConversationNodeFinetuneConversationExample]] = None
+
+    finetune_transition_examples: Optional[List[NodeConversationNodeFinetuneTransitionExample]] = None
+
+    global_node_setting: Optional[NodeConversationNodeGlobalNodeSetting] = None
+
+    interruption_sensitivity: Optional[float] = None
+
+    knowledge_base_ids: Optional[List[str]] = None
+    """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
+
+    api_model_choice: Optional[NodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+
+    name: Optional[str] = None
+    """Optional name for display purposes"""
+
+    responsiveness: Optional[float] = None
+
+    skip_response_edge: Optional[NodeConversationNodeSkipResponseEdge] = None
+
+    voice_speed: Optional[float] = None
+
+
+class NodeSubagentNodeInstruction(BaseModel):
+    text: str
+    """The prompt text for the instruction"""
+
+    type: Literal["prompt"]
+    """Type of instruction"""
+
+
+class NodeSubagentNodeAlwaysEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeSubagentNodeAlwaysEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSubagentNodeAlwaysEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodeSubagentNodeAlwaysEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Always"]] = None
+    """Must be "Always" for always edge"""
+
+
+class NodeSubagentNodeAlwaysEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Always"]
+    """Must be "Always" for always edge"""
+
+    type: Literal["prompt"]
+
+
+NodeSubagentNodeAlwaysEdgeTransitionCondition: TypeAlias = Union[
+    NodeSubagentNodeAlwaysEdgeTransitionConditionPromptCondition,
+    NodeSubagentNodeAlwaysEdgeTransitionConditionEquationCondition,
+    NodeSubagentNodeAlwaysEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeSubagentNodeAlwaysEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodeSubagentNodeAlwaysEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class NodeSubagentNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
+    x: Optional[float] = None
+
+    y: Optional[float] = None
+
+
+class NodeSubagentNodeEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeSubagentNodeEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSubagentNodeEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodeSubagentNodeEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeSubagentNodeEdgeTransitionCondition: TypeAlias = Union[
+    NodeSubagentNodeEdgeTransitionConditionPromptCondition, NodeSubagentNodeEdgeTransitionConditionEquationCondition
+]
+
+
+class NodeSubagentNodeEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodeSubagentNodeEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember0(BaseModel):
+    content: str
+
+    role: Literal["agent", "user"]
+
+
+class NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember1(BaseModel):
+    arguments: str
+
+    name: str
+
+    role: Literal["tool_call_invocation"]
+
+    tool_call_id: str
+
+
+class NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember2(BaseModel):
+    content: str
+
+    role: Literal["tool_call_result"]
+
+    tool_call_id: str
+
+
+NodeSubagentNodeFinetuneConversationExampleTranscript: TypeAlias = Union[
+    NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember0,
+    NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember1,
+    NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember2,
+]
+
+
+class NodeSubagentNodeFinetuneConversationExample(BaseModel):
+    id: str
+    """Unique identifier for the example"""
+
+    transcript: List[NodeSubagentNodeFinetuneConversationExampleTranscript]
+    """The example transcript to finetune how the conversation should be."""
+
+
+class NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember0(BaseModel):
+    content: str
+
+    role: Literal["agent", "user"]
+
+
+class NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember1(BaseModel):
+    arguments: str
+
+    name: str
+
+    role: Literal["tool_call_invocation"]
+
+    tool_call_id: str
+
+
+class NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember2(BaseModel):
+    content: str
+
+    role: Literal["tool_call_result"]
+
+    tool_call_id: str
+
+
+NodeSubagentNodeFinetuneTransitionExampleTranscript: TypeAlias = Union[
+    NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember0,
+    NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember1,
+    NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember2,
+]
+
+
+class NodeSubagentNodeFinetuneTransitionExample(BaseModel):
+    id: str
+    """Unique identifier for the example"""
+
+    transcript: List[NodeSubagentNodeFinetuneTransitionExampleTranscript]
+    """The example transcript to finetune how the node should transition."""
+
+    destination_node_id: Optional[str] = None
+    """Optional destination node ID"""
+
+
+class NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeSubagentNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(BaseModel):
+    content: str
+
+    role: Literal["agent", "user"]
+
+
+class NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(BaseModel):
+    arguments: str
+
+    name: str
+
+    role: Literal["tool_call_invocation"]
+
+    tool_call_id: str
+
+
+class NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(BaseModel):
+    content: str
+
+    role: Literal["tool_call_result"]
+
+    tool_call_id: str
+
+
+NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExample(BaseModel):
+    transcript: List[NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]
+    """Find tune the transition condition to this global node"""
+
+
+class NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(BaseModel):
+    content: str
+
+    role: Literal["agent", "user"]
+
+
+class NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(BaseModel):
+    arguments: str
+
+    name: str
+
+    role: Literal["tool_call_invocation"]
+
+    tool_call_id: str
+
+
+class NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(BaseModel):
+    content: str
+
+    role: Literal["tool_call_result"]
+
+    tool_call_id: str
+
+
+NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
+    transcript: List[NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]
+    """Find tune the transition condition to this global node"""
+
+
+class NodeSubagentNodeGlobalNodeSetting(BaseModel):
+    condition: str
+    """Condition for global node activation, cannot be empty"""
+
+    cool_down: Optional[float] = None
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Optional[List[NodeSubagentNodeGlobalNodeSettingGoBackCondition]] = None
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
+
+    negative_finetune_examples: Optional[List[NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExample]] = None
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Optional[List[NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExample]] = None
+    """Transition to this node"""
+
+
+class NodeSubagentNodeModelChoice(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-4.1-nano",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "claude-4.5-sonnet",
+        "claude-4.6-sonnet",
+        "claude-4.5-haiku",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+        "gemini-3.0-flash",
+    ]
+    """The LLM model to use"""
+
+    type: Literal["cascading"]
+    """Type of model choice"""
+
+    high_priority: Optional[bool] = None
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class NodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeSubagentNodeSkipResponseEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSubagentNodeSkipResponseEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodeSubagentNodeSkipResponseEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Skip response"]] = None
+    """Must be "Skip response" for skip response edge"""
+
+
+class NodeSubagentNodeSkipResponseEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Skip response"]
+    """Must be "Skip response" for skip response edge"""
+
+    type: Literal["prompt"]
+
+
+NodeSubagentNodeSkipResponseEdgeTransitionCondition: TypeAlias = Union[
+    NodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition,
+    NodeSubagentNodeSkipResponseEdgeTransitionConditionEquationCondition,
+    NodeSubagentNodeSkipResponseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeSubagentNodeSkipResponseEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodeSubagentNodeSkipResponseEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class NodeSubagentNodeToolEndCallTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -7886,7 +9024,7 @@ class NodeConversationNodeToolEndCallTool(BaseModel):
     """If true, will speak during execution."""
 
 
-class NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined(BaseModel):
+class NodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined(BaseModel):
     number: str
     """
     The number to transfer to in E.164 format or a dynamic variable like
@@ -7904,7 +9042,7 @@ class NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestina
     """
 
 
-class NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred(BaseModel):
+class NodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationInferred(BaseModel):
     prompt: str
     """The prompt to be used to help infer the transfer destination.
 
@@ -7917,13 +9055,13 @@ class NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestina
     """The type of transfer destination."""
 
 
-NodeConversationNodeToolTransferCallToolTransferDestination: TypeAlias = Union[
-    NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined,
-    NodeConversationNodeToolTransferCallToolTransferDestinationTransferDestinationInferred,
+NodeSubagentNodeToolTransferCallToolTransferDestination: TypeAlias = Union[
+    NodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationPredefined,
+    NodeSubagentNodeToolTransferCallToolTransferDestinationTransferDestinationInferred,
 ]
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseModel):
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer(BaseModel):
     type: Literal["cold_transfer"]
     """The type of the transfer."""
 
@@ -7951,7 +9089,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTr
     """
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption(BaseModel):
     """IVR navigation option to run when doing human detection.
 
     This prompt will guide the AI on how to navigate the IVR system.
@@ -7963,7 +9101,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     type: Optional[Literal["prompt"]] = None
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt(
     BaseModel
 ):
     prompt: Optional[str] = None
@@ -7972,7 +9110,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     type: Optional[Literal["prompt"]] = None
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage(
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage(
     BaseModel
 ):
     message: Optional[str] = None
@@ -7981,13 +9119,13 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     type: Optional[Literal["static_message"]] = None
 
 
-NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption: TypeAlias = Union[
-    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt,
-    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage,
+NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption: TypeAlias = Union[
+    NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferPrompt,
+    NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOptionWarmTransferStaticMessage,
 ]
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt(
     BaseModel
 ):
     prompt: Optional[str] = None
@@ -7996,7 +9134,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     type: Optional[Literal["prompt"]] = None
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
     BaseModel
 ):
     message: Optional[str] = None
@@ -8005,13 +9143,13 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     type: Optional[Literal["static_message"]] = None
 
 
-NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption: TypeAlias = Union[
-    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt,
-    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption: TypeAlias = Union[
+    NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
 ]
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseModel):
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseModel):
     type: Literal["warm_transfer"]
     """The type of the transfer."""
 
@@ -8021,9 +9159,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    ivr_option: Optional[NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption] = (
-        None
-    )
+    ivr_option: Optional[NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferIvrOption] = None
     """IVR navigation option to run when doing human detection.
 
     This prompt will guide the AI on how to navigate the IVR system.
@@ -8039,7 +9175,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     """
 
     private_handoff_option: Optional[
-        NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption
+        NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPrivateHandoffOption
     ] = None
     """
     If set, when transfer is connected, will say the handoff message only to the
@@ -8048,7 +9184,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     """
 
     public_handoff_option: Optional[
-        NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption
+        NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransferPublicHandoffOption
     ] = None
     """
     If set, when transfer is successful, will say the handoff message to both the
@@ -8070,7 +9206,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTr
     """
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent(
     BaseModel
 ):
     """The agent that will mediate the transfer decision."""
@@ -8087,7 +9223,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenti
     """The version of the transfer agent to use."""
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig(
     BaseModel
 ):
     """Configuration for agentic warm transfer. Required for agentic warm transfer."""
@@ -8099,7 +9235,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenti
     """
 
     transfer_agent: Optional[
-        NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
+        NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfigTransferAgent
     ] = None
     """The agent that will mediate the transfer decision."""
 
@@ -8110,7 +9246,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenti
     """
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt(
     BaseModel
 ):
     prompt: Optional[str] = None
@@ -8119,7 +9255,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenti
     type: Optional[Literal["prompt"]] = None
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage(
     BaseModel
 ):
     message: Optional[str] = None
@@ -8128,15 +9264,15 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenti
     type: Optional[Literal["static_message"]] = None
 
 
-NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
-    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
-    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
+NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption: TypeAlias = Union[
+    NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt,
+    NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage,
 ]
 
 
-class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(BaseModel):
+class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(BaseModel):
     agentic_transfer_config: (
-        NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
+        NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAgenticTransferConfig
     )
     """Configuration for agentic warm transfer. Required for agentic warm transfer."""
 
@@ -8150,7 +9286,7 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenti
     """The music to play while the caller is being transferred."""
 
     public_handoff_option: Optional[
-        NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
+        NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
     ] = None
     """
     If set, when transfer is successful, will say the handoff message to both the
@@ -8172,14 +9308,14 @@ class NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenti
     """
 
 
-NodeConversationNodeToolTransferCallToolTransferOption: TypeAlias = Union[
-    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer,
-    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer,
-    NodeConversationNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer,
+NodeSubagentNodeToolTransferCallToolTransferOption: TypeAlias = Union[
+    NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionColdTransfer,
+    NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransfer,
+    NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer,
 ]
 
 
-class NodeConversationNodeToolTransferCallTool(BaseModel):
+class NodeSubagentNodeToolTransferCallTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -8187,9 +9323,9 @@ class NodeConversationNodeToolTransferCallTool(BaseModel):
     tools + state tools + state edges).
     """
 
-    transfer_destination: NodeConversationNodeToolTransferCallToolTransferDestination
+    transfer_destination: NodeSubagentNodeToolTransferCallToolTransferDestination
 
-    transfer_option: NodeConversationNodeToolTransferCallToolTransferOption
+    transfer_option: NodeSubagentNodeToolTransferCallToolTransferOption
 
     type: Literal["transfer_call"]
 
@@ -8228,7 +9364,7 @@ class NodeConversationNodeToolTransferCallTool(BaseModel):
     """If true, will speak during execution."""
 
 
-class NodeConversationNodeToolCheckAvailabilityCalTool(BaseModel):
+class NodeSubagentNodeToolCheckAvailabilityCalTool(BaseModel):
     cal_api_key: str
     """
     Cal.com Api key that have access to the cal.com event you want to check
@@ -8268,7 +9404,7 @@ class NodeConversationNodeToolCheckAvailabilityCalTool(BaseModel):
     """
 
 
-class NodeConversationNodeToolBookAppointmentCalTool(BaseModel):
+class NodeSubagentNodeToolBookAppointmentCalTool(BaseModel):
     cal_api_key: str
     """
     Cal.com Api key that have access to the cal.com event you want to book
@@ -8308,7 +9444,7 @@ class NodeConversationNodeToolBookAppointmentCalTool(BaseModel):
     """
 
 
-class NodeConversationNodeToolAgentSwapTool(BaseModel):
+class NodeSubagentNodeToolAgentSwapTool(BaseModel):
     agent_id: str
     """The id of the agent to swap to."""
 
@@ -8359,7 +9495,7 @@ class NodeConversationNodeToolAgentSwapTool(BaseModel):
     """Webhook setting for the agent swap, defaults to only source."""
 
 
-class NodeConversationNodeToolPressDigitTool(BaseModel):
+class NodeSubagentNodeToolPressDigitTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -8384,14 +9520,14 @@ class NodeConversationNodeToolPressDigitTool(BaseModel):
     """
 
 
-class NodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
+class NodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
     content: Optional[str] = None
     """The static message to be sent in the SMS. Can contain dynamic variables."""
 
     type: Optional[Literal["predefined"]] = None
 
 
-class NodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred(BaseModel):
+class NodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred(BaseModel):
     prompt: Optional[str] = None
     """The prompt to be used to help infer the SMS content.
 
@@ -8402,13 +9538,13 @@ class NodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred(BaseModel)
     type: Optional[Literal["inferred"]] = None
 
 
-NodeConversationNodeToolSendSMSToolSMSContent: TypeAlias = Union[
-    NodeConversationNodeToolSendSMSToolSMSContentSMSContentPredefined,
-    NodeConversationNodeToolSendSMSToolSMSContentSMSContentInferred,
+NodeSubagentNodeToolSendSMSToolSMSContent: TypeAlias = Union[
+    NodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined,
+    NodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred,
 ]
 
 
-class NodeConversationNodeToolSendSMSTool(BaseModel):
+class NodeSubagentNodeToolSendSMSTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -8416,7 +9552,7 @@ class NodeConversationNodeToolSendSMSTool(BaseModel):
     tools + state tools + state edges).
     """
 
-    sms_content: NodeConversationNodeToolSendSMSToolSMSContent
+    sms_content: NodeSubagentNodeToolSendSMSToolSMSContent
 
     type: Literal["send_sms"]
 
@@ -8426,8 +9562,28 @@ class NodeConversationNodeToolSendSMSTool(BaseModel):
     to call the tool.
     """
 
+    execution_message_description: Optional[str] = None
+    """Describes what to say before sending the SMS.
 
-class NodeConversationNodeToolCustomToolParameters(BaseModel):
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """If true, the agent will speak a short line before sending the SMS.
+
+    If omitted, defaults to true (same as end_call / transfer_call tools).
+    """
+
+
+class NodeSubagentNodeToolCustomToolParameters(BaseModel):
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
@@ -8450,7 +9606,7 @@ class NodeConversationNodeToolCustomToolParameters(BaseModel):
     """
 
 
-class NodeConversationNodeToolCustomTool(BaseModel):
+class NodeSubagentNodeToolCustomTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -8498,7 +9654,7 @@ class NodeConversationNodeToolCustomTool(BaseModel):
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
 
-    parameters: Optional[NodeConversationNodeToolCustomToolParameters] = None
+    parameters: Optional[NodeSubagentNodeToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
@@ -8541,7 +9697,7 @@ class NodeConversationNodeToolCustomTool(BaseModel):
     """
 
 
-class NodeConversationNodeToolCodeTool(BaseModel):
+class NodeSubagentNodeToolCodeTool(BaseModel):
     code: str
     """JavaScript code to execute in the sandbox."""
 
@@ -8598,7 +9754,7 @@ class NodeConversationNodeToolCodeTool(BaseModel):
     """
 
 
-class NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel):
+class NodeSubagentNodeToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel):
     description: str
     """Description of the variable."""
 
@@ -8607,6 +9763,13 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisDa
 
     type: Literal["string"]
     """Type of the variable to extract."""
+
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
 
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
@@ -8618,7 +9781,7 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisDa
     """
 
 
-class NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
+class NodeSubagentNodeToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     choices: List[str]
     """The possible values of the variable, must be non empty array."""
 
@@ -8631,6 +9794,13 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -8638,7 +9808,7 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData
     """
 
 
-class NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel):
+class NodeSubagentNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel):
     description: str
     """Description of the variable."""
 
@@ -8648,6 +9818,13 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisD
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -8655,7 +9832,7 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisD
     """
 
 
-class NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel):
+class NodeSubagentNodeToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel):
     description: str
     """Description of the variable."""
 
@@ -8665,6 +9842,13 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisDa
     type: Literal["number"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -8672,15 +9856,15 @@ class NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisDa
     """
 
 
-NodeConversationNodeToolExtractDynamicVariableToolVariable: TypeAlias = Union[
-    NodeConversationNodeToolExtractDynamicVariableToolVariableStringAnalysisData,
-    NodeConversationNodeToolExtractDynamicVariableToolVariableEnumAnalysisData,
-    NodeConversationNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData,
-    NodeConversationNodeToolExtractDynamicVariableToolVariableNumberAnalysisData,
+NodeSubagentNodeToolExtractDynamicVariableToolVariable: TypeAlias = Union[
+    NodeSubagentNodeToolExtractDynamicVariableToolVariableStringAnalysisData,
+    NodeSubagentNodeToolExtractDynamicVariableToolVariableEnumAnalysisData,
+    NodeSubagentNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData,
+    NodeSubagentNodeToolExtractDynamicVariableToolVariableNumberAnalysisData,
 ]
 
 
-class NodeConversationNodeToolExtractDynamicVariableTool(BaseModel):
+class NodeSubagentNodeToolExtractDynamicVariableTool(BaseModel):
     description: str
     """
     Describes what the tool does, sometimes can also include information about when
@@ -8697,11 +9881,11 @@ class NodeConversationNodeToolExtractDynamicVariableTool(BaseModel):
 
     type: Literal["extract_dynamic_variable"]
 
-    variables: List[NodeConversationNodeToolExtractDynamicVariableToolVariable]
+    variables: List[NodeSubagentNodeToolExtractDynamicVariableToolVariable]
     """The variables to be extracted."""
 
 
-class NodeConversationNodeToolBridgeTransferTool(BaseModel):
+class NodeSubagentNodeToolBridgeTransferTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -8738,7 +9922,7 @@ class NodeConversationNodeToolBridgeTransferTool(BaseModel):
     """If true, will speak during execution."""
 
 
-class NodeConversationNodeToolCancelTransferTool(BaseModel):
+class NodeSubagentNodeToolCancelTransferTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -8775,7 +9959,7 @@ class NodeConversationNodeToolCancelTransferTool(BaseModel):
     """If true, will speak during execution."""
 
 
-class NodeConversationNodeToolMcpTool(BaseModel):
+class NodeSubagentNodeToolMcpTool(BaseModel):
     description: str
     """Description of the MCP tool."""
 
@@ -8828,67 +10012,67 @@ class NodeConversationNodeToolMcpTool(BaseModel):
     """
 
 
-NodeConversationNodeTool: TypeAlias = Union[
-    NodeConversationNodeToolEndCallTool,
-    NodeConversationNodeToolTransferCallTool,
-    NodeConversationNodeToolCheckAvailabilityCalTool,
-    NodeConversationNodeToolBookAppointmentCalTool,
-    NodeConversationNodeToolAgentSwapTool,
-    NodeConversationNodeToolPressDigitTool,
-    NodeConversationNodeToolSendSMSTool,
-    NodeConversationNodeToolCustomTool,
-    NodeConversationNodeToolCodeTool,
-    NodeConversationNodeToolExtractDynamicVariableTool,
-    NodeConversationNodeToolBridgeTransferTool,
-    NodeConversationNodeToolCancelTransferTool,
-    NodeConversationNodeToolMcpTool,
+NodeSubagentNodeTool: TypeAlias = Union[
+    NodeSubagentNodeToolEndCallTool,
+    NodeSubagentNodeToolTransferCallTool,
+    NodeSubagentNodeToolCheckAvailabilityCalTool,
+    NodeSubagentNodeToolBookAppointmentCalTool,
+    NodeSubagentNodeToolAgentSwapTool,
+    NodeSubagentNodeToolPressDigitTool,
+    NodeSubagentNodeToolSendSMSTool,
+    NodeSubagentNodeToolCustomTool,
+    NodeSubagentNodeToolCodeTool,
+    NodeSubagentNodeToolExtractDynamicVariableTool,
+    NodeSubagentNodeToolBridgeTransferTool,
+    NodeSubagentNodeToolCancelTransferTool,
+    NodeSubagentNodeToolMcpTool,
 ]
 
 
-class NodeConversationNode(BaseModel):
+class NodeSubagentNode(BaseModel):
     id: str
     """Unique identifier for the node"""
 
-    instruction: NodeConversationNodeInstruction
+    instruction: NodeSubagentNodeInstruction
 
-    type: Literal["conversation"]
+    type: Literal["subagent"]
     """Type of the node"""
 
-    always_edge: Optional[NodeConversationNodeAlwaysEdge] = None
+    always_edge: Optional[NodeSubagentNodeAlwaysEdge] = None
 
-    display_position: Optional[NodeConversationNodeDisplayPosition] = None
+    display_position: Optional[NodeSubagentNodeDisplayPosition] = None
     """Position for frontend display"""
 
-    edges: Optional[List[NodeConversationNodeEdge]] = None
+    edges: Optional[List[NodeSubagentNodeEdge]] = None
 
-    finetune_conversation_examples: Optional[List[NodeConversationNodeFinetuneConversationExample]] = None
+    finetune_conversation_examples: Optional[List[NodeSubagentNodeFinetuneConversationExample]] = None
 
-    finetune_transition_examples: Optional[List[NodeConversationNodeFinetuneTransitionExample]] = None
+    finetune_transition_examples: Optional[List[NodeSubagentNodeFinetuneTransitionExample]] = None
 
-    global_node_setting: Optional[NodeConversationNodeGlobalNodeSetting] = None
+    global_node_setting: Optional[NodeSubagentNodeGlobalNodeSetting] = None
 
     interruption_sensitivity: Optional[float] = None
 
     knowledge_base_ids: Optional[List[str]] = None
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
-    api_model_choice: Optional[NodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    api_model_choice: Optional[NodeSubagentNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 
     name: Optional[str] = None
     """Optional name for display purposes"""
 
     responsiveness: Optional[float] = None
 
-    skip_response_edge: Optional[NodeConversationNodeSkipResponseEdge] = None
+    skip_response_edge: Optional[NodeSubagentNodeSkipResponseEdge] = None
 
     tool_ids: Optional[List[str]] = None
     """
     The tool ids of the tools defined in main conversation flow or component that
-    can be used in this conversation node.
+    can be used in this subagent node.
     """
 
-    tools: Optional[List[NodeConversationNodeTool]] = None
-    """The tools owned by this conversation node.
+    tools: Optional[List[NodeSubagentNodeTool]] = None
+    """The tools owned by this subagent node.
 
     This includes other tool types like transfer_call, agent_swap, etc.
     """
@@ -11445,6 +12629,13 @@ class NodeExtractDynamicVariablesNodeVariableStringAnalysisData(BaseModel):
     type: Literal["string"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
@@ -11468,6 +12659,13 @@ class NodeExtractDynamicVariablesNodeVariableEnumAnalysisData(BaseModel):
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -11485,6 +12683,13 @@ class NodeExtractDynamicVariablesNodeVariableBooleanAnalysisData(BaseModel):
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -11501,6 +12706,13 @@ class NodeExtractDynamicVariablesNodeVariableNumberAnalysisData(BaseModel):
 
     type: Literal["number"]
     """Type of the variable to extract."""
+
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
 
     required: Optional[bool] = None
     """Whether this data is required.
@@ -13340,6 +14552,7 @@ class NodeCancelTransferNode(BaseModel):
 
 Node: TypeAlias = Union[
     NodeConversationNode,
+    NodeSubagentNode,
     NodeEndNode,
     NodeFunctionNode,
     NodeCodeNode,
@@ -13354,6 +14567,39 @@ Node: TypeAlias = Union[
     NodeBridgeTransferNode,
     NodeCancelTransferNode,
 ]
+
+
+class NoteDisplayPosition(BaseModel):
+    """Position of the note on the canvas."""
+
+    x: Optional[float] = None
+
+    y: Optional[float] = None
+
+
+class NoteSize(BaseModel):
+    """Dimensions of the note on the canvas."""
+
+    height: Optional[float] = None
+
+    width: Optional[float] = None
+
+
+class Note(BaseModel):
+    id: str
+    """Unique identifier for the note."""
+
+    content: str
+    """
+    Text content of the note, can contain refs to images in the format
+    "<image:asset_id>"
+    """
+
+    display_position: NoteDisplayPosition
+    """Position of the note on the canvas."""
+
+    size: NoteSize
+    """Dimensions of the note on the canvas."""
 
 
 class ToolCustomToolParameters(BaseModel):
@@ -13615,6 +14861,9 @@ class ConversationFlowResponse(BaseModel):
 
     nodes: Optional[List[Node]] = None
     """Array of nodes in the conversation flow."""
+
+    notes: Optional[List[Note]] = None
+    """Visual annotations displayed on the flow canvas."""
 
     start_node_id: Optional[str] = None
     """ID of the start node in the conversation flow."""

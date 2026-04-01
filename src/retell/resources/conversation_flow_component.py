@@ -52,6 +52,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         begin_tag_display_position: Optional[conversation_flow_component_create_params.BeginTagDisplayPosition]
         | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_component_create_params.Mcp]] | Omit = omit,
+        notes: Optional[Iterable[conversation_flow_component_create_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_component_create_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -73,6 +74,8 @@ class ConversationFlowComponentResource(SyncAPIResource):
 
           mcps: A list of MCP server configurations to use for this component
 
+          notes: Visual annotations displayed on the flow canvas.
+
           start_node_id: ID of the starting node
 
           tools: Tools available within the component
@@ -93,6 +96,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
                     "nodes": nodes,
                     "begin_tag_display_position": begin_tag_display_position,
                     "mcps": mcps,
+                    "notes": notes,
                     "start_node_id": start_node_id,
                     "tools": tools,
                 },
@@ -151,6 +155,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         mcps: Optional[Iterable[conversation_flow_component_update_params.Mcp]] | Omit = omit,
         name: str | Omit = omit,
         nodes: Iterable[conversation_flow_component_update_params.Node] | Omit = omit,
+        notes: Optional[Iterable[conversation_flow_component_update_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_component_update_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -171,6 +176,8 @@ class ConversationFlowComponentResource(SyncAPIResource):
           name: Name of the component
 
           nodes: Nodes that make up the component
+
+          notes: Visual annotations displayed on the flow canvas.
 
           start_node_id: ID of the starting node
 
@@ -199,6 +206,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
                     "mcps": mcps,
                     "name": name,
                     "nodes": nodes,
+                    "notes": notes,
                     "start_node_id": start_node_id,
                     "tools": tools,
                 },
@@ -299,6 +307,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         begin_tag_display_position: Optional[conversation_flow_component_create_params.BeginTagDisplayPosition]
         | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_component_create_params.Mcp]] | Omit = omit,
+        notes: Optional[Iterable[conversation_flow_component_create_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_component_create_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -320,6 +329,8 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
 
           mcps: A list of MCP server configurations to use for this component
 
+          notes: Visual annotations displayed on the flow canvas.
+
           start_node_id: ID of the starting node
 
           tools: Tools available within the component
@@ -340,6 +351,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                     "nodes": nodes,
                     "begin_tag_display_position": begin_tag_display_position,
                     "mcps": mcps,
+                    "notes": notes,
                     "start_node_id": start_node_id,
                     "tools": tools,
                 },
@@ -398,6 +410,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         mcps: Optional[Iterable[conversation_flow_component_update_params.Mcp]] | Omit = omit,
         name: str | Omit = omit,
         nodes: Iterable[conversation_flow_component_update_params.Node] | Omit = omit,
+        notes: Optional[Iterable[conversation_flow_component_update_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_component_update_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -418,6 +431,8 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
           name: Name of the component
 
           nodes: Nodes that make up the component
+
+          notes: Visual annotations displayed on the flow canvas.
 
           start_node_id: ID of the starting node
 
@@ -446,6 +461,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                     "mcps": mcps,
                     "name": name,
                     "nodes": nodes,
+                    "notes": notes,
                     "start_node_id": start_node_id,
                     "tools": tools,
                 },

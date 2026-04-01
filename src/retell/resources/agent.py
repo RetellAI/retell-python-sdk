@@ -78,6 +78,7 @@ class AgentResource(SyncAPIResource):
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
+        handbook_config: agent_create_params.HandbookConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_create_params.IvrOption] | Omit = omit,
@@ -182,6 +183,7 @@ class AgentResource(SyncAPIResource):
         ring_duration_ms: int | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate", "custom"] | Omit = omit,
+        timezone: Optional[str] | Omit = omit,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -348,6 +350,8 @@ class AgentResource(SyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
+          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
               agent, while higher value means it's easier for user to interrupt agent. If
@@ -418,6 +422,9 @@ class AgentResource(SyncAPIResource):
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode. When set to custom, custom_stt_config must be provided.
+
+          timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
+              America/Los_Angeles if not set.
 
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
@@ -506,6 +513,7 @@ class AgentResource(SyncAPIResource):
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
+                    "handbook_config": handbook_config,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
                     "ivr_option": ivr_option,
@@ -523,6 +531,7 @@ class AgentResource(SyncAPIResource):
                     "ring_duration_ms": ring_duration_ms,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
+                    "timezone": timezone,
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
@@ -619,6 +628,7 @@ class AgentResource(SyncAPIResource):
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_update_params.GuardrailConfig | Omit = omit,
+        handbook_config: agent_update_params.HandbookConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_update_params.IvrOption] | Omit = omit,
@@ -724,6 +734,7 @@ class AgentResource(SyncAPIResource):
         ring_duration_ms: int | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate", "custom"] | Omit = omit,
+        timezone: Optional[str] | Omit = omit,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -886,6 +897,8 @@ class AgentResource(SyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
+          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
               agent, while higher value means it's easier for user to interrupt agent. If
@@ -960,6 +973,9 @@ class AgentResource(SyncAPIResource):
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode. When set to custom, custom_stt_config must be provided.
+
+          timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
+              America/Los_Angeles if not set.
 
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
@@ -1051,6 +1067,7 @@ class AgentResource(SyncAPIResource):
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
+                    "handbook_config": handbook_config,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
                     "ivr_option": ivr_option,
@@ -1069,6 +1086,7 @@ class AgentResource(SyncAPIResource):
                     "ring_duration_ms": ring_duration_ms,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
+                    "timezone": timezone,
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
@@ -1308,6 +1326,7 @@ class AsyncAgentResource(AsyncAPIResource):
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
+        handbook_config: agent_create_params.HandbookConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_create_params.IvrOption] | Omit = omit,
@@ -1412,6 +1431,7 @@ class AsyncAgentResource(AsyncAPIResource):
         ring_duration_ms: int | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate", "custom"] | Omit = omit,
+        timezone: Optional[str] | Omit = omit,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -1578,6 +1598,8 @@ class AsyncAgentResource(AsyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
+          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
               agent, while higher value means it's easier for user to interrupt agent. If
@@ -1648,6 +1670,9 @@ class AsyncAgentResource(AsyncAPIResource):
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode. When set to custom, custom_stt_config must be provided.
+
+          timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
+              America/Los_Angeles if not set.
 
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
@@ -1736,6 +1761,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
+                    "handbook_config": handbook_config,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
                     "ivr_option": ivr_option,
@@ -1753,6 +1779,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "ring_duration_ms": ring_duration_ms,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
+                    "timezone": timezone,
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
                     "vocab_specialization": vocab_specialization,
@@ -1849,6 +1876,7 @@ class AsyncAgentResource(AsyncAPIResource):
         end_call_after_silence_ms: int | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_update_params.GuardrailConfig | Omit = omit,
+        handbook_config: agent_update_params.HandbookConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_update_params.IvrOption] | Omit = omit,
@@ -1954,6 +1982,7 @@ class AsyncAgentResource(AsyncAPIResource):
         ring_duration_ms: int | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         stt_mode: Literal["fast", "accurate", "custom"] | Omit = omit,
+        timezone: Optional[str] | Omit = omit,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
@@ -2116,6 +2145,8 @@ class AsyncAgentResource(AsyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
+          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
               agent, while higher value means it's easier for user to interrupt agent. If
@@ -2190,6 +2221,9 @@ class AsyncAgentResource(AsyncAPIResource):
 
           stt_mode: If set, determines whether speech to text should focus on latency or accuracy.
               Default to fast mode. When set to custom, custom_stt_config must be provided.
+
+          timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
+              America/Los_Angeles if not set.
 
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
@@ -2281,6 +2315,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "end_call_after_silence_ms": end_call_after_silence_ms,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
+                    "handbook_config": handbook_config,
                     "interruption_sensitivity": interruption_sensitivity,
                     "is_public": is_public,
                     "ivr_option": ivr_option,
@@ -2299,6 +2334,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "ring_duration_ms": ring_duration_ms,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "stt_mode": stt_mode,
+                    "timezone": timezone,
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
                     "vocab_specialization": vocab_specialization,

@@ -66,6 +66,7 @@ class ConversationFlowResource(SyncAPIResource):
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | Omit = omit,
         model_temperature: Optional[float] | Omit = omit,
+        notes: Optional[Iterable[conversation_flow_create_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         tool_call_strict_mode: Optional[bool] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_create_params.Tool]] | Omit = omit,
@@ -113,6 +114,8 @@ class ConversationFlowResource(SyncAPIResource):
           model_temperature: Controls the randomness of the model's responses. Lower values make responses
               more deterministic.
 
+          notes: Visual annotations displayed on the flow canvas.
+
           start_node_id: ID of the start node in the conversation flow.
 
           tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
@@ -145,6 +148,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
                     "model_temperature": model_temperature,
+                    "notes": notes,
                     "start_node_id": start_node_id,
                     "tool_call_strict_mode": tool_call_strict_mode,
                     "tools": tools,
@@ -219,6 +223,7 @@ class ConversationFlowResource(SyncAPIResource):
         model_choice: conversation_flow_update_params.ModelChoice | Omit = omit,
         model_temperature: Optional[float] | Omit = omit,
         nodes: Iterable[conversation_flow_update_params.Node] | Omit = omit,
+        notes: Optional[Iterable[conversation_flow_update_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         tool_call_strict_mode: Optional[bool] | Omit = omit,
@@ -265,6 +270,8 @@ class ConversationFlowResource(SyncAPIResource):
 
           nodes: Array of nodes in the conversation flow.
 
+          notes: Visual annotations displayed on the flow canvas.
+
           start_node_id: ID of the start node in the conversation flow.
 
           start_speaker: Who starts the conversation - user or agent.
@@ -304,6 +311,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "model_choice": model_choice,
                     "model_temperature": model_temperature,
                     "nodes": nodes,
+                    "notes": notes,
                     "start_node_id": start_node_id,
                     "start_speaker": start_speaker,
                     "tool_call_strict_mode": tool_call_strict_mode,
@@ -455,6 +463,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | Omit = omit,
         model_temperature: Optional[float] | Omit = omit,
+        notes: Optional[Iterable[conversation_flow_create_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         tool_call_strict_mode: Optional[bool] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_create_params.Tool]] | Omit = omit,
@@ -502,6 +511,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
           model_temperature: Controls the randomness of the model's responses. Lower values make responses
               more deterministic.
 
+          notes: Visual annotations displayed on the flow canvas.
+
           start_node_id: ID of the start node in the conversation flow.
 
           tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
@@ -534,6 +545,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
                     "model_temperature": model_temperature,
+                    "notes": notes,
                     "start_node_id": start_node_id,
                     "tool_call_strict_mode": tool_call_strict_mode,
                     "tools": tools,
@@ -608,6 +620,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         model_choice: conversation_flow_update_params.ModelChoice | Omit = omit,
         model_temperature: Optional[float] | Omit = omit,
         nodes: Iterable[conversation_flow_update_params.Node] | Omit = omit,
+        notes: Optional[Iterable[conversation_flow_update_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         tool_call_strict_mode: Optional[bool] | Omit = omit,
@@ -654,6 +667,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           nodes: Array of nodes in the conversation flow.
 
+          notes: Visual annotations displayed on the flow canvas.
+
           start_node_id: ID of the start node in the conversation flow.
 
           start_speaker: Who starts the conversation - user or agent.
@@ -693,6 +708,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "model_choice": model_choice,
                     "model_temperature": model_temperature,
                     "nodes": nodes,
+                    "notes": notes,
                     "start_node_id": start_node_id,
                     "start_speaker": start_speaker,
                     "tool_call_strict_mode": tool_call_strict_mode,

@@ -671,6 +671,26 @@ class GeneralToolSendSMSTool(BaseModel):
     to call the tool.
     """
 
+    execution_message_description: Optional[str] = None
+    """Describes what to say before sending the SMS.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """If true, the agent will speak a short line before sending the SMS.
+
+    If omitted, defaults to true (same as end_call / transfer_call tools).
+    """
+
 
 class GeneralToolCustomToolParameters(BaseModel):
     """The parameters the functions accepts, described as a JSON Schema object.
@@ -853,6 +873,13 @@ class GeneralToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel)
     type: Literal["string"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
@@ -876,6 +903,13 @@ class GeneralToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -893,6 +927,13 @@ class GeneralToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -909,6 +950,13 @@ class GeneralToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel)
 
     type: Literal["number"]
     """Type of the variable to extract."""
+
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
 
     required: Optional[bool] = None
     """Whether this data is required.
@@ -1736,6 +1784,26 @@ class StateToolSendSMSTool(BaseModel):
     to call the tool.
     """
 
+    execution_message_description: Optional[str] = None
+    """Describes what to say before sending the SMS.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """If true, the agent will speak a short line before sending the SMS.
+
+    If omitted, defaults to true (same as end_call / transfer_call tools).
+    """
+
 
 class StateToolCustomToolParameters(BaseModel):
     """The parameters the functions accepts, described as a JSON Schema object.
@@ -1918,6 +1986,13 @@ class StateToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel):
     type: Literal["string"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
@@ -1941,6 +2016,13 @@ class StateToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -1958,6 +2040,13 @@ class StateToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel):
     type: Literal["boolean"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -1974,6 +2063,13 @@ class StateToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel):
 
     type: Literal["number"]
     """Type of the variable to extract."""
+
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
 
     required: Optional[bool] = None
     """Whether this data is required.

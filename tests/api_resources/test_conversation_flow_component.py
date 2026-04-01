@@ -147,17 +147,6 @@ class TestConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
-                    "tool_ids": ["string"],
-                    "tools": [
-                        {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
-                            "execution_message_description": "execution_message_description",
-                            "execution_message_type": "prompt",
-                            "speak_during_execution": True,
-                        }
-                    ],
                     "voice_speed": 0.5,
                 }
             ],
@@ -175,6 +164,20 @@ class TestConversationFlowComponent:
                         "key": "value",
                     },
                     "timeout_ms": 0,
+                }
+            ],
+            notes=[
+                {
+                    "id": "note_abc123",
+                    "content": "Remember to handle edge cases here.",
+                    "display_position": {
+                        "x": 300,
+                        "y": 150,
+                    },
+                    "size": {
+                        "height": 100,
+                        "width": 200,
+                    },
                 }
             ],
             start_node_id="collect_info",
@@ -432,18 +435,21 @@ class TestConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
-                    "tool_ids": ["string"],
-                    "tools": [
-                        {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
-                            "execution_message_description": "execution_message_description",
-                            "execution_message_type": "prompt",
-                            "speak_during_execution": True,
-                        }
-                    ],
                     "voice_speed": 0.5,
+                }
+            ],
+            notes=[
+                {
+                    "id": "note_abc123",
+                    "content": "Remember to handle edge cases here.",
+                    "display_position": {
+                        "x": 300,
+                        "y": 150,
+                    },
+                    "size": {
+                        "height": 100,
+                        "width": 200,
+                    },
                 }
             ],
             start_node_id="collect_info",
@@ -718,17 +724,6 @@ class TestAsyncConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
-                    "tool_ids": ["string"],
-                    "tools": [
-                        {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
-                            "execution_message_description": "execution_message_description",
-                            "execution_message_type": "prompt",
-                            "speak_during_execution": True,
-                        }
-                    ],
                     "voice_speed": 0.5,
                 }
             ],
@@ -746,6 +741,20 @@ class TestAsyncConversationFlowComponent:
                         "key": "value",
                     },
                     "timeout_ms": 0,
+                }
+            ],
+            notes=[
+                {
+                    "id": "note_abc123",
+                    "content": "Remember to handle edge cases here.",
+                    "display_position": {
+                        "x": 300,
+                        "y": 150,
+                    },
+                    "size": {
+                        "height": 100,
+                        "width": 200,
+                    },
                 }
             ],
             start_node_id="collect_info",
@@ -1003,18 +1012,21 @@ class TestAsyncConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
-                    "tool_ids": ["string"],
-                    "tools": [
-                        {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
-                            "execution_message_description": "execution_message_description",
-                            "execution_message_type": "prompt",
-                            "speak_during_execution": True,
-                        }
-                    ],
                     "voice_speed": 0.5,
+                }
+            ],
+            notes=[
+                {
+                    "id": "note_abc123",
+                    "content": "Remember to handle edge cases here.",
+                    "display_position": {
+                        "x": 300,
+                        "y": 150,
+                    },
+                    "size": {
+                        "height": 100,
+                        "width": 200,
+                    },
                 }
             ],
             start_node_id="collect_info",
