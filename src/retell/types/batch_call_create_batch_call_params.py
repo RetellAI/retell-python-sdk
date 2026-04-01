@@ -14,6 +14,7 @@ __all__ = [
     "TaskAgentOverrideAgent",
     "TaskAgentOverrideAgentCustomSttConfig",
     "TaskAgentOverrideAgentGuardrailConfig",
+    "TaskAgentOverrideAgentHandbookConfig",
     "TaskAgentOverrideAgentIvrOption",
     "TaskAgentOverrideAgentIvrOptionAction",
     "TaskAgentOverrideAgentPiiConfig",
@@ -22,6 +23,7 @@ __all__ = [
     "TaskAgentOverrideAgentPostCallAnalysisDataEnumAnalysisData",
     "TaskAgentOverrideAgentPostCallAnalysisDataBooleanAnalysisData",
     "TaskAgentOverrideAgentPostCallAnalysisDataNumberAnalysisData",
+    "TaskAgentOverrideAgentPostCallAnalysisDataCallPresetAnalysisData",
     "TaskAgentOverrideAgentPronunciationDictionary",
     "TaskAgentOverrideAgentResponseEngine",
     "TaskAgentOverrideAgentResponseEngineResponseEngineRetellLm",
@@ -127,6 +129,43 @@ class TaskAgentOverrideAgentGuardrailConfig(TypedDict, total=False):
     """
 
 
+class TaskAgentOverrideAgentHandbookConfig(TypedDict, total=False):
+    """Toggle behavior presets on/off to influence agent response style and behaviors."""
+
+    ai_disclosure: bool
+    """When asked, acknowledge being a virtual assistant."""
+
+    default_personality: bool
+    """Professional call center rep baseline."""
+
+    echo_verification: bool
+    """Repeat back and confirm important details (voice only)."""
+
+    high_empathy: bool
+    """Warm acknowledgment of caller concerns."""
+
+    nato_phonetic_alphabet: bool
+    """Spell using NATO phonetic alphabet style (voice only)."""
+
+    natural_filler_words: bool
+    """
+    Sprinkle natural speech fillers like "um", "you know" for a more human,
+    conversational tone.
+    """
+
+    scope_boundaries: bool
+    """Stay within prompt/context scope, don't invent details."""
+
+    smart_matching: bool
+    """
+    Treat near-match similar words as same entity to reduce impact of transcription
+    error (voice only).
+    """
+
+    speech_normalization: bool
+    """Convert numbers/dates/currency to spoken forms (voice only)."""
+
+
 class TaskAgentOverrideAgentIvrOptionAction(TypedDict, total=False):
     type: Required[Literal["hangup"]]
 
@@ -178,6 +217,13 @@ class TaskAgentOverrideAgentPostCallAnalysisDataStringAnalysisData(TypedDict, to
     type: Required[Literal["string"]]
     """Type of the variable to extract."""
 
+    conditional_prompt: str
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     examples: SequenceNotStr[str]
     """Examples of the variable value to teach model the style and syntax."""
 
@@ -201,6 +247,13 @@ class TaskAgentOverrideAgentPostCallAnalysisDataEnumAnalysisData(TypedDict, tota
     type: Required[Literal["enum"]]
     """Type of the variable to extract."""
 
+    conditional_prompt: str
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: bool
     """Whether this data is required.
 
@@ -217,6 +270,13 @@ class TaskAgentOverrideAgentPostCallAnalysisDataBooleanAnalysisData(TypedDict, t
 
     type: Required[Literal["boolean"]]
     """Type of the variable to extract."""
+
+    conditional_prompt: str
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
 
     required: bool
     """Whether this data is required.
@@ -235,10 +295,45 @@ class TaskAgentOverrideAgentPostCallAnalysisDataNumberAnalysisData(TypedDict, to
     type: Required[Literal["number"]]
     """Type of the variable to extract."""
 
+    conditional_prompt: str
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: bool
     """Whether this data is required.
 
     If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
+
+class TaskAgentOverrideAgentPostCallAnalysisDataCallPresetAnalysisData(TypedDict, total=False):
+    """System preset for post-call analysis (voice agents).
+
+    Use in post_call_analysis_data to override prompts or mark fields optional.
+    """
+
+    name: Required[Literal["call_summary", "call_successful", "user_sentiment"]]
+    """Preset identifier for voice agent analysis."""
+
+    type: Required[Literal["system-presets"]]
+    """Identifies this item as a system preset."""
+
+    conditional_prompt: str
+    """Optional instruction to help decide whether this field needs to be populated.
+
+    If not set, the field is always included.
+    """
+
+    description: str
+    """Prompt or description for this preset."""
+
+    required: bool
+    """If false, this field is optional in the analysis.
+
+    If true or unset, the field is required.
     """
 
 
@@ -247,6 +342,7 @@ TaskAgentOverrideAgentPostCallAnalysisData: TypeAlias = Union[
     TaskAgentOverrideAgentPostCallAnalysisDataEnumAnalysisData,
     TaskAgentOverrideAgentPostCallAnalysisDataBooleanAnalysisData,
     TaskAgentOverrideAgentPostCallAnalysisDataNumberAnalysisData,
+    TaskAgentOverrideAgentPostCallAnalysisDataCallPresetAnalysisData,
 ]
 
 
@@ -532,6 +628,9 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     agent output and user input.
     """
 
+    handbook_config: TaskAgentOverrideAgentHandbookConfig
+    """Toggle behavior presets on/off to influence agent response style and behaviors."""
+
     interruption_sensitivity: float
     """Controls how sensitive the agent is to user interruptions.
 
@@ -740,6 +839,12 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     """If set, determines whether speech to text should focus on latency or accuracy.
 
     Default to fast mode. When set to custom, custom_stt_config must be provided.
+    """
+
+    timezone: Optional[str]
+    """IANA timezone for the agent (e.g.
+
+    America/New_York). Defaults to America/Los_Angeles if not set.
     """
 
     user_dtmf_options: Optional[TaskAgentOverrideAgentUserDtmfOptions]

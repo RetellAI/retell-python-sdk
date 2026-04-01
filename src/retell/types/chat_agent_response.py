@@ -12,12 +12,14 @@ __all__ = [
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
     "GuardrailConfig",
+    "HandbookConfig",
     "PiiConfig",
     "PostChatAnalysisData",
     "PostChatAnalysisDataStringAnalysisData",
     "PostChatAnalysisDataEnumAnalysisData",
     "PostChatAnalysisDataBooleanAnalysisData",
     "PostChatAnalysisDataNumberAnalysisData",
+    "PostChatAnalysisDataChatPresetAnalysisData",
 ]
 
 
@@ -92,6 +94,25 @@ class GuardrailConfig(BaseModel):
     """
 
 
+class HandbookConfig(BaseModel):
+    """Toggle behavior presets on/off to influence agent response style and behaviors.
+
+    Voice-only presets are not available for chat agents.
+    """
+
+    ai_disclosure: Optional[bool] = None
+    """When asked, acknowledge being a virtual assistant."""
+
+    default_personality: Optional[bool] = None
+    """Professional call center rep baseline."""
+
+    high_empathy: Optional[bool] = None
+    """Warm acknowledgment of caller concerns."""
+
+    scope_boundaries: Optional[bool] = None
+    """Stay within prompt/context scope, don't invent details."""
+
+
 class PiiConfig(BaseModel):
     """Configuration for PII scrubbing from transcripts and recordings."""
 
@@ -129,6 +150,13 @@ class PostChatAnalysisDataStringAnalysisData(BaseModel):
     type: Literal["string"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     examples: Optional[List[str]] = None
     """Examples of the variable value to teach model the style and syntax."""
 
@@ -152,6 +180,13 @@ class PostChatAnalysisDataEnumAnalysisData(BaseModel):
     type: Literal["enum"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
@@ -168,6 +203,13 @@ class PostChatAnalysisDataBooleanAnalysisData(BaseModel):
 
     type: Literal["boolean"]
     """Type of the variable to extract."""
+
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
 
     required: Optional[bool] = None
     """Whether this data is required.
@@ -186,10 +228,45 @@ class PostChatAnalysisDataNumberAnalysisData(BaseModel):
     type: Literal["number"]
     """Type of the variable to extract."""
 
+    conditional_prompt: Optional[str] = None
+    """
+    Optional instruction to help decide whether this field needs to be populated in
+    the analysis. If not set, the field is always included. If required is true,
+    this is ignored.
+    """
+
     required: Optional[bool] = None
     """Whether this data is required.
 
     If true and the data is not extracted, the call will be marked as unsuccessful.
+    """
+
+
+class PostChatAnalysisDataChatPresetAnalysisData(BaseModel):
+    """System preset for post-chat analysis (chat agents).
+
+    Use in post_chat_analysis_data to override prompts or mark fields optional.
+    """
+
+    name: Literal["chat_summary", "chat_successful", "user_sentiment"]
+    """Preset identifier for chat agent analysis."""
+
+    type: Literal["system-presets"]
+    """Identifies this item as a system preset."""
+
+    conditional_prompt: Optional[str] = None
+    """Optional instruction to help decide whether this field needs to be populated.
+
+    If not set, the field is always included.
+    """
+
+    description: Optional[str] = None
+    """Prompt or description for this preset."""
+
+    required: Optional[bool] = None
+    """If false, this field is optional in the analysis.
+
+    If true or unset, the field is required.
     """
 
 
@@ -198,6 +275,7 @@ PostChatAnalysisData: TypeAlias = Union[
     PostChatAnalysisDataEnumAnalysisData,
     PostChatAnalysisDataBooleanAnalysisData,
     PostChatAnalysisDataNumberAnalysisData,
+    PostChatAnalysisDataChatPresetAnalysisData,
 ]
 
 
@@ -270,6 +348,12 @@ class ChatAgentResponse(BaseModel):
     """
     Configuration for guardrail checks to detect and prevent prohibited topics in
     agent output and user input.
+    """
+
+    handbook_config: Optional[HandbookConfig] = None
+    """Toggle behavior presets on/off to influence agent response style and behaviors.
+
+    Voice-only presets are not available for chat agents.
     """
 
     is_public: Optional[bool] = None
@@ -375,6 +459,12 @@ class ChatAgentResponse(BaseModel):
 
     Only applicable when opt_in_signed_url is true. If not set, default value of
     86400000 (24 hours) will apply.
+    """
+
+    timezone: Optional[str] = None
+    """IANA timezone for the agent (e.g.
+
+    America/New_York). Defaults to America/Los_Angeles if not set.
     """
 
     version: Optional[int] = None
