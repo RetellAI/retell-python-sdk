@@ -155,17 +155,6 @@ class TestConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
-                    "tool_ids": ["string"],
-                    "tools": [
-                        {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
-                            "execution_message_description": "execution_message_description",
-                            "execution_message_type": "prompt",
-                            "speak_during_execution": True,
-                        }
-                    ],
                     "voice_speed": 0.5,
                 }
             ],
@@ -282,17 +271,6 @@ class TestConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
-                            "tool_ids": ["string"],
-                            "tools": [
-                                {
-                                    "name": "name",
-                                    "type": "end_call",
-                                    "description": "description",
-                                    "execution_message_description": "execution_message_description",
-                                    "execution_message_type": "prompt",
-                                    "speak_during_execution": True,
-                                }
-                            ],
                             "voice_speed": 0.5,
                         }
                     ],
@@ -310,6 +288,20 @@ class TestConversationFlow:
                                 "key": "value",
                             },
                             "timeout_ms": 0,
+                        }
+                    ],
+                    "notes": [
+                        {
+                            "id": "note_abc123",
+                            "content": "Remember to handle edge cases here.",
+                            "display_position": {
+                                "x": 300,
+                                "y": 150,
+                            },
+                            "size": {
+                                "height": 100,
+                                "width": 200,
+                            },
                         }
                     ],
                     "start_node_id": "collect_info",
@@ -366,6 +358,20 @@ class TestConversationFlow:
                 }
             ],
             model_temperature=0.7,
+            notes=[
+                {
+                    "id": "note_abc123",
+                    "content": "Remember to handle edge cases here.",
+                    "display_position": {
+                        "x": 300,
+                        "y": 150,
+                    },
+                    "size": {
+                        "height": 100,
+                        "width": 200,
+                    },
+                }
+            ],
             start_node_id="start",
             tool_call_strict_mode=True,
             tools=[
@@ -629,17 +635,6 @@ class TestConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
-                            "tool_ids": ["string"],
-                            "tools": [
-                                {
-                                    "name": "name",
-                                    "type": "end_call",
-                                    "description": "description",
-                                    "execution_message_description": "execution_message_description",
-                                    "execution_message_type": "prompt",
-                                    "speak_during_execution": True,
-                                }
-                            ],
                             "voice_speed": 0.5,
                         }
                     ],
@@ -657,6 +652,20 @@ class TestConversationFlow:
                                 "key": "value",
                             },
                             "timeout_ms": 0,
+                        }
+                    ],
+                    "notes": [
+                        {
+                            "id": "note_abc123",
+                            "content": "Remember to handle edge cases here.",
+                            "display_position": {
+                                "x": 300,
+                                "y": 150,
+                            },
+                            "size": {
+                                "height": 100,
+                                "width": 200,
+                            },
                         }
                     ],
                     "start_node_id": "collect_info",
@@ -822,18 +831,21 @@ class TestConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
-                    "tool_ids": ["string"],
-                    "tools": [
-                        {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
-                            "execution_message_description": "execution_message_description",
-                            "execution_message_type": "prompt",
-                            "speak_during_execution": True,
-                        }
-                    ],
                     "voice_speed": 0.5,
+                }
+            ],
+            notes=[
+                {
+                    "id": "note_abc123",
+                    "content": "Remember to handle edge cases here.",
+                    "display_position": {
+                        "x": 300,
+                        "y": 150,
+                    },
+                    "size": {
+                        "height": 100,
+                        "width": 200,
+                    },
                 }
             ],
             start_node_id="start",
@@ -1124,17 +1136,6 @@ class TestAsyncConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
-                    "tool_ids": ["string"],
-                    "tools": [
-                        {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
-                            "execution_message_description": "execution_message_description",
-                            "execution_message_type": "prompt",
-                            "speak_during_execution": True,
-                        }
-                    ],
                     "voice_speed": 0.5,
                 }
             ],
@@ -1251,17 +1252,6 @@ class TestAsyncConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
-                            "tool_ids": ["string"],
-                            "tools": [
-                                {
-                                    "name": "name",
-                                    "type": "end_call",
-                                    "description": "description",
-                                    "execution_message_description": "execution_message_description",
-                                    "execution_message_type": "prompt",
-                                    "speak_during_execution": True,
-                                }
-                            ],
                             "voice_speed": 0.5,
                         }
                     ],
@@ -1279,6 +1269,20 @@ class TestAsyncConversationFlow:
                                 "key": "value",
                             },
                             "timeout_ms": 0,
+                        }
+                    ],
+                    "notes": [
+                        {
+                            "id": "note_abc123",
+                            "content": "Remember to handle edge cases here.",
+                            "display_position": {
+                                "x": 300,
+                                "y": 150,
+                            },
+                            "size": {
+                                "height": 100,
+                                "width": 200,
+                            },
                         }
                     ],
                     "start_node_id": "collect_info",
@@ -1335,6 +1339,20 @@ class TestAsyncConversationFlow:
                 }
             ],
             model_temperature=0.7,
+            notes=[
+                {
+                    "id": "note_abc123",
+                    "content": "Remember to handle edge cases here.",
+                    "display_position": {
+                        "x": 300,
+                        "y": 150,
+                    },
+                    "size": {
+                        "height": 100,
+                        "width": 200,
+                    },
+                }
+            ],
             start_node_id="start",
             tool_call_strict_mode=True,
             tools=[
@@ -1598,17 +1616,6 @@ class TestAsyncConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
-                            "tool_ids": ["string"],
-                            "tools": [
-                                {
-                                    "name": "name",
-                                    "type": "end_call",
-                                    "description": "description",
-                                    "execution_message_description": "execution_message_description",
-                                    "execution_message_type": "prompt",
-                                    "speak_during_execution": True,
-                                }
-                            ],
                             "voice_speed": 0.5,
                         }
                     ],
@@ -1626,6 +1633,20 @@ class TestAsyncConversationFlow:
                                 "key": "value",
                             },
                             "timeout_ms": 0,
+                        }
+                    ],
+                    "notes": [
+                        {
+                            "id": "note_abc123",
+                            "content": "Remember to handle edge cases here.",
+                            "display_position": {
+                                "x": 300,
+                                "y": 150,
+                            },
+                            "size": {
+                                "height": 100,
+                                "width": 200,
+                            },
                         }
                     ],
                     "start_node_id": "collect_info",
@@ -1791,18 +1812,21 @@ class TestAsyncConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
-                    "tool_ids": ["string"],
-                    "tools": [
-                        {
-                            "name": "name",
-                            "type": "end_call",
-                            "description": "description",
-                            "execution_message_description": "execution_message_description",
-                            "execution_message_type": "prompt",
-                            "speak_during_execution": True,
-                        }
-                    ],
                     "voice_speed": 0.5,
+                }
+            ],
+            notes=[
+                {
+                    "id": "note_abc123",
+                    "content": "Remember to handle edge cases here.",
+                    "display_position": {
+                        "x": 300,
+                        "y": 150,
+                    },
+                    "size": {
+                        "height": 100,
+                        "width": 200,
+                    },
                 }
             ],
             start_node_id="start",

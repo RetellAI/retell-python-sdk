@@ -65,6 +65,7 @@ class ChatAgentResource(SyncAPIResource):
         | Omit = omit,
         end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_create_params.GuardrailConfig | Omit = omit,
+        handbook_config: chat_agent_create_params.HandbookConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
@@ -134,6 +135,7 @@ class ChatAgentResource(SyncAPIResource):
         ]
         | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
+        timezone: Optional[str] | Omit = omit,
         webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
@@ -181,6 +183,9 @@ class ChatAgentResource(SyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
+          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+              Voice-only presets are not available for chat agents.
+
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
 
@@ -203,6 +208,9 @@ class ChatAgentResource(SyncAPIResource):
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
               apply.
+
+          timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
+              America/Los_Angeles if not set.
 
           webhook_events: Which webhook events this agent should receive. If not set, defaults to
               chat_started, chat_ended, chat_analyzed.
@@ -237,6 +245,7 @@ class ChatAgentResource(SyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
+                    "handbook_config": handbook_config,
                     "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
@@ -244,6 +253,7 @@ class ChatAgentResource(SyncAPIResource):
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
+                    "timezone": timezone,
                     "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
@@ -312,6 +322,7 @@ class ChatAgentResource(SyncAPIResource):
         | Omit = omit,
         end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_update_params.GuardrailConfig | Omit = omit,
+        handbook_config: chat_agent_update_params.HandbookConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
@@ -382,6 +393,7 @@ class ChatAgentResource(SyncAPIResource):
         | Omit = omit,
         response_engine: chat_agent_update_params.ResponseEngine | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
+        timezone: Optional[str] | Omit = omit,
         webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
@@ -427,6 +439,9 @@ class ChatAgentResource(SyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
+          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+              Voice-only presets are not available for chat agents.
+
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
 
@@ -453,6 +468,9 @@ class ChatAgentResource(SyncAPIResource):
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
               apply.
+
+          timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
+              America/Los_Angeles if not set.
 
           webhook_events: Which webhook events this agent should receive. If not set, defaults to
               chat_started, chat_ended, chat_analyzed.
@@ -488,6 +506,7 @@ class ChatAgentResource(SyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
+                    "handbook_config": handbook_config,
                     "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
@@ -496,6 +515,7 @@ class ChatAgentResource(SyncAPIResource):
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "response_engine": response_engine,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
+                    "timezone": timezone,
                     "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
@@ -704,6 +724,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         | Omit = omit,
         end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_create_params.GuardrailConfig | Omit = omit,
+        handbook_config: chat_agent_create_params.HandbookConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
@@ -773,6 +794,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         ]
         | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
+        timezone: Optional[str] | Omit = omit,
         webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
@@ -820,6 +842,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
+          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+              Voice-only presets are not available for chat agents.
+
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
 
@@ -842,6 +867,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
               apply.
+
+          timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
+              America/Los_Angeles if not set.
 
           webhook_events: Which webhook events this agent should receive. If not set, defaults to
               chat_started, chat_ended, chat_analyzed.
@@ -876,6 +904,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
+                    "handbook_config": handbook_config,
                     "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
@@ -883,6 +912,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
+                    "timezone": timezone,
                     "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
@@ -953,6 +983,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         | Omit = omit,
         end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_update_params.GuardrailConfig | Omit = omit,
+        handbook_config: chat_agent_update_params.HandbookConfig | Omit = omit,
         is_public: Optional[bool] | Omit = omit,
         language: Literal[
             "en-US",
@@ -1023,6 +1054,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         | Omit = omit,
         response_engine: chat_agent_update_params.ResponseEngine | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
+        timezone: Optional[str] | Omit = omit,
         webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]] | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
         webhook_url: Optional[str] | Omit = omit,
@@ -1068,6 +1100,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
+          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+              Voice-only presets are not available for chat agents.
+
           is_public: Whether the agent is public. When set to true, the agent is available for public
               agent preview link.
 
@@ -1094,6 +1129,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
               apply.
+
+          timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
+              America/Los_Angeles if not set.
 
           webhook_events: Which webhook events this agent should receive. If not set, defaults to
               chat_started, chat_ended, chat_analyzed.
@@ -1129,6 +1167,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
+                    "handbook_config": handbook_config,
                     "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
@@ -1137,6 +1176,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "response_engine": response_engine,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
+                    "timezone": timezone,
                     "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
