@@ -23,7 +23,7 @@ from retell import Retell, AsyncRetell, APIResponseValidationError
 from retell._types import Omit
 from retell._utils import asyncify
 from retell._models import BaseModel, FinalRequestOptions
-from retell._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
+from retell._exceptions import RetellError, APIStatusError, APITimeoutError, APIResponseValidationError
 from retell._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -401,6 +401,11 @@ class TestRetell:
         client = Retell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {api_key}"
+
+        with pytest.raises(RetellError):
+            with update_env(**{"RETELL_API_KEY": Omit()}):
+                client2 = Retell(base_url=base_url, api_key=None, _strict_response_validation=True)
+            _ = client2
 
     def test_default_query_option(self) -> None:
         client = Retell(
@@ -1319,6 +1324,11 @@ class TestAsyncRetell:
         client = AsyncRetell(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("Authorization") == f"Bearer {api_key}"
+
+        with pytest.raises(RetellError):
+            with update_env(**{"RETELL_API_KEY": Omit()}):
+                client2 = AsyncRetell(base_url=base_url, api_key=None, _strict_response_validation=True)
+            _ = client2
 
     async def test_default_query_option(self) -> None:
         client = AsyncRetell(
