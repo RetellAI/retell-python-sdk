@@ -32,10 +32,11 @@ pip install retell-sdk
 The full API of this library can be found in [api.md](api.md).
 
 ```python
+import os
 from retell import Retell
 
 client = Retell(
-    api_key="YOUR_RETELL_API_KEY",
+    api_key=os.environ.get("RETELL_API_KEY"),  # This is the default and can be omitted
 )
 
 agent_response = client.agent.create(
@@ -48,16 +49,22 @@ agent_response = client.agent.create(
 print(agent_response.agent_id)
 ```
 
+While you can provide an `api_key` keyword argument,
+we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
+to add `RETELL_API_KEY="YOUR_RETELL_API_KEY"` to your `.env` file
+so that your API Key is not stored in source control.
+
 ## Async usage
 
 Simply import `AsyncRetell` instead of `Retell` and use `await` with each API call:
 
 ```python
+import os
 import asyncio
 from retell import AsyncRetell
 
 client = AsyncRetell(
-    api_key="YOUR_RETELL_API_KEY",
+    api_key=os.environ.get("RETELL_API_KEY"),  # This is the default and can be omitted
 )
 
 
@@ -91,6 +98,7 @@ pip install retell-sdk[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from retell import DefaultAioHttpClient
 from retell import AsyncRetell
@@ -98,7 +106,7 @@ from retell import AsyncRetell
 
 async def main() -> None:
     async with AsyncRetell(
-        api_key="YOUR_RETELL_API_KEY",
+        api_key=os.environ.get("RETELL_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         agent_response = await client.agent.create(
