@@ -23,7 +23,7 @@ from ._utils import is_given, get_async_library
 from ._compat import cached_property
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError
+from ._exceptions import RetellError, APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -76,7 +76,7 @@ class Retell(SyncAPIClient):
     def __init__(
         self,
         *,
-        api_key: str,
+        api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = not_given,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -96,7 +96,16 @@ class Retell(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous Retell client instance."""
+        """Construct a new synchronous Retell client instance.
+
+        This automatically infers the `api_key` argument from the `RETELL_API_KEY` environment variable if it is not provided.
+        """
+        if api_key is None:
+            api_key = os.environ.get("RETELL_API_KEY")
+        if api_key is None:
+            raise RetellError(
+                "The api_key client option must be set either by passing api_key to the client or by setting the RETELL_API_KEY environment variable"
+            )
         self.api_key = api_key
         self.verify = verify  # type: ignore
 
@@ -320,7 +329,7 @@ class AsyncRetell(AsyncAPIClient):
     def __init__(
         self,
         *,
-        api_key: str,
+        api_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = not_given,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -340,7 +349,16 @@ class AsyncRetell(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async AsyncRetell client instance."""
+        """Construct a new async AsyncRetell client instance.
+
+        This automatically infers the `api_key` argument from the `RETELL_API_KEY` environment variable if it is not provided.
+        """
+        if api_key is None:
+            api_key = os.environ.get("RETELL_API_KEY")
+        if api_key is None:
+            raise RetellError(
+                "The api_key client option must be set either by passing api_key to the client or by setting the RETELL_API_KEY environment variable"
+            )
         self.api_key = api_key
 
         if base_url is None:
