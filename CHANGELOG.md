@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.25.1 (2026-04-08)
+
+Full Changelog: [v5.25.0...v5.25.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.25.0...v5.25.1)
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([30b8c01](https://github.com/RetellAI/retell-python-sdk/commit/30b8c013334553f994379d10f762de3826edcbce))
+
 ## 5.25.0 (2026-04-02)
 
 Full Changelog: [v5.24.0...v5.25.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.24.0...v5.25.0)
