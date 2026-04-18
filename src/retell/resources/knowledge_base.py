@@ -7,8 +7,9 @@ from typing import Mapping, Iterable, cast
 import httpx
 
 from ..types import knowledge_base_create_params, knowledge_base_add_sources_params
+from .._files import deepcopy_with_paths
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, FileTypes, SequenceNotStr, omit, not_given
-from .._utils import extract_files, path_template, maybe_transform, deepcopy_minimal, async_maybe_transform
+from .._utils import extract_files, path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -92,7 +93,7 @@ class KnowledgeBaseResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        body = deepcopy_minimal(
+        body = deepcopy_with_paths(
             {
                 "knowledge_base_name": knowledge_base_name,
                 "enable_auto_refresh": enable_auto_refresh,
@@ -101,7 +102,8 @@ class KnowledgeBaseResource(SyncAPIResource):
                 "knowledge_base_urls": knowledge_base_urls,
                 "max_chunk_size": max_chunk_size,
                 "min_chunk_size": min_chunk_size,
-            }
+            },
+            [["knowledge_base_files", "<array>"]],
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["knowledge_base_files", "<array>"]])
         # It should be noted that the actual Content-Type header that will be
@@ -239,12 +241,13 @@ class KnowledgeBaseResource(SyncAPIResource):
         """
         if not knowledge_base_id:
             raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
-        body = deepcopy_minimal(
+        body = deepcopy_with_paths(
             {
                 "knowledge_base_files": knowledge_base_files,
                 "knowledge_base_texts": knowledge_base_texts,
                 "knowledge_base_urls": knowledge_base_urls,
-            }
+            },
+            [["knowledge_base_files", "<array>"]],
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["knowledge_base_files", "<array>"]])
         # It should be noted that the actual Content-Type header that will be
@@ -370,7 +373,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        body = deepcopy_minimal(
+        body = deepcopy_with_paths(
             {
                 "knowledge_base_name": knowledge_base_name,
                 "enable_auto_refresh": enable_auto_refresh,
@@ -379,7 +382,8 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
                 "knowledge_base_urls": knowledge_base_urls,
                 "max_chunk_size": max_chunk_size,
                 "min_chunk_size": min_chunk_size,
-            }
+            },
+            [["knowledge_base_files", "<array>"]],
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["knowledge_base_files", "<array>"]])
         # It should be noted that the actual Content-Type header that will be
@@ -517,12 +521,13 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         """
         if not knowledge_base_id:
             raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
-        body = deepcopy_minimal(
+        body = deepcopy_with_paths(
             {
                 "knowledge_base_files": knowledge_base_files,
                 "knowledge_base_texts": knowledge_base_texts,
                 "knowledge_base_urls": knowledge_base_urls,
-            }
+            },
+            [["knowledge_base_files", "<array>"]],
         )
         files = extract_files(cast(Mapping[str, object], body), paths=[["knowledge_base_files", "<array>"]])
         # It should be noted that the actual Content-Type header that will be
