@@ -136,6 +136,7 @@ __all__ = [
     "NodeSubagentNodeToolSendSMSToolSMSContent",
     "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined",
     "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred",
+    "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentTemplate",
     "NodeSubagentNodeToolCustomTool",
     "NodeSubagentNodeToolCustomToolParameters",
     "NodeSubagentNodeToolCodeTool",
@@ -368,6 +369,7 @@ __all__ = [
     "NodeSMSNodeInstruction",
     "NodeSMSNodeInstructionNodeInstructionPrompt",
     "NodeSMSNodeInstructionNodeInstructionStaticText",
+    "NodeSMSNodeInstructionSMSInstructionTemplate",
     "NodeSMSNodeSuccessEdge",
     "NodeSMSNodeSuccessEdgeTransitionCondition",
     "NodeSMSNodeSuccessEdgeTransitionConditionPromptCondition",
@@ -959,6 +961,7 @@ class NodeConversationNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -1420,6 +1423,7 @@ class NodeSubagentNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -2035,9 +2039,21 @@ class NodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred(BaseModel):
     type: Optional[Literal["inferred"]] = None
 
 
+class NodeSubagentNodeToolSendSMSToolSMSContentSMSContentTemplate(BaseModel):
+    template: Literal["info_collection"]
+    """The template to use for the SMS content.
+
+    "info_collection" sends a predefined message requesting information from the
+    user.
+    """
+
+    type: Literal["template"]
+
+
 NodeSubagentNodeToolSendSMSToolSMSContent: TypeAlias = Union[
     NodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined,
     NodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred,
+    NodeSubagentNodeToolSendSMSToolSMSContentSMSContentTemplate,
 ]
 
 
@@ -2129,6 +2145,13 @@ class NodeSubagentNodeToolCustomTool(BaseModel):
     description: Optional[str] = None
     """Describes what this tool does and when to call this tool."""
 
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing. Useful when the tool takes a noticeable amount of time to prevent
+    silence on the call.
+    """
+
     execution_message_description: Optional[str] = None
     """The description for the sentence agent say during execution.
 
@@ -2210,6 +2233,12 @@ class NodeSubagentNodeToolCodeTool(BaseModel):
 
     description: Optional[str] = None
     """Describes what this tool does and when to call this tool."""
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
 
     execution_message_description: Optional[str] = None
     """The description for the sentence agent say during execution.
@@ -2464,6 +2493,12 @@ class NodeSubagentNodeToolMcpTool(BaseModel):
     """Name of the MCP tool."""
 
     type: Literal["mcp"]
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this MCP tool is
+    executing.
+    """
 
     execution_message_description: Optional[str] = None
     """The description for the sentence agent say during execution.
@@ -2765,6 +2800,7 @@ class NodeEndNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -3129,6 +3165,7 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -3161,6 +3198,9 @@ class NodeFunctionNode(BaseModel):
     edges: Optional[List[NodeFunctionNodeEdge]] = None
 
     else_edge: Optional[NodeFunctionNodeElseEdge] = None
+
+    enable_typing_sound: Optional[bool] = None
+    """If true, play a typing sound while this function executes."""
 
     finetune_transition_examples: Optional[List[NodeFunctionNodeFinetuneTransitionExample]] = None
 
@@ -3507,6 +3547,7 @@ class NodeCodeNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -3536,6 +3577,9 @@ class NodeCodeNode(BaseModel):
     edges: Optional[List[NodeCodeNodeEdge]] = None
 
     else_edge: Optional[NodeCodeNodeElseEdge] = None
+
+    enable_typing_sound: Optional[bool] = None
+    """If true, play a typing sound while code executes."""
 
     finetune_transition_examples: Optional[List[NodeCodeNodeFinetuneTransitionExample]] = None
 
@@ -4090,6 +4134,7 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -4402,6 +4447,7 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -4748,6 +4794,7 @@ class NodeBranchNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -4854,8 +4901,22 @@ class NodeSMSNodeInstructionNodeInstructionStaticText(BaseModel):
     """Type of instruction"""
 
 
+class NodeSMSNodeInstructionSMSInstructionTemplate(BaseModel):
+    template: Literal["info_collection"]
+    """The template to use for the instruction.
+
+    "info_collection" sends a predefined message requesting information from the
+    user.
+    """
+
+    type: Literal["template"]
+    """Type of instruction"""
+
+
 NodeSMSNodeInstruction: TypeAlias = Union[
-    NodeSMSNodeInstructionNodeInstructionPrompt, NodeSMSNodeInstructionNodeInstructionStaticText
+    NodeSMSNodeInstructionNodeInstructionPrompt,
+    NodeSMSNodeInstructionNodeInstructionStaticText,
+    NodeSMSNodeInstructionSMSInstructionTemplate,
 ]
 
 
@@ -5082,6 +5143,7 @@ class NodeSMSNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -5544,6 +5606,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -5828,6 +5891,7 @@ class NodeAgentSwapNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -6216,6 +6280,7 @@ class NodeMcpNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -6248,6 +6313,9 @@ class NodeMcpNode(BaseModel):
     edges: Optional[List[NodeMcpNodeEdge]] = None
 
     else_edge: Optional[NodeMcpNodeElseEdge] = None
+
+    enable_typing_sound: Optional[bool] = None
+    """If true, play a typing sound while MCP tool executes."""
 
     finetune_transition_examples: Optional[List[NodeMcpNodeFinetuneTransitionExample]] = None
 
@@ -6785,6 +6853,7 @@ class NodeBridgeTransferNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -7010,6 +7079,7 @@ class NodeCancelTransferNodeModelChoice(BaseModel):
         "gemini-2.5-flash",
         "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
     ]
     """The LLM model to use"""
 
@@ -7174,6 +7244,13 @@ class ToolCustomTool(BaseModel):
 
     description: Optional[str] = None
     """Describes what this tool does and when to call this tool."""
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing. Useful when the tool takes a noticeable amount of time to prevent
+    silence on the call.
+    """
 
     execution_message_description: Optional[str] = None
     """The description for the sentence agent say during execution.

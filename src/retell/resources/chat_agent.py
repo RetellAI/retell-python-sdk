@@ -131,6 +131,7 @@ class ChatAgentResource(SyncAPIResource):
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
+                "gemini-3.1-flash-lite",
             ]
         ]
         | Omit = omit,
@@ -203,7 +204,7 @@ class ChatAgentResource(SyncAPIResource):
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1-mini.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
 
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
@@ -388,6 +389,7 @@ class ChatAgentResource(SyncAPIResource):
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
+                "gemini-3.1-flash-lite",
             ]
         ]
         | Omit = omit,
@@ -459,7 +461,7 @@ class ChatAgentResource(SyncAPIResource):
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1-mini.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
 
           response_engine: The Response Engine to attach to the agent. It is used to generate responses for
               the agent. You need to create a Response Engine first before attaching it to an
@@ -535,6 +537,7 @@ class ChatAgentResource(SyncAPIResource):
     def list(
         self,
         *,
+        is_latest: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
         pagination_key_version: int | Omit = omit,
@@ -549,6 +552,8 @@ class ChatAgentResource(SyncAPIResource):
         List all chat agents
 
         Args:
+          is_latest: If true, only return the latest version of each chat agent.
+
           limit: A limit on the number of objects to be returned. Limit can range between 1 and
               1000, and the default is 1000.
 
@@ -577,6 +582,7 @@ class ChatAgentResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "is_latest": is_latest,
                         "limit": limit,
                         "pagination_key": pagination_key,
                         "pagination_key_version": pagination_key_version,
@@ -790,6 +796,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
+                "gemini-3.1-flash-lite",
             ]
         ]
         | Omit = omit,
@@ -862,7 +869,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1-mini.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
 
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
@@ -1049,6 +1056,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
+                "gemini-3.1-flash-lite",
             ]
         ]
         | Omit = omit,
@@ -1120,7 +1128,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1-mini.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
 
           response_engine: The Response Engine to attach to the agent. It is used to generate responses for
               the agent. You need to create a Response Engine first before attaching it to an
@@ -1196,6 +1204,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        is_latest: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
         pagination_key_version: int | Omit = omit,
@@ -1210,6 +1219,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
         List all chat agents
 
         Args:
+          is_latest: If true, only return the latest version of each chat agent.
+
           limit: A limit on the number of objects to be returned. Limit can range between 1 and
               1000, and the default is 1000.
 
@@ -1238,6 +1249,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "is_latest": is_latest,
                         "limit": limit,
                         "pagination_key": pagination_key,
                         "pagination_key_version": pagination_key_version,

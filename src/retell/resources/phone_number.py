@@ -53,14 +53,10 @@ class PhoneNumberResource(SyncAPIResource):
         area_code: int | Omit = omit,
         country_code: Literal["US", "CA"] | Omit = omit,
         fallback_number: Optional[str] | Omit = omit,
-        inbound_agent_id: Optional[str] | Omit = omit,
-        inbound_agent_version: Optional[int] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_create_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: str | Omit = omit,
         number_provider: Literal["twilio", "telnyx"] | Omit = omit,
-        outbound_agent_id: Optional[str] | Omit = omit,
-        outbound_agent_version: Optional[int] | Omit = omit,
         outbound_agents: Optional[Iterable[phone_number_create_params.OutboundAgent]] | Omit = omit,
         phone_number: str | Omit = omit,
         toll_free: bool | Omit = omit,
@@ -93,19 +89,9 @@ class PhoneNumberResource(SyncAPIResource):
               Cannot be the same as this phone number, and cannot be a number that already has
               its own fallback configured (prevents nested forwarding).
 
-          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls. If null, this number would not accept
-              inbound call. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to inbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -114,19 +100,9 @@ class PhoneNumberResource(SyncAPIResource):
 
           number_provider: The provider to purchase the phone number from. Default to twilio.
 
-          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls. If null, this number would not be able to
-              initiate outbound call without agent id override. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to latest version. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to outbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           phone_number: The number you are trying to purchase in E.164 format of the number (+country
               code then number with no space and no special characters).
@@ -153,14 +129,10 @@ class PhoneNumberResource(SyncAPIResource):
                     "area_code": area_code,
                     "country_code": country_code,
                     "fallback_number": fallback_number,
-                    "inbound_agent_id": inbound_agent_id,
-                    "inbound_agent_version": inbound_agent_version,
                     "inbound_agents": inbound_agents,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "number_provider": number_provider,
-                    "outbound_agent_id": outbound_agent_id,
-                    "outbound_agent_version": outbound_agent_version,
                     "outbound_agents": outbound_agents,
                     "phone_number": phone_number,
                     "toll_free": toll_free,
@@ -216,15 +188,11 @@ class PhoneNumberResource(SyncAPIResource):
         auth_password: str | Omit = omit,
         auth_username: str | Omit = omit,
         fallback_number: Optional[str] | Omit = omit,
-        inbound_agent_id: Optional[str] | Omit = omit,
-        inbound_agent_version: Optional[int] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_update_params.InboundAgent]] | Omit = omit,
         inbound_sms_agents: Optional[Iterable[phone_number_update_params.InboundSMSAgent]] | Omit = omit,
         inbound_sms_webhook_url: Optional[str] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: Optional[str] | Omit = omit,
-        outbound_agent_id: Optional[str] | Omit = omit,
-        outbound_agent_version: Optional[int] | Omit = omit,
         outbound_agents: Optional[Iterable[phone_number_update_params.OutboundAgent]] | Omit = omit,
         outbound_sms_agents: Optional[Iterable[phone_number_update_params.OutboundSMSAgent]] | Omit = omit,
         termination_uri: str | Omit = omit,
@@ -258,19 +226,9 @@ class PhoneNumberResource(SyncAPIResource):
               number that already has its own fallback configured (prevents nested
               forwarding).
 
-          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls. If set to null, this number would not accept
-              inbound call. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to inbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           inbound_sms_agents: Inbound SMS agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound SMS, with probability
@@ -285,18 +243,9 @@ class PhoneNumberResource(SyncAPIResource):
 
           nickname: Nickname of the number. This is for your reference only.
 
-          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls. If set to null, this number would not be
-              able to initiate outbound call without agent id override. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to latest version.
-
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to outbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           outbound_sms_agents: Outbound SMS agents to bind to the number with weights. If set and non-empty,
               one agent will be picked randomly for each outbound SMS, with probability
@@ -328,15 +277,11 @@ class PhoneNumberResource(SyncAPIResource):
                     "auth_password": auth_password,
                     "auth_username": auth_username,
                     "fallback_number": fallback_number,
-                    "inbound_agent_id": inbound_agent_id,
-                    "inbound_agent_version": inbound_agent_version,
                     "inbound_agents": inbound_agents,
                     "inbound_sms_agents": inbound_sms_agents,
                     "inbound_sms_webhook_url": inbound_sms_webhook_url,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
-                    "outbound_agent_id": outbound_agent_id,
-                    "outbound_agent_version": outbound_agent_version,
                     "outbound_agents": outbound_agents,
                     "outbound_sms_agents": outbound_sms_agents,
                     "termination_uri": termination_uri,
@@ -411,13 +356,9 @@ class PhoneNumberResource(SyncAPIResource):
         allowed_inbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         ignore_e164_validation: bool | Omit = omit,
-        inbound_agent_id: Optional[str] | Omit = omit,
-        inbound_agent_version: Optional[int] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_import_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: str | Omit = omit,
-        outbound_agent_id: Optional[str] | Omit = omit,
-        outbound_agent_version: Optional[int] | Omit = omit,
         outbound_agents: Optional[Iterable[phone_number_import_params.OutboundAgent]] | Omit = omit,
         sip_trunk_auth_password: str | Omit = omit,
         sip_trunk_auth_username: str | Omit = omit,
@@ -452,38 +393,18 @@ class PhoneNumberResource(SyncAPIResource):
               true. Must be a boolean literal; string values like "true" or "false" are
               invalid.
 
-          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls. If null, this number would not accept
-              inbound call. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to inbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
-          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls. If null, this number would not be able to
-              initiate outbound call without agent id override. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to latest version. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to outbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           sip_trunk_auth_password: The password used for authentication for the SIP trunk.
 
@@ -509,13 +430,9 @@ class PhoneNumberResource(SyncAPIResource):
                     "allowed_inbound_country_list": allowed_inbound_country_list,
                     "allowed_outbound_country_list": allowed_outbound_country_list,
                     "ignore_e164_validation": ignore_e164_validation,
-                    "inbound_agent_id": inbound_agent_id,
-                    "inbound_agent_version": inbound_agent_version,
                     "inbound_agents": inbound_agents,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
-                    "outbound_agent_id": outbound_agent_id,
-                    "outbound_agent_version": outbound_agent_version,
                     "outbound_agents": outbound_agents,
                     "sip_trunk_auth_password": sip_trunk_auth_password,
                     "sip_trunk_auth_username": sip_trunk_auth_username,
@@ -558,14 +475,10 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         area_code: int | Omit = omit,
         country_code: Literal["US", "CA"] | Omit = omit,
         fallback_number: Optional[str] | Omit = omit,
-        inbound_agent_id: Optional[str] | Omit = omit,
-        inbound_agent_version: Optional[int] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_create_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: str | Omit = omit,
         number_provider: Literal["twilio", "telnyx"] | Omit = omit,
-        outbound_agent_id: Optional[str] | Omit = omit,
-        outbound_agent_version: Optional[int] | Omit = omit,
         outbound_agents: Optional[Iterable[phone_number_create_params.OutboundAgent]] | Omit = omit,
         phone_number: str | Omit = omit,
         toll_free: bool | Omit = omit,
@@ -598,19 +511,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               Cannot be the same as this phone number, and cannot be a number that already has
               its own fallback configured (prevents nested forwarding).
 
-          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls. If null, this number would not accept
-              inbound call. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to inbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
@@ -619,19 +522,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           number_provider: The provider to purchase the phone number from. Default to twilio.
 
-          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls. If null, this number would not be able to
-              initiate outbound call without agent id override. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to latest version. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to outbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           phone_number: The number you are trying to purchase in E.164 format of the number (+country
               code then number with no space and no special characters).
@@ -658,14 +551,10 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "area_code": area_code,
                     "country_code": country_code,
                     "fallback_number": fallback_number,
-                    "inbound_agent_id": inbound_agent_id,
-                    "inbound_agent_version": inbound_agent_version,
                     "inbound_agents": inbound_agents,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
                     "number_provider": number_provider,
-                    "outbound_agent_id": outbound_agent_id,
-                    "outbound_agent_version": outbound_agent_version,
                     "outbound_agents": outbound_agents,
                     "phone_number": phone_number,
                     "toll_free": toll_free,
@@ -721,15 +610,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         auth_password: str | Omit = omit,
         auth_username: str | Omit = omit,
         fallback_number: Optional[str] | Omit = omit,
-        inbound_agent_id: Optional[str] | Omit = omit,
-        inbound_agent_version: Optional[int] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_update_params.InboundAgent]] | Omit = omit,
         inbound_sms_agents: Optional[Iterable[phone_number_update_params.InboundSMSAgent]] | Omit = omit,
         inbound_sms_webhook_url: Optional[str] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: Optional[str] | Omit = omit,
-        outbound_agent_id: Optional[str] | Omit = omit,
-        outbound_agent_version: Optional[int] | Omit = omit,
         outbound_agents: Optional[Iterable[phone_number_update_params.OutboundAgent]] | Omit = omit,
         outbound_sms_agents: Optional[Iterable[phone_number_update_params.OutboundSMSAgent]] | Omit = omit,
         termination_uri: str | Omit = omit,
@@ -763,19 +648,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               number that already has its own fallback configured (prevents nested
               forwarding).
 
-          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls. If set to null, this number would not accept
-              inbound call. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to inbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           inbound_sms_agents: Inbound SMS agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound SMS, with probability
@@ -790,18 +665,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           nickname: Nickname of the number. This is for your reference only.
 
-          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls. If set to null, this number would not be
-              able to initiate outbound call without agent id override. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to latest version.
-
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to outbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           outbound_sms_agents: Outbound SMS agents to bind to the number with weights. If set and non-empty,
               one agent will be picked randomly for each outbound SMS, with probability
@@ -833,15 +699,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "auth_password": auth_password,
                     "auth_username": auth_username,
                     "fallback_number": fallback_number,
-                    "inbound_agent_id": inbound_agent_id,
-                    "inbound_agent_version": inbound_agent_version,
                     "inbound_agents": inbound_agents,
                     "inbound_sms_agents": inbound_sms_agents,
                     "inbound_sms_webhook_url": inbound_sms_webhook_url,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
-                    "outbound_agent_id": outbound_agent_id,
-                    "outbound_agent_version": outbound_agent_version,
                     "outbound_agents": outbound_agents,
                     "outbound_sms_agents": outbound_sms_agents,
                     "termination_uri": termination_uri,
@@ -916,13 +778,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         allowed_inbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         ignore_e164_validation: bool | Omit = omit,
-        inbound_agent_id: Optional[str] | Omit = omit,
-        inbound_agent_version: Optional[int] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_import_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: str | Omit = omit,
-        outbound_agent_id: Optional[str] | Omit = omit,
-        outbound_agent_version: Optional[int] | Omit = omit,
         outbound_agents: Optional[Iterable[phone_number_import_params.OutboundAgent]] | Omit = omit,
         sip_trunk_auth_password: str | Omit = omit,
         sip_trunk_auth_username: str | Omit = omit,
@@ -957,38 +815,18 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               true. Must be a boolean literal; string values like "true" or "false" are
               invalid.
 
-          inbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when receiving inbound calls. If null, this number would not accept
-              inbound call. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          inbound_agent_version: Version of the inbound agent to bind to the number. If not provided, will
-              default to latest version. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to inbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
               id, set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
-          outbound_agent_id: Unique id of agent to bind to the number. The number will automatically use the
-              agent when conducting outbound calls. If null, this number would not be able to
-              initiate outbound call without agent id override. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
-          outbound_agent_version: Version of the outbound agent to bind to the number. If not provided, will
-              default to latest version. Deprecated. See
-              https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to outbound_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           sip_trunk_auth_password: The password used for authentication for the SIP trunk.
 
@@ -1014,13 +852,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "allowed_inbound_country_list": allowed_inbound_country_list,
                     "allowed_outbound_country_list": allowed_outbound_country_list,
                     "ignore_e164_validation": ignore_e164_validation,
-                    "inbound_agent_id": inbound_agent_id,
-                    "inbound_agent_version": inbound_agent_version,
                     "inbound_agents": inbound_agents,
                     "inbound_webhook_url": inbound_webhook_url,
                     "nickname": nickname,
-                    "outbound_agent_id": outbound_agent_id,
-                    "outbound_agent_version": outbound_agent_version,
                     "outbound_agents": outbound_agents,
                     "sip_trunk_auth_password": sip_trunk_auth_password,
                     "sip_trunk_auth_username": sip_trunk_auth_username,

@@ -8,34 +8,31 @@ from .._models import BaseModel
 __all__ = [
     "ChatCreateChatCompletionResponse",
     "Message",
-    "MessageMessage",
-    "MessageToolCallInvocationMessage",
-    "MessageToolCallResultMessage",
-    "MessageNodeTransitionMessage",
-    "MessageStateTransitionMessage",
+    "MessageMessageBase",
+    "MessageToolCallInvocationMessageBase",
+    "MessageToolCallResultMessageBase",
+    "MessageNodeTransitionMessageBase",
+    "MessageStateTransitionMessageBase",
 ]
 
 
-class MessageMessage(BaseModel):
+class MessageMessageBase(BaseModel):
     content: str
     """Content of the message"""
-
-    created_timestamp: int
-    """Create timestamp of the message"""
-
-    message_id: str
-    """Unique id of the message"""
 
     role: Literal["agent", "user"]
     """Documents whether this message is sent by agent or user."""
 
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
 
-class MessageToolCallInvocationMessage(BaseModel):
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+
+class MessageToolCallInvocationMessageBase(BaseModel):
     arguments: str
     """Arguments for this tool call, it's a stringified JSON object."""
-
-    message_id: str
-    """Unique id of the message"""
 
     name: str
     """Name of the function in this tool call."""
@@ -49,6 +46,9 @@ class MessageToolCallInvocationMessage(BaseModel):
     created_timestamp: Optional[int] = None
     """Create timestamp of the message"""
 
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
     thought_signature: Optional[str] = None
     """Optional thought signature from Google Gemini thinking models.
 
@@ -57,15 +57,9 @@ class MessageToolCallInvocationMessage(BaseModel):
     """
 
 
-class MessageToolCallResultMessage(BaseModel):
+class MessageToolCallResultMessageBase(BaseModel):
     content: str
     """Result of the tool call, can be a string, a stringified json, etc."""
-
-    created_timestamp: int
-    """Create timestamp of the message"""
-
-    message_id: str
-    """Unique id of the message"""
 
     role: Literal["tool_call_result"]
     """This is the result of a tool call."""
@@ -73,19 +67,22 @@ class MessageToolCallResultMessage(BaseModel):
     tool_call_id: str
     """Tool call id, globally unique."""
 
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
     successful: Optional[bool] = None
     """Whether the tool call was successful."""
 
 
-class MessageNodeTransitionMessage(BaseModel):
-    created_timestamp: int
-    """Create timestamp of the message"""
-
-    message_id: str
-    """Unique id of the message"""
-
+class MessageNodeTransitionMessageBase(BaseModel):
     role: Literal["node_transition"]
     """This is a node transition."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
 
     former_node_id: Optional[str] = None
     """Former node id"""
@@ -93,36 +90,47 @@ class MessageNodeTransitionMessage(BaseModel):
     former_node_name: Optional[str] = None
     """Former node name"""
 
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
     new_node_id: Optional[str] = None
     """New node id"""
 
     new_node_name: Optional[str] = None
     """New node name"""
 
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
 
-class MessageStateTransitionMessage(BaseModel):
-    created_timestamp: int
-    """Create timestamp of the message"""
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
 
-    message_id: str
-    """Unique id of the message"""
 
+class MessageStateTransitionMessageBase(BaseModel):
     role: Literal["state_transition"]
     """This is a state transition."""
 
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
     former_state_name: Optional[str] = None
     """Former state name"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
 
     new_state_name: Optional[str] = None
     """New state name"""
 
 
 Message: TypeAlias = Union[
-    MessageMessage,
-    MessageToolCallInvocationMessage,
-    MessageToolCallResultMessage,
-    MessageNodeTransitionMessage,
-    MessageStateTransitionMessage,
+    MessageMessageBase,
+    MessageToolCallInvocationMessageBase,
+    MessageToolCallResultMessageBase,
+    MessageNodeTransitionMessageBase,
+    MessageStateTransitionMessageBase,
 ]
 
 

@@ -75,9 +75,12 @@ class CustomSttConfig(BaseModel):
     """Custom STT configuration. Only used when stt_mode is set to custom."""
 
     endpointing_ms: int
-    """Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram."""
+    """Endpointing timeout in milliseconds.
 
-    provider: Literal["azure", "deepgram"]
+    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox
+    """
+
+    provider: Literal["azure", "deepgram", "soniox"]
     """The STT provider to use."""
 
 
@@ -707,17 +710,6 @@ class AgentResponse(BaseModel):
     7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
     """
 
-    normalize_for_speech: Optional[bool] = None
-    """
-    If set to true, will normalize the some part of text (number, currency, date,
-    etc) to spoken to its spoken form for more consistent speech synthesis
-    (sometimes the voice synthesize system itself might read these wrong with the
-    raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
-    2024 for the $24.12 payment" to "Call my number two one three seven one one two
-    three four two on july fifth, twenty twenty four for the twenty four dollars
-    twelve cents payment" before starting audio generation.
-    """
-
     opt_in_signed_url: Optional[bool] = None
     """Whether this agent opts in for signed URLs for public logs and recordings.
 
@@ -754,9 +746,10 @@ class AgentResponse(BaseModel):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ] = None
-    """The model to use for post call analysis. Default to gpt-4.1-mini."""
+    """The model to use for post call analysis. Default to gpt-4.1."""
 
     pronunciation_dictionary: Optional[List[PronunciationDictionary]] = None
     """
@@ -851,6 +844,7 @@ class AgentResponse(BaseModel):
             "speech-02-turbo",
             "speech-2.8-turbo",
             "s1",
+            "s2-pro",
         ]
     ] = None
     """Select the voice model used for the selected voice.

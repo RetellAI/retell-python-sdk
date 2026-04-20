@@ -150,7 +150,6 @@ class AgentResource(SyncAPIResource):
         ]
         | Omit = omit,
         max_call_duration_ms: int | Omit = omit,
-        normalize_for_speech: bool | Omit = omit,
         opt_in_signed_url: bool | Omit = omit,
         pii_config: agent_create_params.PiiConfig | Omit = omit,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | Omit = omit,
@@ -173,6 +172,7 @@ class AgentResource(SyncAPIResource):
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
+                "gemini-3.1-flash-lite",
             ]
         ]
         | Omit = omit,
@@ -204,6 +204,7 @@ class AgentResource(SyncAPIResource):
                 "speech-02-turbo",
                 "speech-2.8-turbo",
                 "s1",
+                "s2-pro",
             ]
         ]
         | Omit = omit,
@@ -374,14 +375,6 @@ class AgentResource(SyncAPIResource):
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
               7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
 
-          normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
-              etc) to spoken to its spoken form for more consistent speech synthesis
-              (sometimes the voice synthesize system itself might read these wrong with the
-              raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
-              2024 for the $24.12 payment" to "Call my number two one three seven one one two
-              three four two on july fifth, twenty twenty four for the twenty four dollars
-              twelve cents payment" before starting audio generation.
-
           opt_in_signed_url: Whether this agent opts in for signed URLs for public logs and recordings. When
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
@@ -392,7 +385,7 @@ class AgentResource(SyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -519,7 +512,6 @@ class AgentResource(SyncAPIResource):
                     "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
-                    "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
@@ -700,7 +692,6 @@ class AgentResource(SyncAPIResource):
         ]
         | Omit = omit,
         max_call_duration_ms: int | Omit = omit,
-        normalize_for_speech: bool | Omit = omit,
         opt_in_signed_url: bool | Omit = omit,
         pii_config: agent_update_params.PiiConfig | Omit = omit,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | Omit = omit,
@@ -723,6 +714,7 @@ class AgentResource(SyncAPIResource):
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
+                "gemini-3.1-flash-lite",
             ]
         ]
         | Omit = omit,
@@ -756,6 +748,7 @@ class AgentResource(SyncAPIResource):
                 "speech-02-turbo",
                 "speech-2.8-turbo",
                 "s1",
+                "s2-pro",
             ]
         ]
         | Omit = omit,
@@ -921,14 +914,6 @@ class AgentResource(SyncAPIResource):
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
               7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
 
-          normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
-              etc) to spoken to its spoken form for more consistent speech synthesis
-              (sometimes the voice synthesize system itself might read these wrong with the
-              raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
-              2024 for the $24.12 payment" to "Call my number two one three seven one one two
-              three four two on july fifth, twenty twenty four for the twenty four dollars
-              twelve cents payment" before starting audio generation.
-
           opt_in_signed_url: Whether this agent opts in for signed URLs for public logs and recordings. When
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
@@ -939,7 +924,7 @@ class AgentResource(SyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -1073,7 +1058,6 @@ class AgentResource(SyncAPIResource):
                     "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
-                    "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
@@ -1118,6 +1102,7 @@ class AgentResource(SyncAPIResource):
     def list(
         self,
         *,
+        is_latest: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
         pagination_key_version: int | Omit = omit,
@@ -1128,12 +1113,13 @@ class AgentResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListResponse:
-        """List all agents
+        """
+        List all agents
 
         Args:
-          limit: A limit on the number of objects to be returned.
+          is_latest: If true, only return the latest version of each agent.
 
-        Limit can range between 1 and
+          limit: A limit on the number of objects to be returned. Limit can range between 1 and
               1000, and the default is 1000.
 
           pagination_key: The pagination key to continue fetching the next page of agents. Pagination key
@@ -1161,6 +1147,7 @@ class AgentResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "is_latest": is_latest,
                         "limit": limit,
                         "pagination_key": pagination_key,
                         "pagination_key_version": pagination_key_version,
@@ -1398,7 +1385,6 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | Omit = omit,
         max_call_duration_ms: int | Omit = omit,
-        normalize_for_speech: bool | Omit = omit,
         opt_in_signed_url: bool | Omit = omit,
         pii_config: agent_create_params.PiiConfig | Omit = omit,
         post_call_analysis_data: Optional[Iterable[agent_create_params.PostCallAnalysisData]] | Omit = omit,
@@ -1421,6 +1407,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
+                "gemini-3.1-flash-lite",
             ]
         ]
         | Omit = omit,
@@ -1452,6 +1439,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "speech-02-turbo",
                 "speech-2.8-turbo",
                 "s1",
+                "s2-pro",
             ]
         ]
         | Omit = omit,
@@ -1622,14 +1610,6 @@ class AsyncAgentResource(AsyncAPIResource):
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
               7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
 
-          normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
-              etc) to spoken to its spoken form for more consistent speech synthesis
-              (sometimes the voice synthesize system itself might read these wrong with the
-              raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
-              2024 for the $24.12 payment" to "Call my number two one three seven one one two
-              three four two on july fifth, twenty twenty four for the twenty four dollars
-              twelve cents payment" before starting audio generation.
-
           opt_in_signed_url: Whether this agent opts in for signed URLs for public logs and recordings. When
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
@@ -1640,7 +1620,7 @@ class AsyncAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -1767,7 +1747,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
-                    "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
@@ -1948,7 +1927,6 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | Omit = omit,
         max_call_duration_ms: int | Omit = omit,
-        normalize_for_speech: bool | Omit = omit,
         opt_in_signed_url: bool | Omit = omit,
         pii_config: agent_update_params.PiiConfig | Omit = omit,
         post_call_analysis_data: Optional[Iterable[agent_update_params.PostCallAnalysisData]] | Omit = omit,
@@ -1971,6 +1949,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
+                "gemini-3.1-flash-lite",
             ]
         ]
         | Omit = omit,
@@ -2004,6 +1983,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "speech-02-turbo",
                 "speech-2.8-turbo",
                 "s1",
+                "s2-pro",
             ]
         ]
         | Omit = omit,
@@ -2169,14 +2149,6 @@ class AsyncAgentResource(AsyncAPIResource):
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
               7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
 
-          normalize_for_speech: If set to true, will normalize the some part of text (number, currency, date,
-              etc) to spoken to its spoken form for more consistent speech synthesis
-              (sometimes the voice synthesize system itself might read these wrong with the
-              raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
-              2024 for the $24.12 payment" to "Call my number two one three seven one one two
-              three four two on july fifth, twenty twenty four for the twenty four dollars
-              twelve cents payment" before starting audio generation.
-
           opt_in_signed_url: Whether this agent opts in for signed URLs for public logs and recordings. When
               enabled, the generated URLs will include security signatures that restrict
               access and automatically expire after 24 hours.
@@ -2187,7 +2159,7 @@ class AsyncAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1-mini.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -2321,7 +2293,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
-                    "normalize_for_speech": normalize_for_speech,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
@@ -2366,6 +2337,7 @@ class AsyncAgentResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        is_latest: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
         pagination_key_version: int | Omit = omit,
@@ -2376,12 +2348,13 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListResponse:
-        """List all agents
+        """
+        List all agents
 
         Args:
-          limit: A limit on the number of objects to be returned.
+          is_latest: If true, only return the latest version of each agent.
 
-        Limit can range between 1 and
+          limit: A limit on the number of objects to be returned. Limit can range between 1 and
               1000, and the default is 1000.
 
           pagination_key: The pagination key to continue fetching the next page of agents. Pagination key
@@ -2409,6 +2382,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "is_latest": is_latest,
                         "limit": limit,
                         "pagination_key": pagination_key,
                         "pagination_key_version": pagination_key_version,

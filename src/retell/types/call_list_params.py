@@ -130,6 +130,7 @@ class FilterCriteria(TypedDict, total=False):
             "registered_call_timeout",
             "transfer_bridged",
             "transfer_cancelled",
+            "manual_stopped",
         ]
     ]
     """Only retrieve calls with specific disconnection reason(s)."""
