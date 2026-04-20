@@ -450,9 +450,10 @@ class ChatAgentResponse(BaseModel):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ] = None
-    """The model to use for post chat analysis. Default to gpt-4.1-mini."""
+    """The model to use for post chat analysis. Default to gpt-4.1."""
 
     signed_url_expiration_ms: Optional[int] = None
     """The expiration time for the signed url in milliseconds.

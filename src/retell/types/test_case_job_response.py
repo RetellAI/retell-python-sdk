@@ -35,6 +35,5 @@ class TestCaseJobResponse(BaseModel):
     transcript_snapshot: Optional[object] = None
     """Snapshot of the transcript generated during test execution.
 
-    Can be either ConversationFlowPlaygroundSnapshot or
-    MultiStatePromptPlaygroundSnapshot
+    Can be either ConversationFlowPlaygroundSnapshot or RetellLlmPlaygroundSnapshot
     """

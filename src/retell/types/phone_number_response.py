@@ -120,27 +120,11 @@ class PhoneNumberResponse(BaseModel):
     configured (prevents nested forwarding).
     """
 
-    inbound_agent_id: Optional[str] = None
-    """Unique id of agent to bind to the number.
-
-    The number will automatically use the agent when receiving inbound calls. If
-    null, this number would not accept inbound call. Deprecated. See
-    https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-    """
-
-    inbound_agent_version: Optional[int] = None
-    """Version of the inbound agent to bind to the number.
-
-    If not provided, will default to latest version. Deprecated. See
-    https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-    """
-
     inbound_agents: Optional[List[InboundAgent]] = None
     """Inbound agents to bind to the number with weights.
 
     If set and non-empty, one agent will be picked randomly for each inbound call,
-    with probability proportional to the weight. Total weights must add up to 1. If
-    not set or empty, fallback to inbound_agent_id.
+    with probability proportional to the weight. Total weights must add up to 1.
     """
 
     inbound_sms_agents: Optional[List[InboundSMSAgent]] = None
@@ -166,28 +150,11 @@ class PhoneNumberResponse(BaseModel):
     nickname: Optional[str] = None
     """Nickname of the number. This is for your reference only."""
 
-    outbound_agent_id: Optional[str] = None
-    """Unique id of agent to bind to the number.
-
-    The number will automatically use the agent when conducting outbound calls. If
-    null, this number would not be able to initiate outbound call without agent id
-    override. Deprecated. See
-    https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-    """
-
-    outbound_agent_version: Optional[int] = None
-    """Version of the outbound agent to bind to the number.
-
-    If not provided, will default to latest version. Deprecated. See
-    https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-    """
-
     outbound_agents: Optional[List[OutboundAgent]] = None
     """Outbound agents to bind to the number with weights.
 
     If set and non-empty, one agent will be picked randomly for each outbound call,
-    with probability proportional to the weight. Total weights must add up to 1. If
-    not set or empty, fallback to outbound_agent_id.
+    with probability proportional to the weight. Total weights must add up to 1.
     """
 
     outbound_sms_agents: Optional[List[OutboundSMSAgent]] = None

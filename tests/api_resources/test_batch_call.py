@@ -79,7 +79,6 @@ class TestBatchCall:
                             "ivr_option": {"action": {"type": "hangup"}},
                             "language": "en-US",
                             "max_call_duration_ms": 3600000,
-                            "normalize_for_speech": True,
                             "opt_in_signed_url": True,
                             "pii_config": {
                                 "categories": ["person_name"],
@@ -292,7 +291,6 @@ class TestAsyncBatchCall:
                             "ivr_option": {"action": {"type": "hangup"}},
                             "language": "en-US",
                             "max_call_duration_ms": 3600000,
-                            "normalize_for_speech": True,
                             "opt_in_signed_url": True,
                             "pii_config": {
                                 "categories": ["person_name"],

@@ -39,6 +39,7 @@ __all__ = [
     "GeneralToolSendSMSToolSMSContent",
     "GeneralToolSendSMSToolSMSContentSMSContentPredefined",
     "GeneralToolSendSMSToolSMSContentSMSContentInferred",
+    "GeneralToolSendSMSToolSMSContentSMSContentTemplate",
     "GeneralToolCustomTool",
     "GeneralToolCustomToolParameters",
     "GeneralToolCodeTool",
@@ -86,6 +87,7 @@ __all__ = [
     "StateToolSendSMSToolSMSContent",
     "StateToolSendSMSToolSMSContentSMSContentPredefined",
     "StateToolSendSMSToolSMSContentSMSContentInferred",
+    "StateToolSendSMSToolSMSContentSMSContentTemplate",
     "StateToolCustomTool",
     "StateToolCustomToolParameters",
     "StateToolCodeTool",
@@ -648,8 +650,21 @@ class GeneralToolSendSMSToolSMSContentSMSContentInferred(BaseModel):
     type: Optional[Literal["inferred"]] = None
 
 
+class GeneralToolSendSMSToolSMSContentSMSContentTemplate(BaseModel):
+    template: Literal["info_collection"]
+    """The template to use for the SMS content.
+
+    "info_collection" sends a predefined message requesting information from the
+    user.
+    """
+
+    type: Literal["template"]
+
+
 GeneralToolSendSMSToolSMSContent: TypeAlias = Union[
-    GeneralToolSendSMSToolSMSContentSMSContentPredefined, GeneralToolSendSMSToolSMSContentSMSContentInferred
+    GeneralToolSendSMSToolSMSContentSMSContentPredefined,
+    GeneralToolSendSMSToolSMSContentSMSContentInferred,
+    GeneralToolSendSMSToolSMSContentSMSContentTemplate,
 ]
 
 
@@ -741,6 +756,13 @@ class GeneralToolCustomTool(BaseModel):
     description: Optional[str] = None
     """Describes what this tool does and when to call this tool."""
 
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing. Useful when the tool takes a noticeable amount of time to prevent
+    silence on the call.
+    """
+
     execution_message_description: Optional[str] = None
     """The description for the sentence agent say during execution.
 
@@ -822,6 +844,12 @@ class GeneralToolCodeTool(BaseModel):
 
     description: Optional[str] = None
     """Describes what this tool does and when to call this tool."""
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
 
     execution_message_description: Optional[str] = None
     """The description for the sentence agent say during execution.
@@ -1076,6 +1104,12 @@ class GeneralToolMcpTool(BaseModel):
     """Name of the MCP tool."""
 
     type: Literal["mcp"]
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this MCP tool is
+    executing.
+    """
 
     execution_message_description: Optional[str] = None
     """The description for the sentence agent say during execution.
@@ -1761,8 +1795,21 @@ class StateToolSendSMSToolSMSContentSMSContentInferred(BaseModel):
     type: Optional[Literal["inferred"]] = None
 
 
+class StateToolSendSMSToolSMSContentSMSContentTemplate(BaseModel):
+    template: Literal["info_collection"]
+    """The template to use for the SMS content.
+
+    "info_collection" sends a predefined message requesting information from the
+    user.
+    """
+
+    type: Literal["template"]
+
+
 StateToolSendSMSToolSMSContent: TypeAlias = Union[
-    StateToolSendSMSToolSMSContentSMSContentPredefined, StateToolSendSMSToolSMSContentSMSContentInferred
+    StateToolSendSMSToolSMSContentSMSContentPredefined,
+    StateToolSendSMSToolSMSContentSMSContentInferred,
+    StateToolSendSMSToolSMSContentSMSContentTemplate,
 ]
 
 
@@ -1854,6 +1901,13 @@ class StateToolCustomTool(BaseModel):
     description: Optional[str] = None
     """Describes what this tool does and when to call this tool."""
 
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing. Useful when the tool takes a noticeable amount of time to prevent
+    silence on the call.
+    """
+
     execution_message_description: Optional[str] = None
     """The description for the sentence agent say during execution.
 
@@ -1935,6 +1989,12 @@ class StateToolCodeTool(BaseModel):
 
     description: Optional[str] = None
     """Describes what this tool does and when to call this tool."""
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
 
     execution_message_description: Optional[str] = None
     """The description for the sentence agent say during execution.
@@ -2190,6 +2250,12 @@ class StateToolMcpTool(BaseModel):
 
     type: Literal["mcp"]
 
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this MCP tool is
+    executing.
+    """
+
     execution_message_description: Optional[str] = None
     """The description for the sentence agent say during execution.
 
@@ -2359,6 +2425,7 @@ class LlmResponse(BaseModel):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ] = None
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""

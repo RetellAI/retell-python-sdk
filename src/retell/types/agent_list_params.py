@@ -8,6 +8,9 @@ __all__ = ["AgentListParams"]
 
 
 class AgentListParams(TypedDict, total=False):
+    is_latest: bool
+    """If true, only return the latest version of each agent."""
+
     limit: int
     """A limit on the number of objects to be returned.
 

@@ -11,11 +11,11 @@ __all__ = [
     "ChatCost",
     "ChatCostProductCost",
     "MessageWithToolCall",
-    "MessageWithToolCallMessage",
-    "MessageWithToolCallToolCallInvocationMessage",
-    "MessageWithToolCallToolCallResultMessage",
-    "MessageWithToolCallNodeTransitionMessage",
-    "MessageWithToolCallStateTransitionMessage",
+    "MessageWithToolCallMessageBase",
+    "MessageWithToolCallToolCallInvocationMessageBase",
+    "MessageWithToolCallToolCallResultMessageBase",
+    "MessageWithToolCallNodeTransitionMessageBase",
+    "MessageWithToolCallStateTransitionMessageBase",
 ]
 
 
@@ -65,26 +65,23 @@ class ChatCost(BaseModel):
     """List of products with their unit prices and costs in cents"""
 
 
-class MessageWithToolCallMessage(BaseModel):
+class MessageWithToolCallMessageBase(BaseModel):
     content: str
     """Content of the message"""
-
-    created_timestamp: int
-    """Create timestamp of the message"""
-
-    message_id: str
-    """Unique id of the message"""
 
     role: Literal["agent", "user"]
     """Documents whether this message is sent by agent or user."""
 
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
 
-class MessageWithToolCallToolCallInvocationMessage(BaseModel):
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+
+class MessageWithToolCallToolCallInvocationMessageBase(BaseModel):
     arguments: str
     """Arguments for this tool call, it's a stringified JSON object."""
-
-    message_id: str
-    """Unique id of the message"""
 
     name: str
     """Name of the function in this tool call."""
@@ -98,6 +95,9 @@ class MessageWithToolCallToolCallInvocationMessage(BaseModel):
     created_timestamp: Optional[int] = None
     """Create timestamp of the message"""
 
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
     thought_signature: Optional[str] = None
     """Optional thought signature from Google Gemini thinking models.
 
@@ -106,15 +106,9 @@ class MessageWithToolCallToolCallInvocationMessage(BaseModel):
     """
 
 
-class MessageWithToolCallToolCallResultMessage(BaseModel):
+class MessageWithToolCallToolCallResultMessageBase(BaseModel):
     content: str
     """Result of the tool call, can be a string, a stringified json, etc."""
-
-    created_timestamp: int
-    """Create timestamp of the message"""
-
-    message_id: str
-    """Unique id of the message"""
 
     role: Literal["tool_call_result"]
     """This is the result of a tool call."""
@@ -122,19 +116,22 @@ class MessageWithToolCallToolCallResultMessage(BaseModel):
     tool_call_id: str
     """Tool call id, globally unique."""
 
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
     successful: Optional[bool] = None
     """Whether the tool call was successful."""
 
 
-class MessageWithToolCallNodeTransitionMessage(BaseModel):
-    created_timestamp: int
-    """Create timestamp of the message"""
-
-    message_id: str
-    """Unique id of the message"""
-
+class MessageWithToolCallNodeTransitionMessageBase(BaseModel):
     role: Literal["node_transition"]
     """This is a node transition."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
 
     former_node_id: Optional[str] = None
     """Former node id"""
@@ -142,36 +139,47 @@ class MessageWithToolCallNodeTransitionMessage(BaseModel):
     former_node_name: Optional[str] = None
     """Former node name"""
 
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
     new_node_id: Optional[str] = None
     """New node id"""
 
     new_node_name: Optional[str] = None
     """New node name"""
 
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
 
-class MessageWithToolCallStateTransitionMessage(BaseModel):
-    created_timestamp: int
-    """Create timestamp of the message"""
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
 
-    message_id: str
-    """Unique id of the message"""
 
+class MessageWithToolCallStateTransitionMessageBase(BaseModel):
     role: Literal["state_transition"]
     """This is a state transition."""
 
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
     former_state_name: Optional[str] = None
     """Former state name"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
 
     new_state_name: Optional[str] = None
     """New state name"""
 
 
 MessageWithToolCall: TypeAlias = Union[
-    MessageWithToolCallMessage,
-    MessageWithToolCallToolCallInvocationMessage,
-    MessageWithToolCallToolCallResultMessage,
-    MessageWithToolCallNodeTransitionMessage,
-    MessageWithToolCallStateTransitionMessage,
+    MessageWithToolCallMessageBase,
+    MessageWithToolCallToolCallInvocationMessageBase,
+    MessageWithToolCallToolCallResultMessageBase,
+    MessageWithToolCallNodeTransitionMessageBase,
+    MessageWithToolCallStateTransitionMessageBase,
 ]
 
 
