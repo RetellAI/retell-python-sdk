@@ -95,9 +95,12 @@ class AgentOverrideAgentCustomSttConfig(TypedDict, total=False):
     """Custom STT configuration. Only used when stt_mode is set to custom."""
 
     endpointing_ms: Required[int]
-    """Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram."""
+    """Endpointing timeout in milliseconds.
 
-    provider: Required[Literal["azure", "deepgram"]]
+    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox
+    """
+
+    provider: Required[Literal["azure", "deepgram", "soniox"]]
     """The STT provider to use."""
 
 
@@ -739,17 +742,6 @@ class AgentOverrideAgent(TypedDict, total=False):
     7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).
     """
 
-    normalize_for_speech: bool
-    """
-    If set to true, will normalize the some part of text (number, currency, date,
-    etc) to spoken to its spoken form for more consistent speech synthesis
-    (sometimes the voice synthesize system itself might read these wrong with the
-    raw text). For example, it will convert "Call my number 2137112342 on Jul 5th,
-    2024 for the $24.12 payment" to "Call my number two one three seven one one two
-    three four two on july fifth, twenty twenty four for the twenty four dollars
-    twelve cents payment" before starting audio generation.
-    """
-
     opt_in_signed_url: bool
     """Whether this agent opts in for signed URLs for public logs and recordings.
 
@@ -786,9 +778,10 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
-    """The model to use for post call analysis. Default to gpt-4.1-mini."""
+    """The model to use for post call analysis. Default to gpt-4.1."""
 
     pronunciation_dictionary: Optional[Iterable[AgentOverrideAgentPronunciationDictionary]]
     """
@@ -896,6 +889,7 @@ class AgentOverrideAgent(TypedDict, total=False):
             "speech-02-turbo",
             "speech-2.8-turbo",
             "s1",
+            "s2-pro",
         ]
     ]
     """Select the voice model used for the selected voice.
@@ -1017,6 +1011,7 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -1123,6 +1118,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""

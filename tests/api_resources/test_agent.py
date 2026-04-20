@@ -86,7 +86,6 @@ class TestAgent:
             ivr_option={"action": {"type": "hangup"}},
             language="en-US",
             max_call_duration_ms=3600000,
-            normalize_for_speech=True,
             opt_in_signed_url=True,
             pii_config={
                 "categories": ["person_name"],
@@ -285,7 +284,6 @@ class TestAgent:
             ivr_option={"action": {"type": "hangup"}},
             language="en-US",
             max_call_duration_ms=3600000,
-            normalize_for_speech=True,
             opt_in_signed_url=True,
             pii_config={
                 "categories": ["person_name"],
@@ -392,6 +390,7 @@ class TestAgent:
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
         agent = client.agent.list(
+            is_latest=True,
             limit=50,
             pagination_key="agent_1ffdb9717444d0e77346838911",
             pagination_key_version=0,
@@ -617,7 +616,6 @@ class TestAsyncAgent:
             ivr_option={"action": {"type": "hangup"}},
             language="en-US",
             max_call_duration_ms=3600000,
-            normalize_for_speech=True,
             opt_in_signed_url=True,
             pii_config={
                 "categories": ["person_name"],
@@ -816,7 +814,6 @@ class TestAsyncAgent:
             ivr_option={"action": {"type": "hangup"}},
             language="en-US",
             max_call_duration_ms=3600000,
-            normalize_for_speech=True,
             opt_in_signed_url=True,
             pii_config={
                 "categories": ["person_name"],
@@ -923,6 +920,7 @@ class TestAsyncAgent:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.list(
+            is_latest=True,
             limit=50,
             pagination_key="agent_1ffdb9717444d0e77346838911",
             pagination_key_version=0,

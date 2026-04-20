@@ -8,6 +8,9 @@ __all__ = ["ChatAgentListParams"]
 
 
 class ChatAgentListParams(TypedDict, total=False):
+    is_latest: bool
+    """If true, only return the latest version of each chat agent."""
+
     limit: int
     """A limit on the number of objects to be returned.
 

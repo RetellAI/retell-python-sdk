@@ -138,6 +138,7 @@ __all__ = [
     "NodeSubagentNodeToolSendSMSToolSMSContent",
     "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined",
     "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred",
+    "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentTemplate",
     "NodeSubagentNodeToolCustomTool",
     "NodeSubagentNodeToolCustomToolParameters",
     "NodeSubagentNodeToolCodeTool",
@@ -370,6 +371,7 @@ __all__ = [
     "NodeSMSNodeInstruction",
     "NodeSMSNodeInstructionNodeInstructionPrompt",
     "NodeSMSNodeInstructionNodeInstructionStaticText",
+    "NodeSMSNodeInstructionSMSInstructionTemplate",
     "NodeSMSNodeSuccessEdge",
     "NodeSMSNodeSuccessEdgeTransitionCondition",
     "NodeSMSNodeSuccessEdgeTransitionConditionPromptCondition",
@@ -1014,6 +1016,7 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -1481,6 +1484,7 @@ class NodeSubagentNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -2095,9 +2099,21 @@ class NodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred(TypedDict, tot
     type: Literal["inferred"]
 
 
+class NodeSubagentNodeToolSendSMSToolSMSContentSMSContentTemplate(TypedDict, total=False):
+    template: Required[Literal["info_collection"]]
+    """The template to use for the SMS content.
+
+    "info_collection" sends a predefined message requesting information from the
+    user.
+    """
+
+    type: Required[Literal["template"]]
+
+
 NodeSubagentNodeToolSendSMSToolSMSContent: TypeAlias = Union[
     NodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined,
     NodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred,
+    NodeSubagentNodeToolSendSMSToolSMSContentSMSContentTemplate,
 ]
 
 
@@ -2189,6 +2205,13 @@ class NodeSubagentNodeToolCustomTool(TypedDict, total=False):
     description: str
     """Describes what this tool does and when to call this tool."""
 
+    enable_typing_sound: bool
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing. Useful when the tool takes a noticeable amount of time to prevent
+    silence on the call.
+    """
+
     execution_message_description: str
     """The description for the sentence agent say during execution.
 
@@ -2270,6 +2293,12 @@ class NodeSubagentNodeToolCodeTool(TypedDict, total=False):
 
     description: str
     """Describes what this tool does and when to call this tool."""
+
+    enable_typing_sound: bool
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
 
     execution_message_description: str
     """The description for the sentence agent say during execution.
@@ -2524,6 +2553,12 @@ class NodeSubagentNodeToolMcpTool(TypedDict, total=False):
     """Name of the MCP tool."""
 
     type: Required[Literal["mcp"]]
+
+    enable_typing_sound: bool
+    """
+    If true, play a typing sound on the agent audio track while this MCP tool is
+    executing.
+    """
 
     execution_message_description: str
     """The description for the sentence agent say during execution.
@@ -2828,6 +2863,7 @@ class NodeEndNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -3198,6 +3234,7 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -3231,6 +3268,9 @@ class NodeFunctionNode(TypedDict, total=False):
     edges: Iterable[NodeFunctionNodeEdge]
 
     else_edge: NodeFunctionNodeElseEdge
+
+    enable_typing_sound: bool
+    """If true, play a typing sound while this function executes."""
 
     finetune_transition_examples: Iterable[NodeFunctionNodeFinetuneTransitionExample]
 
@@ -3580,6 +3620,7 @@ class NodeCodeNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -3610,6 +3651,9 @@ class NodeCodeNode(TypedDict, total=False):
     edges: Iterable[NodeCodeNodeEdge]
 
     else_edge: NodeCodeNodeElseEdge
+
+    enable_typing_sound: bool
+    """If true, play a typing sound while code executes."""
 
     finetune_transition_examples: Iterable[NodeCodeNodeFinetuneTransitionExample]
 
@@ -4171,6 +4215,7 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -4489,6 +4534,7 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -4841,6 +4887,7 @@ class NodeBranchNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -4948,8 +4995,22 @@ class NodeSMSNodeInstructionNodeInstructionStaticText(TypedDict, total=False):
     """Type of instruction"""
 
 
+class NodeSMSNodeInstructionSMSInstructionTemplate(TypedDict, total=False):
+    template: Required[Literal["info_collection"]]
+    """The template to use for the instruction.
+
+    "info_collection" sends a predefined message requesting information from the
+    user.
+    """
+
+    type: Required[Literal["template"]]
+    """Type of instruction"""
+
+
 NodeSMSNodeInstruction: TypeAlias = Union[
-    NodeSMSNodeInstructionNodeInstructionPrompt, NodeSMSNodeInstructionNodeInstructionStaticText
+    NodeSMSNodeInstructionNodeInstructionPrompt,
+    NodeSMSNodeInstructionNodeInstructionStaticText,
+    NodeSMSNodeInstructionSMSInstructionTemplate,
 ]
 
 
@@ -5179,6 +5240,7 @@ class NodeSMSNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -5657,6 +5719,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -5945,6 +6008,7 @@ class NodeAgentSwapNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -6337,6 +6401,7 @@ class NodeMcpNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -6370,6 +6435,9 @@ class NodeMcpNode(TypedDict, total=False):
     edges: Iterable[NodeMcpNodeEdge]
 
     else_edge: NodeMcpNodeElseEdge
+
+    enable_typing_sound: bool
+    """If true, play a typing sound while MCP tool executes."""
 
     finetune_transition_examples: Iterable[NodeMcpNodeFinetuneTransitionExample]
 
@@ -6918,6 +6986,7 @@ class NodeBridgeTransferNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -7151,6 +7220,7 @@ class NodeCancelTransferNodeModelChoice(TypedDict, total=False):
             "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
         ]
     ]
     """The LLM model to use"""
@@ -7289,6 +7359,13 @@ class ToolCustomTool(TypedDict, total=False):
 
     description: str
     """Describes what this tool does and when to call this tool."""
+
+    enable_typing_sound: bool
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing. Useful when the tool takes a noticeable amount of time to prevent
+    silence on the call.
+    """
 
     execution_message_description: str
     """The description for the sentence agent say during execution.

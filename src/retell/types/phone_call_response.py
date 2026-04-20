@@ -459,6 +459,14 @@ class ScrubbedTranscriptWithToolCallNodeTransitionUtterance(BaseModel):
     role: Literal["node_transition"]
     """This is result of a node transition"""
 
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
+
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
+
 
 class ScrubbedTranscriptWithToolCallDtmfUtterance(BaseModel):
     digit: str
@@ -605,6 +613,14 @@ class TranscriptWithToolCallNodeTransitionUtterance(BaseModel):
     role: Literal["node_transition"]
     """This is result of a node transition"""
 
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
+
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
+
 
 class TranscriptWithToolCallDtmfUtterance(BaseModel):
     digit: str
@@ -721,6 +737,7 @@ class PhoneCallResponse(BaseModel):
             "registered_call_timeout",
             "transfer_bridged",
             "transfer_cancelled",
+            "manual_stopped",
         ]
     ] = None
     """The reason for the disconnection of the call.

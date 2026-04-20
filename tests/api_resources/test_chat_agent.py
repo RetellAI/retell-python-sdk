@@ -275,6 +275,7 @@ class TestChatAgent:
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
         chat_agent = client.chat_agent.list(
+            is_latest=True,
             limit=50,
             pagination_key="16b980523634a6dc504898cda492e939",
             pagination_key_version=0,
@@ -689,6 +690,7 @@ class TestAsyncChatAgent:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.list(
+            is_latest=True,
             limit=50,
             pagination_key="16b980523634a6dc504898cda492e939",
             pagination_key_version=0,
