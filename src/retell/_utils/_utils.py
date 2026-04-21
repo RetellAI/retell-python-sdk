@@ -116,6 +116,7 @@ def _extract_items(
         if key != "<array>":
             return []
 
+        array_flattened_key = "[]" if flattened_key is None else f"{flattened_key}[]"
         list_ = obj
         if (len(path)) == index:
             list_ = obj[:]
@@ -127,7 +128,7 @@ def _extract_items(
                     item,
                     path,
                     index=index,
-                    flattened_key=flattened_key,
+                    flattened_key=array_flattened_key,
                 )
                 for item in list_
             ]
