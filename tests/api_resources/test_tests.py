@@ -394,7 +394,6 @@ class TestTests:
             type="retell-llm",
             conversation_flow_id="conversation_flow_id",
             llm_id="llm_id",
-            version=0,
         )
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
@@ -914,7 +913,6 @@ class TestAsyncTests:
             type="retell-llm",
             conversation_flow_id="conversation_flow_id",
             llm_id="llm_id",
-            version=0,
         )
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
