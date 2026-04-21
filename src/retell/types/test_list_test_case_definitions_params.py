@@ -16,6 +16,3 @@ class TestListTestCaseDefinitionsParams(TypedDict, total=False):
 
     llm_id: str
     """LLM ID (required when type is retell-llm)"""
-
-    version: int
-    """Version of the response engine (defaults to latest)"""
