@@ -1,5 +1,24 @@
 # Changelog
 
+## 5.26.0 (2026-04-21)
+
+Full Changelog: [v5.25.1...v5.26.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.25.1...v5.26.0)
+
+### Features
+
+* **api:** api update ([cf35bc0](https://github.com/RetellAI/retell-python-sdk/commit/cf35bc0e0bc91087ff291519368c31d79f5eb965))
+* **api:** api update ([f713a5c](https://github.com/RetellAI/retell-python-sdk/commit/f713a5caca59576e67eacdc0e1ef7d187ad55848))
+
+
+### Bug Fixes
+
+* ensure file data are only sent as 1 parameter ([f78c675](https://github.com/RetellAI/retell-python-sdk/commit/f78c6756701a322eaffc2fd88926dc23be926b69))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([b0c4a11](https://github.com/RetellAI/retell-python-sdk/commit/b0c4a11c769cc0483e7cfff7646feb11f17ef7e5))
+
 ## 5.25.1 (2026-04-08)
 
 Full Changelog: [v5.25.0...v5.25.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.25.0...v5.25.1)
