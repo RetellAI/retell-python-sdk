@@ -24,9 +24,17 @@ class TestPlayground:
             agent_id="agent_id",
             messages=[
                 {
-                    "content": "hi how are you doing?",
+                    "content": "Hi, I'd like to check my appointment.",
+                    "role": "user",
+                },
+                {
+                    "content": "Sure! Could you please provide your name?",
                     "role": "agent",
-                }
+                },
+                {
+                    "content": "My name is John Smith.",
+                    "role": "user",
+                },
             ],
         )
         assert_matches_type(PlaygroundCompletionResponse, playground, path=["response"])
@@ -38,17 +46,32 @@ class TestPlayground:
             agent_id="agent_id",
             messages=[
                 {
-                    "content": "hi how are you doing?",
+                    "content": "Hi, I'd like to check my appointment.",
+                    "role": "user",
+                    "created_timestamp": 1703302428855,
+                    "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
+                },
+                {
+                    "content": "Sure! Could you please provide your name?",
                     "role": "agent",
                     "created_timestamp": 1703302428855,
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
-                }
+                },
+                {
+                    "content": "My name is John Smith.",
+                    "role": "user",
+                    "created_timestamp": 1703302428855,
+                    "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
+                },
             ],
             version=0,
-            component_id="component_id",
-            current_node_id="current_node_id",
-            current_state="current_state",
-            dynamic_variables={"foo": "string"},
+            component_id="component_xyz789",
+            current_node_id="start-node-abc123",
+            current_state="greeting",
+            dynamic_variables={
+                "customer_name": "John Smith",
+                "customer_phone": "444-223-3564",
+            },
             tool_mocks=[
                 {
                     "input_match_rule": {"type": "any"},
@@ -67,9 +90,17 @@ class TestPlayground:
             agent_id="agent_id",
             messages=[
                 {
-                    "content": "hi how are you doing?",
+                    "content": "Hi, I'd like to check my appointment.",
+                    "role": "user",
+                },
+                {
+                    "content": "Sure! Could you please provide your name?",
                     "role": "agent",
-                }
+                },
+                {
+                    "content": "My name is John Smith.",
+                    "role": "user",
+                },
             ],
         )
 
@@ -85,9 +116,17 @@ class TestPlayground:
             agent_id="agent_id",
             messages=[
                 {
-                    "content": "hi how are you doing?",
+                    "content": "Hi, I'd like to check my appointment.",
+                    "role": "user",
+                },
+                {
+                    "content": "Sure! Could you please provide your name?",
                     "role": "agent",
-                }
+                },
+                {
+                    "content": "My name is John Smith.",
+                    "role": "user",
+                },
             ],
         ) as response:
             assert not response.is_closed
@@ -106,9 +145,17 @@ class TestPlayground:
                 agent_id="",
                 messages=[
                     {
-                        "content": "hi how are you doing?",
+                        "content": "Hi, I'd like to check my appointment.",
+                        "role": "user",
+                    },
+                    {
+                        "content": "Sure! Could you please provide your name?",
                         "role": "agent",
-                    }
+                    },
+                    {
+                        "content": "My name is John Smith.",
+                        "role": "user",
+                    },
                 ],
             )
 
@@ -125,9 +172,17 @@ class TestAsyncPlayground:
             agent_id="agent_id",
             messages=[
                 {
-                    "content": "hi how are you doing?",
+                    "content": "Hi, I'd like to check my appointment.",
+                    "role": "user",
+                },
+                {
+                    "content": "Sure! Could you please provide your name?",
                     "role": "agent",
-                }
+                },
+                {
+                    "content": "My name is John Smith.",
+                    "role": "user",
+                },
             ],
         )
         assert_matches_type(PlaygroundCompletionResponse, playground, path=["response"])
@@ -139,17 +194,32 @@ class TestAsyncPlayground:
             agent_id="agent_id",
             messages=[
                 {
-                    "content": "hi how are you doing?",
+                    "content": "Hi, I'd like to check my appointment.",
+                    "role": "user",
+                    "created_timestamp": 1703302428855,
+                    "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
+                },
+                {
+                    "content": "Sure! Could you please provide your name?",
                     "role": "agent",
                     "created_timestamp": 1703302428855,
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
-                }
+                },
+                {
+                    "content": "My name is John Smith.",
+                    "role": "user",
+                    "created_timestamp": 1703302428855,
+                    "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
+                },
             ],
             version=0,
-            component_id="component_id",
-            current_node_id="current_node_id",
-            current_state="current_state",
-            dynamic_variables={"foo": "string"},
+            component_id="component_xyz789",
+            current_node_id="start-node-abc123",
+            current_state="greeting",
+            dynamic_variables={
+                "customer_name": "John Smith",
+                "customer_phone": "444-223-3564",
+            },
             tool_mocks=[
                 {
                     "input_match_rule": {"type": "any"},
@@ -168,9 +238,17 @@ class TestAsyncPlayground:
             agent_id="agent_id",
             messages=[
                 {
-                    "content": "hi how are you doing?",
+                    "content": "Hi, I'd like to check my appointment.",
+                    "role": "user",
+                },
+                {
+                    "content": "Sure! Could you please provide your name?",
                     "role": "agent",
-                }
+                },
+                {
+                    "content": "My name is John Smith.",
+                    "role": "user",
+                },
             ],
         )
 
@@ -186,9 +264,17 @@ class TestAsyncPlayground:
             agent_id="agent_id",
             messages=[
                 {
-                    "content": "hi how are you doing?",
+                    "content": "Hi, I'd like to check my appointment.",
+                    "role": "user",
+                },
+                {
+                    "content": "Sure! Could you please provide your name?",
                     "role": "agent",
-                }
+                },
+                {
+                    "content": "My name is John Smith.",
+                    "role": "user",
+                },
             ],
         ) as response:
             assert not response.is_closed
@@ -207,8 +293,16 @@ class TestAsyncPlayground:
                 agent_id="",
                 messages=[
                     {
-                        "content": "hi how are you doing?",
+                        "content": "Hi, I'd like to check my appointment.",
+                        "role": "user",
+                    },
+                    {
+                        "content": "Sure! Could you please provide your name?",
                         "role": "agent",
-                    }
+                    },
+                    {
+                        "content": "My name is John Smith.",
+                        "role": "user",
+                    },
                 ],
             )
