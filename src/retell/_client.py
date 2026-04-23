@@ -41,6 +41,7 @@ if TYPE_CHECKING:
         mcp_tool,
         batch_call,
         chat_agent,
+        playground,
         concurrency,
         phone_number,
         knowledge_base,
@@ -56,6 +57,7 @@ if TYPE_CHECKING:
     from .resources.mcp_tool import McpToolResource, AsyncMcpToolResource
     from .resources.batch_call import BatchCallResource, AsyncBatchCallResource
     from .resources.chat_agent import ChatAgentResource, AsyncChatAgentResource
+    from .resources.playground import PlaygroundResource, AsyncPlaygroundResource
     from .resources.concurrency import ConcurrencyResource, AsyncConcurrencyResource
     from .resources.phone_number import PhoneNumberResource, AsyncPhoneNumberResource
     from .resources.knowledge_base import KnowledgeBaseResource, AsyncKnowledgeBaseResource
@@ -200,6 +202,12 @@ class Retell(SyncAPIClient):
         from .resources.tests import TestsResource
 
         return TestsResource(self)
+
+    @cached_property
+    def playground(self) -> PlaygroundResource:
+        from .resources.playground import PlaygroundResource
+
+        return PlaygroundResource(self)
 
     @cached_property
     def mcp_tool(self) -> McpToolResource:
@@ -454,6 +462,12 @@ class AsyncRetell(AsyncAPIClient):
         return AsyncTestsResource(self)
 
     @cached_property
+    def playground(self) -> AsyncPlaygroundResource:
+        from .resources.playground import AsyncPlaygroundResource
+
+        return AsyncPlaygroundResource(self)
+
+    @cached_property
     def mcp_tool(self) -> AsyncMcpToolResource:
         from .resources.mcp_tool import AsyncMcpToolResource
 
@@ -659,6 +673,12 @@ class RetellWithRawResponse:
         return TestsResourceWithRawResponse(self._client.tests)
 
     @cached_property
+    def playground(self) -> playground.PlaygroundResourceWithRawResponse:
+        from .resources.playground import PlaygroundResourceWithRawResponse
+
+        return PlaygroundResourceWithRawResponse(self._client.playground)
+
+    @cached_property
     def mcp_tool(self) -> mcp_tool.McpToolResourceWithRawResponse:
         from .resources.mcp_tool import McpToolResourceWithRawResponse
 
@@ -750,6 +770,12 @@ class AsyncRetellWithRawResponse:
         from .resources.tests import AsyncTestsResourceWithRawResponse
 
         return AsyncTestsResourceWithRawResponse(self._client.tests)
+
+    @cached_property
+    def playground(self) -> playground.AsyncPlaygroundResourceWithRawResponse:
+        from .resources.playground import AsyncPlaygroundResourceWithRawResponse
+
+        return AsyncPlaygroundResourceWithRawResponse(self._client.playground)
 
     @cached_property
     def mcp_tool(self) -> mcp_tool.AsyncMcpToolResourceWithRawResponse:
@@ -845,6 +871,12 @@ class RetellWithStreamedResponse:
         return TestsResourceWithStreamingResponse(self._client.tests)
 
     @cached_property
+    def playground(self) -> playground.PlaygroundResourceWithStreamingResponse:
+        from .resources.playground import PlaygroundResourceWithStreamingResponse
+
+        return PlaygroundResourceWithStreamingResponse(self._client.playground)
+
+    @cached_property
     def mcp_tool(self) -> mcp_tool.McpToolResourceWithStreamingResponse:
         from .resources.mcp_tool import McpToolResourceWithStreamingResponse
 
@@ -936,6 +968,12 @@ class AsyncRetellWithStreamedResponse:
         from .resources.tests import AsyncTestsResourceWithStreamingResponse
 
         return AsyncTestsResourceWithStreamingResponse(self._client.tests)
+
+    @cached_property
+    def playground(self) -> playground.AsyncPlaygroundResourceWithStreamingResponse:
+        from .resources.playground import AsyncPlaygroundResourceWithStreamingResponse
+
+        return AsyncPlaygroundResourceWithStreamingResponse(self._client.playground)
 
     @cached_property
     def mcp_tool(self) -> mcp_tool.AsyncMcpToolResourceWithStreamingResponse:
