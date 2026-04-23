@@ -1,4 +1,4 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 __title__ = "retell"
-__version__ = "5.27.1"  # x-release-please-version
+__version__ = "5.28.0"  # x-release-please-version
