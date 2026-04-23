@@ -72,6 +72,14 @@ from .chat_agent import (
     ChatAgentResourceWithStreamingResponse,
     AsyncChatAgentResourceWithStreamingResponse,
 )
+from .playground import (
+    PlaygroundResource,
+    AsyncPlaygroundResource,
+    PlaygroundResourceWithRawResponse,
+    AsyncPlaygroundResourceWithRawResponse,
+    PlaygroundResourceWithStreamingResponse,
+    AsyncPlaygroundResourceWithStreamingResponse,
+)
 from .concurrency import (
     ConcurrencyResource,
     AsyncConcurrencyResource,
@@ -192,6 +200,12 @@ __all__ = [
     "AsyncTestsResourceWithRawResponse",
     "TestsResourceWithStreamingResponse",
     "AsyncTestsResourceWithStreamingResponse",
+    "PlaygroundResource",
+    "AsyncPlaygroundResource",
+    "PlaygroundResourceWithRawResponse",
+    "AsyncPlaygroundResourceWithRawResponse",
+    "PlaygroundResourceWithStreamingResponse",
+    "AsyncPlaygroundResourceWithStreamingResponse",
     "McpToolResource",
     "AsyncMcpToolResource",
     "McpToolResourceWithRawResponse",
