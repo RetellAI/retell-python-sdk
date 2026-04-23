@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.27.1 (2026-04-23)
+
+Full Changelog: [v5.27.0...v5.27.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.27.0...v5.27.1)
+
+### Chores
+
+* **internal:** more robust bootstrap script ([0823005](https://github.com/RetellAI/retell-python-sdk/commit/08230055b4d763e96698f67bccde9a9bcc66c3b7))
+
 ## 5.27.0 (2026-04-23)
 
 Full Changelog: [v5.26.0...v5.27.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.26.0...v5.27.0)
