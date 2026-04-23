@@ -220,6 +220,18 @@ Methods:
 - <code title="get /list-test-runs/{test_case_batch_job_id}">client.tests.<a href="./src/retell/resources/tests.py">list_test_runs</a>(test_case_batch_job_id) -> <a href="./src/retell/types/test_list_test_runs_response.py">TestListTestRunsResponse</a></code>
 - <code title="put /update-test-case-definition/{test_case_definition_id}">client.tests.<a href="./src/retell/resources/tests.py">update_test_case_definition</a>(test_case_definition_id, \*\*<a href="src/retell/types/test_update_test_case_definition_params.py">params</a>) -> <a href="./src/retell/types/test_case_definition_response.py">TestCaseDefinitionResponse</a></code>
 
+# Playground
+
+Types:
+
+```python
+from retell.types import PlaygroundCompletionResponse
+```
+
+Methods:
+
+- <code title="post /agent-playground-completion/{agent_id}">client.playground.<a href="./src/retell/resources/playground.py">completion</a>(agent_id, \*\*<a href="src/retell/types/playground_completion_params.py">params</a>) -> <a href="./src/retell/types/playground_completion_response.py">PlaygroundCompletionResponse</a></code>
+
 # McpTool
 
 Types:
