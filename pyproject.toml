@@ -1,6 +1,6 @@
 [project]
 name = "retell-sdk"
-version = "5.29.0"
+version = "5.30.0"
 description = "The official Python library for the retell API"
 dynamic = ["readme"]
 license = "Apache-2.0"
