@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.29.0 (2026-04-27)
+
+Full Changelog: [v5.28.0...v5.29.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.28.0...v5.29.0)
+
+### Features
+
+* **api:** api update ([cd25a42](https://github.com/RetellAI/retell-python-sdk/commit/cd25a42a765006cec01dc1758746be5c13fe78cd))
+
 ## 5.28.0 (2026-04-23)
 
 Full Changelog: [v5.27.1...v5.28.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.27.1...v5.28.0)
