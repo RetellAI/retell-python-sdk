@@ -423,6 +423,7 @@ class AgentCreateParams(TypedDict, total=False):
             "gpt-5.4",
             "gpt-5.4-mini",
             "gpt-5.4-nano",
+            "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -664,7 +665,7 @@ class CustomSttConfig(TypedDict, total=False):
     """
 
     provider: Required[Literal["azure", "deepgram", "soniox"]]
-    """The STT provider to use."""
+    """ASR provider name."""
 
 
 class GuardrailConfig(TypedDict, total=False):

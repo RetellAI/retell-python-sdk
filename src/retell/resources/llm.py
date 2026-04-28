@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Dict, Iterable, Optional
 from typing_extensions import Literal
 
@@ -69,6 +70,7 @@ class LlmResource(SyncAPIResource):
                 "gpt-5.4",
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
+                "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-4.5-haiku",
@@ -264,6 +266,7 @@ class LlmResource(SyncAPIResource):
                 "gpt-5.4",
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
+                "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-4.5-haiku",
@@ -399,6 +402,7 @@ class LlmResource(SyncAPIResource):
             cast_to=LlmResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
@@ -533,6 +537,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gpt-5.4",
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
+                "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-4.5-haiku",
@@ -728,6 +733,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gpt-5.4",
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
+                "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-4.5-haiku",
@@ -863,6 +869,7 @@ class AsyncLlmResource(AsyncAPIResource):
             cast_to=LlmResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
@@ -966,8 +973,10 @@ class LlmResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             llm.update,
         )
-        self.list = to_raw_response_wrapper(
-            llm.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                llm.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = to_raw_response_wrapper(
             llm.delete,
@@ -987,8 +996,10 @@ class AsyncLlmResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             llm.update,
         )
-        self.list = async_to_raw_response_wrapper(
-            llm.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                llm.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = async_to_raw_response_wrapper(
             llm.delete,
@@ -1008,8 +1019,10 @@ class LlmResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             llm.update,
         )
-        self.list = to_streamed_response_wrapper(
-            llm.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                llm.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = to_streamed_response_wrapper(
             llm.delete,
@@ -1029,8 +1042,10 @@ class AsyncLlmResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             llm.update,
         )
-        self.list = async_to_streamed_response_wrapper(
-            llm.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                llm.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = async_to_streamed_response_wrapper(
             llm.delete,

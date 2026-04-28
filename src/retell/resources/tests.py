@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Dict, Iterable
 from typing_extensions import Literal
 
@@ -120,6 +121,7 @@ class TestsResource(SyncAPIResource):
             "gpt-5.4",
             "gpt-5.4-mini",
             "gpt-5.4-nano",
+            "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -327,6 +329,7 @@ class TestsResource(SyncAPIResource):
             cast_to=TestCaseJobResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list_batch_tests(
         self,
         *,
@@ -381,6 +384,7 @@ class TestsResource(SyncAPIResource):
             cast_to=TestListBatchTestsResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list_test_case_definitions(
         self,
         *,
@@ -431,6 +435,7 @@ class TestsResource(SyncAPIResource):
             cast_to=TestListTestCaseDefinitionsResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list_test_runs(
         self,
         test_case_batch_job_id: str,
@@ -483,6 +488,7 @@ class TestsResource(SyncAPIResource):
             "gpt-5.4",
             "gpt-5.4-mini",
             "gpt-5.4-nano",
+            "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -641,6 +647,7 @@ class AsyncTestsResource(AsyncAPIResource):
             "gpt-5.4",
             "gpt-5.4-mini",
             "gpt-5.4-nano",
+            "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -848,6 +855,7 @@ class AsyncTestsResource(AsyncAPIResource):
             cast_to=TestCaseJobResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def list_batch_tests(
         self,
         *,
@@ -902,6 +910,7 @@ class AsyncTestsResource(AsyncAPIResource):
             cast_to=TestListBatchTestsResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def list_test_case_definitions(
         self,
         *,
@@ -952,6 +961,7 @@ class AsyncTestsResource(AsyncAPIResource):
             cast_to=TestListTestCaseDefinitionsResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def list_test_runs(
         self,
         test_case_batch_job_id: str,
@@ -1004,6 +1014,7 @@ class AsyncTestsResource(AsyncAPIResource):
             "gpt-5.4",
             "gpt-5.4-mini",
             "gpt-5.4-nano",
+            "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -1103,14 +1114,20 @@ class TestsResourceWithRawResponse:
         self.get_test_run = to_raw_response_wrapper(
             tests.get_test_run,
         )
-        self.list_batch_tests = to_raw_response_wrapper(
-            tests.list_batch_tests,
+        self.list_batch_tests = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                tests.list_batch_tests,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list_test_case_definitions = to_raw_response_wrapper(
-            tests.list_test_case_definitions,
+        self.list_test_case_definitions = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                tests.list_test_case_definitions,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list_test_runs = to_raw_response_wrapper(
-            tests.list_test_runs,
+        self.list_test_runs = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                tests.list_test_runs,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.update_test_case_definition = to_raw_response_wrapper(
             tests.update_test_case_definition,
@@ -1139,14 +1156,20 @@ class AsyncTestsResourceWithRawResponse:
         self.get_test_run = async_to_raw_response_wrapper(
             tests.get_test_run,
         )
-        self.list_batch_tests = async_to_raw_response_wrapper(
-            tests.list_batch_tests,
+        self.list_batch_tests = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                tests.list_batch_tests,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list_test_case_definitions = async_to_raw_response_wrapper(
-            tests.list_test_case_definitions,
+        self.list_test_case_definitions = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                tests.list_test_case_definitions,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list_test_runs = async_to_raw_response_wrapper(
-            tests.list_test_runs,
+        self.list_test_runs = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                tests.list_test_runs,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.update_test_case_definition = async_to_raw_response_wrapper(
             tests.update_test_case_definition,
@@ -1177,14 +1200,20 @@ class TestsResourceWithStreamingResponse:
         self.get_test_run = to_streamed_response_wrapper(
             tests.get_test_run,
         )
-        self.list_batch_tests = to_streamed_response_wrapper(
-            tests.list_batch_tests,
+        self.list_batch_tests = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                tests.list_batch_tests,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list_test_case_definitions = to_streamed_response_wrapper(
-            tests.list_test_case_definitions,
+        self.list_test_case_definitions = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                tests.list_test_case_definitions,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list_test_runs = to_streamed_response_wrapper(
-            tests.list_test_runs,
+        self.list_test_runs = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                tests.list_test_runs,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.update_test_case_definition = to_streamed_response_wrapper(
             tests.update_test_case_definition,
@@ -1213,14 +1242,20 @@ class AsyncTestsResourceWithStreamingResponse:
         self.get_test_run = async_to_streamed_response_wrapper(
             tests.get_test_run,
         )
-        self.list_batch_tests = async_to_streamed_response_wrapper(
-            tests.list_batch_tests,
+        self.list_batch_tests = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                tests.list_batch_tests,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list_test_case_definitions = async_to_streamed_response_wrapper(
-            tests.list_test_case_definitions,
+        self.list_test_case_definitions = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                tests.list_test_case_definitions,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list_test_runs = async_to_streamed_response_wrapper(
-            tests.list_test_runs,
+        self.list_test_runs = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                tests.list_test_runs,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.update_test_case_definition = async_to_streamed_response_wrapper(
             tests.update_test_case_definition,
