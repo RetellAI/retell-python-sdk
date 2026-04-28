@@ -114,7 +114,7 @@ class AgentOverrideAgentCustomSttConfig(TypedDict, total=False):
     """
 
     provider: Required[Literal["azure", "deepgram", "soniox"]]
-    """The STT provider to use."""
+    """ASR provider name."""
 
 
 class AgentOverrideAgentGuardrailConfig(TypedDict, total=False):
@@ -858,6 +858,7 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gpt-5.4",
             "gpt-5.4-mini",
             "gpt-5.4-nano",
+            "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -1091,6 +1092,7 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "gpt-5.4",
             "gpt-5.4-mini",
             "gpt-5.4-nano",
+            "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
@@ -1198,6 +1200,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-5.4",
             "gpt-5.4-mini",
             "gpt-5.4-nano",
+            "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",

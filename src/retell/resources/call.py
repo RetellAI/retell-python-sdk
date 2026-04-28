@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Any, Dict, Union, Optional, cast
 from typing_extensions import Literal
 
@@ -156,6 +157,7 @@ class CallResource(SyncAPIResource):
             ),
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
@@ -640,6 +642,7 @@ class AsyncCallResource(AsyncAPIResource):
             ),
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
@@ -1012,8 +1015,10 @@ class CallResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             call.update,
         )
-        self.list = to_raw_response_wrapper(
-            call.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                call.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = to_raw_response_wrapper(
             call.delete,
@@ -1042,8 +1047,10 @@ class AsyncCallResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             call.update,
         )
-        self.list = async_to_raw_response_wrapper(
-            call.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                call.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = async_to_raw_response_wrapper(
             call.delete,
@@ -1072,8 +1079,10 @@ class CallResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             call.update,
         )
-        self.list = to_streamed_response_wrapper(
-            call.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                call.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = to_streamed_response_wrapper(
             call.delete,
@@ -1102,8 +1111,10 @@ class AsyncCallResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             call.update,
         )
-        self.list = async_to_streamed_response_wrapper(
-            call.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                call.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = async_to_streamed_response_wrapper(
             call.delete,

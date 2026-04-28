@@ -16,6 +16,8 @@ from retell.types import (
     PhoneCallResponse,
 )
 
+# pyright: reportDeprecated=false
+
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
@@ -127,56 +129,61 @@ class TestCall:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Retell) -> None:
-        call = client.call.list()
+        with pytest.warns(DeprecationWarning):
+            call = client.call.list()
+
         assert_matches_type(CallListResponse, call, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
-        call = client.call.list(
-            filter_criteria={
-                "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
-                "batch_call_id": ["string"],
-                "call_id": ["call_5a82f0a43ea0977566b1104fcfc"],
-                "call_status": ["ended"],
-                "call_successful": [True],
-                "call_type": ["phone_call"],
-                "direction": ["inbound"],
-                "disconnection_reason": ["user_hangup"],
-                "duration_ms": {
-                    "lower_threshold": 0,
-                    "upper_threshold": 0,
+        with pytest.warns(DeprecationWarning):
+            call = client.call.list(
+                filter_criteria={
+                    "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
+                    "batch_call_id": ["string"],
+                    "call_id": ["call_5a82f0a43ea0977566b1104fcfc"],
+                    "call_status": ["ended"],
+                    "call_successful": [True],
+                    "call_type": ["phone_call"],
+                    "direction": ["inbound"],
+                    "disconnection_reason": ["user_hangup"],
+                    "duration_ms": {
+                        "lower_threshold": 0,
+                        "upper_threshold": 0,
+                    },
+                    "dynamic_variables": {"dynamic_variables.user_name": ["John"]},
+                    "e2e_latency_p50": {
+                        "lower_threshold": 0,
+                        "upper_threshold": 0,
+                    },
+                    "end_timestamp": {
+                        "lower_threshold": 0,
+                        "upper_threshold": 0,
+                    },
+                    "from_number": ["x"],
+                    "in_voicemail": [True],
+                    "metadata": {"metadata.customer_id": ["cust_123"]},
+                    "start_timestamp": {
+                        "lower_threshold": 1738475411000,
+                        "upper_threshold": 1738475421000,
+                    },
+                    "to_number": ["x"],
+                    "user_sentiment": ["Positive"],
+                    "version": [0],
                 },
-                "dynamic_variables": {"dynamic_variables.user_name": ["John"]},
-                "e2e_latency_p50": {
-                    "lower_threshold": 0,
-                    "upper_threshold": 0,
-                },
-                "end_timestamp": {
-                    "lower_threshold": 0,
-                    "upper_threshold": 0,
-                },
-                "from_number": ["x"],
-                "in_voicemail": [True],
-                "metadata": {"metadata.customer_id": ["cust_123"]},
-                "start_timestamp": {
-                    "lower_threshold": 1738475411000,
-                    "upper_threshold": 1738475421000,
-                },
-                "to_number": ["x"],
-                "user_sentiment": ["Positive"],
-                "version": [0],
-            },
-            limit=0,
-            pagination_key="pagination_key",
-            sort_order="ascending",
-        )
+                limit=0,
+                pagination_key="pagination_key",
+                sort_order="ascending",
+            )
+
         assert_matches_type(CallListResponse, call, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
-        response = client.call.with_raw_response.list()
+        with pytest.warns(DeprecationWarning):
+            response = client.call.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -186,12 +193,13 @@ class TestCall:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Retell) -> None:
-        with client.call.with_streaming_response.list() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.call.with_streaming_response.list() as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            call = response.parse()
-            assert_matches_type(CallListResponse, call, path=["response"])
+                call = response.parse()
+                assert_matches_type(CallListResponse, call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -948,56 +956,61 @@ class TestAsyncCall:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
-        call = await async_client.call.list()
+        with pytest.warns(DeprecationWarning):
+            call = await async_client.call.list()
+
         assert_matches_type(CallListResponse, call, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
-        call = await async_client.call.list(
-            filter_criteria={
-                "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
-                "batch_call_id": ["string"],
-                "call_id": ["call_5a82f0a43ea0977566b1104fcfc"],
-                "call_status": ["ended"],
-                "call_successful": [True],
-                "call_type": ["phone_call"],
-                "direction": ["inbound"],
-                "disconnection_reason": ["user_hangup"],
-                "duration_ms": {
-                    "lower_threshold": 0,
-                    "upper_threshold": 0,
+        with pytest.warns(DeprecationWarning):
+            call = await async_client.call.list(
+                filter_criteria={
+                    "agent_id": ["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],
+                    "batch_call_id": ["string"],
+                    "call_id": ["call_5a82f0a43ea0977566b1104fcfc"],
+                    "call_status": ["ended"],
+                    "call_successful": [True],
+                    "call_type": ["phone_call"],
+                    "direction": ["inbound"],
+                    "disconnection_reason": ["user_hangup"],
+                    "duration_ms": {
+                        "lower_threshold": 0,
+                        "upper_threshold": 0,
+                    },
+                    "dynamic_variables": {"dynamic_variables.user_name": ["John"]},
+                    "e2e_latency_p50": {
+                        "lower_threshold": 0,
+                        "upper_threshold": 0,
+                    },
+                    "end_timestamp": {
+                        "lower_threshold": 0,
+                        "upper_threshold": 0,
+                    },
+                    "from_number": ["x"],
+                    "in_voicemail": [True],
+                    "metadata": {"metadata.customer_id": ["cust_123"]},
+                    "start_timestamp": {
+                        "lower_threshold": 1738475411000,
+                        "upper_threshold": 1738475421000,
+                    },
+                    "to_number": ["x"],
+                    "user_sentiment": ["Positive"],
+                    "version": [0],
                 },
-                "dynamic_variables": {"dynamic_variables.user_name": ["John"]},
-                "e2e_latency_p50": {
-                    "lower_threshold": 0,
-                    "upper_threshold": 0,
-                },
-                "end_timestamp": {
-                    "lower_threshold": 0,
-                    "upper_threshold": 0,
-                },
-                "from_number": ["x"],
-                "in_voicemail": [True],
-                "metadata": {"metadata.customer_id": ["cust_123"]},
-                "start_timestamp": {
-                    "lower_threshold": 1738475411000,
-                    "upper_threshold": 1738475421000,
-                },
-                "to_number": ["x"],
-                "user_sentiment": ["Positive"],
-                "version": [0],
-            },
-            limit=0,
-            pagination_key="pagination_key",
-            sort_order="ascending",
-        )
+                limit=0,
+                pagination_key="pagination_key",
+                sort_order="ascending",
+            )
+
         assert_matches_type(CallListResponse, call, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
-        response = await async_client.call.with_raw_response.list()
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.call.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1007,12 +1020,13 @@ class TestAsyncCall:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
-        async with async_client.call.with_streaming_response.list() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.call.with_streaming_response.list() as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            call = await response.parse()
-            assert_matches_type(CallListResponse, call, path=["response"])
+                call = await response.parse()
+                assert_matches_type(CallListResponse, call, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
