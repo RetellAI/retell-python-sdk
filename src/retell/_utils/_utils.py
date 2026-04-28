@@ -17,11 +17,11 @@ from typing import (
 )
 from pathlib import Path
 from datetime import date, datetime
-from typing_extensions import TypeGuard
+from typing_extensions import TypeGuard, get_args
 
 import sniffio
 
-from .._types import Omit, NotGiven, FileTypes, HeadersLike
+from .._types import Omit, NotGiven, FileTypes, ArrayFormat, HeadersLike
 
 _T = TypeVar("_T")
 _TupleT = TypeVar("_TupleT", bound=Tuple[object, ...])
@@ -40,17 +40,36 @@ def extract_files(
     query: Mapping[str, object],
     *,
     paths: Sequence[Sequence[str]],
+    array_format: ArrayFormat = "brackets",
 ) -> list[tuple[str, FileTypes]]:
     """Recursively extract files from the given dictionary based on specified paths.
 
     A path may look like this ['foo', 'files', '<array>', 'data'].
 
+    ``array_format`` controls how ``<array>`` segments contribute to the emitted
+    field name. Supported values: ``"brackets"`` (``foo[]``), ``"repeat"`` and
+    ``"comma"`` (``foo``), ``"indices"`` (``foo[0]``, ``foo[1]``).
+
     Note: this mutates the given dictionary.
     """
     files: list[tuple[str, FileTypes]] = []
     for path in paths:
-        files.extend(_extract_items(query, path, index=0, flattened_key=None))
+        files.extend(_extract_items(query, path, index=0, flattened_key=None, array_format=array_format))
     return files
+
+
+def _array_suffix(array_format: ArrayFormat, array_index: int) -> str:
+    if array_format == "brackets":
+        return "[]"
+    if array_format == "indices":
+        return f"[{array_index}]"
+    if array_format == "repeat" or array_format == "comma":
+        # Both repeat the bare field name for each file part; there is no
+        # meaningful way to comma-join binary parts.
+        return ""
+    raise NotImplementedError(
+        f"Unknown array_format value: {array_format}, choose from {', '.join(get_args(ArrayFormat))}"
+    )
 
 
 def _extract_items(
@@ -59,6 +78,7 @@ def _extract_items(
     *,
     index: int,
     flattened_key: str | None,
+    array_format: ArrayFormat,
 ) -> list[tuple[str, FileTypes]]:
     try:
         key = path[index]
@@ -75,9 +95,11 @@ def _extract_items(
 
         if is_list(obj):
             files: list[tuple[str, FileTypes]] = []
-            for entry in obj:
-                assert_is_file_content(entry, key=flattened_key if flattened_key else "")
-                files.append((flattened_key, cast(FileTypes, entry)))
+            for array_index, entry in enumerate(obj):
+                suffix = _array_suffix(array_format, array_index)
+                emitted_key = (flattened_key + suffix) if flattened_key else suffix
+                assert_is_file_content(entry, key=emitted_key)
+                files.append((emitted_key, cast(FileTypes, entry)))
             return files
 
         assert_is_file_content(obj, key=flattened_key)
@@ -106,6 +128,7 @@ def _extract_items(
             path,
             index=index,
             flattened_key=flattened_key,
+            array_format=array_format,
         )
         # If extraction emptied the value (e.g. <array> cleared the list),
         # remove the key from the dict so it doesn't get serialized as '[]'
@@ -116,7 +139,6 @@ def _extract_items(
         if key != "<array>":
             return []
 
-        array_flattened_key = "[]" if flattened_key is None else f"{flattened_key}[]"
         list_ = obj
         if (len(path)) == index:
             list_ = obj[:]
@@ -128,9 +150,12 @@ def _extract_items(
                     item,
                     path,
                     index=index,
-                    flattened_key=array_flattened_key,
+                    flattened_key=(
+                        (flattened_key if flattened_key is not None else "") + _array_suffix(array_format, array_index)
+                    ),
+                    array_format=array_format,
                 )
-                for item in list_
+                for array_index, item in enumerate(list_)
             ]
         )
 
