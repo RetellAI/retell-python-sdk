@@ -98,6 +98,7 @@ class TestCaseDefinitionResponse(BaseModel):
         "gpt-5.4",
         "gpt-5.4-mini",
         "gpt-5.4-nano",
+        "gpt-5.5",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",

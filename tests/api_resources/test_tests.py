@@ -18,6 +18,8 @@ from retell.types import (
     TestListTestCaseDefinitionsResponse,
 )
 
+# pyright: reportDeprecated=false
+
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
@@ -337,28 +339,33 @@ class TestTests:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_batch_tests(self, client: Retell) -> None:
-        test = client.tests.list_batch_tests(
-            type="retell-llm",
-        )
+        with pytest.warns(DeprecationWarning):
+            test = client.tests.list_batch_tests(
+                type="retell-llm",
+            )
+
         assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_batch_tests_with_all_params(self, client: Retell) -> None:
-        test = client.tests.list_batch_tests(
-            type="retell-llm",
-            conversation_flow_id="conversation_flow_id",
-            llm_id="llm_id",
-            version=0,
-        )
+        with pytest.warns(DeprecationWarning):
+            test = client.tests.list_batch_tests(
+                type="retell-llm",
+                conversation_flow_id="conversation_flow_id",
+                llm_id="llm_id",
+                version=0,
+            )
+
         assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_batch_tests(self, client: Retell) -> None:
-        response = client.tests.with_raw_response.list_batch_tests(
-            type="retell-llm",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.tests.with_raw_response.list_batch_tests(
+                type="retell-llm",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -368,41 +375,47 @@ class TestTests:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_batch_tests(self, client: Retell) -> None:
-        with client.tests.with_streaming_response.list_batch_tests(
-            type="retell-llm",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.tests.with_streaming_response.list_batch_tests(
+                type="retell-llm",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            test = response.parse()
-            assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
+                test = response.parse()
+                assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_test_case_definitions(self, client: Retell) -> None:
-        test = client.tests.list_test_case_definitions(
-            type="retell-llm",
-        )
+        with pytest.warns(DeprecationWarning):
+            test = client.tests.list_test_case_definitions(
+                type="retell-llm",
+            )
+
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_test_case_definitions_with_all_params(self, client: Retell) -> None:
-        test = client.tests.list_test_case_definitions(
-            type="retell-llm",
-            conversation_flow_id="conversation_flow_id",
-            llm_id="llm_id",
-        )
+        with pytest.warns(DeprecationWarning):
+            test = client.tests.list_test_case_definitions(
+                type="retell-llm",
+                conversation_flow_id="conversation_flow_id",
+                llm_id="llm_id",
+            )
+
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_test_case_definitions(self, client: Retell) -> None:
-        response = client.tests.with_raw_response.list_test_case_definitions(
-            type="retell-llm",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.tests.with_raw_response.list_test_case_definitions(
+                type="retell-llm",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -412,31 +425,35 @@ class TestTests:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_test_case_definitions(self, client: Retell) -> None:
-        with client.tests.with_streaming_response.list_test_case_definitions(
-            type="retell-llm",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.tests.with_streaming_response.list_test_case_definitions(
+                type="retell-llm",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            test = response.parse()
-            assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
+                test = response.parse()
+                assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_test_runs(self, client: Retell) -> None:
-        test = client.tests.list_test_runs(
-            "test_case_batch_job_id",
-        )
+        with pytest.warns(DeprecationWarning):
+            test = client.tests.list_test_runs(
+                "test_case_batch_job_id",
+            )
+
         assert_matches_type(TestListTestRunsResponse, test, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list_test_runs(self, client: Retell) -> None:
-        response = client.tests.with_raw_response.list_test_runs(
-            "test_case_batch_job_id",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.tests.with_raw_response.list_test_runs(
+                "test_case_batch_job_id",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -446,26 +463,28 @@ class TestTests:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list_test_runs(self, client: Retell) -> None:
-        with client.tests.with_streaming_response.list_test_runs(
-            "test_case_batch_job_id",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.tests.with_streaming_response.list_test_runs(
+                "test_case_batch_job_id",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            test = response.parse()
-            assert_matches_type(TestListTestRunsResponse, test, path=["response"])
+                test = response.parse()
+                assert_matches_type(TestListTestRunsResponse, test, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_list_test_runs(self, client: Retell) -> None:
-        with pytest.raises(
-            ValueError, match=r"Expected a non-empty value for `test_case_batch_job_id` but received ''"
-        ):
-            client.tests.with_raw_response.list_test_runs(
-                "",
-            )
+        with pytest.warns(DeprecationWarning):
+            with pytest.raises(
+                ValueError, match=r"Expected a non-empty value for `test_case_batch_job_id` but received ''"
+            ):
+                client.tests.with_raw_response.list_test_runs(
+                    "",
+                )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -856,28 +875,33 @@ class TestAsyncTests:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_batch_tests(self, async_client: AsyncRetell) -> None:
-        test = await async_client.tests.list_batch_tests(
-            type="retell-llm",
-        )
+        with pytest.warns(DeprecationWarning):
+            test = await async_client.tests.list_batch_tests(
+                type="retell-llm",
+            )
+
         assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_batch_tests_with_all_params(self, async_client: AsyncRetell) -> None:
-        test = await async_client.tests.list_batch_tests(
-            type="retell-llm",
-            conversation_flow_id="conversation_flow_id",
-            llm_id="llm_id",
-            version=0,
-        )
+        with pytest.warns(DeprecationWarning):
+            test = await async_client.tests.list_batch_tests(
+                type="retell-llm",
+                conversation_flow_id="conversation_flow_id",
+                llm_id="llm_id",
+                version=0,
+            )
+
         assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_batch_tests(self, async_client: AsyncRetell) -> None:
-        response = await async_client.tests.with_raw_response.list_batch_tests(
-            type="retell-llm",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.tests.with_raw_response.list_batch_tests(
+                type="retell-llm",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -887,41 +911,47 @@ class TestAsyncTests:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_batch_tests(self, async_client: AsyncRetell) -> None:
-        async with async_client.tests.with_streaming_response.list_batch_tests(
-            type="retell-llm",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.tests.with_streaming_response.list_batch_tests(
+                type="retell-llm",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            test = await response.parse()
-            assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
+                test = await response.parse()
+                assert_matches_type(TestListBatchTestsResponse, test, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_test_case_definitions(self, async_client: AsyncRetell) -> None:
-        test = await async_client.tests.list_test_case_definitions(
-            type="retell-llm",
-        )
+        with pytest.warns(DeprecationWarning):
+            test = await async_client.tests.list_test_case_definitions(
+                type="retell-llm",
+            )
+
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_test_case_definitions_with_all_params(self, async_client: AsyncRetell) -> None:
-        test = await async_client.tests.list_test_case_definitions(
-            type="retell-llm",
-            conversation_flow_id="conversation_flow_id",
-            llm_id="llm_id",
-        )
+        with pytest.warns(DeprecationWarning):
+            test = await async_client.tests.list_test_case_definitions(
+                type="retell-llm",
+                conversation_flow_id="conversation_flow_id",
+                llm_id="llm_id",
+            )
+
         assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_test_case_definitions(self, async_client: AsyncRetell) -> None:
-        response = await async_client.tests.with_raw_response.list_test_case_definitions(
-            type="retell-llm",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.tests.with_raw_response.list_test_case_definitions(
+                type="retell-llm",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -931,31 +961,35 @@ class TestAsyncTests:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_test_case_definitions(self, async_client: AsyncRetell) -> None:
-        async with async_client.tests.with_streaming_response.list_test_case_definitions(
-            type="retell-llm",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.tests.with_streaming_response.list_test_case_definitions(
+                type="retell-llm",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            test = await response.parse()
-            assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
+                test = await response.parse()
+                assert_matches_type(TestListTestCaseDefinitionsResponse, test, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_test_runs(self, async_client: AsyncRetell) -> None:
-        test = await async_client.tests.list_test_runs(
-            "test_case_batch_job_id",
-        )
+        with pytest.warns(DeprecationWarning):
+            test = await async_client.tests.list_test_runs(
+                "test_case_batch_job_id",
+            )
+
         assert_matches_type(TestListTestRunsResponse, test, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list_test_runs(self, async_client: AsyncRetell) -> None:
-        response = await async_client.tests.with_raw_response.list_test_runs(
-            "test_case_batch_job_id",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.tests.with_raw_response.list_test_runs(
+                "test_case_batch_job_id",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -965,26 +999,28 @@ class TestAsyncTests:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list_test_runs(self, async_client: AsyncRetell) -> None:
-        async with async_client.tests.with_streaming_response.list_test_runs(
-            "test_case_batch_job_id",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.tests.with_streaming_response.list_test_runs(
+                "test_case_batch_job_id",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            test = await response.parse()
-            assert_matches_type(TestListTestRunsResponse, test, path=["response"])
+                test = await response.parse()
+                assert_matches_type(TestListTestRunsResponse, test, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_list_test_runs(self, async_client: AsyncRetell) -> None:
-        with pytest.raises(
-            ValueError, match=r"Expected a non-empty value for `test_case_batch_job_id` but received ''"
-        ):
-            await async_client.tests.with_raw_response.list_test_runs(
-                "",
-            )
+        with pytest.warns(DeprecationWarning):
+            with pytest.raises(
+                ValueError, match=r"Expected a non-empty value for `test_case_batch_job_id` but received ''"
+            ):
+                await async_client.tests.with_raw_response.list_test_runs(
+                    "",
+                )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize

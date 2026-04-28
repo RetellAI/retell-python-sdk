@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Iterable, Optional
 from typing_extensions import Literal
 
@@ -295,6 +296,7 @@ class PhoneNumberResource(SyncAPIResource):
             cast_to=PhoneNumberResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
@@ -717,6 +719,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             cast_to=PhoneNumberResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
@@ -882,8 +885,10 @@ class PhoneNumberResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             phone_number.update,
         )
-        self.list = to_raw_response_wrapper(
-            phone_number.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                phone_number.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = to_raw_response_wrapper(
             phone_number.delete,
@@ -906,8 +911,10 @@ class AsyncPhoneNumberResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             phone_number.update,
         )
-        self.list = async_to_raw_response_wrapper(
-            phone_number.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                phone_number.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = async_to_raw_response_wrapper(
             phone_number.delete,
@@ -930,8 +937,10 @@ class PhoneNumberResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             phone_number.update,
         )
-        self.list = to_streamed_response_wrapper(
-            phone_number.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                phone_number.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = to_streamed_response_wrapper(
             phone_number.delete,
@@ -954,8 +963,10 @@ class AsyncPhoneNumberResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             phone_number.update,
         )
-        self.list = async_to_streamed_response_wrapper(
-            phone_number.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                phone_number.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = async_to_streamed_response_wrapper(
             phone_number.delete,

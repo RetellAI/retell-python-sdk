@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Dict, Union, Optional
 from typing_extensions import Literal
 
@@ -204,6 +205,7 @@ class ChatResource(SyncAPIResource):
             cast_to=ChatResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
@@ -582,6 +584,7 @@ class AsyncChatResource(AsyncAPIResource):
             cast_to=ChatResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
@@ -802,8 +805,10 @@ class ChatResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             chat.update,
         )
-        self.list = to_raw_response_wrapper(
-            chat.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                chat.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.create_chat_completion = to_raw_response_wrapper(
             chat.create_chat_completion,
@@ -829,8 +834,10 @@ class AsyncChatResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             chat.update,
         )
-        self.list = async_to_raw_response_wrapper(
-            chat.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                chat.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.create_chat_completion = async_to_raw_response_wrapper(
             chat.create_chat_completion,
@@ -856,8 +863,10 @@ class ChatResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             chat.update,
         )
-        self.list = to_streamed_response_wrapper(
-            chat.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                chat.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.create_chat_completion = to_streamed_response_wrapper(
             chat.create_chat_completion,
@@ -883,8 +892,10 @@ class AsyncChatResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             chat.update,
         )
-        self.list = async_to_streamed_response_wrapper(
-            chat.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                chat.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.create_chat_completion = async_to_streamed_response_wrapper(
             chat.create_chat_completion,

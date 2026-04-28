@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Dict, Iterable, Optional
 from typing_extensions import Literal
 
@@ -331,6 +332,7 @@ class ConversationFlowResource(SyncAPIResource):
             cast_to=ConversationFlowResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
@@ -728,6 +730,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
             cast_to=ConversationFlowResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
@@ -837,8 +840,10 @@ class ConversationFlowResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             conversation_flow.update,
         )
-        self.list = to_raw_response_wrapper(
-            conversation_flow.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                conversation_flow.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = to_raw_response_wrapper(
             conversation_flow.delete,
@@ -858,8 +863,10 @@ class AsyncConversationFlowResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             conversation_flow.update,
         )
-        self.list = async_to_raw_response_wrapper(
-            conversation_flow.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                conversation_flow.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = async_to_raw_response_wrapper(
             conversation_flow.delete,
@@ -879,8 +886,10 @@ class ConversationFlowResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             conversation_flow.update,
         )
-        self.list = to_streamed_response_wrapper(
-            conversation_flow.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                conversation_flow.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = to_streamed_response_wrapper(
             conversation_flow.delete,
@@ -900,8 +909,10 @@ class AsyncConversationFlowResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             conversation_flow.update,
         )
-        self.list = async_to_streamed_response_wrapper(
-            conversation_flow.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                conversation_flow.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = async_to_streamed_response_wrapper(
             conversation_flow.delete,
