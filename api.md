@@ -181,6 +181,18 @@ Methods:
 
 - <code title="get /get-concurrency">client.concurrency.<a href="./src/retell/resources/concurrency.py">retrieve</a>() -> <a href="./src/retell/types/concurrency_retrieve_response.py">ConcurrencyRetrieveResponse</a></code>
 
+# ExportRequest
+
+Types:
+
+```python
+from retell.types import ExportRequestListResponse
+```
+
+Methods:
+
+- <code title="get /v2/list-export-requests">client.export_request.<a href="./src/retell/resources/export_request.py">list</a>(\*\*<a href="src/retell/types/export_request_list_params.py">params</a>) -> <a href="./src/retell/types/export_request_list_response.py">ExportRequestListResponse</a></code>
+
 # BatchCall
 
 Types:
