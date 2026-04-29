@@ -96,6 +96,14 @@ from .phone_number import (
     PhoneNumberResourceWithStreamingResponse,
     AsyncPhoneNumberResourceWithStreamingResponse,
 )
+from .export_request import (
+    ExportRequestResource,
+    AsyncExportRequestResource,
+    ExportRequestResourceWithRawResponse,
+    AsyncExportRequestResourceWithRawResponse,
+    ExportRequestResourceWithStreamingResponse,
+    AsyncExportRequestResourceWithStreamingResponse,
+)
 from .knowledge_base import (
     KnowledgeBaseResource,
     AsyncKnowledgeBaseResource,
@@ -188,6 +196,12 @@ __all__ = [
     "AsyncConcurrencyResourceWithRawResponse",
     "ConcurrencyResourceWithStreamingResponse",
     "AsyncConcurrencyResourceWithStreamingResponse",
+    "ExportRequestResource",
+    "AsyncExportRequestResource",
+    "ExportRequestResourceWithRawResponse",
+    "AsyncExportRequestResourceWithRawResponse",
+    "ExportRequestResourceWithStreamingResponse",
+    "AsyncExportRequestResourceWithStreamingResponse",
     "BatchCallResource",
     "AsyncBatchCallResource",
     "BatchCallResourceWithRawResponse",

@@ -49,6 +49,7 @@ if TYPE_CHECKING:
         playground,
         concurrency,
         phone_number,
+        export_request,
         knowledge_base,
         conversation_flow,
         conversation_flow_component,
@@ -65,6 +66,7 @@ if TYPE_CHECKING:
     from .resources.playground import PlaygroundResource, AsyncPlaygroundResource
     from .resources.concurrency import ConcurrencyResource, AsyncConcurrencyResource
     from .resources.phone_number import PhoneNumberResource, AsyncPhoneNumberResource
+    from .resources.export_request import ExportRequestResource, AsyncExportRequestResource
     from .resources.knowledge_base import KnowledgeBaseResource, AsyncKnowledgeBaseResource
     from .resources.conversation_flow import ConversationFlowResource, AsyncConversationFlowResource
     from .resources.conversation_flow_component import (
@@ -205,6 +207,12 @@ class Retell(SyncAPIClient):
         from .resources.concurrency import ConcurrencyResource
 
         return ConcurrencyResource(self)
+
+    @cached_property
+    def export_request(self) -> ExportRequestResource:
+        from .resources.export_request import ExportRequestResource
+
+        return ExportRequestResource(self)
 
     @cached_property
     def batch_call(self) -> BatchCallResource:
@@ -474,6 +482,12 @@ class AsyncRetell(AsyncAPIClient):
         return AsyncConcurrencyResource(self)
 
     @cached_property
+    def export_request(self) -> AsyncExportRequestResource:
+        from .resources.export_request import AsyncExportRequestResource
+
+        return AsyncExportRequestResource(self)
+
+    @cached_property
     def batch_call(self) -> AsyncBatchCallResource:
         from .resources.batch_call import AsyncBatchCallResource
 
@@ -685,6 +699,12 @@ class RetellWithRawResponse:
         return ConcurrencyResourceWithRawResponse(self._client.concurrency)
 
     @cached_property
+    def export_request(self) -> export_request.ExportRequestResourceWithRawResponse:
+        from .resources.export_request import ExportRequestResourceWithRawResponse
+
+        return ExportRequestResourceWithRawResponse(self._client.export_request)
+
+    @cached_property
     def batch_call(self) -> batch_call.BatchCallResourceWithRawResponse:
         from .resources.batch_call import BatchCallResourceWithRawResponse
 
@@ -782,6 +802,12 @@ class AsyncRetellWithRawResponse:
         from .resources.concurrency import AsyncConcurrencyResourceWithRawResponse
 
         return AsyncConcurrencyResourceWithRawResponse(self._client.concurrency)
+
+    @cached_property
+    def export_request(self) -> export_request.AsyncExportRequestResourceWithRawResponse:
+        from .resources.export_request import AsyncExportRequestResourceWithRawResponse
+
+        return AsyncExportRequestResourceWithRawResponse(self._client.export_request)
 
     @cached_property
     def batch_call(self) -> batch_call.AsyncBatchCallResourceWithRawResponse:
@@ -883,6 +909,12 @@ class RetellWithStreamedResponse:
         return ConcurrencyResourceWithStreamingResponse(self._client.concurrency)
 
     @cached_property
+    def export_request(self) -> export_request.ExportRequestResourceWithStreamingResponse:
+        from .resources.export_request import ExportRequestResourceWithStreamingResponse
+
+        return ExportRequestResourceWithStreamingResponse(self._client.export_request)
+
+    @cached_property
     def batch_call(self) -> batch_call.BatchCallResourceWithStreamingResponse:
         from .resources.batch_call import BatchCallResourceWithStreamingResponse
 
@@ -980,6 +1012,12 @@ class AsyncRetellWithStreamedResponse:
         from .resources.concurrency import AsyncConcurrencyResourceWithStreamingResponse
 
         return AsyncConcurrencyResourceWithStreamingResponse(self._client.concurrency)
+
+    @cached_property
+    def export_request(self) -> export_request.AsyncExportRequestResourceWithStreamingResponse:
+        from .resources.export_request import AsyncExportRequestResourceWithStreamingResponse
+
+        return AsyncExportRequestResourceWithStreamingResponse(self._client.export_request)
 
     @cached_property
     def batch_call(self) -> batch_call.AsyncBatchCallResourceWithStreamingResponse:
