@@ -1,5 +1,25 @@
 # Changelog
 
+## 5.31.0 (2026-05-05)
+
+Full Changelog: [v5.30.0...v5.31.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.30.0...v5.31.0)
+
+### Features
+
+* **api:** api update ([3e27125](https://github.com/RetellAI/retell-python-sdk/commit/3e27125f49792d65e27cfa26ed8b319e85775e2b))
+* **api:** api update ([b0ca46f](https://github.com/RetellAI/retell-python-sdk/commit/b0ca46f13bc0929480684322fa3b3018f52e3b96))
+* support setting headers via env ([ad2a728](https://github.com/RetellAI/retell-python-sdk/commit/ad2a728de37bc36ab124e82130b28e0a87c99df1))
+
+
+### Bug Fixes
+
+* use correct field name format for multipart file arrays ([b7a5c04](https://github.com/RetellAI/retell-python-sdk/commit/b7a5c04d8509ecea70e354ac91b4062e48e7743c))
+
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([19515b0](https://github.com/RetellAI/retell-python-sdk/commit/19515b0a2213b4907e6422047b758731f68d5e1b))
+
 ## 5.30.0 (2026-04-27)
 
 Full Changelog: [v5.29.0...v5.30.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.29.0...v5.30.0)
