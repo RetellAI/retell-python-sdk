@@ -9,6 +9,7 @@ from .._types import SequenceNotStr
 
 __all__ = [
     "AgentUpdateParams",
+    "CallScreeningOption",
     "CustomSttConfig",
     "GuardrailConfig",
     "HandbookConfig",
@@ -42,6 +43,13 @@ class AgentUpdateParams(TypedDict, total=False):
 
     agent_name: Optional[str]
     """The name of the agent. Only used for your own reference."""
+
+    allow_dtmf_interruption: bool
+    """
+    If set to true, DTMF input will interrupt the agent even when
+    interruption_sensitivity is 0. Can be overridden per conversation or subagent
+    node. Default to false.
+    """
 
     allow_user_dtmf: bool
     """If set to true, DTMF input will be accepted and processed.
@@ -131,6 +139,13 @@ class AgentUpdateParams(TypedDict, total=False):
     Provide a customized list of keywords to bias the transcriber model, so that
     these words are more likely to get transcribed. Commonly used for names, brands,
     street, etc.
+    """
+
+    call_screening_option: Optional[CallScreeningOption]
+    """
+    If this option is set, the agent prompt will include call screen handling
+    instructions for identity and call purpose questions. Set this to null to
+    disable call screen prompt instructions.
     """
 
     custom_stt_config: Optional[CustomSttConfig]
@@ -417,7 +432,6 @@ class AgentUpdateParams(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -621,6 +635,24 @@ class AgentUpdateParams(TypedDict, total=False):
     """
 
 
+class CallScreeningOption(TypedDict, total=False):
+    """
+    If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
+    """
+
+    agent_identity: Required[str]
+    """Identity the agent should provide when a call screen asks who is calling.
+
+    Dynamic variables are supported.
+    """
+
+    call_purpose: Required[str]
+    """Purpose the agent should provide when a call screen asks why it is calling.
+
+    Dynamic variables are supported.
+    """
+
+
 class CustomSttConfig(TypedDict, total=False):
     """Custom STT configuration. Only used when stt_mode is set to custom."""
 
@@ -715,6 +747,12 @@ class IvrOption(TypedDict, total=False):
     """
 
     action: Required[IvrOptionAction]
+
+    detection_prompt: Optional[str]
+    """Optionally describe what should be treated as an IVR.
+
+    Leave as null to use the default definition.
+    """
 
 
 class PiiConfig(TypedDict, total=False):
@@ -994,3 +1032,9 @@ class VoicemailOption(TypedDict, total=False):
     """
 
     action: Required[VoicemailOptionAction]
+
+    detection_prompt: Optional[str]
+    """Optionally describe what should be treated as voicemail.
+
+    Leave as null to use the default definition.
+    """

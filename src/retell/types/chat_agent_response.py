@@ -318,8 +318,14 @@ class ChatAgentResponse(BaseModel):
     prompt.
     """
 
+    assigned_tags: Optional[List[str]] = None
+    """Tags assigned to this chat agent version. Preferred tag is listed first."""
+
     auto_close_message: Optional[str] = None
     """Message to display when the chat is automatically closed."""
+
+    base_version: Optional[int] = None
+    """Version that this draft was based on. Null for initial versions."""
 
     data_storage_retention_days: Optional[int] = None
     """Number of days to retain call/chat data before automatic deletion.
@@ -545,13 +551,18 @@ class ChatAgentResponse(BaseModel):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
         ]
     ] = None
     """The model to use for post chat analysis. Default to gpt-4.1."""
+
+    response_engine_data: Optional[object] = None
+    """Hydrated response engine for this chat agent version.
+
+    Only present when include_response_engine is true on /get-chat-agent-versions.
+    """
 
     signed_url_expiration_ms: Optional[int] = None
     """The expiration time for the signed url in milliseconds.
@@ -569,7 +580,7 @@ class ChatAgentResponse(BaseModel):
     version: Optional[int] = None
     """The version of the chat agent."""
 
-    webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]] = None
+    webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed", "transcript_updated"]]] = None
     """Which webhook events this agent should receive.
 
     If not set, defaults to chat_started, chat_ended, chat_analyzed.

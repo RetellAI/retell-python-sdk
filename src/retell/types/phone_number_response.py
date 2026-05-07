@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -24,7 +24,16 @@ class InboundAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Optional[int] = None
+    agent_version: Union[int, str, None] = None
+    """Agent version reference.
+
+    Supports a numeric version (for example 3) or a tag/environment name (for
+    example "prod"). When a tag is provided, resolution uses that exact tag
+    assignment (including its dynamic variables). If the tag exists but is currently
+    unassigned, it resolves to latest. When a numeric version (or latest) is
+    provided, resolution applies dynamic variables from the preferred tag for that
+    resolved version (most recently assigned), if any.
+    """
 
 
 class InboundSMSAgent(BaseModel):
@@ -36,7 +45,16 @@ class InboundSMSAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Optional[int] = None
+    agent_version: Union[int, str, None] = None
+    """Agent version reference.
+
+    Supports a numeric version (for example 3) or a tag/environment name (for
+    example "prod"). When a tag is provided, resolution uses that exact tag
+    assignment (including its dynamic variables). If the tag exists but is currently
+    unassigned, it resolves to latest. When a numeric version (or latest) is
+    provided, resolution applies dynamic variables from the preferred tag for that
+    resolved version (most recently assigned), if any.
+    """
 
 
 class OutboundAgent(BaseModel):
@@ -48,7 +66,16 @@ class OutboundAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Optional[int] = None
+    agent_version: Union[int, str, None] = None
+    """Agent version reference.
+
+    Supports a numeric version (for example 3) or a tag/environment name (for
+    example "prod"). When a tag is provided, resolution uses that exact tag
+    assignment (including its dynamic variables). If the tag exists but is currently
+    unassigned, it resolves to latest. When a numeric version (or latest) is
+    provided, resolution applies dynamic variables from the preferred tag for that
+    resolved version (most recently assigned), if any.
+    """
 
 
 class OutboundSMSAgent(BaseModel):
@@ -60,7 +87,16 @@ class OutboundSMSAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Optional[int] = None
+    agent_version: Union[int, str, None] = None
+    """Agent version reference.
+
+    Supports a numeric version (for example 3) or a tag/environment name (for
+    example "prod"). When a tag is provided, resolution uses that exact tag
+    assignment (including its dynamic variables). If the tag exists but is currently
+    unassigned, it resolves to latest. When a numeric version (or latest) is
+    provided, resolution applies dynamic variables from the preferred tag for that
+    resolved version (most recently assigned), if any.
+    """
 
 
 class SipOutboundTrunkConfig(BaseModel):

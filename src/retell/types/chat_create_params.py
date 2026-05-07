@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import Required, TypedDict
 
 __all__ = ["ChatCreateParams"]
@@ -12,7 +12,7 @@ class ChatCreateParams(TypedDict, total=False):
     agent_id: Required[str]
     """The chat agent to use for the call."""
 
-    agent_version: int
+    agent_version: Union[int, str]
     """The version of the chat agent to use for the chat.
 
     If not provided, will default to latest version.

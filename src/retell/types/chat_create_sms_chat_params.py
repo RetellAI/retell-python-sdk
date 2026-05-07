@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Union
 from typing_extensions import Required, TypedDict
 
 __all__ = ["ChatCreateSMSChatParams"]
@@ -33,7 +33,7 @@ class ChatCreateSMSChatParams(TypedDict, total=False):
     This does not bind the agent to this number, this is for one time override.
     """
 
-    override_agent_version: int
+    override_agent_version: Union[int, str]
     """For this particular chat, override the agent version used with this version.
 
     This does not bind the agent version to this number, this is for one time

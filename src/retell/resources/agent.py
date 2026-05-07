@@ -7,7 +7,13 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import agent_list_params, agent_create_params, agent_update_params, agent_retrieve_params
+from ..types import (
+    agent_list_params,
+    agent_create_params,
+    agent_update_params,
+    agent_retrieve_params,
+    agent_get_versions_params,
+)
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -52,6 +58,7 @@ class AgentResource(SyncAPIResource):
         response_engine: agent_create_params.ResponseEngine,
         voice_id: str,
         agent_name: Optional[str] | Omit = omit,
+        allow_dtmf_interruption: bool | Omit = omit,
         allow_user_dtmf: bool | Omit = omit,
         ambient_sound: Optional[
             Literal[
@@ -67,6 +74,7 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        call_screening_option: Optional[agent_create_params.CallScreeningOption] | Omit = omit,
         custom_stt_config: Optional[agent_create_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
@@ -239,7 +247,6 @@ class AgentResource(SyncAPIResource):
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -321,6 +328,10 @@ class AgentResource(SyncAPIResource):
 
           agent_name: The name of the agent. Only used for your own reference.
 
+          allow_dtmf_interruption: If set to true, DTMF input will interrupt the agent even when
+              interruption_sensitivity is 0. Can be overridden per conversation or subagent
+              node. Default to false.
+
           allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
               input will be ignored. Default to true.
 
@@ -377,6 +388,10 @@ class AgentResource(SyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          call_screening_option: If this option is set, the agent prompt will include call screen handling
+              instructions for identity and call purpose questions. Set this to null to
+              disable call screen prompt instructions.
 
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
@@ -559,6 +574,7 @@ class AgentResource(SyncAPIResource):
                     "response_engine": response_engine,
                     "voice_id": voice_id,
                     "agent_name": agent_name,
+                    "allow_dtmf_interruption": allow_dtmf_interruption,
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
@@ -569,6 +585,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "call_screening_option": call_screening_option,
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
@@ -667,6 +684,7 @@ class AgentResource(SyncAPIResource):
         *,
         version: int | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
+        allow_dtmf_interruption: bool | Omit = omit,
         allow_user_dtmf: bool | Omit = omit,
         ambient_sound: Optional[
             Literal[
@@ -682,6 +700,7 @@ class AgentResource(SyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        call_screening_option: Optional[agent_update_params.CallScreeningOption] | Omit = omit,
         custom_stt_config: Optional[agent_update_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
@@ -854,7 +873,6 @@ class AgentResource(SyncAPIResource):
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -933,6 +951,10 @@ class AgentResource(SyncAPIResource):
 
           agent_name: The name of the agent. Only used for your own reference.
 
+          allow_dtmf_interruption: If set to true, DTMF input will interrupt the agent even when
+              interruption_sensitivity is 0. Can be overridden per conversation or subagent
+              node. Default to false.
+
           allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
               input will be ignored. Default to true.
 
@@ -989,6 +1011,10 @@ class AgentResource(SyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          call_screening_option: If this option is set, the agent prompt will include call screen handling
+              instructions for identity and call purpose questions. Set this to null to
+              disable call screen prompt instructions.
 
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
@@ -1178,6 +1204,7 @@ class AgentResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "agent_name": agent_name,
+                    "allow_dtmf_interruption": allow_dtmf_interruption,
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
@@ -1188,6 +1215,7 @@ class AgentResource(SyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "call_screening_option": call_screening_option,
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
@@ -1342,6 +1370,7 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
+        include_response_engine: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1353,6 +1382,10 @@ class AgentResource(SyncAPIResource):
         Get all versions of an agent
 
         Args:
+          include_response_engine: When true, each returned agent version includes a response_engine_data field
+              with the hydrated response engine (full retell-llm or conversation-flow
+              configuration) bound to that version.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1366,44 +1399,16 @@ class AgentResource(SyncAPIResource):
         return self._get(
             path_template("/get-agent-versions/{agent_id}", agent_id=agent_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"include_response_engine": include_response_engine},
+                    agent_get_versions_params.AgentGetVersionsParams,
+                ),
             ),
             cast_to=AgentGetVersionsResponse,
-        )
-
-    def publish(
-        self,
-        agent_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Publish the latest version of the agent and create a new draft agent with newer
-        version.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not agent_id:
-            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            path_template("/publish-agent/{agent_id}", agent_id=agent_id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
 
@@ -1433,6 +1438,7 @@ class AsyncAgentResource(AsyncAPIResource):
         response_engine: agent_create_params.ResponseEngine,
         voice_id: str,
         agent_name: Optional[str] | Omit = omit,
+        allow_dtmf_interruption: bool | Omit = omit,
         allow_user_dtmf: bool | Omit = omit,
         ambient_sound: Optional[
             Literal[
@@ -1448,6 +1454,7 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        call_screening_option: Optional[agent_create_params.CallScreeningOption] | Omit = omit,
         custom_stt_config: Optional[agent_create_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
@@ -1620,7 +1627,6 @@ class AsyncAgentResource(AsyncAPIResource):
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -1702,6 +1708,10 @@ class AsyncAgentResource(AsyncAPIResource):
 
           agent_name: The name of the agent. Only used for your own reference.
 
+          allow_dtmf_interruption: If set to true, DTMF input will interrupt the agent even when
+              interruption_sensitivity is 0. Can be overridden per conversation or subagent
+              node. Default to false.
+
           allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
               input will be ignored. Default to true.
 
@@ -1758,6 +1768,10 @@ class AsyncAgentResource(AsyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          call_screening_option: If this option is set, the agent prompt will include call screen handling
+              instructions for identity and call purpose questions. Set this to null to
+              disable call screen prompt instructions.
 
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
@@ -1940,6 +1954,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "response_engine": response_engine,
                     "voice_id": voice_id,
                     "agent_name": agent_name,
+                    "allow_dtmf_interruption": allow_dtmf_interruption,
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
@@ -1950,6 +1965,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "call_screening_option": call_screening_option,
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
@@ -2048,6 +2064,7 @@ class AsyncAgentResource(AsyncAPIResource):
         *,
         version: int | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
+        allow_dtmf_interruption: bool | Omit = omit,
         allow_user_dtmf: bool | Omit = omit,
         ambient_sound: Optional[
             Literal[
@@ -2063,6 +2080,7 @@ class AsyncAgentResource(AsyncAPIResource):
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
+        call_screening_option: Optional[agent_update_params.CallScreeningOption] | Omit = omit,
         custom_stt_config: Optional[agent_update_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
@@ -2235,7 +2253,6 @@ class AsyncAgentResource(AsyncAPIResource):
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash",
                 "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -2314,6 +2331,10 @@ class AsyncAgentResource(AsyncAPIResource):
 
           agent_name: The name of the agent. Only used for your own reference.
 
+          allow_dtmf_interruption: If set to true, DTMF input will interrupt the agent even when
+              interruption_sensitivity is 0. Can be overridden per conversation or subagent
+              node. Default to false.
+
           allow_user_dtmf: If set to true, DTMF input will be accepted and processed. If false, any DTMF
               input will be ignored. Default to true.
 
@@ -2370,6 +2391,10 @@ class AsyncAgentResource(AsyncAPIResource):
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
               street, etc.
+
+          call_screening_option: If this option is set, the agent prompt will include call screen handling
+              instructions for identity and call purpose questions. Set this to null to
+              disable call screen prompt instructions.
 
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
@@ -2559,6 +2584,7 @@ class AsyncAgentResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "agent_name": agent_name,
+                    "allow_dtmf_interruption": allow_dtmf_interruption,
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
@@ -2569,6 +2595,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
+                    "call_screening_option": call_screening_option,
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
@@ -2723,6 +2750,7 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
+        include_response_engine: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2734,6 +2762,10 @@ class AsyncAgentResource(AsyncAPIResource):
         Get all versions of an agent
 
         Args:
+          include_response_engine: When true, each returned agent version includes a response_engine_data field
+              with the hydrated response engine (full retell-llm or conversation-flow
+              configuration) bound to that version.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -2747,44 +2779,16 @@ class AsyncAgentResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-agent-versions/{agent_id}", agent_id=agent_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"include_response_engine": include_response_engine},
+                    agent_get_versions_params.AgentGetVersionsParams,
+                ),
             ),
             cast_to=AgentGetVersionsResponse,
-        )
-
-    async def publish(
-        self,
-        agent_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Publish the latest version of the agent and create a new draft agent with newer
-        version.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not agent_id:
-            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            path_template("/publish-agent/{agent_id}", agent_id=agent_id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
 
@@ -2810,9 +2814,6 @@ class AgentResourceWithRawResponse:
         self.get_versions = to_raw_response_wrapper(
             agent.get_versions,
         )
-        self.publish = to_raw_response_wrapper(
-            agent.publish,
-        )
 
 
 class AsyncAgentResourceWithRawResponse:
@@ -2836,9 +2837,6 @@ class AsyncAgentResourceWithRawResponse:
         )
         self.get_versions = async_to_raw_response_wrapper(
             agent.get_versions,
-        )
-        self.publish = async_to_raw_response_wrapper(
-            agent.publish,
         )
 
 
@@ -2864,9 +2862,6 @@ class AgentResourceWithStreamingResponse:
         self.get_versions = to_streamed_response_wrapper(
             agent.get_versions,
         )
-        self.publish = to_streamed_response_wrapper(
-            agent.publish,
-        )
 
 
 class AsyncAgentResourceWithStreamingResponse:
@@ -2890,7 +2885,4 @@ class AsyncAgentResourceWithStreamingResponse:
         )
         self.get_versions = async_to_streamed_response_wrapper(
             agent.get_versions,
-        )
-        self.publish = async_to_streamed_response_wrapper(
-            agent.publish,
         )
