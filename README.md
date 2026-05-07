@@ -146,12 +146,12 @@ agent_response = client.agent.create(
         "type": "retell-llm",
     },
     voice_id="retell-Cimo",
-    custom_stt_config={
-        "endpointing_ms": 0,
-        "provider": "azure",
+    call_screening_option={
+        "agent_identity": "Acme Health scheduling team",
+        "call_purpose": "confirming your appointment for tomorrow",
     },
 )
-print(agent_response.custom_stt_config)
+print(agent_response.call_screening_option)
 ```
 
 ## Handling errors

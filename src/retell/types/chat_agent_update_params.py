@@ -274,7 +274,6 @@ class ChatAgentUpdateParams(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -302,7 +301,7 @@ class ChatAgentUpdateParams(TypedDict, total=False):
     America/New_York). Defaults to America/Los_Angeles if not set.
     """
 
-    webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed"]]]
+    webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed", "transcript_updated"]]]
     """Which webhook events this agent should receive.
 
     If not set, defaults to chat_started, chat_ended, chat_analyzed.

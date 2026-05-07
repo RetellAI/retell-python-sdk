@@ -11,6 +11,7 @@ __all__ = [
     "ResponseEngineResponseEngineRetellLm",
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
+    "CallScreeningOption",
     "CustomSttConfig",
     "GuardrailConfig",
     "HandbookConfig",
@@ -69,6 +70,24 @@ ResponseEngine: TypeAlias = Union[
     ResponseEngineResponseEngineCustomLm,
     ResponseEngineResponseEngineConversationFlow,
 ]
+
+
+class CallScreeningOption(BaseModel):
+    """
+    If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
+    """
+
+    agent_identity: str
+    """Identity the agent should provide when a call screen asks who is calling.
+
+    Dynamic variables are supported.
+    """
+
+    call_purpose: str
+    """Purpose the agent should provide when a call screen asks why it is calling.
+
+    Dynamic variables are supported.
+    """
 
 
 class CustomSttConfig(BaseModel):
@@ -165,6 +184,12 @@ class IvrOption(BaseModel):
     """
 
     action: IvrOptionAction
+
+    detection_prompt: Optional[str] = None
+    """Optionally describe what should be treated as an IVR.
+
+    Leave as null to use the default definition.
+    """
 
 
 class PiiConfig(BaseModel):
@@ -406,6 +431,12 @@ class VoicemailOption(BaseModel):
 
     action: VoicemailOptionAction
 
+    detection_prompt: Optional[str] = None
+    """Optionally describe what should be treated as voicemail.
+
+    Leave as null to use the default definition.
+    """
+
 
 class AgentResponse(BaseModel):
     agent_id: str
@@ -435,6 +466,13 @@ class AgentResponse(BaseModel):
 
     agent_name: Optional[str] = None
     """The name of the agent. Only used for your own reference."""
+
+    allow_dtmf_interruption: Optional[bool] = None
+    """
+    If set to true, DTMF input will interrupt the agent even when
+    interruption_sensitivity is 0. Can be overridden per conversation or subagent
+    node. Default to false.
+    """
 
     allow_user_dtmf: Optional[bool] = None
     """If set to true, DTMF input will be accepted and processed.
@@ -492,6 +530,9 @@ class AgentResponse(BaseModel):
     default prompt.
     """
 
+    assigned_tags: Optional[List[str]] = None
+    """Tags assigned to this agent version. Preferred tag is listed first."""
+
     backchannel_frequency: Optional[float] = None
     """Only applicable when enable_backchannel is true.
 
@@ -511,6 +552,9 @@ class AgentResponse(BaseModel):
     so it's recommended to experiment before adding any words.
     """
 
+    base_version: Optional[int] = None
+    """Version that this draft was based on. Null for initial versions."""
+
     begin_message_delay_ms: Optional[int] = None
     """
     If set, will delay the first message by the specified amount of milliseconds, so
@@ -524,6 +568,13 @@ class AgentResponse(BaseModel):
     Provide a customized list of keywords to bias the transcriber model, so that
     these words are more likely to get transcribed. Commonly used for names, brands,
     street, etc.
+    """
+
+    call_screening_option: Optional[CallScreeningOption] = None
+    """
+    If this option is set, the agent prompt will include call screen handling
+    instructions for identity and call purpose questions. Set this to null to
+    disable call screen prompt instructions.
     """
 
     custom_stt_config: Optional[CustomSttConfig] = None
@@ -816,7 +867,6 @@ class AgentResponse(BaseModel):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -844,6 +894,12 @@ class AgentResponse(BaseModel):
     If set (in milliseconds), will trigger a reminder to the agent to speak if the
     user has been silent for the specified duration after some agent speech. Must be
     a positive number. If unset, default value of 10000 ms (10 s) will apply.
+    """
+
+    response_engine_data: Optional[object] = None
+    """Hydrated response engine for this agent version.
+
+    Only present when include_response_engine is true on /get-agent-versions.
     """
 
     responsiveness: Optional[float] = None

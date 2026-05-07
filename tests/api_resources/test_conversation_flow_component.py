@@ -53,6 +53,7 @@ class TestConversationFlowComponent:
                         "type": "prompt",
                     },
                     "type": "conversation",
+                    "allow_dtmf_interruption": True,
                     "always_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -133,6 +134,10 @@ class TestConversationFlowComponent:
                         ],
                     },
                     "interruption_sensitivity": 0,
+                    "kb_config": {
+                        "filter_score": 0.6,
+                        "top_k": 3,
+                    },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
                         "model": "gpt-4.1",
@@ -342,6 +347,7 @@ class TestConversationFlowComponent:
                         "type": "prompt",
                     },
                     "type": "conversation",
+                    "allow_dtmf_interruption": True,
                     "always_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -422,6 +428,10 @@ class TestConversationFlowComponent:
                         ],
                     },
                     "interruption_sensitivity": 0,
+                    "kb_config": {
+                        "filter_score": 0.6,
+                        "top_k": 3,
+                    },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
                         "model": "gpt-4.1",
@@ -638,6 +648,7 @@ class TestAsyncConversationFlowComponent:
                         "type": "prompt",
                     },
                     "type": "conversation",
+                    "allow_dtmf_interruption": True,
                     "always_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -718,6 +729,10 @@ class TestAsyncConversationFlowComponent:
                         ],
                     },
                     "interruption_sensitivity": 0,
+                    "kb_config": {
+                        "filter_score": 0.6,
+                        "top_k": 3,
+                    },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
                         "model": "gpt-4.1",
@@ -927,6 +942,7 @@ class TestAsyncConversationFlowComponent:
                         "type": "prompt",
                     },
                     "type": "conversation",
+                    "allow_dtmf_interruption": True,
                     "always_edge": {
                         "id": "id",
                         "transition_condition": {
@@ -1007,6 +1023,10 @@ class TestAsyncConversationFlowComponent:
                         ],
                     },
                     "interruption_sensitivity": 0,
+                    "kb_config": {
+                        "filter_score": 0.6,
+                        "top_k": 3,
+                    },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
                     "model_choice": {
                         "model": "gpt-4.1",
