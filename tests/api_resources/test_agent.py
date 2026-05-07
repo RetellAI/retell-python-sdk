@@ -44,6 +44,7 @@ class TestAgent:
             },
             voice_id="retell-Cimo",
             agent_name="Jarvis",
+            allow_dtmf_interruption=False,
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
@@ -54,6 +55,10 @@ class TestAgent:
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
             boosted_keywords=["retell", "kroger"],
+            call_screening_option={
+                "agent_identity": "Acme Health scheduling team",
+                "call_purpose": "confirming your appointment for tomorrow",
+            },
             custom_stt_config={
                 "endpointing_ms": 0,
                 "provider": "azure",
@@ -83,7 +88,10 @@ class TestAgent:
             },
             interruption_sensitivity=1,
             is_public=False,
-            ivr_option={"action": {"type": "hangup"}},
+            ivr_option={
+                "action": {"type": "hangup"},
+                "detection_prompt": "detection_prompt",
+            },
             language="en-US",
             max_call_duration_ms=3600000,
             opt_in_signed_url=True,
@@ -133,7 +141,8 @@ class TestAgent:
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
                     "type": "static_text",
-                }
+                },
+                "detection_prompt": "detection_prompt",
             },
             volume=1,
             webhook_events=["call_started"],
@@ -242,6 +251,7 @@ class TestAgent:
             agent_id="16b980523634a6dc504898cda492e939",
             version=1,
             agent_name="Jarvis",
+            allow_dtmf_interruption=False,
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
@@ -252,6 +262,10 @@ class TestAgent:
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
             boosted_keywords=["retell", "kroger"],
+            call_screening_option={
+                "agent_identity": "Acme Health scheduling team",
+                "call_purpose": "confirming your appointment for tomorrow",
+            },
             custom_stt_config={
                 "endpointing_ms": 0,
                 "provider": "azure",
@@ -281,7 +295,10 @@ class TestAgent:
             },
             interruption_sensitivity=1,
             is_public=False,
-            ivr_option={"action": {"type": "hangup"}},
+            ivr_option={
+                "action": {"type": "hangup"},
+                "detection_prompt": "detection_prompt",
+            },
             language="en-US",
             max_call_duration_ms=3600000,
             opt_in_signed_url=True,
@@ -337,7 +354,8 @@ class TestAgent:
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
                     "type": "static_text",
-                }
+                },
+                "detection_prompt": "detection_prompt",
             },
             volume=1,
             webhook_events=["call_started"],
@@ -465,7 +483,16 @@ class TestAgent:
     @parametrize
     def test_method_get_versions(self, client: Retell) -> None:
         agent = client.agent.get_versions(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_versions_with_all_params(self, client: Retell) -> None:
+        agent = client.agent.get_versions(
+            agent_id="16b980523634a6dc504898cda492e939",
+            include_response_engine=True,
         )
         assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
 
@@ -473,7 +500,7 @@ class TestAgent:
     @parametrize
     def test_raw_response_get_versions(self, client: Retell) -> None:
         response = client.agent.with_raw_response.get_versions(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
         )
 
         assert response.is_closed is True
@@ -485,7 +512,7 @@ class TestAgent:
     @parametrize
     def test_streaming_response_get_versions(self, client: Retell) -> None:
         with client.agent.with_streaming_response.get_versions(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -500,49 +527,7 @@ class TestAgent:
     def test_path_params_get_versions(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             client.agent.with_raw_response.get_versions(
-                "",
-            )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_publish(self, client: Retell) -> None:
-        agent = client.agent.publish(
-            "16b980523634a6dc504898cda492e939",
-        )
-        assert agent is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_publish(self, client: Retell) -> None:
-        response = client.agent.with_raw_response.publish(
-            "16b980523634a6dc504898cda492e939",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        agent = response.parse()
-        assert agent is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_publish(self, client: Retell) -> None:
-        with client.agent.with_streaming_response.publish(
-            "16b980523634a6dc504898cda492e939",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            agent = response.parse()
-            assert agent is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_path_params_publish(self, client: Retell) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
-            client.agent.with_raw_response.publish(
-                "",
+                agent_id="",
             )
 
 
@@ -574,6 +559,7 @@ class TestAsyncAgent:
             },
             voice_id="retell-Cimo",
             agent_name="Jarvis",
+            allow_dtmf_interruption=False,
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
@@ -584,6 +570,10 @@ class TestAsyncAgent:
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
             boosted_keywords=["retell", "kroger"],
+            call_screening_option={
+                "agent_identity": "Acme Health scheduling team",
+                "call_purpose": "confirming your appointment for tomorrow",
+            },
             custom_stt_config={
                 "endpointing_ms": 0,
                 "provider": "azure",
@@ -613,7 +603,10 @@ class TestAsyncAgent:
             },
             interruption_sensitivity=1,
             is_public=False,
-            ivr_option={"action": {"type": "hangup"}},
+            ivr_option={
+                "action": {"type": "hangup"},
+                "detection_prompt": "detection_prompt",
+            },
             language="en-US",
             max_call_duration_ms=3600000,
             opt_in_signed_url=True,
@@ -663,7 +656,8 @@ class TestAsyncAgent:
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
                     "type": "static_text",
-                }
+                },
+                "detection_prompt": "detection_prompt",
             },
             volume=1,
             webhook_events=["call_started"],
@@ -772,6 +766,7 @@ class TestAsyncAgent:
             agent_id="16b980523634a6dc504898cda492e939",
             version=1,
             agent_name="Jarvis",
+            allow_dtmf_interruption=False,
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
@@ -782,6 +777,10 @@ class TestAsyncAgent:
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
             boosted_keywords=["retell", "kroger"],
+            call_screening_option={
+                "agent_identity": "Acme Health scheduling team",
+                "call_purpose": "confirming your appointment for tomorrow",
+            },
             custom_stt_config={
                 "endpointing_ms": 0,
                 "provider": "azure",
@@ -811,7 +810,10 @@ class TestAsyncAgent:
             },
             interruption_sensitivity=1,
             is_public=False,
-            ivr_option={"action": {"type": "hangup"}},
+            ivr_option={
+                "action": {"type": "hangup"},
+                "detection_prompt": "detection_prompt",
+            },
             language="en-US",
             max_call_duration_ms=3600000,
             opt_in_signed_url=True,
@@ -867,7 +869,8 @@ class TestAsyncAgent:
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
                     "type": "static_text",
-                }
+                },
+                "detection_prompt": "detection_prompt",
             },
             volume=1,
             webhook_events=["call_started"],
@@ -995,7 +998,16 @@ class TestAsyncAgent:
     @parametrize
     async def test_method_get_versions(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.get_versions(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_versions_with_all_params(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.get_versions(
+            agent_id="16b980523634a6dc504898cda492e939",
+            include_response_engine=True,
         )
         assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
 
@@ -1003,7 +1015,7 @@ class TestAsyncAgent:
     @parametrize
     async def test_raw_response_get_versions(self, async_client: AsyncRetell) -> None:
         response = await async_client.agent.with_raw_response.get_versions(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
         )
 
         assert response.is_closed is True
@@ -1015,7 +1027,7 @@ class TestAsyncAgent:
     @parametrize
     async def test_streaming_response_get_versions(self, async_client: AsyncRetell) -> None:
         async with async_client.agent.with_streaming_response.get_versions(
-            "16b980523634a6dc504898cda492e939",
+            agent_id="16b980523634a6dc504898cda492e939",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1030,47 +1042,5 @@ class TestAsyncAgent:
     async def test_path_params_get_versions(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             await async_client.agent.with_raw_response.get_versions(
-                "",
-            )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_publish(self, async_client: AsyncRetell) -> None:
-        agent = await async_client.agent.publish(
-            "16b980523634a6dc504898cda492e939",
-        )
-        assert agent is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_publish(self, async_client: AsyncRetell) -> None:
-        response = await async_client.agent.with_raw_response.publish(
-            "16b980523634a6dc504898cda492e939",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        agent = await response.parse()
-        assert agent is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_publish(self, async_client: AsyncRetell) -> None:
-        async with async_client.agent.with_streaming_response.publish(
-            "16b980523634a6dc504898cda492e939",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            agent = await response.parse()
-            assert agent is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_path_params_publish(self, async_client: AsyncRetell) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
-            await async_client.agent.with_raw_response.publish(
-                "",
+                agent_id="",
             )

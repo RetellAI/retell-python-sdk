@@ -53,6 +53,7 @@ __all__ = [
     "NodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
     "NodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "NodeConversationNodeKBConfig",
     "NodeConversationNodeModelChoice",
     "NodeConversationNodeSkipResponseEdge",
     "NodeConversationNodeSkipResponseEdgeTransitionCondition",
@@ -100,6 +101,7 @@ __all__ = [
     "NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
     "NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "NodeSubagentNodeKBConfig",
     "NodeSubagentNodeModelChoice",
     "NodeSubagentNodeSkipResponseEdge",
     "NodeSubagentNodeSkipResponseEdgeTransitionCondition",
@@ -624,6 +626,7 @@ __all__ = [
     "ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
     "ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeConversationNodeKBConfig",
     "ComponentNodeConversationNodeModelChoice",
     "ComponentNodeConversationNodeSkipResponseEdge",
     "ComponentNodeConversationNodeSkipResponseEdgeTransitionCondition",
@@ -671,6 +674,7 @@ __all__ = [
     "ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
     "ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "ComponentNodeSubagentNodeKBConfig",
     "ComponentNodeSubagentNodeModelChoice",
     "ComponentNodeSubagentNodeSkipResponseEdge",
     "ComponentNodeSubagentNodeSkipResponseEdgeTransitionCondition",
@@ -1260,7 +1264,6 @@ class ModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -1630,6 +1633,19 @@ class NodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
     """Transition to this node"""
 
 
+class NodeConversationNodeKBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval at the node level.
+
+    If kb_instruction is set here, it overrides the flow-level kb_instruction.
+    """
+
+    filter_score: float
+    """Similarity threshold for filtering search results"""
+
+    top_k: int
+    """Max number of knowledge base chunks to retrieve"""
+
+
 class NodeConversationNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
@@ -1648,7 +1664,6 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -1728,6 +1743,9 @@ class NodeConversationNode(TypedDict, total=False):
     type: Required[Literal["conversation"]]
     """Type of the node"""
 
+    allow_dtmf_interruption: Optional[bool]
+    """If set, overrides the agent-level allow_dtmf_interruption for this node only."""
+
     always_edge: NodeConversationNodeAlwaysEdge
 
     display_position: NodeConversationNodeDisplayPosition
@@ -1742,6 +1760,12 @@ class NodeConversationNode(TypedDict, total=False):
     global_node_setting: NodeConversationNodeGlobalNodeSetting
 
     interruption_sensitivity: Optional[float]
+
+    kb_config: NodeConversationNodeKBConfig
+    """Knowledge base configuration for RAG retrieval at the node level.
+
+    If kb_instruction is set here, it overrides the flow-level kb_instruction.
+    """
 
     knowledge_base_ids: Optional[SequenceNotStr[str]]
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
@@ -2099,6 +2123,19 @@ class NodeSubagentNodeGlobalNodeSetting(TypedDict, total=False):
     """Transition to this node"""
 
 
+class NodeSubagentNodeKBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval at the node level.
+
+    If kb_instruction is set here, it overrides the flow-level kb_instruction.
+    """
+
+    filter_score: float
+    """Similarity threshold for filtering search results"""
+
+    top_k: int
+    """Max number of knowledge base chunks to retrieve"""
+
+
 class NodeSubagentNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
@@ -2117,7 +2154,6 @@ class NodeSubagentNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -2657,7 +2693,7 @@ class NodeSubagentNodeToolAgentSwapTool(TypedDict, total=False):
 
     type: Required[Literal["agent_swap"]]
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -3266,6 +3302,9 @@ class NodeSubagentNode(TypedDict, total=False):
     type: Required[Literal["subagent"]]
     """Type of the node"""
 
+    allow_dtmf_interruption: Optional[bool]
+    """If set, overrides the agent-level allow_dtmf_interruption for this node only."""
+
     always_edge: NodeSubagentNodeAlwaysEdge
 
     display_position: NodeSubagentNodeDisplayPosition
@@ -3280,6 +3319,12 @@ class NodeSubagentNode(TypedDict, total=False):
     global_node_setting: NodeSubagentNodeGlobalNodeSetting
 
     interruption_sensitivity: Optional[float]
+
+    kb_config: NodeSubagentNodeKBConfig
+    """Knowledge base configuration for RAG retrieval at the node level.
+
+    If kb_instruction is set here, it overrides the flow-level kb_instruction.
+    """
 
     knowledge_base_ids: Optional[SequenceNotStr[str]]
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
@@ -3497,7 +3542,6 @@ class NodeEndNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -3869,7 +3913,6 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -4256,7 +4299,6 @@ class NodeCodeNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -4852,7 +4894,6 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -5172,7 +5213,6 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -5526,7 +5566,6 @@ class NodeBranchNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -5880,7 +5919,6 @@ class NodeSMSNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -6360,7 +6398,6 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -6650,7 +6687,6 @@ class NodeAgentSwapNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -6681,7 +6717,7 @@ class NodeAgentSwapNode(TypedDict, total=False):
     type: Required[Literal["agent_swap"]]
     """Type of the node"""
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version
@@ -7044,7 +7080,6 @@ class NodeMcpNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -7630,7 +7665,6 @@ class NodeBridgeTransferNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -7865,7 +7899,6 @@ class NodeCancelTransferNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -8308,6 +8341,19 @@ class ComponentNodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
     """Transition to this node"""
 
 
+class ComponentNodeConversationNodeKBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval at the node level.
+
+    If kb_instruction is set here, it overrides the flow-level kb_instruction.
+    """
+
+    filter_score: float
+    """Similarity threshold for filtering search results"""
+
+    top_k: int
+    """Max number of knowledge base chunks to retrieve"""
+
+
 class ComponentNodeConversationNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
@@ -8326,7 +8372,6 @@ class ComponentNodeConversationNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -8408,6 +8453,9 @@ class ComponentNodeConversationNode(TypedDict, total=False):
     type: Required[Literal["conversation"]]
     """Type of the node"""
 
+    allow_dtmf_interruption: Optional[bool]
+    """If set, overrides the agent-level allow_dtmf_interruption for this node only."""
+
     always_edge: ComponentNodeConversationNodeAlwaysEdge
 
     display_position: ComponentNodeConversationNodeDisplayPosition
@@ -8422,6 +8470,12 @@ class ComponentNodeConversationNode(TypedDict, total=False):
     global_node_setting: ComponentNodeConversationNodeGlobalNodeSetting
 
     interruption_sensitivity: Optional[float]
+
+    kb_config: ComponentNodeConversationNodeKBConfig
+    """Knowledge base configuration for RAG retrieval at the node level.
+
+    If kb_instruction is set here, it overrides the flow-level kb_instruction.
+    """
 
     knowledge_base_ids: Optional[SequenceNotStr[str]]
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
@@ -8784,6 +8838,19 @@ class ComponentNodeSubagentNodeGlobalNodeSetting(TypedDict, total=False):
     """Transition to this node"""
 
 
+class ComponentNodeSubagentNodeKBConfig(TypedDict, total=False):
+    """Knowledge base configuration for RAG retrieval at the node level.
+
+    If kb_instruction is set here, it overrides the flow-level kb_instruction.
+    """
+
+    filter_score: float
+    """Similarity threshold for filtering search results"""
+
+    top_k: int
+    """Max number of knowledge base chunks to retrieve"""
+
+
 class ComponentNodeSubagentNodeModelChoice(TypedDict, total=False):
     model: Required[
         Literal[
@@ -8802,7 +8869,6 @@ class ComponentNodeSubagentNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -9350,7 +9416,7 @@ class ComponentNodeSubagentNodeToolAgentSwapTool(TypedDict, total=False):
 
     type: Required[Literal["agent_swap"]]
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -9959,6 +10025,9 @@ class ComponentNodeSubagentNode(TypedDict, total=False):
     type: Required[Literal["subagent"]]
     """Type of the node"""
 
+    allow_dtmf_interruption: Optional[bool]
+    """If set, overrides the agent-level allow_dtmf_interruption for this node only."""
+
     always_edge: ComponentNodeSubagentNodeAlwaysEdge
 
     display_position: ComponentNodeSubagentNodeDisplayPosition
@@ -9973,6 +10042,12 @@ class ComponentNodeSubagentNode(TypedDict, total=False):
     global_node_setting: ComponentNodeSubagentNodeGlobalNodeSetting
 
     interruption_sensitivity: Optional[float]
+
+    kb_config: ComponentNodeSubagentNodeKBConfig
+    """Knowledge base configuration for RAG retrieval at the node level.
+
+    If kb_instruction is set here, it overrides the flow-level kb_instruction.
+    """
 
     knowledge_base_ids: Optional[SequenceNotStr[str]]
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
@@ -10192,7 +10267,6 @@ class ComponentNodeEndNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -10570,7 +10644,6 @@ class ComponentNodeFunctionNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -10960,7 +11033,6 @@ class ComponentNodeCodeNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -11579,7 +11651,6 @@ class ComponentNodeTransferCallNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -11906,7 +11977,6 @@ class ComponentNodePressDigitNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -12263,7 +12333,6 @@ class ComponentNodeBranchNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -12619,7 +12688,6 @@ class ComponentNodeSMSNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -13115,7 +13183,6 @@ class ComponentNodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -13410,7 +13477,6 @@ class ComponentNodeAgentSwapNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -13441,7 +13507,7 @@ class ComponentNodeAgentSwapNode(TypedDict, total=False):
     type: Required[Literal["agent_swap"]]
     """Type of the node"""
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version
@@ -13807,7 +13873,6 @@ class ComponentNodeMcpNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -14415,7 +14480,6 @@ class ComponentNodeBridgeTransferNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -14667,7 +14731,6 @@ class ComponentNodeCancelTransferNodeModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from typing import Union, Iterable, Optional
 from typing_extensions import Required, TypedDict
 
 from .._types import SequenceNotStr
@@ -111,7 +111,16 @@ class InboundAgent(TypedDict, total=False):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: int
+    agent_version: Union[int, str]
+    """Agent version reference.
+
+    Supports a numeric version (for example 3) or a tag/environment name (for
+    example "prod"). When a tag is provided, resolution uses that exact tag
+    assignment (including its dynamic variables). If the tag exists but is currently
+    unassigned, it resolves to latest. When a numeric version (or latest) is
+    provided, resolution applies dynamic variables from the preferred tag for that
+    resolved version (most recently assigned), if any.
+    """
 
 
 class InboundSMSAgent(TypedDict, total=False):
@@ -123,7 +132,16 @@ class InboundSMSAgent(TypedDict, total=False):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: int
+    agent_version: Union[int, str]
+    """Agent version reference.
+
+    Supports a numeric version (for example 3) or a tag/environment name (for
+    example "prod"). When a tag is provided, resolution uses that exact tag
+    assignment (including its dynamic variables). If the tag exists but is currently
+    unassigned, it resolves to latest. When a numeric version (or latest) is
+    provided, resolution applies dynamic variables from the preferred tag for that
+    resolved version (most recently assigned), if any.
+    """
 
 
 class OutboundAgent(TypedDict, total=False):
@@ -135,7 +153,16 @@ class OutboundAgent(TypedDict, total=False):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: int
+    agent_version: Union[int, str]
+    """Agent version reference.
+
+    Supports a numeric version (for example 3) or a tag/environment name (for
+    example "prod"). When a tag is provided, resolution uses that exact tag
+    assignment (including its dynamic variables). If the tag exists but is currently
+    unassigned, it resolves to latest. When a numeric version (or latest) is
+    provided, resolution applies dynamic variables from the preferred tag for that
+    resolved version (most recently assigned), if any.
+    """
 
 
 class OutboundSMSAgent(TypedDict, total=False):
@@ -147,4 +174,13 @@ class OutboundSMSAgent(TypedDict, total=False):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: int
+    agent_version: Union[int, str]
+    """Agent version reference.
+
+    Supports a numeric version (for example 3) or a tag/environment name (for
+    example "prod"). When a tag is provided, resolution uses that exact tag
+    assignment (including its dynamic variables). If the tag exists but is currently
+    unassigned, it resolves to latest. When a numeric version (or latest) is
+    provided, resolution applies dynamic variables from the preferred tag for that
+    resolved version (most recently assigned), if any.
+    """

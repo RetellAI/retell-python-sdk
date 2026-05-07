@@ -169,7 +169,6 @@ class LlmCreateParams(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash",
             "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -692,7 +691,7 @@ class GeneralToolAgentSwapTool(TypedDict, total=False):
 
     type: Required[Literal["agent_swap"]]
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -1835,7 +1834,7 @@ class StateToolAgentSwapTool(TypedDict, total=False):
 
     type: Required[Literal["agent_swap"]]
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.

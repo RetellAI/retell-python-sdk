@@ -37,6 +37,7 @@ class TestBatchCall:
                     "agent_override": {
                         "agent": {
                             "agent_name": "Jarvis",
+                            "allow_dtmf_interruption": False,
                             "allow_user_dtmf": True,
                             "ambient_sound": "coffee-shop",
                             "ambient_sound_volume": 1,
@@ -47,6 +48,10 @@ class TestBatchCall:
                             "backchannel_words": ["yeah", "uh-huh"],
                             "begin_message_delay_ms": 1000,
                             "boosted_keywords": ["retell", "kroger"],
+                            "call_screening_option": {
+                                "agent_identity": "Acme Health scheduling team",
+                                "call_purpose": "confirming your appointment for tomorrow",
+                            },
                             "custom_stt_config": {
                                 "endpointing_ms": 0,
                                 "provider": "azure",
@@ -76,7 +81,10 @@ class TestBatchCall:
                             },
                             "interruption_sensitivity": 1,
                             "is_public": False,
-                            "ivr_option": {"action": {"type": "hangup"}},
+                            "ivr_option": {
+                                "action": {"type": "hangup"},
+                                "detection_prompt": "detection_prompt",
+                            },
                             "language": "en-US",
                             "max_call_duration_ms": 3600000,
                             "opt_in_signed_url": True,
@@ -132,7 +140,8 @@ class TestBatchCall:
                                 "action": {
                                     "text": "Please give us a callback tomorrow at 10am.",
                                     "type": "static_text",
-                                }
+                                },
+                                "detection_prompt": "detection_prompt",
                             },
                             "volume": 1,
                             "webhook_events": ["call_started"],
@@ -249,6 +258,7 @@ class TestAsyncBatchCall:
                     "agent_override": {
                         "agent": {
                             "agent_name": "Jarvis",
+                            "allow_dtmf_interruption": False,
                             "allow_user_dtmf": True,
                             "ambient_sound": "coffee-shop",
                             "ambient_sound_volume": 1,
@@ -259,6 +269,10 @@ class TestAsyncBatchCall:
                             "backchannel_words": ["yeah", "uh-huh"],
                             "begin_message_delay_ms": 1000,
                             "boosted_keywords": ["retell", "kroger"],
+                            "call_screening_option": {
+                                "agent_identity": "Acme Health scheduling team",
+                                "call_purpose": "confirming your appointment for tomorrow",
+                            },
                             "custom_stt_config": {
                                 "endpointing_ms": 0,
                                 "provider": "azure",
@@ -288,7 +302,10 @@ class TestAsyncBatchCall:
                             },
                             "interruption_sensitivity": 1,
                             "is_public": False,
-                            "ivr_option": {"action": {"type": "hangup"}},
+                            "ivr_option": {
+                                "action": {"type": "hangup"},
+                                "detection_prompt": "detection_prompt",
+                            },
                             "language": "en-US",
                             "max_call_duration_ms": 3600000,
                             "opt_in_signed_url": True,
@@ -344,7 +361,8 @@ class TestAsyncBatchCall:
                                 "action": {
                                     "text": "Please give us a callback tomorrow at 10am.",
                                     "type": "static_text",
-                                }
+                                },
+                                "detection_prompt": "detection_prompt",
                             },
                             "volume": 1,
                             "webhook_events": ["call_started"],
