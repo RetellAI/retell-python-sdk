@@ -333,7 +333,7 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the transfer agent to use."""
 
 
@@ -1478,7 +1478,7 @@ class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAg
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the transfer agent to use."""
 
 

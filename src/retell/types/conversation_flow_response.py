@@ -2363,7 +2363,7 @@ class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionA
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the transfer agent to use."""
 
 
@@ -4515,7 +4515,7 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransf
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the transfer agent to use."""
 
 
@@ -9384,7 +9384,7 @@ class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWar
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the transfer agent to use."""
 
 
@@ -11527,7 +11527,7 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgentic
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: float
+    agent_version: Union[int, str]
     """The version of the transfer agent to use."""
 
 

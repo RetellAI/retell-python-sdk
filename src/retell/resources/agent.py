@@ -635,7 +635,7 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: int | Omit = omit,
+        version: Union[int, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -676,7 +676,7 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: int | Omit = omit,
+        version: Union[int, str] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
         allow_dtmf_interruption: bool | Omit = omit,
         allow_user_dtmf: bool | Omit = omit,
@@ -2003,7 +2003,7 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: int | Omit = omit,
+        version: Union[int, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2044,7 +2044,7 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: int | Omit = omit,
+        version: Union[int, str] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
         allow_dtmf_interruption: bool | Omit = omit,
         allow_user_dtmf: bool | Omit = omit,
