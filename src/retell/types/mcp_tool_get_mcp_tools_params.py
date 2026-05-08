@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import Required, TypedDict
 
 __all__ = ["McpToolGetMcpToolsParams"]
@@ -14,7 +15,7 @@ class McpToolGetMcpToolsParams(TypedDict, total=False):
     component_id: str
     """The ID of the component if the MCP server is configured under a component."""
 
-    version: int
+    version: Union[int, str]
     """Optional version of the agent to use for this request.
 
     Default to latest version.

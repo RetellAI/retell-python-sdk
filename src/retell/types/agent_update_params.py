@@ -38,7 +38,7 @@ __all__ = [
 
 
 class AgentUpdateParams(TypedDict, total=False):
-    version: int
+    version: Union[int, str]
     """Optional version of the API to use for this request. Default to latest version."""
 
     agent_name: Optional[str]

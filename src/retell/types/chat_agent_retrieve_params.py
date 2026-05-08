@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
+from typing import Union
 from typing_extensions import TypedDict
 
 __all__ = ["ChatAgentRetrieveParams"]
 
 
 class ChatAgentRetrieveParams(TypedDict, total=False):
-    version: int
+    version: Union[int, str]
     """Optional version of the API to use for this request.
 
     If not provided, will default to latest version.

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable
+from typing import Dict, Union, Iterable
 
 import httpx
 
@@ -49,7 +49,7 @@ class PlaygroundResource(SyncAPIResource):
         agent_id: str,
         *,
         messages: Iterable[playground_completion_params.Message],
-        version: int | Omit = omit,
+        version: Union[int, str] | Omit = omit,
         component_id: str | Omit = omit,
         current_node_id: str | Omit = omit,
         current_state: str | Omit = omit,
@@ -148,7 +148,7 @@ class AsyncPlaygroundResource(AsyncAPIResource):
         agent_id: str,
         *,
         messages: Iterable[playground_completion_params.Message],
-        version: int | Omit = omit,
+        version: Union[int, str] | Omit = omit,
         component_id: str | Omit = omit,
         current_node_id: str | Omit = omit,
         current_state: str | Omit = omit,
