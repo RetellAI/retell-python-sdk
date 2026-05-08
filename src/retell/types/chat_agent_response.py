@@ -558,12 +558,6 @@ class ChatAgentResponse(BaseModel):
     ] = None
     """The model to use for post chat analysis. Default to gpt-4.1."""
 
-    response_engine_data: Optional[object] = None
-    """Hydrated response engine for this chat agent version.
-
-    Only present when include_response_engine is true on /get-chat-agent-versions.
-    """
-
     signed_url_expiration_ms: Optional[int] = None
     """The expiration time for the signed url in milliseconds.
 
