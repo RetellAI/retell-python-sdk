@@ -12,7 +12,6 @@ from ..types import (
     chat_agent_create_params,
     chat_agent_update_params,
     chat_agent_retrieve_params,
-    chat_agent_get_versions_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
@@ -828,7 +827,6 @@ class ChatAgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        include_response_engine: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -840,10 +838,6 @@ class ChatAgentResource(SyncAPIResource):
         Get all versions of a chat agent
 
         Args:
-          include_response_engine: When true, each returned chat agent version includes a response_engine_data
-              field with the hydrated response engine (full retell-llm or conversation-flow
-              configuration) bound to that version.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -857,14 +851,7 @@ class ChatAgentResource(SyncAPIResource):
         return self._get(
             path_template("/get-chat-agent-versions/{agent_id}", agent_id=agent_id),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {"include_response_engine": include_response_engine},
-                    chat_agent_get_versions_params.ChatAgentGetVersionsParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ChatAgentGetVersionsResponse,
         )
@@ -1668,7 +1655,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        include_response_engine: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1680,10 +1666,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
         Get all versions of a chat agent
 
         Args:
-          include_response_engine: When true, each returned chat agent version includes a response_engine_data
-              field with the hydrated response engine (full retell-llm or conversation-flow
-              configuration) bound to that version.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1697,14 +1679,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-chat-agent-versions/{agent_id}", agent_id=agent_id),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"include_response_engine": include_response_engine},
-                    chat_agent_get_versions_params.ChatAgentGetVersionsParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ChatAgentGetVersionsResponse,
         )
