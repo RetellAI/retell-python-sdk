@@ -264,6 +264,40 @@ class ChatResource(SyncAPIResource):
             cast_to=ChatListResponse,
         )
 
+    def delete(
+        self,
+        chat_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete an existing chat
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not chat_id:
+            raise ValueError(f"Expected a non-empty value for `chat_id` but received {chat_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            path_template("/delete-chat/{chat_id}", chat_id=chat_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     def create_chat_completion(
         self,
         *,
@@ -643,6 +677,40 @@ class AsyncChatResource(AsyncAPIResource):
             cast_to=ChatListResponse,
         )
 
+    async def delete(
+        self,
+        chat_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Delete an existing chat
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not chat_id:
+            raise ValueError(f"Expected a non-empty value for `chat_id` but received {chat_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            path_template("/delete-chat/{chat_id}", chat_id=chat_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
     async def create_chat_completion(
         self,
         *,
@@ -810,6 +878,9 @@ class ChatResourceWithRawResponse:
                 chat.list,  # pyright: ignore[reportDeprecated],
             )
         )
+        self.delete = to_raw_response_wrapper(
+            chat.delete,
+        )
         self.create_chat_completion = to_raw_response_wrapper(
             chat.create_chat_completion,
         )
@@ -838,6 +909,9 @@ class AsyncChatResourceWithRawResponse:
             async_to_raw_response_wrapper(
                 chat.list,  # pyright: ignore[reportDeprecated],
             )
+        )
+        self.delete = async_to_raw_response_wrapper(
+            chat.delete,
         )
         self.create_chat_completion = async_to_raw_response_wrapper(
             chat.create_chat_completion,
@@ -868,6 +942,9 @@ class ChatResourceWithStreamingResponse:
                 chat.list,  # pyright: ignore[reportDeprecated],
             )
         )
+        self.delete = to_streamed_response_wrapper(
+            chat.delete,
+        )
         self.create_chat_completion = to_streamed_response_wrapper(
             chat.create_chat_completion,
         )
@@ -896,6 +973,9 @@ class AsyncChatResourceWithStreamingResponse:
             async_to_streamed_response_wrapper(
                 chat.list,  # pyright: ignore[reportDeprecated],
             )
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            chat.delete,
         )
         self.create_chat_completion = async_to_streamed_response_wrapper(
             chat.create_chat_completion,
