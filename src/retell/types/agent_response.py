@@ -896,12 +896,6 @@ class AgentResponse(BaseModel):
     a positive number. If unset, default value of 10000 ms (10 s) will apply.
     """
 
-    response_engine_data: Optional[object] = None
-    """Hydrated response engine for this agent version.
-
-    Only present when include_response_engine is true on /get-agent-versions.
-    """
-
     responsiveness: Optional[float] = None
     """Controls how responsive is the agent.
 
