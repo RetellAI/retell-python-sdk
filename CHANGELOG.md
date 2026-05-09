@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.35.1 (2026-05-09)
+
+Full Changelog: [v5.35.0...v5.35.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.35.0...v5.35.1)
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([291d6f4](https://github.com/RetellAI/retell-python-sdk/commit/291d6f41f0ebe9b8de3fb0e148218495098c959b))
+
 ## 5.35.0 (2026-05-08)
 
 Full Changelog: [v5.34.0...v5.35.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.34.0...v5.35.0)
