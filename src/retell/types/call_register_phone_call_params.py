@@ -993,12 +993,14 @@ class AgentOverrideAgent(TypedDict, total=False):
             "eleven_v3",
             "sonic-3",
             "sonic-3-latest",
+            "sonic-3.5",
             "tts-1",
             "gpt-4o-mini-tts",
             "speech-02-turbo",
             "speech-2.8-turbo",
             "s1",
             "s2-pro",
+            "s2.1-pro",
         ]
     ]
     """Select the voice model used for the selected voice.
@@ -1247,7 +1249,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[Literal["gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+    s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.
