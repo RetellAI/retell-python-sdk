@@ -521,6 +521,62 @@ class TestAgent:
                 "",
             )
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_publish(self, client: Retell) -> None:
+        agent = client.agent.publish(
+            agent_id="agent_xxx",
+            version=15,
+        )
+        assert agent is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_publish_with_all_params(self, client: Retell) -> None:
+        agent = client.agent.publish(
+            agent_id="agent_xxx",
+            version=15,
+            version_description="Hotfix for transfer timeout",
+        )
+        assert agent is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_publish(self, client: Retell) -> None:
+        response = client.agent.with_raw_response.publish(
+            agent_id="agent_xxx",
+            version=15,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = response.parse()
+        assert agent is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_publish(self, client: Retell) -> None:
+        with client.agent.with_streaming_response.publish(
+            agent_id="agent_xxx",
+            version=15,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = response.parse()
+            assert agent is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_publish(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            client.agent.with_raw_response.publish(
+                agent_id="",
+                version=15,
+            )
+
 
 class TestAsyncAgent:
     parametrize = pytest.mark.parametrize(
@@ -1025,4 +1081,60 @@ class TestAsyncAgent:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             await async_client.agent.with_raw_response.get_versions(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_publish(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.publish(
+            agent_id="agent_xxx",
+            version=15,
+        )
+        assert agent is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_publish_with_all_params(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.publish(
+            agent_id="agent_xxx",
+            version=15,
+            version_description="Hotfix for transfer timeout",
+        )
+        assert agent is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_publish(self, async_client: AsyncRetell) -> None:
+        response = await async_client.agent.with_raw_response.publish(
+            agent_id="agent_xxx",
+            version=15,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = await response.parse()
+        assert agent is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_publish(self, async_client: AsyncRetell) -> None:
+        async with async_client.agent.with_streaming_response.publish(
+            agent_id="agent_xxx",
+            version=15,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = await response.parse()
+            assert agent is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_publish(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            await async_client.agent.with_raw_response.publish(
+                agent_id="",
+                version=15,
             )

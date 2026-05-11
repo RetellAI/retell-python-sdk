@@ -10,7 +10,7 @@ Methods:
 
 - <code title="get /v2/get-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">retrieve</a>(call_id) -> <a href="./src/retell/types/call_response.py">CallResponse</a></code>
 - <code title="patch /v2/update-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">update</a>(call_id, \*\*<a href="src/retell/types/call_update_params.py">params</a>) -> <a href="./src/retell/types/call_response.py">CallResponse</a></code>
-- <code title="post /v2/list-calls">client.call.<a href="./src/retell/resources/call.py">list</a>(\*\*<a href="src/retell/types/call_list_params.py">params</a>) -> <a href="./src/retell/types/call_list_response.py">CallListResponse</a></code>
+- <code title="post /v3/list-calls">client.call.<a href="./src/retell/resources/call.py">list</a>(\*\*<a href="src/retell/types/call_list_params.py">params</a>) -> <a href="./src/retell/types/call_list_response.py">CallListResponse</a></code>
 - <code title="delete /v2/delete-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">delete</a>(call_id) -> None</code>
 - <code title="post /v2/create-phone-call">client.call.<a href="./src/retell/resources/call.py">create_phone_call</a>(\*\*<a href="src/retell/types/call_create_phone_call_params.py">params</a>) -> <a href="./src/retell/types/phone_call_response.py">PhoneCallResponse</a></code>
 - <code title="post /v2/create-web-call">client.call.<a href="./src/retell/resources/call.py">create_web_call</a>(\*\*<a href="src/retell/types/call_create_web_call_params.py">params</a>) -> <a href="./src/retell/types/web_call_response.py">WebCallResponse</a></code>
@@ -30,7 +30,7 @@ Methods:
 - <code title="post /create-chat">client.chat.<a href="./src/retell/resources/chat.py">create</a>(\*\*<a href="src/retell/types/chat_create_params.py">params</a>) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
 - <code title="get /get-chat/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">retrieve</a>(chat_id) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
 - <code title="patch /update-chat/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">update</a>(chat_id, \*\*<a href="src/retell/types/chat_update_params.py">params</a>) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
-- <code title="get /list-chat">client.chat.<a href="./src/retell/resources/chat.py">list</a>(\*\*<a href="src/retell/types/chat_list_params.py">params</a>) -> <a href="./src/retell/types/chat_list_response.py">ChatListResponse</a></code>
+- <code title="post /v3/list-chats">client.chat.<a href="./src/retell/resources/chat.py">list</a>(\*\*<a href="src/retell/types/chat_list_params.py">params</a>) -> <a href="./src/retell/types/chat_list_response.py">ChatListResponse</a></code>
 - <code title="delete /delete-chat/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">delete</a>(chat_id) -> None</code>
 - <code title="post /create-chat-completion">client.chat.<a href="./src/retell/resources/chat.py">create_chat_completion</a>(\*\*<a href="src/retell/types/chat_create_chat_completion_params.py">params</a>) -> <a href="./src/retell/types/chat_create_chat_completion_response.py">ChatCreateChatCompletionResponse</a></code>
 - <code title="post /create-sms-chat">client.chat.<a href="./src/retell/resources/chat.py">create_sms_chat</a>(\*\*<a href="src/retell/types/chat_create_sms_chat_params.py">params</a>) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
@@ -49,7 +49,7 @@ Methods:
 - <code title="post /create-phone-number">client.phone_number.<a href="./src/retell/resources/phone_number.py">create</a>(\*\*<a href="src/retell/types/phone_number_create_params.py">params</a>) -> <a href="./src/retell/types/phone_number_response.py">PhoneNumberResponse</a></code>
 - <code title="get /get-phone-number/{phone_number}">client.phone_number.<a href="./src/retell/resources/phone_number.py">retrieve</a>(phone_number) -> <a href="./src/retell/types/phone_number_response.py">PhoneNumberResponse</a></code>
 - <code title="patch /update-phone-number/{phone_number}">client.phone_number.<a href="./src/retell/resources/phone_number.py">update</a>(phone_number, \*\*<a href="src/retell/types/phone_number_update_params.py">params</a>) -> <a href="./src/retell/types/phone_number_response.py">PhoneNumberResponse</a></code>
-- <code title="get /list-phone-numbers">client.phone_number.<a href="./src/retell/resources/phone_number.py">list</a>() -> <a href="./src/retell/types/phone_number_list_response.py">PhoneNumberListResponse</a></code>
+- <code title="get /v2/list-phone-numbers">client.phone_number.<a href="./src/retell/resources/phone_number.py">list</a>(\*\*<a href="src/retell/types/phone_number_list_params.py">params</a>) -> <a href="./src/retell/types/phone_number_list_response.py">PhoneNumberListResponse</a></code>
 - <code title="delete /delete-phone-number/{phone_number}">client.phone_number.<a href="./src/retell/resources/phone_number.py">delete</a>(phone_number) -> None</code>
 - <code title="post /import-phone-number">client.phone*number.<a href="./src/retell/resources/phone_number.py">import*</a>(\*\*<a href="src/retell/types/phone_number_import_params.py">params</a>) -> <a href="./src/retell/types/phone_number_response.py">PhoneNumberResponse</a></code>
 
@@ -69,6 +69,7 @@ Methods:
 - <code title="get /list-agents">client.agent.<a href="./src/retell/resources/agent.py">list</a>(\*\*<a href="src/retell/types/agent_list_params.py">params</a>) -> <a href="./src/retell/types/agent_list_response.py">AgentListResponse</a></code>
 - <code title="delete /delete-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">delete</a>(agent_id) -> None</code>
 - <code title="get /get-agent-versions/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">get_versions</a>(agent_id) -> <a href="./src/retell/types/agent_get_versions_response.py">AgentGetVersionsResponse</a></code>
+- <code title="post /publish-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">publish</a>(agent_id, \*\*<a href="src/retell/types/agent_publish_params.py">params</a>) -> None</code>
 
 # ChatAgent
 
@@ -86,6 +87,7 @@ Methods:
 - <code title="get /list-chat-agents">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">list</a>(\*\*<a href="src/retell/types/chat_agent_list_params.py">params</a>) -> <a href="./src/retell/types/chat_agent_list_response.py">ChatAgentListResponse</a></code>
 - <code title="delete /delete-chat-agent/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">delete</a>(agent_id) -> None</code>
 - <code title="get /get-chat-agent-versions/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">get_versions</a>(agent_id) -> <a href="./src/retell/types/chat_agent_get_versions_response.py">ChatAgentGetVersionsResponse</a></code>
+- <code title="post /publish-agent-version/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">publish</a>(agent_id, \*\*<a href="src/retell/types/chat_agent_publish_params.py">params</a>) -> None</code>
 
 # Llm
 
@@ -100,7 +102,7 @@ Methods:
 - <code title="post /create-retell-llm">client.llm.<a href="./src/retell/resources/llm.py">create</a>(\*\*<a href="src/retell/types/llm_create_params.py">params</a>) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
 - <code title="get /get-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">retrieve</a>(llm_id, \*\*<a href="src/retell/types/llm_retrieve_params.py">params</a>) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
 - <code title="patch /update-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">update</a>(llm_id, \*\*<a href="src/retell/types/llm_update_params.py">params</a>) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
-- <code title="get /list-retell-llms">client.llm.<a href="./src/retell/resources/llm.py">list</a>(\*\*<a href="src/retell/types/llm_list_params.py">params</a>) -> <a href="./src/retell/types/llm_list_response.py">LlmListResponse</a></code>
+- <code title="get /v2/list-retell-llms">client.llm.<a href="./src/retell/resources/llm.py">list</a>(\*\*<a href="src/retell/types/llm_list_params.py">params</a>) -> <a href="./src/retell/types/llm_list_response.py">LlmListResponse</a></code>
 - <code title="delete /delete-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">delete</a>(llm_id) -> None</code>
 
 # ConversationFlow
@@ -116,7 +118,7 @@ Methods:
 - <code title="post /create-conversation-flow">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">create</a>(\*\*<a href="src/retell/types/conversation_flow_create_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_response.py">ConversationFlowResponse</a></code>
 - <code title="get /get-conversation-flow/{conversation_flow_id}">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">retrieve</a>(conversation_flow_id, \*\*<a href="src/retell/types/conversation_flow_retrieve_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_response.py">ConversationFlowResponse</a></code>
 - <code title="patch /update-conversation-flow/{conversation_flow_id}">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">update</a>(conversation_flow_id, \*\*<a href="src/retell/types/conversation_flow_update_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_response.py">ConversationFlowResponse</a></code>
-- <code title="get /list-conversation-flows">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">list</a>(\*\*<a href="src/retell/types/conversation_flow_list_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_list_response.py">ConversationFlowListResponse</a></code>
+- <code title="get /v2/list-conversation-flows">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">list</a>(\*\*<a href="src/retell/types/conversation_flow_list_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_list_response.py">ConversationFlowListResponse</a></code>
 - <code title="delete /delete-conversation-flow/{conversation_flow_id}">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">delete</a>(conversation_flow_id) -> None</code>
 
 # ConversationFlowComponent
@@ -132,7 +134,7 @@ Methods:
 - <code title="post /create-conversation-flow-component">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">create</a>(\*\*<a href="src/retell/types/conversation_flow_component_create_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_component_response.py">ConversationFlowComponentResponse</a></code>
 - <code title="get /get-conversation-flow-component/{conversation_flow_component_id}">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">retrieve</a>(conversation_flow_component_id) -> <a href="./src/retell/types/conversation_flow_component_response.py">ConversationFlowComponentResponse</a></code>
 - <code title="patch /update-conversation-flow-component/{conversation_flow_component_id}">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">update</a>(conversation_flow_component_id, \*\*<a href="src/retell/types/conversation_flow_component_update_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_component_response.py">ConversationFlowComponentResponse</a></code>
-- <code title="get /list-conversation-flow-components">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">list</a>() -> <a href="./src/retell/types/conversation_flow_component_list_response.py">ConversationFlowComponentListResponse</a></code>
+- <code title="get /v2/list-conversation-flow-components">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">list</a>(\*\*<a href="src/retell/types/conversation_flow_component_list_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_component_list_response.py">ConversationFlowComponentListResponse</a></code>
 - <code title="delete /delete-conversation-flow-component/{conversation_flow_component_id}">client.conversation_flow_component.<a href="./src/retell/resources/conversation_flow_component.py">delete</a>(conversation_flow_component_id) -> None</code>
 
 # KnowledgeBase
@@ -227,9 +229,9 @@ Methods:
 - <code title="get /get-batch-test/{test_case_batch_job_id}">client.tests.<a href="./src/retell/resources/tests.py">get_batch_test</a>(test_case_batch_job_id) -> <a href="./src/retell/types/batch_test_response.py">BatchTestResponse</a></code>
 - <code title="get /get-test-case-definition/{test_case_definition_id}">client.tests.<a href="./src/retell/resources/tests.py">get_test_case_definition</a>(test_case_definition_id) -> <a href="./src/retell/types/test_case_definition_response.py">TestCaseDefinitionResponse</a></code>
 - <code title="get /get-test-run/{test_case_job_id}">client.tests.<a href="./src/retell/resources/tests.py">get_test_run</a>(test_case_job_id) -> <a href="./src/retell/types/test_case_job_response.py">TestCaseJobResponse</a></code>
-- <code title="get /list-batch-tests">client.tests.<a href="./src/retell/resources/tests.py">list_batch_tests</a>(\*\*<a href="src/retell/types/test_list_batch_tests_params.py">params</a>) -> <a href="./src/retell/types/test_list_batch_tests_response.py">TestListBatchTestsResponse</a></code>
-- <code title="get /list-test-case-definitions">client.tests.<a href="./src/retell/resources/tests.py">list_test_case_definitions</a>(\*\*<a href="src/retell/types/test_list_test_case_definitions_params.py">params</a>) -> <a href="./src/retell/types/test_list_test_case_definitions_response.py">TestListTestCaseDefinitionsResponse</a></code>
-- <code title="get /list-test-runs/{test_case_batch_job_id}">client.tests.<a href="./src/retell/resources/tests.py">list_test_runs</a>(test_case_batch_job_id) -> <a href="./src/retell/types/test_list_test_runs_response.py">TestListTestRunsResponse</a></code>
+- <code title="get /v2/list-batch-tests">client.tests.<a href="./src/retell/resources/tests.py">list_batch_tests</a>(\*\*<a href="src/retell/types/test_list_batch_tests_params.py">params</a>) -> <a href="./src/retell/types/test_list_batch_tests_response.py">TestListBatchTestsResponse</a></code>
+- <code title="get /v2/list-test-case-definitions">client.tests.<a href="./src/retell/resources/tests.py">list_test_case_definitions</a>(\*\*<a href="src/retell/types/test_list_test_case_definitions_params.py">params</a>) -> <a href="./src/retell/types/test_list_test_case_definitions_response.py">TestListTestCaseDefinitionsResponse</a></code>
+- <code title="get /v2/list-test-runs/{test_case_batch_job_id}">client.tests.<a href="./src/retell/resources/tests.py">list_test_runs</a>(test_case_batch_job_id, \*\*<a href="src/retell/types/test_list_test_runs_params.py">params</a>) -> <a href="./src/retell/types/test_list_test_runs_response.py">TestListTestRunsResponse</a></code>
 - <code title="put /update-test-case-definition/{test_case_definition_id}">client.tests.<a href="./src/retell/resources/tests.py">update_test_case_definition</a>(test_case_definition_id, \*\*<a href="src/retell/types/test_update_test_case_definition_params.py">params</a>) -> <a href="./src/retell/types/test_case_definition_response.py">TestCaseDefinitionResponse</a></code>
 
 # Playground

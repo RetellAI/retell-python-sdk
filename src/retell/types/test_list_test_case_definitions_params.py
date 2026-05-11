@@ -14,5 +14,11 @@ class TestListTestCaseDefinitionsParams(TypedDict, total=False):
     conversation_flow_id: str
     """Conversation flow ID (required when type is conversation-flow)"""
 
+    limit: int
+    """Maximum number of items to return."""
+
     llm_id: str
     """LLM ID (required when type is retell-llm)"""
+
+    pagination_key: str
+    """Pagination key for fetching the next page."""

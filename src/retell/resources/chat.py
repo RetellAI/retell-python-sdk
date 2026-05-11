@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Dict, Union, Optional
 from typing_extensions import Literal
 
@@ -205,12 +204,13 @@ class ChatResource(SyncAPIResource):
             cast_to=ChatResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
+        filter_criteria: Dict[str, object] | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
+        skip: int | Omit = omit,
         sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -219,21 +219,19 @@ class ChatResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatListResponse:
-        """List all chats
+        """
+        List chats with unified cursor pagination response.
 
         Args:
-          limit: Limit the number of chats returned.
+          filter_criteria: Filter criteria for chats to retrieve.
 
-        Default 50, Max 1000. To retrieve more than
-              1000, use pagination_key to continue fetching the next page.
+          limit: Maximum number of chats to return.
 
-          pagination_key: The pagination key to continue fetching the next page of chats. Pagination key
-              is represented by a chat id here, and it's exclusive (not included in the
-              fetched chats). The last chat id from the list chats is usually used as
-              pagination key here. If not set, will start from the beginning.
+          pagination_key: Opaque pagination cursor from a previous response.
 
-          sort_order: The chats will be sorted by `start_timestamp`, whether to return the chats in
-              ascending or descending order.
+          skip: Number of records to skip for pagination.
+
+          sort_order: Sort chats by `start_timestamp` in ascending or descending order.
 
           extra_headers: Send extra headers
 
@@ -245,21 +243,20 @@ class ChatResource(SyncAPIResource):
         """
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 300
-        return self._get(
-            "/list-chat",
+        return self._post(
+            "/v3/list-chats",
+            body=maybe_transform(
+                {
+                    "filter_criteria": filter_criteria,
+                    "limit": limit,
+                    "pagination_key": pagination_key,
+                    "skip": skip,
+                    "sort_order": sort_order,
+                },
+                chat_list_params.ChatListParams,
+            ),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "limit": limit,
-                        "pagination_key": pagination_key,
-                        "sort_order": sort_order,
-                    },
-                    chat_list_params.ChatListParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ChatListResponse,
         )
@@ -618,12 +615,13 @@ class AsyncChatResource(AsyncAPIResource):
             cast_to=ChatResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
+        filter_criteria: Dict[str, object] | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
+        skip: int | Omit = omit,
         sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -632,21 +630,19 @@ class AsyncChatResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatListResponse:
-        """List all chats
+        """
+        List chats with unified cursor pagination response.
 
         Args:
-          limit: Limit the number of chats returned.
+          filter_criteria: Filter criteria for chats to retrieve.
 
-        Default 50, Max 1000. To retrieve more than
-              1000, use pagination_key to continue fetching the next page.
+          limit: Maximum number of chats to return.
 
-          pagination_key: The pagination key to continue fetching the next page of chats. Pagination key
-              is represented by a chat id here, and it's exclusive (not included in the
-              fetched chats). The last chat id from the list chats is usually used as
-              pagination key here. If not set, will start from the beginning.
+          pagination_key: Opaque pagination cursor from a previous response.
 
-          sort_order: The chats will be sorted by `start_timestamp`, whether to return the chats in
-              ascending or descending order.
+          skip: Number of records to skip for pagination.
+
+          sort_order: Sort chats by `start_timestamp` in ascending or descending order.
 
           extra_headers: Send extra headers
 
@@ -658,21 +654,20 @@ class AsyncChatResource(AsyncAPIResource):
         """
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 300
-        return await self._get(
-            "/list-chat",
+        return await self._post(
+            "/v3/list-chats",
+            body=await async_maybe_transform(
+                {
+                    "filter_criteria": filter_criteria,
+                    "limit": limit,
+                    "pagination_key": pagination_key,
+                    "skip": skip,
+                    "sort_order": sort_order,
+                },
+                chat_list_params.ChatListParams,
+            ),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "limit": limit,
-                        "pagination_key": pagination_key,
-                        "sort_order": sort_order,
-                    },
-                    chat_list_params.ChatListParams,
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ChatListResponse,
         )
@@ -873,10 +868,8 @@ class ChatResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             chat.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                chat.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_raw_response_wrapper(
+            chat.list,
         )
         self.delete = to_raw_response_wrapper(
             chat.delete,
@@ -905,10 +898,8 @@ class AsyncChatResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             chat.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                chat.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_raw_response_wrapper(
+            chat.list,
         )
         self.delete = async_to_raw_response_wrapper(
             chat.delete,
@@ -937,10 +928,8 @@ class ChatResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             chat.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                chat.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_streamed_response_wrapper(
+            chat.list,
         )
         self.delete = to_streamed_response_wrapper(
             chat.delete,
@@ -969,10 +958,8 @@ class AsyncChatResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             chat.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                chat.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_streamed_response_wrapper(
+            chat.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             chat.delete,

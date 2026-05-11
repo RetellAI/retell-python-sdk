@@ -14,8 +14,6 @@ from retell.types import (
     LlmListResponse,
 )
 
-# pyright: reportDeprecated=false
-
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
@@ -370,28 +368,23 @@ class TestLlm:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            llm = client.llm.list()
-
+        llm = client.llm.list()
         assert_matches_type(LlmListResponse, llm, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            llm = client.llm.list(
-                limit=50,
-                pagination_key="llm_1ffdb9717444d0e77346838911",
-                pagination_key_version=0,
-            )
-
+        llm = client.llm.list(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+        )
         assert_matches_type(LlmListResponse, llm, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = client.llm.with_raw_response.list()
+        response = client.llm.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -401,13 +394,12 @@ class TestLlm:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            with client.llm.with_streaming_response.list() as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with client.llm.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-                llm = response.parse()
-                assert_matches_type(LlmListResponse, llm, path=["response"])
+            llm = response.parse()
+            assert_matches_type(LlmListResponse, llm, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -807,28 +799,23 @@ class TestAsyncLlm:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            llm = await async_client.llm.list()
-
+        llm = await async_client.llm.list()
         assert_matches_type(LlmListResponse, llm, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            llm = await async_client.llm.list(
-                limit=50,
-                pagination_key="llm_1ffdb9717444d0e77346838911",
-                pagination_key_version=0,
-            )
-
+        llm = await async_client.llm.list(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+        )
         assert_matches_type(LlmListResponse, llm, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = await async_client.llm.with_raw_response.list()
+        response = await async_client.llm.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -838,13 +825,12 @@ class TestAsyncLlm:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            async with async_client.llm.with_streaming_response.list() as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        async with async_client.llm.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-                llm = await response.parse()
-                assert_matches_type(LlmListResponse, llm, path=["response"])
+            llm = await response.parse()
+            assert_matches_type(LlmListResponse, llm, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

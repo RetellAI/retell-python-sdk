@@ -14,8 +14,6 @@ from retell.types import (
     ConversationFlowComponentListResponse,
 )
 
-# pyright: reportDeprecated=false
-
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
@@ -536,16 +534,23 @@ class TestConversationFlowComponent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            conversation_flow_component = client.conversation_flow_component.list()
+        conversation_flow_component = client.conversation_flow_component.list()
+        assert_matches_type(ConversationFlowComponentListResponse, conversation_flow_component, path=["response"])
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_with_all_params(self, client: Retell) -> None:
+        conversation_flow_component = client.conversation_flow_component.list(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+        )
         assert_matches_type(ConversationFlowComponentListResponse, conversation_flow_component, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = client.conversation_flow_component.with_raw_response.list()
+        response = client.conversation_flow_component.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -555,15 +560,12 @@ class TestConversationFlowComponent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            with client.conversation_flow_component.with_streaming_response.list() as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with client.conversation_flow_component.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-                conversation_flow_component = response.parse()
-                assert_matches_type(
-                    ConversationFlowComponentListResponse, conversation_flow_component, path=["response"]
-                )
+            conversation_flow_component = response.parse()
+            assert_matches_type(ConversationFlowComponentListResponse, conversation_flow_component, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1131,16 +1133,23 @@ class TestAsyncConversationFlowComponent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            conversation_flow_component = await async_client.conversation_flow_component.list()
+        conversation_flow_component = await async_client.conversation_flow_component.list()
+        assert_matches_type(ConversationFlowComponentListResponse, conversation_flow_component, path=["response"])
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
+        conversation_flow_component = await async_client.conversation_flow_component.list(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+        )
         assert_matches_type(ConversationFlowComponentListResponse, conversation_flow_component, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = await async_client.conversation_flow_component.with_raw_response.list()
+        response = await async_client.conversation_flow_component.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1150,15 +1159,12 @@ class TestAsyncConversationFlowComponent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            async with async_client.conversation_flow_component.with_streaming_response.list() as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        async with async_client.conversation_flow_component.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-                conversation_flow_component = await response.parse()
-                assert_matches_type(
-                    ConversationFlowComponentListResponse, conversation_flow_component, path=["response"]
-                )
+            conversation_flow_component = await response.parse()
+            assert_matches_type(ConversationFlowComponentListResponse, conversation_flow_component, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

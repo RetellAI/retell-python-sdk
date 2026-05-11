@@ -2,29 +2,24 @@
 
 from __future__ import annotations
 
+from typing import Dict
 from typing_extensions import Literal, TypedDict
 
 __all__ = ["ChatListParams"]
 
 
 class ChatListParams(TypedDict, total=False):
-    limit: int
-    """Limit the number of chats returned.
+    filter_criteria: Dict[str, object]
+    """Filter criteria for chats to retrieve."""
 
-    Default 50, Max 1000. To retrieve more than 1000, use pagination_key to continue
-    fetching the next page.
-    """
+    limit: int
+    """Maximum number of chats to return."""
 
     pagination_key: str
-    """The pagination key to continue fetching the next page of chats.
+    """Opaque pagination cursor from a previous response."""
 
-    Pagination key is represented by a chat id here, and it's exclusive (not
-    included in the fetched chats). The last chat id from the list chats is usually
-    used as pagination key here. If not set, will start from the beginning.
-    """
+    skip: int
+    """Number of records to skip for pagination."""
 
     sort_order: Literal["ascending", "descending"]
-    """
-    The chats will be sorted by `start_timestamp`, whether to return the chats in
-    ascending or descending order.
-    """
+    """Sort chats by `start_timestamp` in ascending or descending order."""
