@@ -11,6 +11,7 @@ from ..types import (
     chat_agent_list_params,
     chat_agent_create_params,
     chat_agent_update_params,
+    chat_agent_publish_params,
     chat_agent_retrieve_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
@@ -856,6 +857,49 @@ class ChatAgentResource(SyncAPIResource):
             cast_to=ChatAgentGetVersionsResponse,
         )
 
+    def publish(
+        self,
+        agent_id: str,
+        *,
+        version: int,
+        version_description: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Publish an existing draft version in place.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            path_template("/publish-agent-version/{agent_id}", agent_id=agent_id),
+            body=maybe_transform(
+                {
+                    "version": version,
+                    "version_description": version_description,
+                },
+                chat_agent_publish_params.ChatAgentPublishParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class AsyncChatAgentResource(AsyncAPIResource):
     @cached_property
@@ -1684,6 +1728,49 @@ class AsyncChatAgentResource(AsyncAPIResource):
             cast_to=ChatAgentGetVersionsResponse,
         )
 
+    async def publish(
+        self,
+        agent_id: str,
+        *,
+        version: int,
+        version_description: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Publish an existing draft version in place.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            path_template("/publish-agent-version/{agent_id}", agent_id=agent_id),
+            body=await async_maybe_transform(
+                {
+                    "version": version,
+                    "version_description": version_description,
+                },
+                chat_agent_publish_params.ChatAgentPublishParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class ChatAgentResourceWithRawResponse:
     def __init__(self, chat_agent: ChatAgentResource) -> None:
@@ -1706,6 +1793,9 @@ class ChatAgentResourceWithRawResponse:
         )
         self.get_versions = to_raw_response_wrapper(
             chat_agent.get_versions,
+        )
+        self.publish = to_raw_response_wrapper(
+            chat_agent.publish,
         )
 
 
@@ -1731,6 +1821,9 @@ class AsyncChatAgentResourceWithRawResponse:
         self.get_versions = async_to_raw_response_wrapper(
             chat_agent.get_versions,
         )
+        self.publish = async_to_raw_response_wrapper(
+            chat_agent.publish,
+        )
 
 
 class ChatAgentResourceWithStreamingResponse:
@@ -1755,6 +1848,9 @@ class ChatAgentResourceWithStreamingResponse:
         self.get_versions = to_streamed_response_wrapper(
             chat_agent.get_versions,
         )
+        self.publish = to_streamed_response_wrapper(
+            chat_agent.publish,
+        )
 
 
 class AsyncChatAgentResourceWithStreamingResponse:
@@ -1778,4 +1874,7 @@ class AsyncChatAgentResourceWithStreamingResponse:
         )
         self.get_versions = async_to_streamed_response_wrapper(
             chat_agent.get_versions,
+        )
+        self.publish = async_to_streamed_response_wrapper(
+            chat_agent.publish,
         )

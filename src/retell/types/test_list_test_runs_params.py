@@ -2,17 +2,14 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, TypedDict
+from typing_extensions import TypedDict
 
-__all__ = ["ConversationFlowListParams"]
+__all__ = ["TestListTestRunsParams"]
 
 
-class ConversationFlowListParams(TypedDict, total=False):
+class TestListTestRunsParams(TypedDict, total=False):
     limit: int
     """Maximum number of items to return."""
 
     pagination_key: str
     """Pagination key for fetching the next page."""
-
-    sort_order: Literal["ascending", "descending"]
-    """Sort order for results."""

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Dict, Iterable, Optional
 from typing_extensions import Literal
 
@@ -332,13 +331,12 @@ class ConversationFlowResource(SyncAPIResource):
             cast_to=ConversationFlowResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
-        pagination_key_version: int | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -347,21 +345,14 @@ class ConversationFlowResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowListResponse:
         """
-        List all conversation flows that can be attached to an agent.
+        List conversation flows with pagination
 
         Args:
-          limit: Limit the number of conversation flows returned. Default 1000, Max 1000. To
-              retrieve more than 1000, use pagination_key to continue fetching the next page.
+          limit: Maximum number of items to return.
 
-          pagination_key: The pagination key to continue fetching the next page of conversation flows.
-              Pagination key is represented by a conversation flow id here, and it's exclusive
-              (not included in the fetched conversation flows). The last conversation flow id
-              from the list conversation flows is usually used as pagination key here. If not
-              set, will start from the beginning.
+          pagination_key: Pagination key for fetching the next page.
 
-          pagination_key_version: Specifies the version of the conversation flow associated with the
-              pagination_key. When paginating, both the pagination_key and its version must be
-              provided to ensure consistent ordering and to fetch the next page correctly.
+          sort_order: Sort order for results.
 
           extra_headers: Send extra headers
 
@@ -372,7 +363,7 @@ class ConversationFlowResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/list-conversation-flows",
+            "/v2/list-conversation-flows",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -382,7 +373,7 @@ class ConversationFlowResource(SyncAPIResource):
                     {
                         "limit": limit,
                         "pagination_key": pagination_key,
-                        "pagination_key_version": pagination_key_version,
+                        "sort_order": sort_order,
                     },
                     conversation_flow_list_params.ConversationFlowListParams,
                 ),
@@ -730,13 +721,12 @@ class AsyncConversationFlowResource(AsyncAPIResource):
             cast_to=ConversationFlowResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
-        pagination_key_version: int | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -745,21 +735,14 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowListResponse:
         """
-        List all conversation flows that can be attached to an agent.
+        List conversation flows with pagination
 
         Args:
-          limit: Limit the number of conversation flows returned. Default 1000, Max 1000. To
-              retrieve more than 1000, use pagination_key to continue fetching the next page.
+          limit: Maximum number of items to return.
 
-          pagination_key: The pagination key to continue fetching the next page of conversation flows.
-              Pagination key is represented by a conversation flow id here, and it's exclusive
-              (not included in the fetched conversation flows). The last conversation flow id
-              from the list conversation flows is usually used as pagination key here. If not
-              set, will start from the beginning.
+          pagination_key: Pagination key for fetching the next page.
 
-          pagination_key_version: Specifies the version of the conversation flow associated with the
-              pagination_key. When paginating, both the pagination_key and its version must be
-              provided to ensure consistent ordering and to fetch the next page correctly.
+          sort_order: Sort order for results.
 
           extra_headers: Send extra headers
 
@@ -770,7 +753,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/list-conversation-flows",
+            "/v2/list-conversation-flows",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -780,7 +763,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     {
                         "limit": limit,
                         "pagination_key": pagination_key,
-                        "pagination_key_version": pagination_key_version,
+                        "sort_order": sort_order,
                     },
                     conversation_flow_list_params.ConversationFlowListParams,
                 ),
@@ -840,10 +823,8 @@ class ConversationFlowResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             conversation_flow.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                conversation_flow.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_raw_response_wrapper(
+            conversation_flow.list,
         )
         self.delete = to_raw_response_wrapper(
             conversation_flow.delete,
@@ -863,10 +844,8 @@ class AsyncConversationFlowResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             conversation_flow.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                conversation_flow.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_raw_response_wrapper(
+            conversation_flow.list,
         )
         self.delete = async_to_raw_response_wrapper(
             conversation_flow.delete,
@@ -886,10 +865,8 @@ class ConversationFlowResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             conversation_flow.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                conversation_flow.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_streamed_response_wrapper(
+            conversation_flow.list,
         )
         self.delete = to_streamed_response_wrapper(
             conversation_flow.delete,
@@ -909,10 +886,8 @@ class AsyncConversationFlowResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             conversation_flow.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                conversation_flow.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_streamed_response_wrapper(
+            conversation_flow.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             conversation_flow.delete,

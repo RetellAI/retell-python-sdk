@@ -2,13 +2,17 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
 
-from ..types import phone_number_create_params, phone_number_import_params, phone_number_update_params
+from ..types import (
+    phone_number_list_params,
+    phone_number_create_params,
+    phone_number_import_params,
+    phone_number_update_params,
+)
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -296,10 +300,12 @@ class PhoneNumberResource(SyncAPIResource):
             cast_to=PhoneNumberResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -307,11 +313,39 @@ class PhoneNumberResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberListResponse:
-        """List all phone numbers"""
+        """
+        List phone numbers with pagination
+
+        Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
+          sort_order: Sort order for results.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
-            "/list-phone-numbers",
+            "/v2/list-phone-numbers",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "sort_order": sort_order,
+                    },
+                    phone_number_list_params.PhoneNumberListParams,
+                ),
             ),
             cast_to=PhoneNumberListResponse,
         )
@@ -719,10 +753,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             cast_to=PhoneNumberResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -730,11 +766,39 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberListResponse:
-        """List all phone numbers"""
+        """
+        List phone numbers with pagination
+
+        Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
+          sort_order: Sort order for results.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
-            "/list-phone-numbers",
+            "/v2/list-phone-numbers",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "sort_order": sort_order,
+                    },
+                    phone_number_list_params.PhoneNumberListParams,
+                ),
             ),
             cast_to=PhoneNumberListResponse,
         )
@@ -885,10 +949,8 @@ class PhoneNumberResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             phone_number.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                phone_number.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_raw_response_wrapper(
+            phone_number.list,
         )
         self.delete = to_raw_response_wrapper(
             phone_number.delete,
@@ -911,10 +973,8 @@ class AsyncPhoneNumberResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             phone_number.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                phone_number.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_raw_response_wrapper(
+            phone_number.list,
         )
         self.delete = async_to_raw_response_wrapper(
             phone_number.delete,
@@ -937,10 +997,8 @@ class PhoneNumberResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             phone_number.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                phone_number.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_streamed_response_wrapper(
+            phone_number.list,
         )
         self.delete = to_streamed_response_wrapper(
             phone_number.delete,
@@ -963,10 +1021,8 @@ class AsyncPhoneNumberResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             phone_number.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                phone_number.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_streamed_response_wrapper(
+            phone_number.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             phone_number.delete,

@@ -2,12 +2,16 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Iterable, Optional
+from typing_extensions import Literal
 
 import httpx
 
-from ..types import conversation_flow_component_create_params, conversation_flow_component_update_params
+from ..types import (
+    conversation_flow_component_list_params,
+    conversation_flow_component_create_params,
+    conversation_flow_component_update_params,
+)
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -219,10 +223,12 @@ class ConversationFlowComponentResource(SyncAPIResource):
             cast_to=ConversationFlowComponentResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -230,11 +236,39 @@ class ConversationFlowComponentResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowComponentListResponse:
-        """List shared conversation flow components"""
+        """
+        List shared conversation flow components with pagination
+
+        Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
+          sort_order: Sort order for results.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
-            "/list-conversation-flow-components",
+            "/v2/list-conversation-flow-components",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "sort_order": sort_order,
+                    },
+                    conversation_flow_component_list_params.ConversationFlowComponentListParams,
+                ),
             ),
             cast_to=ConversationFlowComponentListResponse,
         )
@@ -475,10 +509,12 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
             cast_to=ConversationFlowComponentResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -486,11 +522,39 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConversationFlowComponentListResponse:
-        """List shared conversation flow components"""
+        """
+        List shared conversation flow components with pagination
+
+        Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
+          sort_order: Sort order for results.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
-            "/list-conversation-flow-components",
+            "/v2/list-conversation-flow-components",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "sort_order": sort_order,
+                    },
+                    conversation_flow_component_list_params.ConversationFlowComponentListParams,
+                ),
             ),
             cast_to=ConversationFlowComponentListResponse,
         )
@@ -550,10 +614,8 @@ class ConversationFlowComponentResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             conversation_flow_component.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                conversation_flow_component.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_raw_response_wrapper(
+            conversation_flow_component.list,
         )
         self.delete = to_raw_response_wrapper(
             conversation_flow_component.delete,
@@ -573,10 +635,8 @@ class AsyncConversationFlowComponentResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             conversation_flow_component.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                conversation_flow_component.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_raw_response_wrapper(
+            conversation_flow_component.list,
         )
         self.delete = async_to_raw_response_wrapper(
             conversation_flow_component.delete,
@@ -596,10 +656,8 @@ class ConversationFlowComponentResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             conversation_flow_component.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                conversation_flow_component.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_streamed_response_wrapper(
+            conversation_flow_component.list,
         )
         self.delete = to_streamed_response_wrapper(
             conversation_flow_component.delete,
@@ -619,10 +677,8 @@ class AsyncConversationFlowComponentResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             conversation_flow_component.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                conversation_flow_component.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_streamed_response_wrapper(
+            conversation_flow_component.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             conversation_flow_component.delete,
