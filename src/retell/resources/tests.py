@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Dict, Iterable
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import (
+    test_list_test_runs_params,
     test_list_batch_tests_params,
     test_create_batch_test_params,
     test_list_test_case_definitions_params,
@@ -328,13 +328,14 @@ class TestsResource(SyncAPIResource):
             cast_to=TestCaseJobResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     def list_batch_tests(
         self,
         *,
         type: Literal["retell-llm", "conversation-flow"],
         conversation_flow_id: str | Omit = omit,
+        limit: int | Omit = omit,
         llm_id: str | Omit = omit,
+        pagination_key: str | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -344,14 +345,18 @@ class TestsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TestListBatchTestsResponse:
         """
-        List batch test jobs for a response engine
+        List batch test jobs with pagination
 
         Args:
           type: Type of response engine
 
           conversation_flow_id: Conversation flow ID (required when type is conversation-flow)
 
+          limit: Maximum number of items to return.
+
           llm_id: LLM ID (required when type is retell-llm)
+
+          pagination_key: Pagination key for fetching the next page.
 
           version: Version of the response engine (defaults to latest)
 
@@ -364,7 +369,7 @@ class TestsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/list-batch-tests",
+            "/v2/list-batch-tests",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -374,7 +379,9 @@ class TestsResource(SyncAPIResource):
                     {
                         "type": type,
                         "conversation_flow_id": conversation_flow_id,
+                        "limit": limit,
                         "llm_id": llm_id,
+                        "pagination_key": pagination_key,
                         "version": version,
                     },
                     test_list_batch_tests_params.TestListBatchTestsParams,
@@ -383,13 +390,14 @@ class TestsResource(SyncAPIResource):
             cast_to=TestListBatchTestsResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     def list_test_case_definitions(
         self,
         *,
         type: Literal["retell-llm", "conversation-flow"],
         conversation_flow_id: str | Omit = omit,
+        limit: int | Omit = omit,
         llm_id: str | Omit = omit,
+        pagination_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -398,14 +406,18 @@ class TestsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TestListTestCaseDefinitionsResponse:
         """
-        List test case definitions for a response engine
+        List test case definitions with pagination
 
         Args:
           type: Type of response engine
 
           conversation_flow_id: Conversation flow ID (required when type is conversation-flow)
 
+          limit: Maximum number of items to return.
+
           llm_id: LLM ID (required when type is retell-llm)
+
+          pagination_key: Pagination key for fetching the next page.
 
           extra_headers: Send extra headers
 
@@ -416,7 +428,7 @@ class TestsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/list-test-case-definitions",
+            "/v2/list-test-case-definitions",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -426,7 +438,9 @@ class TestsResource(SyncAPIResource):
                     {
                         "type": type,
                         "conversation_flow_id": conversation_flow_id,
+                        "limit": limit,
                         "llm_id": llm_id,
+                        "pagination_key": pagination_key,
                     },
                     test_list_test_case_definitions_params.TestListTestCaseDefinitionsParams,
                 ),
@@ -434,11 +448,12 @@ class TestsResource(SyncAPIResource):
             cast_to=TestListTestCaseDefinitionsResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     def list_test_runs(
         self,
         test_case_batch_job_id: str,
         *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -447,9 +462,13 @@ class TestsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TestListTestRunsResponse:
         """
-        List all test case jobs (test runs) for a batch test job
+        List test case jobs (test runs) for a batch test job with pagination
 
         Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -463,9 +482,19 @@ class TestsResource(SyncAPIResource):
                 f"Expected a non-empty value for `test_case_batch_job_id` but received {test_case_batch_job_id!r}"
             )
         return self._get(
-            path_template("/list-test-runs/{test_case_batch_job_id}", test_case_batch_job_id=test_case_batch_job_id),
+            path_template("/v2/list-test-runs/{test_case_batch_job_id}", test_case_batch_job_id=test_case_batch_job_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                    },
+                    test_list_test_runs_params.TestListTestRunsParams,
+                ),
             ),
             cast_to=TestListTestRunsResponse,
         )
@@ -852,13 +881,14 @@ class AsyncTestsResource(AsyncAPIResource):
             cast_to=TestCaseJobResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def list_batch_tests(
         self,
         *,
         type: Literal["retell-llm", "conversation-flow"],
         conversation_flow_id: str | Omit = omit,
+        limit: int | Omit = omit,
         llm_id: str | Omit = omit,
+        pagination_key: str | Omit = omit,
         version: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -868,14 +898,18 @@ class AsyncTestsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TestListBatchTestsResponse:
         """
-        List batch test jobs for a response engine
+        List batch test jobs with pagination
 
         Args:
           type: Type of response engine
 
           conversation_flow_id: Conversation flow ID (required when type is conversation-flow)
 
+          limit: Maximum number of items to return.
+
           llm_id: LLM ID (required when type is retell-llm)
+
+          pagination_key: Pagination key for fetching the next page.
 
           version: Version of the response engine (defaults to latest)
 
@@ -888,7 +922,7 @@ class AsyncTestsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/list-batch-tests",
+            "/v2/list-batch-tests",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -898,7 +932,9 @@ class AsyncTestsResource(AsyncAPIResource):
                     {
                         "type": type,
                         "conversation_flow_id": conversation_flow_id,
+                        "limit": limit,
                         "llm_id": llm_id,
+                        "pagination_key": pagination_key,
                         "version": version,
                     },
                     test_list_batch_tests_params.TestListBatchTestsParams,
@@ -907,13 +943,14 @@ class AsyncTestsResource(AsyncAPIResource):
             cast_to=TestListBatchTestsResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def list_test_case_definitions(
         self,
         *,
         type: Literal["retell-llm", "conversation-flow"],
         conversation_flow_id: str | Omit = omit,
+        limit: int | Omit = omit,
         llm_id: str | Omit = omit,
+        pagination_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -922,14 +959,18 @@ class AsyncTestsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TestListTestCaseDefinitionsResponse:
         """
-        List test case definitions for a response engine
+        List test case definitions with pagination
 
         Args:
           type: Type of response engine
 
           conversation_flow_id: Conversation flow ID (required when type is conversation-flow)
 
+          limit: Maximum number of items to return.
+
           llm_id: LLM ID (required when type is retell-llm)
+
+          pagination_key: Pagination key for fetching the next page.
 
           extra_headers: Send extra headers
 
@@ -940,7 +981,7 @@ class AsyncTestsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/list-test-case-definitions",
+            "/v2/list-test-case-definitions",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -950,7 +991,9 @@ class AsyncTestsResource(AsyncAPIResource):
                     {
                         "type": type,
                         "conversation_flow_id": conversation_flow_id,
+                        "limit": limit,
                         "llm_id": llm_id,
+                        "pagination_key": pagination_key,
                     },
                     test_list_test_case_definitions_params.TestListTestCaseDefinitionsParams,
                 ),
@@ -958,11 +1001,12 @@ class AsyncTestsResource(AsyncAPIResource):
             cast_to=TestListTestCaseDefinitionsResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def list_test_runs(
         self,
         test_case_batch_job_id: str,
         *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -971,9 +1015,13 @@ class AsyncTestsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TestListTestRunsResponse:
         """
-        List all test case jobs (test runs) for a batch test job
+        List test case jobs (test runs) for a batch test job with pagination
 
         Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -987,9 +1035,19 @@ class AsyncTestsResource(AsyncAPIResource):
                 f"Expected a non-empty value for `test_case_batch_job_id` but received {test_case_batch_job_id!r}"
             )
         return await self._get(
-            path_template("/list-test-runs/{test_case_batch_job_id}", test_case_batch_job_id=test_case_batch_job_id),
+            path_template("/v2/list-test-runs/{test_case_batch_job_id}", test_case_batch_job_id=test_case_batch_job_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                    },
+                    test_list_test_runs_params.TestListTestRunsParams,
+                ),
             ),
             cast_to=TestListTestRunsResponse,
         )
@@ -1110,20 +1168,14 @@ class TestsResourceWithRawResponse:
         self.get_test_run = to_raw_response_wrapper(
             tests.get_test_run,
         )
-        self.list_batch_tests = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                tests.list_batch_tests,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_batch_tests = to_raw_response_wrapper(
+            tests.list_batch_tests,
         )
-        self.list_test_case_definitions = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                tests.list_test_case_definitions,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_test_case_definitions = to_raw_response_wrapper(
+            tests.list_test_case_definitions,
         )
-        self.list_test_runs = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                tests.list_test_runs,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_test_runs = to_raw_response_wrapper(
+            tests.list_test_runs,
         )
         self.update_test_case_definition = to_raw_response_wrapper(
             tests.update_test_case_definition,
@@ -1152,20 +1204,14 @@ class AsyncTestsResourceWithRawResponse:
         self.get_test_run = async_to_raw_response_wrapper(
             tests.get_test_run,
         )
-        self.list_batch_tests = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                tests.list_batch_tests,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_batch_tests = async_to_raw_response_wrapper(
+            tests.list_batch_tests,
         )
-        self.list_test_case_definitions = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                tests.list_test_case_definitions,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_test_case_definitions = async_to_raw_response_wrapper(
+            tests.list_test_case_definitions,
         )
-        self.list_test_runs = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                tests.list_test_runs,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_test_runs = async_to_raw_response_wrapper(
+            tests.list_test_runs,
         )
         self.update_test_case_definition = async_to_raw_response_wrapper(
             tests.update_test_case_definition,
@@ -1196,20 +1242,14 @@ class TestsResourceWithStreamingResponse:
         self.get_test_run = to_streamed_response_wrapper(
             tests.get_test_run,
         )
-        self.list_batch_tests = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                tests.list_batch_tests,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_batch_tests = to_streamed_response_wrapper(
+            tests.list_batch_tests,
         )
-        self.list_test_case_definitions = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                tests.list_test_case_definitions,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_test_case_definitions = to_streamed_response_wrapper(
+            tests.list_test_case_definitions,
         )
-        self.list_test_runs = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                tests.list_test_runs,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_test_runs = to_streamed_response_wrapper(
+            tests.list_test_runs,
         )
         self.update_test_case_definition = to_streamed_response_wrapper(
             tests.update_test_case_definition,
@@ -1238,20 +1278,14 @@ class AsyncTestsResourceWithStreamingResponse:
         self.get_test_run = async_to_streamed_response_wrapper(
             tests.get_test_run,
         )
-        self.list_batch_tests = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                tests.list_batch_tests,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_batch_tests = async_to_streamed_response_wrapper(
+            tests.list_batch_tests,
         )
-        self.list_test_case_definitions = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                tests.list_test_case_definitions,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_test_case_definitions = async_to_streamed_response_wrapper(
+            tests.list_test_case_definitions,
         )
-        self.list_test_runs = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                tests.list_test_runs,  # pyright: ignore[reportDeprecated],
-            )
+        self.list_test_runs = async_to_streamed_response_wrapper(
+            tests.list_test_runs,
         )
         self.update_test_case_definition = async_to_streamed_response_wrapper(
             tests.update_test_case_definition,

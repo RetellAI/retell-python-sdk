@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Any, Dict, Union, Optional, cast
 from typing_extensions import Literal
 
@@ -157,13 +156,13 @@ class CallResource(SyncAPIResource):
             ),
         )
 
-    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
         filter_criteria: call_list_params.FilterCriteria | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
+        skip: int | Omit = omit,
         sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -173,21 +172,18 @@ class CallResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CallListResponse:
         """
-        Retrieve call details
+        List calls with unified cursor pagination response.
 
         Args:
-          filter_criteria: Filter criteria for the calls to retrieve.
+          filter_criteria: Filter criteria for calls. All conditions are implicitly connected with AND.
 
-          limit: Limit the number of calls returned. Default 50, Max 1000. To retrieve more than
-              1000, use pagination_key to continue fetching the next page.
+          limit: Maximum number of calls to return.
 
-          pagination_key: The pagination key to continue fetching the next page of calls. Pagination key
-              is represented by a call id here, and it's exclusive (not included in the
-              fetched calls). The last call id from the list calls is usually used as
-              pagination key here. If not set, will start from the beginning.
+          pagination_key: Opaque pagination cursor from a previous response.
 
-          sort_order: The calls will be sorted by `start_timestamp`, whether to return the calls in
-              ascending or descending order.
+          skip: Number of records to skip for pagination.
+
+          sort_order: Sort calls by `start_timestamp` in ascending or descending order.
 
           extra_headers: Send extra headers
 
@@ -200,12 +196,13 @@ class CallResource(SyncAPIResource):
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 300
         return self._post(
-            "/v2/list-calls",
+            "/v3/list-calls",
             body=maybe_transform(
                 {
                     "filter_criteria": filter_criteria,
                     "limit": limit,
                     "pagination_key": pagination_key,
+                    "skip": skip,
                     "sort_order": sort_order,
                 },
                 call_list_params.CallListParams,
@@ -642,13 +639,13 @@ class AsyncCallResource(AsyncAPIResource):
             ),
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
         filter_criteria: call_list_params.FilterCriteria | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
+        skip: int | Omit = omit,
         sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -658,21 +655,18 @@ class AsyncCallResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CallListResponse:
         """
-        Retrieve call details
+        List calls with unified cursor pagination response.
 
         Args:
-          filter_criteria: Filter criteria for the calls to retrieve.
+          filter_criteria: Filter criteria for calls. All conditions are implicitly connected with AND.
 
-          limit: Limit the number of calls returned. Default 50, Max 1000. To retrieve more than
-              1000, use pagination_key to continue fetching the next page.
+          limit: Maximum number of calls to return.
 
-          pagination_key: The pagination key to continue fetching the next page of calls. Pagination key
-              is represented by a call id here, and it's exclusive (not included in the
-              fetched calls). The last call id from the list calls is usually used as
-              pagination key here. If not set, will start from the beginning.
+          pagination_key: Opaque pagination cursor from a previous response.
 
-          sort_order: The calls will be sorted by `start_timestamp`, whether to return the calls in
-              ascending or descending order.
+          skip: Number of records to skip for pagination.
+
+          sort_order: Sort calls by `start_timestamp` in ascending or descending order.
 
           extra_headers: Send extra headers
 
@@ -685,12 +679,13 @@ class AsyncCallResource(AsyncAPIResource):
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 300
         return await self._post(
-            "/v2/list-calls",
+            "/v3/list-calls",
             body=await async_maybe_transform(
                 {
                     "filter_criteria": filter_criteria,
                     "limit": limit,
                     "pagination_key": pagination_key,
+                    "skip": skip,
                     "sort_order": sort_order,
                 },
                 call_list_params.CallListParams,
@@ -1015,10 +1010,8 @@ class CallResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             call.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                call.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_raw_response_wrapper(
+            call.list,
         )
         self.delete = to_raw_response_wrapper(
             call.delete,
@@ -1047,10 +1040,8 @@ class AsyncCallResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             call.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                call.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_raw_response_wrapper(
+            call.list,
         )
         self.delete = async_to_raw_response_wrapper(
             call.delete,
@@ -1079,10 +1070,8 @@ class CallResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             call.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                call.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_streamed_response_wrapper(
+            call.list,
         )
         self.delete = to_streamed_response_wrapper(
             call.delete,
@@ -1111,10 +1100,8 @@ class AsyncCallResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             call.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                call.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_streamed_response_wrapper(
+            call.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             call.delete,

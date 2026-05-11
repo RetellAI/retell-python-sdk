@@ -32,6 +32,7 @@ from .mcp_tool_definition import McpToolDefinition as McpToolDefinition
 from .phone_call_response import PhoneCallResponse as PhoneCallResponse
 from .voice_list_response import VoiceListResponse as VoiceListResponse
 from .voice_search_params import VoiceSearchParams as VoiceSearchParams
+from .agent_publish_params import AgentPublishParams as AgentPublishParams
 from .agent_retrieve_params import AgentRetrieveParams as AgentRetrieveParams
 from .phone_number_response import PhoneNumberResponse as PhoneNumberResponse
 from .voice_search_response import VoiceSearchResponse as VoiceSearchResponse
@@ -41,6 +42,8 @@ from .knowledge_base_response import KnowledgeBaseResponse as KnowledgeBaseRespo
 from .chat_agent_create_params import ChatAgentCreateParams as ChatAgentCreateParams
 from .chat_agent_list_response import ChatAgentListResponse as ChatAgentListResponse
 from .chat_agent_update_params import ChatAgentUpdateParams as ChatAgentUpdateParams
+from .phone_number_list_params import PhoneNumberListParams as PhoneNumberListParams
+from .chat_agent_publish_params import ChatAgentPublishParams as ChatAgentPublishParams
 from .voice_add_resource_params import VoiceAddResourceParams as VoiceAddResourceParams
 from .chat_agent_retrieve_params import ChatAgentRetrieveParams as ChatAgentRetrieveParams
 from .conversation_flow_response import ConversationFlowResponse as ConversationFlowResponse
@@ -49,6 +52,7 @@ from .phone_number_create_params import PhoneNumberCreateParams as PhoneNumberCr
 from .phone_number_import_params import PhoneNumberImportParams as PhoneNumberImportParams
 from .phone_number_list_response import PhoneNumberListResponse as PhoneNumberListResponse
 from .phone_number_update_params import PhoneNumberUpdateParams as PhoneNumberUpdateParams
+from .test_list_test_runs_params import TestListTestRunsParams as TestListTestRunsParams
 from .agent_get_versions_response import AgentGetVersionsResponse as AgentGetVersionsResponse
 from .call_create_web_call_params import CallCreateWebCallParams as CallCreateWebCallParams
 from .chat_create_sms_chat_params import ChatCreateSMSChatParams as ChatCreateSMSChatParams
@@ -80,6 +84,9 @@ from .chat_create_chat_completion_response import ChatCreateChatCompletionRespon
 from .conversation_flow_component_response import ConversationFlowComponentResponse as ConversationFlowComponentResponse
 from .test_list_test_case_definitions_params import (
     TestListTestCaseDefinitionsParams as TestListTestCaseDefinitionsParams,
+)
+from .conversation_flow_component_list_params import (
+    ConversationFlowComponentListParams as ConversationFlowComponentListParams,
 )
 from .test_create_test_case_definition_params import (
     TestCreateTestCaseDefinitionParams as TestCreateTestCaseDefinitionParams,

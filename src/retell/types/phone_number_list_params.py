@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Literal, TypedDict
 
-__all__ = ["ConversationFlowListParams"]
+__all__ = ["PhoneNumberListParams"]
 
 
-class ConversationFlowListParams(TypedDict, total=False):
+class PhoneNumberListParams(TypedDict, total=False):
     limit: int
     """Maximum number of items to return."""
 
