@@ -81,7 +81,8 @@ class LlmResource(SyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]] | Omit = omit,
+        s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+        | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
@@ -276,7 +277,8 @@ class LlmResource(SyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]] | Omit = omit,
+        s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+        | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
@@ -540,7 +542,8 @@ class AsyncLlmResource(AsyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]] | Omit = omit,
+        s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+        | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
@@ -735,7 +738,8 @@ class AsyncLlmResource(AsyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]] | Omit = omit,
+        s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+        | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,

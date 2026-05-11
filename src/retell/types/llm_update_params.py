@@ -195,7 +195,7 @@ class LlmUpdateParams(TypedDict, total=False):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[Literal["gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+    s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.
