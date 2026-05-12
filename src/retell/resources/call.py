@@ -258,7 +258,7 @@ class CallResource(SyncAPIResource):
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
         override_agent_version: Union[int, str] | Omit = omit,
-        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -343,7 +343,7 @@ class CallResource(SyncAPIResource):
         current_node_id: Optional[str] | Omit = omit,
         current_state: Optional[str] | Omit = omit,
         metadata: object | Omit = omit,
-        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -418,7 +418,7 @@ class CallResource(SyncAPIResource):
         direction: Literal["inbound", "outbound"] | Omit = omit,
         from_number: str | Omit = omit,
         metadata: object | Omit = omit,
-        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         to_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -741,7 +741,7 @@ class AsyncCallResource(AsyncAPIResource):
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
         override_agent_version: Union[int, str] | Omit = omit,
-        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -826,7 +826,7 @@ class AsyncCallResource(AsyncAPIResource):
         current_node_id: Optional[str] | Omit = omit,
         current_state: Optional[str] | Omit = omit,
         metadata: object | Omit = omit,
-        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -901,7 +901,7 @@ class AsyncCallResource(AsyncAPIResource):
         direction: Literal["inbound", "outbound"] | Omit = omit,
         from_number: str | Omit = omit,
         metadata: object | Omit = omit,
-        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         to_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

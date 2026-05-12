@@ -26,7 +26,7 @@ class ChatCreateParams(TypedDict, total=False):
     object.
     """
 
-    retell_llm_dynamic_variables: Dict[str, object]
+    retell_llm_dynamic_variables: Dict[str, str]
     """
     Add optional dynamic variables in key value pairs of string that injects into
     your Response Engine prompt and tool description. Only applicable for Response

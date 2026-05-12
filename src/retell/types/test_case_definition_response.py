@@ -48,7 +48,7 @@ class ToolMockInputMatchRuleType(BaseModel):
 
 
 class ToolMockInputMatchRuleUnionMember1(BaseModel):
-    args: Dict[str, object]
+    args: object
     """Arguments to match. Only provided fields will be checked"""
 
     type: Literal["partial_match"]
