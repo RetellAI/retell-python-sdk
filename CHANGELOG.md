@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.38.0 (2026-05-12)
+
+Full Changelog: [v5.37.0...v5.38.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.37.0...v5.38.0)
+
+### Features
+
+* **internal/types:** support eagerly validating pydantic iterators ([593e797](https://github.com/RetellAI/retell-python-sdk/commit/593e7977a7681f20fcc0cc18f550643b71fef380))
+
 ## 5.37.0 (2026-05-11)
 
 Full Changelog: [v5.36.0...v5.37.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.36.0...v5.37.0)
