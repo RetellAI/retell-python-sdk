@@ -713,7 +713,7 @@ class GeneralToolCustomToolParameters(BaseModel):
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
 
-    properties: Dict[str, object]
+    properties: object
     """
     The value of properties is an object, where each key is the name of a property
     and each value is a schema used to validate that property.
@@ -1207,7 +1207,7 @@ class StateEdgeParameters(BaseModel):
     The parameters extracted here can be referenced in prompts & function descriptions of later states via dynamic variables. The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
     """
 
-    properties: Dict[str, object]
+    properties: object
     """
     The value of properties is an object, where each key is the name of a property
     and each value is a schema used to validate that property.
@@ -1858,7 +1858,7 @@ class StateToolCustomToolParameters(BaseModel):
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
 
-    properties: Dict[str, object]
+    properties: object
     """
     The value of properties is an object, where each key is the name of a property
     and each value is a schema used to validate that property.

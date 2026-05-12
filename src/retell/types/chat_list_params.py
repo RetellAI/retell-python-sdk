@@ -2,14 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict
 from typing_extensions import Literal, TypedDict
 
 __all__ = ["ChatListParams"]
 
 
 class ChatListParams(TypedDict, total=False):
-    filter_criteria: Dict[str, object]
+    filter_criteria: object
     """Filter criteria for chats to retrieve."""
 
     limit: int

@@ -59,7 +59,7 @@ class ChatResource(SyncAPIResource):
         agent_id: str,
         agent_version: Union[int, str] | Omit = omit,
         metadata: object | Omit = omit,
-        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -207,7 +207,7 @@ class ChatResource(SyncAPIResource):
     def list(
         self,
         *,
-        filter_criteria: Dict[str, object] | Omit = omit,
+        filter_criteria: object | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
         skip: int | Omit = omit,
@@ -348,7 +348,7 @@ class ChatResource(SyncAPIResource):
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
         override_agent_version: Union[int, str] | Omit = omit,
-        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -470,7 +470,7 @@ class AsyncChatResource(AsyncAPIResource):
         agent_id: str,
         agent_version: Union[int, str] | Omit = omit,
         metadata: object | Omit = omit,
-        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -618,7 +618,7 @@ class AsyncChatResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        filter_criteria: Dict[str, object] | Omit = omit,
+        filter_criteria: object | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
         skip: int | Omit = omit,
@@ -759,7 +759,7 @@ class AsyncChatResource(AsyncAPIResource):
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
         override_agent_version: Union[int, str] | Omit = omit,
-        retell_llm_dynamic_variables: Dict[str, object] | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

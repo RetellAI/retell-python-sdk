@@ -211,7 +211,7 @@ class ChatResponse(BaseModel):
     chat_type: Optional[Literal["api_chat", "sms_chat"]] = None
     """Type of the chat"""
 
-    collected_dynamic_variables: Optional[Dict[str, object]] = None
+    collected_dynamic_variables: Optional[Dict[str, str]] = None
     """Dynamic variables collected from the chat. Only available after the chat ends."""
 
     custom_attributes: Optional[Dict[str, Union[str, float, bool]]] = None
@@ -234,7 +234,7 @@ class ChatResponse(BaseModel):
     object.
     """
 
-    retell_llm_dynamic_variables: Optional[Dict[str, object]] = None
+    retell_llm_dynamic_variables: Optional[Dict[str, str]] = None
     """
     Add optional dynamic variables in key value pairs of string that injects into
     your Response Engine prompt and tool description. Only applicable for Response
