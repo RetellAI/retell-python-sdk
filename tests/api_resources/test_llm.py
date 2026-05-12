@@ -75,7 +75,7 @@ class TestLlm:
                             "description": "Transition to book an appointment.",
                             "destination_state_name": "appointment_booking",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -113,7 +113,7 @@ class TestLlm:
                             "description": "description",
                             "destination_state_name": "destination_state_name",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -269,7 +269,7 @@ class TestLlm:
                             "description": "Transition to book an appointment.",
                             "destination_state_name": "appointment_booking",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -307,7 +307,7 @@ class TestLlm:
                             "description": "description",
                             "destination_state_name": "destination_state_name",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -506,7 +506,7 @@ class TestAsyncLlm:
                             "description": "Transition to book an appointment.",
                             "destination_state_name": "appointment_booking",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -544,7 +544,7 @@ class TestAsyncLlm:
                             "description": "description",
                             "destination_state_name": "destination_state_name",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -700,7 +700,7 @@ class TestAsyncLlm:
                             "description": "Transition to book an appointment.",
                             "destination_state_name": "appointment_booking",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -738,7 +738,7 @@ class TestAsyncLlm:
                             "description": "description",
                             "destination_state_name": "destination_state_name",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },

@@ -2834,7 +2834,7 @@ class NodeSubagentNodeToolCustomToolParameters(TypedDict, total=False):
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
 
-    properties: Required[Dict[str, object]]
+    properties: Required[object]
     """
     The value of properties is an object, where each key is the name of a property
     and each value is a schema used to validate that property.
@@ -9557,7 +9557,7 @@ class ComponentNodeSubagentNodeToolCustomToolParameters(TypedDict, total=False):
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
 
-    properties: Required[Dict[str, object]]
+    properties: Required[object]
     """
     The value of properties is an object, where each key is the name of a property
     and each value is a schema used to validate that property.
@@ -14857,7 +14857,7 @@ class ComponentToolCustomToolParameters(TypedDict, total=False):
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
 
-    properties: Required[Dict[str, object]]
+    properties: Required[object]
     """
     The value of properties is an object, where each key is the name of a property
     and each value is a schema used to validate that property.
@@ -15157,7 +15157,7 @@ class ToolCustomToolParameters(TypedDict, total=False):
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
 
-    properties: Required[Dict[str, object]]
+    properties: Required[object]
     """
     The value of properties is an object, where each key is the name of a property
     and each value is a schema used to validate that property.

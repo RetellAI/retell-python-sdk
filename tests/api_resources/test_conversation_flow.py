@@ -328,7 +328,7 @@ class TestConversationFlow:
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -398,7 +398,7 @@ class TestConversationFlow:
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
                     "parameters": {
-                        "properties": {"foo": "bar"},
+                        "properties": {},
                         "type": "object",
                         "required": ["string"],
                     },
@@ -699,7 +699,7 @@ class TestConversationFlow:
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -887,7 +887,7 @@ class TestConversationFlow:
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
                     "parameters": {
-                        "properties": {"foo": "bar"},
+                        "properties": {},
                         "type": "object",
                         "required": ["string"],
                     },
@@ -1333,7 +1333,7 @@ class TestAsyncConversationFlow:
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -1403,7 +1403,7 @@ class TestAsyncConversationFlow:
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
                     "parameters": {
-                        "properties": {"foo": "bar"},
+                        "properties": {},
                         "type": "object",
                         "required": ["string"],
                     },
@@ -1704,7 +1704,7 @@ class TestAsyncConversationFlow:
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
                             "parameters": {
-                                "properties": {"foo": "bar"},
+                                "properties": {},
                                 "type": "object",
                                 "required": ["string"],
                             },
@@ -1892,7 +1892,7 @@ class TestAsyncConversationFlow:
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
                     "parameters": {
-                        "properties": {"foo": "bar"},
+                        "properties": {},
                         "type": "object",
                         "required": ["string"],
                     },

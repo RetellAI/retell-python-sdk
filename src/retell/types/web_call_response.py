@@ -677,7 +677,7 @@ class WebCallResponse(BaseModel):
     call_cost: Optional[CallCost] = None
     """Cost of the call, including all the products and their costs and discount."""
 
-    collected_dynamic_variables: Optional[Dict[str, object]] = None
+    collected_dynamic_variables: Optional[Dict[str, str]] = None
     """Dynamic variables collected from the call. Only available after the call ends."""
 
     custom_sip_headers: Optional[Dict[str, str]] = None
@@ -795,7 +795,7 @@ class WebCallResponse(BaseModel):
     recording_url: Optional[str] = None
     """Recording of the call. Available after call ends."""
 
-    retell_llm_dynamic_variables: Optional[Dict[str, object]] = None
+    retell_llm_dynamic_variables: Optional[Dict[str, str]] = None
     """
     Add optional dynamic variables in key value pairs of string that injects into
     your Response Engine prompt and tool description. Only applicable for Response

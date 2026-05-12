@@ -36,7 +36,7 @@ class TestChat:
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             agent_version=1,
             metadata={},
-            retell_llm_dynamic_variables={"customer_name": "bar"},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
@@ -178,7 +178,7 @@ class TestChat:
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
         chat = client.chat.list(
-            filter_criteria={"foo": "bar"},
+            filter_criteria={},
             limit=1000,
             pagination_key="pagination_key",
             skip=0,
@@ -305,7 +305,7 @@ class TestChat:
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             override_agent_version=1,
-            retell_llm_dynamic_variables={"customer_name": "bar"},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
@@ -400,7 +400,7 @@ class TestAsyncChat:
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             agent_version=1,
             metadata={},
-            retell_llm_dynamic_variables={"customer_name": "bar"},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 
@@ -542,7 +542,7 @@ class TestAsyncChat:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.list(
-            filter_criteria={"foo": "bar"},
+            filter_criteria={},
             limit=1000,
             pagination_key="pagination_key",
             skip=0,
@@ -669,7 +669,7 @@ class TestAsyncChat:
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             override_agent_version=1,
-            retell_llm_dynamic_variables={"customer_name": "bar"},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
 

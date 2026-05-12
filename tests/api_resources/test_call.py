@@ -511,7 +511,7 @@ class TestCall:
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             override_agent_version=1,
-            retell_llm_dynamic_variables={"customer_name": "bar"},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(PhoneCallResponse, call, path=["response"])
 
@@ -706,7 +706,7 @@ class TestCall:
             current_node_id="collect_info",
             current_state="information_collection",
             metadata={},
-            retell_llm_dynamic_variables={"customer_name": "bar"},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(WebCallResponse, call, path=["response"])
 
@@ -899,7 +899,7 @@ class TestCall:
             direction="inbound",
             from_number="+14157774444",
             metadata={},
-            retell_llm_dynamic_variables={"customer_name": "bar"},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
             to_number="+12137774445",
         )
         assert_matches_type(PhoneCallResponse, call, path=["response"])
@@ -1467,7 +1467,7 @@ class TestAsyncCall:
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             override_agent_version=1,
-            retell_llm_dynamic_variables={"customer_name": "bar"},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(PhoneCallResponse, call, path=["response"])
 
@@ -1662,7 +1662,7 @@ class TestAsyncCall:
             current_node_id="collect_info",
             current_state="information_collection",
             metadata={},
-            retell_llm_dynamic_variables={"customer_name": "bar"},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(WebCallResponse, call, path=["response"])
 
@@ -1855,7 +1855,7 @@ class TestAsyncCall:
             direction="inbound",
             from_number="+14157774444",
             metadata={},
-            retell_llm_dynamic_variables={"customer_name": "bar"},
+            retell_llm_dynamic_variables={"customer_name": "John Doe"},
             to_number="+12137774445",
         )
         assert_matches_type(PhoneCallResponse, call, path=["response"])

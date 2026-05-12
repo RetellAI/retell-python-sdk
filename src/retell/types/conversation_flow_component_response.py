@@ -2139,7 +2139,7 @@ class NodeSubagentNodeToolCustomToolParameters(BaseModel):
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
 
-    properties: Dict[str, object]
+    properties: object
     """
     The value of properties is an object, where each key is the name of a property
     and each value is a schema used to validate that property.
@@ -7248,7 +7248,7 @@ class ToolCustomToolParameters(BaseModel):
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
 
-    properties: Dict[str, object]
+    properties: object
     """
     The value of properties is an object, where each key is the name of a property
     and each value is a schema used to validate that property.

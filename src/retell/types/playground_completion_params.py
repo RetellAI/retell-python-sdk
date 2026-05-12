@@ -181,7 +181,7 @@ class ToolMockInputMatchRuleType(TypedDict, total=False):
 
 
 class ToolMockInputMatchRuleUnionMember1(TypedDict, total=False):
-    args: Required[Dict[str, object]]
+    args: Required[object]
     """Arguments to match. Only provided fields will be checked"""
 
     type: Required[Literal["partial_match"]]
