@@ -1,5 +1,9 @@
 # Changelog
 
+## 5.39.1 (2026-05-13)
+
+Full Changelog: [v5.39.0...v5.39.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.39.0...v5.39.1)
+
 ## 5.39.0 (2026-05-12)
 
 Full Changelog: [v5.38.0...v5.39.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.38.0...v5.39.0)
