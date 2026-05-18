@@ -288,6 +288,7 @@ class TestConversationFlow:
                         "x": 100,
                         "y": 200,
                     },
+                    "flex_mode": False,
                     "mcps": [
                         {
                             "name": "name",
@@ -349,6 +350,7 @@ class TestConversationFlow:
                 "company_name": "Retell Inc",
                 "support_hours": "9 AM - 5 PM",
             },
+            flex_mode=False,
             global_prompt="You are a helpful customer service agent.",
             is_transfer_llm=False,
             kb_config={
@@ -659,6 +661,7 @@ class TestConversationFlow:
                         "x": 100,
                         "y": 200,
                     },
+                    "flex_mode": False,
                     "mcps": [
                         {
                             "name": "name",
@@ -720,6 +723,7 @@ class TestConversationFlow:
                 "company_name": "Retell Inc",
                 "support_hours": "9 AM - 5 PM",
             },
+            flex_mode=False,
             global_prompt="You are a helpful customer service agent.",
             is_transfer_llm=False,
             kb_config={
@@ -1293,6 +1297,7 @@ class TestAsyncConversationFlow:
                         "x": 100,
                         "y": 200,
                     },
+                    "flex_mode": False,
                     "mcps": [
                         {
                             "name": "name",
@@ -1354,6 +1359,7 @@ class TestAsyncConversationFlow:
                 "company_name": "Retell Inc",
                 "support_hours": "9 AM - 5 PM",
             },
+            flex_mode=False,
             global_prompt="You are a helpful customer service agent.",
             is_transfer_llm=False,
             kb_config={
@@ -1664,6 +1670,7 @@ class TestAsyncConversationFlow:
                         "x": 100,
                         "y": 200,
                     },
+                    "flex_mode": False,
                     "mcps": [
                         {
                             "name": "name",
@@ -1725,6 +1732,7 @@ class TestAsyncConversationFlow:
                 "company_name": "Retell Inc",
                 "support_hours": "9 AM - 5 PM",
             },
+            flex_mode=False,
             global_prompt="You are a helpful customer service agent.",
             is_transfer_llm=False,
             kb_config={

@@ -60,6 +60,7 @@ class ConversationFlowResource(SyncAPIResource):
         begin_tag_display_position: Optional[conversation_flow_create_params.BeginTagDisplayPosition] | Omit = omit,
         components: Optional[Iterable[conversation_flow_create_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        flex_mode: Optional[bool] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
         is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
@@ -100,6 +101,9 @@ class ConversationFlowResource(SyncAPIResource):
 
           default_dynamic_variables: Default dynamic variables that can be referenced throughout the conversation
               flow.
+
+          flex_mode: If enabled, the whole conversation flow will be converted as a Single Prompt
+              agent.
 
           global_prompt: Global prompt used in every node of the conversation flow.
 
@@ -142,6 +146,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "begin_tag_display_position": begin_tag_display_position,
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
+                    "flex_mode": flex_mode,
                     "global_prompt": global_prompt,
                     "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
@@ -215,6 +220,7 @@ class ConversationFlowResource(SyncAPIResource):
         begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition] | Omit = omit,
         components: Optional[Iterable[conversation_flow_update_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        flex_mode: Optional[bool] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
         is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_update_params.KBConfig | Omit = omit,
@@ -252,6 +258,9 @@ class ConversationFlowResource(SyncAPIResource):
 
           default_dynamic_variables: Default dynamic variables that can be referenced throughout the conversation
               flow.
+
+          flex_mode: If enabled, the whole conversation flow will be converted as a Single Prompt
+              agent.
 
           global_prompt: Global prompt used in every node of the conversation flow.
 
@@ -303,6 +312,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "begin_tag_display_position": begin_tag_display_position,
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
+                    "flex_mode": flex_mode,
                     "global_prompt": global_prompt,
                     "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
@@ -450,6 +460,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         begin_tag_display_position: Optional[conversation_flow_create_params.BeginTagDisplayPosition] | Omit = omit,
         components: Optional[Iterable[conversation_flow_create_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        flex_mode: Optional[bool] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
         is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
@@ -490,6 +501,9 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           default_dynamic_variables: Default dynamic variables that can be referenced throughout the conversation
               flow.
+
+          flex_mode: If enabled, the whole conversation flow will be converted as a Single Prompt
+              agent.
 
           global_prompt: Global prompt used in every node of the conversation flow.
 
@@ -532,6 +546,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "begin_tag_display_position": begin_tag_display_position,
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
+                    "flex_mode": flex_mode,
                     "global_prompt": global_prompt,
                     "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
@@ -605,6 +620,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         begin_tag_display_position: Optional[conversation_flow_update_params.BeginTagDisplayPosition] | Omit = omit,
         components: Optional[Iterable[conversation_flow_update_params.Component]] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
+        flex_mode: Optional[bool] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
         is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_update_params.KBConfig | Omit = omit,
@@ -642,6 +658,9 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           default_dynamic_variables: Default dynamic variables that can be referenced throughout the conversation
               flow.
+
+          flex_mode: If enabled, the whole conversation flow will be converted as a Single Prompt
+              agent.
 
           global_prompt: Global prompt used in every node of the conversation flow.
 
@@ -693,6 +712,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "begin_tag_display_position": begin_tag_display_position,
                     "components": components,
                     "default_dynamic_variables": default_dynamic_variables,
+                    "flex_mode": flex_mode,
                     "global_prompt": global_prompt,
                     "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,

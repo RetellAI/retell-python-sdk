@@ -10,7 +10,7 @@ __all__ = ["ChatCreateParams"]
 
 class ChatCreateParams(TypedDict, total=False):
     agent_id: Required[str]
-    """The chat agent to use for the call."""
+    """The chat agent to use for the chat."""
 
     agent_version: Union[int, str]
     """The version of the chat agent to use for the chat.

@@ -7471,6 +7471,9 @@ class ConversationFlowComponentResponse(BaseModel):
     begin_tag_display_position: Optional[BeginTagDisplayPosition] = None
     """Display position for the begin tag in the frontend"""
 
+    flex_mode: Optional[bool] = None
+    """If enabled, the whole component will be converted as a Single Prompt agent."""
+
     linked_conversation_flow_ids: Optional[List[str]] = None
     """IDs of conversation flows linked to this shared component"""
 

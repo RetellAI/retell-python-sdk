@@ -8146,6 +8146,9 @@ class Component(BaseModel):
     begin_tag_display_position: Optional[ComponentBeginTagDisplayPosition] = None
     """Display position for the begin tag in the frontend"""
 
+    flex_mode: Optional[bool] = None
+    """If enabled, the whole component will be converted as a Single Prompt agent."""
+
     mcps: Optional[List[ComponentMcp]] = None
     """A list of MCP server configurations to use for this component"""
 
@@ -15080,6 +15083,12 @@ class ConversationFlowResponse(BaseModel):
     """
     Default dynamic variables that can be referenced throughout the conversation
     flow.
+    """
+
+    flex_mode: Optional[bool] = None
+    """
+    If enabled, the whole conversation flow will be converted as a Single Prompt
+    agent.
     """
 
     global_prompt: Optional[str] = None

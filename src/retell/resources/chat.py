@@ -71,7 +71,7 @@ class ChatResource(SyncAPIResource):
         Create a chat session
 
         Args:
-          agent_id: The chat agent to use for the call.
+          agent_id: The chat agent to use for the chat.
 
           agent_version: The version of the chat agent to use for the chat. If not provided, will default
               to latest version.
@@ -208,6 +208,7 @@ class ChatResource(SyncAPIResource):
         self,
         *,
         filter_criteria: object | Omit = omit,
+        include_total: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
         skip: int | Omit = omit,
@@ -224,6 +225,11 @@ class ChatResource(SyncAPIResource):
 
         Args:
           filter_criteria: Filter criteria for chats to retrieve.
+
+          include_total: Whether to include `total` (count of all chats matching `filter_criteria`,
+              ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false.
+              Each enabled request triggers an additional aggregate query, so opt in only when
+              the total is needed.
 
           limit: Maximum number of chats to return.
 
@@ -248,6 +254,7 @@ class ChatResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "filter_criteria": filter_criteria,
+                    "include_total": include_total,
                     "limit": limit,
                     "pagination_key": pagination_key,
                     "skip": skip,
@@ -482,7 +489,7 @@ class AsyncChatResource(AsyncAPIResource):
         Create a chat session
 
         Args:
-          agent_id: The chat agent to use for the call.
+          agent_id: The chat agent to use for the chat.
 
           agent_version: The version of the chat agent to use for the chat. If not provided, will default
               to latest version.
@@ -619,6 +626,7 @@ class AsyncChatResource(AsyncAPIResource):
         self,
         *,
         filter_criteria: object | Omit = omit,
+        include_total: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
         skip: int | Omit = omit,
@@ -635,6 +643,11 @@ class AsyncChatResource(AsyncAPIResource):
 
         Args:
           filter_criteria: Filter criteria for chats to retrieve.
+
+          include_total: Whether to include `total` (count of all chats matching `filter_criteria`,
+              ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false.
+              Each enabled request triggers an additional aggregate query, so opt in only when
+              the total is needed.
 
           limit: Maximum number of chats to return.
 
@@ -659,6 +672,7 @@ class AsyncChatResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "filter_criteria": filter_criteria,
+                    "include_total": include_total,
                     "limit": limit,
                     "pagination_key": pagination_key,
                     "skip": skip,

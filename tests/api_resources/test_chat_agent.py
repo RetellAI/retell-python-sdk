@@ -59,7 +59,6 @@ class TestChatAgent:
                 "high_empathy": True,
                 "scope_boundaries": True,
             },
-            is_public=False,
             language="en-US",
             opt_in_signed_url=True,
             pii_config={
@@ -200,7 +199,6 @@ class TestChatAgent:
                 "high_empathy": True,
                 "scope_boundaries": True,
             },
-            is_public=False,
             language="en-US",
             opt_in_signed_url=True,
             pii_config={
@@ -488,7 +486,6 @@ class TestAsyncChatAgent:
                 "high_empathy": True,
                 "scope_boundaries": True,
             },
-            is_public=False,
             language="en-US",
             opt_in_signed_url=True,
             pii_config={
@@ -629,7 +626,6 @@ class TestAsyncChatAgent:
                 "high_empathy": True,
                 "scope_boundaries": True,
             },
-            is_public=False,
             language="en-US",
             opt_in_signed_url=True,
             pii_config={

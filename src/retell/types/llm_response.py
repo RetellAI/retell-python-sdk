@@ -2477,4 +2477,4 @@ class LlmResponse(BaseModel):
     """
 
     version: Optional[int] = None
-    """The version of the LLM."""
+    """Version of the Retell LLM Response Engine."""

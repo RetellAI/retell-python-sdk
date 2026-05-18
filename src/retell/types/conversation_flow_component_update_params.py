@@ -597,6 +597,9 @@ class ConversationFlowComponentUpdateParams(TypedDict, total=False):
     begin_tag_display_position: Optional[BeginTagDisplayPosition]
     """Display position for the begin tag in the frontend"""
 
+    flex_mode: Optional[bool]
+    """If enabled, the whole component will be converted as a Single Prompt agent."""
+
     mcps: Optional[Iterable[Mcp]]
     """A list of MCP server configurations to use for this component"""
 

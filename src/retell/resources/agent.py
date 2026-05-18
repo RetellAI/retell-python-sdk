@@ -88,7 +88,6 @@ class AgentResource(SyncAPIResource):
         guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
         handbook_config: agent_create_params.HandbookConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
-        is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_create_params.IvrOption] | Omit = omit,
         language: Union[
             Literal[
@@ -446,9 +445,6 @@ class AgentResource(SyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
-          is_public: Whether the agent is public. When set to true, the agent is available for public
-              agent preview link.
-
           ivr_option: If this option is set, the call will try to detect IVR in the first 3 minutes of
               the call. Actions defined will be applied when the IVR is detected. Set this to
               null to disable IVR detection.
@@ -600,7 +596,6 @@ class AgentResource(SyncAPIResource):
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
                     "interruption_sensitivity": interruption_sensitivity,
-                    "is_public": is_public,
                     "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
@@ -716,7 +711,6 @@ class AgentResource(SyncAPIResource):
         guardrail_config: agent_update_params.GuardrailConfig | Omit = omit,
         handbook_config: agent_update_params.HandbookConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
-        is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_update_params.IvrOption] | Omit = omit,
         language: Union[
             Literal[
@@ -1071,9 +1065,6 @@ class AgentResource(SyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
-          is_public: Whether the agent is public. When set to true, the agent is available for public
-              agent preview link.
-
           ivr_option: If this option is set, the call will try to detect IVR in the first 3 minutes of
               the call. Actions defined will be applied when the IVR is detected. Set this to
               null to disable IVR detection.
@@ -1232,7 +1223,6 @@ class AgentResource(SyncAPIResource):
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
                     "interruption_sensitivity": interruption_sensitivity,
-                    "is_public": is_public,
                     "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
@@ -1503,7 +1493,6 @@ class AsyncAgentResource(AsyncAPIResource):
         guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
         handbook_config: agent_create_params.HandbookConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
-        is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_create_params.IvrOption] | Omit = omit,
         language: Union[
             Literal[
@@ -1861,9 +1850,6 @@ class AsyncAgentResource(AsyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
-          is_public: Whether the agent is public. When set to true, the agent is available for public
-              agent preview link.
-
           ivr_option: If this option is set, the call will try to detect IVR in the first 3 minutes of
               the call. Actions defined will be applied when the IVR is detected. Set this to
               null to disable IVR detection.
@@ -2015,7 +2001,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
                     "interruption_sensitivity": interruption_sensitivity,
-                    "is_public": is_public,
                     "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
@@ -2131,7 +2116,6 @@ class AsyncAgentResource(AsyncAPIResource):
         guardrail_config: agent_update_params.GuardrailConfig | Omit = omit,
         handbook_config: agent_update_params.HandbookConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
-        is_public: Optional[bool] | Omit = omit,
         ivr_option: Optional[agent_update_params.IvrOption] | Omit = omit,
         language: Union[
             Literal[
@@ -2486,9 +2470,6 @@ class AsyncAgentResource(AsyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
-          is_public: Whether the agent is public. When set to true, the agent is available for public
-              agent preview link.
-
           ivr_option: If this option is set, the call will try to detect IVR in the first 3 minutes of
               the call. Actions defined will be applied when the IVR is detected. Set this to
               null to disable IVR detection.
@@ -2647,7 +2628,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
                     "interruption_sensitivity": interruption_sensitivity,
-                    "is_public": is_public,
                     "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,

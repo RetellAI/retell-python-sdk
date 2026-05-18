@@ -222,9 +222,6 @@ class LlmCreateParams(TypedDict, total=False):
     Only applicable when using certain supported models.
     """
 
-    version: Optional[int]
-    """The version of the LLM."""
-
 
 class GeneralToolEndCallTool(TypedDict, total=False):
     name: Required[str]
