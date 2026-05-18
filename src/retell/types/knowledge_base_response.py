@@ -15,6 +15,9 @@ __all__ = [
 
 
 class KnowledgeBaseSourceKnowledgeBaseSourceDocument(BaseModel):
+    file_size: float
+    """File size in bytes."""
+
     file_url: str
     """URL of the document stored."""
 

@@ -67,7 +67,6 @@ class ChatAgentResource(SyncAPIResource):
         end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_create_params.GuardrailConfig | Omit = omit,
         handbook_config: chat_agent_create_params.HandbookConfig | Omit = omit,
-        is_public: Optional[bool] | Omit = omit,
         language: Union[
             Literal[
                 "en-US",
@@ -283,9 +282,6 @@ class ChatAgentResource(SyncAPIResource):
           handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
               Voice-only presets are not available for chat agents.
 
-          is_public: Whether the agent is public. When set to true, the agent is available for public
-              agent preview link.
-
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual
               support, or an array of concrete locale codes for explicit multi-locale
@@ -346,7 +342,6 @@ class ChatAgentResource(SyncAPIResource):
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
-                    "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,
@@ -423,7 +418,6 @@ class ChatAgentResource(SyncAPIResource):
         end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_update_params.GuardrailConfig | Omit = omit,
         handbook_config: chat_agent_update_params.HandbookConfig | Omit = omit,
-        is_public: Optional[bool] | Omit = omit,
         language: Union[
             Literal[
                 "en-US",
@@ -638,9 +632,6 @@ class ChatAgentResource(SyncAPIResource):
           handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
               Voice-only presets are not available for chat agents.
 
-          is_public: Whether the agent is public. When set to true, the agent is available for public
-              agent preview link.
-
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual
               support, or an array of concrete locale codes for explicit multi-locale
@@ -706,7 +697,6 @@ class ChatAgentResource(SyncAPIResource):
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
-                    "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,
@@ -936,7 +926,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
         end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_create_params.GuardrailConfig | Omit = omit,
         handbook_config: chat_agent_create_params.HandbookConfig | Omit = omit,
-        is_public: Optional[bool] | Omit = omit,
         language: Union[
             Literal[
                 "en-US",
@@ -1152,9 +1141,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
           handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
               Voice-only presets are not available for chat agents.
 
-          is_public: Whether the agent is public. When set to true, the agent is available for public
-              agent preview link.
-
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual
               support, or an array of concrete locale codes for explicit multi-locale
@@ -1215,7 +1201,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
-                    "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,
@@ -1294,7 +1279,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
         end_chat_after_silence_ms: Optional[int] | Omit = omit,
         guardrail_config: chat_agent_update_params.GuardrailConfig | Omit = omit,
         handbook_config: chat_agent_update_params.HandbookConfig | Omit = omit,
-        is_public: Optional[bool] | Omit = omit,
         language: Union[
             Literal[
                 "en-US",
@@ -1509,9 +1493,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
           handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
               Voice-only presets are not available for chat agents.
 
-          is_public: Whether the agent is public. When set to true, the agent is available for public
-              agent preview link.
-
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual
               support, or an array of concrete locale codes for explicit multi-locale
@@ -1577,7 +1558,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
-                    "is_public": is_public,
                     "language": language,
                     "opt_in_signed_url": opt_in_signed_url,
                     "pii_config": pii_config,

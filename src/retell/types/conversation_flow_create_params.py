@@ -1207,6 +1207,12 @@ class ConversationFlowCreateParams(TypedDict, total=False):
     flow.
     """
 
+    flex_mode: Optional[bool]
+    """
+    If enabled, the whole conversation flow will be converted as a Single Prompt
+    agent.
+    """
+
     global_prompt: Optional[str]
     """Global prompt used in every node of the conversation flow."""
 
@@ -15075,6 +15081,9 @@ class Component(TypedDict, total=False):
 
     begin_tag_display_position: Optional[ComponentBeginTagDisplayPosition]
     """Display position for the begin tag in the frontend"""
+
+    flex_mode: Optional[bool]
+    """If enabled, the whole component will be converted as a Single Prompt agent."""
 
     mcps: Optional[Iterable[ComponentMcp]]
     """A list of MCP server configurations to use for this component"""

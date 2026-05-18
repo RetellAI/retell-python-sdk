@@ -159,6 +159,7 @@ class TestConversationFlowComponent:
                 "x": 100,
                 "y": 200,
             },
+            flex_mode=False,
             mcps=[
                 {
                     "name": "name",
@@ -324,6 +325,7 @@ class TestConversationFlowComponent:
                 "x": 100,
                 "y": 200,
             },
+            flex_mode=False,
             mcps=[
                 {
                     "name": "name",
@@ -758,6 +760,7 @@ class TestAsyncConversationFlowComponent:
                 "x": 100,
                 "y": 200,
             },
+            flex_mode=False,
             mcps=[
                 {
                     "name": "name",
@@ -923,6 +926,7 @@ class TestAsyncConversationFlowComponent:
                 "x": 100,
                 "y": 200,
             },
+            flex_mode=False,
             mcps=[
                 {
                     "name": "name",

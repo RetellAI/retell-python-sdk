@@ -26,6 +26,8 @@ __all__ = [
     "ScrubbedTranscriptWithToolCallToolCallResultUtterance",
     "ScrubbedTranscriptWithToolCallNodeTransitionUtterance",
     "ScrubbedTranscriptWithToolCallDtmfUtterance",
+    "ScrubbedTranscriptWithToolCallSMSUtterance",
+    "ScrubbedTranscriptWithToolCallSMSUtteranceMultimedia",
     "TelephonyIdentifier",
     "TranscriptObject",
     "TranscriptObjectWord",
@@ -36,6 +38,8 @@ __all__ = [
     "TranscriptWithToolCallToolCallResultUtterance",
     "TranscriptWithToolCallNodeTransitionUtterance",
     "TranscriptWithToolCallDtmfUtterance",
+    "TranscriptWithToolCallSMSUtterance",
+    "TranscriptWithToolCallSMSUtteranceMultimedia",
 ]
 
 
@@ -479,12 +483,41 @@ class ScrubbedTranscriptWithToolCallDtmfUtterance(BaseModel):
     """Digit pressed by the user from their phone keypad."""
 
 
+class ScrubbedTranscriptWithToolCallSMSUtteranceMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class ScrubbedTranscriptWithToolCallSMSUtterance(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """
+    SMS message received from the user during the call (for example while the agent
+    is leaving a voicemail). Not part of the spoken conversation.
+    """
+
+    time_sec: float
+    """Time the SMS was received, in seconds relative to the start of the call."""
+
+    multimedia: Optional[List[ScrubbedTranscriptWithToolCallSMSUtteranceMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
 ScrubbedTranscriptWithToolCall: TypeAlias = Union[
     ScrubbedTranscriptWithToolCallUtterance,
     ScrubbedTranscriptWithToolCallToolCallInvocationUtterance,
     ScrubbedTranscriptWithToolCallToolCallResultUtterance,
     ScrubbedTranscriptWithToolCallNodeTransitionUtterance,
     ScrubbedTranscriptWithToolCallDtmfUtterance,
+    ScrubbedTranscriptWithToolCallSMSUtterance,
 ]
 
 
@@ -633,12 +666,41 @@ class TranscriptWithToolCallDtmfUtterance(BaseModel):
     """Digit pressed by the user from their phone keypad."""
 
 
+class TranscriptWithToolCallSMSUtteranceMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class TranscriptWithToolCallSMSUtterance(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """
+    SMS message received from the user during the call (for example while the agent
+    is leaving a voicemail). Not part of the spoken conversation.
+    """
+
+    time_sec: float
+    """Time the SMS was received, in seconds relative to the start of the call."""
+
+    multimedia: Optional[List[TranscriptWithToolCallSMSUtteranceMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
 TranscriptWithToolCall: TypeAlias = Union[
     TranscriptWithToolCallUtterance,
     TranscriptWithToolCallToolCallInvocationUtterance,
     TranscriptWithToolCallToolCallResultUtterance,
     TranscriptWithToolCallNodeTransitionUtterance,
     TranscriptWithToolCallDtmfUtterance,
+    TranscriptWithToolCallSMSUtterance,
 ]
 
 

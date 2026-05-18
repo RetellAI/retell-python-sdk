@@ -1146,3 +1146,9 @@ class CallListResponse(BaseModel):
 
     pagination_key: Optional[str] = None
     """Pagination key for the next page."""
+
+    total: Optional[int] = None
+    """Total number of calls matching `filter_criteria`.
+
+    Only present when `include_total` is true.
+    """

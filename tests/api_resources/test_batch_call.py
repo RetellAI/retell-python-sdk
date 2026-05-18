@@ -80,7 +80,6 @@ class TestBatchCall:
                                 "speech_normalization": True,
                             },
                             "interruption_sensitivity": 1,
-                            "is_public": False,
                             "ivr_option": {
                                 "action": {"type": "hangup"},
                                 "detection_prompt": "detection_prompt",
@@ -301,7 +300,6 @@ class TestAsyncBatchCall:
                                 "speech_normalization": True,
                             },
                             "interruption_sensitivity": 1,
-                            "is_public": False,
                             "ivr_option": {
                                 "action": {"type": "hangup"},
                                 "detection_prompt": "detection_prompt",

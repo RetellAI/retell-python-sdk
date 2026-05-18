@@ -160,6 +160,7 @@ class CallResource(SyncAPIResource):
         self,
         *,
         filter_criteria: call_list_params.FilterCriteria | Omit = omit,
+        include_total: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
         skip: int | Omit = omit,
@@ -176,6 +177,11 @@ class CallResource(SyncAPIResource):
 
         Args:
           filter_criteria: Filter criteria for calls. All conditions are implicitly connected with AND.
+
+          include_total: Whether to include `total` (count of all calls matching `filter_criteria`,
+              ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false.
+              Each enabled request triggers an additional aggregate query, so opt in only when
+              the total is needed.
 
           limit: Maximum number of calls to return.
 
@@ -200,6 +206,7 @@ class CallResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "filter_criteria": filter_criteria,
+                    "include_total": include_total,
                     "limit": limit,
                     "pagination_key": pagination_key,
                     "skip": skip,
@@ -643,6 +650,7 @@ class AsyncCallResource(AsyncAPIResource):
         self,
         *,
         filter_criteria: call_list_params.FilterCriteria | Omit = omit,
+        include_total: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
         skip: int | Omit = omit,
@@ -659,6 +667,11 @@ class AsyncCallResource(AsyncAPIResource):
 
         Args:
           filter_criteria: Filter criteria for calls. All conditions are implicitly connected with AND.
+
+          include_total: Whether to include `total` (count of all calls matching `filter_criteria`,
+              ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false.
+              Each enabled request triggers an additional aggregate query, so opt in only when
+              the total is needed.
 
           limit: Maximum number of calls to return.
 
@@ -683,6 +696,7 @@ class AsyncCallResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "filter_criteria": filter_criteria,
+                    "include_total": include_total,
                     "limit": limit,
                     "pagination_key": pagination_key,
                     "skip": skip,

@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 from typing import Dict, Union, Iterable, Optional
-from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
-from .._utils import PropertyInfo
 
 __all__ = [
     "LlmUpdateParams",
@@ -105,7 +104,7 @@ __all__ = [
 
 
 class LlmUpdateParams(TypedDict, total=False):
-    query_version: Annotated[int, PropertyInfo(alias="version")]
+    version: int
     """Optional version of the API to use for this request. Default to latest version."""
 
     begin_after_user_silence_ms: Optional[int]
@@ -225,9 +224,6 @@ class LlmUpdateParams(TypedDict, total=False):
 
     Only applicable when using certain supported models.
     """
-
-    body_version: Annotated[Optional[int], PropertyInfo(alias="version")]
-    """The version of the LLM."""
 
 
 class GeneralToolEndCallTool(TypedDict, total=False):

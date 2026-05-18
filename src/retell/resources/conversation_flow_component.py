@@ -56,6 +56,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         nodes: Iterable[conversation_flow_component_create_params.Node],
         begin_tag_display_position: Optional[conversation_flow_component_create_params.BeginTagDisplayPosition]
         | Omit = omit,
+        flex_mode: Optional[bool] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_component_create_params.Mcp]] | Omit = omit,
         notes: Optional[Iterable[conversation_flow_component_create_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
@@ -76,6 +77,8 @@ class ConversationFlowComponentResource(SyncAPIResource):
           nodes: Nodes that make up the component
 
           begin_tag_display_position: Display position for the begin tag in the frontend
+
+          flex_mode: If enabled, the whole component will be converted as a Single Prompt agent.
 
           mcps: A list of MCP server configurations to use for this component
 
@@ -100,6 +103,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
                     "name": name,
                     "nodes": nodes,
                     "begin_tag_display_position": begin_tag_display_position,
+                    "flex_mode": flex_mode,
                     "mcps": mcps,
                     "notes": notes,
                     "start_node_id": start_node_id,
@@ -157,6 +161,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         *,
         begin_tag_display_position: Optional[conversation_flow_component_update_params.BeginTagDisplayPosition]
         | Omit = omit,
+        flex_mode: Optional[bool] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_component_update_params.Mcp]] | Omit = omit,
         name: str | Omit = omit,
         nodes: Iterable[conversation_flow_component_update_params.Node] | Omit = omit,
@@ -175,6 +180,8 @@ class ConversationFlowComponentResource(SyncAPIResource):
 
         Args:
           begin_tag_display_position: Display position for the begin tag in the frontend
+
+          flex_mode: If enabled, the whole component will be converted as a Single Prompt agent.
 
           mcps: A list of MCP server configurations to use for this component
 
@@ -208,6 +215,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "begin_tag_display_position": begin_tag_display_position,
+                    "flex_mode": flex_mode,
                     "mcps": mcps,
                     "name": name,
                     "nodes": nodes,
@@ -342,6 +350,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         nodes: Iterable[conversation_flow_component_create_params.Node],
         begin_tag_display_position: Optional[conversation_flow_component_create_params.BeginTagDisplayPosition]
         | Omit = omit,
+        flex_mode: Optional[bool] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_component_create_params.Mcp]] | Omit = omit,
         notes: Optional[Iterable[conversation_flow_component_create_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
@@ -362,6 +371,8 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
           nodes: Nodes that make up the component
 
           begin_tag_display_position: Display position for the begin tag in the frontend
+
+          flex_mode: If enabled, the whole component will be converted as a Single Prompt agent.
 
           mcps: A list of MCP server configurations to use for this component
 
@@ -386,6 +397,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                     "name": name,
                     "nodes": nodes,
                     "begin_tag_display_position": begin_tag_display_position,
+                    "flex_mode": flex_mode,
                     "mcps": mcps,
                     "notes": notes,
                     "start_node_id": start_node_id,
@@ -443,6 +455,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         *,
         begin_tag_display_position: Optional[conversation_flow_component_update_params.BeginTagDisplayPosition]
         | Omit = omit,
+        flex_mode: Optional[bool] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_component_update_params.Mcp]] | Omit = omit,
         name: str | Omit = omit,
         nodes: Iterable[conversation_flow_component_update_params.Node] | Omit = omit,
@@ -461,6 +474,8 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
 
         Args:
           begin_tag_display_position: Display position for the begin tag in the frontend
+
+          flex_mode: If enabled, the whole component will be converted as a Single Prompt agent.
 
           mcps: A list of MCP server configurations to use for this component
 
@@ -494,6 +509,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "begin_tag_display_position": begin_tag_display_position,
+                    "flex_mode": flex_mode,
                     "mcps": mcps,
                     "name": name,
                     "nodes": nodes,
