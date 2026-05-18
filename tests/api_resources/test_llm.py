@@ -133,7 +133,6 @@ class TestLlm:
                 },
             ],
             tool_call_strict_mode=True,
-            version=1,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -223,7 +222,7 @@ class TestLlm:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         llm = client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
-            query_version=1,
+            version=1,
             begin_after_user_silence_ms=2000,
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
@@ -327,7 +326,6 @@ class TestLlm:
                 },
             ],
             tool_call_strict_mode=True,
-            body_version=1,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -564,7 +562,6 @@ class TestAsyncLlm:
                 },
             ],
             tool_call_strict_mode=True,
-            version=1,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -654,7 +651,7 @@ class TestAsyncLlm:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
-            query_version=1,
+            version=1,
             begin_after_user_silence_ms=2000,
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
@@ -758,7 +755,6 @@ class TestAsyncLlm:
                 },
             ],
             tool_call_strict_mode=True,
-            body_version=1,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 

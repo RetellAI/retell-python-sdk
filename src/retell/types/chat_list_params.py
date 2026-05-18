@@ -11,6 +11,14 @@ class ChatListParams(TypedDict, total=False):
     filter_criteria: object
     """Filter criteria for chats to retrieve."""
 
+    include_total: bool
+    """
+    Whether to include `total` (count of all chats matching `filter_criteria`,
+    ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false.
+    Each enabled request triggers an additional aggregate query, so opt in only when
+    the total is needed.
+    """
+
     limit: int
     """Maximum number of chats to return."""
 

@@ -179,6 +179,7 @@ class TestChat:
     def test_method_list_with_all_params(self, client: Retell) -> None:
         chat = client.chat.list(
             filter_criteria={},
+            include_total=True,
             limit=1000,
             pagination_key="pagination_key",
             skip=0,
@@ -543,6 +544,7 @@ class TestAsyncChat:
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.list(
             filter_criteria={},
+            include_total=True,
             limit=1000,
             pagination_key="pagination_key",
             skip=0,

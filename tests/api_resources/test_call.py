@@ -274,6 +274,7 @@ class TestCall:
                     "value": ["Negative"],
                 },
             },
+            include_total=True,
             limit=1000,
             pagination_key="pagination_key",
             skip=0,
@@ -406,7 +407,6 @@ class TestCall:
                         "speech_normalization": True,
                     },
                     "interruption_sensitivity": 1,
-                    "is_public": False,
                     "ivr_option": {
                         "action": {"type": "hangup"},
                         "detection_prompt": "detection_prompt",
@@ -602,7 +602,6 @@ class TestCall:
                         "speech_normalization": True,
                     },
                     "interruption_sensitivity": 1,
-                    "is_public": False,
                     "ivr_option": {
                         "action": {"type": "hangup"},
                         "detection_prompt": "detection_prompt",
@@ -795,7 +794,6 @@ class TestCall:
                         "speech_normalization": True,
                     },
                     "interruption_sensitivity": 1,
-                    "is_public": False,
                     "ivr_option": {
                         "action": {"type": "hangup"},
                         "detection_prompt": "detection_prompt",
@@ -1230,6 +1228,7 @@ class TestAsyncCall:
                     "value": ["Negative"],
                 },
             },
+            include_total=True,
             limit=1000,
             pagination_key="pagination_key",
             skip=0,
@@ -1362,7 +1361,6 @@ class TestAsyncCall:
                         "speech_normalization": True,
                     },
                     "interruption_sensitivity": 1,
-                    "is_public": False,
                     "ivr_option": {
                         "action": {"type": "hangup"},
                         "detection_prompt": "detection_prompt",
@@ -1558,7 +1556,6 @@ class TestAsyncCall:
                         "speech_normalization": True,
                     },
                     "interruption_sensitivity": 1,
-                    "is_public": False,
                     "ivr_option": {
                         "action": {"type": "hangup"},
                         "detection_prompt": "detection_prompt",
@@ -1751,7 +1748,6 @@ class TestAsyncCall:
                         "speech_normalization": True,
                     },
                     "interruption_sensitivity": 1,
-                    "is_public": False,
                     "ivr_option": {
                         "action": {"type": "hangup"},
                         "detection_prompt": "detection_prompt",

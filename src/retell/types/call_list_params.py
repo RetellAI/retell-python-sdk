@@ -72,6 +72,14 @@ class CallListParams(TypedDict, total=False):
     filter_criteria: FilterCriteria
     """Filter criteria for calls. All conditions are implicitly connected with AND."""
 
+    include_total: bool
+    """
+    Whether to include `total` (count of all calls matching `filter_criteria`,
+    ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false.
+    Each enabled request triggers an additional aggregate query, so opt in only when
+    the total is needed.
+    """
+
     limit: int
     """Maximum number of calls to return."""
 

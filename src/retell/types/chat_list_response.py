@@ -22,3 +22,9 @@ class ChatListResponse(BaseModel):
 
     pagination_key: Optional[str] = None
     """Pagination key for the next page."""
+
+    total: Optional[int] = None
+    """Total number of chats matching `filter_criteria`.
+
+    Only present when `include_total` is true.
+    """

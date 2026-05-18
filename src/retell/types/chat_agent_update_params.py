@@ -89,12 +89,6 @@ class ChatAgentUpdateParams(TypedDict, total=False):
     Voice-only presets are not available for chat agents.
     """
 
-    is_public: Optional[bool]
-    """Whether the agent is public.
-
-    When set to true, the agent is available for public agent preview link.
-    """
-
     language: Union[
         Literal[
             "en-US",
@@ -399,7 +393,11 @@ class PiiConfig(TypedDict, total=False):
             ]
         ]
     ]
-    """List of PII categories to scrub from transcripts and recordings."""
+    """List of PII categories to scrub from transcripts and recordings.
+
+    PII redaction is only active when this list is non-empty; an empty array means
+    no PII scrubbing is performed.
+    """
 
     mode: Required[Literal["post_call"]]
     """The processing mode for PII scrubbing. Currently only post-call is supported."""

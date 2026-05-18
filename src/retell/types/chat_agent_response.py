@@ -134,7 +134,11 @@ class PiiConfig(BaseModel):
             "customer_account_number",
         ]
     ]
-    """List of PII categories to scrub from transcripts and recordings."""
+    """List of PII categories to scrub from transcripts and recordings.
+
+    PII redaction is only active when this list is non-empty; an empty array means
+    no PII scrubbing is performed.
+    """
 
     mode: Literal["post_call"]
     """The processing mode for PII scrubbing. Currently only post-call is supported."""
@@ -360,12 +364,6 @@ class ChatAgentResponse(BaseModel):
     """Toggle behavior presets on/off to influence agent response style and behaviors.
 
     Voice-only presets are not available for chat agents.
-    """
-
-    is_public: Optional[bool] = None
-    """Whether the agent is public.
-
-    When set to true, the agent is available for public agent preview link.
     """
 
     is_published: Optional[bool] = None

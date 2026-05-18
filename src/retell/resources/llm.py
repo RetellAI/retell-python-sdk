@@ -87,7 +87,6 @@ class LlmResource(SyncAPIResource):
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
         tool_call_strict_mode: Optional[bool] | Omit = omit,
-        version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -159,8 +158,6 @@ class LlmResource(SyncAPIResource):
           tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
               supported models.
 
-          version: The version of the LLM.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -189,7 +186,6 @@ class LlmResource(SyncAPIResource):
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
-                    "version": version,
                 },
                 llm_create_params.LlmCreateParams,
             ),
@@ -243,7 +239,7 @@ class LlmResource(SyncAPIResource):
         self,
         llm_id: str,
         *,
-        query_version: int | Omit = omit,
+        version: int | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -283,7 +279,6 @@ class LlmResource(SyncAPIResource):
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
         tool_call_strict_mode: Optional[bool] | Omit = omit,
-        body_version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -295,7 +290,7 @@ class LlmResource(SyncAPIResource):
         Update an existing Retell LLM Response Engine
 
         Args:
-          query_version: Optional version of the API to use for this request. Default to latest version.
+          version: Optional version of the API to use for this request. Default to latest version.
 
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
@@ -355,8 +350,6 @@ class LlmResource(SyncAPIResource):
           tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
               supported models.
 
-          body_version: The version of the LLM.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -387,7 +380,6 @@ class LlmResource(SyncAPIResource):
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
-                    "body_version": body_version,
                 },
                 llm_update_params.LlmUpdateParams,
             ),
@@ -396,7 +388,7 @@ class LlmResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"query_version": query_version}, llm_update_params.LlmUpdateParams),
+                query=maybe_transform({"version": version}, llm_update_params.LlmUpdateParams),
             ),
             cast_to=LlmResponse,
         )
@@ -548,7 +540,6 @@ class AsyncLlmResource(AsyncAPIResource):
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
         tool_call_strict_mode: Optional[bool] | Omit = omit,
-        version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -620,8 +611,6 @@ class AsyncLlmResource(AsyncAPIResource):
           tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
               supported models.
 
-          version: The version of the LLM.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -650,7 +639,6 @@ class AsyncLlmResource(AsyncAPIResource):
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
-                    "version": version,
                 },
                 llm_create_params.LlmCreateParams,
             ),
@@ -704,7 +692,7 @@ class AsyncLlmResource(AsyncAPIResource):
         self,
         llm_id: str,
         *,
-        query_version: int | Omit = omit,
+        version: int | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -744,7 +732,6 @@ class AsyncLlmResource(AsyncAPIResource):
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
         tool_call_strict_mode: Optional[bool] | Omit = omit,
-        body_version: Optional[int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -756,7 +743,7 @@ class AsyncLlmResource(AsyncAPIResource):
         Update an existing Retell LLM Response Engine
 
         Args:
-          query_version: Optional version of the API to use for this request. Default to latest version.
+          version: Optional version of the API to use for this request. Default to latest version.
 
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
@@ -816,8 +803,6 @@ class AsyncLlmResource(AsyncAPIResource):
           tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
               supported models.
 
-          body_version: The version of the LLM.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -848,7 +833,6 @@ class AsyncLlmResource(AsyncAPIResource):
                     "starting_state": starting_state,
                     "states": states,
                     "tool_call_strict_mode": tool_call_strict_mode,
-                    "body_version": body_version,
                 },
                 llm_update_params.LlmUpdateParams,
             ),
@@ -857,7 +841,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"query_version": query_version}, llm_update_params.LlmUpdateParams),
+                query=await async_maybe_transform({"version": version}, llm_update_params.LlmUpdateParams),
             ),
             cast_to=LlmResponse,
         )

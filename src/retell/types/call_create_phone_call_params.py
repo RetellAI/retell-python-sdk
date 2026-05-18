@@ -248,7 +248,11 @@ class AgentOverrideAgentPiiConfig(TypedDict, total=False):
             ]
         ]
     ]
-    """List of PII categories to scrub from transcripts and recordings."""
+    """List of PII categories to scrub from transcripts and recordings.
+
+    PII redaction is only active when this list is non-empty; an empty array means
+    no PII scrubbing is performed.
+    """
 
     mode: Required[Literal["post_call"]]
     """The processing mode for PII scrubbing. Currently only post-call is supported."""
@@ -705,12 +709,6 @@ class AgentOverrideAgent(TypedDict, total=False):
     user to interrupt agent, while higher value means it's easier for user to
     interrupt agent. If unset, default value 1 will apply. When this is set to 0,
     agent would never be interrupted.
-    """
-
-    is_public: Optional[bool]
-    """Whether the agent is public.
-
-    When set to true, the agent is available for public agent preview link.
     """
 
     ivr_option: Optional[AgentOverrideAgentIvrOption]
