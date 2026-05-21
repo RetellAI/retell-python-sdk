@@ -1,0 +1,12 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import Required, TypedDict
+
+__all__ = ["AgentCreateVersionParams"]
+
+
+class AgentCreateVersionParams(TypedDict, total=False):
+    base_version: Required[int]
+    """Existing version used as the base when creating a new draft."""

@@ -58,7 +58,12 @@ Methods:
 Types:
 
 ```python
-from retell.types import AgentResponse, AgentListResponse, AgentGetVersionsResponse
+from retell.types import (
+    AgentResponse,
+    AgentListResponse,
+    AgentCreateVersionResponse,
+    AgentGetVersionsResponse,
+)
 ```
 
 Methods:
@@ -68,6 +73,8 @@ Methods:
 - <code title="patch /update-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">update</a>(agent_id, \*\*<a href="src/retell/types/agent_update_params.py">params</a>) -> <a href="./src/retell/types/agent_response.py">AgentResponse</a></code>
 - <code title="get /list-agents">client.agent.<a href="./src/retell/resources/agent.py">list</a>(\*\*<a href="src/retell/types/agent_list_params.py">params</a>) -> <a href="./src/retell/types/agent_list_response.py">AgentListResponse</a></code>
 - <code title="delete /delete-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">delete</a>(agent_id) -> None</code>
+- <code title="post /create-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">create_version</a>(agent_id, \*\*<a href="src/retell/types/agent_create_version_params.py">params</a>) -> <a href="./src/retell/types/agent_create_version_response.py">AgentCreateVersionResponse</a></code>
+- <code title="delete /delete-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">delete_version</a>(agent_id, \*\*<a href="src/retell/types/agent_delete_version_params.py">params</a>) -> None</code>
 - <code title="get /get-agent-versions/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">get_versions</a>(agent_id) -> <a href="./src/retell/types/agent_get_versions_response.py">AgentGetVersionsResponse</a></code>
 - <code title="post /publish-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">publish</a>(agent_id, \*\*<a href="src/retell/types/agent_publish_params.py">params</a>) -> None</code>
 
@@ -76,7 +83,12 @@ Methods:
 Types:
 
 ```python
-from retell.types import ChatAgentResponse, ChatAgentListResponse, ChatAgentGetVersionsResponse
+from retell.types import (
+    ChatAgentResponse,
+    ChatAgentListResponse,
+    ChatAgentCreateVersionResponse,
+    ChatAgentGetVersionsResponse,
+)
 ```
 
 Methods:
@@ -86,6 +98,8 @@ Methods:
 - <code title="patch /update-chat-agent/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">update</a>(agent_id, \*\*<a href="src/retell/types/chat_agent_update_params.py">params</a>) -> <a href="./src/retell/types/chat_agent_response.py">ChatAgentResponse</a></code>
 - <code title="get /list-chat-agents">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">list</a>(\*\*<a href="src/retell/types/chat_agent_list_params.py">params</a>) -> <a href="./src/retell/types/chat_agent_list_response.py">ChatAgentListResponse</a></code>
 - <code title="delete /delete-chat-agent/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">delete</a>(agent_id) -> None</code>
+- <code title="post /create-agent-version/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">create_version</a>(agent_id, \*\*<a href="src/retell/types/chat_agent_create_version_params.py">params</a>) -> <a href="./src/retell/types/chat_agent_create_version_response.py">ChatAgentCreateVersionResponse</a></code>
+- <code title="delete /delete-agent-version/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">delete_version</a>(agent_id, \*\*<a href="src/retell/types/chat_agent_delete_version_params.py">params</a>) -> None</code>
 - <code title="get /get-chat-agent-versions/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">get_versions</a>(agent_id) -> <a href="./src/retell/types/chat_agent_get_versions_response.py">ChatAgentGetVersionsResponse</a></code>
 - <code title="post /publish-agent-version/{agent_id}">client.chat_agent.<a href="./src/retell/resources/chat_agent.py">publish</a>(agent_id, \*\*<a href="src/retell/types/chat_agent_publish_params.py">params</a>) -> None</code>
 
