@@ -13,6 +13,7 @@ from retell.types import (
     ChatAgentResponse,
     ChatAgentListResponse,
     ChatAgentGetVersionsResponse,
+    ChatAgentCreateVersionResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -342,6 +343,98 @@ class TestChatAgent:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             client.chat_agent.with_raw_response.delete(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create_version(self, client: Retell) -> None:
+        chat_agent = client.chat_agent.create_version(
+            agent_id="agent_xxx",
+            base_version=12,
+        )
+        assert_matches_type(ChatAgentCreateVersionResponse, chat_agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_create_version(self, client: Retell) -> None:
+        response = client.chat_agent.with_raw_response.create_version(
+            agent_id="agent_xxx",
+            base_version=12,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat_agent = response.parse()
+        assert_matches_type(ChatAgentCreateVersionResponse, chat_agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_create_version(self, client: Retell) -> None:
+        with client.chat_agent.with_streaming_response.create_version(
+            agent_id="agent_xxx",
+            base_version=12,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat_agent = response.parse()
+            assert_matches_type(ChatAgentCreateVersionResponse, chat_agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_create_version(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            client.chat_agent.with_raw_response.create_version(
+                agent_id="",
+                base_version=12,
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_delete_version(self, client: Retell) -> None:
+        chat_agent = client.chat_agent.delete_version(
+            agent_id="agent_xxx",
+            version=1,
+        )
+        assert chat_agent is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_delete_version(self, client: Retell) -> None:
+        response = client.chat_agent.with_raw_response.delete_version(
+            agent_id="agent_xxx",
+            version=1,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat_agent = response.parse()
+        assert chat_agent is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_delete_version(self, client: Retell) -> None:
+        with client.chat_agent.with_streaming_response.delete_version(
+            agent_id="agent_xxx",
+            version=1,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat_agent = response.parse()
+            assert chat_agent is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_delete_version(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            client.chat_agent.with_raw_response.delete_version(
+                agent_id="",
+                version=1,
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -769,6 +862,98 @@ class TestAsyncChatAgent:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             await async_client.chat_agent.with_raw_response.delete(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_version(self, async_client: AsyncRetell) -> None:
+        chat_agent = await async_client.chat_agent.create_version(
+            agent_id="agent_xxx",
+            base_version=12,
+        )
+        assert_matches_type(ChatAgentCreateVersionResponse, chat_agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_create_version(self, async_client: AsyncRetell) -> None:
+        response = await async_client.chat_agent.with_raw_response.create_version(
+            agent_id="agent_xxx",
+            base_version=12,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat_agent = await response.parse()
+        assert_matches_type(ChatAgentCreateVersionResponse, chat_agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_create_version(self, async_client: AsyncRetell) -> None:
+        async with async_client.chat_agent.with_streaming_response.create_version(
+            agent_id="agent_xxx",
+            base_version=12,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat_agent = await response.parse()
+            assert_matches_type(ChatAgentCreateVersionResponse, chat_agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_create_version(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            await async_client.chat_agent.with_raw_response.create_version(
+                agent_id="",
+                base_version=12,
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_delete_version(self, async_client: AsyncRetell) -> None:
+        chat_agent = await async_client.chat_agent.delete_version(
+            agent_id="agent_xxx",
+            version=1,
+        )
+        assert chat_agent is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_delete_version(self, async_client: AsyncRetell) -> None:
+        response = await async_client.chat_agent.with_raw_response.delete_version(
+            agent_id="agent_xxx",
+            version=1,
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat_agent = await response.parse()
+        assert chat_agent is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_delete_version(self, async_client: AsyncRetell) -> None:
+        async with async_client.chat_agent.with_streaming_response.delete_version(
+            agent_id="agent_xxx",
+            version=1,
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat_agent = await response.parse()
+            assert chat_agent is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_delete_version(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            await async_client.chat_agent.with_raw_response.delete_version(
+                agent_id="",
+                version=1,
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
