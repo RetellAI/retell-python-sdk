@@ -90,7 +90,8 @@ class PhoneNumberResource(SyncAPIResource):
               left empty, will default to "US".
 
           fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
-              in outage mode. Can be either a Retell phone number or an external number.
+              in outage mode or when an inbound call cannot get a concurrency slot before the
+              fallback timeout. Can be either a Retell phone number or an external number.
               Cannot be the same as this phone number, and cannot be a number that already has
               its own fallback configured (prevents nested forwarding).
 
@@ -226,7 +227,8 @@ class PhoneNumberResource(SyncAPIResource):
               number.
 
           fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
-              in outage mode. Can be either a Retell phone number or an external number. Set
+              in outage mode or when an inbound call cannot get a concurrency slot before the
+              fallback timeout. Can be either a Retell phone number or an external number. Set
               to null to remove. Cannot be the same as this phone number, and cannot be a
               number that already has its own fallback configured (prevents nested
               forwarding).
@@ -543,7 +545,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               left empty, will default to "US".
 
           fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
-              in outage mode. Can be either a Retell phone number or an external number.
+              in outage mode or when an inbound call cannot get a concurrency slot before the
+              fallback timeout. Can be either a Retell phone number or an external number.
               Cannot be the same as this phone number, and cannot be a number that already has
               its own fallback configured (prevents nested forwarding).
 
@@ -679,7 +682,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               number.
 
           fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
-              in outage mode. Can be either a Retell phone number or an external number. Set
+              in outage mode or when an inbound call cannot get a concurrency slot before the
+              fallback timeout. Can be either a Retell phone number or an external number. Set
               to null to remove. Cannot be the same as this phone number, and cannot be a
               number that already has its own fallback configured (prevents nested
               forwarding).
