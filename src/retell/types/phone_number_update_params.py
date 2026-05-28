@@ -38,7 +38,8 @@ class PhoneNumberUpdateParams(TypedDict, total=False):
     fallback_number: Optional[str]
     """Enterprise only.
 
-    Phone number to transfer inbound calls to when organization is in outage mode.
+    Phone number to transfer inbound calls to when organization is in outage mode or
+    when an inbound call cannot get a concurrency slot before the fallback timeout.
     Can be either a Retell phone number or an external number. Set to null to
     remove. Cannot be the same as this phone number, and cannot be a number that
     already has its own fallback configured (prevents nested forwarding).
