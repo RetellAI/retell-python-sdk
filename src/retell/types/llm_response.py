@@ -1021,6 +1021,12 @@ class GeneralToolExtractDynamicVariableTool(BaseModel):
     variables: List[GeneralToolExtractDynamicVariableToolVariable]
     """The variables to be extracted."""
 
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
+
 
 class GeneralToolBridgeTransferTool(BaseModel):
     name: str
@@ -2165,6 +2171,12 @@ class StateToolExtractDynamicVariableTool(BaseModel):
 
     variables: List[StateToolExtractDynamicVariableToolVariable]
     """The variables to be extracted."""
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
 
 
 class StateToolBridgeTransferTool(BaseModel):

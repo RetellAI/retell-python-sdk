@@ -28,6 +28,7 @@ __all__ = [
     "ScrubbedTranscriptWithToolCallDtmfUtterance",
     "ScrubbedTranscriptWithToolCallSMSUtterance",
     "ScrubbedTranscriptWithToolCallSMSUtteranceMultimedia",
+    "ScrubbedTranscriptWithToolCallInjectedUtterance",
     "TranscriptObject",
     "TranscriptObjectWord",
     "TranscriptWithToolCall",
@@ -39,6 +40,7 @@ __all__ = [
     "TranscriptWithToolCallDtmfUtterance",
     "TranscriptWithToolCallSMSUtterance",
     "TranscriptWithToolCallSMSUtteranceMultimedia",
+    "TranscriptWithToolCallInjectedUtterance",
 ]
 
 
@@ -510,6 +512,20 @@ class ScrubbedTranscriptWithToolCallSMSUtterance(BaseModel):
     """
 
 
+class ScrubbedTranscriptWithToolCallInjectedUtterance(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    time_sec: float
+    """Time the context was injected, in seconds relative to the start of the call."""
+
+
 ScrubbedTranscriptWithToolCall: TypeAlias = Union[
     ScrubbedTranscriptWithToolCallUtterance,
     ScrubbedTranscriptWithToolCallToolCallInvocationUtterance,
@@ -517,6 +533,7 @@ ScrubbedTranscriptWithToolCall: TypeAlias = Union[
     ScrubbedTranscriptWithToolCallNodeTransitionUtterance,
     ScrubbedTranscriptWithToolCallDtmfUtterance,
     ScrubbedTranscriptWithToolCallSMSUtterance,
+    ScrubbedTranscriptWithToolCallInjectedUtterance,
 ]
 
 
@@ -683,6 +700,20 @@ class TranscriptWithToolCallSMSUtterance(BaseModel):
     """
 
 
+class TranscriptWithToolCallInjectedUtterance(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    time_sec: float
+    """Time the context was injected, in seconds relative to the start of the call."""
+
+
 TranscriptWithToolCall: TypeAlias = Union[
     TranscriptWithToolCallUtterance,
     TranscriptWithToolCallToolCallInvocationUtterance,
@@ -690,6 +721,7 @@ TranscriptWithToolCall: TypeAlias = Union[
     TranscriptWithToolCallNodeTransitionUtterance,
     TranscriptWithToolCallDtmfUtterance,
     TranscriptWithToolCallSMSUtterance,
+    TranscriptWithToolCallInjectedUtterance,
 ]
 
 
@@ -762,6 +794,7 @@ class WebCallResponse(BaseModel):
             "inactivity",
             "max_duration_reached",
             "concurrency_limit_reached",
+            "no_concurrency_fallback",
             "no_valid_payment",
             "scam_detected",
             "dial_busy",

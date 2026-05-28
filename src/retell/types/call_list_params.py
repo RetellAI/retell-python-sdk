@@ -379,6 +379,7 @@ class FilterCriteriaDisconnectionReason(TypedDict, total=False):
                 "inactivity",
                 "max_duration_reached",
                 "concurrency_limit_reached",
+                "no_concurrency_fallback",
                 "no_valid_payment",
                 "scam_detected",
                 "dial_busy",
