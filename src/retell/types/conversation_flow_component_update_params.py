@@ -2510,6 +2510,12 @@ class NodeSubagentNodeToolExtractDynamicVariableTool(TypedDict, total=False):
     variables: Required[Iterable[NodeSubagentNodeToolExtractDynamicVariableToolVariable]]
     """The variables to be extracted."""
 
+    enable_typing_sound: bool
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
+
 
 class NodeSubagentNodeToolBridgeTransferTool(TypedDict, total=False):
     name: Required[str]
@@ -5795,6 +5801,9 @@ class NodeExtractDynamicVariablesNode(TypedDict, total=False):
     edges: Iterable[NodeExtractDynamicVariablesNodeEdge]
 
     else_edge: NodeExtractDynamicVariablesNodeElseEdge
+
+    enable_typing_sound: bool
+    """If true, play a typing sound while this extract step executes."""
 
     finetune_transition_examples: Iterable[NodeExtractDynamicVariablesNodeFinetuneTransitionExample]
 

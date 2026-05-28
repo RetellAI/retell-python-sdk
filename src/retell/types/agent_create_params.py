@@ -148,7 +148,7 @@ class AgentCreateParams(TypedDict, total=False):
     """
     Provide a customized list of keywords to bias the transcriber model, so that
     these words are more likely to get transcribed. Commonly used for names, brands,
-    street, etc.
+    street, etc. Entries may reference dynamic variables with `{{variable}}` syntax.
     """
 
     call_screening_option: Optional[CallScreeningOption]

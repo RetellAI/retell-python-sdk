@@ -1137,6 +1137,12 @@ class GeneralToolExtractDynamicVariableTool(TypedDict, total=False):
     variables: Required[Iterable[GeneralToolExtractDynamicVariableToolVariable]]
     """The variables to be extracted."""
 
+    enable_typing_sound: bool
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
+
 
 class GeneralToolBridgeTransferTool(TypedDict, total=False):
     name: Required[str]
@@ -2279,6 +2285,12 @@ class StateToolExtractDynamicVariableTool(TypedDict, total=False):
 
     variables: Required[Iterable[StateToolExtractDynamicVariableToolVariable]]
     """The variables to be extracted."""
+
+    enable_typing_sound: bool
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
 
 
 class StateToolBridgeTransferTool(TypedDict, total=False):

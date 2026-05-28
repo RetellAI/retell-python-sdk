@@ -171,7 +171,7 @@ class ChatResource(SyncAPIResource):
               your internal customer id associated with the chat. Not used for processing. You
               can later get this field from the chat object. Size limited to 50kB max.
 
-          override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
+          override_dynamic_variables: Override dynamic variables represented as key-value pairs of strings. Setting
               this will override or add the dynamic variables set in the agent during the
               call. Only need to set the delta where you want to override, no need to set the
               entire dynamic variables object. Setting this to null will remove any existing
@@ -207,7 +207,7 @@ class ChatResource(SyncAPIResource):
     def list(
         self,
         *,
-        filter_criteria: object | Omit = omit,
+        filter_criteria: chat_list_params.FilterCriteria | Omit = omit,
         include_total: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
@@ -589,7 +589,7 @@ class AsyncChatResource(AsyncAPIResource):
               your internal customer id associated with the chat. Not used for processing. You
               can later get this field from the chat object. Size limited to 50kB max.
 
-          override_dynamic_variables: Override dynamic varaibles represented as key-value pairs of strings. Setting
+          override_dynamic_variables: Override dynamic variables represented as key-value pairs of strings. Setting
               this will override or add the dynamic variables set in the agent during the
               call. Only need to set the delta where you want to override, no need to set the
               entire dynamic variables object. Setting this to null will remove any existing
@@ -625,7 +625,7 @@ class AsyncChatResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        filter_criteria: object | Omit = omit,
+        filter_criteria: chat_list_params.FilterCriteria | Omit = omit,
         include_total: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
