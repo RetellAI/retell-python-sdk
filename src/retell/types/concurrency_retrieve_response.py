@@ -46,3 +46,6 @@ class ConcurrencyRetrieveResponse(BaseModel):
     This is the difference between `concurrency_purchase_limit` and
     `purchased_concurrency`.
     """
+
+    reserved_inbound_concurrency: Optional[int] = None
+    """Number of normal concurrency slots reserved for inbound calls."""

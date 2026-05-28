@@ -391,7 +391,7 @@ class AgentResource(SyncAPIResource):
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
-              street, etc.
+              street, etc. Entries may reference dynamic variables with `{{variable}}` syntax.
 
           call_screening_option: If this option is set, the agent prompt will include call screen handling
               instructions for identity and call purpose questions. Set this to null to
@@ -1011,7 +1011,7 @@ class AgentResource(SyncAPIResource):
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
-              street, etc.
+              street, etc. Entries may reference dynamic variables with `{{variable}}` syntax.
 
           call_screening_option: If this option is set, the agent prompt will include call screen handling
               instructions for identity and call purpose questions. Set this to null to
@@ -1881,7 +1881,7 @@ class AsyncAgentResource(AsyncAPIResource):
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
-              street, etc.
+              street, etc. Entries may reference dynamic variables with `{{variable}}` syntax.
 
           call_screening_option: If this option is set, the agent prompt will include call screen handling
               instructions for identity and call purpose questions. Set this to null to
@@ -2501,7 +2501,7 @@ class AsyncAgentResource(AsyncAPIResource):
 
           boosted_keywords: Provide a customized list of keywords to bias the transcriber model, so that
               these words are more likely to get transcribed. Commonly used for names, brands,
-              street, etc.
+              street, etc. Entries may reference dynamic variables with `{{variable}}` syntax.
 
           call_screening_option: If this option is set, the agent prompt will include call screen handling
               instructions for identity and call purpose questions. Set this to null to

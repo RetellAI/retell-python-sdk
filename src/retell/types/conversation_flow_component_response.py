@@ -2447,6 +2447,12 @@ class NodeSubagentNodeToolExtractDynamicVariableTool(BaseModel):
     variables: List[NodeSubagentNodeToolExtractDynamicVariableToolVariable]
     """The variables to be extracted."""
 
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
+
 
 class NodeSubagentNodeToolBridgeTransferTool(BaseModel):
     name: str
@@ -5678,6 +5684,9 @@ class NodeExtractDynamicVariablesNode(BaseModel):
     edges: Optional[List[NodeExtractDynamicVariablesNodeEdge]] = None
 
     else_edge: Optional[NodeExtractDynamicVariablesNodeElseEdge] = None
+
+    enable_typing_sound: Optional[bool] = None
+    """If true, play a typing sound while this extract step executes."""
 
     finetune_transition_examples: Optional[List[NodeExtractDynamicVariablesNodeFinetuneTransitionExample]] = None
 

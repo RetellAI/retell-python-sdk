@@ -178,7 +178,75 @@ class TestChat:
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
         chat = client.chat.list(
-            filter_criteria={},
+            filter_criteria={
+                "agent": [
+                    {
+                        "agent_id": "x",
+                        "version": [0],
+                    }
+                ],
+                "chat_id": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "value",
+                },
+                "chat_status": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["ongoing"],
+                },
+                "chat_successful": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
+                "combined_cost": {
+                    "op": "eq",
+                    "type": "number",
+                    "value": 0,
+                },
+                "custom_analysis_data": [
+                    {
+                        "op": "eq",
+                        "type": "string",
+                        "value": "value",
+                        "key": "key",
+                    }
+                ],
+                "custom_attributes": [
+                    {
+                        "op": "eq",
+                        "type": "string",
+                        "value": "value",
+                        "key": "key",
+                    }
+                ],
+                "disconnection_reason": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["user_hangup"],
+                },
+                "duration_ms": {
+                    "op": "eq",
+                    "type": "number",
+                    "value": 0,
+                },
+                "end_timestamp": {
+                    "op": "eq",
+                    "type": "number",
+                    "value": 0,
+                },
+                "start_timestamp": {
+                    "op": "eq",
+                    "type": "number",
+                    "value": 0,
+                },
+                "user_sentiment": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["Negative"],
+                },
+            },
             include_total=True,
             limit=1000,
             pagination_key="pagination_key",
@@ -543,7 +611,75 @@ class TestAsyncChat:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.list(
-            filter_criteria={},
+            filter_criteria={
+                "agent": [
+                    {
+                        "agent_id": "x",
+                        "version": [0],
+                    }
+                ],
+                "chat_id": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "value",
+                },
+                "chat_status": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["ongoing"],
+                },
+                "chat_successful": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
+                "combined_cost": {
+                    "op": "eq",
+                    "type": "number",
+                    "value": 0,
+                },
+                "custom_analysis_data": [
+                    {
+                        "op": "eq",
+                        "type": "string",
+                        "value": "value",
+                        "key": "key",
+                    }
+                ],
+                "custom_attributes": [
+                    {
+                        "op": "eq",
+                        "type": "string",
+                        "value": "value",
+                        "key": "key",
+                    }
+                ],
+                "disconnection_reason": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["user_hangup"],
+                },
+                "duration_ms": {
+                    "op": "eq",
+                    "type": "number",
+                    "value": 0,
+                },
+                "end_timestamp": {
+                    "op": "eq",
+                    "type": "number",
+                    "value": 0,
+                },
+                "start_timestamp": {
+                    "op": "eq",
+                    "type": "number",
+                    "value": 0,
+                },
+                "user_sentiment": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["Negative"],
+                },
+            },
             include_total=True,
             limit=1000,
             pagination_key="pagination_key",

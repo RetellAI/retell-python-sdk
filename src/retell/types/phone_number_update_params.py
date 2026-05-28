@@ -115,11 +115,13 @@ class InboundAgent(TypedDict, total=False):
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
-    example "prod"). When a tag is provided, resolution uses that exact tag
-    assignment (including its dynamic variables). If the tag exists but is currently
-    unassigned, it resolves to latest. When a numeric version (or latest) is
-    provided, resolution applies dynamic variables from the preferred tag for that
-    resolved version (most recently assigned), if any.
+    example "prod"). The string "latest" resolves to the most recently created
+    version (the largest version number), and "latest_published" resolves to the
+    most recently published version. When a tag is provided, resolution uses that
+    exact tag assignment (including its dynamic variables). If the tag exists but is
+    currently unassigned, it resolves to latest. When a numeric version, latest, or
+    latest_published is provided, resolution applies dynamic variables from the
+    preferred tag for that resolved version (most recently assigned), if any.
     """
 
 
@@ -136,11 +138,13 @@ class InboundSMSAgent(TypedDict, total=False):
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
-    example "prod"). When a tag is provided, resolution uses that exact tag
-    assignment (including its dynamic variables). If the tag exists but is currently
-    unassigned, it resolves to latest. When a numeric version (or latest) is
-    provided, resolution applies dynamic variables from the preferred tag for that
-    resolved version (most recently assigned), if any.
+    example "prod"). The string "latest" resolves to the most recently created
+    version (the largest version number), and "latest_published" resolves to the
+    most recently published version. When a tag is provided, resolution uses that
+    exact tag assignment (including its dynamic variables). If the tag exists but is
+    currently unassigned, it resolves to latest. When a numeric version, latest, or
+    latest_published is provided, resolution applies dynamic variables from the
+    preferred tag for that resolved version (most recently assigned), if any.
     """
 
 
@@ -157,11 +161,13 @@ class OutboundAgent(TypedDict, total=False):
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
-    example "prod"). When a tag is provided, resolution uses that exact tag
-    assignment (including its dynamic variables). If the tag exists but is currently
-    unassigned, it resolves to latest. When a numeric version (or latest) is
-    provided, resolution applies dynamic variables from the preferred tag for that
-    resolved version (most recently assigned), if any.
+    example "prod"). The string "latest" resolves to the most recently created
+    version (the largest version number), and "latest_published" resolves to the
+    most recently published version. When a tag is provided, resolution uses that
+    exact tag assignment (including its dynamic variables). If the tag exists but is
+    currently unassigned, it resolves to latest. When a numeric version, latest, or
+    latest_published is provided, resolution applies dynamic variables from the
+    preferred tag for that resolved version (most recently assigned), if any.
     """
 
 
@@ -178,9 +184,11 @@ class OutboundSMSAgent(TypedDict, total=False):
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
-    example "prod"). When a tag is provided, resolution uses that exact tag
-    assignment (including its dynamic variables). If the tag exists but is currently
-    unassigned, it resolves to latest. When a numeric version (or latest) is
-    provided, resolution applies dynamic variables from the preferred tag for that
-    resolved version (most recently assigned), if any.
+    example "prod"). The string "latest" resolves to the most recently created
+    version (the largest version number), and "latest_published" resolves to the
+    most recently published version. When a tag is provided, resolution uses that
+    exact tag assignment (including its dynamic variables). If the tag exists but is
+    currently unassigned, it resolves to latest. When a numeric version, latest, or
+    latest_published is provided, resolution applies dynamic variables from the
+    preferred tag for that resolved version (most recently assigned), if any.
     """
