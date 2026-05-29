@@ -11,5 +11,5 @@ class ConversationFlowRetrieveParams(TypedDict, total=False):
     version: int
     """Optional version of the conversation flow to retrieve.
 
-    Default to latest version.
+    Defaults to the latest version.
     """
