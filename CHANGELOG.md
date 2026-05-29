@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.44.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.44.0...v5.44.1) (2026-05-29)
+
+
+### Chores
+
+* restore stlc auto-merge triggers ([5f38f95](https://github.com/RetellAI/retell-python-sdk/commit/5f38f95c5a65f79aedc16da6277c8800f4d05ffc))
+
 ## 5.44.0 (2026-05-29)
 
 Full Changelog: [v5.43.1...v5.44.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.43.1...v5.44.0)
