@@ -39,7 +39,7 @@ jobs:
             echo "synced=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Preserve production-owned workflow files
+      - name: Preserve production-owned files
         if: steps.diff.outputs.synced == 'false'
         run: |
           git config user.name "stlc-bot"
@@ -62,8 +62,32 @@ jobs:
 
           git rm -f --ignore-unmatch .github/workflows/stlc-promote.yml
 
-          if ! git diff --quiet HEAD -- .github/workflows; then
-            git add .github/workflows
+          for release_path in \
+            .release-please-manifest.json \
+            CHANGELOG.md \
+            pyproject.toml \
+            src/retell/_version.py
+          do
+            if git cat-file -e "production/main:${release_path}" 2>/dev/null; then
+              git checkout production/main -- "${release_path}"
+            else
+              git rm -f --ignore-unmatch "${release_path}"
+            fi
+          done
+
+          if ! git diff --quiet HEAD -- \
+            .github/workflows \
+            .release-please-manifest.json \
+            CHANGELOG.md \
+            pyproject.toml \
+            src/retell/_version.py
+          then
+            git add \
+              .github/workflows \
+              .release-please-manifest.json \
+              CHANGELOG.md \
+              pyproject.toml \
+              src/retell/_version.py
             git commit -m "chore: preserve production workflow files"
           fi
 
