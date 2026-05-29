@@ -188,8 +188,8 @@ class PhoneNumberResponse(BaseModel):
 
     inbound_webhook_url: Optional[str] = None
     """
-    If set, will send a webhook for inbound calls, where you can to override agent
-    id, set dynamic variables and other fields specific to that call.
+    If set, will send a webhook for inbound calls, where you can override agent id,
+    set dynamic variables and other fields specific to that call.
     """
 
     nickname: Optional[str] = None

@@ -99,8 +99,8 @@ class PhoneNumberResource(SyncAPIResource):
               agent will be picked randomly for each inbound call, with probability
               proportional to the weight. Total weights must add up to 1.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
-              id, set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
+              set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -245,8 +245,8 @@ class PhoneNumberResource(SyncAPIResource):
           inbound_sms_webhook_url: If set, will send a webhook for inbound SMS, where you can override agent id,
               set dynamic variables and other fields specific to that chat.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
-              id, set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
+              set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -435,8 +435,8 @@ class PhoneNumberResource(SyncAPIResource):
               agent will be picked randomly for each inbound call, with probability
               proportional to the weight. Total weights must add up to 1.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
-              id, set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
+              set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -554,8 +554,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               agent will be picked randomly for each inbound call, with probability
               proportional to the weight. Total weights must add up to 1.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
-              id, set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
+              set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -700,8 +700,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           inbound_sms_webhook_url: If set, will send a webhook for inbound SMS, where you can override agent id,
               set dynamic variables and other fields specific to that chat.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
-              id, set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
+              set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -890,8 +890,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               agent will be picked randomly for each inbound call, with probability
               proportional to the weight. Total weights must add up to 1.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can to override agent
-              id, set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
+              set dynamic variables and other fields specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 

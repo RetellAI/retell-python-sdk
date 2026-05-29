@@ -182,7 +182,7 @@ class ConversationFlowResource(SyncAPIResource):
         Retrieve details of a specific Conversation Flow
 
         Args:
-          version: Optional version of the conversation flow to retrieve. Default to latest
+          version: Optional version of the conversation flow to retrieve. Defaults to the latest
               version.
 
           extra_headers: Send extra headers
@@ -582,7 +582,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         Retrieve details of a specific Conversation Flow
 
         Args:
-          version: Optional version of the conversation flow to retrieve. Default to latest
+          version: Optional version of the conversation flow to retrieve. Defaults to the latest
               version.
 
           extra_headers: Send extra headers
