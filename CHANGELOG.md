@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.43.2](https://github.com/RetellAI/retell-python-sdk/compare/v5.43.1...v5.43.2) (2026-05-29)
+
+
+### Chores
+
+* disable stlc auto-merge workflow ([83fc966](https://github.com/RetellAI/retell-python-sdk/commit/83fc96699b82d56652355396723f52caeb837842))
+
 ## 5.43.1 (2026-05-29)
 
 Full Changelog: [v5.43.0...v5.43.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.43.0...v5.43.1)
