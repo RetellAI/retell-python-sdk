@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.45.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.45.0...v5.45.1) (2026-05-30)
+
+
+### Bug Fixes
+
+* **api:** clarify inbound webhook description ([9638b62](https://github.com/RetellAI/retell-python-sdk/commit/9638b626e6f5d406423c888bb0395c45327673fb))
+
+
+### Chores
+
+* preserve production workflow files ([4bed949](https://github.com/RetellAI/retell-python-sdk/commit/4bed9492d6abaa99b1bb5c45d8ebb2d46cecc8b4))
+
 ## [5.45.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.44.1...v5.45.0) (2026-05-29)
 
 
