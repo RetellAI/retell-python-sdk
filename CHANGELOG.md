@@ -1,5 +1,48 @@
 # Changelog
 
+## [5.45.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.44.1...v5.45.0) (2026-05-29)
+
+
+### Features
+
+* **api:** api update ([2f12990](https://github.com/RetellAI/retell-python-sdk/commit/2f12990411eddc2e1d584266b5787e9a38f54ae1))
+
+
+### Chores
+
+* preserve production workflow files ([8e839ba](https://github.com/RetellAI/retell-python-sdk/commit/8e839bae64ec3a2b4e61a196ca772c6695014dfc))
+
+## [5.44.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.44.0...v5.44.1) (2026-05-29)
+
+
+### Chores
+
+* restore stlc auto-merge triggers ([5f38f95](https://github.com/RetellAI/retell-python-sdk/commit/5f38f95c5a65f79aedc16da6277c8800f4d05ffc))
+
+## 5.44.0 (2026-05-29)
+
+Full Changelog: [v5.43.1...v5.44.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.43.1...v5.44.0)
+
+### Features
+
+* **api:** api update ([a559d90](https://github.com/RetellAI/retell-python-sdk/commit/a559d9031cc2e111ae02a19ce988b8042c137526))
+
+
+### Chores
+
+* disable stlc auto-merge workflow ([83fc966](https://github.com/RetellAI/retell-python-sdk/commit/83fc96699b82d56652355396723f52caeb837842))
+
+## 5.43.1 (2026-05-29)
+
+Full Changelog: [v5.43.0...v5.43.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.43.0...v5.43.1)
+
+### Chores
+
+* add release-please workflow ([2ded49b](https://github.com/RetellAI/retell-python-sdk/commit/2ded49be02e1471bef0968f422c1cbf19314119b))
+* add SDK auto-merge workflow ([0966b89](https://github.com/RetellAI/retell-python-sdk/commit/0966b89b08dcb1ab507511b480270961bf8332b0))
+* harden SDK auto-merge workflow ([be57a3f](https://github.com/RetellAI/retell-python-sdk/commit/be57a3f70524d1f4bad69b37b73b383efb4c48d6))
+* restrict SDK auto-merge to same-repo branches ([4644075](https://github.com/RetellAI/retell-python-sdk/commit/4644075b17cc17443e67bc8fafa3ffe8e0e65e85))
+
 ## 5.43.0 (2026-05-28)
 
 Full Changelog: [v5.42.0...v5.43.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.42.0...v5.43.0)
