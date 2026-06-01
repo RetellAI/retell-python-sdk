@@ -1302,7 +1302,7 @@ class TaskAgentOverride(TypedDict, total=False):
 
 class Task(TypedDict, total=False):
     to_number: Required[str]
-    """The The number you want to call, in E.164 format.
+    """The number you want to call, in E.164 format.
 
     If using a number purchased from Retell, only US numbers are supported as
     destination.
