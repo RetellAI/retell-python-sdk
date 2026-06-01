@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.45.3](https://github.com/RetellAI/retell-python-sdk/compare/v5.45.2...v5.45.3) (2026-06-01)
+
+
+### Chores
+
+* preserve production workflow files ([796a30b](https://github.com/RetellAI/retell-python-sdk/commit/796a30b644e349ffd5ca2115e150905c9b16ae06))
+
 ## [5.45.2](https://github.com/RetellAI/retell-python-sdk/compare/v5.45.1...v5.45.2) (2026-06-01)
 
 
