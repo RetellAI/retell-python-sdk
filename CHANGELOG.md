@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.45.2](https://github.com/RetellAI/retell-python-sdk/compare/v5.45.1...v5.45.2) (2026-06-01)
+
+
+### Chores
+
+* preserve production workflow files ([2873729](https://github.com/RetellAI/retell-python-sdk/commit/28737294ed63d5f974ff3dc930db9a7fb2ec50b3))
+
+
+### Documentation
+
+* fix OpenAPI phone number description typo ([967f88b](https://github.com/RetellAI/retell-python-sdk/commit/967f88bbb7fd117fc24a8cd9c7c8416eaa6ba51a))
+
 ## [5.45.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.45.0...v5.45.1) (2026-05-30)
 
 
