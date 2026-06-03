@@ -343,6 +343,7 @@ class FilterCriteriaDisconnectionReason(TypedDict, total=False):
                 "transfer_bridged",
                 "transfer_cancelled",
                 "manual_stopped",
+                "call_take_over",
             ]
         ]
     ]

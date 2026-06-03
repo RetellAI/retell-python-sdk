@@ -54,8 +54,9 @@ class PhoneNumberImportParams(TypedDict, total=False):
 
     inbound_webhook_url: Optional[str]
     """
-    If set, will send a webhook for inbound calls, where you can override agent id,
-    set dynamic variables and other fields specific to that call.
+    If set, Retell will send a webhook for inbound calls, where you can override the
+    agent ID, set dynamic variables, and configure other fields specific to that
+    call.
     """
 
     nickname: str

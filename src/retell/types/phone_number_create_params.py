@@ -36,13 +36,12 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     """
 
     fallback_number: Optional[str]
-    """Enterprise only.
-
-    Phone number to transfer inbound calls to when organization is in outage mode or
-    when an inbound call cannot get a concurrency slot before the fallback timeout.
-    Can be either a Retell phone number or an external number. Cannot be the same as
-    this phone number, and cannot be a number that already has its own fallback
-    configured (prevents nested forwarding).
+    """
+    When inbound call concurrency is reached and a slot does not free up after
+    extended ringing, the call will fall back to this number. Can be either a Retell
+    phone number or an external number. Cannot be the same as this phone number, and
+    cannot be a number that already has its own fallback configured (prevents nested
+    forwarding).
     """
 
     inbound_agents: Optional[Iterable[InboundAgent]]
@@ -54,8 +53,9 @@ class PhoneNumberCreateParams(TypedDict, total=False):
 
     inbound_webhook_url: Optional[str]
     """
-    If set, will send a webhook for inbound calls, where you can override agent id,
-    set dynamic variables and other fields specific to that call.
+    If set, Retell will send a webhook for inbound calls, where you can override the
+    agent ID, set dynamic variables, and configure other fields specific to that
+    call.
     """
 
     nickname: str

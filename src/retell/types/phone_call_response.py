@@ -833,6 +833,7 @@ class PhoneCallResponse(BaseModel):
             "transfer_bridged",
             "transfer_cancelled",
             "manual_stopped",
+            "call_take_over",
         ]
     ] = None
     """The reason for the disconnection of the call.
