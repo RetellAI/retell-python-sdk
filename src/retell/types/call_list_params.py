@@ -13,6 +13,8 @@ __all__ = [
     "FilterCriteriaAgent",
     "FilterCriteriaBatchCallID",
     "FilterCriteriaCallID",
+    "FilterCriteriaCallIDStringFilter",
+    "FilterCriteriaCallIDEnumFilter",
     "FilterCriteriaCallStatus",
     "FilterCriteriaCallSuccessful",
     "FilterCriteriaCallType",
@@ -112,15 +114,25 @@ class FilterCriteriaBatchCallID(TypedDict, total=False):
     value: Required[str]
 
 
-class FilterCriteriaCallID(TypedDict, total=False):
-    """Filter by call ID."""
-
+class FilterCriteriaCallIDStringFilter(TypedDict, total=False):
     op: Required[Literal["eq", "ne", "sw", "ew", "co"]]
     """eq: equal, ne: not equal, sw: starts with, ew: ends with, co: contains"""
 
     type: Required[Literal["string"]]
 
     value: Required[str]
+
+
+class FilterCriteriaCallIDEnumFilter(TypedDict, total=False):
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[SequenceNotStr[str]]
+
+
+FilterCriteriaCallID: TypeAlias = Union[FilterCriteriaCallIDStringFilter, FilterCriteriaCallIDEnumFilter]
 
 
 class FilterCriteriaCallStatus(TypedDict, total=False):
