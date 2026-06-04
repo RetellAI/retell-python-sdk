@@ -13,6 +13,9 @@ __all__ = [
     "MessageToolCallResultMessageBase",
     "MessageNodeTransitionMessageBase",
     "MessageStateTransitionMessageBase",
+    "MessageInjectedMessageBase",
+    "MessageSMSMessageBase",
+    "MessageSMSMessageBaseMultimedia",
     "ToolMock",
     "ToolMockInputMatchRule",
     "ToolMockInputMatchRuleType",
@@ -166,12 +169,63 @@ class MessageStateTransitionMessageBase(TypedDict, total=False):
     """New state name"""
 
 
+class MessageInjectedMessageBase(TypedDict, total=False):
+    content: Required[str]
+    """The injected context text."""
+
+    role: Required[Literal["injected"]]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    created_timestamp: int
+    """Create timestamp of the message"""
+
+    message_id: str
+    """Unique id of the message"""
+
+
+class MessageSMSMessageBaseMultimedia(TypedDict, total=False):
+    url: Required[str]
+    """URL of the multimedia attachment."""
+
+    summary: str
+    """Optional textual summary of the attachment."""
+
+
+class MessageSMSMessageBase(TypedDict, total=False):
+    content: Required[str]
+    """Text content of the SMS message."""
+
+    role: Required[Literal["sms"]]
+    """SMS message exchanged during the call (for example received from the user).
+
+    Woven into the transcript and shown to the agent, but not part of the spoken
+    conversation.
+    """
+
+    created_timestamp: int
+    """Create timestamp of the message"""
+
+    message_id: str
+    """Unique id of the message"""
+
+    multimedia: Iterable[MessageSMSMessageBaseMultimedia]
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
 Message: TypeAlias = Union[
     MessageMessageBase,
     MessageToolCallInvocationMessageBase,
     MessageToolCallResultMessageBase,
     MessageNodeTransitionMessageBase,
     MessageStateTransitionMessageBase,
+    MessageInjectedMessageBase,
+    MessageSMSMessageBase,
 ]
 
 

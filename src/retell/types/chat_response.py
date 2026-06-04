@@ -16,6 +16,9 @@ __all__ = [
     "MessageWithToolCallToolCallResultMessageBase",
     "MessageWithToolCallNodeTransitionMessageBase",
     "MessageWithToolCallStateTransitionMessageBase",
+    "MessageWithToolCallInjectedMessageBase",
+    "MessageWithToolCallSMSMessageBase",
+    "MessageWithToolCallSMSMessageBaseMultimedia",
 ]
 
 
@@ -174,12 +177,63 @@ class MessageWithToolCallStateTransitionMessageBase(BaseModel):
     """New state name"""
 
 
+class MessageWithToolCallInjectedMessageBase(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+
+class MessageWithToolCallSMSMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class MessageWithToolCallSMSMessageBase(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """SMS message exchanged during the call (for example received from the user).
+
+    Woven into the transcript and shown to the agent, but not part of the spoken
+    conversation.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    multimedia: Optional[List[MessageWithToolCallSMSMessageBaseMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
 MessageWithToolCall: TypeAlias = Union[
     MessageWithToolCallMessageBase,
     MessageWithToolCallToolCallInvocationMessageBase,
     MessageWithToolCallToolCallResultMessageBase,
     MessageWithToolCallNodeTransitionMessageBase,
     MessageWithToolCallStateTransitionMessageBase,
+    MessageWithToolCallInjectedMessageBase,
+    MessageWithToolCallSMSMessageBase,
 ]
 
 

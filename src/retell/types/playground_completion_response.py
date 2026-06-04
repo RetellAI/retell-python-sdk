@@ -13,6 +13,9 @@ __all__ = [
     "MessageToolCallResultMessageBase",
     "MessageNodeTransitionMessageBase",
     "MessageStateTransitionMessageBase",
+    "MessageInjectedMessageBase",
+    "MessageSMSMessageBase",
+    "MessageSMSMessageBaseMultimedia",
 ]
 
 
@@ -125,12 +128,63 @@ class MessageStateTransitionMessageBase(BaseModel):
     """New state name"""
 
 
+class MessageInjectedMessageBase(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+
+class MessageSMSMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class MessageSMSMessageBase(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """SMS message exchanged during the call (for example received from the user).
+
+    Woven into the transcript and shown to the agent, but not part of the spoken
+    conversation.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    multimedia: Optional[List[MessageSMSMessageBaseMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
 Message: TypeAlias = Union[
     MessageMessageBase,
     MessageToolCallInvocationMessageBase,
     MessageToolCallResultMessageBase,
     MessageNodeTransitionMessageBase,
     MessageStateTransitionMessageBase,
+    MessageInjectedMessageBase,
+    MessageSMSMessageBase,
 ]
 
 
