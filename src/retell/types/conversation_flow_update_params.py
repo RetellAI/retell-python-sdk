@@ -28,6 +28,12 @@ __all__ = [
     "ComponentNodeConversationNodeEdgeTransitionConditionPromptCondition",
     "ComponentNodeConversationNodeEdgeTransitionConditionEquationCondition",
     "ComponentNodeConversationNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeConversationNodeElseEdge",
+    "ComponentNodeConversationNodeElseEdgeTransitionCondition",
+    "ComponentNodeConversationNodeElseEdgeTransitionConditionPromptCondition",
+    "ComponentNodeConversationNodeElseEdgeTransitionConditionEquationCondition",
+    "ComponentNodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeConversationNodeElseEdgeTransitionConditionUnionMember2",
     "ComponentNodeConversationNodeFinetuneConversationExample",
     "ComponentNodeConversationNodeFinetuneConversationExampleTranscript",
     "ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0",
@@ -76,6 +82,12 @@ __all__ = [
     "ComponentNodeSubagentNodeEdgeTransitionConditionPromptCondition",
     "ComponentNodeSubagentNodeEdgeTransitionConditionEquationCondition",
     "ComponentNodeSubagentNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeSubagentNodeElseEdge",
+    "ComponentNodeSubagentNodeElseEdgeTransitionCondition",
+    "ComponentNodeSubagentNodeElseEdgeTransitionConditionPromptCondition",
+    "ComponentNodeSubagentNodeElseEdgeTransitionConditionEquationCondition",
+    "ComponentNodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodeSubagentNodeElseEdgeTransitionConditionUnionMember2",
     "ComponentNodeSubagentNodeFinetuneConversationExample",
     "ComponentNodeSubagentNodeFinetuneConversationExampleTranscript",
     "ComponentNodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember0",
@@ -306,6 +318,12 @@ __all__ = [
     "ComponentNodePressDigitNodeEdgeTransitionConditionPromptCondition",
     "ComponentNodePressDigitNodeEdgeTransitionConditionEquationCondition",
     "ComponentNodePressDigitNodeEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodePressDigitNodeElseEdge",
+    "ComponentNodePressDigitNodeElseEdgeTransitionCondition",
+    "ComponentNodePressDigitNodeElseEdgeTransitionConditionPromptCondition",
+    "ComponentNodePressDigitNodeElseEdgeTransitionConditionEquationCondition",
+    "ComponentNodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "ComponentNodePressDigitNodeElseEdgeTransitionConditionUnionMember2",
     "ComponentNodePressDigitNodeFinetuneTransitionExample",
     "ComponentNodePressDigitNodeFinetuneTransitionExampleTranscript",
     "ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember0",
@@ -612,6 +630,12 @@ __all__ = [
     "NodeConversationNodeEdgeTransitionConditionPromptCondition",
     "NodeConversationNodeEdgeTransitionConditionEquationCondition",
     "NodeConversationNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeConversationNodeElseEdge",
+    "NodeConversationNodeElseEdgeTransitionCondition",
+    "NodeConversationNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeConversationNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeConversationNodeElseEdgeTransitionConditionUnionMember2",
     "NodeConversationNodeFinetuneConversationExample",
     "NodeConversationNodeFinetuneConversationExampleTranscript",
     "NodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0",
@@ -660,6 +684,12 @@ __all__ = [
     "NodeSubagentNodeEdgeTransitionConditionPromptCondition",
     "NodeSubagentNodeEdgeTransitionConditionEquationCondition",
     "NodeSubagentNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeSubagentNodeElseEdge",
+    "NodeSubagentNodeElseEdgeTransitionCondition",
+    "NodeSubagentNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeSubagentNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeSubagentNodeElseEdgeTransitionConditionUnionMember2",
     "NodeSubagentNodeFinetuneConversationExample",
     "NodeSubagentNodeFinetuneConversationExampleTranscript",
     "NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember0",
@@ -890,6 +920,12 @@ __all__ = [
     "NodePressDigitNodeEdgeTransitionConditionPromptCondition",
     "NodePressDigitNodeEdgeTransitionConditionEquationCondition",
     "NodePressDigitNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodePressDigitNodeElseEdge",
+    "NodePressDigitNodeElseEdgeTransitionCondition",
+    "NodePressDigitNodeElseEdgeTransitionConditionPromptCondition",
+    "NodePressDigitNodeElseEdgeTransitionConditionEquationCondition",
+    "NodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodePressDigitNodeElseEdgeTransitionConditionUnionMember2",
     "NodePressDigitNodeFinetuneTransitionExample",
     "NodePressDigitNodeFinetuneTransitionExampleTranscript",
     "NodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember0",
@@ -1392,6 +1428,62 @@ class ComponentNodeConversationNodeEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class ComponentNodeConversationNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeConversationNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class ComponentNodeConversationNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeConversationNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeConversationNodeElseEdgeTransitionConditionPromptCondition,
+    ComponentNodeConversationNodeElseEdgeTransitionConditionEquationCondition,
+    ComponentNodeConversationNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeConversationNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeConversationNodeElseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class ComponentNodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -1757,6 +1849,8 @@ class ComponentNodeConversationNode(TypedDict, total=False):
 
     edges: Iterable[ComponentNodeConversationNodeEdge]
 
+    else_edge: ComponentNodeConversationNodeElseEdge
+
     finetune_conversation_examples: Iterable[ComponentNodeConversationNodeFinetuneConversationExample]
 
     finetune_transition_examples: Iterable[ComponentNodeConversationNodeFinetuneTransitionExample]
@@ -1898,6 +1992,62 @@ class ComponentNodeSubagentNodeEdge(TypedDict, total=False):
     """Unique identifier for the edge"""
 
     transition_condition: Required[ComponentNodeSubagentNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class ComponentNodeSubagentNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeSubagentNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class ComponentNodeSubagentNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodeSubagentNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodeSubagentNodeElseEdgeTransitionConditionPromptCondition,
+    ComponentNodeSubagentNodeElseEdgeTransitionConditionEquationCondition,
+    ComponentNodeSubagentNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodeSubagentNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodeSubagentNodeElseEdgeTransitionCondition]
 
     destination_node_id: str
     """ID of the destination node"""
@@ -3334,6 +3484,8 @@ class ComponentNodeSubagentNode(TypedDict, total=False):
     """Position for frontend display"""
 
     edges: Iterable[ComponentNodeSubagentNodeEdge]
+
+    else_edge: ComponentNodeSubagentNodeElseEdge
 
     finetune_conversation_examples: Iterable[ComponentNodeSubagentNodeFinetuneConversationExample]
 
@@ -5067,6 +5219,62 @@ class ComponentNodePressDigitNodeEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class ComponentNodePressDigitNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodePressDigitNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class ComponentNodePressDigitNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+ComponentNodePressDigitNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    ComponentNodePressDigitNodeElseEdgeTransitionConditionPromptCondition,
+    ComponentNodePressDigitNodeElseEdgeTransitionConditionEquationCondition,
+    ComponentNodePressDigitNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class ComponentNodePressDigitNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[ComponentNodePressDigitNodeElseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class ComponentNodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -5307,6 +5515,8 @@ class ComponentNodePressDigitNode(TypedDict, total=False):
     """Position for frontend display"""
 
     edges: Iterable[ComponentNodePressDigitNodeEdge]
+
+    else_edge: ComponentNodePressDigitNodeElseEdge
 
     finetune_transition_examples: Iterable[ComponentNodePressDigitNodeFinetuneTransitionExample]
 
@@ -8588,6 +8798,62 @@ class NodeConversationNodeEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class NodeConversationNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeConversationNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class NodeConversationNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+NodeConversationNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeConversationNodeElseEdgeTransitionConditionPromptCondition,
+    NodeConversationNodeElseEdgeTransitionConditionEquationCondition,
+    NodeConversationNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeConversationNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeConversationNodeElseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -8933,6 +9199,8 @@ class NodeConversationNode(TypedDict, total=False):
 
     edges: Iterable[NodeConversationNodeEdge]
 
+    else_edge: NodeConversationNodeElseEdge
+
     finetune_conversation_examples: Iterable[NodeConversationNodeFinetuneConversationExample]
 
     finetune_transition_examples: Iterable[NodeConversationNodeFinetuneTransitionExample]
@@ -9073,6 +9341,62 @@ class NodeSubagentNodeEdge(TypedDict, total=False):
     """Unique identifier for the edge"""
 
     transition_condition: Required[NodeSubagentNodeEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+NodeSubagentNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeSubagentNodeElseEdgeTransitionConditionPromptCondition,
+    NodeSubagentNodeElseEdgeTransitionConditionEquationCondition,
+    NodeSubagentNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeSubagentNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodeSubagentNodeElseEdgeTransitionCondition]
 
     destination_node_id: str
     """ID of the destination node"""
@@ -10497,6 +10821,8 @@ class NodeSubagentNode(TypedDict, total=False):
     """Position for frontend display"""
 
     edges: Iterable[NodeSubagentNodeEdge]
+
+    else_edge: NodeSubagentNodeElseEdge
 
     finetune_conversation_examples: Iterable[NodeSubagentNodeFinetuneConversationExample]
 
@@ -12195,6 +12521,62 @@ class NodePressDigitNodeEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class NodePressDigitNodeElseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodePressDigitNodeElseEdgeTransitionConditionEquationCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation"]]
+
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+
+class NodePressDigitNodeElseEdgeTransitionConditionUnionMember2(TypedDict, total=False):
+    prompt: Required[Literal["Else"]]
+    """Must be "Else" for else edge"""
+
+    type: Required[Literal["prompt"]]
+
+
+NodePressDigitNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodePressDigitNodeElseEdgeTransitionConditionPromptCondition,
+    NodePressDigitNodeElseEdgeTransitionConditionEquationCondition,
+    NodePressDigitNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodePressDigitNodeElseEdge(TypedDict, total=False):
+    id: Required[str]
+    """Unique identifier for the edge"""
+
+    transition_condition: Required[NodePressDigitNodeElseEdgeTransitionCondition]
+
+    destination_node_id: str
+    """ID of the destination node"""
+
+
 class NodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember0(TypedDict, total=False):
     content: Required[str]
 
@@ -12429,6 +12811,8 @@ class NodePressDigitNode(TypedDict, total=False):
     """Position for frontend display"""
 
     edges: Iterable[NodePressDigitNodeEdge]
+
+    else_edge: NodePressDigitNodeElseEdge
 
     finetune_transition_examples: Iterable[NodePressDigitNodeFinetuneTransitionExample]
 
