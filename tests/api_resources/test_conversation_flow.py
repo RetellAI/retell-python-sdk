@@ -82,6 +82,14 @@ class TestConversationFlow:
                             "destination_node_id": "book_appointment",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -203,6 +211,14 @@ class TestConversationFlow:
                                     "destination_node_id": "destination_node_id",
                                 }
                             ],
+                            "else_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "finetune_conversation_examples": [
                                 {
                                     "id": "id",
@@ -576,6 +592,14 @@ class TestConversationFlow:
                                     "destination_node_id": "destination_node_id",
                                 }
                             ],
+                            "else_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "finetune_conversation_examples": [
                                 {
                                     "id": "id",
@@ -780,6 +804,14 @@ class TestConversationFlow:
                             "destination_node_id": "book_appointment",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -1091,6 +1123,14 @@ class TestAsyncConversationFlow:
                             "destination_node_id": "book_appointment",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -1212,6 +1252,14 @@ class TestAsyncConversationFlow:
                                     "destination_node_id": "destination_node_id",
                                 }
                             ],
+                            "else_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "finetune_conversation_examples": [
                                 {
                                     "id": "id",
@@ -1585,6 +1633,14 @@ class TestAsyncConversationFlow:
                                     "destination_node_id": "destination_node_id",
                                 }
                             ],
+                            "else_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "finetune_conversation_examples": [
                                 {
                                     "id": "id",
@@ -1789,6 +1845,14 @@ class TestAsyncConversationFlow:
                             "destination_node_id": "book_appointment",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",

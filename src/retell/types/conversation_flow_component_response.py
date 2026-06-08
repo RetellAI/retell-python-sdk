@@ -26,6 +26,12 @@ __all__ = [
     "NodeConversationNodeEdgeTransitionConditionPromptCondition",
     "NodeConversationNodeEdgeTransitionConditionEquationCondition",
     "NodeConversationNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeConversationNodeElseEdge",
+    "NodeConversationNodeElseEdgeTransitionCondition",
+    "NodeConversationNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeConversationNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeConversationNodeElseEdgeTransitionConditionUnionMember2",
     "NodeConversationNodeFinetuneConversationExample",
     "NodeConversationNodeFinetuneConversationExampleTranscript",
     "NodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0",
@@ -74,6 +80,12 @@ __all__ = [
     "NodeSubagentNodeEdgeTransitionConditionPromptCondition",
     "NodeSubagentNodeEdgeTransitionConditionEquationCondition",
     "NodeSubagentNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeSubagentNodeElseEdge",
+    "NodeSubagentNodeElseEdgeTransitionCondition",
+    "NodeSubagentNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeSubagentNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeSubagentNodeElseEdgeTransitionConditionUnionMember2",
     "NodeSubagentNodeFinetuneConversationExample",
     "NodeSubagentNodeFinetuneConversationExampleTranscript",
     "NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember0",
@@ -304,6 +316,12 @@ __all__ = [
     "NodePressDigitNodeEdgeTransitionConditionPromptCondition",
     "NodePressDigitNodeEdgeTransitionConditionEquationCondition",
     "NodePressDigitNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodePressDigitNodeElseEdge",
+    "NodePressDigitNodeElseEdgeTransitionCondition",
+    "NodePressDigitNodeElseEdgeTransitionConditionPromptCondition",
+    "NodePressDigitNodeElseEdgeTransitionConditionEquationCondition",
+    "NodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodePressDigitNodeElseEdgeTransitionConditionUnionMember2",
     "NodePressDigitNodeFinetuneTransitionExample",
     "NodePressDigitNodeFinetuneTransitionExampleTranscript",
     "NodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember0",
@@ -723,6 +741,62 @@ class NodeConversationNodeEdge(BaseModel):
     """ID of the destination node"""
 
 
+class NodeConversationNodeElseEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeConversationNodeElseEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Else"]] = None
+    """Must be "Else" for else edge"""
+
+
+class NodeConversationNodeElseEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+    type: Literal["prompt"]
+
+
+NodeConversationNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeConversationNodeElseEdgeTransitionConditionPromptCondition,
+    NodeConversationNodeElseEdgeTransitionConditionEquationCondition,
+    NodeConversationNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeConversationNodeElseEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodeConversationNodeElseEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
 class NodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0(BaseModel):
     content: str
 
@@ -1062,6 +1136,8 @@ class NodeConversationNode(BaseModel):
 
     edges: Optional[List[NodeConversationNodeEdge]] = None
 
+    else_edge: Optional[NodeConversationNodeElseEdge] = None
+
     finetune_conversation_examples: Optional[List[NodeConversationNodeFinetuneConversationExample]] = None
 
     finetune_transition_examples: Optional[List[NodeConversationNodeFinetuneTransitionExample]] = None
@@ -1202,6 +1278,62 @@ class NodeSubagentNodeEdge(BaseModel):
     """Unique identifier for the edge"""
 
     transition_condition: NodeSubagentNodeEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Else"]] = None
+    """Must be "Else" for else edge"""
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+    type: Literal["prompt"]
+
+
+NodeSubagentNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeSubagentNodeElseEdgeTransitionConditionPromptCondition,
+    NodeSubagentNodeElseEdgeTransitionConditionEquationCondition,
+    NodeSubagentNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeSubagentNodeElseEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodeSubagentNodeElseEdgeTransitionCondition
 
     destination_node_id: Optional[str] = None
     """ID of the destination node"""
@@ -2622,6 +2754,8 @@ class NodeSubagentNode(BaseModel):
     """Position for frontend display"""
 
     edges: Optional[List[NodeSubagentNodeEdge]] = None
+
+    else_edge: Optional[NodeSubagentNodeElseEdge] = None
 
     finetune_conversation_examples: Optional[List[NodeSubagentNodeFinetuneConversationExample]] = None
 
@@ -4298,6 +4432,62 @@ class NodePressDigitNodeEdge(BaseModel):
     """ID of the destination node"""
 
 
+class NodePressDigitNodeElseEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodePressDigitNodeElseEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Else"]] = None
+    """Must be "Else" for else edge"""
+
+
+class NodePressDigitNodeElseEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+    type: Literal["prompt"]
+
+
+NodePressDigitNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodePressDigitNodeElseEdgeTransitionConditionPromptCondition,
+    NodePressDigitNodeElseEdgeTransitionConditionEquationCondition,
+    NodePressDigitNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodePressDigitNodeElseEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodePressDigitNodeElseEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
 class NodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember0(BaseModel):
     content: str
 
@@ -4526,6 +4716,8 @@ class NodePressDigitNode(BaseModel):
     """Position for frontend display"""
 
     edges: Optional[List[NodePressDigitNodeEdge]] = None
+
+    else_edge: Optional[NodePressDigitNodeElseEdge] = None
 
     finetune_transition_examples: Optional[List[NodePressDigitNodeFinetuneTransitionExample]] = None
 

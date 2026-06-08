@@ -74,6 +74,14 @@ class TestConversationFlowComponent:
                             "destination_node_id": "destination_node_id",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -370,6 +378,14 @@ class TestConversationFlowComponent:
                             "destination_node_id": "destination_node_id",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -675,6 +691,14 @@ class TestAsyncConversationFlowComponent:
                             "destination_node_id": "destination_node_id",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -971,6 +995,14 @@ class TestAsyncConversationFlowComponent:
                             "destination_node_id": "destination_node_id",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
