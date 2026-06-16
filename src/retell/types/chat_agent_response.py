@@ -572,6 +572,9 @@ class ChatAgentResponse(BaseModel):
     version: Optional[int] = None
     """The version of the chat agent."""
 
+    version_title: Optional[str] = None
+    """Optional title of the chat agent version. Used for your own reference."""
+
     webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed", "transcript_updated"]]] = None
     """Which webhook events this agent should receive.
 

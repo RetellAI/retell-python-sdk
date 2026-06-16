@@ -16,6 +16,8 @@ from retell.types import (
     AgentCreateVersionResponse,
 )
 
+# pyright: reportDeprecated=false
+
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
@@ -70,7 +72,10 @@ class TestAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
+            enable_expressive_mode=True,
             end_call_after_silence_ms=600000,
+            expressive_emotion_tags=["empathetic", "excited", "sigh", "clear throat", "emphasis"],
+            expressive_mode_prompt="Use [sigh] for thoughtful pauses and [excited] for good news.",
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
                 "input_topics": ["platform_integrity_jailbreaking"],
@@ -78,6 +83,7 @@ class TestAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational_personality": True,
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -130,13 +136,12 @@ class TestAgent:
                 "timeout_ms": 1000,
             },
             version_description="Customer support agent for handling product inquiries",
+            version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
-            voicemail_detection_timeout_ms=30000,
-            voicemail_message="Hi, please give us a callback.",
             voicemail_option={
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
@@ -276,7 +281,10 @@ class TestAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
+            enable_expressive_mode=True,
             end_call_after_silence_ms=600000,
+            expressive_emotion_tags=["empathetic", "excited", "sigh", "clear throat", "emphasis"],
+            expressive_mode_prompt="Use [sigh] for thoughtful pauses and [excited] for good news.",
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
                 "input_topics": ["platform_integrity_jailbreaking"],
@@ -284,6 +292,7 @@ class TestAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational_personality": True,
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -341,14 +350,13 @@ class TestAgent:
                 "timeout_ms": 1000,
             },
             version_description="Customer support agent for handling product inquiries",
+            version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
             voice_id="retell-Cimo",
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
-            voicemail_detection_timeout_ms=30000,
-            voicemail_message="Hi, please give us a callback.",
             voicemail_option={
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
@@ -400,24 +408,29 @@ class TestAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Retell) -> None:
-        agent = client.agent.list()
+        with pytest.warns(DeprecationWarning):
+            agent = client.agent.list()
+
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
-        agent = client.agent.list(
-            is_latest=True,
-            limit=50,
-            pagination_key="agent_1ffdb9717444d0e77346838911",
-            pagination_key_version=0,
-        )
+        with pytest.warns(DeprecationWarning):
+            agent = client.agent.list(
+                is_latest=True,
+                limit=50,
+                pagination_key="agent_1ffdb9717444d0e77346838911",
+                pagination_key_version=0,
+            )
+
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
-        response = client.agent.with_raw_response.list()
+        with pytest.warns(DeprecationWarning):
+            response = client.agent.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -427,12 +440,13 @@ class TestAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Retell) -> None:
-        with client.agent.with_streaming_response.list() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.agent.with_streaming_response.list() as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            agent = response.parse()
-            assert_matches_type(AgentListResponse, agent, path=["response"])
+                agent = response.parse()
+                assert_matches_type(AgentListResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -628,6 +642,7 @@ class TestAgent:
             agent_id="agent_xxx",
             version=15,
             version_description="Hotfix for transfer timeout",
+            version_title="Hotfix",
         )
         assert agent is None
 
@@ -722,7 +737,10 @@ class TestAsyncAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
+            enable_expressive_mode=True,
             end_call_after_silence_ms=600000,
+            expressive_emotion_tags=["empathetic", "excited", "sigh", "clear throat", "emphasis"],
+            expressive_mode_prompt="Use [sigh] for thoughtful pauses and [excited] for good news.",
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
                 "input_topics": ["platform_integrity_jailbreaking"],
@@ -730,6 +748,7 @@ class TestAsyncAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational_personality": True,
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -782,13 +801,12 @@ class TestAsyncAgent:
                 "timeout_ms": 1000,
             },
             version_description="Customer support agent for handling product inquiries",
+            version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
-            voicemail_detection_timeout_ms=30000,
-            voicemail_message="Hi, please give us a callback.",
             voicemail_option={
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
@@ -928,7 +946,10 @@ class TestAsyncAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
+            enable_expressive_mode=True,
             end_call_after_silence_ms=600000,
+            expressive_emotion_tags=["empathetic", "excited", "sigh", "clear throat", "emphasis"],
+            expressive_mode_prompt="Use [sigh] for thoughtful pauses and [excited] for good news.",
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
                 "input_topics": ["platform_integrity_jailbreaking"],
@@ -936,6 +957,7 @@ class TestAsyncAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational_personality": True,
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -993,14 +1015,13 @@ class TestAsyncAgent:
                 "timeout_ms": 1000,
             },
             version_description="Customer support agent for handling product inquiries",
+            version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
             voice_id="retell-Cimo",
             voice_model="eleven_turbo_v2",
             voice_speed=1,
             voice_temperature=1,
-            voicemail_detection_timeout_ms=30000,
-            voicemail_message="Hi, please give us a callback.",
             voicemail_option={
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
@@ -1052,24 +1073,29 @@ class TestAsyncAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
-        agent = await async_client.agent.list()
+        with pytest.warns(DeprecationWarning):
+            agent = await async_client.agent.list()
+
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
-        agent = await async_client.agent.list(
-            is_latest=True,
-            limit=50,
-            pagination_key="agent_1ffdb9717444d0e77346838911",
-            pagination_key_version=0,
-        )
+        with pytest.warns(DeprecationWarning):
+            agent = await async_client.agent.list(
+                is_latest=True,
+                limit=50,
+                pagination_key="agent_1ffdb9717444d0e77346838911",
+                pagination_key_version=0,
+            )
+
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
-        response = await async_client.agent.with_raw_response.list()
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.agent.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1079,12 +1105,13 @@ class TestAsyncAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
-        async with async_client.agent.with_streaming_response.list() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.agent.with_streaming_response.list() as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            agent = await response.parse()
-            assert_matches_type(AgentListResponse, agent, path=["response"])
+                agent = await response.parse()
+                assert_matches_type(AgentListResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1280,6 +1307,7 @@ class TestAsyncAgent:
             agent_id="agent_xxx",
             version=15,
             version_description="Hotfix for transfer timeout",
+            version_title="Hotfix",
         )
         assert agent is None
 

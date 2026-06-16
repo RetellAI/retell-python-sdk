@@ -14,8 +14,13 @@ class TestCaseJobResponse(BaseModel):
     creation_timestamp: int
     """Timestamp when the test case job was created (milliseconds since epoch)"""
 
-    status: Literal["in_progress", "pass", "fail", "error"]
-    """Status of the test case job"""
+    status: Literal["pending", "in_progress", "pass", "fail", "error"]
+    """Status of the test case job.
+
+    `pending` means the run is queued but has not started yet; it becomes
+    `in_progress` once a worker picks it up, then resolves to `pass`, `fail`, or
+    `error`.
+    """
 
     test_case_definition_id: str
     """ID of the test case definition used"""

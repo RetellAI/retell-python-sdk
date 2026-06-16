@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Any, List, Union, Iterable, Optional, cast
 from typing_extensions import Literal
 
@@ -234,6 +235,7 @@ class ChatAgentResource(SyncAPIResource):
         | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         timezone: Optional[str] | Omit = omit,
+        version_title: Optional[str] | Omit = omit,
         webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed", "transcript_updated"]]]
         | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
@@ -311,6 +313,8 @@ class ChatAgentResource(SyncAPIResource):
           timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
               America/Los_Angeles if not set.
 
+          version_title: Optional title of the chat agent version. Used for your own reference.
+
           webhook_events: Which webhook events this agent should receive. If not set, defaults to
               chat_started, chat_ended, chat_analyzed.
 
@@ -352,6 +356,7 @@ class ChatAgentResource(SyncAPIResource):
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "timezone": timezone,
+                    "version_title": version_title,
                     "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
@@ -586,6 +591,7 @@ class ChatAgentResource(SyncAPIResource):
         response_engine: chat_agent_update_params.ResponseEngine | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         timezone: Optional[str] | Omit = omit,
+        version_title: Optional[str] | Omit = omit,
         webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed", "transcript_updated"]]]
         | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
@@ -665,6 +671,8 @@ class ChatAgentResource(SyncAPIResource):
           timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
               America/Los_Angeles if not set.
 
+          version_title: Optional title of the chat agent version. Used for your own reference.
+
           webhook_events: Which webhook events this agent should receive. If not set, defaults to
               chat_started, chat_ended, chat_analyzed.
 
@@ -708,6 +716,7 @@ class ChatAgentResource(SyncAPIResource):
                     "response_engine": response_engine,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "timezone": timezone,
+                    "version_title": version_title,
                     "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
@@ -724,6 +733,7 @@ class ChatAgentResource(SyncAPIResource):
             cast_to=ChatAgentResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
@@ -943,6 +953,7 @@ class ChatAgentResource(SyncAPIResource):
         *,
         version: int,
         version_description: str | Omit = omit,
+        version_title: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -954,6 +965,8 @@ class ChatAgentResource(SyncAPIResource):
         Publish an existing draft version in place.
 
         Args:
+          version_title: Optional title of the agent version. Used for your own reference.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -971,6 +984,7 @@ class ChatAgentResource(SyncAPIResource):
                 {
                     "version": version,
                     "version_description": version_description,
+                    "version_title": version_title,
                 },
                 chat_agent_publish_params.ChatAgentPublishParams,
             ),
@@ -1180,6 +1194,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         timezone: Optional[str] | Omit = omit,
+        version_title: Optional[str] | Omit = omit,
         webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed", "transcript_updated"]]]
         | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
@@ -1257,6 +1272,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
           timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
               America/Los_Angeles if not set.
 
+          version_title: Optional title of the chat agent version. Used for your own reference.
+
           webhook_events: Which webhook events this agent should receive. If not set, defaults to
               chat_started, chat_ended, chat_analyzed.
 
@@ -1298,6 +1315,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "post_chat_analysis_model": post_chat_analysis_model,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "timezone": timezone,
+                    "version_title": version_title,
                     "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
@@ -1534,6 +1552,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         response_engine: chat_agent_update_params.ResponseEngine | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         timezone: Optional[str] | Omit = omit,
+        version_title: Optional[str] | Omit = omit,
         webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed", "transcript_updated"]]]
         | Omit = omit,
         webhook_timeout_ms: int | Omit = omit,
@@ -1613,6 +1632,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
           timezone: IANA timezone for the agent (e.g. America/New_York). Defaults to
               America/Los_Angeles if not set.
 
+          version_title: Optional title of the chat agent version. Used for your own reference.
+
           webhook_events: Which webhook events this agent should receive. If not set, defaults to
               chat_started, chat_ended, chat_analyzed.
 
@@ -1656,6 +1677,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "response_engine": response_engine,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "timezone": timezone,
+                    "version_title": version_title,
                     "webhook_events": webhook_events,
                     "webhook_timeout_ms": webhook_timeout_ms,
                     "webhook_url": webhook_url,
@@ -1672,6 +1694,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
             cast_to=ChatAgentResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
@@ -1891,6 +1914,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         *,
         version: int,
         version_description: str | Omit = omit,
+        version_title: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1902,6 +1926,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
         Publish an existing draft version in place.
 
         Args:
+          version_title: Optional title of the agent version. Used for your own reference.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1919,6 +1945,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 {
                     "version": version,
                     "version_description": version_description,
+                    "version_title": version_title,
                 },
                 chat_agent_publish_params.ChatAgentPublishParams,
             ),
@@ -1942,8 +1969,10 @@ class ChatAgentResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             chat_agent.update,
         )
-        self.list = to_raw_response_wrapper(
-            chat_agent.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                chat_agent.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = to_raw_response_wrapper(
             chat_agent.delete,
@@ -1975,8 +2004,10 @@ class AsyncChatAgentResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             chat_agent.update,
         )
-        self.list = async_to_raw_response_wrapper(
-            chat_agent.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                chat_agent.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = async_to_raw_response_wrapper(
             chat_agent.delete,
@@ -2008,8 +2039,10 @@ class ChatAgentResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             chat_agent.update,
         )
-        self.list = to_streamed_response_wrapper(
-            chat_agent.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                chat_agent.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = to_streamed_response_wrapper(
             chat_agent.delete,
@@ -2041,8 +2074,10 @@ class AsyncChatAgentResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             chat_agent.update,
         )
-        self.list = async_to_streamed_response_wrapper(
-            chat_agent.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                chat_agent.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete = async_to_streamed_response_wrapper(
             chat_agent.delete,

@@ -11,3 +11,6 @@ class AgentPublishParams(TypedDict, total=False):
     version: Required[int]
 
     version_description: str
+
+    version_title: str
+    """Optional title of the agent version. Used for your own reference."""

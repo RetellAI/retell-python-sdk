@@ -295,6 +295,9 @@ class ChatAgentUpdateParams(TypedDict, total=False):
     America/New_York). Defaults to America/Los_Angeles if not set.
     """
 
+    version_title: Optional[str]
+    """Optional title of the chat agent version. Used for your own reference."""
+
     webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed", "transcript_updated"]]]
     """Which webhook events this agent should receive.
 
