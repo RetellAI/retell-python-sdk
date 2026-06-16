@@ -411,6 +411,17 @@ class ItemV3WebCallResponse(BaseModel):
     agent_name: Optional[str] = None
     """Name of the agent."""
 
+    agent_tag: Optional[str] = None
+    """
+    Tag pointing at the agent version used for this call, captured at call creation
+    time and frozen thereafter (unaffected by later tag reassignments). Populated
+    whether the caller dispatched by tag, numeric version, "latest", or
+    "latest_published" — when the caller specified a tag, that tag wins; otherwise
+    the most-recently- assigned tag on the resolved version is used. Absent when no
+    tag points at the resolved version (or for calls created before this field was
+    introduced).
+    """
+
     call_analysis: Optional[ItemV3WebCallResponseCallAnalysis] = None
     """
     Post call analysis that includes information such as sentiment, status, summary,
@@ -964,6 +975,17 @@ class ItemV3PhoneCallResponse(BaseModel):
 
     agent_name: Optional[str] = None
     """Name of the agent."""
+
+    agent_tag: Optional[str] = None
+    """
+    Tag pointing at the agent version used for this call, captured at call creation
+    time and frozen thereafter (unaffected by later tag reassignments). Populated
+    whether the caller dispatched by tag, numeric version, "latest", or
+    "latest_published" — when the caller specified a tag, that tag wins; otherwise
+    the most-recently- assigned tag on the resolved version is used. Absent when no
+    tag points at the resolved version (or for calls created before this field was
+    introduced).
+    """
 
     call_analysis: Optional[ItemV3PhoneCallResponseCallAnalysis] = None
     """

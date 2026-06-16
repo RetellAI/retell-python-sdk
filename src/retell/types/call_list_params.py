@@ -693,14 +693,17 @@ class FilterCriteriaToolCallSuccess(TypedDict, total=False):
 
 
 class FilterCriteriaToolCall(TypedDict, total=False):
-    name: Required[str]
-    """The tool call name to filter on."""
-
     latency_ms: FilterCriteriaToolCallLatencyMs
     """Filter by tool call latency in milliseconds."""
 
+    name: str
+    """The tool call name to filter on."""
+
     success: FilterCriteriaToolCallSuccess
     """Filter by tool call success status."""
+
+    type: str
+    """The tool call type to filter on."""
 
 
 class FilterCriteriaUserSentiment(TypedDict, total=False):
