@@ -61,9 +61,6 @@ class ChatAgentResource(SyncAPIResource):
         *,
         response_engine: chat_agent_create_params.ResponseEngine,
         agent_name: Optional[str] | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
@@ -257,15 +254,6 @@ class ChatAgentResource(SyncAPIResource):
 
           agent_name: The name of the chat agent. Only used for your own reference.
 
-          analysis_successful_prompt: The prompt to use for post call analysis to evaluate whether the call is
-              successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
-              use the default prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post chat analysis should evaluate user sentiment. When
-              unset, the default system prompt is used. Set to null to use the default prompt.
-
           auto_close_message: Message to display when the chat is automatically closed.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
@@ -340,9 +328,6 @@ class ChatAgentResource(SyncAPIResource):
                 {
                     "response_engine": response_engine,
                     "agent_name": agent_name,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "auto_close_message": auto_close_message,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
@@ -416,9 +401,6 @@ class ChatAgentResource(SyncAPIResource):
         *,
         version: Union[int, str] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
@@ -611,15 +593,6 @@ class ChatAgentResource(SyncAPIResource):
 
           agent_name: The name of the chat agent. Only used for your own reference.
 
-          analysis_successful_prompt: The prompt to use for post call analysis to evaluate whether the call is
-              successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
-              use the default prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post chat analysis should evaluate user sentiment. When
-              unset, the default system prompt is used. Set to null to use the default prompt.
-
           auto_close_message: Message to display when the chat is automatically closed.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
@@ -699,9 +672,6 @@ class ChatAgentResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "agent_name": agent_name,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "auto_close_message": auto_close_message,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
@@ -1020,9 +990,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
         *,
         response_engine: chat_agent_create_params.ResponseEngine,
         agent_name: Optional[str] | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
@@ -1216,15 +1183,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
 
           agent_name: The name of the chat agent. Only used for your own reference.
 
-          analysis_successful_prompt: The prompt to use for post call analysis to evaluate whether the call is
-              successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
-              use the default prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post chat analysis should evaluate user sentiment. When
-              unset, the default system prompt is used. Set to null to use the default prompt.
-
           auto_close_message: Message to display when the chat is automatically closed.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
@@ -1299,9 +1257,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 {
                     "response_engine": response_engine,
                     "agent_name": agent_name,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "auto_close_message": auto_close_message,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
@@ -1377,9 +1332,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
         *,
         version: Union[int, str] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
@@ -1572,15 +1524,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
 
           agent_name: The name of the chat agent. Only used for your own reference.
 
-          analysis_successful_prompt: The prompt to use for post call analysis to evaluate whether the call is
-              successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: The prompt to use for post call analysis to summarize the call. Set to null to
-              use the default prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post chat analysis should evaluate user sentiment. When
-              unset, the default system prompt is used. Set to null to use the default prompt.
-
           auto_close_message: Message to display when the chat is automatically closed.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
@@ -1660,9 +1603,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "agent_name": agent_name,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "auto_close_message": auto_close_message,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,

@@ -303,25 +303,6 @@ class ChatAgentResponse(BaseModel):
     agent_name: Optional[str] = None
     """The name of the chat agent. Only used for your own reference."""
 
-    analysis_successful_prompt: Optional[str] = None
-    """
-    The prompt to use for post call analysis to evaluate whether the call is
-    successful. Set to null to use the default prompt.
-    """
-
-    analysis_summary_prompt: Optional[str] = None
-    """The prompt to use for post call analysis to summarize the call.
-
-    Set to null to use the default prompt.
-    """
-
-    analysis_user_sentiment_prompt: Optional[str] = None
-    """Prompt to guide how the post chat analysis should evaluate user sentiment.
-
-    When unset, the default system prompt is used. Set to null to use the default
-    prompt.
-    """
-
     assigned_tags: Optional[List[str]] = None
     """Tags assigned to this chat agent version. Preferred tag is listed first."""
 

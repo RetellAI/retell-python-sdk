@@ -522,26 +522,6 @@ class AgentResponse(BaseModel):
     value means louder ambient sound. If unset, default value 1 will apply.
     """
 
-    analysis_successful_prompt: Optional[str] = None
-    """
-    Prompt to determine whether the post call or chat analysis should mark the
-    interaction as successful. Set to null to use the default prompt.
-    """
-
-    analysis_summary_prompt: Optional[str] = None
-    """Prompt to guide how the post call or chat analysis summary should be generated.
-
-    When unset, the default system prompt is used. Set to null to use the default
-    prompt.
-    """
-
-    analysis_user_sentiment_prompt: Optional[str] = None
-    """
-    Prompt to guide how the post call or chat analysis should evaluate user
-    sentiment. When unset, the default system prompt is used. Set to null to use the
-    default prompt.
-    """
-
     assigned_tags: Optional[List[str]] = None
     """Tags assigned to this agent version. Preferred tag is listed first."""
 

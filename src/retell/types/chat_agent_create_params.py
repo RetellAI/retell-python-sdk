@@ -36,25 +36,6 @@ class ChatAgentCreateParams(TypedDict, total=False):
     agent_name: Optional[str]
     """The name of the chat agent. Only used for your own reference."""
 
-    analysis_successful_prompt: Optional[str]
-    """
-    The prompt to use for post call analysis to evaluate whether the call is
-    successful. Set to null to use the default prompt.
-    """
-
-    analysis_summary_prompt: Optional[str]
-    """The prompt to use for post call analysis to summarize the call.
-
-    Set to null to use the default prompt.
-    """
-
-    analysis_user_sentiment_prompt: Optional[str]
-    """Prompt to guide how the post chat analysis should evaluate user sentiment.
-
-    When unset, the default system prompt is used. Set to null to use the default
-    prompt.
-    """
-
     auto_close_message: Optional[str]
     """Message to display when the chat is automatically closed."""
 
