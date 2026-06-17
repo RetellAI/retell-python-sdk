@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.51.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.50.0...v5.51.0) (2026-06-17)
+
+
+### Features
+
+* **api:** api update ([73dec56](https://github.com/RetellAI/retell-python-sdk/commit/73dec56f49821452f30a7cd89c303f5505c16c4a))
+
+
+### Chores
+
+* preserve production workflow files ([09d57b1](https://github.com/RetellAI/retell-python-sdk/commit/09d57b17aa3af1462458321627f90c5c16410e4c))
+
 ## [5.50.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.49.0...v5.50.0) (2026-06-16)
 
 
