@@ -71,9 +71,6 @@ class AgentResource(SyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -378,17 +375,6 @@ class AgentResource(SyncAPIResource):
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
 
-          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
-              interaction as successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
-              When unset, the default system prompt is used. Set to null to use the default
-              prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
-              sentiment. When unset, the default system prompt is used. Set to null to use the
-              default prompt.
-
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -602,9 +588,6 @@ class AgentResource(SyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -718,9 +701,6 @@ class AgentResource(SyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -1022,17 +1002,6 @@ class AgentResource(SyncAPIResource):
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
 
-          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
-              interaction as successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
-              When unset, the default system prompt is used. Set to null to use the default
-              prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
-              sentiment. When unset, the default system prompt is used. Set to null to use the
-              default prompt.
-
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -1253,9 +1222,6 @@ class AgentResource(SyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -1614,9 +1580,6 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -1921,17 +1884,6 @@ class AsyncAgentResource(AsyncAPIResource):
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
 
-          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
-              interaction as successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
-              When unset, the default system prompt is used. Set to null to use the default
-              prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
-              sentiment. When unset, the default system prompt is used. Set to null to use the
-              default prompt.
-
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -2145,9 +2097,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -2261,9 +2210,6 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -2565,17 +2511,6 @@ class AsyncAgentResource(AsyncAPIResource):
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
 
-          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
-              interaction as successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
-              When unset, the default system prompt is used. Set to null to use the default
-              prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
-              sentiment. When unset, the default system prompt is used. Set to null to use the
-              default prompt.
-
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -2796,9 +2731,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
