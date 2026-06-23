@@ -172,7 +172,6 @@ class LlmUpdateParams(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
         ]
@@ -393,6 +392,13 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedD
     agent_detection_timeout_ms: float
     """The time to wait before considering transfer fails."""
 
+    custom_on_hold_music_asset_id: str
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: bool
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
@@ -402,8 +408,12 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedD
     This prompt will guide the AI on how to navigate the IVR system.
     """
 
-    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     opt_out_human_detection: bool
     """If set to true, will not perform human detection for the transfer.
@@ -512,11 +522,22 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer
     type: Required[Literal["agentic_warm_transfer"]]
     """The type of the transfer."""
 
+    custom_on_hold_music_asset_id: str
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: bool
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     public_handoff_option: GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
     """
@@ -1542,6 +1563,13 @@ class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedDic
     agent_detection_timeout_ms: float
     """The time to wait before considering transfer fails."""
 
+    custom_on_hold_music_asset_id: str
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: bool
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
@@ -1551,8 +1579,12 @@ class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(TypedDic
     This prompt will guide the AI on how to navigate the IVR system.
     """
 
-    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     opt_out_human_detection: bool
     """If set to true, will not perform human detection for the transfer.
@@ -1661,11 +1693,22 @@ class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(T
     type: Required[Literal["agentic_warm_transfer"]]
     """The type of the transfer."""
 
+    custom_on_hold_music_asset_id: str
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: bool
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     public_handoff_option: StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
     """
