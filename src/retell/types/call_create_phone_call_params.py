@@ -928,7 +928,6 @@ class AgentOverrideAgent(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
         ]
@@ -1151,7 +1150,6 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
         ]
@@ -1258,7 +1256,6 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
         ]

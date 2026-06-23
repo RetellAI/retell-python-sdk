@@ -1667,7 +1667,6 @@ class ComponentNodeConversationNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -2212,7 +2211,6 @@ class ComponentNodeSubagentNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -2448,6 +2446,13 @@ class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionW
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
@@ -2459,8 +2464,12 @@ class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionW
     This prompt will guide the AI on how to navigate the IVR system.
     """
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     opt_out_human_detection: Optional[bool] = None
     """If set to true, will not perform human detection for the transfer.
@@ -2571,11 +2580,22 @@ class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionA
     type: Literal["agentic_warm_transfer"]
     """The type of the transfer."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     public_handoff_option: Optional[
         ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
@@ -3606,7 +3626,6 @@ class ComponentNodeEndNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -3975,7 +3994,6 @@ class ComponentNodeFunctionNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -4358,7 +4376,6 @@ class ComponentNodeCodeNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -4610,6 +4627,13 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(Base
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
@@ -4619,8 +4643,12 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(Base
     This prompt will guide the AI on how to navigate the IVR system.
     """
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     opt_out_human_detection: Optional[bool] = None
     """If set to true, will not perform human detection for the transfer.
@@ -4731,11 +4759,22 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransf
     type: Literal["agentic_warm_transfer"]
     """The type of the transfer."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     public_handoff_option: Optional[
         ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
@@ -4962,7 +5001,6 @@ class ComponentNodeTransferCallNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -5340,7 +5378,6 @@ class ComponentNodePressDigitNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -5690,7 +5727,6 @@ class ComponentNodeBranchNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -6039,7 +6075,6 @@ class ComponentNodeSMSNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -6506,7 +6541,6 @@ class ComponentNodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -6803,7 +6837,6 @@ class ComponentNodeAgentSwapNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -7193,7 +7226,6 @@ class ComponentNodeMcpNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -7782,7 +7814,6 @@ class ComponentNodeBridgeTransferNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -8019,7 +8050,6 @@ class ComponentNodeCancelTransferNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -8429,7 +8459,6 @@ class ModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -8879,7 +8908,6 @@ class NodeConversationNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -9421,7 +9449,6 @@ class NodeSubagentNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -9657,6 +9684,13 @@ class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransf
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
@@ -9666,8 +9700,12 @@ class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransf
     This prompt will guide the AI on how to navigate the IVR system.
     """
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     opt_out_human_detection: Optional[bool] = None
     """If set to true, will not perform human detection for the transfer.
@@ -9780,11 +9818,22 @@ class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWar
     type: Literal["agentic_warm_transfer"]
     """The type of the transfer."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     public_handoff_option: Optional[
         NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
@@ -10815,7 +10864,6 @@ class NodeEndNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -11180,7 +11228,6 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -11562,7 +11609,6 @@ class NodeCodeNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -11810,6 +11856,13 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(BaseModel):
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
@@ -11819,8 +11872,12 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(BaseModel):
     This prompt will guide the AI on how to navigate the IVR system.
     """
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     opt_out_human_detection: Optional[bool] = None
     """If set to true, will not perform human detection for the transfer.
@@ -11927,11 +11984,22 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer(BaseMo
     type: Literal["agentic_warm_transfer"]
     """The type of the transfer."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     public_handoff_option: Optional[
         NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
@@ -12149,7 +12217,6 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -12518,7 +12585,6 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -12867,7 +12933,6 @@ class NodeBranchNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -13216,7 +13281,6 @@ class NodeSMSNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -13679,7 +13743,6 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -13967,7 +14030,6 @@ class NodeAgentSwapNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -14356,7 +14418,6 @@ class NodeMcpNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -14929,7 +14990,6 @@ class NodeBridgeTransferNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -15155,7 +15215,6 @@ class NodeCancelTransferNodeModelChoice(BaseModel):
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
     ]
@@ -15463,6 +15522,12 @@ Tool: TypeAlias = Union[ToolCustomTool, ToolCheckAvailabilityCalTool, ToolBookAp
 class ConversationFlowResponse(BaseModel):
     conversation_flow_id: str
     """Unique identifier for the conversation flow"""
+
+    last_modification_timestamp: int
+    """Last modification timestamp (milliseconds since epoch).
+
+    Either the time of last update or creation if no updates available.
+    """
 
     version: int
     """Version number of the conversation flow"""
