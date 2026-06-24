@@ -3081,6 +3081,14 @@ class NodeSubagentNodeToolCustomTool(TypedDict, total=False):
     method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
     """Method to use for the request, default to POST."""
 
+    parameter_type: Literal["json", "form"]
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
+
     parameters: NodeSubagentNodeToolCustomToolParameters
     """The parameters the functions accepts, described as a JSON Schema object.
 
@@ -10017,6 +10025,14 @@ class ComponentNodeSubagentNodeToolCustomTool(TypedDict, total=False):
     method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
     """Method to use for the request, default to POST."""
 
+    parameter_type: Literal["json", "form"]
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
+
     parameters: ComponentNodeSubagentNodeToolCustomToolParameters
     """The parameters the functions accepts, described as a JSON Schema object.
 
@@ -15396,6 +15412,14 @@ class ComponentToolCustomTool(TypedDict, total=False):
     method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
     """Method to use for the request, default to POST."""
 
+    parameter_type: Literal["json", "form"]
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
+
     parameters: ComponentToolCustomToolParameters
     """The parameters the functions accepts, described as a JSON Schema object.
 
@@ -15698,6 +15722,14 @@ class ToolCustomTool(TypedDict, total=False):
 
     method: Literal["GET", "POST", "PUT", "PATCH", "DELETE"]
     """Method to use for the request, default to POST."""
+
+    parameter_type: Literal["json", "form"]
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
 
     parameters: ToolCustomToolParameters
     """The parameters the functions accepts, described as a JSON Schema object.

@@ -344,6 +344,7 @@ class TestConversationFlow:
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
+                            "parameter_type": "json",
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
@@ -415,6 +416,7 @@ class TestConversationFlow:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",
@@ -725,6 +727,7 @@ class TestConversationFlow:
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
+                            "parameter_type": "json",
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
@@ -922,6 +925,7 @@ class TestConversationFlow:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",
@@ -1385,6 +1389,7 @@ class TestAsyncConversationFlow:
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
+                            "parameter_type": "json",
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
@@ -1456,6 +1461,7 @@ class TestAsyncConversationFlow:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",
@@ -1766,6 +1772,7 @@ class TestAsyncConversationFlow:
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
+                            "parameter_type": "json",
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
@@ -1963,6 +1970,7 @@ class TestAsyncConversationFlow:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",
