@@ -807,6 +807,14 @@ class GeneralToolCustomTool(BaseModel):
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
 
+    parameter_type: Optional[Literal["json", "form"]] = None
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
+
     parameters: Optional[GeneralToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
 
@@ -1979,6 +1987,14 @@ class StateToolCustomTool(BaseModel):
 
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
+
+    parameter_type: Optional[Literal["json", "form"]] = None
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
 
     parameters: Optional[StateToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
