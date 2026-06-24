@@ -2,32 +2,41 @@
 
 from __future__ import annotations
 
-from typing_extensions import TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["ChatAgentListParams"]
+__all__ = ["ChatAgentListParams", "FilterCriteria", "FilterCriteriaChannel"]
 
 
 class ChatAgentListParams(TypedDict, total=False):
-    is_latest: bool
-    """If true, only return the latest version of each chat agent."""
-
     limit: int
-    """A limit on the number of objects to be returned.
-
-    Limit can range between 1 and 1000, and the default is 1000.
-    """
+    """Maximum number of items to return."""
 
     pagination_key: str
-    """The pagination key to continue fetching the next page of agents.
+    """Pagination key for fetching the next page."""
 
-    Pagination key is represented by a agent id, pagination key and version pair is
-    exclusive (not included in the fetched page). If not set, will start from the
-    beginning.
+    sort_order: Literal["ascending", "descending"]
+    """Sort order for results."""
+
+    filter_criteria: FilterCriteria
+    """Filters for listing agents. All provided filters are connected with AND."""
+
+
+class FilterCriteriaChannel(TypedDict, total=False):
+    op: Required[Literal["eq", "ne", "sw", "ew", "co"]]
+    """eq: equal, ne: not equal, sw: starts with, ew: ends with, co: contains"""
+
+    type: Required[Literal["string"]]
+
+    value: Required[Literal["voice", "chat"]]
+
+
+class FilterCriteria(TypedDict, total=False):
+    """Filters for listing agents. All provided filters are connected with AND."""
+
+    channel: FilterCriteriaChannel
+
+    query: str
     """
-
-    pagination_key_version: int
-    """Specifies the version of the agent associated with the pagination_key.
-
-    When paginating, both the pagination_key and its version must be provided to
-    ensure consistent ordering and to fetch the next page correctly.
+    Case-insensitive substring search over agent name, plus substring search over
+    agent id.
     """

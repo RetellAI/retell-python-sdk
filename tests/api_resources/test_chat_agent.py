@@ -16,8 +16,6 @@ from retell.types import (
     ChatAgentCreateVersionResponse,
 )
 
-# pyright: reportDeprecated=false
-
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
@@ -265,29 +263,31 @@ class TestChatAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            chat_agent = client.chat_agent.list()
-
+        chat_agent = client.chat_agent.list()
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            chat_agent = client.chat_agent.list(
-                is_latest=True,
-                limit=50,
-                pagination_key="16b980523634a6dc504898cda492e939",
-                pagination_key_version=0,
-            )
-
+        chat_agent = client.chat_agent.list(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+            filter_criteria={
+                "channel": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "voice",
+                },
+                "query": "query",
+            },
+        )
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = client.chat_agent.with_raw_response.list()
+        response = client.chat_agent.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -297,13 +297,12 @@ class TestChatAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            with client.chat_agent.with_streaming_response.list() as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with client.chat_agent.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-                chat_agent = response.parse()
-                assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
+            chat_agent = response.parse()
+            assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -787,29 +786,31 @@ class TestAsyncChatAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            chat_agent = await async_client.chat_agent.list()
-
+        chat_agent = await async_client.chat_agent.list()
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            chat_agent = await async_client.chat_agent.list(
-                is_latest=True,
-                limit=50,
-                pagination_key="16b980523634a6dc504898cda492e939",
-                pagination_key_version=0,
-            )
-
+        chat_agent = await async_client.chat_agent.list(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+            filter_criteria={
+                "channel": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "voice",
+                },
+                "query": "query",
+            },
+        )
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = await async_client.chat_agent.with_raw_response.list()
+        response = await async_client.chat_agent.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -819,13 +820,12 @@ class TestAsyncChatAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            async with async_client.chat_agent.with_streaming_response.list() as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        async with async_client.chat_agent.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-                chat_agent = await response.parse()
-                assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
+            chat_agent = await response.parse()
+            assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

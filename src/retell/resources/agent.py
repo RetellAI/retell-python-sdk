@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Any, List, Union, Iterable, Optional, cast
 from typing_extensions import Literal
 
@@ -1283,14 +1282,13 @@ class AgentResource(SyncAPIResource):
             cast_to=AgentResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
-        is_latest: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
-        pagination_key_version: int | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
+        filter_criteria: agent_list_params.FilterCriteria | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1299,21 +1297,16 @@ class AgentResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListResponse:
         """
-        List all agents
+        List unique agents with pagination.
 
         Args:
-          is_latest: If true, only return the latest version of each agent.
+          limit: Maximum number of items to return.
 
-          limit: A limit on the number of objects to be returned. Limit can range between 1 and
-              1000, and the default is 1000.
+          pagination_key: Pagination key for fetching the next page.
 
-          pagination_key: The pagination key to continue fetching the next page of agents. Pagination key
-              is represented by a agent id, pagination key and version pair is exclusive (not
-              included in the fetched page). If not set, will start from the beginning.
+          sort_order: Sort order for results.
 
-          pagination_key_version: Specifies the version of the agent associated with the pagination_key. When
-              paginating, both the pagination_key and its version must be provided to ensure
-              consistent ordering and to fetch the next page correctly.
+          filter_criteria: Filters for listing agents. All provided filters are connected with AND.
 
           extra_headers: Send extra headers
 
@@ -1323,8 +1316,9 @@ class AgentResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
-            "/list-agents",
+        return self._post(
+            "/v2/list-agents",
+            body=maybe_transform({"filter_criteria": filter_criteria}, agent_list_params.AgentListParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1332,10 +1326,9 @@ class AgentResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "is_latest": is_latest,
                         "limit": limit,
                         "pagination_key": pagination_key,
-                        "pagination_key_version": pagination_key_version,
+                        "sort_order": sort_order,
                     },
                     agent_list_params.AgentListParams,
                 ),
@@ -2790,14 +2783,13 @@ class AsyncAgentResource(AsyncAPIResource):
             cast_to=AgentResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
-        is_latest: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
-        pagination_key_version: int | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
+        filter_criteria: agent_list_params.FilterCriteria | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2806,21 +2798,16 @@ class AsyncAgentResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListResponse:
         """
-        List all agents
+        List unique agents with pagination.
 
         Args:
-          is_latest: If true, only return the latest version of each agent.
+          limit: Maximum number of items to return.
 
-          limit: A limit on the number of objects to be returned. Limit can range between 1 and
-              1000, and the default is 1000.
+          pagination_key: Pagination key for fetching the next page.
 
-          pagination_key: The pagination key to continue fetching the next page of agents. Pagination key
-              is represented by a agent id, pagination key and version pair is exclusive (not
-              included in the fetched page). If not set, will start from the beginning.
+          sort_order: Sort order for results.
 
-          pagination_key_version: Specifies the version of the agent associated with the pagination_key. When
-              paginating, both the pagination_key and its version must be provided to ensure
-              consistent ordering and to fetch the next page correctly.
+          filter_criteria: Filters for listing agents. All provided filters are connected with AND.
 
           extra_headers: Send extra headers
 
@@ -2830,8 +2817,9 @@ class AsyncAgentResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
-            "/list-agents",
+        return await self._post(
+            "/v2/list-agents",
+            body=await async_maybe_transform({"filter_criteria": filter_criteria}, agent_list_params.AgentListParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2839,10 +2827,9 @@ class AsyncAgentResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "is_latest": is_latest,
                         "limit": limit,
                         "pagination_key": pagination_key,
-                        "pagination_key_version": pagination_key_version,
+                        "sort_order": sort_order,
                     },
                     agent_list_params.AgentListParams,
                 ),
@@ -3065,10 +3052,8 @@ class AgentResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             agent.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                agent.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_raw_response_wrapper(
+            agent.list,
         )
         self.delete = to_raw_response_wrapper(
             agent.delete,
@@ -3100,10 +3085,8 @@ class AsyncAgentResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             agent.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                agent.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_raw_response_wrapper(
+            agent.list,
         )
         self.delete = async_to_raw_response_wrapper(
             agent.delete,
@@ -3135,10 +3118,8 @@ class AgentResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             agent.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                agent.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_streamed_response_wrapper(
+            agent.list,
         )
         self.delete = to_streamed_response_wrapper(
             agent.delete,
@@ -3170,10 +3151,8 @@ class AsyncAgentResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             agent.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                agent.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_streamed_response_wrapper(
+            agent.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             agent.delete,
