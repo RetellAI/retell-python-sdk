@@ -127,6 +127,7 @@ class TestsResource(SyncAPIResource):
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
         | Omit = omit,
         tool_mocks: Iterable[test_create_test_case_definition_params.ToolMock] | Omit = omit,
@@ -521,6 +522,7 @@ class TestsResource(SyncAPIResource):
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
         | Omit = omit,
         metrics: SequenceNotStr[str] | Omit = omit,
@@ -678,6 +680,7 @@ class AsyncTestsResource(AsyncAPIResource):
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
         | Omit = omit,
         tool_mocks: Iterable[test_create_test_case_definition_params.ToolMock] | Omit = omit,
@@ -1072,6 +1075,7 @@ class AsyncTestsResource(AsyncAPIResource):
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
         | Omit = omit,
         metrics: SequenceNotStr[str] | Omit = omit,

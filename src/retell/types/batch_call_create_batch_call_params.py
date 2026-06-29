@@ -911,6 +911,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The model to use for post call analysis. Default to gpt-4.1."""
@@ -1133,6 +1134,7 @@ class TaskAgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -1239,6 +1241,7 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""

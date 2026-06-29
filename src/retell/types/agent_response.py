@@ -892,6 +892,7 @@ class AgentResponse(BaseModel):
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ] = None
     """The model to use for post call analysis. Default to gpt-4.1."""

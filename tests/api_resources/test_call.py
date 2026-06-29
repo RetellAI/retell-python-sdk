@@ -141,6 +141,11 @@ class TestCall:
                         "version": [0],
                     }
                 ],
+                "agent_tag": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
                 "batch_call_id": {
                     "op": "eq",
                     "type": "string",
@@ -1096,6 +1101,11 @@ class TestAsyncCall:
                         "version": [0],
                     }
                 ],
+                "agent_tag": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
                 "batch_call_id": {
                     "op": "eq",
                     "type": "string",

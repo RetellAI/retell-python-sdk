@@ -75,6 +75,7 @@ class LlmResource(SyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -266,6 +267,7 @@ class LlmResource(SyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -526,6 +528,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -717,6 +720,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,

@@ -1669,6 +1669,7 @@ class ComponentNodeConversationNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -2213,6 +2214,7 @@ class ComponentNodeSubagentNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -3636,6 +3638,7 @@ class ComponentNodeEndNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -4004,6 +4007,7 @@ class ComponentNodeFunctionNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -4386,6 +4390,7 @@ class ComponentNodeCodeNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -5011,6 +5016,7 @@ class ComponentNodeTransferCallNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -5388,6 +5394,7 @@ class ComponentNodePressDigitNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -5737,6 +5744,7 @@ class ComponentNodeBranchNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -6085,6 +6093,7 @@ class ComponentNodeSMSNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -6551,6 +6560,7 @@ class ComponentNodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -6847,6 +6857,7 @@ class ComponentNodeAgentSwapNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -7236,6 +7247,7 @@ class ComponentNodeMcpNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -7824,6 +7836,7 @@ class ComponentNodeBridgeTransferNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -8060,6 +8073,7 @@ class ComponentNodeCancelTransferNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -8477,6 +8491,7 @@ class ModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -8926,6 +8941,7 @@ class NodeConversationNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -9467,6 +9483,7 @@ class NodeSubagentNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -10890,6 +10907,7 @@ class NodeEndNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -11254,6 +11272,7 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -11635,6 +11654,7 @@ class NodeCodeNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -12243,6 +12263,7 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -12611,6 +12632,7 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -12959,6 +12981,7 @@ class NodeBranchNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -13307,6 +13330,7 @@ class NodeSMSNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -13769,6 +13793,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -14056,6 +14081,7 @@ class NodeAgentSwapNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -14444,6 +14470,7 @@ class NodeMcpNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -15016,6 +15043,7 @@ class NodeBridgeTransferNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -15241,6 +15269,7 @@ class NodeCancelTransferNodeModelChoice(BaseModel):
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
