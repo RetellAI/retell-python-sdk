@@ -26,7 +26,7 @@ __all__ = [
 
 
 class ChatAgentUpdateParams(TypedDict, total=False):
-    version: Union[int, str]
+    version: Union[str, int]
     """Optional version of the API to use for this request. Default to latest version."""
 
     agent_name: Optional[str]
@@ -248,6 +248,7 @@ class ChatAgentUpdateParams(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",

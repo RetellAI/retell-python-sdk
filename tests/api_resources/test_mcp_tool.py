@@ -33,7 +33,7 @@ class TestMcpTool:
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             mcp_id="mcp-server-1",
             component_id="component-123",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(McpToolGetMcpToolsResponse, mcp_tool, path=["response"])
 
@@ -96,7 +96,7 @@ class TestAsyncMcpTool:
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             mcp_id="mcp-server-1",
             component_id="component-123",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(McpToolGetMcpToolsResponse, mcp_tool, path=["response"])
 

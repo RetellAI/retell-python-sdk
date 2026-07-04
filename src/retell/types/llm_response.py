@@ -344,7 +344,7 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the transfer agent to use."""
 
 
@@ -594,7 +594,7 @@ class GeneralToolAgentSwapTool(BaseModel):
 
     type: Literal["agent_swap"]
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -1525,7 +1525,7 @@ class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAg
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the transfer agent to use."""
 
 
@@ -1775,7 +1775,7 @@ class StateToolAgentSwapTool(BaseModel):
 
     type: Literal["agent_swap"]
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -2494,6 +2494,7 @@ class LlmResponse(BaseModel):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",

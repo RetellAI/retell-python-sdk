@@ -1305,6 +1305,7 @@ class ModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -1761,6 +1762,7 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -2309,6 +2311,7 @@ class NodeSubagentNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -2621,7 +2624,7 @@ class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWar
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Required[Union[int, str]]
+    agent_version: Required[Union[str, int]]
     """The version of the transfer agent to use."""
 
 
@@ -2871,7 +2874,7 @@ class NodeSubagentNodeToolAgentSwapTool(TypedDict, total=False):
 
     type: Required[Literal["agent_swap"]]
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -3735,6 +3738,7 @@ class NodeEndNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -4106,6 +4110,7 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -4492,6 +4497,7 @@ class NodeCodeNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -4816,7 +4822,7 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgentic
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Required[Union[int, str]]
+    agent_version: Required[Union[str, int]]
     """The version of the transfer agent to use."""
 
 
@@ -5109,6 +5115,7 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -5484,6 +5491,7 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -5839,6 +5847,7 @@ class NodeBranchNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -6192,6 +6201,7 @@ class NodeSMSNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -6671,6 +6681,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -6963,6 +6974,7 @@ class NodeAgentSwapNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -6994,7 +7006,7 @@ class NodeAgentSwapNode(TypedDict, total=False):
     type: Required[Literal["agent_swap"]]
     """Type of the node"""
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version
@@ -7356,6 +7368,7 @@ class NodeMcpNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -7941,6 +7954,7 @@ class NodeBridgeTransferNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -8175,6 +8189,7 @@ class NodeCancelTransferNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -8704,6 +8719,7 @@ class ComponentNodeConversationNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -9259,6 +9275,7 @@ class ComponentNodeSubagentNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -9577,7 +9594,7 @@ class ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionA
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Required[Union[int, str]]
+    agent_version: Required[Union[str, int]]
     """The version of the transfer agent to use."""
 
 
@@ -9829,7 +9846,7 @@ class ComponentNodeSubagentNodeToolAgentSwapTool(TypedDict, total=False):
 
     type: Required[Literal["agent_swap"]]
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -10695,6 +10712,7 @@ class ComponentNodeEndNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -11072,6 +11090,7 @@ class ComponentNodeFunctionNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -11461,6 +11480,7 @@ class ComponentNodeCodeNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -11785,7 +11805,7 @@ class ComponentNodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransf
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Required[Union[int, str]]
+    agent_version: Required[Union[str, int]]
     """The version of the transfer agent to use."""
 
 
@@ -12101,6 +12121,7 @@ class ComponentNodeTransferCallNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -12483,6 +12504,7 @@ class ComponentNodePressDigitNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -12841,6 +12863,7 @@ class ComponentNodeBranchNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -13196,6 +13219,7 @@ class ComponentNodeSMSNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -13691,6 +13715,7 @@ class ComponentNodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -13988,6 +14013,7 @@ class ComponentNodeAgentSwapNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -14019,7 +14045,7 @@ class ComponentNodeAgentSwapNode(TypedDict, total=False):
     type: Required[Literal["agent_swap"]]
     """Type of the node"""
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version
@@ -14384,6 +14410,7 @@ class ComponentNodeMcpNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -14991,6 +15018,7 @@ class ComponentNodeBridgeTransferNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -15242,6 +15270,7 @@ class ComponentNodeCancelTransferNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",

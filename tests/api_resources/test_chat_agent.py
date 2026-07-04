@@ -128,7 +128,7 @@ class TestChatAgent:
     def test_method_retrieve_with_all_params(self, client: Retell) -> None:
         chat_agent = client.chat_agent.retrieve(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
@@ -179,7 +179,7 @@ class TestChatAgent:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         chat_agent = client.chat_agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
             agent_name="Jarvis",
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_retention_days=30,
@@ -651,7 +651,7 @@ class TestAsyncChatAgent:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.retrieve(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
@@ -702,7 +702,7 @@ class TestAsyncChatAgent:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
             agent_name="Jarvis",
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_retention_days=30,

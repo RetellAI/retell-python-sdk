@@ -262,6 +262,7 @@ class AgentResource(SyncAPIResource):
                 "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -285,9 +286,7 @@ class AgentResource(SyncAPIResource):
         | Omit = omit,
         voice_model: Optional[
             Literal[
-                "eleven_turbo_v2",
                 "eleven_flash_v2",
-                "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
@@ -648,7 +647,7 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -689,7 +688,7 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
         allow_dtmf_interruption: bool | Omit = omit,
         allow_user_dtmf: bool | Omit = omit,
@@ -892,6 +891,7 @@ class AgentResource(SyncAPIResource):
                 "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -917,9 +917,7 @@ class AgentResource(SyncAPIResource):
         voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
-                "eleven_turbo_v2",
                 "eleven_flash_v2",
-                "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
@@ -1765,6 +1763,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -1788,9 +1787,7 @@ class AsyncAgentResource(AsyncAPIResource):
         | Omit = omit,
         voice_model: Optional[
             Literal[
-                "eleven_turbo_v2",
                 "eleven_flash_v2",
-                "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
@@ -2151,7 +2148,7 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2192,7 +2189,7 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
         allow_dtmf_interruption: bool | Omit = omit,
         allow_user_dtmf: bool | Omit = omit,
@@ -2395,6 +2392,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -2420,9 +2418,7 @@ class AsyncAgentResource(AsyncAPIResource):
         voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
-                "eleven_turbo_v2",
                 "eleven_flash_v2",
-                "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",

@@ -91,7 +91,7 @@ class InboundAgent(TypedDict, total=False):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -114,7 +114,7 @@ class OutboundAgent(TypedDict, total=False):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for

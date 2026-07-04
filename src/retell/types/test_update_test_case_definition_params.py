@@ -38,6 +38,7 @@ class TestUpdateTestCaseDefinitionParams(TypedDict, total=False):
         "gpt-5.5",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",

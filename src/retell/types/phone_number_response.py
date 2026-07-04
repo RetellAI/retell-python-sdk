@@ -24,7 +24,7 @@ class InboundAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -47,7 +47,7 @@ class InboundSMSAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -70,7 +70,7 @@ class OutboundAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -93,7 +93,7 @@ class OutboundSMSAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for

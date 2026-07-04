@@ -134,7 +134,7 @@ class TestAgent:
             version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
             voicemail_option={
@@ -198,7 +198,7 @@ class TestAgent:
     def test_method_retrieve_with_all_params(self, client: Retell) -> None:
         agent = client.agent.retrieve(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
 
@@ -249,7 +249,7 @@ class TestAgent:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         agent = client.agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
             agent_name="Jarvis",
             allow_dtmf_interruption=False,
             allow_user_dtmf=True,
@@ -346,7 +346,7 @@ class TestAgent:
             vocab_specialization="general",
             voice_emotion="calm",
             voice_id="retell-Cimo",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
             voicemail_option={
@@ -794,7 +794,7 @@ class TestAsyncAgent:
             version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
             voicemail_option={
@@ -858,7 +858,7 @@ class TestAsyncAgent:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.retrieve(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
 
@@ -909,7 +909,7 @@ class TestAsyncAgent:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
             agent_name="Jarvis",
             allow_dtmf_interruption=False,
             allow_user_dtmf=True,
@@ -1006,7 +1006,7 @@ class TestAsyncAgent:
             vocab_specialization="general",
             voice_emotion="calm",
             voice_id="retell-Cimo",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
             voicemail_option={

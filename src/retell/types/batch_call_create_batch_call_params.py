@@ -908,6 +908,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -1012,9 +1013,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
 
     voice_model: Optional[
         Literal[
-            "eleven_turbo_v2",
             "eleven_flash_v2",
-            "eleven_turbo_v2_5",
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
             "eleven_v3",
@@ -1131,6 +1130,7 @@ class TaskAgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -1238,6 +1238,7 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -1351,7 +1352,7 @@ class Task(TypedDict, total=False):
     This does not bind the agent to this number, this is for one time override.
     """
 
-    override_agent_version: Union[int, str]
+    override_agent_version: Union[str, int]
     """For this particular call, override the agent version used with this version.
 
     This does not bind the agent to this number, this is for one time override.

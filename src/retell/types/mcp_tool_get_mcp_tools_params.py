@@ -15,7 +15,7 @@ class McpToolGetMcpToolsParams(TypedDict, total=False):
     component_id: str
     """The ID of the component if the MCP server is configured under a component."""
 
-    version: Union[int, str]
+    version: Union[str, int]
     """Optional version of the agent to use for this request.
 
     Default to latest version.
