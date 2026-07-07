@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Any, List, Union, Iterable, Optional, cast
 from typing_extensions import Literal
 
@@ -223,9 +222,11 @@ class ChatAgentResource(SyncAPIResource):
                 "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -357,7 +358,7 @@ class ChatAgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -398,7 +399,7 @@ class ChatAgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
@@ -562,9 +563,11 @@ class ChatAgentResource(SyncAPIResource):
                 "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -701,14 +704,13 @@ class ChatAgentResource(SyncAPIResource):
             cast_to=ChatAgentResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
-        is_latest: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
-        pagination_key_version: int | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
+        filter_criteria: chat_agent_list_params.FilterCriteria | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -717,21 +719,16 @@ class ChatAgentResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatAgentListResponse:
         """
-        List all chat agents
+        List unique agents with pagination.
 
         Args:
-          is_latest: If true, only return the latest version of each chat agent.
+          limit: Maximum number of items to return.
 
-          limit: A limit on the number of objects to be returned. Limit can range between 1 and
-              1000, and the default is 1000.
+          pagination_key: Pagination key for fetching the next page.
 
-          pagination_key: The pagination key to continue fetching the next page of agents. Pagination key
-              is represented by a agent id, pagination key and version pair is exclusive (not
-              included in the fetched page). If not set, will start from the beginning.
+          sort_order: Sort order for results.
 
-          pagination_key_version: Specifies the version of the agent associated with the pagination_key. When
-              paginating, both the pagination_key and its version must be provided to ensure
-              consistent ordering and to fetch the next page correctly.
+          filter_criteria: Filters for listing agents. All provided filters are connected with AND.
 
           extra_headers: Send extra headers
 
@@ -741,8 +738,9 @@ class ChatAgentResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
-            "/list-chat-agents",
+        return self._post(
+            "/v2/list-agents",
+            body=maybe_transform({"filter_criteria": filter_criteria}, chat_agent_list_params.ChatAgentListParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -750,10 +748,9 @@ class ChatAgentResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "is_latest": is_latest,
                         "limit": limit,
                         "pagination_key": pagination_key,
-                        "pagination_key_version": pagination_key_version,
+                        "sort_order": sort_order,
                     },
                     chat_agent_list_params.ChatAgentListParams,
                 ),
@@ -1150,9 +1147,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -1284,7 +1283,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1327,7 +1326,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
@@ -1491,9 +1490,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "gpt-5.5",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -1630,14 +1631,13 @@ class AsyncChatAgentResource(AsyncAPIResource):
             cast_to=ChatAgentResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
-        is_latest: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
-        pagination_key_version: int | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
+        filter_criteria: chat_agent_list_params.FilterCriteria | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1646,21 +1646,16 @@ class AsyncChatAgentResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatAgentListResponse:
         """
-        List all chat agents
+        List unique agents with pagination.
 
         Args:
-          is_latest: If true, only return the latest version of each chat agent.
+          limit: Maximum number of items to return.
 
-          limit: A limit on the number of objects to be returned. Limit can range between 1 and
-              1000, and the default is 1000.
+          pagination_key: Pagination key for fetching the next page.
 
-          pagination_key: The pagination key to continue fetching the next page of agents. Pagination key
-              is represented by a agent id, pagination key and version pair is exclusive (not
-              included in the fetched page). If not set, will start from the beginning.
+          sort_order: Sort order for results.
 
-          pagination_key_version: Specifies the version of the agent associated with the pagination_key. When
-              paginating, both the pagination_key and its version must be provided to ensure
-              consistent ordering and to fetch the next page correctly.
+          filter_criteria: Filters for listing agents. All provided filters are connected with AND.
 
           extra_headers: Send extra headers
 
@@ -1670,8 +1665,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
-            "/list-chat-agents",
+        return await self._post(
+            "/v2/list-agents",
+            body=await async_maybe_transform(
+                {"filter_criteria": filter_criteria}, chat_agent_list_params.ChatAgentListParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1679,10 +1677,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "is_latest": is_latest,
                         "limit": limit,
                         "pagination_key": pagination_key,
-                        "pagination_key_version": pagination_key_version,
+                        "sort_order": sort_order,
                     },
                     chat_agent_list_params.ChatAgentListParams,
                 ),
@@ -1905,10 +1902,8 @@ class ChatAgentResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             chat_agent.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                chat_agent.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_raw_response_wrapper(
+            chat_agent.list,
         )
         self.delete = to_raw_response_wrapper(
             chat_agent.delete,
@@ -1940,10 +1935,8 @@ class AsyncChatAgentResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             chat_agent.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                chat_agent.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_raw_response_wrapper(
+            chat_agent.list,
         )
         self.delete = async_to_raw_response_wrapper(
             chat_agent.delete,
@@ -1975,10 +1968,8 @@ class ChatAgentResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             chat_agent.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                chat_agent.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = to_streamed_response_wrapper(
+            chat_agent.list,
         )
         self.delete = to_streamed_response_wrapper(
             chat_agent.delete,
@@ -2010,10 +2001,8 @@ class AsyncChatAgentResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             chat_agent.update,
         )
-        self.list = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                chat_agent.list,  # pyright: ignore[reportDeprecated],
-            )
+        self.list = async_to_streamed_response_wrapper(
+            chat_agent.list,
         )
         self.delete = async_to_streamed_response_wrapper(
             chat_agent.delete,

@@ -33,7 +33,7 @@ class ChatCreateSMSChatParams(TypedDict, total=False):
     This does not bind the agent to this number, this is for one time override.
     """
 
-    override_agent_version: Union[int, str]
+    override_agent_version: Union[str, int]
     """For this particular chat, override the agent version used with this version.
 
     This does not bind the agent version to this number, this is for one time

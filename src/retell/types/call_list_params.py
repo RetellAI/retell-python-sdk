@@ -11,6 +11,7 @@ __all__ = [
     "CallListParams",
     "FilterCriteria",
     "FilterCriteriaAgent",
+    "FilterCriteriaAgentTag",
     "FilterCriteriaBatchCallID",
     "FilterCriteriaCallID",
     "FilterCriteriaCallIDStringFilter",
@@ -101,6 +102,17 @@ class FilterCriteriaAgent(TypedDict, total=False):
 
     version: Iterable[float]
     """Specific versions to filter on. If not provided, all versions are included."""
+
+
+class FilterCriteriaAgentTag(TypedDict, total=False):
+    """Filter by agent environment tag(s) (e.g. "prod", "staging")."""
+
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[SequenceNotStr[str]]
 
 
 class FilterCriteriaBatchCallID(TypedDict, total=False):
@@ -720,6 +732,9 @@ class FilterCriteria(TypedDict, total=False):
 
     agent: Iterable[FilterCriteriaAgent]
     """Filter by agent(s). Agent filters are connected by OR."""
+
+    agent_tag: FilterCriteriaAgentTag
+    """Filter by agent environment tag(s) (e.g. "prod", "staging")."""
 
     batch_call_id: FilterCriteriaBatchCallID
     """Filter by batch call ID."""

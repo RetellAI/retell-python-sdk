@@ -265,7 +265,7 @@ class CallResource(SyncAPIResource):
         ignore_e164_validation: bool | Omit = omit,
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
-        override_agent_version: Union[int, str] | Omit = omit,
+        override_agent_version: Union[str, int] | Omit = omit,
         retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -347,7 +347,7 @@ class CallResource(SyncAPIResource):
         *,
         agent_id: str,
         agent_override: call_create_web_call_params.AgentOverride | Omit = omit,
-        agent_version: Union[int, str] | Omit = omit,
+        agent_version: Union[str, int] | Omit = omit,
         current_node_id: Optional[str] | Omit = omit,
         current_state: Optional[str] | Omit = omit,
         metadata: object | Omit = omit,
@@ -422,7 +422,7 @@ class CallResource(SyncAPIResource):
         *,
         agent_id: str,
         agent_override: call_register_phone_call_params.AgentOverride | Omit = omit,
-        agent_version: Union[int, str] | Omit = omit,
+        agent_version: Union[str, int] | Omit = omit,
         direction: Literal["inbound", "outbound"] | Omit = omit,
         from_number: str | Omit = omit,
         metadata: object | Omit = omit,
@@ -756,7 +756,7 @@ class AsyncCallResource(AsyncAPIResource):
         ignore_e164_validation: bool | Omit = omit,
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
-        override_agent_version: Union[int, str] | Omit = omit,
+        override_agent_version: Union[str, int] | Omit = omit,
         retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -838,7 +838,7 @@ class AsyncCallResource(AsyncAPIResource):
         *,
         agent_id: str,
         agent_override: call_create_web_call_params.AgentOverride | Omit = omit,
-        agent_version: Union[int, str] | Omit = omit,
+        agent_version: Union[str, int] | Omit = omit,
         current_node_id: Optional[str] | Omit = omit,
         current_state: Optional[str] | Omit = omit,
         metadata: object | Omit = omit,
@@ -913,7 +913,7 @@ class AsyncCallResource(AsyncAPIResource):
         *,
         agent_id: str,
         agent_override: call_register_phone_call_params.AgentOverride | Omit = omit,
-        agent_version: Union[int, str] | Omit = omit,
+        agent_version: Union[str, int] | Omit = omit,
         direction: Literal["inbound", "outbound"] | Omit = omit,
         from_number: str | Omit = omit,
         metadata: object | Omit = omit,

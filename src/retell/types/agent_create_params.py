@@ -450,9 +450,11 @@ class AgentCreateParams(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The model to use for post call analysis. Default to gpt-4.1."""
@@ -540,9 +542,7 @@ class AgentCreateParams(TypedDict, total=False):
 
     voice_model: Optional[
         Literal[
-            "eleven_turbo_v2",
             "eleven_flash_v2",
-            "eleven_turbo_v2_5",
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
             "eleven_v3",

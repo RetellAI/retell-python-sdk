@@ -31,7 +31,7 @@ class PlaygroundCompletionParams(TypedDict, total=False):
     omitted.
     """
 
-    version: Union[int, str]
+    version: Union[str, int]
     """Agent version to use. Defaults to latest."""
 
     component_id: str

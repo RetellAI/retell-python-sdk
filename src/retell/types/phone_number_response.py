@@ -24,7 +24,7 @@ class InboundAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -47,7 +47,7 @@ class InboundSMSAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -70,7 +70,7 @@ class OutboundAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -93,7 +93,7 @@ class OutboundSMSAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -175,8 +175,7 @@ class PhoneNumberResponse(BaseModel):
     """Inbound SMS agents to bind to the number with weights.
 
     If set and non-empty, one agent will be picked randomly for each inbound SMS,
-    with probability proportional to the weight. Total weights must add up to 1. If
-    not set or empty, fallback to inbound_sms_agent_id.
+    with probability proportional to the weight. Total weights must add up to 1.
     """
 
     inbound_sms_webhook_url: Optional[str] = None
@@ -207,8 +206,7 @@ class PhoneNumberResponse(BaseModel):
     """Outbound SMS agents to bind to the number with weights.
 
     If set and non-empty, one agent will be picked randomly for each outbound SMS,
-    with probability proportional to the weight. Total weights must add up to 1. If
-    not set or empty, fallback to outbound_sms_agent_id.
+    with probability proportional to the weight. Total weights must add up to 1.
     """
 
     phone_number_pretty: Optional[str] = None

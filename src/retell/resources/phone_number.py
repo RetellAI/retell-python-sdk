@@ -239,8 +239,7 @@ class PhoneNumberResource(SyncAPIResource):
 
           inbound_sms_agents: Inbound SMS agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound SMS, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to inbound_sms_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           inbound_sms_webhook_url: If set, Retell will send a webhook for inbound SMS, where you can override the
               agent ID, set dynamic variables, and configure other fields specific to that
@@ -258,8 +257,7 @@ class PhoneNumberResource(SyncAPIResource):
 
           outbound_sms_agents: Outbound SMS agents to bind to the number with weights. If set and non-empty,
               one agent will be picked randomly for each outbound SMS, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to outbound_sms_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           termination_uri: The termination uri to update for the phone number. This is used for outbound
               calls.
@@ -697,8 +695,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           inbound_sms_agents: Inbound SMS agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound SMS, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to inbound_sms_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           inbound_sms_webhook_url: If set, Retell will send a webhook for inbound SMS, where you can override the
               agent ID, set dynamic variables, and configure other fields specific to that
@@ -716,8 +713,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           outbound_sms_agents: Outbound SMS agents to bind to the number with weights. If set and non-empty,
               one agent will be picked randomly for each outbound SMS, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to outbound_sms_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           termination_uri: The termination uri to update for the phone number. This is used for outbound
               calls.

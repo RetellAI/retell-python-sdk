@@ -1105,9 +1105,11 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -1652,9 +1654,11 @@ class NodeSubagentNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -1963,7 +1967,7 @@ class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWar
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Required[Union[int, str]]
+    agent_version: Required[Union[str, int]]
     """The version of the transfer agent to use."""
 
 
@@ -2213,7 +2217,7 @@ class NodeSubagentNodeToolAgentSwapTool(TypedDict, total=False):
 
     type: Required[Literal["agent_swap"]]
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -3077,9 +3081,11 @@ class NodeEndNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -3447,9 +3453,11 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -3832,9 +3840,11 @@ class NodeCodeNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -4155,7 +4165,7 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgentic
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Required[Union[int, str]]
+    agent_version: Required[Union[str, int]]
     """The version of the transfer agent to use."""
 
 
@@ -4448,9 +4458,11 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -4822,9 +4834,11 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -5176,9 +5190,11 @@ class NodeBranchNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -5528,9 +5544,11 @@ class NodeSMSNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -6006,9 +6024,11 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -6297,9 +6317,11 @@ class NodeAgentSwapNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -6327,7 +6349,7 @@ class NodeAgentSwapNode(TypedDict, total=False):
     type: Required[Literal["agent_swap"]]
     """Type of the node"""
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the agent to swap to.
 
     If not specified, will use the latest version
@@ -6689,9 +6711,11 @@ class NodeMcpNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -7273,9 +7297,11 @@ class NodeBridgeTransferNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -7506,9 +7532,11 @@ class NodeCancelTransferNodeModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""

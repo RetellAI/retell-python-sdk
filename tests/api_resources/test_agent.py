@@ -16,8 +16,6 @@ from retell.types import (
     AgentCreateVersionResponse,
 )
 
-# pyright: reportDeprecated=false
-
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
@@ -136,7 +134,7 @@ class TestAgent:
             version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
             voicemail_option={
@@ -200,7 +198,7 @@ class TestAgent:
     def test_method_retrieve_with_all_params(self, client: Retell) -> None:
         agent = client.agent.retrieve(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
 
@@ -251,7 +249,7 @@ class TestAgent:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         agent = client.agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
             agent_name="Jarvis",
             allow_dtmf_interruption=False,
             allow_user_dtmf=True,
@@ -348,7 +346,7 @@ class TestAgent:
             vocab_specialization="general",
             voice_emotion="calm",
             voice_id="retell-Cimo",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
             voicemail_option={
@@ -402,29 +400,31 @@ class TestAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            agent = client.agent.list()
-
+        agent = client.agent.list()
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            agent = client.agent.list(
-                is_latest=True,
-                limit=50,
-                pagination_key="agent_1ffdb9717444d0e77346838911",
-                pagination_key_version=0,
-            )
-
+        agent = client.agent.list(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+            filter_criteria={
+                "channel": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "voice",
+                },
+                "query": "query",
+            },
+        )
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = client.agent.with_raw_response.list()
+        response = client.agent.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -434,13 +434,12 @@ class TestAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Retell) -> None:
-        with pytest.warns(DeprecationWarning):
-            with client.agent.with_streaming_response.list() as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with client.agent.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-                agent = response.parse()
-                assert_matches_type(AgentListResponse, agent, path=["response"])
+            agent = response.parse()
+            assert_matches_type(AgentListResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -795,7 +794,7 @@ class TestAsyncAgent:
             version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
             voicemail_option={
@@ -859,7 +858,7 @@ class TestAsyncAgent:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.retrieve(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
 
@@ -910,7 +909,7 @@ class TestAsyncAgent:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
             agent_name="Jarvis",
             allow_dtmf_interruption=False,
             allow_user_dtmf=True,
@@ -1007,7 +1006,7 @@ class TestAsyncAgent:
             vocab_specialization="general",
             voice_emotion="calm",
             voice_id="retell-Cimo",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
             voicemail_option={
@@ -1061,29 +1060,31 @@ class TestAsyncAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            agent = await async_client.agent.list()
-
+        agent = await async_client.agent.list()
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            agent = await async_client.agent.list(
-                is_latest=True,
-                limit=50,
-                pagination_key="agent_1ffdb9717444d0e77346838911",
-                pagination_key_version=0,
-            )
-
+        agent = await async_client.agent.list(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+            filter_criteria={
+                "channel": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "voice",
+                },
+                "query": "query",
+            },
+        )
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = await async_client.agent.with_raw_response.list()
+        response = await async_client.agent.with_raw_response.list()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1093,13 +1094,12 @@ class TestAsyncAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncRetell) -> None:
-        with pytest.warns(DeprecationWarning):
-            async with async_client.agent.with_streaming_response.list() as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        async with async_client.agent.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-                agent = await response.parse()
-                assert_matches_type(AgentListResponse, agent, path=["response"])
+            agent = await response.parse()
+            assert_matches_type(AgentListResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

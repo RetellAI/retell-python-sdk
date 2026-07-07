@@ -90,7 +90,7 @@ class CallCreatePhoneCallParams(TypedDict, total=False):
     This does not bind the agent to this number, this is for one time override.
     """
 
-    override_agent_version: Union[int, str]
+    override_agent_version: Union[str, int]
     """For this particular call, override the agent version used with this version.
 
     This does not bind the agent version to this number, this is for one time
@@ -927,9 +927,11 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The model to use for post call analysis. Default to gpt-4.1."""
@@ -1030,9 +1032,7 @@ class AgentOverrideAgent(TypedDict, total=False):
 
     voice_model: Optional[
         Literal[
-            "eleven_turbo_v2",
             "eleven_flash_v2",
-            "eleven_turbo_v2_5",
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
             "eleven_v3",
@@ -1149,9 +1149,11 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The LLM model to use"""
@@ -1255,9 +1257,11 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-5.5",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""
