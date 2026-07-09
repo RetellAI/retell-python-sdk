@@ -1,5 +1,191 @@
 # Changelog
 
+## [5.54.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.53.0...v5.54.0) (2026-07-08)
+
+
+### Features
+
+* **api:** api update ([e7e729f](https://github.com/RetellAI/retell-python-sdk/commit/e7e729fc17e4d264a22142eaf26d405cfd6593aa))
+* **api:** api update ([dfce78e](https://github.com/RetellAI/retell-python-sdk/commit/dfce78e5398a5c0ec272b3852598770b40c7204c))
+* **api:** api update ([4dc0a99](https://github.com/RetellAI/retell-python-sdk/commit/4dc0a990089765f8fc19c67bf886a64451fd9fc0))
+* **api:** api update ([a05cffa](https://github.com/RetellAI/retell-python-sdk/commit/a05cffacd3f4159c0cdeb8b02d8ee81b010a7fda))
+* **api:** api update ([9e80f55](https://github.com/RetellAI/retell-python-sdk/commit/9e80f556b2de52668b20bf9d30ced35ea4c9e337))
+
+
+### Chores
+
+* preserve production workflow files ([8683b11](https://github.com/RetellAI/retell-python-sdk/commit/8683b11151829ffa2179b286610cfaa4f488f854))
+
+## [5.53.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.52.0...v5.53.0) (2026-06-24)
+
+
+### Features
+
+* **api:** api update ([36d42b3](https://github.com/RetellAI/retell-python-sdk/commit/36d42b3c8e89fe81b753bdfc3a31971febd3e1f4))
+
+
+### Chores
+
+* preserve production workflow files ([45d7aed](https://github.com/RetellAI/retell-python-sdk/commit/45d7aed33c6aaea6b9bdf9c152cfbb9270f7097d))
+
+## [5.52.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.51.0...v5.52.0) (2026-06-23)
+
+
+### Features
+
+* **api:** api update ([8ce76d0](https://github.com/RetellAI/retell-python-sdk/commit/8ce76d0de39343ae3e83217f1a8f34dbff60b440))
+
+
+### Chores
+
+* preserve production workflow files ([5540212](https://github.com/RetellAI/retell-python-sdk/commit/5540212198562befd780b811a3aa9cb1d22ea0a0))
+
+## [5.51.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.50.0...v5.51.0) (2026-06-17)
+
+
+### Features
+
+* **api:** api update ([73dec56](https://github.com/RetellAI/retell-python-sdk/commit/73dec56f49821452f30a7cd89c303f5505c16c4a))
+
+
+### Chores
+
+* preserve production workflow files ([09d57b1](https://github.com/RetellAI/retell-python-sdk/commit/09d57b17aa3af1462458321627f90c5c16410e4c))
+
+## [5.50.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.49.0...v5.50.0) (2026-06-16)
+
+
+### Features
+
+* **api:** api update ([91b673c](https://github.com/RetellAI/retell-python-sdk/commit/91b673c334463c107e36f7a1a5d8cde306a9f82a))
+
+
+### Chores
+
+* preserve production workflow files ([94c2f0d](https://github.com/RetellAI/retell-python-sdk/commit/94c2f0d4eb4c8e820676984beb3ac509c3bd60d6))
+
+## [5.49.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.48.0...v5.49.0) (2026-06-08)
+
+
+### Features
+
+* **api:** api update ([0e6c50c](https://github.com/RetellAI/retell-python-sdk/commit/0e6c50c808e8b1d96d95462fac7d9538d22b7bd1))
+
+
+### Chores
+
+* preserve production workflow files ([c30cbb5](https://github.com/RetellAI/retell-python-sdk/commit/c30cbb563f3394750695a99381d2fb40cebb19b0))
+
+## [5.48.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.47.0...v5.48.0) (2026-06-04)
+
+
+### Features
+
+* **api:** api update ([0922f59](https://github.com/RetellAI/retell-python-sdk/commit/0922f592d548608dee1f563f927cdcf47b7df267))
+
+
+### Chores
+
+* preserve production workflow files ([3453b45](https://github.com/RetellAI/retell-python-sdk/commit/3453b45bf8185d3c293702310357dd38260dff11))
+
+## [5.47.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.46.0...v5.47.0) (2026-06-04)
+
+
+### Features
+
+* **api:** api update ([346634f](https://github.com/RetellAI/retell-python-sdk/commit/346634f3547846366a241260f4585f776bad8cc5))
+
+
+### Chores
+
+* preserve production workflow files ([2e271d2](https://github.com/RetellAI/retell-python-sdk/commit/2e271d2bb76823939dc1dcff62a9fa484204bf1a))
+
+## [5.46.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.45.3...v5.46.0) (2026-06-03)
+
+
+### Features
+
+* **api:** api update ([e8599c9](https://github.com/RetellAI/retell-python-sdk/commit/e8599c933355aef8b1ec14e264cc151be3d742fe))
+
+
+### Chores
+
+* preserve production workflow files ([02fb027](https://github.com/RetellAI/retell-python-sdk/commit/02fb027422e35b17bc2b849b4f071891ed568240))
+
+## [5.45.3](https://github.com/RetellAI/retell-python-sdk/compare/v5.45.2...v5.45.3) (2026-06-01)
+
+
+### Chores
+
+* preserve production workflow files ([796a30b](https://github.com/RetellAI/retell-python-sdk/commit/796a30b644e349ffd5ca2115e150905c9b16ae06))
+
+## [5.45.2](https://github.com/RetellAI/retell-python-sdk/compare/v5.45.1...v5.45.2) (2026-06-01)
+
+
+### Chores
+
+* preserve production workflow files ([2873729](https://github.com/RetellAI/retell-python-sdk/commit/28737294ed63d5f974ff3dc930db9a7fb2ec50b3))
+
+
+### Documentation
+
+* fix OpenAPI phone number description typo ([967f88b](https://github.com/RetellAI/retell-python-sdk/commit/967f88bbb7fd117fc24a8cd9c7c8416eaa6ba51a))
+
+## [5.45.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.45.0...v5.45.1) (2026-05-30)
+
+
+### Bug Fixes
+
+* **api:** clarify inbound webhook description ([9638b62](https://github.com/RetellAI/retell-python-sdk/commit/9638b626e6f5d406423c888bb0395c45327673fb))
+
+
+### Chores
+
+* preserve production workflow files ([4bed949](https://github.com/RetellAI/retell-python-sdk/commit/4bed9492d6abaa99b1bb5c45d8ebb2d46cecc8b4))
+
+## [5.45.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.44.1...v5.45.0) (2026-05-29)
+
+
+### Features
+
+* **api:** api update ([2f12990](https://github.com/RetellAI/retell-python-sdk/commit/2f12990411eddc2e1d584266b5787e9a38f54ae1))
+
+
+### Chores
+
+* preserve production workflow files ([8e839ba](https://github.com/RetellAI/retell-python-sdk/commit/8e839bae64ec3a2b4e61a196ca772c6695014dfc))
+
+## [5.44.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.44.0...v5.44.1) (2026-05-29)
+
+
+### Chores
+
+* restore stlc auto-merge triggers ([5f38f95](https://github.com/RetellAI/retell-python-sdk/commit/5f38f95c5a65f79aedc16da6277c8800f4d05ffc))
+
+## 5.44.0 (2026-05-29)
+
+Full Changelog: [v5.43.1...v5.44.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.43.1...v5.44.0)
+
+### Features
+
+* **api:** api update ([a559d90](https://github.com/RetellAI/retell-python-sdk/commit/a559d9031cc2e111ae02a19ce988b8042c137526))
+
+
+### Chores
+
+* disable stlc auto-merge workflow ([83fc966](https://github.com/RetellAI/retell-python-sdk/commit/83fc96699b82d56652355396723f52caeb837842))
+
+## 5.43.1 (2026-05-29)
+
+Full Changelog: [v5.43.0...v5.43.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.43.0...v5.43.1)
+
+### Chores
+
+* add release-please workflow ([2ded49b](https://github.com/RetellAI/retell-python-sdk/commit/2ded49be02e1471bef0968f422c1cbf19314119b))
+* add SDK auto-merge workflow ([0966b89](https://github.com/RetellAI/retell-python-sdk/commit/0966b89b08dcb1ab507511b480270961bf8332b0))
+* harden SDK auto-merge workflow ([be57a3f](https://github.com/RetellAI/retell-python-sdk/commit/be57a3f70524d1f4bad69b37b73b383efb4c48d6))
+* restrict SDK auto-merge to same-repo branches ([4644075](https://github.com/RetellAI/retell-python-sdk/commit/4644075b17cc17443e67bc8fafa3ffe8e0e65e85))
+
 ## 5.43.0 (2026-05-28)
 
 Full Changelog: [v5.42.0...v5.43.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.42.0...v5.43.0)
