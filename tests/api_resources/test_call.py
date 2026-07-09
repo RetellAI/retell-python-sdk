@@ -86,7 +86,6 @@ class TestCall:
                 "customer_id": "cust_123",
                 "notes": "Follow-up required",
             },
-            override_dynamic_variables={"additional_discount": "15%"},
         )
         assert_matches_type(CallResponse, call, path=["response"])
 
@@ -1046,7 +1045,6 @@ class TestAsyncCall:
                 "customer_id": "cust_123",
                 "notes": "Follow-up required",
             },
-            override_dynamic_variables={"additional_discount": "15%"},
         )
         assert_matches_type(CallResponse, call, path=["response"])
 

@@ -97,7 +97,6 @@ class CallResource(SyncAPIResource):
         custom_attributes: Dict[str, Union[str, float, bool]] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         metadata: object | Omit = omit,
-        override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -120,13 +119,6 @@ class CallResource(SyncAPIResource):
               your internal customer id associated with the call. Not used for processing. You
               can later get this field from the call object. Size limited to 50kB max.
 
-          override_dynamic_variables: Deprecated. Use the /v2/update-live-call/{call_id} endpoint to override dynamic
-              variables on an ongoing call. Override dynamic variables represented as
-              key-value pairs of strings. Setting this will override or add the dynamic
-              variables set in the agent during the call. Only need to set the delta where you
-              want to override, no need to set the entire dynamic variables object. Setting
-              this to null will remove any existing override.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -146,7 +138,6 @@ class CallResource(SyncAPIResource):
                         "custom_attributes": custom_attributes,
                         "data_storage_setting": data_storage_setting,
                         "metadata": metadata,
-                        "override_dynamic_variables": override_dynamic_variables,
                     },
                     call_update_params.CallUpdateParams,
                 ),
@@ -588,7 +579,6 @@ class AsyncCallResource(AsyncAPIResource):
         custom_attributes: Dict[str, Union[str, float, bool]] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         metadata: object | Omit = omit,
-        override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -611,13 +601,6 @@ class AsyncCallResource(AsyncAPIResource):
               your internal customer id associated with the call. Not used for processing. You
               can later get this field from the call object. Size limited to 50kB max.
 
-          override_dynamic_variables: Deprecated. Use the /v2/update-live-call/{call_id} endpoint to override dynamic
-              variables on an ongoing call. Override dynamic variables represented as
-              key-value pairs of strings. Setting this will override or add the dynamic
-              variables set in the agent during the call. Only need to set the delta where you
-              want to override, no need to set the entire dynamic variables object. Setting
-              this to null will remove any existing override.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -637,7 +620,6 @@ class AsyncCallResource(AsyncAPIResource):
                         "custom_attributes": custom_attributes,
                         "data_storage_setting": data_storage_setting,
                         "metadata": metadata,
-                        "override_dynamic_variables": override_dynamic_variables,
                     },
                     call_update_params.CallUpdateParams,
                 ),
