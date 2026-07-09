@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, Union
 from typing_extensions import Literal, TypedDict
 
 __all__ = ["CallUpdateParams"]
@@ -27,15 +27,4 @@ class CallUpdateParams(TypedDict, total=False):
     You can put anything here like your internal customer id associated with the
     call. Not used for processing. You can later get this field from the call
     object. Size limited to 50kB max.
-    """
-
-    override_dynamic_variables: Optional[Dict[str, str]]
-    """Deprecated.
-
-    Use the /v2/update-live-call/{call_id} endpoint to override dynamic variables on
-    an ongoing call. Override dynamic variables represented as key-value pairs of
-    strings. Setting this will override or add the dynamic variables set in the
-    agent during the call. Only need to set the delta where you want to override, no
-    need to set the entire dynamic variables object. Setting this to null will
-    remove any existing override.
     """
