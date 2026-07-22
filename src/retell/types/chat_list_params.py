@@ -11,6 +11,7 @@ __all__ = [
     "ChatListParams",
     "FilterCriteria",
     "FilterCriteriaAgent",
+    "FilterCriteriaAgentTag",
     "FilterCriteriaChatID",
     "FilterCriteriaChatStatus",
     "FilterCriteriaChatSuccessful",
@@ -76,6 +77,17 @@ class FilterCriteriaAgent(TypedDict, total=False):
 
     version: Iterable[float]
     """Specific versions to filter on. If not provided, all versions are included."""
+
+
+class FilterCriteriaAgentTag(TypedDict, total=False):
+    """Filter by agent environment tag(s) (e.g. "prod", "staging")."""
+
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[SequenceNotStr[str]]
 
 
 class FilterCriteriaChatID(TypedDict, total=False):
@@ -442,6 +454,9 @@ class FilterCriteria(TypedDict, total=False):
 
     agent: Iterable[FilterCriteriaAgent]
     """Filter by agent(s). Agent filters are connected by OR."""
+
+    agent_tag: FilterCriteriaAgentTag
+    """Filter by agent environment tag(s) (e.g. "prod", "staging")."""
 
     chat_id: FilterCriteriaChatID
     """Filter by chat ID."""

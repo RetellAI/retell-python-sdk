@@ -903,6 +903,8 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gpt-5.4-mini",
             "gpt-5.4-nano",
             "gpt-5.5",
+            "gpt-5.6-terra",
+            "gpt-5.6-luna",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-5-sonnet",
@@ -1125,6 +1127,8 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "gpt-5.4-mini",
             "gpt-5.4-nano",
             "gpt-5.5",
+            "gpt-5.6-terra",
+            "gpt-5.6-luna",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-5-sonnet",
@@ -1233,6 +1237,8 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-5.4-mini",
             "gpt-5.4-nano",
             "gpt-5.5",
+            "gpt-5.6-terra",
+            "gpt-5.6-luna",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-5-sonnet",
@@ -1259,7 +1265,16 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+    s2s_model: Optional[
+        Literal[
+            "gpt-realtime-2.1",
+            "gpt-realtime-2.1-mini",
+            "gpt-realtime-2",
+            "gpt-realtime-1.5",
+            "gpt-realtime",
+            "gpt-realtime-mini",
+        ]
+    ]
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.
