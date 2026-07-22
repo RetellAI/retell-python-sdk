@@ -48,6 +48,8 @@ class TestCreateTestCaseDefinitionParams(TypedDict, total=False):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
         "claude-5-sonnet",

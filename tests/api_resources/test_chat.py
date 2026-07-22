@@ -185,6 +185,11 @@ class TestChat:
                         "version": [0],
                     }
                 ],
+                "agent_tag": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
                 "chat_id": {
                     "op": "eq",
                     "type": "string",
@@ -618,6 +623,11 @@ class TestAsyncChat:
                         "version": [0],
                     }
                 ],
+                "agent_tag": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
                 "chat_id": {
                     "op": "eq",
                     "type": "string",
