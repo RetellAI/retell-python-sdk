@@ -181,15 +181,15 @@ class PhoneNumberResponse(BaseModel):
     inbound_sms_webhook_url: Optional[str] = None
     """
     If set, Retell will send a webhook for inbound SMS, where you can override the
-    agent ID, set dynamic variables, and configure other fields specific to that
-    chat.
+    agent ID, set dynamic variables, reject the SMS, and configure other fields
+    specific to that chat.
     """
 
     inbound_webhook_url: Optional[str] = None
     """
     If set, Retell will send a webhook for inbound calls, where you can override the
-    agent ID, set dynamic variables, and configure other fields specific to that
-    call.
+    agent ID, set dynamic variables, reject the call, and configure other fields
+    specific to that call.
     """
 
     nickname: Optional[str] = None

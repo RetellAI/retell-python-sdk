@@ -100,8 +100,8 @@ class PhoneNumberResource(SyncAPIResource):
               proportional to the weight. Total weights must add up to 1.
 
           inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
-              agent ID, set dynamic variables, and configure other fields specific to that
-              call.
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -242,12 +242,12 @@ class PhoneNumberResource(SyncAPIResource):
               proportional to the weight. Total weights must add up to 1.
 
           inbound_sms_webhook_url: If set, Retell will send a webhook for inbound SMS, where you can override the
-              agent ID, set dynamic variables, and configure other fields specific to that
-              chat.
+              agent ID, set dynamic variables, reject the SMS, and configure other fields
+              specific to that chat.
 
           inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
-              agent ID, set dynamic variables, and configure other fields specific to that
-              call.
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -436,8 +436,8 @@ class PhoneNumberResource(SyncAPIResource):
               proportional to the weight. Total weights must add up to 1.
 
           inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
-              agent ID, set dynamic variables, and configure other fields specific to that
-              call.
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -556,8 +556,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               proportional to the weight. Total weights must add up to 1.
 
           inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
-              agent ID, set dynamic variables, and configure other fields specific to that
-              call.
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -698,12 +698,12 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               proportional to the weight. Total weights must add up to 1.
 
           inbound_sms_webhook_url: If set, Retell will send a webhook for inbound SMS, where you can override the
-              agent ID, set dynamic variables, and configure other fields specific to that
-              chat.
+              agent ID, set dynamic variables, reject the SMS, and configure other fields
+              specific to that chat.
 
           inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
-              agent ID, set dynamic variables, and configure other fields specific to that
-              call.
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -892,8 +892,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               proportional to the weight. Total weights must add up to 1.
 
           inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
-              agent ID, set dynamic variables, and configure other fields specific to that
-              call.
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 

@@ -161,7 +161,12 @@ class ChatResource(SyncAPIResource):
         Update metadata and sensitive data storage settings for an existing chat.
 
         Args:
-          custom_attributes: Custom attributes for the chat
+          custom_attributes: Custom attributes for the chat, as key-value pairs. Each attribute must first be
+              defined for your organization in the Retell dashboard (Chat History → Actions →
+              Custom attributes) before it can be set here. The object key must match the id
+              of an existing organization-level custom attribute; keys that do not match a
+              defined attribute are ignored and will not be saved. Values must be a string,
+              number, or boolean.
 
           data_storage_setting: Data storage setting for this chat. Overrides the agent's default setting.
               "everything" stores all data, "basic_attributes_only" stores only metadata.
@@ -579,7 +584,12 @@ class AsyncChatResource(AsyncAPIResource):
         Update metadata and sensitive data storage settings for an existing chat.
 
         Args:
-          custom_attributes: Custom attributes for the chat
+          custom_attributes: Custom attributes for the chat, as key-value pairs. Each attribute must first be
+              defined for your organization in the Retell dashboard (Chat History → Actions →
+              Custom attributes) before it can be set here. The object key must match the id
+              of an existing organization-level custom attribute; keys that do not match a
+              defined attribute are ignored and will not be saved. Values must be a string,
+              number, or boolean.
 
           data_storage_setting: Data storage setting for this chat. Overrides the agent's default setting.
               "everything" stores all data, "basic_attributes_only" stores only metadata.

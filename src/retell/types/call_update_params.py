@@ -10,7 +10,14 @@ __all__ = ["CallUpdateParams"]
 
 class CallUpdateParams(TypedDict, total=False):
     custom_attributes: Dict[str, Union[str, float, bool]]
-    """Custom attributes for the call"""
+    """Custom attributes for the call, as key-value pairs.
+
+    Each attribute must first be defined for your organization in the Retell
+    dashboard (Call History → Actions → Custom attributes) before it can be set
+    here. The object key must match the id of an existing organization-level custom
+    attribute; keys that do not match a defined attribute are ignored and will not
+    be saved. Values must be a string, number, or boolean.
+    """
 
     data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"]
     """Data storage setting for this call.

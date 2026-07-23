@@ -108,7 +108,12 @@ class CallResource(SyncAPIResource):
         Update metadata and sensitive data storage settings for an existing call.
 
         Args:
-          custom_attributes: Custom attributes for the call
+          custom_attributes: Custom attributes for the call, as key-value pairs. Each attribute must first be
+              defined for your organization in the Retell dashboard (Call History → Actions →
+              Custom attributes) before it can be set here. The object key must match the id
+              of an existing organization-level custom attribute; keys that do not match a
+              defined attribute are ignored and will not be saved. Values must be a string,
+              number, or boolean.
 
           data_storage_setting: Data storage setting for this call. Overrides the agent's default setting.
               "everything" stores all data, "everything_except_pii" excludes PII when
@@ -590,7 +595,12 @@ class AsyncCallResource(AsyncAPIResource):
         Update metadata and sensitive data storage settings for an existing call.
 
         Args:
-          custom_attributes: Custom attributes for the call
+          custom_attributes: Custom attributes for the call, as key-value pairs. Each attribute must first be
+              defined for your organization in the Retell dashboard (Call History → Actions →
+              Custom attributes) before it can be set here. The object key must match the id
+              of an existing organization-level custom attribute; keys that do not match a
+              defined attribute are ignored and will not be saved. Values must be a string,
+              number, or boolean.
 
           data_storage_setting: Data storage setting for this call. Overrides the agent's default setting.
               "everything" stores all data, "everything_except_pii" excludes PII when
