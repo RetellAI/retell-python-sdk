@@ -70,9 +70,6 @@ class AgentResource(SyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -86,7 +83,24 @@ class AgentResource(SyncAPIResource):
         enable_backchannel: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
+        enable_expressive_mode: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
+        expressive_emotion_tags: List[
+            Literal[
+                "empathetic",
+                "excited",
+                "happy",
+                "curious",
+                "surprised",
+                "sigh",
+                "clear throat",
+                "pause",
+                "long pause",
+                "emphasis",
+            ]
+        ]
+        | Omit = omit,
+        expressive_mode_prompt: Optional[str] | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
         handbook_config: agent_create_params.HandbookConfig | Omit = omit,
@@ -246,12 +260,15 @@ class AgentResource(SyncAPIResource):
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
                 "gpt-5.5",
+                "gpt-5.6-terra",
+                "gpt-5.6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -265,14 +282,13 @@ class AgentResource(SyncAPIResource):
         timezone: Optional[str] | Omit = omit,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
+        version_title: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
         voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
         | Omit = omit,
         voice_model: Optional[
             Literal[
-                "eleven_turbo_v2",
                 "eleven_flash_v2",
-                "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
@@ -291,8 +307,6 @@ class AgentResource(SyncAPIResource):
         | Omit = omit,
         voice_speed: float | Omit = omit,
         voice_temperature: float | Omit = omit,
-        voicemail_detection_timeout_ms: int | Omit = omit,
-        voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_create_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
         webhook_events: Optional[
@@ -361,17 +375,6 @@ class AgentResource(SyncAPIResource):
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
 
-          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
-              interaction as successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
-              When unset, the default system prompt is used. Set to null to use the default
-              prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
-              sentiment. When unset, the default system prompt is used. Set to null to use the
-              default prompt.
-
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -428,8 +431,21 @@ class AgentResource(SyncAPIResource):
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
 
+          enable_expressive_mode: Master toggle for expressive mode. When true, the agent may add expressive voice
+              tags to the audio it generates. Only applicable for platform voices. If unset,
+              defaults to false.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
+
+          expressive_emotion_tags: The expressive voice tags Retell pre-teaches the model to use when
+              enable_expressive_mode is true. Custom tags defined in the system prompt are
+              still allowed. If empty, the agent follows general expressive guidance without a
+              fixed tag set.
+
+          expressive_mode_prompt: Custom expressive voice guidance to use instead of the default Retell expressive
+              prompt when enable_expressive_mode is true. If omitted or blank, the default
+              expressive prompt will be used.
 
           fallback_voice_ids: When TTS provider for the selected voice is experiencing outages, we would use
               fallback voices listed here for the agent. Voice id and the fallback voice ids
@@ -511,6 +527,8 @@ class AgentResource(SyncAPIResource):
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
 
+          version_title: Optional title of the agent version. Used for your own reference.
+
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
@@ -530,15 +548,6 @@ class AgentResource(SyncAPIResource):
               more stable, and higher value means more variant speech generation. Check the
               dashboard to see what provider supports this feature. If unset, default value 1
               will apply.
-
-          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
-              hit voicemail after a couple minutes, and keep running it will only have
-              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
-              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
-
-          voicemail_message: The message to be played when the call enters a voicemail. Note that this
-              feature is only available for phone calls. If you want to hangup after hitting
-              voicemail, set this to empty string.
 
           voicemail_option: If this option is set, the call will try to detect voicemail in the first 3
               minutes of the call. Actions defined (hangup, or leave a message) will be
@@ -579,9 +588,6 @@ class AgentResource(SyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -594,7 +600,10 @@ class AgentResource(SyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
+                    "enable_expressive_mode": enable_expressive_mode,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
+                    "expressive_emotion_tags": expressive_emotion_tags,
+                    "expressive_mode_prompt": expressive_mode_prompt,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
@@ -616,13 +625,12 @@ class AgentResource(SyncAPIResource):
                     "timezone": timezone,
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
+                    "version_title": version_title,
                     "vocab_specialization": vocab_specialization,
                     "voice_emotion": voice_emotion,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
-                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
-                    "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
                     "webhook_events": webhook_events,
@@ -641,7 +649,7 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -682,7 +690,7 @@ class AgentResource(SyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
         allow_dtmf_interruption: bool | Omit = omit,
         allow_user_dtmf: bool | Omit = omit,
@@ -693,9 +701,6 @@ class AgentResource(SyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -709,7 +714,24 @@ class AgentResource(SyncAPIResource):
         enable_backchannel: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
+        enable_expressive_mode: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
+        expressive_emotion_tags: List[
+            Literal[
+                "empathetic",
+                "excited",
+                "happy",
+                "curious",
+                "surprised",
+                "sigh",
+                "clear throat",
+                "pause",
+                "long pause",
+                "emphasis",
+            ]
+        ]
+        | Omit = omit,
+        expressive_mode_prompt: Optional[str] | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_update_params.GuardrailConfig | Omit = omit,
         handbook_config: agent_update_params.HandbookConfig | Omit = omit,
@@ -869,12 +891,15 @@ class AgentResource(SyncAPIResource):
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
                 "gpt-5.5",
+                "gpt-5.6-terra",
+                "gpt-5.6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -889,15 +914,14 @@ class AgentResource(SyncAPIResource):
         timezone: Optional[str] | Omit = omit,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
+        version_title: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
         voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
         | Omit = omit,
         voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
-                "eleven_turbo_v2",
                 "eleven_flash_v2",
-                "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
@@ -916,8 +940,6 @@ class AgentResource(SyncAPIResource):
         | Omit = omit,
         voice_speed: float | Omit = omit,
         voice_temperature: float | Omit = omit,
-        voicemail_detection_timeout_ms: int | Omit = omit,
-        voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_update_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
         webhook_events: Optional[
@@ -981,17 +1003,6 @@ class AgentResource(SyncAPIResource):
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
 
-          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
-              interaction as successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
-              When unset, the default system prompt is used. Set to null to use the default
-              prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
-              sentiment. When unset, the default system prompt is used. Set to null to use the
-              default prompt.
-
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -1048,8 +1059,21 @@ class AgentResource(SyncAPIResource):
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
 
+          enable_expressive_mode: Master toggle for expressive mode. When true, the agent may add expressive voice
+              tags to the audio it generates. Only applicable for platform voices. If unset,
+              defaults to false.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
+
+          expressive_emotion_tags: The expressive voice tags Retell pre-teaches the model to use when
+              enable_expressive_mode is true. Custom tags defined in the system prompt are
+              still allowed. If empty, the agent follows general expressive guidance without a
+              fixed tag set.
+
+          expressive_mode_prompt: Custom expressive voice guidance to use instead of the default Retell expressive
+              prompt when enable_expressive_mode is true. If omitted or blank, the default
+              expressive prompt will be used.
 
           fallback_voice_ids: When TTS provider for the selected voice is experiencing outages, we would use
               fallback voices listed here for the agent. Voice id and the fallback voice ids
@@ -1135,6 +1159,8 @@ class AgentResource(SyncAPIResource):
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
 
+          version_title: Optional title of the agent version. Used for your own reference.
+
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
@@ -1157,15 +1183,6 @@ class AgentResource(SyncAPIResource):
               more stable, and higher value means more variant speech generation. Check the
               dashboard to see what provider supports this feature. If unset, default value 1
               will apply.
-
-          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
-              hit voicemail after a couple minutes, and keep running it will only have
-              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
-              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
-
-          voicemail_message: The message to be played when the call enters a voicemail. Note that this
-              feature is only available for phone calls. If you want to hangup after hitting
-              voicemail, set this to empty string.
 
           voicemail_option: If this option is set, the call will try to detect voicemail in the first 3
               minutes of the call. Actions defined (hangup, or leave a message) will be
@@ -1206,9 +1223,6 @@ class AgentResource(SyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -1221,7 +1235,10 @@ class AgentResource(SyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
+                    "enable_expressive_mode": enable_expressive_mode,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
+                    "expressive_emotion_tags": expressive_emotion_tags,
+                    "expressive_mode_prompt": expressive_mode_prompt,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
@@ -1244,14 +1261,13 @@ class AgentResource(SyncAPIResource):
                     "timezone": timezone,
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
+                    "version_title": version_title,
                     "vocab_specialization": vocab_specialization,
                     "voice_emotion": voice_emotion,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
-                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
-                    "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
                     "webhook_events": webhook_events,
@@ -1273,10 +1289,10 @@ class AgentResource(SyncAPIResource):
     def list(
         self,
         *,
-        is_latest: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
-        pagination_key_version: int | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
+        filter_criteria: agent_list_params.FilterCriteria | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1285,21 +1301,16 @@ class AgentResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListResponse:
         """
-        List all agents
+        List unique agents with pagination.
 
         Args:
-          is_latest: If true, only return the latest version of each agent.
+          limit: Maximum number of items to return.
 
-          limit: A limit on the number of objects to be returned. Limit can range between 1 and
-              1000, and the default is 1000.
+          pagination_key: Pagination key for fetching the next page.
 
-          pagination_key: The pagination key to continue fetching the next page of agents. Pagination key
-              is represented by a agent id, pagination key and version pair is exclusive (not
-              included in the fetched page). If not set, will start from the beginning.
+          sort_order: Sort order for results.
 
-          pagination_key_version: Specifies the version of the agent associated with the pagination_key. When
-              paginating, both the pagination_key and its version must be provided to ensure
-              consistent ordering and to fetch the next page correctly.
+          filter_criteria: Filters for listing agents. All provided filters are connected with AND.
 
           extra_headers: Send extra headers
 
@@ -1309,8 +1320,9 @@ class AgentResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
-            "/list-agents",
+        return self._post(
+            "/v2/list-agents",
+            body=maybe_transform({"filter_criteria": filter_criteria}, agent_list_params.AgentListParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1318,10 +1330,9 @@ class AgentResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "is_latest": is_latest,
                         "limit": limit,
                         "pagination_key": pagination_key,
-                        "pagination_key_version": pagination_key_version,
+                        "sort_order": sort_order,
                     },
                     agent_list_params.AgentListParams,
                 ),
@@ -1487,6 +1498,7 @@ class AgentResource(SyncAPIResource):
         *,
         version: int,
         version_description: str | Omit = omit,
+        version_title: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1498,6 +1510,8 @@ class AgentResource(SyncAPIResource):
         Publish an existing draft version in place.
 
         Args:
+          version_title: Optional title of the agent version. Used for your own reference.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1515,6 +1529,7 @@ class AgentResource(SyncAPIResource):
                 {
                     "version": version,
                     "version_description": version_description,
+                    "version_title": version_title,
                 },
                 agent_publish_params.AgentPublishParams,
             ),
@@ -1560,9 +1575,6 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -1576,7 +1588,24 @@ class AsyncAgentResource(AsyncAPIResource):
         enable_backchannel: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
+        enable_expressive_mode: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
+        expressive_emotion_tags: List[
+            Literal[
+                "empathetic",
+                "excited",
+                "happy",
+                "curious",
+                "surprised",
+                "sigh",
+                "clear throat",
+                "pause",
+                "long pause",
+                "emphasis",
+            ]
+        ]
+        | Omit = omit,
+        expressive_mode_prompt: Optional[str] | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
         handbook_config: agent_create_params.HandbookConfig | Omit = omit,
@@ -1736,12 +1765,15 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
                 "gpt-5.5",
+                "gpt-5.6-terra",
+                "gpt-5.6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -1755,14 +1787,13 @@ class AsyncAgentResource(AsyncAPIResource):
         timezone: Optional[str] | Omit = omit,
         user_dtmf_options: Optional[agent_create_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
+        version_title: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
         voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
         | Omit = omit,
         voice_model: Optional[
             Literal[
-                "eleven_turbo_v2",
                 "eleven_flash_v2",
-                "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
@@ -1781,8 +1812,6 @@ class AsyncAgentResource(AsyncAPIResource):
         | Omit = omit,
         voice_speed: float | Omit = omit,
         voice_temperature: float | Omit = omit,
-        voicemail_detection_timeout_ms: int | Omit = omit,
-        voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_create_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
         webhook_events: Optional[
@@ -1851,17 +1880,6 @@ class AsyncAgentResource(AsyncAPIResource):
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
 
-          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
-              interaction as successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
-              When unset, the default system prompt is used. Set to null to use the default
-              prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
-              sentiment. When unset, the default system prompt is used. Set to null to use the
-              default prompt.
-
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -1918,8 +1936,21 @@ class AsyncAgentResource(AsyncAPIResource):
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
 
+          enable_expressive_mode: Master toggle for expressive mode. When true, the agent may add expressive voice
+              tags to the audio it generates. Only applicable for platform voices. If unset,
+              defaults to false.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
+
+          expressive_emotion_tags: The expressive voice tags Retell pre-teaches the model to use when
+              enable_expressive_mode is true. Custom tags defined in the system prompt are
+              still allowed. If empty, the agent follows general expressive guidance without a
+              fixed tag set.
+
+          expressive_mode_prompt: Custom expressive voice guidance to use instead of the default Retell expressive
+              prompt when enable_expressive_mode is true. If omitted or blank, the default
+              expressive prompt will be used.
 
           fallback_voice_ids: When TTS provider for the selected voice is experiencing outages, we would use
               fallback voices listed here for the agent. Voice id and the fallback voice ids
@@ -2001,6 +2032,8 @@ class AsyncAgentResource(AsyncAPIResource):
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
 
+          version_title: Optional title of the agent version. Used for your own reference.
+
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
@@ -2020,15 +2053,6 @@ class AsyncAgentResource(AsyncAPIResource):
               more stable, and higher value means more variant speech generation. Check the
               dashboard to see what provider supports this feature. If unset, default value 1
               will apply.
-
-          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
-              hit voicemail after a couple minutes, and keep running it will only have
-              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
-              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
-
-          voicemail_message: The message to be played when the call enters a voicemail. Note that this
-              feature is only available for phone calls. If you want to hangup after hitting
-              voicemail, set this to empty string.
 
           voicemail_option: If this option is set, the call will try to detect voicemail in the first 3
               minutes of the call. Actions defined (hangup, or leave a message) will be
@@ -2069,9 +2093,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -2084,7 +2105,10 @@ class AsyncAgentResource(AsyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
+                    "enable_expressive_mode": enable_expressive_mode,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
+                    "expressive_emotion_tags": expressive_emotion_tags,
+                    "expressive_mode_prompt": expressive_mode_prompt,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
@@ -2106,13 +2130,12 @@ class AsyncAgentResource(AsyncAPIResource):
                     "timezone": timezone,
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
+                    "version_title": version_title,
                     "vocab_specialization": vocab_specialization,
                     "voice_emotion": voice_emotion,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
-                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
-                    "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
                     "webhook_events": webhook_events,
@@ -2131,7 +2154,7 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2172,7 +2195,7 @@ class AsyncAgentResource(AsyncAPIResource):
         self,
         agent_id: str,
         *,
-        version: Union[int, str] | Omit = omit,
+        version: Union[str, int] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
         allow_dtmf_interruption: bool | Omit = omit,
         allow_user_dtmf: bool | Omit = omit,
@@ -2183,9 +2206,6 @@ class AsyncAgentResource(AsyncAPIResource):
         ]
         | Omit = omit,
         ambient_sound_volume: float | Omit = omit,
-        analysis_successful_prompt: Optional[str] | Omit = omit,
-        analysis_summary_prompt: Optional[str] | Omit = omit,
-        analysis_user_sentiment_prompt: Optional[str] | Omit = omit,
         backchannel_frequency: float | Omit = omit,
         backchannel_words: Optional[SequenceNotStr[str]] | Omit = omit,
         begin_message_delay_ms: int | Omit = omit,
@@ -2199,7 +2219,24 @@ class AsyncAgentResource(AsyncAPIResource):
         enable_backchannel: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
+        enable_expressive_mode: bool | Omit = omit,
         end_call_after_silence_ms: int | Omit = omit,
+        expressive_emotion_tags: List[
+            Literal[
+                "empathetic",
+                "excited",
+                "happy",
+                "curious",
+                "surprised",
+                "sigh",
+                "clear throat",
+                "pause",
+                "long pause",
+                "emphasis",
+            ]
+        ]
+        | Omit = omit,
+        expressive_mode_prompt: Optional[str] | Omit = omit,
         fallback_voice_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         guardrail_config: agent_update_params.GuardrailConfig | Omit = omit,
         handbook_config: agent_update_params.HandbookConfig | Omit = omit,
@@ -2359,12 +2396,15 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
                 "gpt-5.5",
+                "gpt-5.6-terra",
+                "gpt-5.6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
@@ -2379,15 +2419,14 @@ class AsyncAgentResource(AsyncAPIResource):
         timezone: Optional[str] | Omit = omit,
         user_dtmf_options: Optional[agent_update_params.UserDtmfOptions] | Omit = omit,
         version_description: Optional[str] | Omit = omit,
+        version_title: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
         voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
         | Omit = omit,
         voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
-                "eleven_turbo_v2",
                 "eleven_flash_v2",
-                "eleven_turbo_v2_5",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
@@ -2406,8 +2445,6 @@ class AsyncAgentResource(AsyncAPIResource):
         | Omit = omit,
         voice_speed: float | Omit = omit,
         voice_temperature: float | Omit = omit,
-        voicemail_detection_timeout_ms: int | Omit = omit,
-        voicemail_message: str | Omit = omit,
         voicemail_option: Optional[agent_update_params.VoicemailOption] | Omit = omit,
         volume: float | Omit = omit,
         webhook_events: Optional[
@@ -2471,17 +2508,6 @@ class AsyncAgentResource(AsyncAPIResource):
               Lower value means quieter ambient sound, while higher value means louder ambient
               sound. If unset, default value 1 will apply.
 
-          analysis_successful_prompt: Prompt to determine whether the post call or chat analysis should mark the
-              interaction as successful. Set to null to use the default prompt.
-
-          analysis_summary_prompt: Prompt to guide how the post call or chat analysis summary should be generated.
-              When unset, the default system prompt is used. Set to null to use the default
-              prompt.
-
-          analysis_user_sentiment_prompt: Prompt to guide how the post call or chat analysis should evaluate user
-              sentiment. When unset, the default system prompt is used. Set to null to use the
-              default prompt.
-
           backchannel_frequency: Only applicable when enable_backchannel is true. Controls how often the agent
               would backchannel when a backchannel is possible. Value ranging from [0,1].
               Lower value means less frequent backchannel, while higher value means more
@@ -2538,8 +2564,21 @@ class AsyncAgentResource(AsyncAPIResource):
           enable_dynamic_voice_speed: If set to true, will enable dynamic voice speed adjustment based on the user's
               speech rate and conversation context. If unset, default value false will apply.
 
+          enable_expressive_mode: Master toggle for expressive mode. When true, the agent may add expressive voice
+              tags to the audio it generates. Only applicable for platform voices. If unset,
+              defaults to false.
+
           end_call_after_silence_ms: If users stay silent for a period after agent speech, end the call. The minimum
               value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).
+
+          expressive_emotion_tags: The expressive voice tags Retell pre-teaches the model to use when
+              enable_expressive_mode is true. Custom tags defined in the system prompt are
+              still allowed. If empty, the agent follows general expressive guidance without a
+              fixed tag set.
+
+          expressive_mode_prompt: Custom expressive voice guidance to use instead of the default Retell expressive
+              prompt when enable_expressive_mode is true. If omitted or blank, the default
+              expressive prompt will be used.
 
           fallback_voice_ids: When TTS provider for the selected voice is experiencing outages, we would use
               fallback voices listed here for the agent. Voice id and the fallback voice ids
@@ -2625,6 +2664,8 @@ class AsyncAgentResource(AsyncAPIResource):
           version_description: Optional description of the agent version. Used for your own reference and
               documentation.
 
+          version_title: Optional title of the agent version. Used for your own reference.
+
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
@@ -2647,15 +2688,6 @@ class AsyncAgentResource(AsyncAPIResource):
               more stable, and higher value means more variant speech generation. Check the
               dashboard to see what provider supports this feature. If unset, default value 1
               will apply.
-
-          voicemail_detection_timeout_ms: Configures when to stop running voicemail detection, as it becomes unlikely to
-              hit voicemail after a couple minutes, and keep running it will only have
-              negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
-              allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
-
-          voicemail_message: The message to be played when the call enters a voicemail. Note that this
-              feature is only available for phone calls. If you want to hangup after hitting
-              voicemail, set this to empty string.
 
           voicemail_option: If this option is set, the call will try to detect voicemail in the first 3
               minutes of the call. Actions defined (hangup, or leave a message) will be
@@ -2696,9 +2728,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "allow_user_dtmf": allow_user_dtmf,
                     "ambient_sound": ambient_sound,
                     "ambient_sound_volume": ambient_sound_volume,
-                    "analysis_successful_prompt": analysis_successful_prompt,
-                    "analysis_summary_prompt": analysis_summary_prompt,
-                    "analysis_user_sentiment_prompt": analysis_user_sentiment_prompt,
                     "backchannel_frequency": backchannel_frequency,
                     "backchannel_words": backchannel_words,
                     "begin_message_delay_ms": begin_message_delay_ms,
@@ -2711,7 +2740,10 @@ class AsyncAgentResource(AsyncAPIResource):
                     "enable_backchannel": enable_backchannel,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
+                    "enable_expressive_mode": enable_expressive_mode,
                     "end_call_after_silence_ms": end_call_after_silence_ms,
+                    "expressive_emotion_tags": expressive_emotion_tags,
+                    "expressive_mode_prompt": expressive_mode_prompt,
                     "fallback_voice_ids": fallback_voice_ids,
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
@@ -2734,14 +2766,13 @@ class AsyncAgentResource(AsyncAPIResource):
                     "timezone": timezone,
                     "user_dtmf_options": user_dtmf_options,
                     "version_description": version_description,
+                    "version_title": version_title,
                     "vocab_specialization": vocab_specialization,
                     "voice_emotion": voice_emotion,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
-                    "voicemail_detection_timeout_ms": voicemail_detection_timeout_ms,
-                    "voicemail_message": voicemail_message,
                     "voicemail_option": voicemail_option,
                     "volume": volume,
                     "webhook_events": webhook_events,
@@ -2763,10 +2794,10 @@ class AsyncAgentResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        is_latest: bool | Omit = omit,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
-        pagination_key_version: int | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
+        filter_criteria: agent_list_params.FilterCriteria | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2775,21 +2806,16 @@ class AsyncAgentResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListResponse:
         """
-        List all agents
+        List unique agents with pagination.
 
         Args:
-          is_latest: If true, only return the latest version of each agent.
+          limit: Maximum number of items to return.
 
-          limit: A limit on the number of objects to be returned. Limit can range between 1 and
-              1000, and the default is 1000.
+          pagination_key: Pagination key for fetching the next page.
 
-          pagination_key: The pagination key to continue fetching the next page of agents. Pagination key
-              is represented by a agent id, pagination key and version pair is exclusive (not
-              included in the fetched page). If not set, will start from the beginning.
+          sort_order: Sort order for results.
 
-          pagination_key_version: Specifies the version of the agent associated with the pagination_key. When
-              paginating, both the pagination_key and its version must be provided to ensure
-              consistent ordering and to fetch the next page correctly.
+          filter_criteria: Filters for listing agents. All provided filters are connected with AND.
 
           extra_headers: Send extra headers
 
@@ -2799,8 +2825,9 @@ class AsyncAgentResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
-            "/list-agents",
+        return await self._post(
+            "/v2/list-agents",
+            body=await async_maybe_transform({"filter_criteria": filter_criteria}, agent_list_params.AgentListParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2808,10 +2835,9 @@ class AsyncAgentResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "is_latest": is_latest,
                         "limit": limit,
                         "pagination_key": pagination_key,
-                        "pagination_key_version": pagination_key_version,
+                        "sort_order": sort_order,
                     },
                     agent_list_params.AgentListParams,
                 ),
@@ -2979,6 +3005,7 @@ class AsyncAgentResource(AsyncAPIResource):
         *,
         version: int,
         version_description: str | Omit = omit,
+        version_title: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2990,6 +3017,8 @@ class AsyncAgentResource(AsyncAPIResource):
         Publish an existing draft version in place.
 
         Args:
+          version_title: Optional title of the agent version. Used for your own reference.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -3007,6 +3036,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 {
                     "version": version,
                     "version_description": version_description,
+                    "version_title": version_title,
                 },
                 agent_publish_params.AgentPublishParams,
             ),

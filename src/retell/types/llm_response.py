@@ -270,6 +270,13 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMo
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
@@ -279,8 +286,12 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMo
     This prompt will guide the AI on how to navigate the IVR system.
     """
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     opt_out_human_detection: Optional[bool] = None
     """If set to true, will not perform human detection for the transfer.
@@ -333,7 +344,7 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the transfer agent to use."""
 
 
@@ -391,11 +402,22 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer
     type: Literal["agentic_warm_transfer"]
     """The type of the transfer."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     public_handoff_option: Optional[
         GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
@@ -572,7 +594,7 @@ class GeneralToolAgentSwapTool(BaseModel):
 
     type: Literal["agent_swap"]
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -784,6 +806,14 @@ class GeneralToolCustomTool(BaseModel):
 
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
+
+    parameter_type: Optional[Literal["json", "form"]] = None
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
 
     parameters: Optional[GeneralToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
@@ -1421,6 +1451,13 @@ class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMode
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
@@ -1430,8 +1467,12 @@ class StateToolTransferCallToolTransferOptionTransferOptionWarmTransfer(BaseMode
     This prompt will guide the AI on how to navigate the IVR system.
     """
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     opt_out_human_detection: Optional[bool] = None
     """If set to true, will not perform human detection for the transfer.
@@ -1484,7 +1525,7 @@ class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferAg
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the transfer agent to use."""
 
 
@@ -1542,11 +1583,22 @@ class StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransfer(B
     type: Literal["agentic_warm_transfer"]
     """The type of the transfer."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     public_handoff_option: Optional[
         StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
@@ -1723,7 +1775,7 @@ class StateToolAgentSwapTool(BaseModel):
 
     type: Literal["agent_swap"]
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -1935,6 +1987,14 @@ class StateToolCustomTool(BaseModel):
 
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
+
+    parameter_type: Optional[Literal["json", "form"]] = None
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
 
     parameters: Optional[StateToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
@@ -2432,12 +2492,15 @@ class LlmResponse(BaseModel):
             "gpt-5.4-mini",
             "gpt-5.4-nano",
             "gpt-5.5",
+            "gpt-5.6-terra",
+            "gpt-5.6-luna",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ] = None
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""
@@ -2457,7 +2520,16 @@ class LlmResponse(BaseModel):
     tool calling, a lower value is recommended.
     """
 
-    s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]] = None
+    s2s_model: Optional[
+        Literal[
+            "gpt-realtime-2.1",
+            "gpt-realtime-2.1-mini",
+            "gpt-realtime-2",
+            "gpt-realtime-1.5",
+            "gpt-realtime",
+            "gpt-realtime-mini",
+        ]
+    ] = None
     """Select the underlying speech to speech model.
 
     Can only set this or model, not both.

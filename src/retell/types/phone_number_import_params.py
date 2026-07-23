@@ -54,8 +54,9 @@ class PhoneNumberImportParams(TypedDict, total=False):
 
     inbound_webhook_url: Optional[str]
     """
-    If set, will send a webhook for inbound calls, where you can override agent id,
-    set dynamic variables and other fields specific to that call.
+    If set, Retell will send a webhook for inbound calls, where you can override the
+    agent ID, set dynamic variables, reject the call, and configure other fields
+    specific to that call.
     """
 
     nickname: str
@@ -90,7 +91,7 @@ class InboundAgent(TypedDict, total=False):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -113,7 +114,7 @@ class OutboundAgent(TypedDict, total=False):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for

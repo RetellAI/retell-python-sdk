@@ -303,25 +303,6 @@ class ChatAgentResponse(BaseModel):
     agent_name: Optional[str] = None
     """The name of the chat agent. Only used for your own reference."""
 
-    analysis_successful_prompt: Optional[str] = None
-    """
-    The prompt to use for post call analysis to evaluate whether the call is
-    successful. Set to null to use the default prompt.
-    """
-
-    analysis_summary_prompt: Optional[str] = None
-    """The prompt to use for post call analysis to summarize the call.
-
-    Set to null to use the default prompt.
-    """
-
-    analysis_user_sentiment_prompt: Optional[str] = None
-    """Prompt to guide how the post chat analysis should evaluate user sentiment.
-
-    When unset, the default system prompt is used. Set to null to use the default
-    prompt.
-    """
-
     assigned_tags: Optional[List[str]] = None
     """Tags assigned to this chat agent version. Preferred tag is listed first."""
 
@@ -546,12 +527,15 @@ class ChatAgentResponse(BaseModel):
             "gpt-5.4-mini",
             "gpt-5.4-nano",
             "gpt-5.5",
+            "gpt-5.6-terra",
+            "gpt-5.6-luna",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ] = None
     """The model to use for post chat analysis. Default to gpt-4.1."""
@@ -571,6 +555,9 @@ class ChatAgentResponse(BaseModel):
 
     version: Optional[int] = None
     """The version of the chat agent."""
+
+    version_title: Optional[str] = None
+    """Optional title of the chat agent version. Used for your own reference."""
 
     webhook_events: Optional[List[Literal["chat_started", "chat_ended", "chat_analyzed", "transcript_updated"]]] = None
     """Which webhook events this agent should receive.

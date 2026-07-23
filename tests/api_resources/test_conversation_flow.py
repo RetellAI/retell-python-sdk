@@ -82,6 +82,14 @@ class TestConversationFlow:
                             "destination_node_id": "book_appointment",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -203,6 +211,14 @@ class TestConversationFlow:
                                     "destination_node_id": "destination_node_id",
                                 }
                             ],
+                            "else_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "finetune_conversation_examples": [
                                 {
                                     "id": "id",
@@ -328,6 +344,7 @@ class TestConversationFlow:
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
+                            "parameter_type": "json",
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
@@ -399,6 +416,7 @@ class TestConversationFlow:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",
@@ -576,6 +594,14 @@ class TestConversationFlow:
                                     "destination_node_id": "destination_node_id",
                                 }
                             ],
+                            "else_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "finetune_conversation_examples": [
                                 {
                                     "id": "id",
@@ -701,6 +727,7 @@ class TestConversationFlow:
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
+                            "parameter_type": "json",
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
@@ -780,6 +807,14 @@ class TestConversationFlow:
                             "destination_node_id": "book_appointment",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -890,6 +925,7 @@ class TestConversationFlow:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",
@@ -1091,6 +1127,14 @@ class TestAsyncConversationFlow:
                             "destination_node_id": "book_appointment",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -1212,6 +1256,14 @@ class TestAsyncConversationFlow:
                                     "destination_node_id": "destination_node_id",
                                 }
                             ],
+                            "else_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "finetune_conversation_examples": [
                                 {
                                     "id": "id",
@@ -1337,6 +1389,7 @@ class TestAsyncConversationFlow:
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
+                            "parameter_type": "json",
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
@@ -1408,6 +1461,7 @@ class TestAsyncConversationFlow:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",
@@ -1585,6 +1639,14 @@ class TestAsyncConversationFlow:
                                     "destination_node_id": "destination_node_id",
                                 }
                             ],
+                            "else_edge": {
+                                "id": "id",
+                                "transition_condition": {
+                                    "prompt": "prompt",
+                                    "type": "prompt",
+                                },
+                                "destination_node_id": "destination_node_id",
+                            },
                             "finetune_conversation_examples": [
                                 {
                                     "id": "id",
@@ -1710,6 +1772,7 @@ class TestAsyncConversationFlow:
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
                             "method": "GET",
+                            "parameter_type": "json",
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
@@ -1789,6 +1852,14 @@ class TestAsyncConversationFlow:
                             "destination_node_id": "book_appointment",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -1899,6 +1970,7 @@ class TestAsyncConversationFlow:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",

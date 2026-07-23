@@ -49,9 +49,6 @@ class TestAgent:
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
-            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
-            analysis_summary_prompt="Summarize the outcome of the conversation in two sentences.",
-            analysis_user_sentiment_prompt="Evaluate the user's sentiment based on their tone and satisfaction level.",
             backchannel_frequency=0.9,
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
@@ -70,7 +67,10 @@ class TestAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
+            enable_expressive_mode=True,
             end_call_after_silence_ms=600000,
+            expressive_emotion_tags=["empathetic", "excited", "sigh", "clear throat", "emphasis"],
+            expressive_mode_prompt="Use [sigh] for thoughtful pauses and [excited] for good news.",
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
                 "input_topics": ["platform_integrity_jailbreaking"],
@@ -78,6 +78,7 @@ class TestAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational_personality": True,
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -130,13 +131,12 @@ class TestAgent:
                 "timeout_ms": 1000,
             },
             version_description="Customer support agent for handling product inquiries",
+            version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
-            voicemail_detection_timeout_ms=30000,
-            voicemail_message="Hi, please give us a callback.",
             voicemail_option={
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
@@ -198,7 +198,7 @@ class TestAgent:
     def test_method_retrieve_with_all_params(self, client: Retell) -> None:
         agent = client.agent.retrieve(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
 
@@ -249,15 +249,12 @@ class TestAgent:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         agent = client.agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
             agent_name="Jarvis",
             allow_dtmf_interruption=False,
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
-            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
-            analysis_summary_prompt="Summarize the outcome of the conversation in two sentences.",
-            analysis_user_sentiment_prompt="Evaluate the user's sentiment based on their tone and satisfaction level.",
             backchannel_frequency=0.9,
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
@@ -276,7 +273,10 @@ class TestAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
+            enable_expressive_mode=True,
             end_call_after_silence_ms=600000,
+            expressive_emotion_tags=["empathetic", "excited", "sigh", "clear throat", "emphasis"],
+            expressive_mode_prompt="Use [sigh] for thoughtful pauses and [excited] for good news.",
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
                 "input_topics": ["platform_integrity_jailbreaking"],
@@ -284,6 +284,7 @@ class TestAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational_personality": True,
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -341,14 +342,13 @@ class TestAgent:
                 "timeout_ms": 1000,
             },
             version_description="Customer support agent for handling product inquiries",
+            version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
             voice_id="retell-Cimo",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
-            voicemail_detection_timeout_ms=30000,
-            voicemail_message="Hi, please give us a callback.",
             voicemail_option={
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
@@ -407,10 +407,17 @@ class TestAgent:
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
         agent = client.agent.list(
-            is_latest=True,
-            limit=50,
-            pagination_key="agent_1ffdb9717444d0e77346838911",
-            pagination_key_version=0,
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+            filter_criteria={
+                "channel": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "voice",
+                },
+                "query": "query",
+            },
         )
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
@@ -628,6 +635,7 @@ class TestAgent:
             agent_id="agent_xxx",
             version=15,
             version_description="Hotfix for transfer timeout",
+            version_title="Hotfix",
         )
         assert agent is None
 
@@ -701,9 +709,6 @@ class TestAsyncAgent:
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
-            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
-            analysis_summary_prompt="Summarize the outcome of the conversation in two sentences.",
-            analysis_user_sentiment_prompt="Evaluate the user's sentiment based on their tone and satisfaction level.",
             backchannel_frequency=0.9,
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
@@ -722,7 +727,10 @@ class TestAsyncAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
+            enable_expressive_mode=True,
             end_call_after_silence_ms=600000,
+            expressive_emotion_tags=["empathetic", "excited", "sigh", "clear throat", "emphasis"],
+            expressive_mode_prompt="Use [sigh] for thoughtful pauses and [excited] for good news.",
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
                 "input_topics": ["platform_integrity_jailbreaking"],
@@ -730,6 +738,7 @@ class TestAsyncAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational_personality": True,
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -782,13 +791,12 @@ class TestAsyncAgent:
                 "timeout_ms": 1000,
             },
             version_description="Customer support agent for handling product inquiries",
+            version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
-            voicemail_detection_timeout_ms=30000,
-            voicemail_message="Hi, please give us a callback.",
             voicemail_option={
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
@@ -850,7 +858,7 @@ class TestAsyncAgent:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.retrieve(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(AgentResponse, agent, path=["response"])
 
@@ -901,15 +909,12 @@ class TestAsyncAgent:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
             agent_name="Jarvis",
             allow_dtmf_interruption=False,
             allow_user_dtmf=True,
             ambient_sound="coffee-shop",
             ambient_sound_volume=1,
-            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
-            analysis_summary_prompt="Summarize the outcome of the conversation in two sentences.",
-            analysis_user_sentiment_prompt="Evaluate the user's sentiment based on their tone and satisfaction level.",
             backchannel_frequency=0.9,
             backchannel_words=["yeah", "uh-huh"],
             begin_message_delay_ms=1000,
@@ -928,7 +933,10 @@ class TestAsyncAgent:
             enable_backchannel=True,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
+            enable_expressive_mode=True,
             end_call_after_silence_ms=600000,
+            expressive_emotion_tags=["empathetic", "excited", "sigh", "clear throat", "emphasis"],
+            expressive_mode_prompt="Use [sigh] for thoughtful pauses and [excited] for good news.",
             fallback_voice_ids=["cartesia-Cimo", "minimax-Cimo"],
             guardrail_config={
                 "input_topics": ["platform_integrity_jailbreaking"],
@@ -936,6 +944,7 @@ class TestAsyncAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational_personality": True,
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -993,14 +1002,13 @@ class TestAsyncAgent:
                 "timeout_ms": 1000,
             },
             version_description="Customer support agent for handling product inquiries",
+            version_title="Production hotfix",
             vocab_specialization="general",
             voice_emotion="calm",
             voice_id="retell-Cimo",
-            voice_model="eleven_turbo_v2",
+            voice_model="eleven_flash_v2",
             voice_speed=1,
             voice_temperature=1,
-            voicemail_detection_timeout_ms=30000,
-            voicemail_message="Hi, please give us a callback.",
             voicemail_option={
                 "action": {
                     "text": "Please give us a callback tomorrow at 10am.",
@@ -1059,10 +1067,17 @@ class TestAsyncAgent:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.list(
-            is_latest=True,
-            limit=50,
-            pagination_key="agent_1ffdb9717444d0e77346838911",
-            pagination_key_version=0,
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+            filter_criteria={
+                "channel": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "voice",
+                },
+                "query": "query",
+            },
         )
         assert_matches_type(AgentListResponse, agent, path=["response"])
 
@@ -1280,6 +1295,7 @@ class TestAsyncAgent:
             agent_id="agent_xxx",
             version=15,
             version_description="Hotfix for transfer timeout",
+            version_title="Hotfix",
         )
         assert agent is None
 

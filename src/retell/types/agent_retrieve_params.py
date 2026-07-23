@@ -9,7 +9,7 @@ __all__ = ["AgentRetrieveParams"]
 
 
 class AgentRetrieveParams(TypedDict, total=False):
-    version: Union[int, str]
+    version: Union[str, int]
     """Optional version of the API to use for this request.
 
     If not provided, will default to latest version.

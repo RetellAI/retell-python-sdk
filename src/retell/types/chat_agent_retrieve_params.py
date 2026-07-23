@@ -9,7 +9,7 @@ __all__ = ["ChatAgentRetrieveParams"]
 
 
 class ChatAgentRetrieveParams(TypedDict, total=False):
-    version: Union[int, str]
+    version: Union[str, int]
     """Optional version of the API to use for this request.
 
     If not provided, will default to latest version.

@@ -38,7 +38,7 @@ __all__ = [
 
 
 class AgentUpdateParams(TypedDict, total=False):
-    version: Union[int, str]
+    version: Union[str, int]
     """Optional version of the API to use for this request. Default to latest version."""
 
     agent_name: Optional[str]
@@ -85,26 +85,6 @@ class AgentUpdateParams(TypedDict, total=False):
 
     Value ranging from [0,2]. Lower value means quieter ambient sound, while higher
     value means louder ambient sound. If unset, default value 1 will apply.
-    """
-
-    analysis_successful_prompt: Optional[str]
-    """
-    Prompt to determine whether the post call or chat analysis should mark the
-    interaction as successful. Set to null to use the default prompt.
-    """
-
-    analysis_summary_prompt: Optional[str]
-    """Prompt to guide how the post call or chat analysis summary should be generated.
-
-    When unset, the default system prompt is used. Set to null to use the default
-    prompt.
-    """
-
-    analysis_user_sentiment_prompt: Optional[str]
-    """
-    Prompt to guide how the post call or chat analysis should evaluate user
-    sentiment. When unset, the default system prompt is used. Set to null to use the
-    default prompt.
     """
 
     backchannel_frequency: float
@@ -198,11 +178,46 @@ class AgentUpdateParams(TypedDict, total=False):
     speech rate and conversation context. If unset, default value false will apply.
     """
 
+    enable_expressive_mode: bool
+    """Master toggle for expressive mode.
+
+    When true, the agent may add expressive voice tags to the audio it generates.
+    Only applicable for platform voices. If unset, defaults to false.
+    """
+
     end_call_after_silence_ms: int
     """If users stay silent for a period after agent speech, end the call.
 
     The minimum value allowed is 10,000 ms (10 s). By default, this is set to 600000
     (10 min).
+    """
+
+    expressive_emotion_tags: List[
+        Literal[
+            "empathetic",
+            "excited",
+            "happy",
+            "curious",
+            "surprised",
+            "sigh",
+            "clear throat",
+            "pause",
+            "long pause",
+            "emphasis",
+        ]
+    ]
+    """
+    The expressive voice tags Retell pre-teaches the model to use when
+    enable_expressive_mode is true. Custom tags defined in the system prompt are
+    still allowed. If empty, the agent follows general expressive guidance without a
+    fixed tag set.
+    """
+
+    expressive_mode_prompt: Optional[str]
+    """
+    Custom expressive voice guidance to use instead of the default Retell expressive
+    prompt when enable_expressive_mode is true. If omitted or blank, the default
+    expressive prompt will be used.
     """
 
     fallback_voice_ids: Optional[SequenceNotStr[str]]
@@ -423,12 +438,15 @@ class AgentUpdateParams(TypedDict, total=False):
             "gpt-5.4-mini",
             "gpt-5.4-nano",
             "gpt-5.5",
+            "gpt-5.6-terra",
+            "gpt-5.6-luna",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-sonnet",
             "claude-4.5-haiku",
-            "gemini-2.5-flash-lite",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
         ]
     ]
     """The model to use for post call analysis. Default to gpt-4.1."""
@@ -504,6 +522,9 @@ class AgentUpdateParams(TypedDict, total=False):
     Used for your own reference and documentation.
     """
 
+    version_title: Optional[str]
+    """Optional title of the agent version. Used for your own reference."""
+
     vocab_specialization: Literal["general", "medical"]
     """If set, determines the vocabulary set to use for transcription.
 
@@ -526,9 +547,7 @@ class AgentUpdateParams(TypedDict, total=False):
 
     voice_model: Optional[
         Literal[
-            "eleven_turbo_v2",
             "eleven_flash_v2",
-            "eleven_turbo_v2_5",
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
             "eleven_v3",
@@ -564,21 +583,6 @@ class AgentUpdateParams(TypedDict, total=False):
     Value ranging from [0,2]. Lower value means more stable, and higher value means
     more variant speech generation. Check the dashboard to see what provider
     supports this feature. If unset, default value 1 will apply.
-    """
-
-    voicemail_detection_timeout_ms: int
-    """
-    Configures when to stop running voicemail detection, as it becomes unlikely to
-    hit voicemail after a couple minutes, and keep running it will only have
-    negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value
-    allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
-    """
-
-    voicemail_message: str
-    """The message to be played when the call enters a voicemail.
-
-    Note that this feature is only available for phone calls. If you want to hangup
-    after hitting voicemail, set this to empty string.
     """
 
     voicemail_option: Optional[VoicemailOption]
@@ -655,10 +659,10 @@ class CustomSttConfig(TypedDict, total=False):
     endpointing_ms: Required[int]
     """Endpointing timeout in milliseconds.
 
-    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox
+    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI.
     """
 
-    provider: Required[Literal["azure", "deepgram", "soniox"]]
+    provider: Required[Literal["azure", "deepgram", "soniox", "assemblyai"]]
     """ASR provider name."""
 
 
@@ -701,6 +705,14 @@ class HandbookConfig(TypedDict, total=False):
 
     ai_disclosure: bool
     """When asked, acknowledge being a virtual assistant."""
+
+    conversational_personality: bool
+    """Enables Conversational Personality.
+
+    When true, the agent uses the Conversational Personality handbook preset, skips
+    Professional Rep Personality during prompt assembly, and enables internal
+    colloquial rewrite behavior.
+    """
 
     default_personality: bool
     """Professional call center rep baseline."""

@@ -26,6 +26,12 @@ __all__ = [
     "NodeConversationNodeEdgeTransitionConditionPromptCondition",
     "NodeConversationNodeEdgeTransitionConditionEquationCondition",
     "NodeConversationNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeConversationNodeElseEdge",
+    "NodeConversationNodeElseEdgeTransitionCondition",
+    "NodeConversationNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeConversationNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeConversationNodeElseEdgeTransitionConditionUnionMember2",
     "NodeConversationNodeFinetuneConversationExample",
     "NodeConversationNodeFinetuneConversationExampleTranscript",
     "NodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0",
@@ -74,6 +80,12 @@ __all__ = [
     "NodeSubagentNodeEdgeTransitionConditionPromptCondition",
     "NodeSubagentNodeEdgeTransitionConditionEquationCondition",
     "NodeSubagentNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeSubagentNodeElseEdge",
+    "NodeSubagentNodeElseEdgeTransitionCondition",
+    "NodeSubagentNodeElseEdgeTransitionConditionPromptCondition",
+    "NodeSubagentNodeElseEdgeTransitionConditionEquationCondition",
+    "NodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodeSubagentNodeElseEdgeTransitionConditionUnionMember2",
     "NodeSubagentNodeFinetuneConversationExample",
     "NodeSubagentNodeFinetuneConversationExampleTranscript",
     "NodeSubagentNodeFinetuneConversationExampleTranscriptUnionMember0",
@@ -304,6 +316,12 @@ __all__ = [
     "NodePressDigitNodeEdgeTransitionConditionPromptCondition",
     "NodePressDigitNodeEdgeTransitionConditionEquationCondition",
     "NodePressDigitNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodePressDigitNodeElseEdge",
+    "NodePressDigitNodeElseEdgeTransitionCondition",
+    "NodePressDigitNodeElseEdgeTransitionConditionPromptCondition",
+    "NodePressDigitNodeElseEdgeTransitionConditionEquationCondition",
+    "NodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation",
+    "NodePressDigitNodeElseEdgeTransitionConditionUnionMember2",
     "NodePressDigitNodeFinetuneTransitionExample",
     "NodePressDigitNodeFinetuneTransitionExampleTranscript",
     "NodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember0",
@@ -723,6 +741,62 @@ class NodeConversationNodeEdge(BaseModel):
     """ID of the destination node"""
 
 
+class NodeConversationNodeElseEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeConversationNodeElseEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodeConversationNodeElseEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Else"]] = None
+    """Must be "Else" for else edge"""
+
+
+class NodeConversationNodeElseEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+    type: Literal["prompt"]
+
+
+NodeConversationNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeConversationNodeElseEdgeTransitionConditionPromptCondition,
+    NodeConversationNodeElseEdgeTransitionConditionEquationCondition,
+    NodeConversationNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeConversationNodeElseEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodeConversationNodeElseEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
 class NodeConversationNodeFinetuneConversationExampleTranscriptUnionMember0(BaseModel):
     content: str
 
@@ -971,12 +1045,15 @@ class NodeConversationNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -1061,6 +1138,8 @@ class NodeConversationNode(BaseModel):
     """Position for frontend display"""
 
     edges: Optional[List[NodeConversationNodeEdge]] = None
+
+    else_edge: Optional[NodeConversationNodeElseEdge] = None
 
     finetune_conversation_examples: Optional[List[NodeConversationNodeFinetuneConversationExample]] = None
 
@@ -1202,6 +1281,62 @@ class NodeSubagentNodeEdge(BaseModel):
     """Unique identifier for the edge"""
 
     transition_condition: NodeSubagentNodeEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodeSubagentNodeElseEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Else"]] = None
+    """Must be "Else" for else edge"""
+
+
+class NodeSubagentNodeElseEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+    type: Literal["prompt"]
+
+
+NodeSubagentNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodeSubagentNodeElseEdgeTransitionConditionPromptCondition,
+    NodeSubagentNodeElseEdgeTransitionConditionEquationCondition,
+    NodeSubagentNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeSubagentNodeElseEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodeSubagentNodeElseEdgeTransitionCondition
 
     destination_node_id: Optional[str] = None
     """ID of the destination node"""
@@ -1455,12 +1590,15 @@ class NodeSubagentNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -1694,6 +1832,13 @@ class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransf
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
@@ -1703,8 +1848,12 @@ class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionWarmTransf
     This prompt will guide the AI on how to navigate the IVR system.
     """
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     opt_out_human_detection: Optional[bool] = None
     """If set to true, will not perform human detection for the transfer.
@@ -1757,7 +1906,7 @@ class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWar
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the transfer agent to use."""
 
 
@@ -1817,11 +1966,22 @@ class NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWar
     type: Literal["agentic_warm_transfer"]
     """The type of the transfer."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     public_handoff_option: Optional[
         NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
@@ -1998,7 +2158,7 @@ class NodeSubagentNodeToolAgentSwapTool(BaseModel):
 
     type: Literal["agent_swap"]
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """The version of the agent to swap to.
 
     If not specified, will use the latest version.
@@ -2210,6 +2370,14 @@ class NodeSubagentNodeToolCustomTool(BaseModel):
 
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
+
+    parameter_type: Optional[Literal["json", "form"]] = None
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
 
     parameters: Optional[NodeSubagentNodeToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
@@ -2623,6 +2791,8 @@ class NodeSubagentNode(BaseModel):
 
     edges: Optional[List[NodeSubagentNodeEdge]] = None
 
+    else_edge: Optional[NodeSubagentNodeElseEdge] = None
+
     finetune_conversation_examples: Optional[List[NodeSubagentNodeFinetuneConversationExample]] = None
 
     finetune_transition_examples: Optional[List[NodeSubagentNodeFinetuneTransitionExample]] = None
@@ -2847,12 +3017,15 @@ class NodeEndNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -3212,12 +3385,15 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -3594,12 +3770,15 @@ class NodeCodeNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -3845,6 +4024,13 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(BaseModel):
     agent_detection_timeout_ms: Optional[float] = None
     """The time to wait before considering transfer fails."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
@@ -3854,8 +4040,12 @@ class NodeTransferCallNodeTransferOptionTransferOptionWarmTransfer(BaseModel):
     This prompt will guide the AI on how to navigate the IVR system.
     """
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     opt_out_human_detection: Optional[bool] = None
     """If set to true, will not perform human detection for the transfer.
@@ -3906,7 +4096,7 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferAgentic
     CancelTransferNode (for Conversation Flow).
     """
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the transfer agent to use."""
 
 
@@ -3962,11 +4152,22 @@ class NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransfer(BaseMo
     type: Literal["agentic_warm_transfer"]
     """The type of the transfer."""
 
+    custom_on_hold_music_asset_id: Optional[str] = None
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
     enable_bridge_audio_cue: Optional[bool] = None
     """Whether to play an audio cue when bridging the call. Defaults to true."""
 
-    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone"]] = None
-    """The music to play while the caller is being transferred."""
+    on_hold_music: Optional[Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]] = None
+    """The music to play while the caller is being transferred.
+
+    Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded
+    audio asset.
+    """
 
     public_handoff_option: Optional[
         NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption
@@ -4181,12 +4382,15 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -4293,6 +4497,62 @@ class NodePressDigitNodeEdge(BaseModel):
     """Unique identifier for the edge"""
 
     transition_condition: NodePressDigitNodeEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class NodePressDigitNodeElseEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodePressDigitNodeElseEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodePressDigitNodeElseEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Else"]] = None
+    """Must be "Else" for else edge"""
+
+
+class NodePressDigitNodeElseEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Else"]
+    """Must be "Else" for else edge"""
+
+    type: Literal["prompt"]
+
+
+NodePressDigitNodeElseEdgeTransitionCondition: TypeAlias = Union[
+    NodePressDigitNodeElseEdgeTransitionConditionPromptCondition,
+    NodePressDigitNodeElseEdgeTransitionConditionEquationCondition,
+    NodePressDigitNodeElseEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodePressDigitNodeElseEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodePressDigitNodeElseEdgeTransitionCondition
 
     destination_node_id: Optional[str] = None
     """ID of the destination node"""
@@ -4494,12 +4754,15 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -4526,6 +4789,8 @@ class NodePressDigitNode(BaseModel):
     """Position for frontend display"""
 
     edges: Optional[List[NodePressDigitNodeEdge]] = None
+
+    else_edge: Optional[NodePressDigitNodeElseEdge] = None
 
     finetune_transition_examples: Optional[List[NodePressDigitNodeFinetuneTransitionExample]] = None
 
@@ -4841,12 +5106,15 @@ class NodeBranchNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -5190,12 +5458,15 @@ class NodeSMSNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -5653,12 +5924,15 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -5941,12 +6215,15 @@ class NodeAgentSwapNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -5973,7 +6250,7 @@ class NodeAgentSwapNode(BaseModel):
     type: Literal["agent_swap"]
     """Type of the node"""
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """The version of the agent to swap to.
 
     If not specified, will use the latest version
@@ -6330,12 +6607,15 @@ class NodeMcpNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -6903,12 +7183,15 @@ class NodeBridgeTransferNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -7129,12 +7412,15 @@ class NodeCancelTransferNodeModelChoice(BaseModel):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-sonnet",
         "claude-4.5-haiku",
-        "gemini-2.5-flash-lite",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
     ]
     """The LLM model to use"""
 
@@ -7328,6 +7614,14 @@ class ToolCustomTool(BaseModel):
 
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
+
+    parameter_type: Optional[Literal["json", "form"]] = None
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
 
     parameters: Optional[ToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.

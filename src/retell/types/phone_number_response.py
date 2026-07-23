@@ -24,7 +24,7 @@ class InboundAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -47,7 +47,7 @@ class InboundSMSAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -70,7 +70,7 @@ class OutboundAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -93,7 +93,7 @@ class OutboundSMSAgent(BaseModel):
     When used in a list of agents, the total weights must add up to 1.
     """
 
-    agent_version: Union[int, str, None] = None
+    agent_version: Union[str, int, None] = None
     """Agent version reference.
 
     Supports a numeric version (for example 3) or a tag/environment name (for
@@ -156,13 +156,12 @@ class PhoneNumberResponse(BaseModel):
     """
 
     fallback_number: Optional[str] = None
-    """Enterprise only.
-
-    Phone number to transfer inbound calls to when organization is in outage mode or
-    when an inbound call cannot get a concurrency slot before the fallback timeout.
-    Can be either a Retell phone number or an external number. Cannot be the same as
-    this phone number, and cannot be a number that already has its own fallback
-    configured (prevents nested forwarding).
+    """
+    When inbound call concurrency is reached and a slot does not free up after
+    extended ringing, the call will fall back to this number. Can be either a Retell
+    phone number or an external number. Cannot be the same as this phone number, and
+    cannot be a number that already has its own fallback configured (prevents nested
+    forwarding).
     """
 
     inbound_agents: Optional[List[InboundAgent]] = None
@@ -176,21 +175,21 @@ class PhoneNumberResponse(BaseModel):
     """Inbound SMS agents to bind to the number with weights.
 
     If set and non-empty, one agent will be picked randomly for each inbound SMS,
-    with probability proportional to the weight. Total weights must add up to 1. If
-    not set or empty, fallback to inbound_sms_agent_id.
+    with probability proportional to the weight. Total weights must add up to 1.
     """
 
     inbound_sms_webhook_url: Optional[str] = None
     """
-    If set, will send a webhook for inbound SMS, where you can override agent id,
-    set dynamic variables and other fields specific to that chat.
+    If set, Retell will send a webhook for inbound SMS, where you can override the
+    agent ID, set dynamic variables, reject the SMS, and configure other fields
+    specific to that chat.
     """
 
     inbound_webhook_url: Optional[str] = None
     """
     If set, Retell will send a webhook for inbound calls, where you can override the
-    agent ID, set dynamic variables, and configure other fields specific to that
-    call.
+    agent ID, set dynamic variables, reject the call, and configure other fields
+    specific to that call.
     """
 
     nickname: Optional[str] = None
@@ -207,8 +206,7 @@ class PhoneNumberResponse(BaseModel):
     """Outbound SMS agents to bind to the number with weights.
 
     If set and non-empty, one agent will be picked randomly for each outbound SMS,
-    with probability proportional to the weight. Total weights must add up to 1. If
-    not set or empty, fallback to outbound_sms_agent_id.
+    with probability proportional to the weight. Total weights must add up to 1.
     """
 
     phone_number_pretty: Optional[str] = None

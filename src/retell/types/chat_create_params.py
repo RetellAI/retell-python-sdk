@@ -12,7 +12,7 @@ class ChatCreateParams(TypedDict, total=False):
     agent_id: Required[str]
     """The chat agent to use for the chat."""
 
-    agent_version: Union[int, str]
+    agent_version: Union[str, int]
     """The version of the chat agent to use for the chat.
 
     If not provided, will default to latest version.

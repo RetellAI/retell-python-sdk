@@ -39,7 +39,7 @@ class TestPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             inbound_webhook_url="https://example.com/inbound-webhook",
@@ -49,7 +49,7 @@ class TestPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             phone_number="+14157774444",
@@ -151,7 +151,7 @@ class TestPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             inbound_sms_webhook_url="https://example.com/inbound-sms-webhook",
@@ -168,7 +168,7 @@ class TestPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             termination_uri="someuri.pstn.twilio.com",
@@ -312,7 +312,7 @@ class TestPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             inbound_webhook_url="https://example.com/inbound-webhook",
@@ -321,7 +321,7 @@ class TestPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             sip_trunk_auth_password="123456",
@@ -383,7 +383,7 @@ class TestAsyncPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             inbound_webhook_url="https://example.com/inbound-webhook",
@@ -393,7 +393,7 @@ class TestAsyncPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             phone_number="+14157774444",
@@ -495,7 +495,7 @@ class TestAsyncPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             inbound_sms_webhook_url="https://example.com/inbound-sms-webhook",
@@ -512,7 +512,7 @@ class TestAsyncPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             termination_uri="someuri.pstn.twilio.com",
@@ -656,7 +656,7 @@ class TestAsyncPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             inbound_webhook_url="https://example.com/inbound-webhook",
@@ -665,7 +665,7 @@ class TestAsyncPhoneNumber:
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
                     "weight": 0.5,
-                    "agent_version": 1,
+                    "agent_version": "latest_published",
                 }
             ],
             sip_trunk_auth_password="123456",

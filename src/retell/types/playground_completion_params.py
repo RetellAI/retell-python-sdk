@@ -13,6 +13,9 @@ __all__ = [
     "MessageToolCallResultMessageBase",
     "MessageNodeTransitionMessageBase",
     "MessageStateTransitionMessageBase",
+    "MessageInjectedMessageBase",
+    "MessageSMSMessageBase",
+    "MessageSMSMessageBaseMultimedia",
     "ToolMock",
     "ToolMockInputMatchRule",
     "ToolMockInputMatchRuleType",
@@ -28,7 +31,7 @@ class PlaygroundCompletionParams(TypedDict, total=False):
     omitted.
     """
 
-    version: Union[int, str]
+    version: Union[str, int]
     """Agent version to use. Defaults to latest."""
 
     component_id: str
@@ -166,43 +169,111 @@ class MessageStateTransitionMessageBase(TypedDict, total=False):
     """New state name"""
 
 
+class MessageInjectedMessageBase(TypedDict, total=False):
+    content: Required[str]
+    """The injected context text."""
+
+    role: Required[Literal["injected"]]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    created_timestamp: int
+    """Create timestamp of the message"""
+
+    message_id: str
+    """Unique id of the message"""
+
+
+class MessageSMSMessageBaseMultimedia(TypedDict, total=False):
+    url: Required[str]
+    """URL of the multimedia attachment."""
+
+    summary: str
+    """Optional textual summary of the attachment."""
+
+
+class MessageSMSMessageBase(TypedDict, total=False):
+    content: Required[str]
+    """Text content of the SMS message."""
+
+    role: Required[Literal["sms"]]
+    """SMS message exchanged during the call (for example received from the user).
+
+    Woven into the transcript and shown to the agent, but not part of the spoken
+    conversation.
+    """
+
+    created_timestamp: int
+    """Create timestamp of the message"""
+
+    message_id: str
+    """Unique id of the message"""
+
+    multimedia: Iterable[MessageSMSMessageBaseMultimedia]
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
 Message: TypeAlias = Union[
     MessageMessageBase,
     MessageToolCallInvocationMessageBase,
     MessageToolCallResultMessageBase,
     MessageNodeTransitionMessageBase,
     MessageStateTransitionMessageBase,
+    MessageInjectedMessageBase,
+    MessageSMSMessageBase,
 ]
 
 
 class ToolMockInputMatchRuleType(TypedDict, total=False):
     type: Required[Literal["any"]]
-    """Match any input of the tool"""
+    """Match every call to the tool, no matter what arguments were passed.
+
+    Use this for a catch-all mock.
+    """
 
 
 class ToolMockInputMatchRuleUnionMember1(TypedDict, total=False):
     args: Required[object]
-    """Arguments to match. Only provided fields will be checked"""
+    """Argument values the call must have to match.
+
+    Only the fields you list here are checked, and each must equal the value in the
+    actual call. Extra fields in the call are ignored, so this is a subset match.
+    """
 
     type: Required[Literal["partial_match"]]
-    """Match only calls with specific arguments"""
+    """Match only calls whose arguments contain the values listed in `args`."""
 
 
 ToolMockInputMatchRule: TypeAlias = Union[ToolMockInputMatchRuleType, ToolMockInputMatchRuleUnionMember1]
 
 
 class ToolMock(TypedDict, total=False):
+    """A fake response for one tool.
+
+    During a simulation, when the LLM calls a tool whose name matches `tool_name` and whose arguments satisfy `input_match_rule`, the real tool is not run; `output` is returned to the LLM instead. This keeps runs deterministic and avoids calling live integrations. A tool call that matches no mock falls through to the real tool.
+    """
+
     input_match_rule: Required[ToolMockInputMatchRule]
-    """Rule for matching tool calls"""
+    """Decides which calls to this tool the mock applies to."""
 
     output: Required[str]
-    """The output of the tool call that will be fed into the LLM.
+    """The tool result fed back to the LLM in place of the real tool's output.
 
-    Should be a JSON string.
+    Should be a JSON string, the same shape the real tool would return.
     """
 
     tool_name: Required[str]
-    """Name of the tool to mock"""
+    """The tool's function name, not the tool ID, i.e.
+
+    the name the LLM uses when it calls the tool (for example
+    `check_availability_cal`, `book_appointment_cal`, or the name you gave a custom
+    function).
+    """
 
     result: Optional[bool]
     """For tool calls like transfer_call that require a boolean result.

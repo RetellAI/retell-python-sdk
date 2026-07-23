@@ -89,18 +89,19 @@ class PhoneNumberResource(SyncAPIResource):
           country_code: The ISO 3166-1 alpha-2 country code of the number you are trying to purchase. If
               left empty, will default to "US".
 
-          fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
-              in outage mode or when an inbound call cannot get a concurrency slot before the
-              fallback timeout. Can be either a Retell phone number or an external number.
-              Cannot be the same as this phone number, and cannot be a number that already has
-              its own fallback configured (prevents nested forwarding).
+          fallback_number: When inbound call concurrency is reached and a slot does not free up after
+              extended ringing, the call will fall back to this number. Can be either a Retell
+              phone number or an external number. Cannot be the same as this phone number, and
+              cannot be a number that already has its own fallback configured (prevents nested
+              forwarding).
 
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
               proportional to the weight. Total weights must add up to 1.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
-              set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -226,12 +227,11 @@ class PhoneNumberResource(SyncAPIResource):
           auth_username: The username used for authentication for the SIP trunk to update for the phone
               number.
 
-          fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
-              in outage mode or when an inbound call cannot get a concurrency slot before the
-              fallback timeout. Can be either a Retell phone number or an external number. Set
-              to null to remove. Cannot be the same as this phone number, and cannot be a
-              number that already has its own fallback configured (prevents nested
-              forwarding).
+          fallback_number: When inbound call concurrency is reached and a slot does not free up after
+              extended ringing, the call will fall back to this number. Can be either a Retell
+              phone number or an external number. Set to null to remove. Cannot be the same as
+              this phone number, and cannot be a number that already has its own fallback
+              configured (prevents nested forwarding).
 
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
@@ -239,14 +239,15 @@ class PhoneNumberResource(SyncAPIResource):
 
           inbound_sms_agents: Inbound SMS agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound SMS, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to inbound_sms_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
-          inbound_sms_webhook_url: If set, will send a webhook for inbound SMS, where you can override agent id,
-              set dynamic variables and other fields specific to that chat.
+          inbound_sms_webhook_url: If set, Retell will send a webhook for inbound SMS, where you can override the
+              agent ID, set dynamic variables, reject the SMS, and configure other fields
+              specific to that chat.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
-              set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -256,8 +257,7 @@ class PhoneNumberResource(SyncAPIResource):
 
           outbound_sms_agents: Outbound SMS agents to bind to the number with weights. If set and non-empty,
               one agent will be picked randomly for each outbound SMS, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to outbound_sms_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           termination_uri: The termination uri to update for the phone number. This is used for outbound
               calls.
@@ -435,8 +435,9 @@ class PhoneNumberResource(SyncAPIResource):
               agent will be picked randomly for each inbound call, with probability
               proportional to the weight. Total weights must add up to 1.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
-              set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -544,18 +545,19 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           country_code: The ISO 3166-1 alpha-2 country code of the number you are trying to purchase. If
               left empty, will default to "US".
 
-          fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
-              in outage mode or when an inbound call cannot get a concurrency slot before the
-              fallback timeout. Can be either a Retell phone number or an external number.
-              Cannot be the same as this phone number, and cannot be a number that already has
-              its own fallback configured (prevents nested forwarding).
+          fallback_number: When inbound call concurrency is reached and a slot does not free up after
+              extended ringing, the call will fall back to this number. Can be either a Retell
+              phone number or an external number. Cannot be the same as this phone number, and
+              cannot be a number that already has its own fallback configured (prevents nested
+              forwarding).
 
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
               proportional to the weight. Total weights must add up to 1.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
-              set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -681,12 +683,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           auth_username: The username used for authentication for the SIP trunk to update for the phone
               number.
 
-          fallback_number: Enterprise only. Phone number to transfer inbound calls to when organization is
-              in outage mode or when an inbound call cannot get a concurrency slot before the
-              fallback timeout. Can be either a Retell phone number or an external number. Set
-              to null to remove. Cannot be the same as this phone number, and cannot be a
-              number that already has its own fallback configured (prevents nested
-              forwarding).
+          fallback_number: When inbound call concurrency is reached and a slot does not free up after
+              extended ringing, the call will fall back to this number. Can be either a Retell
+              phone number or an external number. Set to null to remove. Cannot be the same as
+              this phone number, and cannot be a number that already has its own fallback
+              configured (prevents nested forwarding).
 
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
@@ -694,14 +695,15 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           inbound_sms_agents: Inbound SMS agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound SMS, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to inbound_sms_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
-          inbound_sms_webhook_url: If set, will send a webhook for inbound SMS, where you can override agent id,
-              set dynamic variables and other fields specific to that chat.
+          inbound_sms_webhook_url: If set, Retell will send a webhook for inbound SMS, where you can override the
+              agent ID, set dynamic variables, reject the SMS, and configure other fields
+              specific to that chat.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
-              set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 
@@ -711,8 +713,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           outbound_sms_agents: Outbound SMS agents to bind to the number with weights. If set and non-empty,
               one agent will be picked randomly for each outbound SMS, with probability
-              proportional to the weight. Total weights must add up to 1. If not set or empty,
-              fallback to outbound_sms_agent_id.
+              proportional to the weight. Total weights must add up to 1.
 
           termination_uri: The termination uri to update for the phone number. This is used for outbound
               calls.
@@ -890,8 +891,9 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               agent will be picked randomly for each inbound call, with probability
               proportional to the weight. Total weights must add up to 1.
 
-          inbound_webhook_url: If set, will send a webhook for inbound calls, where you can override agent id,
-              set dynamic variables and other fields specific to that call.
+          inbound_webhook_url: If set, Retell will send a webhook for inbound calls, where you can override the
+              agent ID, set dynamic variables, reject the call, and configure other fields
+              specific to that call.
 
           nickname: Nickname of the number. This is for your reference only.
 

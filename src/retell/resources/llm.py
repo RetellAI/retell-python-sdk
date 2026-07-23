@@ -70,18 +70,30 @@ class LlmResource(SyncAPIResource):
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
                 "gpt-5.5",
+                "gpt-5.6-terra",
+                "gpt-5.6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+        s2s_model: Optional[
+            Literal[
+                "gpt-realtime-2.1",
+                "gpt-realtime-2.1-mini",
+                "gpt-realtime-2",
+                "gpt-realtime-1.5",
+                "gpt-realtime",
+                "gpt-realtime-mini",
+            ]
+        ]
         | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
@@ -262,18 +274,30 @@ class LlmResource(SyncAPIResource):
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
                 "gpt-5.5",
+                "gpt-5.6-terra",
+                "gpt-5.6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+        s2s_model: Optional[
+            Literal[
+                "gpt-realtime-2.1",
+                "gpt-realtime-2.1-mini",
+                "gpt-realtime-2",
+                "gpt-realtime-1.5",
+                "gpt-realtime",
+                "gpt-realtime-mini",
+            ]
+        ]
         | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
@@ -523,18 +547,30 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
                 "gpt-5.5",
+                "gpt-5.6-terra",
+                "gpt-5.6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+        s2s_model: Optional[
+            Literal[
+                "gpt-realtime-2.1",
+                "gpt-realtime-2.1-mini",
+                "gpt-realtime-2",
+                "gpt-realtime-1.5",
+                "gpt-realtime",
+                "gpt-realtime-mini",
+            ]
+        ]
         | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
@@ -715,18 +751,30 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gpt-5.4-mini",
                 "gpt-5.4-nano",
                 "gpt-5.5",
+                "gpt-5.6-terra",
+                "gpt-5.6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-sonnet",
                 "claude-4.5-haiku",
-                "gemini-2.5-flash-lite",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
+                "gemini-3.5-flash",
             ]
         ]
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
-        s2s_model: Optional[Literal["gpt-realtime-2", "gpt-realtime-1.5", "gpt-realtime", "gpt-realtime-mini"]]
+        s2s_model: Optional[
+            Literal[
+                "gpt-realtime-2.1",
+                "gpt-realtime-2.1-mini",
+                "gpt-realtime-2",
+                "gpt-realtime-1.5",
+                "gpt-realtime",
+                "gpt-realtime-mini",
+            ]
+        ]
         | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,

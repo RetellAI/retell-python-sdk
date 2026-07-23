@@ -43,9 +43,6 @@ class TestChatAgent:
                 "version": 0,
             },
             agent_name="Jarvis",
-            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
-            analysis_summary_prompt="Summarize the call in a few sentences.",
-            analysis_user_sentiment_prompt="Evaluate the user's sentiment based on their tone and satisfaction level.",
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_retention_days=30,
             data_storage_setting="everything",
@@ -79,6 +76,7 @@ class TestChatAgent:
             post_chat_analysis_model="gpt-4.1-mini",
             signed_url_expiration_ms=86400000,
             timezone="America/New_York",
+            version_title="Production hotfix",
             webhook_events=["chat_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
@@ -130,7 +128,7 @@ class TestChatAgent:
     def test_method_retrieve_with_all_params(self, client: Retell) -> None:
         chat_agent = client.chat_agent.retrieve(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
@@ -181,11 +179,8 @@ class TestChatAgent:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         chat_agent = client.chat_agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
             agent_name="Jarvis",
-            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
-            analysis_summary_prompt="Summarize the call in a few sentences.",
-            analysis_user_sentiment_prompt="Evaluate the user's sentiment based on their tone and satisfaction level.",
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_retention_days=30,
             data_storage_setting="everything",
@@ -224,6 +219,7 @@ class TestChatAgent:
             },
             signed_url_expiration_ms=86400000,
             timezone="America/New_York",
+            version_title="Production hotfix",
             webhook_events=["chat_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
@@ -274,10 +270,17 @@ class TestChatAgent:
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
         chat_agent = client.chat_agent.list(
-            is_latest=True,
-            limit=50,
-            pagination_key="16b980523634a6dc504898cda492e939",
-            pagination_key_version=0,
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+            filter_criteria={
+                "channel": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "voice",
+                },
+                "query": "query",
+            },
         )
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
@@ -495,6 +498,7 @@ class TestChatAgent:
             agent_id="agent_xxx",
             version=15,
             version_description="Hotfix for transfer timeout",
+            version_title="Hotfix",
         )
         assert chat_agent is None
 
@@ -562,9 +566,6 @@ class TestAsyncChatAgent:
                 "version": 0,
             },
             agent_name="Jarvis",
-            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
-            analysis_summary_prompt="Summarize the call in a few sentences.",
-            analysis_user_sentiment_prompt="Evaluate the user's sentiment based on their tone and satisfaction level.",
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_retention_days=30,
             data_storage_setting="everything",
@@ -598,6 +599,7 @@ class TestAsyncChatAgent:
             post_chat_analysis_model="gpt-4.1-mini",
             signed_url_expiration_ms=86400000,
             timezone="America/New_York",
+            version_title="Production hotfix",
             webhook_events=["chat_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
@@ -649,7 +651,7 @@ class TestAsyncChatAgent:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.retrieve(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
         )
         assert_matches_type(ChatAgentResponse, chat_agent, path=["response"])
 
@@ -700,11 +702,8 @@ class TestAsyncChatAgent:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.update(
             agent_id="16b980523634a6dc504898cda492e939",
-            version=1,
+            version="latest_published",
             agent_name="Jarvis",
-            analysis_successful_prompt="The agent finished the task and the call was complete without being cutoff.",
-            analysis_summary_prompt="Summarize the call in a few sentences.",
-            analysis_user_sentiment_prompt="Evaluate the user's sentiment based on their tone and satisfaction level.",
             auto_close_message="Thank you for chatting. The conversation has ended.",
             data_storage_retention_days=30,
             data_storage_setting="everything",
@@ -743,6 +742,7 @@ class TestAsyncChatAgent:
             },
             signed_url_expiration_ms=86400000,
             timezone="America/New_York",
+            version_title="Production hotfix",
             webhook_events=["chat_started"],
             webhook_timeout_ms=10000,
             webhook_url="https://webhook-url-here",
@@ -793,10 +793,17 @@ class TestAsyncChatAgent:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         chat_agent = await async_client.chat_agent.list(
-            is_latest=True,
-            limit=50,
-            pagination_key="16b980523634a6dc504898cda492e939",
-            pagination_key_version=0,
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+            filter_criteria={
+                "channel": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "voice",
+                },
+                "query": "query",
+            },
         )
         assert_matches_type(ChatAgentListResponse, chat_agent, path=["response"])
 
@@ -1014,6 +1021,7 @@ class TestAsyncChatAgent:
             agent_id="agent_xxx",
             version=15,
             version_description="Hotfix for transfer timeout",
+            version_title="Hotfix",
         )
         assert chat_agent is None
 

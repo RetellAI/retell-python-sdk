@@ -74,6 +74,14 @@ class TestConversationFlowComponent:
                             "destination_node_id": "destination_node_id",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -199,6 +207,7 @@ class TestConversationFlowComponent:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",
@@ -370,6 +379,14 @@ class TestConversationFlowComponent:
                             "destination_node_id": "destination_node_id",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -478,6 +495,7 @@ class TestConversationFlowComponent:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",
@@ -675,6 +693,14 @@ class TestAsyncConversationFlowComponent:
                             "destination_node_id": "destination_node_id",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -800,6 +826,7 @@ class TestAsyncConversationFlowComponent:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",
@@ -971,6 +998,14 @@ class TestAsyncConversationFlowComponent:
                             "destination_node_id": "destination_node_id",
                         }
                     ],
+                    "else_edge": {
+                        "id": "id",
+                        "transition_condition": {
+                            "prompt": "prompt",
+                            "type": "prompt",
+                        },
+                        "destination_node_id": "destination_node_id",
+                    },
                     "finetune_conversation_examples": [
                         {
                             "id": "id",
@@ -1079,6 +1114,7 @@ class TestAsyncConversationFlowComponent:
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
                     "method": "GET",
+                    "parameter_type": "json",
                     "parameters": {
                         "properties": {},
                         "type": "object",

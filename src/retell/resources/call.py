@@ -97,7 +97,6 @@ class CallResource(SyncAPIResource):
         custom_attributes: Dict[str, Union[str, float, bool]] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         metadata: object | Omit = omit,
-        override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -109,7 +108,12 @@ class CallResource(SyncAPIResource):
         Update metadata and sensitive data storage settings for an existing call.
 
         Args:
-          custom_attributes: Custom attributes for the call
+          custom_attributes: Custom attributes for the call, as key-value pairs. Each attribute must first be
+              defined for your organization in the Retell dashboard (Call History → Actions →
+              Custom attributes) before it can be set here. The object key must match the id
+              of an existing organization-level custom attribute; keys that do not match a
+              defined attribute are ignored and will not be saved. Values must be a string,
+              number, or boolean.
 
           data_storage_setting: Data storage setting for this call. Overrides the agent's default setting.
               "everything" stores all data, "everything_except_pii" excludes PII when
@@ -119,12 +123,6 @@ class CallResource(SyncAPIResource):
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
               can later get this field from the call object. Size limited to 50kB max.
-
-          override_dynamic_variables: Override dynamic variables represented as key-value pairs of strings. Setting
-              this will override or add the dynamic variables set in the agent during the
-              call. Only need to set the delta where you want to override, no need to set the
-              entire dynamic variables object. Setting this to null will remove any existing
-              override.
 
           extra_headers: Send extra headers
 
@@ -145,7 +143,6 @@ class CallResource(SyncAPIResource):
                         "custom_attributes": custom_attributes,
                         "data_storage_setting": data_storage_setting,
                         "metadata": metadata,
-                        "override_dynamic_variables": override_dynamic_variables,
                     },
                     call_update_params.CallUpdateParams,
                 ),
@@ -264,7 +261,7 @@ class CallResource(SyncAPIResource):
         ignore_e164_validation: bool | Omit = omit,
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
-        override_agent_version: Union[int, str] | Omit = omit,
+        override_agent_version: Union[str, int] | Omit = omit,
         retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -346,7 +343,7 @@ class CallResource(SyncAPIResource):
         *,
         agent_id: str,
         agent_override: call_create_web_call_params.AgentOverride | Omit = omit,
-        agent_version: Union[int, str] | Omit = omit,
+        agent_version: Union[str, int] | Omit = omit,
         current_node_id: Optional[str] | Omit = omit,
         current_state: Optional[str] | Omit = omit,
         metadata: object | Omit = omit,
@@ -421,7 +418,7 @@ class CallResource(SyncAPIResource):
         *,
         agent_id: str,
         agent_override: call_register_phone_call_params.AgentOverride | Omit = omit,
-        agent_version: Union[int, str] | Omit = omit,
+        agent_version: Union[str, int] | Omit = omit,
         direction: Literal["inbound", "outbound"] | Omit = omit,
         from_number: str | Omit = omit,
         metadata: object | Omit = omit,
@@ -587,7 +584,6 @@ class AsyncCallResource(AsyncAPIResource):
         custom_attributes: Dict[str, Union[str, float, bool]] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         metadata: object | Omit = omit,
-        override_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -599,7 +595,12 @@ class AsyncCallResource(AsyncAPIResource):
         Update metadata and sensitive data storage settings for an existing call.
 
         Args:
-          custom_attributes: Custom attributes for the call
+          custom_attributes: Custom attributes for the call, as key-value pairs. Each attribute must first be
+              defined for your organization in the Retell dashboard (Call History → Actions →
+              Custom attributes) before it can be set here. The object key must match the id
+              of an existing organization-level custom attribute; keys that do not match a
+              defined attribute are ignored and will not be saved. Values must be a string,
+              number, or boolean.
 
           data_storage_setting: Data storage setting for this call. Overrides the agent's default setting.
               "everything" stores all data, "everything_except_pii" excludes PII when
@@ -609,12 +610,6 @@ class AsyncCallResource(AsyncAPIResource):
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the call. Not used for processing. You
               can later get this field from the call object. Size limited to 50kB max.
-
-          override_dynamic_variables: Override dynamic variables represented as key-value pairs of strings. Setting
-              this will override or add the dynamic variables set in the agent during the
-              call. Only need to set the delta where you want to override, no need to set the
-              entire dynamic variables object. Setting this to null will remove any existing
-              override.
 
           extra_headers: Send extra headers
 
@@ -635,7 +630,6 @@ class AsyncCallResource(AsyncAPIResource):
                         "custom_attributes": custom_attributes,
                         "data_storage_setting": data_storage_setting,
                         "metadata": metadata,
-                        "override_dynamic_variables": override_dynamic_variables,
                     },
                     call_update_params.CallUpdateParams,
                 ),
@@ -754,7 +748,7 @@ class AsyncCallResource(AsyncAPIResource):
         ignore_e164_validation: bool | Omit = omit,
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
-        override_agent_version: Union[int, str] | Omit = omit,
+        override_agent_version: Union[str, int] | Omit = omit,
         retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -836,7 +830,7 @@ class AsyncCallResource(AsyncAPIResource):
         *,
         agent_id: str,
         agent_override: call_create_web_call_params.AgentOverride | Omit = omit,
-        agent_version: Union[int, str] | Omit = omit,
+        agent_version: Union[str, int] | Omit = omit,
         current_node_id: Optional[str] | Omit = omit,
         current_state: Optional[str] | Omit = omit,
         metadata: object | Omit = omit,
@@ -911,7 +905,7 @@ class AsyncCallResource(AsyncAPIResource):
         *,
         agent_id: str,
         agent_override: call_register_phone_call_params.AgentOverride | Omit = omit,
-        agent_version: Union[int, str] | Omit = omit,
+        agent_version: Union[str, int] | Omit = omit,
         direction: Literal["inbound", "outbound"] | Omit = omit,
         from_number: str | Omit = omit,
         metadata: object | Omit = omit,

@@ -11,8 +11,11 @@ __all__ = [
     "CallListParams",
     "FilterCriteria",
     "FilterCriteriaAgent",
+    "FilterCriteriaAgentTag",
     "FilterCriteriaBatchCallID",
     "FilterCriteriaCallID",
+    "FilterCriteriaCallIDStringFilter",
+    "FilterCriteriaCallIDEnumFilter",
     "FilterCriteriaCallStatus",
     "FilterCriteriaCallSuccessful",
     "FilterCriteriaCallType",
@@ -101,6 +104,17 @@ class FilterCriteriaAgent(TypedDict, total=False):
     """Specific versions to filter on. If not provided, all versions are included."""
 
 
+class FilterCriteriaAgentTag(TypedDict, total=False):
+    """Filter by agent environment tag(s) (e.g. "prod", "staging")."""
+
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[SequenceNotStr[str]]
+
+
 class FilterCriteriaBatchCallID(TypedDict, total=False):
     """Filter by batch call ID."""
 
@@ -112,15 +126,25 @@ class FilterCriteriaBatchCallID(TypedDict, total=False):
     value: Required[str]
 
 
-class FilterCriteriaCallID(TypedDict, total=False):
-    """Filter by call ID."""
-
+class FilterCriteriaCallIDStringFilter(TypedDict, total=False):
     op: Required[Literal["eq", "ne", "sw", "ew", "co"]]
     """eq: equal, ne: not equal, sw: starts with, ew: ends with, co: contains"""
 
     type: Required[Literal["string"]]
 
     value: Required[str]
+
+
+class FilterCriteriaCallIDEnumFilter(TypedDict, total=False):
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[SequenceNotStr[str]]
+
+
+FilterCriteriaCallID: TypeAlias = Union[FilterCriteriaCallIDStringFilter, FilterCriteriaCallIDEnumFilter]
 
 
 class FilterCriteriaCallStatus(TypedDict, total=False):
@@ -404,6 +428,7 @@ class FilterCriteriaDisconnectionReason(TypedDict, total=False):
                 "transfer_bridged",
                 "transfer_cancelled",
                 "manual_stopped",
+                "call_take_over",
             ]
         ]
     ]
@@ -680,14 +705,17 @@ class FilterCriteriaToolCallSuccess(TypedDict, total=False):
 
 
 class FilterCriteriaToolCall(TypedDict, total=False):
-    name: Required[str]
-    """The tool call name to filter on."""
-
     latency_ms: FilterCriteriaToolCallLatencyMs
     """Filter by tool call latency in milliseconds."""
 
+    name: str
+    """The tool call name to filter on."""
+
     success: FilterCriteriaToolCallSuccess
     """Filter by tool call success status."""
+
+    type: str
+    """The tool call type to filter on."""
 
 
 class FilterCriteriaUserSentiment(TypedDict, total=False):
@@ -704,6 +732,9 @@ class FilterCriteria(TypedDict, total=False):
 
     agent: Iterable[FilterCriteriaAgent]
     """Filter by agent(s). Agent filters are connected by OR."""
+
+    agent_tag: FilterCriteriaAgentTag
+    """Filter by agent environment tag(s) (e.g. "prod", "staging")."""
 
     batch_call_id: FilterCriteriaBatchCallID
     """Filter by batch call ID."""

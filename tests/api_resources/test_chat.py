@@ -34,7 +34,7 @@ class TestChat:
     def test_method_create_with_all_params(self, client: Retell) -> None:
         chat = client.chat.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
-            agent_version=1,
+            agent_version="latest_published",
             metadata={},
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
@@ -185,6 +185,11 @@ class TestChat:
                         "version": [0],
                     }
                 ],
+                "agent_tag": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
                 "chat_id": {
                     "op": "eq",
                     "type": "string",
@@ -373,7 +378,7 @@ class TestChat:
             to_number="+14155551234",
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
-            override_agent_version=1,
+            override_agent_version="latest_published",
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
@@ -467,7 +472,7 @@ class TestAsyncChat:
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         chat = await async_client.chat.create(
             agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
-            agent_version=1,
+            agent_version="latest_published",
             metadata={},
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
@@ -618,6 +623,11 @@ class TestAsyncChat:
                         "version": [0],
                     }
                 ],
+                "agent_tag": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
                 "chat_id": {
                     "op": "eq",
                     "type": "string",
@@ -806,7 +816,7 @@ class TestAsyncChat:
             to_number="+14155551234",
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
-            override_agent_version=1,
+            override_agent_version="latest_published",
             retell_llm_dynamic_variables={"customer_name": "John Doe"},
         )
         assert_matches_type(ChatResponse, chat, path=["response"])
