@@ -1881,6 +1881,18 @@ class NodeConversationNode(TypedDict, total=False):
     name: str
     """Optional name for display purposes"""
 
+    reminder_max_count: Optional[int]
+    """If set, overrides the agent-level reminder_max_count for this node only.
+
+    Set to 0 to disable reminders for this node.
+    """
+
+    reminder_trigger_ms: Optional[float]
+    """
+    If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this
+    node only.
+    """
+
     responsiveness: Optional[float]
 
     skip_response_edge: NodeConversationNodeSkipResponseEdge
@@ -3536,6 +3548,18 @@ class NodeSubagentNode(TypedDict, total=False):
 
     name: str
     """Optional name for display purposes"""
+
+    reminder_max_count: Optional[int]
+    """If set, overrides the agent-level reminder_max_count for this node only.
+
+    Set to 0 to disable reminders for this node.
+    """
+
+    reminder_trigger_ms: Optional[float]
+    """
+    If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this
+    node only.
+    """
 
     responsiveness: Optional[float]
 
@@ -8868,6 +8892,18 @@ class ComponentNodeConversationNode(TypedDict, total=False):
     name: str
     """Optional name for display purposes"""
 
+    reminder_max_count: Optional[int]
+    """If set, overrides the agent-level reminder_max_count for this node only.
+
+    Set to 0 to disable reminders for this node.
+    """
+
+    reminder_trigger_ms: Optional[float]
+    """
+    If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this
+    node only.
+    """
+
     responsiveness: Optional[float]
 
     skip_response_edge: ComponentNodeConversationNodeSkipResponseEdge
@@ -10536,6 +10572,18 @@ class ComponentNodeSubagentNode(TypedDict, total=False):
 
     name: str
     """Optional name for display purposes"""
+
+    reminder_max_count: Optional[int]
+    """If set, overrides the agent-level reminder_max_count for this node only.
+
+    Set to 0 to disable reminders for this node.
+    """
+
+    reminder_trigger_ms: Optional[float]
+    """
+    If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this
+    node only.
+    """
 
     responsiveness: Optional[float]
 
