@@ -151,6 +151,8 @@ class TestConversationFlowComponent:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "reminder_max_count": 0,
+                    "reminder_trigger_ms": 1,
                     "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
@@ -456,6 +458,8 @@ class TestConversationFlowComponent:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "reminder_max_count": 0,
+                    "reminder_trigger_ms": 1,
                     "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
@@ -770,6 +774,8 @@ class TestAsyncConversationFlowComponent:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "reminder_max_count": 0,
+                    "reminder_trigger_ms": 1,
                     "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
@@ -1075,6 +1081,8 @@ class TestAsyncConversationFlowComponent:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "reminder_max_count": 0,
+                    "reminder_trigger_ms": 1,
                     "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",

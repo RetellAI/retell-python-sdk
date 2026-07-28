@@ -1782,6 +1782,18 @@ class ComponentNodeConversationNode(BaseModel):
     name: Optional[str] = None
     """Optional name for display purposes"""
 
+    reminder_max_count: Optional[int] = None
+    """If set, overrides the agent-level reminder_max_count for this node only.
+
+    Set to 0 to disable reminders for this node.
+    """
+
+    reminder_trigger_ms: Optional[float] = None
+    """
+    If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this
+    node only.
+    """
+
     responsiveness: Optional[float] = None
 
     skip_response_edge: Optional[ComponentNodeConversationNodeSkipResponseEdge] = None
@@ -3436,6 +3448,18 @@ class ComponentNodeSubagentNode(BaseModel):
 
     name: Optional[str] = None
     """Optional name for display purposes"""
+
+    reminder_max_count: Optional[int] = None
+    """If set, overrides the agent-level reminder_max_count for this node only.
+
+    Set to 0 to disable reminders for this node.
+    """
+
+    reminder_trigger_ms: Optional[float] = None
+    """
+    If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this
+    node only.
+    """
 
     responsiveness: Optional[float] = None
 
@@ -9099,6 +9123,18 @@ class NodeConversationNode(BaseModel):
     name: Optional[str] = None
     """Optional name for display purposes"""
 
+    reminder_max_count: Optional[int] = None
+    """If set, overrides the agent-level reminder_max_count for this node only.
+
+    Set to 0 to disable reminders for this node.
+    """
+
+    reminder_trigger_ms: Optional[float] = None
+    """
+    If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this
+    node only.
+    """
+
     responsiveness: Optional[float] = None
 
     skip_response_edge: Optional[NodeConversationNodeSkipResponseEdge] = None
@@ -10750,6 +10786,18 @@ class NodeSubagentNode(BaseModel):
 
     name: Optional[str] = None
     """Optional name for display purposes"""
+
+    reminder_max_count: Optional[int] = None
+    """If set, overrides the agent-level reminder_max_count for this node only.
+
+    Set to 0 to disable reminders for this node.
+    """
+
+    reminder_trigger_ms: Optional[float] = None
+    """
+    If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this
+    node only.
+    """
 
     responsiveness: Optional[float] = None
 

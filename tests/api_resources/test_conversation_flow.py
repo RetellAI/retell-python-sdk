@@ -159,6 +159,8 @@ class TestConversationFlow:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "reminder_max_count": 0,
+                    "reminder_trigger_ms": 1,
                     "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
@@ -288,6 +290,8 @@ class TestConversationFlow:
                                 "high_priority": True,
                             },
                             "name": "name",
+                            "reminder_max_count": 0,
+                            "reminder_trigger_ms": 1,
                             "responsiveness": 0,
                             "skip_response_edge": {
                                 "id": "id",
@@ -671,6 +675,8 @@ class TestConversationFlow:
                                 "high_priority": True,
                             },
                             "name": "name",
+                            "reminder_max_count": 0,
+                            "reminder_trigger_ms": 1,
                             "responsiveness": 0,
                             "skip_response_edge": {
                                 "id": "id",
@@ -884,6 +890,8 @@ class TestConversationFlow:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "reminder_max_count": 0,
+                    "reminder_trigger_ms": 1,
                     "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
@@ -1204,6 +1212,8 @@ class TestAsyncConversationFlow:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "reminder_max_count": 0,
+                    "reminder_trigger_ms": 1,
                     "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
@@ -1333,6 +1343,8 @@ class TestAsyncConversationFlow:
                                 "high_priority": True,
                             },
                             "name": "name",
+                            "reminder_max_count": 0,
+                            "reminder_trigger_ms": 1,
                             "responsiveness": 0,
                             "skip_response_edge": {
                                 "id": "id",
@@ -1716,6 +1728,8 @@ class TestAsyncConversationFlow:
                                 "high_priority": True,
                             },
                             "name": "name",
+                            "reminder_max_count": 0,
+                            "reminder_trigger_ms": 1,
                             "responsiveness": 0,
                             "skip_response_edge": {
                                 "id": "id",
@@ -1929,6 +1943,8 @@ class TestAsyncConversationFlow:
                         "high_priority": True,
                     },
                     "name": "name",
+                    "reminder_max_count": 0,
+                    "reminder_trigger_ms": 1,
                     "responsiveness": 0,
                     "skip_response_edge": {
                         "id": "id",
