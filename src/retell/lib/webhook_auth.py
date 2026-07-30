@@ -22,7 +22,7 @@ def make_secure_webhooks(get_signer, get_verifier):  # type: ignore
     def verify(input_str, secret_or_public_key, signature, opts=None):  # type: ignore
         if opts is None:
             opts = {}
-        match = re.search(r"v=(\d+),d=(.*)", signature)  # type: ignore
+        match = re.fullmatch(r"v=(\d+),d=([0-9a-f]{64})", signature)  # type: ignore
         if not match:
             return False
         poststamp = int(match.group(1))
@@ -40,9 +40,9 @@ def make_secure_webhooks(get_signer, get_verifier):  # type: ignore
 
 def symmetric_get_signer(secret):  # type: ignore
     def signer(input_str):  # type: ignore
-        h = hmac.new(secret.encode(), digestmod=hashlib.sha256) # type: ignore
-        h.update(input_str.encode()) # type: ignore
-        return h.hexdigest() # type: ignore
+        h = hmac.new(secret.encode(), digestmod=hashlib.sha256)  # type: ignore
+        h.update(input_str.encode())  # type: ignore
+        return h.hexdigest()  # type: ignore
 
     return signer  # type: ignore
 
@@ -52,7 +52,7 @@ def symmetric_get_verifier(secret):  # type: ignore
         algo = hashlib.sha256
         hmac_instance = hmac.new(secret.encode(), digestmod=algo)  # type: ignore
         hmac_instance.update(input_str.encode())  # type: ignore
-        return hmac_instance.hexdigest() == digest  # type: ignore
+        return hmac.compare_digest(hmac_instance.hexdigest(), digest)  # type: ignore
 
     return verifier  # type: ignore
 
