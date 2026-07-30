@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.57.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.57.0...v5.57.1) (2026-07-30)
+
+
+### Bug Fixes
+
+* **multipart:** use bare file array field names ([481281a](https://github.com/RetellAI/retell-python-sdk/commit/481281a29cfcdacc4935e0b813eb3a75f0def28c))
+* **multipart:** use bare file array field names ([377f072](https://github.com/RetellAI/retell-python-sdk/commit/377f0720ac978819f24e5ec0bf7f89ee34ec1844))
+
+
+### Chores
+
+* preserve production workflow files ([b255e7e](https://github.com/RetellAI/retell-python-sdk/commit/b255e7e5b3ad0cb95ad37150b0597b97a93c910f))
+
 ## [5.57.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.56.1...v5.57.0) (2026-07-28)
 
 
