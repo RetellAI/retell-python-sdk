@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.58.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.57.2...v5.58.0) (2026-07-30)
+
+
+### Features
+
+* **sdks:** expose live updates and analysis reruns ([54996b1](https://github.com/RetellAI/retell-python-sdk/commit/54996b124d05717af5f4d6709994d69d18d9cec6))
+
+
+### Chores
+
+* preserve production workflow files ([924da2f](https://github.com/RetellAI/retell-python-sdk/commit/924da2f987e2dc50bef0226e32047ef9627eec81))
+
 ## [5.57.2](https://github.com/RetellAI/retell-python-sdk/compare/v5.57.1...v5.57.2) (2026-07-30)
 
 
