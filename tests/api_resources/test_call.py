@@ -14,6 +14,7 @@ from retell.types import (
     WebCallResponse,
     CallListResponse,
     PhoneCallResponse,
+    CallUpdateLiveResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -935,6 +936,48 @@ class TestCall:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_rerun_analysis(self, client: Retell) -> None:
+        call = client.call.rerun_analysis(
+            "call_119c3f8e47135a29e65947eeb34cf12d",
+        )
+        assert_matches_type(CallResponse, call, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_rerun_analysis(self, client: Retell) -> None:
+        response = client.call.with_raw_response.rerun_analysis(
+            "call_119c3f8e47135a29e65947eeb34cf12d",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        call = response.parse()
+        assert_matches_type(CallResponse, call, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_rerun_analysis(self, client: Retell) -> None:
+        with client.call.with_streaming_response.rerun_analysis(
+            "call_119c3f8e47135a29e65947eeb34cf12d",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            call = response.parse()
+            assert_matches_type(CallResponse, call, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_rerun_analysis(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `call_id` but received ''"):
+            client.call.with_raw_response.rerun_analysis(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_method_stop(self, client: Retell) -> None:
         call = client.call.stop(
             "call_a4441234567890777c4a4a123e6",
@@ -973,6 +1016,68 @@ class TestCall:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `call_id` but received ''"):
             client.call.with_raw_response.stop(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_live(self, client: Retell) -> None:
+        call = client.call.update_live(
+            call_id="call_a4441234567890777c4a4a123e6",
+        )
+        assert_matches_type(CallUpdateLiveResponse, call, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_live_with_all_params(self, client: Retell) -> None:
+        call = client.call.update_live(
+            call_id="call_a4441234567890777c4a4a123e6",
+            call_control={
+                "additional_context": "Customer just opened a support ticket about billing.",
+                "trigger_response": True,
+            },
+            fields_to_override={
+                "data_storage_setting": "everything_except_pii",
+                "metadata": {
+                    "customer_id": "cust_123",
+                    "notes": "Follow-up required",
+                },
+                "override_dynamic_variables": {"additional_discount": "15%"},
+            },
+        )
+        assert_matches_type(CallUpdateLiveResponse, call, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_update_live(self, client: Retell) -> None:
+        response = client.call.with_raw_response.update_live(
+            call_id="call_a4441234567890777c4a4a123e6",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        call = response.parse()
+        assert_matches_type(CallUpdateLiveResponse, call, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_update_live(self, client: Retell) -> None:
+        with client.call.with_streaming_response.update_live(
+            call_id="call_a4441234567890777c4a4a123e6",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            call = response.parse()
+            assert_matches_type(CallUpdateLiveResponse, call, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_update_live(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `call_id` but received ''"):
+            client.call.with_raw_response.update_live(
+                call_id="",
             )
 
 
@@ -1894,6 +1999,48 @@ class TestAsyncCall:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    async def test_method_rerun_analysis(self, async_client: AsyncRetell) -> None:
+        call = await async_client.call.rerun_analysis(
+            "call_119c3f8e47135a29e65947eeb34cf12d",
+        )
+        assert_matches_type(CallResponse, call, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_rerun_analysis(self, async_client: AsyncRetell) -> None:
+        response = await async_client.call.with_raw_response.rerun_analysis(
+            "call_119c3f8e47135a29e65947eeb34cf12d",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        call = await response.parse()
+        assert_matches_type(CallResponse, call, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_rerun_analysis(self, async_client: AsyncRetell) -> None:
+        async with async_client.call.with_streaming_response.rerun_analysis(
+            "call_119c3f8e47135a29e65947eeb34cf12d",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            call = await response.parse()
+            assert_matches_type(CallResponse, call, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_rerun_analysis(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `call_id` but received ''"):
+            await async_client.call.with_raw_response.rerun_analysis(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     async def test_method_stop(self, async_client: AsyncRetell) -> None:
         call = await async_client.call.stop(
             "call_a4441234567890777c4a4a123e6",
@@ -1932,4 +2079,66 @@ class TestAsyncCall:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `call_id` but received ''"):
             await async_client.call.with_raw_response.stop(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_live(self, async_client: AsyncRetell) -> None:
+        call = await async_client.call.update_live(
+            call_id="call_a4441234567890777c4a4a123e6",
+        )
+        assert_matches_type(CallUpdateLiveResponse, call, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_live_with_all_params(self, async_client: AsyncRetell) -> None:
+        call = await async_client.call.update_live(
+            call_id="call_a4441234567890777c4a4a123e6",
+            call_control={
+                "additional_context": "Customer just opened a support ticket about billing.",
+                "trigger_response": True,
+            },
+            fields_to_override={
+                "data_storage_setting": "everything_except_pii",
+                "metadata": {
+                    "customer_id": "cust_123",
+                    "notes": "Follow-up required",
+                },
+                "override_dynamic_variables": {"additional_discount": "15%"},
+            },
+        )
+        assert_matches_type(CallUpdateLiveResponse, call, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_update_live(self, async_client: AsyncRetell) -> None:
+        response = await async_client.call.with_raw_response.update_live(
+            call_id="call_a4441234567890777c4a4a123e6",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        call = await response.parse()
+        assert_matches_type(CallUpdateLiveResponse, call, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_update_live(self, async_client: AsyncRetell) -> None:
+        async with async_client.call.with_streaming_response.update_live(
+            call_id="call_a4441234567890777c4a4a123e6",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            call = await response.parse()
+            assert_matches_type(CallUpdateLiveResponse, call, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_update_live(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `call_id` but received ''"):
+            await async_client.call.with_raw_response.update_live(
+                call_id="",
             )

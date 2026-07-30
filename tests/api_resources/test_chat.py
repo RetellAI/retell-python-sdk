@@ -453,6 +453,48 @@ class TestChat:
                 "",
             )
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_rerun_analysis(self, client: Retell) -> None:
+        chat = client.chat.rerun_analysis(
+            "chat_16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(ChatResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_rerun_analysis(self, client: Retell) -> None:
+        response = client.chat.with_raw_response.rerun_analysis(
+            "chat_16b980523634a6dc504898cda492e939",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat = response.parse()
+        assert_matches_type(ChatResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_rerun_analysis(self, client: Retell) -> None:
+        with client.chat.with_streaming_response.rerun_analysis(
+            "chat_16b980523634a6dc504898cda492e939",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat = response.parse()
+            assert_matches_type(ChatResponse, chat, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_rerun_analysis(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
+            client.chat.with_raw_response.rerun_analysis(
+                "",
+            )
+
 
 class TestAsyncChat:
     parametrize = pytest.mark.parametrize(
@@ -888,5 +930,47 @@ class TestAsyncChat:
     async def test_path_params_end(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
             await async_client.chat.with_raw_response.end(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_rerun_analysis(self, async_client: AsyncRetell) -> None:
+        chat = await async_client.chat.rerun_analysis(
+            "chat_16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(ChatResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_rerun_analysis(self, async_client: AsyncRetell) -> None:
+        response = await async_client.chat.with_raw_response.rerun_analysis(
+            "chat_16b980523634a6dc504898cda492e939",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat = await response.parse()
+        assert_matches_type(ChatResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_rerun_analysis(self, async_client: AsyncRetell) -> None:
+        async with async_client.chat.with_streaming_response.rerun_analysis(
+            "chat_16b980523634a6dc504898cda492e939",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat = await response.parse()
+            assert_matches_type(ChatResponse, chat, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_rerun_analysis(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
+            await async_client.chat.with_raw_response.rerun_analysis(
                 "",
             )

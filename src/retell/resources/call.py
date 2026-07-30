@@ -10,6 +10,7 @@ import httpx
 from ..types import (
     call_list_params,
     call_update_params,
+    call_update_live_params,
     call_create_web_call_params,
     call_create_phone_call_params,
     call_register_phone_call_params,
@@ -30,6 +31,7 @@ from ..types.call_response import CallResponse
 from ..types.web_call_response import WebCallResponse
 from ..types.call_list_response import CallListResponse
 from ..types.phone_call_response import PhoneCallResponse
+from ..types.call_update_live_response import CallUpdateLiveResponse
 
 __all__ = ["CallResource", "AsyncCallResource"]
 
@@ -486,6 +488,42 @@ class CallResource(SyncAPIResource):
             cast_to=PhoneCallResponse,
         )
 
+    def rerun_analysis(
+        self,
+        call_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CallResponse:
+        """
+        Rerun post-call analysis for a specific call
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not call_id:
+            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
+        return cast(
+            CallResponse,
+            self._put(
+                path_template("/rerun-call-analysis/{call_id}", call_id=call_id),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
+
     def stop(
         self,
         call_id: str,
@@ -518,6 +556,60 @@ class CallResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
+        )
+
+    def update_live(
+        self,
+        call_id: str,
+        *,
+        call_control: call_update_live_params.CallControl | Omit = omit,
+        fields_to_override: call_update_live_params.FieldsToOverride | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CallUpdateLiveResponse:
+        """Update an ongoing call at runtime.
+
+        Supports overriding dynamic variables,
+        metadata, and the data storage setting on the running call, and controlling the
+        live agent (inject context, trigger a response). These overrides take effect
+        immediately on the live call; metadata and data storage setting changes are also
+        persisted to the call record. To update a call that is no longer ongoing, use
+        /v2/update-call/{call_id}.
+
+        Args:
+          call_control: Live agent control. At least one of `additional_context` or `trigger_response`
+              should be supplied; an empty object is a no-op.
+
+          fields_to_override: Call fields to override on the running call. Each field is applied to the live
+              call immediately; omitted fields are left unchanged.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not call_id:
+            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
+        return self._patch(
+            path_template("/v2/update-live-call/{call_id}", call_id=call_id),
+            body=maybe_transform(
+                {
+                    "call_control": call_control,
+                    "fields_to_override": fields_to_override,
+                },
+                call_update_live_params.CallUpdateLiveParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CallUpdateLiveResponse,
         )
 
 
@@ -973,6 +1065,42 @@ class AsyncCallResource(AsyncAPIResource):
             cast_to=PhoneCallResponse,
         )
 
+    async def rerun_analysis(
+        self,
+        call_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CallResponse:
+        """
+        Rerun post-call analysis for a specific call
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not call_id:
+            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
+        return cast(
+            CallResponse,
+            await self._put(
+                path_template("/rerun-call-analysis/{call_id}", call_id=call_id),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
+
     async def stop(
         self,
         call_id: str,
@@ -1007,6 +1135,60 @@ class AsyncCallResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def update_live(
+        self,
+        call_id: str,
+        *,
+        call_control: call_update_live_params.CallControl | Omit = omit,
+        fields_to_override: call_update_live_params.FieldsToOverride | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CallUpdateLiveResponse:
+        """Update an ongoing call at runtime.
+
+        Supports overriding dynamic variables,
+        metadata, and the data storage setting on the running call, and controlling the
+        live agent (inject context, trigger a response). These overrides take effect
+        immediately on the live call; metadata and data storage setting changes are also
+        persisted to the call record. To update a call that is no longer ongoing, use
+        /v2/update-call/{call_id}.
+
+        Args:
+          call_control: Live agent control. At least one of `additional_context` or `trigger_response`
+              should be supplied; an empty object is a no-op.
+
+          fields_to_override: Call fields to override on the running call. Each field is applied to the live
+              call immediately; omitted fields are left unchanged.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not call_id:
+            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
+        return await self._patch(
+            path_template("/v2/update-live-call/{call_id}", call_id=call_id),
+            body=await async_maybe_transform(
+                {
+                    "call_control": call_control,
+                    "fields_to_override": fields_to_override,
+                },
+                call_update_live_params.CallUpdateLiveParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CallUpdateLiveResponse,
+        )
+
 
 class CallResourceWithRawResponse:
     def __init__(self, call: CallResource) -> None:
@@ -1033,8 +1215,14 @@ class CallResourceWithRawResponse:
         self.register_phone_call = to_raw_response_wrapper(
             call.register_phone_call,
         )
+        self.rerun_analysis = to_raw_response_wrapper(
+            call.rerun_analysis,
+        )
         self.stop = to_raw_response_wrapper(
             call.stop,
+        )
+        self.update_live = to_raw_response_wrapper(
+            call.update_live,
         )
 
 
@@ -1063,8 +1251,14 @@ class AsyncCallResourceWithRawResponse:
         self.register_phone_call = async_to_raw_response_wrapper(
             call.register_phone_call,
         )
+        self.rerun_analysis = async_to_raw_response_wrapper(
+            call.rerun_analysis,
+        )
         self.stop = async_to_raw_response_wrapper(
             call.stop,
+        )
+        self.update_live = async_to_raw_response_wrapper(
+            call.update_live,
         )
 
 
@@ -1093,8 +1287,14 @@ class CallResourceWithStreamingResponse:
         self.register_phone_call = to_streamed_response_wrapper(
             call.register_phone_call,
         )
+        self.rerun_analysis = to_streamed_response_wrapper(
+            call.rerun_analysis,
+        )
         self.stop = to_streamed_response_wrapper(
             call.stop,
+        )
+        self.update_live = to_streamed_response_wrapper(
+            call.update_live,
         )
 
 
@@ -1123,6 +1323,12 @@ class AsyncCallResourceWithStreamingResponse:
         self.register_phone_call = async_to_streamed_response_wrapper(
             call.register_phone_call,
         )
+        self.rerun_analysis = async_to_streamed_response_wrapper(
+            call.rerun_analysis,
+        )
         self.stop = async_to_streamed_response_wrapper(
             call.stop,
+        )
+        self.update_live = async_to_streamed_response_wrapper(
+            call.update_live,
         )

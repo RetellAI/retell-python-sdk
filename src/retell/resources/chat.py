@@ -455,6 +455,39 @@ class ChatResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def rerun_analysis(
+        self,
+        chat_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ChatResponse:
+        """
+        Rerun post-chat analysis for a specific chat
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not chat_id:
+            raise ValueError(f"Expected a non-empty value for `chat_id` but received {chat_id!r}")
+        return self._put(
+            path_template("/rerun-chat-analysis/{chat_id}", chat_id=chat_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ChatResponse,
+        )
+
 
 class AsyncChatResource(AsyncAPIResource):
     @cached_property
@@ -878,6 +911,39 @@ class AsyncChatResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def rerun_analysis(
+        self,
+        chat_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ChatResponse:
+        """
+        Rerun post-chat analysis for a specific chat
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not chat_id:
+            raise ValueError(f"Expected a non-empty value for `chat_id` but received {chat_id!r}")
+        return await self._put(
+            path_template("/rerun-chat-analysis/{chat_id}", chat_id=chat_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ChatResponse,
+        )
+
 
 class ChatResourceWithRawResponse:
     def __init__(self, chat: ChatResource) -> None:
@@ -906,6 +972,9 @@ class ChatResourceWithRawResponse:
         )
         self.end = to_raw_response_wrapper(
             chat.end,
+        )
+        self.rerun_analysis = to_raw_response_wrapper(
+            chat.rerun_analysis,
         )
 
 
@@ -937,6 +1006,9 @@ class AsyncChatResourceWithRawResponse:
         self.end = async_to_raw_response_wrapper(
             chat.end,
         )
+        self.rerun_analysis = async_to_raw_response_wrapper(
+            chat.rerun_analysis,
+        )
 
 
 class ChatResourceWithStreamingResponse:
@@ -967,6 +1039,9 @@ class ChatResourceWithStreamingResponse:
         self.end = to_streamed_response_wrapper(
             chat.end,
         )
+        self.rerun_analysis = to_streamed_response_wrapper(
+            chat.rerun_analysis,
+        )
 
 
 class AsyncChatResourceWithStreamingResponse:
@@ -996,4 +1071,7 @@ class AsyncChatResourceWithStreamingResponse:
         )
         self.end = async_to_streamed_response_wrapper(
             chat.end,
+        )
+        self.rerun_analysis = async_to_streamed_response_wrapper(
+            chat.rerun_analysis,
         )

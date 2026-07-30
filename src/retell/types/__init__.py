@@ -38,11 +38,13 @@ from .phone_number_response import PhoneNumberResponse as PhoneNumberResponse
 from .voice_search_response import VoiceSearchResponse as VoiceSearchResponse
 from .chat_agent_list_params import ChatAgentListParams as ChatAgentListParams
 from .test_case_job_response import TestCaseJobResponse as TestCaseJobResponse
+from .call_update_live_params import CallUpdateLiveParams as CallUpdateLiveParams
 from .knowledge_base_response import KnowledgeBaseResponse as KnowledgeBaseResponse
 from .chat_agent_create_params import ChatAgentCreateParams as ChatAgentCreateParams
 from .chat_agent_list_response import ChatAgentListResponse as ChatAgentListResponse
 from .chat_agent_update_params import ChatAgentUpdateParams as ChatAgentUpdateParams
 from .phone_number_list_params import PhoneNumberListParams as PhoneNumberListParams
+from .call_update_live_response import CallUpdateLiveResponse as CallUpdateLiveResponse
 from .chat_agent_publish_params import ChatAgentPublishParams as ChatAgentPublishParams
 from .voice_add_resource_params import VoiceAddResourceParams as VoiceAddResourceParams
 from .chat_agent_retrieve_params import ChatAgentRetrieveParams as ChatAgentRetrieveParams

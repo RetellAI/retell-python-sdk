@@ -3,7 +3,13 @@
 Types:
 
 ```python
-from retell.types import CallResponse, PhoneCallResponse, WebCallResponse, CallListResponse
+from retell.types import (
+    CallResponse,
+    PhoneCallResponse,
+    WebCallResponse,
+    CallListResponse,
+    CallUpdateLiveResponse,
+)
 ```
 
 Methods:
@@ -15,7 +21,9 @@ Methods:
 - <code title="post /v2/create-phone-call">client.call.<a href="./src/retell/resources/call.py">create_phone_call</a>(\*\*<a href="src/retell/types/call_create_phone_call_params.py">params</a>) -> <a href="./src/retell/types/phone_call_response.py">PhoneCallResponse</a></code>
 - <code title="post /v2/create-web-call">client.call.<a href="./src/retell/resources/call.py">create_web_call</a>(\*\*<a href="src/retell/types/call_create_web_call_params.py">params</a>) -> <a href="./src/retell/types/web_call_response.py">WebCallResponse</a></code>
 - <code title="post /v2/register-phone-call">client.call.<a href="./src/retell/resources/call.py">register_phone_call</a>(\*\*<a href="src/retell/types/call_register_phone_call_params.py">params</a>) -> <a href="./src/retell/types/phone_call_response.py">PhoneCallResponse</a></code>
+- <code title="put /rerun-call-analysis/{call_id}">client.call.<a href="./src/retell/resources/call.py">rerun_analysis</a>(call_id) -> <a href="./src/retell/types/call_response.py">CallResponse</a></code>
 - <code title="post /v2/stop-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">stop</a>(call_id) -> None</code>
+- <code title="patch /v2/update-live-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">update_live</a>(call_id, \*\*<a href="src/retell/types/call_update_live_params.py">params</a>) -> <a href="./src/retell/types/call_update_live_response.py">CallUpdateLiveResponse</a></code>
 
 # Chat
 
@@ -35,6 +43,7 @@ Methods:
 - <code title="post /create-chat-completion">client.chat.<a href="./src/retell/resources/chat.py">create_chat_completion</a>(\*\*<a href="src/retell/types/chat_create_chat_completion_params.py">params</a>) -> <a href="./src/retell/types/chat_create_chat_completion_response.py">ChatCreateChatCompletionResponse</a></code>
 - <code title="post /create-sms-chat">client.chat.<a href="./src/retell/resources/chat.py">create_sms_chat</a>(\*\*<a href="src/retell/types/chat_create_sms_chat_params.py">params</a>) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
 - <code title="patch /end-chat/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">end</a>(chat_id) -> None</code>
+- <code title="put /rerun-chat-analysis/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">rerun_analysis</a>(chat_id) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
 
 # PhoneNumber
 
