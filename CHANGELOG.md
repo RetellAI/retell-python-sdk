@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.57.2](https://github.com/RetellAI/retell-python-sdk/compare/v5.57.1...v5.57.2) (2026-07-30)
+
+
+### Bug Fixes
+
+* **webhooks:** harden signature verification ([#4](https://github.com/RetellAI/retell-python-sdk/issues/4)) ([6ec8602](https://github.com/RetellAI/retell-python-sdk/commit/6ec8602981e477cf9c4003384c5d9fc9cfb5aa57))
+
+
+### Chores
+
+* preserve production workflow files ([2e1ab60](https://github.com/RetellAI/retell-python-sdk/commit/2e1ab60af9a9662454271b3cdf91bec1d387335f))
+
 ## [5.57.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.57.0...v5.57.1) (2026-07-30)
 
 
