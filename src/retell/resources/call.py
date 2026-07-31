@@ -499,8 +499,9 @@ class CallResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CallResponse:
-        """
-        Rerun post-call analysis for a specific call
+        """Rerun post-call analysis for a specific call.
+
+        This operation incurs charges.
 
         Args:
           extra_headers: Send extra headers
@@ -1076,8 +1077,9 @@ class AsyncCallResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CallResponse:
-        """
-        Rerun post-call analysis for a specific call
+        """Rerun post-call analysis for a specific call.
+
+        This operation incurs charges.
 
         Args:
           extra_headers: Send extra headers
