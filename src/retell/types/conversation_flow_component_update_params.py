@@ -2294,7 +2294,7 @@ class NodeSubagentNodeToolPressDigitTool(TypedDict, total=False):
 
 
 class NodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined(TypedDict, total=False):
-    content: str
+    text: str
     """The static message to be sent in the SMS. Can contain dynamic variables."""
 
     type: Literal["predefined"]
