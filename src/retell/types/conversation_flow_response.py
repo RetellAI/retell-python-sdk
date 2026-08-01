@@ -2853,7 +2853,7 @@ class ComponentNodeSubagentNodeToolPressDigitTool(BaseModel):
 
 
 class ComponentNodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
-    content: Optional[str] = None
+    text: Optional[str] = None
     """The static message to be sent in the SMS. Can contain dynamic variables."""
 
     type: Optional[Literal["predefined"]] = None
@@ -10191,7 +10191,7 @@ class NodeSubagentNodeToolPressDigitTool(BaseModel):
 
 
 class NodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
-    content: Optional[str] = None
+    text: Optional[str] = None
     """The static message to be sent in the SMS. Can contain dynamic variables."""
 
     type: Optional[Literal["predefined"]] = None

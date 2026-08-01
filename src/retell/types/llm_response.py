@@ -655,7 +655,7 @@ class GeneralToolPressDigitTool(BaseModel):
 
 
 class GeneralToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
-    content: Optional[str] = None
+    text: Optional[str] = None
     """The static message to be sent in the SMS. Can contain dynamic variables."""
 
     type: Optional[Literal["predefined"]] = None
@@ -1836,7 +1836,7 @@ class StateToolPressDigitTool(BaseModel):
 
 
 class StateToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
-    content: Optional[str] = None
+    text: Optional[str] = None
     """The static message to be sent in the SMS. Can contain dynamic variables."""
 
     type: Optional[Literal["predefined"]] = None

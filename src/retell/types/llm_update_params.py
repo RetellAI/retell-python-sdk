@@ -786,7 +786,7 @@ class GeneralToolPressDigitTool(TypedDict, total=False):
 
 
 class GeneralToolSendSMSToolSMSContentSMSContentPredefined(TypedDict, total=False):
-    content: str
+    text: str
     """The static message to be sent in the SMS. Can contain dynamic variables."""
 
     type: Literal["predefined"]
@@ -1965,7 +1965,7 @@ class StateToolPressDigitTool(TypedDict, total=False):
 
 
 class StateToolSendSMSToolSMSContentSMSContentPredefined(TypedDict, total=False):
-    content: str
+    text: str
     """The static message to be sent in the SMS. Can contain dynamic variables."""
 
     type: Literal["predefined"]
