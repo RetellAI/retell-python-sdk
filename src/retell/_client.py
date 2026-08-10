@@ -43,6 +43,7 @@ if TYPE_CHECKING:
         agent,
         tests,
         voice,
+        identity,
         mcp_tool,
         batch_call,
         chat_agent,
@@ -60,6 +61,7 @@ if TYPE_CHECKING:
     from .resources.agent import AgentResource, AsyncAgentResource
     from .resources.tests import TestsResource, AsyncTestsResource
     from .resources.voice import VoiceResource, AsyncVoiceResource
+    from .resources.identity import IdentityResource, AsyncIdentityResource
     from .resources.mcp_tool import McpToolResource, AsyncMcpToolResource
     from .resources.batch_call import BatchCallResource, AsyncBatchCallResource
     from .resources.chat_agent import ChatAgentResource, AsyncChatAgentResource
@@ -207,6 +209,12 @@ class Retell(SyncAPIClient):
         from .resources.concurrency import ConcurrencyResource
 
         return ConcurrencyResource(self)
+
+    @cached_property
+    def identity(self) -> IdentityResource:
+        from .resources.identity import IdentityResource
+
+        return IdentityResource(self)
 
     @cached_property
     def export_request(self) -> ExportRequestResource:
@@ -482,6 +490,12 @@ class AsyncRetell(AsyncAPIClient):
         return AsyncConcurrencyResource(self)
 
     @cached_property
+    def identity(self) -> AsyncIdentityResource:
+        from .resources.identity import AsyncIdentityResource
+
+        return AsyncIdentityResource(self)
+
+    @cached_property
     def export_request(self) -> AsyncExportRequestResource:
         from .resources.export_request import AsyncExportRequestResource
 
@@ -699,6 +713,12 @@ class RetellWithRawResponse:
         return ConcurrencyResourceWithRawResponse(self._client.concurrency)
 
     @cached_property
+    def identity(self) -> identity.IdentityResourceWithRawResponse:
+        from .resources.identity import IdentityResourceWithRawResponse
+
+        return IdentityResourceWithRawResponse(self._client.identity)
+
+    @cached_property
     def export_request(self) -> export_request.ExportRequestResourceWithRawResponse:
         from .resources.export_request import ExportRequestResourceWithRawResponse
 
@@ -802,6 +822,12 @@ class AsyncRetellWithRawResponse:
         from .resources.concurrency import AsyncConcurrencyResourceWithRawResponse
 
         return AsyncConcurrencyResourceWithRawResponse(self._client.concurrency)
+
+    @cached_property
+    def identity(self) -> identity.AsyncIdentityResourceWithRawResponse:
+        from .resources.identity import AsyncIdentityResourceWithRawResponse
+
+        return AsyncIdentityResourceWithRawResponse(self._client.identity)
 
     @cached_property
     def export_request(self) -> export_request.AsyncExportRequestResourceWithRawResponse:
@@ -909,6 +935,12 @@ class RetellWithStreamedResponse:
         return ConcurrencyResourceWithStreamingResponse(self._client.concurrency)
 
     @cached_property
+    def identity(self) -> identity.IdentityResourceWithStreamingResponse:
+        from .resources.identity import IdentityResourceWithStreamingResponse
+
+        return IdentityResourceWithStreamingResponse(self._client.identity)
+
+    @cached_property
     def export_request(self) -> export_request.ExportRequestResourceWithStreamingResponse:
         from .resources.export_request import ExportRequestResourceWithStreamingResponse
 
@@ -1012,6 +1044,12 @@ class AsyncRetellWithStreamedResponse:
         from .resources.concurrency import AsyncConcurrencyResourceWithStreamingResponse
 
         return AsyncConcurrencyResourceWithStreamingResponse(self._client.concurrency)
+
+    @cached_property
+    def identity(self) -> identity.AsyncIdentityResourceWithStreamingResponse:
+        from .resources.identity import AsyncIdentityResourceWithStreamingResponse
+
+        return AsyncIdentityResourceWithStreamingResponse(self._client.identity)
 
     @cached_property
     def export_request(self) -> export_request.AsyncExportRequestResourceWithStreamingResponse:

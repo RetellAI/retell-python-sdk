@@ -50,6 +50,7 @@ from .voice_add_resource_params import VoiceAddResourceParams as VoiceAddResourc
 from .chat_agent_retrieve_params import ChatAgentRetrieveParams as ChatAgentRetrieveParams
 from .conversation_flow_response import ConversationFlowResponse as ConversationFlowResponse
 from .export_request_list_params import ExportRequestListParams as ExportRequestListParams
+from .identity_retrieve_response import IdentityRetrieveResponse as IdentityRetrieveResponse
 from .phone_number_create_params import PhoneNumberCreateParams as PhoneNumberCreateParams
 from .phone_number_import_params import PhoneNumberImportParams as PhoneNumberImportParams
 from .phone_number_list_response import PhoneNumberListResponse as PhoneNumberListResponse

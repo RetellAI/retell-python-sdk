@@ -57,6 +57,8 @@ class TestCreateTestCaseDefinitionParams(TypedDict, total=False):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """LLM model to use for simulation"""
 

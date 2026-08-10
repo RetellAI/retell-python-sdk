@@ -205,6 +205,18 @@ Methods:
 
 - <code title="get /get-concurrency">client.concurrency.<a href="./src/retell/resources/concurrency.py">retrieve</a>() -> <a href="./src/retell/types/concurrency_retrieve_response.py">ConcurrencyRetrieveResponse</a></code>
 
+# Identity
+
+Types:
+
+```python
+from retell.types import IdentityRetrieveResponse
+```
+
+Methods:
+
+- <code title="get /get-api-key-info">client.identity.<a href="./src/retell/resources/identity.py">retrieve</a>() -> <a href="./src/retell/types/identity_retrieve_response.py">IdentityRetrieveResponse</a></code>
+
 # ExportRequest
 
 Types:

@@ -406,11 +406,16 @@ AgentOverrideAgentPostCallAnalysisData: TypeAlias = Union[
 
 
 class AgentOverrideAgentPronunciationDictionary(TypedDict, total=False):
-    alphabet: Required[Literal["ipa", "cmu"]]
-    """The phonetic alphabet to be used for pronunciation."""
+    alphabet: Required[Literal["ipa", "cmu", "pinyin", "jyutping"]]
+    """The phonetic alphabet to use.
+
+    MiniMax speech-02-turbo supports IPA and Pinyin. MiniMax speech-2.8-turbo also
+    supports Jyutping. Support for other alphabets depends on the selected voice
+    provider and model.
+    """
 
     phoneme: Required[str]
-    """Pronunciation of the word in the format of a IPA / CMU pronunciation."""
+    """Pronunciation of the word in the format of the selected phonetic alphabet."""
 
     word: Required[str]
     """The string of word / phrase to be annotated with pronunciation."""
@@ -878,13 +883,11 @@ class AgentOverrideAgent(TypedDict, total=False):
     ]
     """Specifies what language(s) the agent will operate in.
 
-    Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value
-    `multi` for multilingual support, or an array of concrete locale codes for
-    explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must
-    contain concrete locale codes only — the `multi` value is valid only as the
-    scalar legacy form and must not appear inside an array. Single-element arrays
-    are normalized to the equivalent scalar on output. If unset, defaults to
-    `en-US`.
+    Accepts either a single locale (e.g. `en-US`) or an array of locales for
+    multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is
+    deprecated but still accepted as a scalar, and is stored and returned as the ten
+    locales it used to mean. It must not appear inside the array form. Send an
+    explicit locale array instead. If unset, defaults to `en-US`.
     """
 
     max_call_duration_ms: int
@@ -934,6 +937,8 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
             "gemini-3.5-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-3.6-flash",
         ]
     ]
     """The model to use for post call analysis. Default to gpt-4.1."""
@@ -1158,6 +1163,8 @@ class AgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
             "gemini-3.5-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-3.6-flash",
         ]
     ]
     """The LLM model to use"""
@@ -1268,6 +1275,8 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
             "gemini-3.5-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-3.6-flash",
         ]
     ]
     """Select the underlying text LLM. If not set, would default to gpt-4.1."""

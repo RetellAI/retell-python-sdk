@@ -44,6 +44,7 @@ class TestLlm:
                     "speak_during_execution": True,
                 }
             ],
+            is_transfer_llm=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,
@@ -237,6 +238,7 @@ class TestLlm:
                     "speak_during_execution": True,
                 }
             ],
+            is_transfer_llm=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,
@@ -473,6 +475,7 @@ class TestAsyncLlm:
                     "speak_during_execution": True,
                 }
             ],
+            is_transfer_llm=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,
@@ -666,6 +669,7 @@ class TestAsyncLlm:
                     "speak_during_execution": True,
                 }
             ],
+            is_transfer_llm=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,

@@ -50,18 +50,36 @@ class TestPlayground:
                     "role": "user",
                     "created_timestamp": 1703302428855,
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
+                    "multimedia": [
+                        {
+                            "url": "url",
+                            "summary": "summary",
+                        }
+                    ],
                 },
                 {
                     "content": "Sure! Could you please provide your name?",
                     "role": "agent",
                     "created_timestamp": 1703302428855,
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
+                    "multimedia": [
+                        {
+                            "url": "url",
+                            "summary": "summary",
+                        }
+                    ],
                 },
                 {
                     "content": "My name is John Smith.",
                     "role": "user",
                     "created_timestamp": 1703302428855,
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
+                    "multimedia": [
+                        {
+                            "url": "url",
+                            "summary": "summary",
+                        }
+                    ],
                 },
             ],
             version="latest_published",
@@ -198,18 +216,36 @@ class TestAsyncPlayground:
                     "role": "user",
                     "created_timestamp": 1703302428855,
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
+                    "multimedia": [
+                        {
+                            "url": "url",
+                            "summary": "summary",
+                        }
+                    ],
                 },
                 {
                     "content": "Sure! Could you please provide your name?",
                     "role": "agent",
                     "created_timestamp": 1703302428855,
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
+                    "multimedia": [
+                        {
+                            "url": "url",
+                            "summary": "summary",
+                        }
+                    ],
                 },
                 {
                     "content": "My name is John Smith.",
                     "role": "user",
                     "created_timestamp": 1703302428855,
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
+                    "multimedia": [
+                        {
+                            "url": "url",
+                            "summary": "summary",
+                        }
+                    ],
                 },
             ],
             version="latest_published",

@@ -347,6 +347,7 @@ class TestConversationFlow:
                             "execution_message_description": "execution_message_description",
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
+                            "max_retry": 0,
                             "method": "GET",
                             "parameter_type": "json",
                             "parameters": {
@@ -373,7 +374,7 @@ class TestConversationFlow:
             },
             flex_mode=False,
             global_prompt="You are a helpful customer service agent.",
-            is_transfer_llm=False,
+            is_transfer_cf=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,
@@ -419,6 +420,7 @@ class TestConversationFlow:
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
+                    "max_retry": 0,
                     "method": "GET",
                     "parameter_type": "json",
                     "parameters": {
@@ -732,6 +734,7 @@ class TestConversationFlow:
                             "execution_message_description": "execution_message_description",
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
+                            "max_retry": 0,
                             "method": "GET",
                             "parameter_type": "json",
                             "parameters": {
@@ -758,7 +761,7 @@ class TestConversationFlow:
             },
             flex_mode=False,
             global_prompt="You are a helpful customer service agent.",
-            is_transfer_llm=False,
+            is_transfer_cf=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,
@@ -932,6 +935,7 @@ class TestConversationFlow:
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
+                    "max_retry": 0,
                     "method": "GET",
                     "parameter_type": "json",
                     "parameters": {
@@ -1400,6 +1404,7 @@ class TestAsyncConversationFlow:
                             "execution_message_description": "execution_message_description",
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
+                            "max_retry": 0,
                             "method": "GET",
                             "parameter_type": "json",
                             "parameters": {
@@ -1426,7 +1431,7 @@ class TestAsyncConversationFlow:
             },
             flex_mode=False,
             global_prompt="You are a helpful customer service agent.",
-            is_transfer_llm=False,
+            is_transfer_cf=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,
@@ -1472,6 +1477,7 @@ class TestAsyncConversationFlow:
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
+                    "max_retry": 0,
                     "method": "GET",
                     "parameter_type": "json",
                     "parameters": {
@@ -1785,6 +1791,7 @@ class TestAsyncConversationFlow:
                             "execution_message_description": "execution_message_description",
                             "execution_message_type": "prompt",
                             "headers": {"Authorization": "Bearer 1234567890"},
+                            "max_retry": 0,
                             "method": "GET",
                             "parameter_type": "json",
                             "parameters": {
@@ -1811,7 +1818,7 @@ class TestAsyncConversationFlow:
             },
             flex_mode=False,
             global_prompt="You are a helpful customer service agent.",
-            is_transfer_llm=False,
+            is_transfer_cf=False,
             kb_config={
                 "filter_score": 0.6,
                 "top_k": 3,
@@ -1985,6 +1992,7 @@ class TestAsyncConversationFlow:
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
+                    "max_retry": 0,
                     "method": "GET",
                     "parameter_type": "json",
                     "parameters": {

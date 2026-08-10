@@ -12,6 +12,7 @@ __all__ = [
     "ChatCostProductCost",
     "MessageWithToolCall",
     "MessageWithToolCallMessageBase",
+    "MessageWithToolCallMessageBaseMultimedia",
     "MessageWithToolCallToolCallInvocationMessageBase",
     "MessageWithToolCallToolCallResultMessageBase",
     "MessageWithToolCallNodeTransitionMessageBase",
@@ -68,6 +69,14 @@ class ChatCost(BaseModel):
     """List of products with their unit prices and costs in cents"""
 
 
+class MessageWithToolCallMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
 class MessageWithToolCallMessageBase(BaseModel):
     content: str
     """Content of the message"""
@@ -80,6 +89,14 @@ class MessageWithToolCallMessageBase(BaseModel):
 
     message_id: Optional[str] = None
     """Unique id of the message"""
+
+    multimedia: Optional[List[MessageWithToolCallMessageBaseMultimedia]] = None
+    """Multimedia attachments received with this message (MMS).
+
+    Display only; a textual summary of each attachment is already included in
+    content. Response only — supplying it in a request has no effect and is silently
+    ignored. Omitted from PII-scrubbed messages.
+    """
 
 
 class MessageWithToolCallToolCallInvocationMessageBase(BaseModel):

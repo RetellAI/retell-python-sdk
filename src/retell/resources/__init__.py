@@ -48,6 +48,14 @@ from .voice import (
     VoiceResourceWithStreamingResponse,
     AsyncVoiceResourceWithStreamingResponse,
 )
+from .identity import (
+    IdentityResource,
+    AsyncIdentityResource,
+    IdentityResourceWithRawResponse,
+    AsyncIdentityResourceWithRawResponse,
+    IdentityResourceWithStreamingResponse,
+    AsyncIdentityResourceWithStreamingResponse,
+)
 from .mcp_tool import (
     McpToolResource,
     AsyncMcpToolResource,
@@ -196,6 +204,12 @@ __all__ = [
     "AsyncConcurrencyResourceWithRawResponse",
     "ConcurrencyResourceWithStreamingResponse",
     "AsyncConcurrencyResourceWithStreamingResponse",
+    "IdentityResource",
+    "AsyncIdentityResource",
+    "IdentityResourceWithRawResponse",
+    "AsyncIdentityResourceWithRawResponse",
+    "IdentityResourceWithStreamingResponse",
+    "AsyncIdentityResourceWithStreamingResponse",
     "ExportRequestResource",
     "AsyncExportRequestResource",
     "ExportRequestResourceWithRawResponse",

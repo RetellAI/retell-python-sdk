@@ -53,6 +53,7 @@ class LlmResource(SyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         general_prompt: Optional[str] | Omit = omit,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | Omit = omit,
+        is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: Optional[llm_create_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[llm_create_params.Mcp]] | Omit = omit,
@@ -79,6 +80,8 @@ class LlmResource(SyncAPIResource):
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
                 "gemini-3.5-flash",
+                "gemini-3.5-flash-lite",
+                "gemini-3.6-flash",
             ]
         ]
         | Omit = omit,
@@ -136,6 +139,9 @@ class LlmResource(SyncAPIResource):
               - Tools of LLM (with state) = general tools + state tools + state transitions
               - Tools of LLM (no state) = general tools
 
+          is_transfer_llm: Whether this Retell LLM is used for warm transfer. Can only be set at creation,
+              and is ignored on update.
+
           kb_config: Knowledge base configuration for RAG retrieval.
 
           knowledge_base_ids: A list of knowledge base ids to use for this resource.
@@ -187,6 +193,7 @@ class LlmResource(SyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
@@ -257,6 +264,7 @@ class LlmResource(SyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         general_prompt: Optional[str] | Omit = omit,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | Omit = omit,
+        is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: Optional[llm_update_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[llm_update_params.Mcp]] | Omit = omit,
@@ -283,6 +291,8 @@ class LlmResource(SyncAPIResource):
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
                 "gemini-3.5-flash",
+                "gemini-3.5-flash-lite",
+                "gemini-3.6-flash",
             ]
         ]
         | Omit = omit,
@@ -340,6 +350,9 @@ class LlmResource(SyncAPIResource):
               - Tools of LLM (with state) = general tools + state tools + state transitions
               - Tools of LLM (no state) = general tools
 
+          is_transfer_llm: Whether this Retell LLM is used for warm transfer. Can only be set at creation,
+              and is ignored on update.
+
           kb_config: Knowledge base configuration for RAG retrieval.
 
           knowledge_base_ids: A list of knowledge base ids to use for this resource.
@@ -393,6 +406,7 @@ class LlmResource(SyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
@@ -530,6 +544,7 @@ class AsyncLlmResource(AsyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         general_prompt: Optional[str] | Omit = omit,
         general_tools: Optional[Iterable[llm_create_params.GeneralTool]] | Omit = omit,
+        is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: Optional[llm_create_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[llm_create_params.Mcp]] | Omit = omit,
@@ -556,6 +571,8 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
                 "gemini-3.5-flash",
+                "gemini-3.5-flash-lite",
+                "gemini-3.6-flash",
             ]
         ]
         | Omit = omit,
@@ -613,6 +630,9 @@ class AsyncLlmResource(AsyncAPIResource):
               - Tools of LLM (with state) = general tools + state tools + state transitions
               - Tools of LLM (no state) = general tools
 
+          is_transfer_llm: Whether this Retell LLM is used for warm transfer. Can only be set at creation,
+              and is ignored on update.
+
           kb_config: Knowledge base configuration for RAG retrieval.
 
           knowledge_base_ids: A list of knowledge base ids to use for this resource.
@@ -664,6 +684,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
@@ -734,6 +755,7 @@ class AsyncLlmResource(AsyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         general_prompt: Optional[str] | Omit = omit,
         general_tools: Optional[Iterable[llm_update_params.GeneralTool]] | Omit = omit,
+        is_transfer_llm: Optional[bool] | Omit = omit,
         kb_config: Optional[llm_update_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[llm_update_params.Mcp]] | Omit = omit,
@@ -760,6 +782,8 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
                 "gemini-3.5-flash",
+                "gemini-3.5-flash-lite",
+                "gemini-3.6-flash",
             ]
         ]
         | Omit = omit,
@@ -817,6 +841,9 @@ class AsyncLlmResource(AsyncAPIResource):
               - Tools of LLM (with state) = general tools + state tools + state transitions
               - Tools of LLM (no state) = general tools
 
+          is_transfer_llm: Whether this Retell LLM is used for warm transfer. Can only be set at creation,
+              and is ignored on update.
+
           kb_config: Knowledge base configuration for RAG retrieval.
 
           knowledge_base_ids: A list of knowledge base ids to use for this resource.
@@ -870,6 +897,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "general_prompt": general_prompt,
                     "general_tools": general_tools,
+                    "is_transfer_llm": is_transfer_llm,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
