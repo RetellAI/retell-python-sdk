@@ -62,7 +62,7 @@ class ConversationFlowResource(SyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         flex_mode: Optional[bool] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
-        is_transfer_llm: Optional[bool] | Omit = omit,
+        is_transfer_cf: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | Omit = omit,
@@ -107,7 +107,8 @@ class ConversationFlowResource(SyncAPIResource):
 
           global_prompt: Global prompt used in every node of the conversation flow.
 
-          is_transfer_llm: Whether this conversation flow is used for transfer LLM.
+          is_transfer_cf: Whether this conversation flow is used for warm transfer. Can only be set at
+              creation, and is ignored on update.
 
           kb_config: Knowledge base configuration for RAG retrieval.
 
@@ -148,7 +149,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "flex_mode": flex_mode,
                     "global_prompt": global_prompt,
-                    "is_transfer_llm": is_transfer_llm,
+                    "is_transfer_cf": is_transfer_cf,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
@@ -222,7 +223,7 @@ class ConversationFlowResource(SyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         flex_mode: Optional[bool] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
-        is_transfer_llm: Optional[bool] | Omit = omit,
+        is_transfer_cf: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_update_params.KBConfig | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_update_params.Mcp]] | Omit = omit,
@@ -264,7 +265,8 @@ class ConversationFlowResource(SyncAPIResource):
 
           global_prompt: Global prompt used in every node of the conversation flow.
 
-          is_transfer_llm: Whether this conversation flow is used for transfer LLM.
+          is_transfer_cf: Whether this conversation flow is used for warm transfer. Can only be set at
+              creation, and is ignored on update.
 
           kb_config: Knowledge base configuration for RAG retrieval.
 
@@ -314,7 +316,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "flex_mode": flex_mode,
                     "global_prompt": global_prompt,
-                    "is_transfer_llm": is_transfer_llm,
+                    "is_transfer_cf": is_transfer_cf,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
@@ -462,7 +464,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         flex_mode: Optional[bool] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
-        is_transfer_llm: Optional[bool] | Omit = omit,
+        is_transfer_cf: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | Omit = omit,
@@ -507,7 +509,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           global_prompt: Global prompt used in every node of the conversation flow.
 
-          is_transfer_llm: Whether this conversation flow is used for transfer LLM.
+          is_transfer_cf: Whether this conversation flow is used for warm transfer. Can only be set at
+              creation, and is ignored on update.
 
           kb_config: Knowledge base configuration for RAG retrieval.
 
@@ -548,7 +551,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "flex_mode": flex_mode,
                     "global_prompt": global_prompt,
-                    "is_transfer_llm": is_transfer_llm,
+                    "is_transfer_cf": is_transfer_cf,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
@@ -622,7 +625,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
         flex_mode: Optional[bool] | Omit = omit,
         global_prompt: Optional[str] | Omit = omit,
-        is_transfer_llm: Optional[bool] | Omit = omit,
+        is_transfer_cf: Optional[bool] | Omit = omit,
         kb_config: conversation_flow_update_params.KBConfig | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_update_params.Mcp]] | Omit = omit,
@@ -664,7 +667,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           global_prompt: Global prompt used in every node of the conversation flow.
 
-          is_transfer_llm: Whether this conversation flow is used for transfer LLM.
+          is_transfer_cf: Whether this conversation flow is used for warm transfer. Can only be set at
+              creation, and is ignored on update.
 
           kb_config: Knowledge base configuration for RAG retrieval.
 
@@ -714,7 +718,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "default_dynamic_variables": default_dynamic_variables,
                     "flex_mode": flex_mode,
                     "global_prompt": global_prompt,
-                    "is_transfer_llm": is_transfer_llm,
+                    "is_transfer_cf": is_transfer_cf,
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,

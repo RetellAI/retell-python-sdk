@@ -1673,6 +1673,8 @@ class ComponentNodeConversationNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -2233,6 +2235,8 @@ class ComponentNodeSubagentNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -3002,6 +3006,20 @@ class ComponentNodeSubagentNodeToolCustomTool(BaseModel):
     headers: Optional[Dict[str, str]] = None
     """Headers to add to the request."""
 
+    max_retry: Optional[int] = None
+    """
+    Maximum number of times to retry the request after a failed attempt, from 0 (no
+    retry) to 5. Retries happen on any failure, with exponential backoff between
+    attempts; the backoff delay is not configurable. `timeout_ms` applies per
+    attempt rather than as a budget across all attempts, so an attempt that times
+    out is still retried and the worst-case total duration is `timeout_ms`
+    multiplied by (`max_retry` + 1) as well as any latency incurred by the
+    exponential backoff + jitter between each retry. Only the final attempt's result
+    is reported to the agent. Because retries repeat the request, only set this
+    above 0 if your endpoint is idempotent — a retried request may be processed more
+    than once. Defaults to 0 (no retry).
+    """
+
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
 
@@ -3672,6 +3690,8 @@ class ComponentNodeEndNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -4044,6 +4064,8 @@ class ComponentNodeFunctionNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -4430,6 +4452,8 @@ class ComponentNodeCodeNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -5059,6 +5083,8 @@ class ComponentNodeTransferCallNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -5440,6 +5466,8 @@ class ComponentNodePressDigitNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -5793,6 +5821,8 @@ class ComponentNodeBranchNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -6145,6 +6175,8 @@ class ComponentNodeSMSNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -6615,6 +6647,8 @@ class ComponentNodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -6915,6 +6949,8 @@ class ComponentNodeAgentSwapNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -7308,6 +7344,8 @@ class ComponentNodeMcpNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -7900,6 +7938,8 @@ class ComponentNodeBridgeTransferNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -8140,6 +8180,8 @@ class ComponentNodeCancelTransferNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -8332,6 +8374,20 @@ class ComponentToolCustomTool(BaseModel):
 
     headers: Optional[Dict[str, str]] = None
     """Headers to add to the request."""
+
+    max_retry: Optional[int] = None
+    """
+    Maximum number of times to retry the request after a failed attempt, from 0 (no
+    retry) to 5. Retries happen on any failure, with exponential backoff between
+    attempts; the backoff delay is not configurable. `timeout_ms` applies per
+    attempt rather than as a budget across all attempts, so an attempt that times
+    out is still retried and the worst-case total duration is `timeout_ms`
+    multiplied by (`max_retry` + 1) as well as any latency incurred by the
+    exponential backoff + jitter between each retry. Only the final attempt's result
+    is reported to the agent. Because retries repeat the request, only set this
+    above 0 if your endpoint is idempotent — a retried request may be processed more
+    than once. Defaults to 0 (no retry).
+    """
 
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
@@ -8561,6 +8617,8 @@ class ModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -9014,6 +9072,8 @@ class NodeConversationNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -9571,6 +9631,8 @@ class NodeSubagentNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -10340,6 +10402,20 @@ class NodeSubagentNodeToolCustomTool(BaseModel):
     headers: Optional[Dict[str, str]] = None
     """Headers to add to the request."""
 
+    max_retry: Optional[int] = None
+    """
+    Maximum number of times to retry the request after a failed attempt, from 0 (no
+    retry) to 5. Retries happen on any failure, with exponential backoff between
+    attempts; the backoff delay is not configurable. `timeout_ms` applies per
+    attempt rather than as a budget across all attempts, so an attempt that times
+    out is still retried and the worst-case total duration is `timeout_ms`
+    multiplied by (`max_retry` + 1) as well as any latency incurred by the
+    exponential backoff + jitter between each retry. Only the final attempt's result
+    is reported to the agent. Because retries repeat the request, only set this
+    above 0 if your endpoint is idempotent — a retried request may be processed more
+    than once. Defaults to 0 (no retry).
+    """
+
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
 
@@ -11010,6 +11086,8 @@ class NodeEndNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -11378,6 +11456,8 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -11763,6 +11843,8 @@ class NodeCodeNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -12375,6 +12457,8 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -12747,6 +12831,8 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -13099,6 +13185,8 @@ class NodeBranchNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -13451,6 +13539,8 @@ class NodeSMSNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -13917,6 +14007,8 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -14208,6 +14300,8 @@ class NodeAgentSwapNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -14600,6 +14694,8 @@ class NodeMcpNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -15176,6 +15272,8 @@ class NodeBridgeTransferNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -15405,6 +15503,8 @@ class NodeCancelTransferNodeModelChoice(BaseModel):
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
         "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
     ]
     """The LLM model to use"""
 
@@ -15568,6 +15668,20 @@ class ToolCustomTool(BaseModel):
 
     headers: Optional[Dict[str, str]] = None
     """Headers to add to the request."""
+
+    max_retry: Optional[int] = None
+    """
+    Maximum number of times to retry the request after a failed attempt, from 0 (no
+    retry) to 5. Retries happen on any failure, with exponential backoff between
+    attempts; the backoff delay is not configurable. `timeout_ms` applies per
+    attempt rather than as a budget across all attempts, so an attempt that times
+    out is still retried and the worst-case total duration is `timeout_ms`
+    multiplied by (`max_retry` + 1) as well as any latency incurred by the
+    exponential backoff + jitter between each retry. Only the final attempt's result
+    is reported to the agent. Because retries repeat the request, only set this
+    above 0 if your endpoint is idempotent — a retried request may be processed more
+    than once. Defaults to 0 (no retry).
+    """
 
     method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
     """Method to use for the request, default to POST."""
@@ -15757,8 +15871,11 @@ class ConversationFlowResponse(BaseModel):
     global_prompt: Optional[str] = None
     """Global prompt used in every node of the conversation flow."""
 
-    is_transfer_llm: Optional[bool] = None
-    """Whether this conversation flow is used for transfer LLM."""
+    is_transfer_cf: Optional[bool] = None
+    """Whether this conversation flow is used for warm transfer.
+
+    Can only be set at creation, and is ignored on update.
+    """
 
     kb_config: Optional[KBConfig] = None
     """Knowledge base configuration for RAG retrieval."""

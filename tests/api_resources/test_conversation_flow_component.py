@@ -208,6 +208,7 @@ class TestConversationFlowComponent:
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
+                    "max_retry": 0,
                     "method": "GET",
                     "parameter_type": "json",
                     "parameters": {
@@ -498,6 +499,7 @@ class TestConversationFlowComponent:
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
+                    "max_retry": 0,
                     "method": "GET",
                     "parameter_type": "json",
                     "parameters": {
@@ -831,6 +833,7 @@ class TestAsyncConversationFlowComponent:
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
+                    "max_retry": 0,
                     "method": "GET",
                     "parameter_type": "json",
                     "parameters": {
@@ -1121,6 +1124,7 @@ class TestAsyncConversationFlowComponent:
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
                     "headers": {"Authorization": "Bearer 1234567890"},
+                    "max_retry": 0,
                     "method": "GET",
                     "parameter_type": "json",
                     "parameters": {

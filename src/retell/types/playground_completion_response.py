@@ -9,6 +9,7 @@ __all__ = [
     "PlaygroundCompletionResponse",
     "Message",
     "MessageMessageBase",
+    "MessageMessageBaseMultimedia",
     "MessageToolCallInvocationMessageBase",
     "MessageToolCallResultMessageBase",
     "MessageNodeTransitionMessageBase",
@@ -17,6 +18,14 @@ __all__ = [
     "MessageSMSMessageBase",
     "MessageSMSMessageBaseMultimedia",
 ]
+
+
+class MessageMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
 
 
 class MessageMessageBase(BaseModel):
@@ -31,6 +40,14 @@ class MessageMessageBase(BaseModel):
 
     message_id: Optional[str] = None
     """Unique id of the message"""
+
+    multimedia: Optional[List[MessageMessageBaseMultimedia]] = None
+    """Multimedia attachments received with this message (MMS).
+
+    Display only; a textual summary of each attachment is already included in
+    content. Response only — supplying it in a request has no effect and is silently
+    ignored. Omitted from PII-scrubbed messages.
+    """
 
 
 class MessageToolCallInvocationMessageBase(BaseModel):

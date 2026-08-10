@@ -207,13 +207,11 @@ class ChatAgentUpdateParams(TypedDict, total=False):
     ]
     """Specifies what language(s) the agent will operate in.
 
-    Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value
-    `multi` for multilingual support, or an array of concrete locale codes for
-    explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must
-    contain concrete locale codes only — the `multi` value is valid only as the
-    scalar legacy form and must not appear inside an array. Single-element arrays
-    are normalized to the equivalent scalar on output. If unset, defaults to
-    `en-US`.
+    Accepts either a single locale (e.g. `en-US`) or an array of locales for
+    multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is
+    deprecated but still accepted as a scalar, and is stored and returned as the ten
+    locales it used to mean. It must not appear inside the array form. Send an
+    explicit locale array instead. If unset, defaults to `en-US`.
     """
 
     opt_in_signed_url: bool
@@ -255,6 +253,8 @@ class ChatAgentUpdateParams(TypedDict, total=False):
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
             "gemini-3.5-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-3.6-flash",
         ]
     ]
     """The model to use for post chat analysis. Default to gpt-4.1."""
