@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Any, List, Union, Iterable, Optional, cast
 from typing_extensions import Literal
 
@@ -13,6 +14,7 @@ from ..types import (
     agent_update_params,
     agent_publish_params,
     agent_retrieve_params,
+    agent_list_versions_params,
     agent_create_version_params,
     agent_delete_version_params,
 )
@@ -30,6 +32,7 @@ from .._base_client import make_request_options
 from ..types.agent_response import AgentResponse
 from ..types.agent_list_response import AgentListResponse
 from ..types.agent_get_versions_response import AgentGetVersionsResponse
+from ..types.agent_list_versions_response import AgentListVersionsResponse
 from ..types.agent_create_version_response import AgentCreateVersionResponse
 
 __all__ = ["AgentResource", "AsyncAgentResource"]
@@ -1461,6 +1464,7 @@ class AgentResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def get_versions(
         self,
         agent_id: str,
@@ -1472,8 +1476,9 @@ class AgentResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentGetVersionsResponse:
-        """
-        Get all versions of an agent
+        """Get agent versions.
+
+        Large version histories may be truncated.
 
         Args:
           extra_headers: Send extra headers
@@ -1492,6 +1497,61 @@ class AgentResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=AgentGetVersionsResponse,
+        )
+
+    def list_versions(
+        self,
+        agent_id: str,
+        *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AgentListVersionsResponse:
+        """List stored versions of a voice or chat agent with pagination.
+
+        Root-level data
+        such as assigned tags is not included.
+
+        Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
+          sort_order: Sort order for results.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        return self._get(
+            path_template("/list-agent-versions/{agent_id}", agent_id=agent_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "sort_order": sort_order,
+                    },
+                    agent_list_versions_params.AgentListVersionsParams,
+                ),
+            ),
+            cast_to=AgentListVersionsResponse,
         )
 
     def publish(
@@ -2970,6 +3030,7 @@ class AsyncAgentResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def get_versions(
         self,
         agent_id: str,
@@ -2981,8 +3042,9 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentGetVersionsResponse:
-        """
-        Get all versions of an agent
+        """Get agent versions.
+
+        Large version histories may be truncated.
 
         Args:
           extra_headers: Send extra headers
@@ -3001,6 +3063,61 @@ class AsyncAgentResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=AgentGetVersionsResponse,
+        )
+
+    async def list_versions(
+        self,
+        agent_id: str,
+        *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AgentListVersionsResponse:
+        """List stored versions of a voice or chat agent with pagination.
+
+        Root-level data
+        such as assigned tags is not included.
+
+        Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
+          sort_order: Sort order for results.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        return await self._get(
+            path_template("/list-agent-versions/{agent_id}", agent_id=agent_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "sort_order": sort_order,
+                    },
+                    agent_list_versions_params.AgentListVersionsParams,
+                ),
+            ),
+            cast_to=AgentListVersionsResponse,
         )
 
     async def publish(
@@ -3076,8 +3193,13 @@ class AgentResourceWithRawResponse:
         self.delete_version = to_raw_response_wrapper(
             agent.delete_version,
         )
-        self.get_versions = to_raw_response_wrapper(
-            agent.get_versions,
+        self.get_versions = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                agent.get_versions,  # pyright: ignore[reportDeprecated],
+            )
+        )
+        self.list_versions = to_raw_response_wrapper(
+            agent.list_versions,
         )
         self.publish = to_raw_response_wrapper(
             agent.publish,
@@ -3109,8 +3231,13 @@ class AsyncAgentResourceWithRawResponse:
         self.delete_version = async_to_raw_response_wrapper(
             agent.delete_version,
         )
-        self.get_versions = async_to_raw_response_wrapper(
-            agent.get_versions,
+        self.get_versions = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                agent.get_versions,  # pyright: ignore[reportDeprecated],
+            )
+        )
+        self.list_versions = async_to_raw_response_wrapper(
+            agent.list_versions,
         )
         self.publish = async_to_raw_response_wrapper(
             agent.publish,
@@ -3142,8 +3269,13 @@ class AgentResourceWithStreamingResponse:
         self.delete_version = to_streamed_response_wrapper(
             agent.delete_version,
         )
-        self.get_versions = to_streamed_response_wrapper(
-            agent.get_versions,
+        self.get_versions = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                agent.get_versions,  # pyright: ignore[reportDeprecated],
+            )
+        )
+        self.list_versions = to_streamed_response_wrapper(
+            agent.list_versions,
         )
         self.publish = to_streamed_response_wrapper(
             agent.publish,
@@ -3175,8 +3307,13 @@ class AsyncAgentResourceWithStreamingResponse:
         self.delete_version = async_to_streamed_response_wrapper(
             agent.delete_version,
         )
-        self.get_versions = async_to_streamed_response_wrapper(
-            agent.get_versions,
+        self.get_versions = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                agent.get_versions,  # pyright: ignore[reportDeprecated],
+            )
+        )
+        self.list_versions = async_to_streamed_response_wrapper(
+            agent.list_versions,
         )
         self.publish = async_to_streamed_response_wrapper(
             agent.publish,

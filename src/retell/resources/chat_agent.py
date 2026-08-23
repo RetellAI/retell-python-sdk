@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Any, List, Union, Iterable, Optional, cast
 from typing_extensions import Literal
 
@@ -885,6 +886,7 @@ class ChatAgentResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def get_versions(
         self,
         agent_id: str,
@@ -896,8 +898,9 @@ class ChatAgentResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatAgentGetVersionsResponse:
-        """
-        Get all versions of a chat agent
+        """Get chat agent versions.
+
+        Large version histories may be truncated.
 
         Args:
           extra_headers: Send extra headers
@@ -1820,6 +1823,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def get_versions(
         self,
         agent_id: str,
@@ -1831,8 +1835,9 @@ class AsyncChatAgentResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatAgentGetVersionsResponse:
-        """
-        Get all versions of a chat agent
+        """Get chat agent versions.
+
+        Large version histories may be truncated.
 
         Args:
           extra_headers: Send extra headers
@@ -1926,8 +1931,10 @@ class ChatAgentResourceWithRawResponse:
         self.delete_version = to_raw_response_wrapper(
             chat_agent.delete_version,
         )
-        self.get_versions = to_raw_response_wrapper(
-            chat_agent.get_versions,
+        self.get_versions = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                chat_agent.get_versions,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.publish = to_raw_response_wrapper(
             chat_agent.publish,
@@ -1959,8 +1966,10 @@ class AsyncChatAgentResourceWithRawResponse:
         self.delete_version = async_to_raw_response_wrapper(
             chat_agent.delete_version,
         )
-        self.get_versions = async_to_raw_response_wrapper(
-            chat_agent.get_versions,
+        self.get_versions = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                chat_agent.get_versions,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.publish = async_to_raw_response_wrapper(
             chat_agent.publish,
@@ -1992,8 +2001,10 @@ class ChatAgentResourceWithStreamingResponse:
         self.delete_version = to_streamed_response_wrapper(
             chat_agent.delete_version,
         )
-        self.get_versions = to_streamed_response_wrapper(
-            chat_agent.get_versions,
+        self.get_versions = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                chat_agent.get_versions,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.publish = to_streamed_response_wrapper(
             chat_agent.publish,
@@ -2025,8 +2036,10 @@ class AsyncChatAgentResourceWithStreamingResponse:
         self.delete_version = async_to_streamed_response_wrapper(
             chat_agent.delete_version,
         )
-        self.get_versions = async_to_streamed_response_wrapper(
-            chat_agent.get_versions,
+        self.get_versions = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                chat_agent.get_versions,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.publish = async_to_streamed_response_wrapper(
             chat_agent.publish,

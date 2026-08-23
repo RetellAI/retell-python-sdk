@@ -72,6 +72,7 @@ from retell.types import (
     AgentListResponse,
     AgentCreateVersionResponse,
     AgentGetVersionsResponse,
+    AgentListVersionsResponse,
 )
 ```
 
@@ -85,6 +86,7 @@ Methods:
 - <code title="post /create-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">create_version</a>(agent_id, \*\*<a href="src/retell/types/agent_create_version_params.py">params</a>) -> <a href="./src/retell/types/agent_create_version_response.py">AgentCreateVersionResponse</a></code>
 - <code title="delete /delete-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">delete_version</a>(agent_id, \*\*<a href="src/retell/types/agent_delete_version_params.py">params</a>) -> None</code>
 - <code title="get /get-agent-versions/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">get_versions</a>(agent_id) -> <a href="./src/retell/types/agent_get_versions_response.py">AgentGetVersionsResponse</a></code>
+- <code title="get /list-agent-versions/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">list_versions</a>(agent_id, \*\*<a href="src/retell/types/agent_list_versions_params.py">params</a>) -> <a href="./src/retell/types/agent_list_versions_response.py">AgentListVersionsResponse</a></code>
 - <code title="post /publish-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">publish</a>(agent_id, \*\*<a href="src/retell/types/agent_publish_params.py">params</a>) -> None</code>
 
 # ChatAgent
@@ -126,7 +128,7 @@ Methods:
 - <code title="get /get-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">retrieve</a>(llm_id, \*\*<a href="src/retell/types/llm_retrieve_params.py">params</a>) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
 - <code title="patch /update-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">update</a>(llm_id, \*\*<a href="src/retell/types/llm_update_params.py">params</a>) -> <a href="./src/retell/types/llm_response.py">LlmResponse</a></code>
 - <code title="get /v2/list-retell-llms">client.llm.<a href="./src/retell/resources/llm.py">list</a>(\*\*<a href="src/retell/types/llm_list_params.py">params</a>) -> <a href="./src/retell/types/llm_list_response.py">LlmListResponse</a></code>
-- <code title="delete /delete-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">delete</a>(llm_id) -> None</code>
+- <code title="delete /delete-retell-llm/{llm_id}">client.llm.<a href="./src/retell/resources/llm.py">delete</a>(llm_id, \*\*<a href="src/retell/types/llm_delete_params.py">params</a>) -> None</code>
 
 # ConversationFlow
 
@@ -142,7 +144,7 @@ Methods:
 - <code title="get /get-conversation-flow/{conversation_flow_id}">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">retrieve</a>(conversation_flow_id, \*\*<a href="src/retell/types/conversation_flow_retrieve_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_response.py">ConversationFlowResponse</a></code>
 - <code title="patch /update-conversation-flow/{conversation_flow_id}">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">update</a>(conversation_flow_id, \*\*<a href="src/retell/types/conversation_flow_update_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_response.py">ConversationFlowResponse</a></code>
 - <code title="get /v2/list-conversation-flows">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">list</a>(\*\*<a href="src/retell/types/conversation_flow_list_params.py">params</a>) -> <a href="./src/retell/types/conversation_flow_list_response.py">ConversationFlowListResponse</a></code>
-- <code title="delete /delete-conversation-flow/{conversation_flow_id}">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">delete</a>(conversation_flow_id) -> None</code>
+- <code title="delete /delete-conversation-flow/{conversation_flow_id}">client.conversation_flow.<a href="./src/retell/resources/conversation_flow.py">delete</a>(conversation_flow_id, \*\*<a href="src/retell/types/conversation_flow_delete_params.py">params</a>) -> None</code>
 
 # ConversationFlowComponent
 
@@ -292,3 +294,68 @@ from retell.types import McpToolDefinition, McpToolGetMcpToolsResponse
 Methods:
 
 - <code title="get /get-mcp-tools/{agent_id}">client.mcp_tool.<a href="./src/retell/resources/mcp_tool.py">get_mcp_tools</a>(agent_id, \*\*<a href="src/retell/types/mcp_tool_get_mcp_tools_params.py">params</a>) -> <a href="./src/retell/types/mcp_tool_get_mcp_tools_response.py">McpToolGetMcpToolsResponse</a></code>
+
+# Contact
+
+Types:
+
+```python
+from retell.types import (
+    ContactResponse,
+    ContactListResponse,
+    ContactBackfillAnalysisDataResponse,
+    ContactGetBackfillJobStatusResponse,
+    ContactListConversationsResponse,
+)
+```
+
+Methods:
+
+- <code title="post /create-contact">client.contact.<a href="./src/retell/resources/contact.py">create</a>(\*\*<a href="src/retell/types/contact_create_params.py">params</a>) -> <a href="./src/retell/types/contact_response.py">ContactResponse</a></code>
+- <code title="patch /update-contact/{contact_id}">client.contact.<a href="./src/retell/resources/contact.py">update</a>(contact_id, \*\*<a href="src/retell/types/contact_update_params.py">params</a>) -> <a href="./src/retell/types/contact_response.py">ContactResponse</a></code>
+- <code title="post /list-contacts">client.contact.<a href="./src/retell/resources/contact.py">list</a>(\*\*<a href="src/retell/types/contact_list_params.py">params</a>) -> <a href="./src/retell/types/contact_list_response.py">ContactListResponse</a></code>
+- <code title="delete /delete-contact/{contact_id}">client.contact.<a href="./src/retell/resources/contact.py">delete</a>(contact_id) -> None</code>
+- <code title="post /backfill-contact-analysis-data">client.contact.<a href="./src/retell/resources/contact.py">backfill_analysis_data</a>(\*\*<a href="src/retell/types/contact_backfill_analysis_data_params.py">params</a>) -> <a href="./src/retell/types/contact_backfill_analysis_data_response.py">ContactBackfillAnalysisDataResponse</a></code>
+- <code title="get /get-contact/{contact_id}">client.contact.<a href="./src/retell/resources/contact.py">get</a>(contact_id) -> <a href="./src/retell/types/contact_response.py">ContactResponse</a></code>
+- <code title="get /get-backfill-contact-job-status">client.contact.<a href="./src/retell/resources/contact.py">get_backfill_job_status</a>() -> <a href="./src/retell/types/contact_get_backfill_job_status_response.py">ContactGetBackfillJobStatusResponse</a></code>
+- <code title="get /get-contact-by-phone/{phone_number}">client.contact.<a href="./src/retell/resources/contact.py">get_by_phone</a>(phone_number) -> <a href="./src/retell/types/contact_response.py">ContactResponse</a></code>
+- <code title="get /list-contact-conversations/{contact_id}">client.contact.<a href="./src/retell/resources/contact.py">list_conversations</a>(contact_id, \*\*<a href="src/retell/types/contact_list_conversations_params.py">params</a>) -> <a href="./src/retell/types/contact_list_conversations_response.py">ContactListConversationsResponse</a></code>
+
+# App
+
+Types:
+
+```python
+from retell.types import AppResponse, AppListResponse, AppListUsagesResponse, AppTestAuthResponse
+```
+
+Methods:
+
+- <code title="post /create-app">client.app.<a href="./src/retell/resources/app.py">create</a>(\*\*<a href="src/retell/types/app_create_params.py">params</a>) -> <a href="./src/retell/types/app_response.py">AppResponse</a></code>
+- <code title="patch /update-app/{app_id}">client.app.<a href="./src/retell/resources/app.py">update</a>(app_id, \*\*<a href="src/retell/types/app_update_params.py">params</a>) -> <a href="./src/retell/types/app_response.py">AppResponse</a></code>
+- <code title="get /list-apps">client.app.<a href="./src/retell/resources/app.py">list</a>(\*\*<a href="src/retell/types/app_list_params.py">params</a>) -> <a href="./src/retell/types/app_list_response.py">AppListResponse</a></code>
+- <code title="delete /delete-app/{app_id}">client.app.<a href="./src/retell/resources/app.py">delete</a>(app_id, \*\*<a href="src/retell/types/app_delete_params.py">params</a>) -> None</code>
+- <code title="get /get-app/{app_id}">client.app.<a href="./src/retell/resources/app.py">get</a>(app_id) -> <a href="./src/retell/types/app_response.py">AppResponse</a></code>
+- <code title="get /list-app-usages/{app_id}">client.app.<a href="./src/retell/resources/app.py">list_usages</a>(app_id, \*\*<a href="src/retell/types/app_list_usages_params.py">params</a>) -> <a href="./src/retell/types/app_list_usages_response.py">AppListUsagesResponse</a></code>
+- <code title="post /test-app-auth/{app_id}">client.app.<a href="./src/retell/resources/app.py">test_auth</a>(app_id) -> <a href="./src/retell/types/app_test_auth_response.py">AppTestAuthResponse</a></code>
+
+# CRM
+
+Types:
+
+```python
+from retell.types import (
+    CRMConfig,
+    CRMGetSchemaResponse,
+    CRMGetSyncJobStatusResponse,
+    CRMRunSyncJobResponse,
+)
+```
+
+Methods:
+
+- <code title="get /get-crm-config">client.crm.<a href="./src/retell/resources/crm.py">get_config</a>() -> <a href="./src/retell/types/crm_config.py">CRMConfig</a></code>
+- <code title="get /get-crm-schema">client.crm.<a href="./src/retell/resources/crm.py">get_schema</a>(\*\*<a href="src/retell/types/crm_get_schema_params.py">params</a>) -> <a href="./src/retell/types/crm_get_schema_response.py">CRMGetSchemaResponse</a></code>
+- <code title="get /get-sync-job-status">client.crm.<a href="./src/retell/resources/crm.py">get_sync_job_status</a>() -> <a href="./src/retell/types/crm_get_sync_job_status_response.py">CRMGetSyncJobStatusResponse</a></code>
+- <code title="post /run-sync-job">client.crm.<a href="./src/retell/resources/crm.py">run_sync_job</a>() -> <a href="./src/retell/types/crm_run_sync_job_response.py">CRMRunSyncJobResponse</a></code>
+- <code title="post /update-crm-config">client.crm.<a href="./src/retell/resources/crm.py">update_config</a>(\*\*<a href="src/retell/types/crm_update_config_params.py">params</a>) -> <a href="./src/retell/types/crm_config.py">CRMConfig</a></code>

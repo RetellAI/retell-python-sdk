@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import llm_list_params, llm_create_params, llm_update_params, llm_retrieve_params
+from ..types import llm_list_params, llm_create_params, llm_delete_params, llm_update_params, llm_retrieve_params
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -485,6 +485,7 @@ class LlmResource(SyncAPIResource):
         self,
         llm_id: str,
         *,
+        force_delete: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -496,6 +497,10 @@ class LlmResource(SyncAPIResource):
         Delete an existing Retell LLM Response Engine
 
         Args:
+          force_delete: By default the deletion is rejected with a 400 if any agent still uses this
+              Retell LLM as its response engine. Set to true to delete it anyway, which leaves
+              those agents pointing at a Retell LLM that no longer exists.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -510,7 +515,11 @@ class LlmResource(SyncAPIResource):
         return self._delete(
             path_template("/delete-retell-llm/{llm_id}", llm_id=llm_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"force_delete": force_delete}, llm_delete_params.LlmDeleteParams),
             ),
             cast_to=NoneType,
         )
@@ -976,6 +985,7 @@ class AsyncLlmResource(AsyncAPIResource):
         self,
         llm_id: str,
         *,
+        force_delete: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -987,6 +997,10 @@ class AsyncLlmResource(AsyncAPIResource):
         Delete an existing Retell LLM Response Engine
 
         Args:
+          force_delete: By default the deletion is rejected with a 400 if any agent still uses this
+              Retell LLM as its response engine. Set to true to delete it anyway, which leaves
+              those agents pointing at a Retell LLM that no longer exists.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1001,7 +1015,11 @@ class AsyncLlmResource(AsyncAPIResource):
         return await self._delete(
             path_template("/delete-retell-llm/{llm_id}", llm_id=llm_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"force_delete": force_delete}, llm_delete_params.LlmDeleteParams),
             ),
             cast_to=NoneType,
         )

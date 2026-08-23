@@ -407,7 +407,16 @@ class TestLlm:
     @parametrize
     def test_method_delete(self, client: Retell) -> None:
         llm = client.llm.delete(
-            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            llm_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+        assert llm is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_delete_with_all_params(self, client: Retell) -> None:
+        llm = client.llm.delete(
+            llm_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            force_delete=True,
         )
         assert llm is None
 
@@ -415,7 +424,7 @@ class TestLlm:
     @parametrize
     def test_raw_response_delete(self, client: Retell) -> None:
         response = client.llm.with_raw_response.delete(
-            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            llm_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
 
         assert response.is_closed is True
@@ -427,7 +436,7 @@ class TestLlm:
     @parametrize
     def test_streaming_response_delete(self, client: Retell) -> None:
         with client.llm.with_streaming_response.delete(
-            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            llm_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -442,7 +451,7 @@ class TestLlm:
     def test_path_params_delete(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `llm_id` but received ''"):
             client.llm.with_raw_response.delete(
-                "",
+                llm_id="",
             )
 
 
@@ -838,7 +847,16 @@ class TestAsyncLlm:
     @parametrize
     async def test_method_delete(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.delete(
-            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            llm_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+        )
+        assert llm is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_delete_with_all_params(self, async_client: AsyncRetell) -> None:
+        llm = await async_client.llm.delete(
+            llm_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            force_delete=True,
         )
         assert llm is None
 
@@ -846,7 +864,7 @@ class TestAsyncLlm:
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncRetell) -> None:
         response = await async_client.llm.with_raw_response.delete(
-            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            llm_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         )
 
         assert response.is_closed is True
@@ -858,7 +876,7 @@ class TestAsyncLlm:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncRetell) -> None:
         async with async_client.llm.with_streaming_response.delete(
-            "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
+            llm_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -873,5 +891,5 @@ class TestAsyncLlm:
     async def test_path_params_delete(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `llm_id` but received ''"):
             await async_client.llm.with_raw_response.delete(
-                "",
+                llm_id="",
             )
