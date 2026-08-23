@@ -13,8 +13,11 @@ from retell.types import (
     AgentResponse,
     AgentListResponse,
     AgentGetVersionsResponse,
+    AgentListVersionsResponse,
     AgentCreateVersionResponse,
 )
+
+# pyright: reportDeprecated=false
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -580,17 +583,20 @@ class TestAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_versions(self, client: Retell) -> None:
-        agent = client.agent.get_versions(
-            "16b980523634a6dc504898cda492e939",
-        )
+        with pytest.warns(DeprecationWarning):
+            agent = client.agent.get_versions(
+                "16b980523634a6dc504898cda492e939",
+            )
+
         assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_versions(self, client: Retell) -> None:
-        response = client.agent.with_raw_response.get_versions(
-            "16b980523634a6dc504898cda492e939",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.agent.with_raw_response.get_versions(
+                "16b980523634a6dc504898cda492e939",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -600,23 +606,78 @@ class TestAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_versions(self, client: Retell) -> None:
-        with client.agent.with_streaming_response.get_versions(
-            "16b980523634a6dc504898cda492e939",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.agent.with_streaming_response.get_versions(
+                "16b980523634a6dc504898cda492e939",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            agent = response.parse()
-            assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
+                agent = response.parse()
+                assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_versions(self, client: Retell) -> None:
+        with pytest.warns(DeprecationWarning):
+            with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+                client.agent.with_raw_response.get_versions(
+                    "",
+                )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_versions(self, client: Retell) -> None:
+        agent = client.agent.list_versions(
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(AgentListVersionsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_versions_with_all_params(self, client: Retell) -> None:
+        agent = client.agent.list_versions(
+            agent_id="16b980523634a6dc504898cda492e939",
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+        )
+        assert_matches_type(AgentListVersionsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_list_versions(self, client: Retell) -> None:
+        response = client.agent.with_raw_response.list_versions(
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = response.parse()
+        assert_matches_type(AgentListVersionsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_list_versions(self, client: Retell) -> None:
+        with client.agent.with_streaming_response.list_versions(
+            agent_id="16b980523634a6dc504898cda492e939",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = response.parse()
+            assert_matches_type(AgentListVersionsResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_list_versions(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
-            client.agent.with_raw_response.get_versions(
-                "",
+            client.agent.with_raw_response.list_versions(
+                agent_id="",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -1240,17 +1301,20 @@ class TestAsyncAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_versions(self, async_client: AsyncRetell) -> None:
-        agent = await async_client.agent.get_versions(
-            "16b980523634a6dc504898cda492e939",
-        )
+        with pytest.warns(DeprecationWarning):
+            agent = await async_client.agent.get_versions(
+                "16b980523634a6dc504898cda492e939",
+            )
+
         assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_versions(self, async_client: AsyncRetell) -> None:
-        response = await async_client.agent.with_raw_response.get_versions(
-            "16b980523634a6dc504898cda492e939",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.agent.with_raw_response.get_versions(
+                "16b980523634a6dc504898cda492e939",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1260,23 +1324,78 @@ class TestAsyncAgent:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_versions(self, async_client: AsyncRetell) -> None:
-        async with async_client.agent.with_streaming_response.get_versions(
-            "16b980523634a6dc504898cda492e939",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.agent.with_streaming_response.get_versions(
+                "16b980523634a6dc504898cda492e939",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            agent = await response.parse()
-            assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
+                agent = await response.parse()
+                assert_matches_type(AgentGetVersionsResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_versions(self, async_client: AsyncRetell) -> None:
+        with pytest.warns(DeprecationWarning):
+            with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+                await async_client.agent.with_raw_response.get_versions(
+                    "",
+                )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_versions(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.list_versions(
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(AgentListVersionsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_versions_with_all_params(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.list_versions(
+            agent_id="16b980523634a6dc504898cda492e939",
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+        )
+        assert_matches_type(AgentListVersionsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_list_versions(self, async_client: AsyncRetell) -> None:
+        response = await async_client.agent.with_raw_response.list_versions(
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = await response.parse()
+        assert_matches_type(AgentListVersionsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_list_versions(self, async_client: AsyncRetell) -> None:
+        async with async_client.agent.with_streaming_response.list_versions(
+            agent_id="16b980523634a6dc504898cda492e939",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = await response.parse()
+            assert_matches_type(AgentListVersionsResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_list_versions(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
-            await async_client.agent.with_raw_response.get_versions(
-                "",
+            await async_client.agent.with_raw_response.list_versions(
+                agent_id="",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")

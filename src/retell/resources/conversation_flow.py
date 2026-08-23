@@ -10,6 +10,7 @@ import httpx
 from ..types import (
     conversation_flow_list_params,
     conversation_flow_create_params,
+    conversation_flow_delete_params,
     conversation_flow_update_params,
     conversation_flow_retrieve_params,
 )
@@ -397,6 +398,7 @@ class ConversationFlowResource(SyncAPIResource):
         self,
         conversation_flow_id: str,
         *,
+        force_delete: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -408,6 +410,10 @@ class ConversationFlowResource(SyncAPIResource):
         Delete a conversation flow and all its versions
 
         Args:
+          force_delete: By default the deletion is rejected with a 400 if any agent still uses this
+              conversation flow as its response engine. Set to true to delete it anyway, which
+              leaves those agents pointing at a conversation flow that no longer exists.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -426,7 +432,13 @@ class ConversationFlowResource(SyncAPIResource):
                 "/delete-conversation-flow/{conversation_flow_id}", conversation_flow_id=conversation_flow_id
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"force_delete": force_delete}, conversation_flow_delete_params.ConversationFlowDeleteParams
+                ),
             ),
             cast_to=NoneType,
         )
@@ -799,6 +811,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         self,
         conversation_flow_id: str,
         *,
+        force_delete: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -810,6 +823,10 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         Delete a conversation flow and all its versions
 
         Args:
+          force_delete: By default the deletion is rejected with a 400 if any agent still uses this
+              conversation flow as its response engine. Set to true to delete it anyway, which
+              leaves those agents pointing at a conversation flow that no longer exists.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -828,7 +845,13 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                 "/delete-conversation-flow/{conversation_flow_id}", conversation_flow_id=conversation_flow_id
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"force_delete": force_delete}, conversation_flow_delete_params.ConversationFlowDeleteParams
+                ),
             ),
             cast_to=NoneType,
         )

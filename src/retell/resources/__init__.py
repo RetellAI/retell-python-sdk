@@ -1,5 +1,21 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .app import (
+    AppResource,
+    AsyncAppResource,
+    AppResourceWithRawResponse,
+    AsyncAppResourceWithRawResponse,
+    AppResourceWithStreamingResponse,
+    AsyncAppResourceWithStreamingResponse,
+)
+from .crm import (
+    CRMResource,
+    AsyncCRMResource,
+    CRMResourceWithRawResponse,
+    AsyncCRMResourceWithRawResponse,
+    CRMResourceWithStreamingResponse,
+    AsyncCRMResourceWithStreamingResponse,
+)
 from .llm import (
     LlmResource,
     AsyncLlmResource,
@@ -47,6 +63,14 @@ from .voice import (
     AsyncVoiceResourceWithRawResponse,
     VoiceResourceWithStreamingResponse,
     AsyncVoiceResourceWithStreamingResponse,
+)
+from .contact import (
+    ContactResource,
+    AsyncContactResource,
+    ContactResourceWithRawResponse,
+    AsyncContactResourceWithRawResponse,
+    ContactResourceWithStreamingResponse,
+    AsyncContactResourceWithStreamingResponse,
 )
 from .identity import (
     IdentityResource,
@@ -240,4 +264,22 @@ __all__ = [
     "AsyncMcpToolResourceWithRawResponse",
     "McpToolResourceWithStreamingResponse",
     "AsyncMcpToolResourceWithStreamingResponse",
+    "ContactResource",
+    "AsyncContactResource",
+    "ContactResourceWithRawResponse",
+    "AsyncContactResourceWithRawResponse",
+    "ContactResourceWithStreamingResponse",
+    "AsyncContactResourceWithStreamingResponse",
+    "AppResource",
+    "AsyncAppResource",
+    "AppResourceWithRawResponse",
+    "AsyncAppResourceWithRawResponse",
+    "AppResourceWithStreamingResponse",
+    "AsyncAppResourceWithStreamingResponse",
+    "CRMResource",
+    "AsyncCRMResource",
+    "CRMResourceWithRawResponse",
+    "AsyncCRMResourceWithRawResponse",
+    "CRMResourceWithStreamingResponse",
+    "AsyncCRMResourceWithStreamingResponse",
 ]

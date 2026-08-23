@@ -2934,7 +2934,11 @@ class ComponentNodeSubagentNodeToolAgentSwapTool(TypedDict, total=False):
     """If true, keep the current language when swapping agents. Defaults to false."""
 
     keep_current_voice: bool
-    """If true, keep the current voice when swapping agents. Defaults to false."""
+    """If true, keep the current voice and ambient sound settings when swapping agents.
+
+    Otherwise, use the destination agent's voice and ambient sound settings.
+    Defaults to false.
+    """
 
     speak_during_execution: bool
 
@@ -7186,7 +7190,11 @@ class ComponentNodeAgentSwapNode(TypedDict, total=False):
     """If true, keep the current language when swapping agents. Defaults to false."""
 
     keep_current_voice: bool
-    """If true, keep the current voice when swapping agents. Defaults to false."""
+    """If true, keep the current voice and ambient sound settings when swapping agents.
+
+    Otherwise, use the destination agent's voice and ambient sound settings.
+    Defaults to false.
+    """
 
     model_choice: ComponentNodeAgentSwapNodeModelChoice
 
@@ -10458,7 +10466,11 @@ class NodeSubagentNodeToolAgentSwapTool(TypedDict, total=False):
     """If true, keep the current language when swapping agents. Defaults to false."""
 
     keep_current_voice: bool
-    """If true, keep the current voice when swapping agents. Defaults to false."""
+    """If true, keep the current voice and ambient sound settings when swapping agents.
+
+    Otherwise, use the destination agent's voice and ambient sound settings.
+    Defaults to false.
+    """
 
     speak_during_execution: bool
 
@@ -14643,7 +14655,11 @@ class NodeAgentSwapNode(TypedDict, total=False):
     """If true, keep the current language when swapping agents. Defaults to false."""
 
     keep_current_voice: bool
-    """If true, keep the current voice when swapping agents. Defaults to false."""
+    """If true, keep the current voice and ambient sound settings when swapping agents.
+
+    Otherwise, use the destination agent's voice and ambient sound settings.
+    Defaults to false.
+    """
 
     model_choice: NodeAgentSwapNodeModelChoice
 

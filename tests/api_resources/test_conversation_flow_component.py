@@ -223,7 +223,7 @@ class TestConversationFlowComponent:
                     "response_variables": {"user_name": "data.user.name"},
                     "speak_after_execution": True,
                     "speak_during_execution": True,
-                    "timeout_ms": 0,
+                    "timeout_ms": 1000,
                     "tool_id": "tool_001",
                 }
             ],
@@ -514,7 +514,7 @@ class TestConversationFlowComponent:
                     "response_variables": {"user_name": "data.user.name"},
                     "speak_after_execution": True,
                     "speak_during_execution": True,
-                    "timeout_ms": 0,
+                    "timeout_ms": 1000,
                     "tool_id": "tool_001",
                 }
             ],
@@ -848,7 +848,7 @@ class TestAsyncConversationFlowComponent:
                     "response_variables": {"user_name": "data.user.name"},
                     "speak_after_execution": True,
                     "speak_during_execution": True,
-                    "timeout_ms": 0,
+                    "timeout_ms": 1000,
                     "tool_id": "tool_001",
                 }
             ],
@@ -1139,7 +1139,7 @@ class TestAsyncConversationFlowComponent:
                     "response_variables": {"user_name": "data.user.name"},
                     "speak_after_execution": True,
                     "speak_during_execution": True,
-                    "timeout_ms": 0,
+                    "timeout_ms": 1000,
                     "tool_id": "tool_001",
                 }
             ],

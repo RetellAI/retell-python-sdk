@@ -2201,7 +2201,11 @@ class NodeSubagentNodeToolAgentSwapTool(BaseModel):
     """If true, keep the current language when swapping agents. Defaults to false."""
 
     keep_current_voice: Optional[bool] = None
-    """If true, keep the current voice when swapping agents. Defaults to false."""
+    """If true, keep the current voice and ambient sound settings when swapping agents.
+
+    Otherwise, use the destination agent's voice and ambient sound settings.
+    Defaults to false.
+    """
 
     speak_during_execution: Optional[bool] = None
 
@@ -6328,7 +6332,11 @@ class NodeAgentSwapNode(BaseModel):
     """If true, keep the current language when swapping agents. Defaults to false."""
 
     keep_current_voice: Optional[bool] = None
-    """If true, keep the current voice when swapping agents. Defaults to false."""
+    """If true, keep the current voice and ambient sound settings when swapping agents.
+
+    Otherwise, use the destination agent's voice and ambient sound settings.
+    Defaults to false.
+    """
 
     api_model_choice: Optional[NodeAgentSwapNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
 

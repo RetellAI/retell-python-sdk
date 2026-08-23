@@ -362,7 +362,7 @@ class TestConversationFlow:
                             "response_variables": {"user_name": "data.user.name"},
                             "speak_after_execution": True,
                             "speak_during_execution": True,
-                            "timeout_ms": 0,
+                            "timeout_ms": 1000,
                             "tool_id": "tool_001",
                         }
                     ],
@@ -435,7 +435,7 @@ class TestConversationFlow:
                     "response_variables": {"user_name": "data.user.name"},
                     "speak_after_execution": True,
                     "speak_during_execution": True,
-                    "timeout_ms": 0,
+                    "timeout_ms": 1000,
                     "tool_id": "tool_001",
                 }
             ],
@@ -749,7 +749,7 @@ class TestConversationFlow:
                             "response_variables": {"user_name": "data.user.name"},
                             "speak_after_execution": True,
                             "speak_during_execution": True,
-                            "timeout_ms": 0,
+                            "timeout_ms": 1000,
                             "tool_id": "tool_001",
                         }
                     ],
@@ -950,7 +950,7 @@ class TestConversationFlow:
                     "response_variables": {"user_name": "data.user.name"},
                     "speak_after_execution": True,
                     "speak_during_execution": True,
-                    "timeout_ms": 0,
+                    "timeout_ms": 1000,
                     "tool_id": "tool_001",
                 }
             ],
@@ -1033,7 +1033,16 @@ class TestConversationFlow:
     @parametrize
     def test_method_delete(self, client: Retell) -> None:
         conversation_flow = client.conversation_flow.delete(
-            "conversation_flow_id",
+            conversation_flow_id="conversation_flow_id",
+        )
+        assert conversation_flow is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_delete_with_all_params(self, client: Retell) -> None:
+        conversation_flow = client.conversation_flow.delete(
+            conversation_flow_id="conversation_flow_id",
+            force_delete=True,
         )
         assert conversation_flow is None
 
@@ -1041,7 +1050,7 @@ class TestConversationFlow:
     @parametrize
     def test_raw_response_delete(self, client: Retell) -> None:
         response = client.conversation_flow.with_raw_response.delete(
-            "conversation_flow_id",
+            conversation_flow_id="conversation_flow_id",
         )
 
         assert response.is_closed is True
@@ -1053,7 +1062,7 @@ class TestConversationFlow:
     @parametrize
     def test_streaming_response_delete(self, client: Retell) -> None:
         with client.conversation_flow.with_streaming_response.delete(
-            "conversation_flow_id",
+            conversation_flow_id="conversation_flow_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1068,7 +1077,7 @@ class TestConversationFlow:
     def test_path_params_delete(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `conversation_flow_id` but received ''"):
             client.conversation_flow.with_raw_response.delete(
-                "",
+                conversation_flow_id="",
             )
 
 
@@ -1419,7 +1428,7 @@ class TestAsyncConversationFlow:
                             "response_variables": {"user_name": "data.user.name"},
                             "speak_after_execution": True,
                             "speak_during_execution": True,
-                            "timeout_ms": 0,
+                            "timeout_ms": 1000,
                             "tool_id": "tool_001",
                         }
                     ],
@@ -1492,7 +1501,7 @@ class TestAsyncConversationFlow:
                     "response_variables": {"user_name": "data.user.name"},
                     "speak_after_execution": True,
                     "speak_during_execution": True,
-                    "timeout_ms": 0,
+                    "timeout_ms": 1000,
                     "tool_id": "tool_001",
                 }
             ],
@@ -1806,7 +1815,7 @@ class TestAsyncConversationFlow:
                             "response_variables": {"user_name": "data.user.name"},
                             "speak_after_execution": True,
                             "speak_during_execution": True,
-                            "timeout_ms": 0,
+                            "timeout_ms": 1000,
                             "tool_id": "tool_001",
                         }
                     ],
@@ -2007,7 +2016,7 @@ class TestAsyncConversationFlow:
                     "response_variables": {"user_name": "data.user.name"},
                     "speak_after_execution": True,
                     "speak_during_execution": True,
-                    "timeout_ms": 0,
+                    "timeout_ms": 1000,
                     "tool_id": "tool_001",
                 }
             ],
@@ -2090,7 +2099,16 @@ class TestAsyncConversationFlow:
     @parametrize
     async def test_method_delete(self, async_client: AsyncRetell) -> None:
         conversation_flow = await async_client.conversation_flow.delete(
-            "conversation_flow_id",
+            conversation_flow_id="conversation_flow_id",
+        )
+        assert conversation_flow is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_delete_with_all_params(self, async_client: AsyncRetell) -> None:
+        conversation_flow = await async_client.conversation_flow.delete(
+            conversation_flow_id="conversation_flow_id",
+            force_delete=True,
         )
         assert conversation_flow is None
 
@@ -2098,7 +2116,7 @@ class TestAsyncConversationFlow:
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncRetell) -> None:
         response = await async_client.conversation_flow.with_raw_response.delete(
-            "conversation_flow_id",
+            conversation_flow_id="conversation_flow_id",
         )
 
         assert response.is_closed is True
@@ -2110,7 +2128,7 @@ class TestAsyncConversationFlow:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncRetell) -> None:
         async with async_client.conversation_flow.with_streaming_response.delete(
-            "conversation_flow_id",
+            conversation_flow_id="conversation_flow_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -2125,5 +2143,5 @@ class TestAsyncConversationFlow:
     async def test_path_params_delete(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `conversation_flow_id` but received ''"):
             await async_client.conversation_flow.with_raw_response.delete(
-                "",
+                conversation_flow_id="",
             )

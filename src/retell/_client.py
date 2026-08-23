@@ -37,12 +37,15 @@ from .lib.webhook_auth import verify  # type: ignore
 
 if TYPE_CHECKING:
     from .resources import (
+        app,
+        crm,
         llm,
         call,
         chat,
         agent,
         tests,
         voice,
+        contact,
         identity,
         mcp_tool,
         batch_call,
@@ -55,12 +58,15 @@ if TYPE_CHECKING:
         conversation_flow,
         conversation_flow_component,
     )
+    from .resources.app import AppResource, AsyncAppResource
+    from .resources.crm import CRMResource, AsyncCRMResource
     from .resources.llm import LlmResource, AsyncLlmResource
     from .resources.call import CallResource, AsyncCallResource
     from .resources.chat import ChatResource, AsyncChatResource
     from .resources.agent import AgentResource, AsyncAgentResource
     from .resources.tests import TestsResource, AsyncTestsResource
     from .resources.voice import VoiceResource, AsyncVoiceResource
+    from .resources.contact import ContactResource, AsyncContactResource
     from .resources.identity import IdentityResource, AsyncIdentityResource
     from .resources.mcp_tool import McpToolResource, AsyncMcpToolResource
     from .resources.batch_call import BatchCallResource, AsyncBatchCallResource
@@ -245,6 +251,24 @@ class Retell(SyncAPIClient):
         from .resources.mcp_tool import McpToolResource
 
         return McpToolResource(self)
+
+    @cached_property
+    def contact(self) -> ContactResource:
+        from .resources.contact import ContactResource
+
+        return ContactResource(self)
+
+    @cached_property
+    def app(self) -> AppResource:
+        from .resources.app import AppResource
+
+        return AppResource(self)
+
+    @cached_property
+    def crm(self) -> CRMResource:
+        from .resources.crm import CRMResource
+
+        return CRMResource(self)
 
     @cached_property
     def with_raw_response(self) -> RetellWithRawResponse:
@@ -526,6 +550,24 @@ class AsyncRetell(AsyncAPIClient):
         return AsyncMcpToolResource(self)
 
     @cached_property
+    def contact(self) -> AsyncContactResource:
+        from .resources.contact import AsyncContactResource
+
+        return AsyncContactResource(self)
+
+    @cached_property
+    def app(self) -> AsyncAppResource:
+        from .resources.app import AsyncAppResource
+
+        return AsyncAppResource(self)
+
+    @cached_property
+    def crm(self) -> AsyncCRMResource:
+        from .resources.crm import AsyncCRMResource
+
+        return AsyncCRMResource(self)
+
+    @cached_property
     def with_raw_response(self) -> AsyncRetellWithRawResponse:
         return AsyncRetellWithRawResponse(self)
 
@@ -748,6 +790,24 @@ class RetellWithRawResponse:
 
         return McpToolResourceWithRawResponse(self._client.mcp_tool)
 
+    @cached_property
+    def contact(self) -> contact.ContactResourceWithRawResponse:
+        from .resources.contact import ContactResourceWithRawResponse
+
+        return ContactResourceWithRawResponse(self._client.contact)
+
+    @cached_property
+    def app(self) -> app.AppResourceWithRawResponse:
+        from .resources.app import AppResourceWithRawResponse
+
+        return AppResourceWithRawResponse(self._client.app)
+
+    @cached_property
+    def crm(self) -> crm.CRMResourceWithRawResponse:
+        from .resources.crm import CRMResourceWithRawResponse
+
+        return CRMResourceWithRawResponse(self._client.crm)
+
 
 class AsyncRetellWithRawResponse:
     _client: AsyncRetell
@@ -858,6 +918,24 @@ class AsyncRetellWithRawResponse:
         from .resources.mcp_tool import AsyncMcpToolResourceWithRawResponse
 
         return AsyncMcpToolResourceWithRawResponse(self._client.mcp_tool)
+
+    @cached_property
+    def contact(self) -> contact.AsyncContactResourceWithRawResponse:
+        from .resources.contact import AsyncContactResourceWithRawResponse
+
+        return AsyncContactResourceWithRawResponse(self._client.contact)
+
+    @cached_property
+    def app(self) -> app.AsyncAppResourceWithRawResponse:
+        from .resources.app import AsyncAppResourceWithRawResponse
+
+        return AsyncAppResourceWithRawResponse(self._client.app)
+
+    @cached_property
+    def crm(self) -> crm.AsyncCRMResourceWithRawResponse:
+        from .resources.crm import AsyncCRMResourceWithRawResponse
+
+        return AsyncCRMResourceWithRawResponse(self._client.crm)
 
 
 class RetellWithStreamedResponse:
@@ -970,6 +1048,24 @@ class RetellWithStreamedResponse:
 
         return McpToolResourceWithStreamingResponse(self._client.mcp_tool)
 
+    @cached_property
+    def contact(self) -> contact.ContactResourceWithStreamingResponse:
+        from .resources.contact import ContactResourceWithStreamingResponse
+
+        return ContactResourceWithStreamingResponse(self._client.contact)
+
+    @cached_property
+    def app(self) -> app.AppResourceWithStreamingResponse:
+        from .resources.app import AppResourceWithStreamingResponse
+
+        return AppResourceWithStreamingResponse(self._client.app)
+
+    @cached_property
+    def crm(self) -> crm.CRMResourceWithStreamingResponse:
+        from .resources.crm import CRMResourceWithStreamingResponse
+
+        return CRMResourceWithStreamingResponse(self._client.crm)
+
 
 class AsyncRetellWithStreamedResponse:
     _client: AsyncRetell
@@ -1080,6 +1176,24 @@ class AsyncRetellWithStreamedResponse:
         from .resources.mcp_tool import AsyncMcpToolResourceWithStreamingResponse
 
         return AsyncMcpToolResourceWithStreamingResponse(self._client.mcp_tool)
+
+    @cached_property
+    def contact(self) -> contact.AsyncContactResourceWithStreamingResponse:
+        from .resources.contact import AsyncContactResourceWithStreamingResponse
+
+        return AsyncContactResourceWithStreamingResponse(self._client.contact)
+
+    @cached_property
+    def app(self) -> app.AsyncAppResourceWithStreamingResponse:
+        from .resources.app import AsyncAppResourceWithStreamingResponse
+
+        return AsyncAppResourceWithStreamingResponse(self._client.app)
+
+    @cached_property
+    def crm(self) -> crm.AsyncCRMResourceWithStreamingResponse:
+        from .resources.crm import AsyncCRMResourceWithStreamingResponse
+
+        return AsyncCRMResourceWithStreamingResponse(self._client.crm)
 
 
 Client = Retell

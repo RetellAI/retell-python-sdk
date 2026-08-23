@@ -43,6 +43,12 @@ __all__ = [
     "FilterCriteriaDurationMsNumberFilter",
     "FilterCriteriaDurationMsRangeFilter",
     "FilterCriteriaDynamicVariable",
+    "FilterCriteriaDynamicVariableStringFilter",
+    "FilterCriteriaDynamicVariableNumberFilter",
+    "FilterCriteriaDynamicVariableBooleanFilter",
+    "FilterCriteriaDynamicVariableRangeFilter",
+    "FilterCriteriaDynamicVariableEnumFilter",
+    "FilterCriteriaDynamicVariablePresentFilter",
     "FilterCriteriaE2ELatencyP50",
     "FilterCriteriaE2ELatencyP50NumberFilter",
     "FilterCriteriaE2ELatencyP50RangeFilter",
@@ -459,16 +465,87 @@ class FilterCriteriaDurationMsRangeFilter(TypedDict, total=False):
 FilterCriteriaDurationMs: TypeAlias = Union[FilterCriteriaDurationMsNumberFilter, FilterCriteriaDurationMsRangeFilter]
 
 
-class FilterCriteriaDynamicVariable(TypedDict, total=False):
-    key: Required[str]
-    """The dynamic variable name to filter on."""
-
+class FilterCriteriaDynamicVariableStringFilter(TypedDict, total=False):
     op: Required[Literal["eq", "ne", "sw", "ew", "co"]]
     """eq: equal, ne: not equal, sw: starts with, ew: ends with, co: contains"""
 
     type: Required[Literal["string"]]
 
     value: Required[str]
+
+    key: str
+    """The field name to filter on."""
+
+
+class FilterCriteriaDynamicVariableNumberFilter(TypedDict, total=False):
+    op: Required[Literal["eq", "ne", "gt", "ge", "lt", "le"]]
+    """
+    eq: equal, ne: not equal, gt: greater than, ge: greater than or equal, lt: less
+    than, le: less than or equal
+    """
+
+    type: Required[Literal["number"]]
+
+    value: Required[float]
+
+    key: str
+    """The field name to filter on."""
+
+
+class FilterCriteriaDynamicVariableBooleanFilter(TypedDict, total=False):
+    op: Required[Literal["eq"]]
+
+    type: Required[Literal["boolean"]]
+
+    value: Required[bool]
+
+    key: str
+    """The field name to filter on."""
+
+
+class FilterCriteriaDynamicVariableRangeFilter(TypedDict, total=False):
+    op: Required[Literal["bt"]]
+    """bt: between"""
+
+    type: Required[Literal["range"]]
+
+    value: Required[Iterable[float]]
+    """[lower_bound, upper_bound]"""
+
+    key: str
+    """The field name to filter on."""
+
+
+class FilterCriteriaDynamicVariableEnumFilter(TypedDict, total=False):
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[SequenceNotStr[str]]
+
+    key: str
+    """The field name to filter on."""
+
+
+class FilterCriteriaDynamicVariablePresentFilter(TypedDict, total=False):
+    op: Required[Literal["pr", "np"]]
+    """pr: present (has value), np: not present"""
+
+    type: Required[Literal["present"]]
+
+    key: str
+    """The field name to filter on."""
+
+
+FilterCriteriaDynamicVariable: TypeAlias = Union[
+    FilterCriteriaDynamicVariableStringFilter,
+    FilterCriteriaDynamicVariableNumberFilter,
+    FilterCriteriaDynamicVariableBooleanFilter,
+    FilterCriteriaDynamicVariableRangeFilter,
+    FilterCriteriaDynamicVariableEnumFilter,
+    FilterCriteriaDynamicVariablePresentFilter,
+]
 
 
 class FilterCriteriaE2ELatencyP50NumberFilter(TypedDict, total=False):
