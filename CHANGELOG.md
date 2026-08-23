@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.64.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.61.0...v5.64.0) (2026-08-23)
+
+
+### Features
+
+* **api:** api update ([a7267c3](https://github.com/RetellAI/retell-python-sdk/commit/a7267c36bc6775d469cb3cffd8cd23c75b6a871f))
+* **api:** expose contact, app, and CRM APIs in API reference and SDKs ([a2ade63](https://github.com/RetellAI/retell-python-sdk/commit/a2ade63b58a71fbd0da7e8c542e4ebc73bd29271))
+
+
+### Chores
+
+* preserve production workflow files ([ebd7949](https://github.com/RetellAI/retell-python-sdk/commit/ebd794948a9cb7165329da6c458a8883dd25c597))
+
 ## [5.61.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.60.0...v5.61.0) (2026-08-10)
 
 
