@@ -561,6 +561,8 @@ class AgentUpdateParams(TypedDict, total=False):
             "s1",
             "s2-pro",
             "s2.1-pro",
+            "inworld-tts-2",
+            "inworld-tts-2-flash",
         ]
     ]
     """Select the voice model used for the selected voice.

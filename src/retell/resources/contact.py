@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Mapping, Iterable, cast
 from typing_extensions import Literal
 
 import httpx
@@ -10,11 +11,14 @@ from ..types import (
     contact_list_params,
     contact_create_params,
     contact_update_params,
+    contact_create_import_params,
     contact_list_conversations_params,
+    contact_upload_import_file_params,
     contact_backfill_analysis_data_params,
 )
-from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import path_template, maybe_transform, async_maybe_transform
+from .._files import deepcopy_with_paths
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, FileTypes, SequenceNotStr, omit, not_given
+from .._utils import extract_files, path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -26,7 +30,10 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.contact_response import ContactResponse
 from ..types.contact_list_response import ContactListResponse
+from ..types.contact_get_import_response import ContactGetImportResponse
+from ..types.contact_create_import_response import ContactCreateImportResponse
 from ..types.contact_list_conversations_response import ContactListConversationsResponse
+from ..types.contact_upload_import_file_response import ContactUploadImportFileResponse
 from ..types.contact_backfill_analysis_data_response import ContactBackfillAnalysisDataResponse
 from ..types.contact_get_backfill_job_status_response import ContactGetBackfillJobStatusResponse
 
@@ -61,6 +68,7 @@ class ContactResource(SyncAPIResource):
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -81,6 +89,8 @@ class ContactResource(SyncAPIResource):
 
           last_name: Last name of the contact.
 
+          tags: Full set of tags for the contact.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -98,6 +108,7 @@ class ContactResource(SyncAPIResource):
                     "do_not_call": do_not_call,
                     "first_name": first_name,
                     "last_name": last_name,
+                    "tags": tags,
                 },
                 contact_create_params.ContactCreateParams,
             ),
@@ -115,6 +126,7 @@ class ContactResource(SyncAPIResource):
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -132,6 +144,8 @@ class ContactResource(SyncAPIResource):
           first_name: First name of the contact.
 
           last_name: Last name of the contact.
+
+          tags: Full replacement set of tags for the contact.
 
           extra_headers: Send extra headers
 
@@ -151,6 +165,7 @@ class ContactResource(SyncAPIResource):
                     "do_not_call": do_not_call,
                     "first_name": first_name,
                     "last_name": last_name,
+                    "tags": tags,
                 },
                 contact_update_params.ContactUpdateParams,
             ),
@@ -311,6 +326,63 @@ class ContactResource(SyncAPIResource):
             cast_to=ContactBackfillAnalysisDataResponse,
         )
 
+    def create_import(
+        self,
+        *,
+        column_mapping: Iterable[contact_create_import_params.ColumnMapping],
+        upload_id: str,
+        default_country: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ContactCreateImportResponse:
+        """
+        Start an incremental contact import from an uploaded CSV: creates new contacts
+        and updates existing ones matched by phone number. Mapped columns overwrite the
+        matched contact's fields; unmapped columns are ignored. Runs asynchronously —
+        poll get-contact-import for progress.
+
+        Args:
+          column_mapping: CSV headers mapped to contact fields. field_name is the contact field and
+              external_field_name is the CSV header. Exactly one mapping must target
+              phone_number. Unmapped columns are ignored.
+
+          upload_id: Id returned by upload-contact-import-file.
+
+          default_country: Country for parsing phone numbers without a country code. Defaults to US.
+
+          tags: Tags added to every contact in this import. Existing tags are preserved. Omit to
+              leave tags unchanged.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/create-contact-import",
+            body=maybe_transform(
+                {
+                    "column_mapping": column_mapping,
+                    "upload_id": upload_id,
+                    "default_country": default_country,
+                    "tags": tags,
+                },
+                contact_create_import_params.ContactCreateImportParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ContactCreateImportResponse,
+        )
+
     def get(
         self,
         contact_id: str,
@@ -398,6 +470,25 @@ class ContactResource(SyncAPIResource):
             cast_to=ContactResponse,
         )
 
+    def get_import(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ContactGetImportResponse:
+        """Status and counts for the org's current or latest contact import."""
+        return self._get(
+            "/get-contact-import",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ContactGetImportResponse,
+        )
+
     def list_conversations(
         self,
         contact_id: str,
@@ -449,6 +540,47 @@ class ContactResource(SyncAPIResource):
             cast_to=ContactListConversationsResponse,
         )
 
+    def upload_import_file(
+        self,
+        *,
+        file: FileTypes,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ContactUploadImportFileResponse:
+        """Upload a CSV file for a contact import.
+
+        The file is stored privately and
+        referenced by the returned upload_id in create-contact-import.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        body = deepcopy_with_paths({"file": file}, [["file"]])
+        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+        return self._post(
+            "/upload-contact-import-file",
+            body=maybe_transform(body, contact_upload_import_file_params.ContactUploadImportFileParams),
+            files=files,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ContactUploadImportFileResponse,
+        )
+
 
 class AsyncContactResource(AsyncAPIResource):
     @cached_property
@@ -478,6 +610,7 @@ class AsyncContactResource(AsyncAPIResource):
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -498,6 +631,8 @@ class AsyncContactResource(AsyncAPIResource):
 
           last_name: Last name of the contact.
 
+          tags: Full set of tags for the contact.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -515,6 +650,7 @@ class AsyncContactResource(AsyncAPIResource):
                     "do_not_call": do_not_call,
                     "first_name": first_name,
                     "last_name": last_name,
+                    "tags": tags,
                 },
                 contact_create_params.ContactCreateParams,
             ),
@@ -532,6 +668,7 @@ class AsyncContactResource(AsyncAPIResource):
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -549,6 +686,8 @@ class AsyncContactResource(AsyncAPIResource):
           first_name: First name of the contact.
 
           last_name: Last name of the contact.
+
+          tags: Full replacement set of tags for the contact.
 
           extra_headers: Send extra headers
 
@@ -568,6 +707,7 @@ class AsyncContactResource(AsyncAPIResource):
                     "do_not_call": do_not_call,
                     "first_name": first_name,
                     "last_name": last_name,
+                    "tags": tags,
                 },
                 contact_update_params.ContactUpdateParams,
             ),
@@ -728,6 +868,63 @@ class AsyncContactResource(AsyncAPIResource):
             cast_to=ContactBackfillAnalysisDataResponse,
         )
 
+    async def create_import(
+        self,
+        *,
+        column_mapping: Iterable[contact_create_import_params.ColumnMapping],
+        upload_id: str,
+        default_country: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ContactCreateImportResponse:
+        """
+        Start an incremental contact import from an uploaded CSV: creates new contacts
+        and updates existing ones matched by phone number. Mapped columns overwrite the
+        matched contact's fields; unmapped columns are ignored. Runs asynchronously —
+        poll get-contact-import for progress.
+
+        Args:
+          column_mapping: CSV headers mapped to contact fields. field_name is the contact field and
+              external_field_name is the CSV header. Exactly one mapping must target
+              phone_number. Unmapped columns are ignored.
+
+          upload_id: Id returned by upload-contact-import-file.
+
+          default_country: Country for parsing phone numbers without a country code. Defaults to US.
+
+          tags: Tags added to every contact in this import. Existing tags are preserved. Omit to
+              leave tags unchanged.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/create-contact-import",
+            body=await async_maybe_transform(
+                {
+                    "column_mapping": column_mapping,
+                    "upload_id": upload_id,
+                    "default_country": default_country,
+                    "tags": tags,
+                },
+                contact_create_import_params.ContactCreateImportParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ContactCreateImportResponse,
+        )
+
     async def get(
         self,
         contact_id: str,
@@ -815,6 +1012,25 @@ class AsyncContactResource(AsyncAPIResource):
             cast_to=ContactResponse,
         )
 
+    async def get_import(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ContactGetImportResponse:
+        """Status and counts for the org's current or latest contact import."""
+        return await self._get(
+            "/get-contact-import",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ContactGetImportResponse,
+        )
+
     async def list_conversations(
         self,
         contact_id: str,
@@ -866,6 +1082,47 @@ class AsyncContactResource(AsyncAPIResource):
             cast_to=ContactListConversationsResponse,
         )
 
+    async def upload_import_file(
+        self,
+        *,
+        file: FileTypes,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ContactUploadImportFileResponse:
+        """Upload a CSV file for a contact import.
+
+        The file is stored privately and
+        referenced by the returned upload_id in create-contact-import.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        body = deepcopy_with_paths({"file": file}, [["file"]])
+        files = extract_files(cast(Mapping[str, object], body), paths=[["file"]])
+        # It should be noted that the actual Content-Type header that will be
+        # sent to the server will contain a `boundary` parameter, e.g.
+        # multipart/form-data; boundary=---abc--
+        extra_headers = {"Content-Type": "multipart/form-data", **(extra_headers or {})}
+        return await self._post(
+            "/upload-contact-import-file",
+            body=await async_maybe_transform(body, contact_upload_import_file_params.ContactUploadImportFileParams),
+            files=files,
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ContactUploadImportFileResponse,
+        )
+
 
 class ContactResourceWithRawResponse:
     def __init__(self, contact: ContactResource) -> None:
@@ -886,6 +1143,9 @@ class ContactResourceWithRawResponse:
         self.backfill_analysis_data = to_raw_response_wrapper(
             contact.backfill_analysis_data,
         )
+        self.create_import = to_raw_response_wrapper(
+            contact.create_import,
+        )
         self.get = to_raw_response_wrapper(
             contact.get,
         )
@@ -895,8 +1155,14 @@ class ContactResourceWithRawResponse:
         self.get_by_phone = to_raw_response_wrapper(
             contact.get_by_phone,
         )
+        self.get_import = to_raw_response_wrapper(
+            contact.get_import,
+        )
         self.list_conversations = to_raw_response_wrapper(
             contact.list_conversations,
+        )
+        self.upload_import_file = to_raw_response_wrapper(
+            contact.upload_import_file,
         )
 
 
@@ -919,6 +1185,9 @@ class AsyncContactResourceWithRawResponse:
         self.backfill_analysis_data = async_to_raw_response_wrapper(
             contact.backfill_analysis_data,
         )
+        self.create_import = async_to_raw_response_wrapper(
+            contact.create_import,
+        )
         self.get = async_to_raw_response_wrapper(
             contact.get,
         )
@@ -928,8 +1197,14 @@ class AsyncContactResourceWithRawResponse:
         self.get_by_phone = async_to_raw_response_wrapper(
             contact.get_by_phone,
         )
+        self.get_import = async_to_raw_response_wrapper(
+            contact.get_import,
+        )
         self.list_conversations = async_to_raw_response_wrapper(
             contact.list_conversations,
+        )
+        self.upload_import_file = async_to_raw_response_wrapper(
+            contact.upload_import_file,
         )
 
 
@@ -952,6 +1227,9 @@ class ContactResourceWithStreamingResponse:
         self.backfill_analysis_data = to_streamed_response_wrapper(
             contact.backfill_analysis_data,
         )
+        self.create_import = to_streamed_response_wrapper(
+            contact.create_import,
+        )
         self.get = to_streamed_response_wrapper(
             contact.get,
         )
@@ -961,8 +1239,14 @@ class ContactResourceWithStreamingResponse:
         self.get_by_phone = to_streamed_response_wrapper(
             contact.get_by_phone,
         )
+        self.get_import = to_streamed_response_wrapper(
+            contact.get_import,
+        )
         self.list_conversations = to_streamed_response_wrapper(
             contact.list_conversations,
+        )
+        self.upload_import_file = to_streamed_response_wrapper(
+            contact.upload_import_file,
         )
 
 
@@ -985,6 +1269,9 @@ class AsyncContactResourceWithStreamingResponse:
         self.backfill_analysis_data = async_to_streamed_response_wrapper(
             contact.backfill_analysis_data,
         )
+        self.create_import = async_to_streamed_response_wrapper(
+            contact.create_import,
+        )
         self.get = async_to_streamed_response_wrapper(
             contact.get,
         )
@@ -994,6 +1281,12 @@ class AsyncContactResourceWithStreamingResponse:
         self.get_by_phone = async_to_streamed_response_wrapper(
             contact.get_by_phone,
         )
+        self.get_import = async_to_streamed_response_wrapper(
+            contact.get_import,
+        )
         self.list_conversations = async_to_streamed_response_wrapper(
             contact.list_conversations,
+        )
+        self.upload_import_file = async_to_streamed_response_wrapper(
+            contact.upload_import_file,
         )

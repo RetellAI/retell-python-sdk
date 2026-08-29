@@ -62,6 +62,9 @@ class CRMConfig(BaseModel):
     table. Not used by the API itself.
     """
 
+    contact_tags: Optional[List[str]] = None
+    """Tags available to contacts in this organization."""
+
     crm_analysis_data_mappings: Optional[List[CRMAnalysisDataMapping]] = None
 
     custom_fields: Optional[List[CustomField]] = None

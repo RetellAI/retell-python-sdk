@@ -13,6 +13,8 @@ __all__ = [
     "FilterCriteriaAgent",
     "FilterCriteriaAgentTag",
     "FilterCriteriaChatID",
+    "FilterCriteriaChatIDStringFilter",
+    "FilterCriteriaChatIDEnumFilter",
     "FilterCriteriaChatStatus",
     "FilterCriteriaChatSuccessful",
     "FilterCriteriaCombinedCost",
@@ -90,15 +92,25 @@ class FilterCriteriaAgentTag(TypedDict, total=False):
     value: Required[SequenceNotStr[str]]
 
 
-class FilterCriteriaChatID(TypedDict, total=False):
-    """Filter by chat ID."""
-
+class FilterCriteriaChatIDStringFilter(TypedDict, total=False):
     op: Required[Literal["eq", "ne", "sw", "ew", "co"]]
     """eq: equal, ne: not equal, sw: starts with, ew: ends with, co: contains"""
 
     type: Required[Literal["string"]]
 
     value: Required[str]
+
+
+class FilterCriteriaChatIDEnumFilter(TypedDict, total=False):
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[SequenceNotStr[str]]
+
+
+FilterCriteriaChatID: TypeAlias = Union[FilterCriteriaChatIDStringFilter, FilterCriteriaChatIDEnumFilter]
 
 
 class FilterCriteriaChatStatus(TypedDict, total=False):

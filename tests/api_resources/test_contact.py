@@ -12,6 +12,9 @@ from tests.utils import assert_matches_type
 from retell.types import (
     ContactResponse,
     ContactListResponse,
+    ContactGetImportResponse,
+    ContactCreateImportResponse,
+    ContactUploadImportFileResponse,
     ContactListConversationsResponse,
     ContactBackfillAnalysisDataResponse,
     ContactGetBackfillJobStatusResponse,
@@ -40,6 +43,7 @@ class TestContact:
             do_not_call=True,
             first_name="first_name",
             last_name="last_name",
+            tags=["P"],
         )
         assert_matches_type(ContactResponse, contact, path=["response"])
 
@@ -86,6 +90,7 @@ class TestContact:
             do_not_call=True,
             first_name="first_name",
             last_name="last_name",
+            tags=["P"],
         )
         assert_matches_type(ContactResponse, contact, path=["response"])
 
@@ -166,6 +171,11 @@ class TestContact:
                     "op": "eq",
                     "type": "string",
                     "value": "value",
+                },
+                "tags": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
                 },
             },
             limit=1,
@@ -297,6 +307,74 @@ class TestContact:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_create_import(self, client: Retell) -> None:
+        contact = client.contact.create_import(
+            column_mapping=[
+                {
+                    "external_field_name": "external_field_name",
+                    "field_name": "field_name",
+                }
+            ],
+            upload_id="upload_26f1cbdf5713",
+        )
+        assert_matches_type(ContactCreateImportResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_create_import_with_all_params(self, client: Retell) -> None:
+        contact = client.contact.create_import(
+            column_mapping=[
+                {
+                    "external_field_name": "external_field_name",
+                    "field_name": "field_name",
+                }
+            ],
+            upload_id="upload_26f1cbdf5713",
+            default_country="se",
+            tags=["P"],
+        )
+        assert_matches_type(ContactCreateImportResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_create_import(self, client: Retell) -> None:
+        response = client.contact.with_raw_response.create_import(
+            column_mapping=[
+                {
+                    "external_field_name": "external_field_name",
+                    "field_name": "field_name",
+                }
+            ],
+            upload_id="upload_26f1cbdf5713",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contact = response.parse()
+        assert_matches_type(ContactCreateImportResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_create_import(self, client: Retell) -> None:
+        with client.contact.with_streaming_response.create_import(
+            column_mapping=[
+                {
+                    "external_field_name": "external_field_name",
+                    "field_name": "field_name",
+                }
+            ],
+            upload_id="upload_26f1cbdf5713",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contact = response.parse()
+            assert_matches_type(ContactCreateImportResponse, contact, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_method_get(self, client: Retell) -> None:
         contact = client.contact.get(
             "contact_id",
@@ -409,6 +487,34 @@ class TestContact:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_get_import(self, client: Retell) -> None:
+        contact = client.contact.get_import()
+        assert_matches_type(ContactGetImportResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get_import(self, client: Retell) -> None:
+        response = client.contact.with_raw_response.get_import()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contact = response.parse()
+        assert_matches_type(ContactGetImportResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get_import(self, client: Retell) -> None:
+        with client.contact.with_streaming_response.get_import() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contact = response.parse()
+            assert_matches_type(ContactGetImportResponse, contact, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_method_list_conversations(self, client: Retell) -> None:
         contact = client.contact.list_conversations(
             contact_id="contact_id",
@@ -459,6 +565,40 @@ class TestContact:
                 contact_id="",
             )
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_upload_import_file(self, client: Retell) -> None:
+        contact = client.contact.upload_import_file(
+            file=b"Example data",
+        )
+        assert_matches_type(ContactUploadImportFileResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_upload_import_file(self, client: Retell) -> None:
+        response = client.contact.with_raw_response.upload_import_file(
+            file=b"Example data",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contact = response.parse()
+        assert_matches_type(ContactUploadImportFileResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_upload_import_file(self, client: Retell) -> None:
+        with client.contact.with_streaming_response.upload_import_file(
+            file=b"Example data",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contact = response.parse()
+            assert_matches_type(ContactUploadImportFileResponse, contact, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncContact:
     parametrize = pytest.mark.parametrize(
@@ -482,6 +622,7 @@ class TestAsyncContact:
             do_not_call=True,
             first_name="first_name",
             last_name="last_name",
+            tags=["P"],
         )
         assert_matches_type(ContactResponse, contact, path=["response"])
 
@@ -528,6 +669,7 @@ class TestAsyncContact:
             do_not_call=True,
             first_name="first_name",
             last_name="last_name",
+            tags=["P"],
         )
         assert_matches_type(ContactResponse, contact, path=["response"])
 
@@ -608,6 +750,11 @@ class TestAsyncContact:
                     "op": "eq",
                     "type": "string",
                     "value": "value",
+                },
+                "tags": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
                 },
             },
             limit=1,
@@ -739,6 +886,74 @@ class TestAsyncContact:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    async def test_method_create_import(self, async_client: AsyncRetell) -> None:
+        contact = await async_client.contact.create_import(
+            column_mapping=[
+                {
+                    "external_field_name": "external_field_name",
+                    "field_name": "field_name",
+                }
+            ],
+            upload_id="upload_26f1cbdf5713",
+        )
+        assert_matches_type(ContactCreateImportResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_create_import_with_all_params(self, async_client: AsyncRetell) -> None:
+        contact = await async_client.contact.create_import(
+            column_mapping=[
+                {
+                    "external_field_name": "external_field_name",
+                    "field_name": "field_name",
+                }
+            ],
+            upload_id="upload_26f1cbdf5713",
+            default_country="se",
+            tags=["P"],
+        )
+        assert_matches_type(ContactCreateImportResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_create_import(self, async_client: AsyncRetell) -> None:
+        response = await async_client.contact.with_raw_response.create_import(
+            column_mapping=[
+                {
+                    "external_field_name": "external_field_name",
+                    "field_name": "field_name",
+                }
+            ],
+            upload_id="upload_26f1cbdf5713",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contact = await response.parse()
+        assert_matches_type(ContactCreateImportResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_create_import(self, async_client: AsyncRetell) -> None:
+        async with async_client.contact.with_streaming_response.create_import(
+            column_mapping=[
+                {
+                    "external_field_name": "external_field_name",
+                    "field_name": "field_name",
+                }
+            ],
+            upload_id="upload_26f1cbdf5713",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contact = await response.parse()
+            assert_matches_type(ContactCreateImportResponse, contact, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     async def test_method_get(self, async_client: AsyncRetell) -> None:
         contact = await async_client.contact.get(
             "contact_id",
@@ -851,6 +1066,34 @@ class TestAsyncContact:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    async def test_method_get_import(self, async_client: AsyncRetell) -> None:
+        contact = await async_client.contact.get_import()
+        assert_matches_type(ContactGetImportResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get_import(self, async_client: AsyncRetell) -> None:
+        response = await async_client.contact.with_raw_response.get_import()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contact = await response.parse()
+        assert_matches_type(ContactGetImportResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get_import(self, async_client: AsyncRetell) -> None:
+        async with async_client.contact.with_streaming_response.get_import() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contact = await response.parse()
+            assert_matches_type(ContactGetImportResponse, contact, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     async def test_method_list_conversations(self, async_client: AsyncRetell) -> None:
         contact = await async_client.contact.list_conversations(
             contact_id="contact_id",
@@ -900,3 +1143,37 @@ class TestAsyncContact:
             await async_client.contact.with_raw_response.list_conversations(
                 contact_id="",
             )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_upload_import_file(self, async_client: AsyncRetell) -> None:
+        contact = await async_client.contact.upload_import_file(
+            file=b"Example data",
+        )
+        assert_matches_type(ContactUploadImportFileResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_upload_import_file(self, async_client: AsyncRetell) -> None:
+        response = await async_client.contact.with_raw_response.upload_import_file(
+            file=b"Example data",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        contact = await response.parse()
+        assert_matches_type(ContactUploadImportFileResponse, contact, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_upload_import_file(self, async_client: AsyncRetell) -> None:
+        async with async_client.contact.with_streaming_response.upload_import_file(
+            file=b"Example data",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            contact = await response.parse()
+            assert_matches_type(ContactUploadImportFileResponse, contact, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

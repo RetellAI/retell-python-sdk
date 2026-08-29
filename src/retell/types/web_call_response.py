@@ -10,6 +10,7 @@ __all__ = [
     "CallAnalysis",
     "CallCost",
     "CallCostProductCost",
+    "IceServer",
     "Latency",
     "LatencyAsr",
     "LatencyE2E",
@@ -99,6 +100,14 @@ class CallCost(BaseModel):
 
     total_duration_unit_price: float
     """Total unit duration price of all products in cents per second"""
+
+
+class IceServer(BaseModel):
+    urls: Union[str, List[str]]
+
+    credential: Optional[str] = None
+
+    username: Optional[str] = None
 
 
 class LatencyAsr(BaseModel):
@@ -848,6 +857,19 @@ class WebCallResponse(BaseModel):
     Available after call ends.
     """
 
+    gateway_ip: Optional[str] = None
+    """
+    Public side of the gateway instance handling this call, for diagnostics only —
+    the client's media address comes from the SDP answer's ICE candidates. `gateway`
+    transport only.
+    """
+
+    ice_servers: Optional[List[IceServer]] = None
+    """
+    ICE servers the client must configure before creating its PeerConnection — they
+    cannot be added afterwards. `gateway` transport only.
+    """
+
     knowledge_base_retrieved_contents_url: Optional[str] = None
     """URL to the knowledge base retrieved contents of the call.
 
@@ -961,4 +983,13 @@ class WebCallResponse(BaseModel):
     """Transfer end timestamp (milliseconds since epoch) of the call.
 
     Available after transfer call ends.
+    """
+
+    transport: Optional[Literal["livekit", "gateway"]] = None
+    """
+    Which media stack issued the access_token, and therefore where the client
+    signals. The two tokens are indistinguishable, so a client must read this rather
+    than infer it. `gateway` clients address Retell itself; `livekit` clients
+    connect to the returned `url`. Optional only because a server predating the
+    field omits it during a rollout; treat absent as `livekit`.
     """

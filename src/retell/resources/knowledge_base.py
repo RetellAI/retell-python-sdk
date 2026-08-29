@@ -68,8 +68,8 @@ class KnowledgeBaseResource(SyncAPIResource):
         Args:
           knowledge_base_name: Name of the knowledge base. Must be less than 40 characters.
 
-          enable_auto_refresh: Whether to enable auto refresh for the knowledge base urls. If set to true, will
-              retrieve the data from the specified url every 12 hours.
+          enable_auto_refresh: Whether to refresh eligible URL and connected-file sources automatically on a
+              daily cadence.
 
           knowledge_base_files: Files to add to the knowledge base. Limit to 25 files, where each file is
               limited to 50MB.
@@ -348,8 +348,8 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         Args:
           knowledge_base_name: Name of the knowledge base. Must be less than 40 characters.
 
-          enable_auto_refresh: Whether to enable auto refresh for the knowledge base urls. If set to true, will
-              retrieve the data from the specified url every 12 hours.
+          enable_auto_refresh: Whether to refresh eligible URL and connected-file sources automatically on a
+              daily cadence.
 
           knowledge_base_files: Files to add to the knowledge base. Limit to 25 files, where each file is
               limited to 50MB.
