@@ -2170,7 +2170,7 @@ class NodeSubagentNodeToolAgentSwapTool(BaseModel):
     """
 
     post_call_analysis_setting: Literal["both_agents", "only_destination_agent"]
-    """Post call analysis setting for the agent swap."""
+    """Post Call Extraction setting for the agent swap."""
 
     type: Literal["agent_swap"]
 
@@ -6309,7 +6309,7 @@ class NodeAgentSwapNode(BaseModel):
     """Edge to transition to if agent swap fails"""
 
     post_call_analysis_setting: Literal["both_agents", "only_destination_agent"]
-    """Post call analysis setting for the agent swap"""
+    """Post Call Extraction setting for the agent swap"""
 
     type: Literal["agent_swap"]
     """Type of the node"""

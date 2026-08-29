@@ -58,7 +58,7 @@ class CRMResource(SyncAPIResource):
     ) -> CRMConfig:
         """
         Get the organization's CRM configuration: which CRM app is linked, the custom
-        contact fields defined for it, and how post-call analysis data is written back
+        contact fields defined for it, and how Post Call Extraction data is written back
         to contacts. Returns an empty configuration when nothing has been set up yet.
         """
         return self._get(
@@ -247,7 +247,7 @@ class AsyncCRMResource(AsyncAPIResource):
     ) -> CRMConfig:
         """
         Get the organization's CRM configuration: which CRM app is linked, the custom
-        contact fields defined for it, and how post-call analysis data is written back
+        contact fields defined for it, and how Post Call Extraction data is written back
         to contacts. Returns an empty configuration when nothing has been set up yet.
         """
         return await self._get(

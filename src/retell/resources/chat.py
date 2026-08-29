@@ -466,7 +466,7 @@ class ChatResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatResponse:
-        """Rerun post-chat analysis for a specific chat.
+        """Rerun Post Chat Extraction for a specific chat.
 
         This operation incurs charges.
 
@@ -923,7 +923,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChatResponse:
-        """Rerun post-chat analysis for a specific chat.
+        """Rerun Post Chat Extraction for a specific chat.
 
         This operation incurs charges.
 

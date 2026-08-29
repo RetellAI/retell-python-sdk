@@ -350,7 +350,7 @@ class TaskAgentOverrideAgentPostCallAnalysisDataNumberAnalysisData(TypedDict, to
 
 
 class TaskAgentOverrideAgentPostCallAnalysisDataCallPresetAnalysisData(TypedDict, total=False):
-    """System preset for post-call analysis (voice agents).
+    """System preset for Post Call Extraction (voice agents).
 
     Use in post_call_analysis_data to override prompts or mark fields optional.
     """
@@ -889,7 +889,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     """Configuration for PII scrubbing from transcripts and recordings."""
 
     post_call_analysis_data: Optional[Iterable[TaskAgentOverrideAgentPostCallAnalysisData]]
-    """Post call analysis data to extract from the call.
+    """Post Call Extraction data to extract from the call.
 
     This data will augment the pre-defined variables extracted in the call analysis.
     This will be available after the call ends.
@@ -922,7 +922,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "gemini-3.6-flash",
         ]
     ]
-    """The model to use for post call analysis. Default to gpt-4.1."""
+    """The model to use for Post Call Extraction. Default to gpt-4.1."""
 
     pronunciation_dictionary: Optional[Iterable[TaskAgentOverrideAgentPronunciationDictionary]]
     """

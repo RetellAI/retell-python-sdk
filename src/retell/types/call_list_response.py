@@ -40,7 +40,7 @@ __all__ = [
 
 class ItemV3WebCallResponseCallAnalysis(BaseModel):
     """
-    Post call analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook event type to receive it once ready.
+    Post Call Extraction that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook event type to receive it once ready.
     """
 
     call_successful: Optional[bool] = None
@@ -55,7 +55,7 @@ class ItemV3WebCallResponseCallAnalysis(BaseModel):
     custom_analysis_data: Optional[object] = None
     """
     Custom analysis data that was extracted based on the schema defined in agent
-    post call analysis data. Can be empty if nothing is specified.
+    Post Call Extraction data. Can be empty if nothing is specified.
     """
 
     in_voicemail: Optional[bool] = None
@@ -424,9 +424,9 @@ class ItemV3WebCallResponse(BaseModel):
 
     call_analysis: Optional[ItemV3WebCallResponseCallAnalysis] = None
     """
-    Post call analysis that includes information such as sentiment, status, summary,
-    and custom defined data to extract. Available after call ends. Subscribe to
-    `call_analyzed` webhook event type to receive it once ready.
+    Post Call Extraction that includes information such as sentiment, status,
+    summary, and custom defined data to extract. Available after call ends.
+    Subscribe to `call_analyzed` webhook event type to receive it once ready.
     """
 
     call_cost: Optional[ItemV3WebCallResponseCallCost] = None
@@ -592,7 +592,7 @@ class ItemV3WebCallResponse(BaseModel):
 
 class ItemV3PhoneCallResponseCallAnalysis(BaseModel):
     """
-    Post call analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook event type to receive it once ready.
+    Post Call Extraction that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook event type to receive it once ready.
     """
 
     call_successful: Optional[bool] = None
@@ -607,7 +607,7 @@ class ItemV3PhoneCallResponseCallAnalysis(BaseModel):
     custom_analysis_data: Optional[object] = None
     """
     Custom analysis data that was extracted based on the schema defined in agent
-    post call analysis data. Can be empty if nothing is specified.
+    Post Call Extraction data. Can be empty if nothing is specified.
     """
 
     in_voicemail: Optional[bool] = None
@@ -989,9 +989,9 @@ class ItemV3PhoneCallResponse(BaseModel):
 
     call_analysis: Optional[ItemV3PhoneCallResponseCallAnalysis] = None
     """
-    Post call analysis that includes information such as sentiment, status, summary,
-    and custom defined data to extract. Available after call ends. Subscribe to
-    `call_analyzed` webhook event type to receive it once ready.
+    Post Call Extraction that includes information such as sentiment, status,
+    summary, and custom defined data to extract. Available after call ends.
+    Subscribe to `call_analyzed` webhook event type to receive it once ready.
     """
 
     call_cost: Optional[ItemV3PhoneCallResponseCallCost] = None

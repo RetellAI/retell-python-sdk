@@ -23,16 +23,16 @@ class ItemContactCall(BaseModel):
     """Duration of the call in milliseconds."""
 
     sentiment: Optional[Literal["Negative", "Positive", "Neutral", "Unknown"]] = None
-    """User sentiment from post-call analysis."""
+    """User sentiment from Post Call Extraction."""
 
     start_timestamp: Optional[float] = None
     """Epoch milliseconds when the call started."""
 
     successful: Optional[bool] = None
-    """Whether the call was deemed successful by post-call analysis."""
+    """Whether the call was deemed successful by Post Call Extraction."""
 
     summary: Optional[str] = None
-    """Post-call analysis summary."""
+    """Post Call Extraction summary."""
 
 
 class ItemContactChat(BaseModel):
@@ -50,16 +50,16 @@ class ItemContactChat(BaseModel):
     """Duration of the chat in milliseconds."""
 
     sentiment: Optional[Literal["Negative", "Positive", "Neutral", "Unknown"]] = None
-    """User sentiment from post-chat analysis."""
+    """User sentiment from Post Chat Extraction."""
 
     start_timestamp: Optional[float] = None
     """Epoch milliseconds when the chat started."""
 
     successful: Optional[bool] = None
-    """Whether the chat was deemed successful by post-chat analysis."""
+    """Whether the chat was deemed successful by Post Chat Extraction."""
 
     summary: Optional[str] = None
-    """Post-chat analysis summary."""
+    """Post Chat Extraction summary."""
 
 
 Item: TypeAlias = Union[ItemContactCall, ItemContactChat]

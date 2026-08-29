@@ -224,7 +224,7 @@ class ChatAgentUpdateParams(TypedDict, total=False):
     """Configuration for PII scrubbing from transcripts and recordings."""
 
     post_chat_analysis_data: Optional[Iterable[PostChatAnalysisData]]
-    """Post chat analysis data to extract from the chat.
+    """Post Chat Extraction data to extract from the chat.
 
     This data will augment the pre-defined variables extracted in the chat analysis.
     This will be available after the chat ends.
@@ -257,7 +257,7 @@ class ChatAgentUpdateParams(TypedDict, total=False):
             "gemini-3.6-flash",
         ]
     ]
-    """The model to use for post chat analysis. Default to gpt-4.1."""
+    """The model to use for Post Chat Extraction. Default to gpt-4.1."""
 
     response_engine: ResponseEngine
     """The Response Engine to attach to the agent.
@@ -493,7 +493,7 @@ class PostChatAnalysisDataNumberAnalysisData(TypedDict, total=False):
 
 
 class PostChatAnalysisDataChatPresetAnalysisData(TypedDict, total=False):
-    """System preset for post-chat analysis (chat agents).
+    """System preset for Post Chat Extraction (chat agents).
 
     Use in post_chat_analysis_data to override prompts or mark fields optional.
     """
