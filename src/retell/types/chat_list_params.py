@@ -78,7 +78,7 @@ class FilterCriteriaAgent(TypedDict, total=False):
     """The agent ID to filter on."""
 
     version: Iterable[float]
-    """Specific versions to filter on. If not provided, all versions are included."""
+    """Specific versions to filter on. If omitted or empty, all versions are included."""
 
 
 class FilterCriteriaAgentTag(TypedDict, total=False):

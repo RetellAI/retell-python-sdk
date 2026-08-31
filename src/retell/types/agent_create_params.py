@@ -426,7 +426,7 @@ class AgentCreateParams(TypedDict, total=False):
     """Configuration for PII scrubbing from transcripts and recordings."""
 
     post_call_analysis_data: Optional[Iterable[PostCallAnalysisData]]
-    """Post Call Extraction data to extract from the call.
+    """Post call analysis data to extract from the call.
 
     This data will augment the pre-defined variables extracted in the call analysis.
     This will be available after the call ends.
@@ -459,7 +459,7 @@ class AgentCreateParams(TypedDict, total=False):
             "gemini-3.6-flash",
         ]
     ]
-    """The model to use for Post Call Extraction. Default to gpt-4.1."""
+    """The model to use for post call analysis. Default to gpt-4.1."""
 
     pronunciation_dictionary: Optional[Iterable[PronunciationDictionary]]
     """
@@ -551,6 +551,7 @@ class AgentCreateParams(TypedDict, total=False):
             "sonic-3",
             "sonic-3-latest",
             "sonic-3.5",
+            "sonic-3.6",
             "tts-1",
             "gpt-4o-mini-tts",
             "speech-02-turbo",
@@ -935,7 +936,7 @@ class PostCallAnalysisDataNumberAnalysisData(TypedDict, total=False):
 
 
 class PostCallAnalysisDataCallPresetAnalysisData(TypedDict, total=False):
-    """System preset for Post Call Extraction (voice agents).
+    """System preset for post-call analysis (voice agents).
 
     Use in post_call_analysis_data to override prompts or mark fields optional.
     """

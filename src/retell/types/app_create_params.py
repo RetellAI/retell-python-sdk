@@ -10,9 +10,7 @@ __all__ = [
     "AuthConfig",
     "AuthConfigOAuthConfigRequest",
     "AuthConfigAPIKeyAuthConfigRequest",
-    "AuthConfigAccessTokenAuthConfigRequest",
     "AuthConfigBasicAuthConfigRequest",
-    "AuthConfigRefreshTokenAuthConfigRequest",
     "CRMConfig",
     "CRMConfigInboundSyncMapping",
     "CRMConfigOutboundSyncMapping",
@@ -31,6 +29,11 @@ class AppCreateParams(TypedDict, total=False):
     """App integration category."""
 
     auth_config: AuthConfig
+    """Caller-managed credentials.
+
+    Providers using the OAuth callback reject auth_config and must be authorized
+    through connect-app.
+    """
 
     crm_config: CRMConfig
 
@@ -63,17 +66,6 @@ class AuthConfigAPIKeyAuthConfigRequest(TypedDict, total=False):
     type: Required[Literal["api_key"]]
 
 
-class AuthConfigAccessTokenAuthConfigRequest(TypedDict, total=False):
-    access_token: Required[str]
-    """
-    OAuth-obtained access token used directly as a static bearer secret; stored
-    encrypted at rest. An alternative to the OAuth connect flow, which persists the
-    same config.
-    """
-
-    type: Required[Literal["access_token"]]
-
-
 class AuthConfigBasicAuthConfigRequest(TypedDict, total=False):
     password: Required[str]
     """Password credential; stored encrypted at rest."""
@@ -83,22 +75,8 @@ class AuthConfigBasicAuthConfigRequest(TypedDict, total=False):
     username: Required[str]
 
 
-class AuthConfigRefreshTokenAuthConfigRequest(TypedDict, total=False):
-    refresh_token: Required[str]
-    """OAuth refresh token; stored encrypted at rest.
-
-    An alternative to the OAuth connect flow, which persists the same config.
-    """
-
-    type: Required[Literal["refresh_token"]]
-
-
 AuthConfig: TypeAlias = Union[
-    AuthConfigOAuthConfigRequest,
-    AuthConfigAPIKeyAuthConfigRequest,
-    AuthConfigAccessTokenAuthConfigRequest,
-    AuthConfigBasicAuthConfigRequest,
-    AuthConfigRefreshTokenAuthConfigRequest,
+    AuthConfigOAuthConfigRequest, AuthConfigAPIKeyAuthConfigRequest, AuthConfigBasicAuthConfigRequest
 ]
 
 

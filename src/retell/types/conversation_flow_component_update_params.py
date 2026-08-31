@@ -2233,7 +2233,7 @@ class NodeSubagentNodeToolAgentSwapTool(TypedDict, total=False):
     """
 
     post_call_analysis_setting: Required[Literal["both_agents", "only_destination_agent"]]
-    """Post Call Extraction setting for the agent swap."""
+    """Post call analysis setting for the agent swap."""
 
     type: Required[Literal["agent_swap"]]
 
@@ -6430,7 +6430,7 @@ class NodeAgentSwapNode(TypedDict, total=False):
     """Edge to transition to if agent swap fails"""
 
     post_call_analysis_setting: Required[Literal["both_agents", "only_destination_agent"]]
-    """Post Call Extraction setting for the agent swap"""
+    """Post call analysis setting for the agent swap"""
 
     type: Required[Literal["agent_swap"]]
     """Type of the node"""

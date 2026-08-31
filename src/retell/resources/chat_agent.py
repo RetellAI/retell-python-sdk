@@ -292,11 +292,11 @@ class ChatAgentResource(SyncAPIResource):
 
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
-          post_chat_analysis_data: Post Chat Extraction data to extract from the chat. This data will augment the
+          post_chat_analysis_data: Post chat analysis data to extract from the chat. This data will augment the
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for Post Chat Extraction. Default to gpt-4.1.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
 
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
@@ -635,11 +635,11 @@ class ChatAgentResource(SyncAPIResource):
 
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
-          post_chat_analysis_data: Post Chat Extraction data to extract from the chat. This data will augment the
+          post_chat_analysis_data: Post chat analysis data to extract from the chat. This data will augment the
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for Post Chat Extraction. Default to gpt-4.1.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
 
           response_engine: The Response Engine to attach to the agent. It is used to generate responses for
               the agent. You need to create a Response Engine first before attaching it to an
@@ -1225,11 +1225,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
 
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
-          post_chat_analysis_data: Post Chat Extraction data to extract from the chat. This data will augment the
+          post_chat_analysis_data: Post chat analysis data to extract from the chat. This data will augment the
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for Post Chat Extraction. Default to gpt-4.1.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
 
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
@@ -1570,11 +1570,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
 
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
-          post_chat_analysis_data: Post Chat Extraction data to extract from the chat. This data will augment the
+          post_chat_analysis_data: Post chat analysis data to extract from the chat. This data will augment the
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for Post Chat Extraction. Default to gpt-4.1.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
 
           response_engine: The Response Engine to attach to the agent. It is used to generate responses for
               the agent. You need to create a Response Engine first before attaching it to an

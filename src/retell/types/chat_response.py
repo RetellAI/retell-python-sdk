@@ -25,7 +25,7 @@ __all__ = [
 
 class ChatAnalysis(BaseModel):
     """
-    Post Chat Extraction that includes information such as sentiment, status, summary, and custom defined data to extract. Available after chat ends. Subscribe to `chat_analyzed` webhook event type to receive it once ready.
+    Post chat analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after chat ends. Subscribe to `chat_analyzed` webhook event type to receive it once ready.
     """
 
     chat_successful: Optional[bool] = None
@@ -40,7 +40,7 @@ class ChatAnalysis(BaseModel):
     custom_analysis_data: Optional[object] = None
     """
     Custom analysis data that was extracted based on the schema defined in chat
-    agent Post Chat Extraction data. Can be empty if nothing is specified.
+    agent post chat analysis data. Can be empty if nothing is specified.
     """
 
     user_sentiment: Optional[Literal["Negative", "Positive", "Neutral", "Unknown"]] = None
@@ -272,9 +272,9 @@ class ChatResponse(BaseModel):
 
     chat_analysis: Optional[ChatAnalysis] = None
     """
-    Post Chat Extraction that includes information such as sentiment, status,
-    summary, and custom defined data to extract. Available after chat ends.
-    Subscribe to `chat_analyzed` webhook event type to receive it once ready.
+    Post chat analysis that includes information such as sentiment, status, summary,
+    and custom defined data to extract. Available after chat ends. Subscribe to
+    `chat_analyzed` webhook event type to receive it once ready.
     """
 
     chat_cost: Optional[ChatCost] = None

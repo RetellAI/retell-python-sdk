@@ -590,7 +590,7 @@ class GeneralToolAgentSwapTool(BaseModel):
     """
 
     post_call_analysis_setting: Literal["both_agents", "only_destination_agent"]
-    """Post Call Extraction setting for the agent swap."""
+    """Post call analysis setting for the agent swap."""
 
     type: Literal["agent_swap"]
 
@@ -1789,7 +1789,7 @@ class StateToolAgentSwapTool(BaseModel):
     """
 
     post_call_analysis_setting: Literal["both_agents", "only_destination_agent"]
-    """Post Call Extraction setting for the agent swap."""
+    """Post call analysis setting for the agent swap."""
 
     type: Literal["agent_swap"]
 

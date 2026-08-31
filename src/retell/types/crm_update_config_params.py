@@ -39,7 +39,7 @@ class CRMUpdateConfigParams(TypedDict, total=False):
 
 class CRMAnalysisDataMapping(TypedDict, total=False):
     analysis_data_name: Required[str]
-    """Name of the Post Call Extraction field to read the value from.
+    """Name of the post-call analysis field to read the value from.
 
     A value that does not match the contact field's type is skipped rather than
     failing the conversation.

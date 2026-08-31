@@ -726,7 +726,7 @@ class GeneralToolAgentSwapTool(TypedDict, total=False):
     """
 
     post_call_analysis_setting: Required[Literal["both_agents", "only_destination_agent"]]
-    """Post Call Extraction setting for the agent swap."""
+    """Post call analysis setting for the agent swap."""
 
     type: Required[Literal["agent_swap"]]
 
@@ -1923,7 +1923,7 @@ class StateToolAgentSwapTool(TypedDict, total=False):
     """
 
     post_call_analysis_setting: Required[Literal["both_agents", "only_destination_agent"]]
-    """Post Call Extraction setting for the agent swap."""
+    """Post call analysis setting for the agent swap."""
 
     type: Required[Literal["agent_swap"]]
 

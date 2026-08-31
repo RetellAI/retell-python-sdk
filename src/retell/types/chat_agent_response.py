@@ -247,7 +247,7 @@ class PostChatAnalysisDataNumberAnalysisData(BaseModel):
 
 
 class PostChatAnalysisDataChatPresetAnalysisData(BaseModel):
-    """System preset for Post Chat Extraction (chat agents).
+    """System preset for post-chat analysis (chat agents).
 
     Use in post_chat_analysis_data to override prompts or mark fields optional.
     """
@@ -505,7 +505,7 @@ class ChatAgentResponse(BaseModel):
     """Configuration for PII scrubbing from transcripts and recordings."""
 
     post_chat_analysis_data: Optional[List[PostChatAnalysisData]] = None
-    """Post Chat Extraction data to extract from the chat.
+    """Post chat analysis data to extract from the chat.
 
     This data will augment the pre-defined variables extracted in the chat analysis.
     This will be available after the chat ends.
@@ -538,7 +538,7 @@ class ChatAgentResponse(BaseModel):
             "gemini-3.6-flash",
         ]
     ] = None
-    """The model to use for Post Chat Extraction. Default to gpt-4.1."""
+    """The model to use for post chat analysis. Default to gpt-4.1."""
 
     signed_url_expiration_ms: Optional[int] = None
     """The expiration time for the signed url in milliseconds.

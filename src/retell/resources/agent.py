@@ -302,6 +302,7 @@ class AgentResource(SyncAPIResource):
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
+                "sonic-3.6",
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
@@ -494,11 +495,11 @@ class AgentResource(SyncAPIResource):
 
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
-          post_call_analysis_data: Post Call Extraction data to extract from the call. This data will augment the
+          post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for Post Call Extraction. Default to gpt-4.1.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -938,6 +939,7 @@ class AgentResource(SyncAPIResource):
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
+                "sonic-3.6",
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
@@ -1125,11 +1127,11 @@ class AgentResource(SyncAPIResource):
 
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
-          post_call_analysis_data: Post Call Extraction data to extract from the call. This data will augment the
+          post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for Post Call Extraction. Default to gpt-4.1.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -1920,6 +1922,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
+                "sonic-3.6",
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
@@ -2112,11 +2115,11 @@ class AsyncAgentResource(AsyncAPIResource):
 
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
-          post_call_analysis_data: Post Call Extraction data to extract from the call. This data will augment the
+          post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for Post Call Extraction. Default to gpt-4.1.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -2556,6 +2559,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
+                "sonic-3.6",
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
@@ -2743,11 +2747,11 @@ class AsyncAgentResource(AsyncAPIResource):
 
           pii_config: Configuration for PII scrubbing from transcripts and recordings.
 
-          post_call_analysis_data: Post Call Extraction data to extract from the call. This data will augment the
+          post_call_analysis_data: Post call analysis data to extract from the call. This data will augment the
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for Post Call Extraction. Default to gpt-4.1.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what

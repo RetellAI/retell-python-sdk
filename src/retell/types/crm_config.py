@@ -10,7 +10,7 @@ __all__ = ["CRMConfig", "CRMAnalysisDataMapping", "CustomField"]
 
 class CRMAnalysisDataMapping(BaseModel):
     analysis_data_name: str
-    """Name of the Post Call Extraction field to read the value from.
+    """Name of the post-call analysis field to read the value from.
 
     A value that does not match the contact field's type is skipped rather than
     failing the conversation.
