@@ -314,7 +314,7 @@ class ChatAgentResource(SyncAPIResource):
               will apply.
 
           webhook_url: The webhook for agent to listen to chat events. See what events it would get at
-              [webhook doc](/features/webhook). If set, will binds webhook events for this
+              [webhook doc](/features/webhook). If set, will bind webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
               agent. Set to `null` to remove webhook url from this agent.
 
@@ -661,7 +661,7 @@ class ChatAgentResource(SyncAPIResource):
               will apply.
 
           webhook_url: The webhook for agent to listen to chat events. See what events it would get at
-              [webhook doc](/features/webhook). If set, will binds webhook events for this
+              [webhook doc](/features/webhook). If set, will bind webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
               agent. Set to `null` to remove webhook url from this agent.
 
@@ -1247,7 +1247,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
               will apply.
 
           webhook_url: The webhook for agent to listen to chat events. See what events it would get at
-              [webhook doc](/features/webhook). If set, will binds webhook events for this
+              [webhook doc](/features/webhook). If set, will bind webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
               agent. Set to `null` to remove webhook url from this agent.
 
@@ -1596,7 +1596,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
               will apply.
 
           webhook_url: The webhook for agent to listen to chat events. See what events it would get at
-              [webhook doc](/features/webhook). If set, will binds webhook events for this
+              [webhook doc](/features/webhook). If set, will bind webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
               agent. Set to `null` to remove webhook url from this agent.
 

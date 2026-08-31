@@ -78,8 +78,8 @@ class KnowledgeBaseResource(SyncAPIResource):
 
           knowledge_base_urls: URLs to be scraped and added to the knowledge base. Must be valid urls.
 
-          max_chunk_size: Maximum number of characters per chunk when splitting knowledge base. Default
-              is 2000. content. Immutable after creation.
+          max_chunk_size: Maximum number of characters per chunk when splitting knowledge base content.
+              Default is 2000. Immutable after creation.
 
           min_chunk_size: Minimum number of characters per chunk. Chunks smaller than this will be merged
               with adjacent chunks. Must be less than max_chunk_size. Immutable after
@@ -358,8 +358,8 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
 
           knowledge_base_urls: URLs to be scraped and added to the knowledge base. Must be valid urls.
 
-          max_chunk_size: Maximum number of characters per chunk when splitting knowledge base. Default
-              is 2000. content. Immutable after creation.
+          max_chunk_size: Maximum number of characters per chunk when splitting knowledge base content.
+              Default is 2000. Immutable after creation.
 
           min_chunk_size: Minimum number of characters per chunk. Chunks smaller than this will be merged
               with adjacent chunks. Must be less than max_chunk_size. Immutable after

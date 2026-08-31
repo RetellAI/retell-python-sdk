@@ -514,7 +514,7 @@ class AgentResource(SyncAPIResource):
               user has been silent for the specified duration after some agent speech. Must be
               a positive number. If unset, default value of 10000 ms (10 s) will apply.
 
-          responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
+          responsiveness: Controls how responsive the agent is. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
@@ -574,7 +574,7 @@ class AgentResource(SyncAPIResource):
               will apply.
 
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
-              [webhook doc](/features/webhook). If set, will binds webhook events for this
+              [webhook doc](/features/webhook). If set, will bind webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
               agent. Set to `null` to remove webhook url from this agent.
 
@@ -1150,7 +1150,7 @@ class AgentResource(SyncAPIResource):
               the agent. You need to create a Response Engine first before attaching it to an
               agent.
 
-          responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
+          responsiveness: Controls how responsive the agent is. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
@@ -1213,7 +1213,7 @@ class AgentResource(SyncAPIResource):
               will apply.
 
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
-              [webhook doc](/features/webhook). If set, will binds webhook events for this
+              [webhook doc](/features/webhook). If set, will bind webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
               agent. Set to `null` to remove webhook url from this agent.
 
@@ -2134,7 +2134,7 @@ class AsyncAgentResource(AsyncAPIResource):
               user has been silent for the specified duration after some agent speech. Must be
               a positive number. If unset, default value of 10000 ms (10 s) will apply.
 
-          responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
+          responsiveness: Controls how responsive the agent is. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
@@ -2194,7 +2194,7 @@ class AsyncAgentResource(AsyncAPIResource):
               will apply.
 
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
-              [webhook doc](/features/webhook). If set, will binds webhook events for this
+              [webhook doc](/features/webhook). If set, will bind webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
               agent. Set to `null` to remove webhook url from this agent.
 
@@ -2770,7 +2770,7 @@ class AsyncAgentResource(AsyncAPIResource):
               the agent. You need to create a Response Engine first before attaching it to an
               agent.
 
-          responsiveness: Controls how responsive is the agent. Value ranging from [0,1]. Lower value
+          responsiveness: Controls how responsive the agent is. Value ranging from [0,1]. Lower value
               means less responsive agent (wait more, respond slower), while higher value
               means faster exchanges (respond when it can). If unset, default value 1 will
               apply.
@@ -2833,7 +2833,7 @@ class AsyncAgentResource(AsyncAPIResource):
               will apply.
 
           webhook_url: The webhook for agent to listen to call events. See what events it would get at
-              [webhook doc](/features/webhook). If set, will binds webhook events for this
+              [webhook doc](/features/webhook). If set, will bind webhook events for this
               agent to the specified url, and will ignore the account level webhook for this
               agent. Set to `null` to remove webhook url from this agent.
 

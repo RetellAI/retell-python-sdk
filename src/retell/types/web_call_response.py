@@ -66,7 +66,7 @@ class CallAnalysis(BaseModel):
     """
 
     in_voicemail: Optional[bool] = None
-    """Whether the call is entered voicemail."""
+    """Whether the call entered voicemail."""
 
     user_sentiment: Optional[Literal["Negative", "Positive", "Neutral", "Unknown"]] = None
     """Sentiment of the user in the call."""
@@ -172,7 +172,7 @@ class LatencyE2E(BaseModel):
 
 class LatencyKnowledgeBase(BaseModel):
     """
-    Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
+    Knowledge base latency (from the triggering of knowledge base retrieval to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
     """
 
     max: Optional[float] = None
@@ -262,7 +262,7 @@ class LatencyLlmWebsocketNetworkRtt(BaseModel):
 
 class LatencyS2s(BaseModel):
     """
-    Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
+    Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that use S2S model like Realtime API.
     """
 
     max: Optional[float] = None
@@ -342,7 +342,7 @@ class Latency(BaseModel):
 
     knowledge_base: Optional[LatencyKnowledgeBase] = None
     """
-    Knowledge base latency (from the triggering of knowledge base retrival to all
+    Knowledge base latency (from the triggering of knowledge base retrieval to all
     relevant context received) tracking of the call. Only populated when using
     knowledge base feature for the agent of the call.
     """
@@ -363,8 +363,8 @@ class Latency(BaseModel):
     s2s: Optional[LatencyS2s] = None
     """
     Speech-to-speech latency (from requesting responses of a S2S model to first byte
-    received) tracking of the call. Only populated for calls that uses S2S model
-    like Realtime API.
+    received) tracking of the call. Only populated for calls that use S2S model like
+    Realtime API.
     """
 
     tts: Optional[LatencyTts] = None
@@ -471,7 +471,7 @@ class ScrubbedTranscriptWithToolCallNodeTransitionUtterance(BaseModel):
     """New node name"""
 
     role: Literal["node_transition"]
-    """This is result of a node transition"""
+    """This is the result of a node transition."""
 
     transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
     """How this node was reached.
@@ -659,7 +659,7 @@ class TranscriptWithToolCallNodeTransitionUtterance(BaseModel):
     """New node name"""
 
     role: Literal["node_transition"]
-    """This is result of a node transition"""
+    """This is the result of a node transition."""
 
     transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
     """How this node was reached.
@@ -874,7 +874,7 @@ class WebCallResponse(BaseModel):
     """URL to the knowledge base retrieved contents of the call.
 
     Available after call ends if the call utilizes knowledge base feature. It
-    consists of the respond id and the retrieved contents related to that response.
+    consists of the response id and the retrieved contents related to that response.
     It's already rendered in call history tab of dashboard, and you can also
     manually download and check against the transcript to view the knowledge base
     retrieval results.

@@ -417,7 +417,7 @@ class PhoneNumberResource(SyncAPIResource):
               identifier for phone number APIs.
 
           termination_uri: The termination uri to uniquely identify your elastic SIP trunk. This is used
-              for outbound calls. For Twilio elastic SIP trunks it always end with
+              for outbound calls. For Twilio elastic SIP trunks it always ends with
               ".pstn.twilio.com".
 
           allowed_inbound_country_list: List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed.
@@ -873,7 +873,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
               identifier for phone number APIs.
 
           termination_uri: The termination uri to uniquely identify your elastic SIP trunk. This is used
-              for outbound calls. For Twilio elastic SIP trunks it always end with
+              for outbound calls. For Twilio elastic SIP trunks it always ends with
               ".pstn.twilio.com".
 
           allowed_inbound_country_list: List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed.
