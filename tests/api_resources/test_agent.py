@@ -12,6 +12,7 @@ from tests.utils import assert_matches_type
 from retell.types import (
     AgentResponse,
     AgentListResponse,
+    AgentRepairResponse,
     AgentGetVersionsResponse,
     AgentListVersionsResponse,
     AgentCreateVersionResponse,
@@ -737,6 +738,57 @@ class TestAgent:
                 version=15,
             )
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_repair(self, client: Retell) -> None:
+        agent = client.agent.repair(
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(AgentRepairResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_repair_with_all_params(self, client: Retell) -> None:
+        agent = client.agent.repair(
+            agent_id="16b980523634a6dc504898cda492e939",
+            version="latest_published",
+        )
+        assert_matches_type(AgentRepairResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_repair(self, client: Retell) -> None:
+        response = client.agent.with_raw_response.repair(
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = response.parse()
+        assert_matches_type(AgentRepairResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_repair(self, client: Retell) -> None:
+        with client.agent.with_streaming_response.repair(
+            agent_id="16b980523634a6dc504898cda492e939",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = response.parse()
+            assert_matches_type(AgentRepairResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_repair(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            client.agent.with_raw_response.repair(
+                agent_id="",
+            )
+
 
 class TestAsyncAgent:
     parametrize = pytest.mark.parametrize(
@@ -1453,4 +1505,55 @@ class TestAsyncAgent:
             await async_client.agent.with_raw_response.publish(
                 agent_id="",
                 version=15,
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_repair(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.repair(
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+        assert_matches_type(AgentRepairResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_repair_with_all_params(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.repair(
+            agent_id="16b980523634a6dc504898cda492e939",
+            version="latest_published",
+        )
+        assert_matches_type(AgentRepairResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_repair(self, async_client: AsyncRetell) -> None:
+        response = await async_client.agent.with_raw_response.repair(
+            agent_id="16b980523634a6dc504898cda492e939",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = await response.parse()
+        assert_matches_type(AgentRepairResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_repair(self, async_client: AsyncRetell) -> None:
+        async with async_client.agent.with_streaming_response.repair(
+            agent_id="16b980523634a6dc504898cda492e939",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = await response.parse()
+            assert_matches_type(AgentRepairResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_repair(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            await async_client.agent.with_raw_response.repair(
+                agent_id="",
             )

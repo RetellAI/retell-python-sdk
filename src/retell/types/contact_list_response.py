@@ -9,12 +9,13 @@ __all__ = ["ContactListResponse"]
 
 
 class ContactListResponse(BaseModel):
-    has_more: Optional[bool] = None
+    has_more: bool
+    """Whether more results are available."""
 
-    items: Optional[List[ContactResponse]] = None
+    items: List[ContactResponse]
 
     pagination_key: Optional[str] = None
-    """Base64url-encoded pagination key for the next page."""
+    """Pagination key for the next page."""
 
     total: Optional[float] = None
     """Total count of contacts matching the filter."""

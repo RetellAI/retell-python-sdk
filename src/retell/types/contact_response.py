@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 
 from .._models import BaseModel
 
@@ -40,6 +40,9 @@ class ContactResponse(BaseModel):
 
     last_name: Optional[str] = None
     """Last name of the contact."""
+
+    tags: Optional[List[str]] = None
+    """Tags assigned to the contact."""
 
     user_modified_timestamp: Optional[float] = None
     """Epoch milliseconds when the contact was last modified."""

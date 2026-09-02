@@ -66,13 +66,10 @@ Item: TypeAlias = Union[ItemContactCall, ItemContactChat]
 
 
 class ContactListConversationsResponse(BaseModel):
-    has_more: Optional[bool] = None
-    """Whether more conversations exist beyond the returned window."""
+    has_more: bool
+    """Whether more results are available."""
 
-    items: Optional[List[Item]] = None
+    items: List[Item]
 
     pagination_key: Optional[str] = None
-    """Base64url-encoded pagination key.
-
-    Pass as `pagination_key` query parameter to fetch the next page.
-    """
+    """Pagination key for the next page."""

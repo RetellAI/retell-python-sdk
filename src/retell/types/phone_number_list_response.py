@@ -9,10 +9,10 @@ __all__ = ["PhoneNumberListResponse"]
 
 
 class PhoneNumberListResponse(BaseModel):
-    has_more: Optional[bool] = None
+    has_more: bool
     """Whether more results are available."""
 
-    items: Optional[List[PhoneNumberResponse]] = None
+    items: List[PhoneNumberResponse]
 
     pagination_key: Optional[str] = None
     """Pagination key for the next page."""

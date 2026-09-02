@@ -26,6 +26,7 @@ __all__ = [
     "FilterCriteriaLastConversationTimestampNumberFilter",
     "FilterCriteriaLastConversationTimestampRangeFilter",
     "FilterCriteriaPhoneNumber",
+    "FilterCriteriaTags",
 ]
 
 
@@ -222,6 +223,17 @@ class FilterCriteriaPhoneNumber(TypedDict, total=False):
     value: Required[str]
 
 
+class FilterCriteriaTags(TypedDict, total=False):
+    """Match contacts that have any of the listed tags."""
+
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[SequenceNotStr[str]]
+
+
 class FilterCriteria(TypedDict, total=False):
     """Filter criteria for contacts.
 
@@ -250,3 +262,6 @@ class FilterCriteria(TypedDict, total=False):
 
     Stored in E.164, so an `eq` filter needs the full number.
     """
+
+    tags: FilterCriteriaTags
+    """Match contacts that have any of the listed tags."""

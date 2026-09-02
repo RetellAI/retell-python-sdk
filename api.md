@@ -73,6 +73,7 @@ from retell.types import (
     AgentCreateVersionResponse,
     AgentGetVersionsResponse,
     AgentListVersionsResponse,
+    AgentRepairResponse,
 )
 ```
 
@@ -88,6 +89,7 @@ Methods:
 - <code title="get /get-agent-versions/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">get_versions</a>(agent_id) -> <a href="./src/retell/types/agent_get_versions_response.py">AgentGetVersionsResponse</a></code>
 - <code title="get /list-agent-versions/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">list_versions</a>(agent_id, \*\*<a href="src/retell/types/agent_list_versions_params.py">params</a>) -> <a href="./src/retell/types/agent_list_versions_response.py">AgentListVersionsResponse</a></code>
 - <code title="post /publish-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">publish</a>(agent_id, \*\*<a href="src/retell/types/agent_publish_params.py">params</a>) -> None</code>
+- <code title="post /repair-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">repair</a>(agent_id, \*\*<a href="src/retell/types/agent_repair_params.py">params</a>) -> <a href="./src/retell/types/agent_repair_response.py">AgentRepairResponse</a></code>
 
 # ChatAgent
 
@@ -194,6 +196,18 @@ Methods:
 - <code title="post /add-community-voice">client.voice.<a href="./src/retell/resources/voice.py">add_resource</a>(\*\*<a href="src/retell/types/voice_add_resource_params.py">params</a>) -> <a href="./src/retell/types/voice_response.py">VoiceResponse</a></code>
 - <code title="post /clone-voice">client.voice.<a href="./src/retell/resources/voice.py">clone</a>(\*\*<a href="src/retell/types/voice_clone_params.py">params</a>) -> <a href="./src/retell/types/voice_response.py">VoiceResponse</a></code>
 - <code title="post /search-community-voice">client.voice.<a href="./src/retell/resources/voice.py">search</a>(\*\*<a href="src/retell/types/voice_search_params.py">params</a>) -> <a href="./src/retell/types/voice_search_response.py">VoiceSearchResponse</a></code>
+
+# Asset
+
+Types:
+
+```python
+from retell.types import AssetCreateResponse
+```
+
+Methods:
+
+- <code title="post /create-asset">client.asset.<a href="./src/retell/resources/asset.py">create</a>(\*\*<a href="src/retell/types/asset_create_params.py">params</a>) -> <a href="./src/retell/types/asset_create_response.py">AssetCreateResponse</a></code>
 
 # Concurrency
 
@@ -304,8 +318,11 @@ from retell.types import (
     ContactResponse,
     ContactListResponse,
     ContactBackfillAnalysisDataResponse,
+    ContactCreateImportResponse,
     ContactGetBackfillJobStatusResponse,
+    ContactGetImportResponse,
     ContactListConversationsResponse,
+    ContactUploadImportFileResponse,
 )
 ```
 
@@ -316,10 +333,13 @@ Methods:
 - <code title="post /list-contacts">client.contact.<a href="./src/retell/resources/contact.py">list</a>(\*\*<a href="src/retell/types/contact_list_params.py">params</a>) -> <a href="./src/retell/types/contact_list_response.py">ContactListResponse</a></code>
 - <code title="delete /delete-contact/{contact_id}">client.contact.<a href="./src/retell/resources/contact.py">delete</a>(contact_id) -> None</code>
 - <code title="post /backfill-contact-analysis-data">client.contact.<a href="./src/retell/resources/contact.py">backfill_analysis_data</a>(\*\*<a href="src/retell/types/contact_backfill_analysis_data_params.py">params</a>) -> <a href="./src/retell/types/contact_backfill_analysis_data_response.py">ContactBackfillAnalysisDataResponse</a></code>
+- <code title="post /create-contact-import">client.contact.<a href="./src/retell/resources/contact.py">create_import</a>(\*\*<a href="src/retell/types/contact_create_import_params.py">params</a>) -> <a href="./src/retell/types/contact_create_import_response.py">ContactCreateImportResponse</a></code>
 - <code title="get /get-contact/{contact_id}">client.contact.<a href="./src/retell/resources/contact.py">get</a>(contact_id) -> <a href="./src/retell/types/contact_response.py">ContactResponse</a></code>
 - <code title="get /get-backfill-contact-job-status">client.contact.<a href="./src/retell/resources/contact.py">get_backfill_job_status</a>() -> <a href="./src/retell/types/contact_get_backfill_job_status_response.py">ContactGetBackfillJobStatusResponse</a></code>
 - <code title="get /get-contact-by-phone/{phone_number}">client.contact.<a href="./src/retell/resources/contact.py">get_by_phone</a>(phone_number) -> <a href="./src/retell/types/contact_response.py">ContactResponse</a></code>
+- <code title="get /get-contact-import">client.contact.<a href="./src/retell/resources/contact.py">get_import</a>() -> <a href="./src/retell/types/contact_get_import_response.py">ContactGetImportResponse</a></code>
 - <code title="get /list-contact-conversations/{contact_id}">client.contact.<a href="./src/retell/resources/contact.py">list_conversations</a>(contact_id, \*\*<a href="src/retell/types/contact_list_conversations_params.py">params</a>) -> <a href="./src/retell/types/contact_list_conversations_response.py">ContactListConversationsResponse</a></code>
+- <code title="post /upload-contact-import-file">client.contact.<a href="./src/retell/resources/contact.py">upload_import_file</a>(\*\*<a href="src/retell/types/contact_upload_import_file_params.py">params</a>) -> <a href="./src/retell/types/contact_upload_import_file_response.py">ContactUploadImportFileResponse</a></code>
 
 # App
 

@@ -20,5 +20,5 @@ class VoiceCloneParams(TypedDict, total=False):
     voice_name: Required[str]
     """Name for the cloned voice"""
 
-    voice_provider: Required[Literal["elevenlabs", "cartesia", "minimax", "fish_audio", "platform"]]
+    voice_provider: Required[Literal["elevenlabs", "cartesia", "minimax", "fish_audio", "platform", "inworld"]]
     """Voice provider to use for cloning."""
