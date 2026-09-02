@@ -479,13 +479,21 @@ class FilterCriteria(TypedDict, total=False):
     """Filter by whether the chat was successful."""
 
     combined_cost: FilterCriteriaCombinedCost
-    """Filter by combined cost of the chat."""
+    """Filter by total chat cost in cents."""
 
     custom_analysis_data: Iterable[FilterCriteriaCustomAnalysisData]
-    """Filter by custom analysis data fields."""
+    """Filter by custom post-chat analysis outputs.
+
+    Each filter `key` matches the configured output's `name`.
+    """
 
     custom_attributes: Iterable[FilterCriteriaCustomAttribute]
-    """Filter by custom attributes fields."""
+    """
+    Filter by organization-level attributes that attach business context to chats,
+    such as customer tier or campaign, so chats can be organized and filtered
+    consistently in Chat History. Use the attribute ID as `key` and the chat's
+    attribute value as `value`.
+    """
 
     disconnection_reason: FilterCriteriaDisconnectionReason
 

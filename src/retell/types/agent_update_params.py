@@ -481,7 +481,7 @@ class AgentUpdateParams(TypedDict, total=False):
     """
 
     responsiveness: float
-    """Controls how responsive the agent is.
+    """Controls how responsive is the agent.
 
     Value ranging from [0,1]. Lower value means less responsive agent (wait more,
     respond slower), while higher value means faster exchanges (respond when it
@@ -632,7 +632,7 @@ class AgentUpdateParams(TypedDict, total=False):
     """The webhook for agent to listen to call events.
 
     See what events it would get at [webhook doc](/features/webhook). If set, will
-    bind webhook events for this agent to the specified url, and will ignore the
+    binds webhook events for this agent to the specified url, and will ignore the
     account level webhook for this agent. Set to `null` to remove webhook url from
     this agent.
     """

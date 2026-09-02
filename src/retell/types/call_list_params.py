@@ -827,13 +827,21 @@ class FilterCriteria(TypedDict, total=False):
     call_type: FilterCriteriaCallType
 
     combined_cost: FilterCriteriaCombinedCost
-    """Filter by combined cost of the call."""
+    """Filter by total call cost in cents."""
 
     custom_analysis_data: Iterable[FilterCriteriaCustomAnalysisData]
-    """Filter by custom analysis data fields."""
+    """Filter by custom post-call analysis outputs.
+
+    Each filter `key` matches the configured output's `name`.
+    """
 
     custom_attributes: Iterable[FilterCriteriaCustomAttribute]
-    """Filter by custom attributes fields."""
+    """
+    Filter by organization-level attributes that attach business context to calls,
+    such as customer tier or campaign, so calls can be organized and filtered
+    consistently in Call History. Use the attribute ID as `key` and the call's
+    attribute value as `value`.
+    """
 
     data_storage_setting: FilterCriteriaDataStorageSetting
 
@@ -845,10 +853,13 @@ class FilterCriteria(TypedDict, total=False):
     """Filter by call duration in milliseconds."""
 
     dynamic_variables: Iterable[FilterCriteriaDynamicVariable]
-    """Filter by dynamic variables."""
+    """Filter by dynamic variables stored on the call.
+
+    Each filter `key` matches a dynamic-variable name.
+    """
 
     e2e_latency_p50: FilterCriteriaE2ELatencyP50
-    """Filter by end-to-end latency p50."""
+    """Filter by per-call p50 end-to-end latency in milliseconds."""
 
     end_timestamp: FilterCriteriaEndTimestamp
     """Filter by call end timestamp (epoch ms)."""
@@ -860,7 +871,10 @@ class FilterCriteria(TypedDict, total=False):
     """Filter by whether the call is in voicemail."""
 
     metadata: Iterable[FilterCriteriaMetadata]
-    """Filter by metadata fields."""
+    """Filter by values stored in the call's `metadata`.
+
+    Each filter `key` matches a top-level metadata key.
+    """
 
     start_timestamp: FilterCriteriaStartTimestamp
     """Filter by call start timestamp (epoch ms)."""

@@ -12,7 +12,6 @@ __all__ = [
     "ItemV3WebCallResponseCallAnalysis",
     "ItemV3WebCallResponseCallCost",
     "ItemV3WebCallResponseCallCostProductCost",
-    "ItemV3WebCallResponseIceServer",
     "ItemV3WebCallResponseLatency",
     "ItemV3WebCallResponseLatencyAsr",
     "ItemV3WebCallResponseLatencyE2E",
@@ -60,7 +59,7 @@ class ItemV3WebCallResponseCallAnalysis(BaseModel):
     """
 
     in_voicemail: Optional[bool] = None
-    """Whether the call entered voicemail."""
+    """Whether the call is entered voicemail."""
 
     user_sentiment: Optional[Literal["Negative", "Positive", "Neutral", "Unknown"]] = None
     """Sentiment of the user in the call."""
@@ -94,14 +93,6 @@ class ItemV3WebCallResponseCallCost(BaseModel):
 
     total_duration_unit_price: float
     """Total unit duration price of all products in cents per second"""
-
-
-class ItemV3WebCallResponseIceServer(BaseModel):
-    urls: Union[str, List[str]]
-
-    credential: Optional[str] = None
-
-    username: Optional[str] = None
 
 
 class ItemV3WebCallResponseLatencyAsr(BaseModel):
@@ -166,7 +157,7 @@ class ItemV3WebCallResponseLatencyE2E(BaseModel):
 
 class ItemV3WebCallResponseLatencyKnowledgeBase(BaseModel):
     """
-    Knowledge base latency (from the triggering of knowledge base retrieval to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
+    Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
     """
 
     max: Optional[float] = None
@@ -256,7 +247,7 @@ class ItemV3WebCallResponseLatencyLlmWebsocketNetworkRtt(BaseModel):
 
 class ItemV3WebCallResponseLatencyS2s(BaseModel):
     """
-    Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that use S2S model like Realtime API.
+    Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
     """
 
     max: Optional[float] = None
@@ -336,7 +327,7 @@ class ItemV3WebCallResponseLatency(BaseModel):
 
     knowledge_base: Optional[ItemV3WebCallResponseLatencyKnowledgeBase] = None
     """
-    Knowledge base latency (from the triggering of knowledge base retrieval to all
+    Knowledge base latency (from the triggering of knowledge base retrival to all
     relevant context received) tracking of the call. Only populated when using
     knowledge base feature for the agent of the call.
     """
@@ -357,8 +348,8 @@ class ItemV3WebCallResponseLatency(BaseModel):
     s2s: Optional[ItemV3WebCallResponseLatencyS2s] = None
     """
     Speech-to-speech latency (from requesting responses of a S2S model to first byte
-    received) tracking of the call. Only populated for calls that use S2S model like
-    Realtime API.
+    received) tracking of the call. Only populated for calls that uses S2S model
+    like Realtime API.
     """
 
     tts: Optional[ItemV3WebCallResponseLatencyTts] = None
@@ -507,24 +498,11 @@ class ItemV3WebCallResponse(BaseModel):
     Available after call ends.
     """
 
-    gateway_ip: Optional[str] = None
-    """
-    Public side of the gateway instance handling this call, for diagnostics only —
-    the client's media address comes from the SDP answer's ICE candidates. `gateway`
-    transport only.
-    """
-
-    ice_servers: Optional[List[ItemV3WebCallResponseIceServer]] = None
-    """
-    ICE servers the client must configure before creating its PeerConnection — they
-    cannot be added afterwards. `gateway` transport only.
-    """
-
     knowledge_base_retrieved_contents_url: Optional[str] = None
     """URL to the knowledge base retrieved contents of the call.
 
     Available after call ends if the call utilizes knowledge base feature. It
-    consists of the response id and the retrieved contents related to that response.
+    consists of the respond id and the retrieved contents related to that response.
     It's already rendered in call history tab of dashboard, and you can also
     manually download and check against the transcript to view the knowledge base
     retrieval results.
@@ -611,15 +589,6 @@ class ItemV3WebCallResponse(BaseModel):
     Available after transfer call ends.
     """
 
-    transport: Optional[Literal["livekit", "gateway"]] = None
-    """
-    Which media stack issued the access_token, and therefore where the client
-    signals. The two tokens are indistinguishable, so a client must read this rather
-    than infer it. `gateway` clients address Retell itself; `livekit` clients
-    connect to the returned `url`. Optional only because a server predating the
-    field omits it during a rollout; treat absent as `livekit`.
-    """
-
 
 class ItemV3PhoneCallResponseCallAnalysis(BaseModel):
     """
@@ -642,7 +611,7 @@ class ItemV3PhoneCallResponseCallAnalysis(BaseModel):
     """
 
     in_voicemail: Optional[bool] = None
-    """Whether the call entered voicemail."""
+    """Whether the call is entered voicemail."""
 
     user_sentiment: Optional[Literal["Negative", "Positive", "Neutral", "Unknown"]] = None
     """Sentiment of the user in the call."""
@@ -740,7 +709,7 @@ class ItemV3PhoneCallResponseLatencyE2E(BaseModel):
 
 class ItemV3PhoneCallResponseLatencyKnowledgeBase(BaseModel):
     """
-    Knowledge base latency (from the triggering of knowledge base retrieval to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
+    Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
     """
 
     max: Optional[float] = None
@@ -830,7 +799,7 @@ class ItemV3PhoneCallResponseLatencyLlmWebsocketNetworkRtt(BaseModel):
 
 class ItemV3PhoneCallResponseLatencyS2s(BaseModel):
     """
-    Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that use S2S model like Realtime API.
+    Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
     """
 
     max: Optional[float] = None
@@ -910,7 +879,7 @@ class ItemV3PhoneCallResponseLatency(BaseModel):
 
     knowledge_base: Optional[ItemV3PhoneCallResponseLatencyKnowledgeBase] = None
     """
-    Knowledge base latency (from the triggering of knowledge base retrieval to all
+    Knowledge base latency (from the triggering of knowledge base retrival to all
     relevant context received) tracking of the call. Only populated when using
     knowledge base feature for the agent of the call.
     """
@@ -931,8 +900,8 @@ class ItemV3PhoneCallResponseLatency(BaseModel):
     s2s: Optional[ItemV3PhoneCallResponseLatencyS2s] = None
     """
     Speech-to-speech latency (from requesting responses of a S2S model to first byte
-    received) tracking of the call. Only populated for calls that use S2S model like
-    Realtime API.
+    received) tracking of the call. Only populated for calls that uses S2S model
+    like Realtime API.
     """
 
     tts: Optional[ItemV3PhoneCallResponseLatencyTts] = None
@@ -1098,7 +1067,7 @@ class ItemV3PhoneCallResponse(BaseModel):
     """URL to the knowledge base retrieved contents of the call.
 
     Available after call ends if the call utilizes knowledge base feature. It
-    consists of the response id and the retrieved contents related to that response.
+    consists of the respond id and the retrieved contents related to that response.
     It's already rendered in call history tab of dashboard, and you can also
     manually download and check against the transcript to view the knowledge base
     retrieval results.

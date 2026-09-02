@@ -21,7 +21,7 @@ class PhoneNumberImportParams(TypedDict, total=False):
     termination_uri: Required[str]
     """The termination uri to uniquely identify your elastic SIP trunk.
 
-    This is used for outbound calls. For Twilio elastic SIP trunks it always ends
+    This is used for outbound calls. For Twilio elastic SIP trunks it always end
     with ".pstn.twilio.com".
     """
 

@@ -10,7 +10,6 @@ __all__ = [
     "CallAnalysis",
     "CallCost",
     "CallCostProductCost",
-    "IceServer",
     "Latency",
     "LatencyAsr",
     "LatencyE2E",
@@ -66,7 +65,7 @@ class CallAnalysis(BaseModel):
     """
 
     in_voicemail: Optional[bool] = None
-    """Whether the call entered voicemail."""
+    """Whether the call is entered voicemail."""
 
     user_sentiment: Optional[Literal["Negative", "Positive", "Neutral", "Unknown"]] = None
     """Sentiment of the user in the call."""
@@ -100,14 +99,6 @@ class CallCost(BaseModel):
 
     total_duration_unit_price: float
     """Total unit duration price of all products in cents per second"""
-
-
-class IceServer(BaseModel):
-    urls: Union[str, List[str]]
-
-    credential: Optional[str] = None
-
-    username: Optional[str] = None
 
 
 class LatencyAsr(BaseModel):
@@ -172,7 +163,7 @@ class LatencyE2E(BaseModel):
 
 class LatencyKnowledgeBase(BaseModel):
     """
-    Knowledge base latency (from the triggering of knowledge base retrieval to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
+    Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
     """
 
     max: Optional[float] = None
@@ -262,7 +253,7 @@ class LatencyLlmWebsocketNetworkRtt(BaseModel):
 
 class LatencyS2s(BaseModel):
     """
-    Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that use S2S model like Realtime API.
+    Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
     """
 
     max: Optional[float] = None
@@ -342,7 +333,7 @@ class Latency(BaseModel):
 
     knowledge_base: Optional[LatencyKnowledgeBase] = None
     """
-    Knowledge base latency (from the triggering of knowledge base retrieval to all
+    Knowledge base latency (from the triggering of knowledge base retrival to all
     relevant context received) tracking of the call. Only populated when using
     knowledge base feature for the agent of the call.
     """
@@ -363,8 +354,8 @@ class Latency(BaseModel):
     s2s: Optional[LatencyS2s] = None
     """
     Speech-to-speech latency (from requesting responses of a S2S model to first byte
-    received) tracking of the call. Only populated for calls that use S2S model like
-    Realtime API.
+    received) tracking of the call. Only populated for calls that uses S2S model
+    like Realtime API.
     """
 
     tts: Optional[LatencyTts] = None
@@ -471,7 +462,7 @@ class ScrubbedTranscriptWithToolCallNodeTransitionUtterance(BaseModel):
     """New node name"""
 
     role: Literal["node_transition"]
-    """This is the result of a node transition."""
+    """This is result of a node transition"""
 
     transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
     """How this node was reached.
@@ -659,7 +650,7 @@ class TranscriptWithToolCallNodeTransitionUtterance(BaseModel):
     """New node name"""
 
     role: Literal["node_transition"]
-    """This is the result of a node transition."""
+    """This is result of a node transition"""
 
     transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
     """How this node was reached.
@@ -857,24 +848,11 @@ class WebCallResponse(BaseModel):
     Available after call ends.
     """
 
-    gateway_ip: Optional[str] = None
-    """
-    Public side of the gateway instance handling this call, for diagnostics only —
-    the client's media address comes from the SDP answer's ICE candidates. `gateway`
-    transport only.
-    """
-
-    ice_servers: Optional[List[IceServer]] = None
-    """
-    ICE servers the client must configure before creating its PeerConnection — they
-    cannot be added afterwards. `gateway` transport only.
-    """
-
     knowledge_base_retrieved_contents_url: Optional[str] = None
     """URL to the knowledge base retrieved contents of the call.
 
     Available after call ends if the call utilizes knowledge base feature. It
-    consists of the response id and the retrieved contents related to that response.
+    consists of the respond id and the retrieved contents related to that response.
     It's already rendered in call history tab of dashboard, and you can also
     manually download and check against the transcript to view the knowledge base
     retrieval results.
@@ -983,13 +961,4 @@ class WebCallResponse(BaseModel):
     """Transfer end timestamp (milliseconds since epoch) of the call.
 
     Available after transfer call ends.
-    """
-
-    transport: Optional[Literal["livekit", "gateway"]] = None
-    """
-    Which media stack issued the access_token, and therefore where the client
-    signals. The two tokens are indistinguishable, so a client must read this rather
-    than infer it. `gateway` clients address Retell itself; `livekit` clients
-    connect to the returned `url`. Optional only because a server predating the
-    field omits it during a rollout; treat absent as `livekit`.
     """

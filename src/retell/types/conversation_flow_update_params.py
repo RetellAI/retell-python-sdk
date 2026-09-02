@@ -1662,7 +1662,7 @@ ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscript:
 
 class ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(
@@ -1704,7 +1704,7 @@ ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscript:
 
 class ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
@@ -2240,7 +2240,7 @@ ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: Typ
 
 class ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -2276,7 +2276,7 @@ ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: Typ
 
 class ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeSubagentNodeGlobalNodeSetting(TypedDict, total=False):
@@ -2413,7 +2413,7 @@ class ComponentNodeSubagentNodeToolEndCallTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -2814,7 +2814,7 @@ class ComponentNodeSubagentNodeToolTransferCallTool(TypedDict, total=False):
 class ComponentNodeSubagentNodeToolCheckAvailabilityCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to check
+    Cal.com Api key that have access to the cal.com event you want to check
     availability for.
     """
 
@@ -2829,7 +2829,7 @@ class ComponentNodeSubagentNodeToolCheckAvailabilityCalTool(TypedDict, total=Fal
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -2854,7 +2854,7 @@ class ComponentNodeSubagentNodeToolCheckAvailabilityCalTool(TypedDict, total=Fal
 class ComponentNodeSubagentNodeToolBookAppointmentCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to book
+    Cal.com Api key that have access to the cal.com event you want to book
     appointment.
     """
 
@@ -2869,7 +2869,7 @@ class ComponentNodeSubagentNodeToolBookAppointmentCalTool(TypedDict, total=False
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -2951,7 +2951,7 @@ class ComponentNodeSubagentNodeToolPressDigitTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -3047,7 +3047,7 @@ class ComponentNodeSubagentNodeToolSendSMSTool(TypedDict, total=False):
 
 
 class ComponentNodeSubagentNodeToolCustomToolParameters(TypedDict, total=False):
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
@@ -3074,8 +3074,8 @@ class ComponentNodeSubagentNodeToolCustomTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["custom"]]
@@ -3147,7 +3147,7 @@ class ComponentNodeSubagentNodeToolCustomTool(TypedDict, total=False):
     """
 
     parameters: ComponentNodeSubagentNodeToolCustomToolParameters
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
@@ -3197,8 +3197,8 @@ class ComponentNodeSubagentNodeToolCodeTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["code"]]
@@ -3373,8 +3373,8 @@ class ComponentNodeSubagentNodeToolExtractDynamicVariableTool(TypedDict, total=F
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["extract_dynamic_variable"]]
@@ -3394,7 +3394,7 @@ class ComponentNodeSubagentNodeToolBridgeTransferTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -3431,7 +3431,7 @@ class ComponentNodeSubagentNodeToolCancelTransferTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -3703,7 +3703,7 @@ ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlia
 
 class ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -3739,7 +3739,7 @@ ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlia
 
 class ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeEndNodeGlobalNodeSetting(TypedDict, total=False):
@@ -4084,7 +4084,7 @@ ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: Typ
 
 class ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -4120,7 +4120,7 @@ ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: Typ
 
 class ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeFunctionNodeGlobalNodeSetting(TypedDict, total=False):
@@ -4479,7 +4479,7 @@ ComponentNodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAli
 
 class ComponentNodeCodeNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -4515,7 +4515,7 @@ ComponentNodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAli
 
 class ComponentNodeCodeNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeCodeNodeGlobalNodeSetting(TypedDict, total=False):
@@ -5117,7 +5117,7 @@ ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscript:
 
 class ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(
@@ -5159,7 +5159,7 @@ ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscript:
 
 class ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
@@ -5532,7 +5532,7 @@ ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: T
 
 class ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -5568,7 +5568,7 @@ ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: T
 
 class ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
@@ -5895,7 +5895,7 @@ ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeA
 
 class ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -5931,7 +5931,7 @@ ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeA
 
 class ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeBranchNodeGlobalNodeSetting(TypedDict, total=False):
@@ -6255,7 +6255,7 @@ ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlia
 
 class ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -6291,7 +6291,7 @@ ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlia
 
 class ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeSMSNodeGlobalNodeSetting(TypedDict, total=False):
@@ -6743,7 +6743,7 @@ class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneE
     transcript: Required[
         Iterable[ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]
     ]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(
@@ -6787,7 +6787,7 @@ class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneE
     transcript: Required[
         Iterable[ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]
     ]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total=False):
@@ -7035,7 +7035,7 @@ ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: Ty
 
 class ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -7071,7 +7071,7 @@ ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: Ty
 
 class ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeAgentSwapNodeGlobalNodeSetting(TypedDict, total=False):
@@ -7441,7 +7441,7 @@ ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlia
 
 class ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -7477,7 +7477,7 @@ ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlia
 
 class ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeMcpNodeGlobalNodeSetting(TypedDict, total=False):
@@ -7848,7 +7848,7 @@ ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: Ty
 
 class ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -7884,7 +7884,7 @@ ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: Ty
 
 class ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeComponentNodeGlobalNodeSetting(TypedDict, total=False):
@@ -8046,7 +8046,7 @@ ComponentNodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscrip
 
 class ComponentNodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(
@@ -8088,7 +8088,7 @@ ComponentNodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscrip
 
 class ComponentNodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeBridgeTransferNodeGlobalNodeSetting(TypedDict, total=False):
@@ -8302,7 +8302,7 @@ ComponentNodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscrip
 
 class ComponentNodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(
@@ -8344,7 +8344,7 @@ ComponentNodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscrip
 
 class ComponentNodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[ComponentNodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class ComponentNodeCancelTransferNodeGlobalNodeSetting(TypedDict, total=False):
@@ -8536,7 +8536,7 @@ class ComponentNote(TypedDict, total=False):
 
 
 class ComponentToolCustomToolParameters(TypedDict, total=False):
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
@@ -8563,8 +8563,8 @@ class ComponentToolCustomTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["custom"]]
@@ -8636,7 +8636,7 @@ class ComponentToolCustomTool(TypedDict, total=False):
     """
 
     parameters: ComponentToolCustomToolParameters
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
@@ -8684,7 +8684,7 @@ class ComponentToolCustomTool(TypedDict, total=False):
 class ComponentToolCheckAvailabilityCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to check
+    Cal.com Api key that have access to the cal.com event you want to check
     availability for.
     """
 
@@ -8699,7 +8699,7 @@ class ComponentToolCheckAvailabilityCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -8727,7 +8727,7 @@ class ComponentToolCheckAvailabilityCalTool(TypedDict, total=False):
 class ComponentToolBookAppointmentCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to book
+    Cal.com Api key that have access to the cal.com event you want to book
     appointment.
     """
 
@@ -8742,7 +8742,7 @@ class ComponentToolBookAppointmentCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -9215,7 +9215,7 @@ NodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlia
 
 class NodeConversationNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeConversationNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -9251,7 +9251,7 @@ NodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlia
 
 class NodeConversationNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
@@ -9780,7 +9780,7 @@ NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = 
 
 class NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeSubagentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -9816,7 +9816,7 @@ NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = 
 
 class NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeSubagentNodeGlobalNodeSetting(TypedDict, total=False):
@@ -9953,7 +9953,7 @@ class NodeSubagentNodeToolEndCallTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -10346,7 +10346,7 @@ class NodeSubagentNodeToolTransferCallTool(TypedDict, total=False):
 class NodeSubagentNodeToolCheckAvailabilityCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to check
+    Cal.com Api key that have access to the cal.com event you want to check
     availability for.
     """
 
@@ -10361,7 +10361,7 @@ class NodeSubagentNodeToolCheckAvailabilityCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -10386,7 +10386,7 @@ class NodeSubagentNodeToolCheckAvailabilityCalTool(TypedDict, total=False):
 class NodeSubagentNodeToolBookAppointmentCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to book
+    Cal.com Api key that have access to the cal.com event you want to book
     appointment.
     """
 
@@ -10401,7 +10401,7 @@ class NodeSubagentNodeToolBookAppointmentCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -10483,7 +10483,7 @@ class NodeSubagentNodeToolPressDigitTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -10579,7 +10579,7 @@ class NodeSubagentNodeToolSendSMSTool(TypedDict, total=False):
 
 
 class NodeSubagentNodeToolCustomToolParameters(TypedDict, total=False):
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
@@ -10606,8 +10606,8 @@ class NodeSubagentNodeToolCustomTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["custom"]]
@@ -10679,7 +10679,7 @@ class NodeSubagentNodeToolCustomTool(TypedDict, total=False):
     """
 
     parameters: NodeSubagentNodeToolCustomToolParameters
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
@@ -10729,8 +10729,8 @@ class NodeSubagentNodeToolCodeTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["code"]]
@@ -10905,8 +10905,8 @@ class NodeSubagentNodeToolExtractDynamicVariableTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["extract_dynamic_variable"]]
@@ -10926,7 +10926,7 @@ class NodeSubagentNodeToolBridgeTransferTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -10963,7 +10963,7 @@ class NodeSubagentNodeToolCancelTransferTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -11233,7 +11233,7 @@ NodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union
 
 class NodeEndNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeEndNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -11269,7 +11269,7 @@ NodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union
 
 class NodeEndNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeEndNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeEndNodeGlobalNodeSetting(TypedDict, total=False):
@@ -11609,7 +11609,7 @@ NodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = 
 
 class NodeFunctionNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeFunctionNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -11645,7 +11645,7 @@ NodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = 
 
 class NodeFunctionNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeFunctionNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeFunctionNodeGlobalNodeSetting(TypedDict, total=False):
@@ -12000,7 +12000,7 @@ NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Unio
 
 class NodeCodeNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeCodeNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -12036,7 +12036,7 @@ NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Unio
 
 class NodeCodeNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeCodeNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeCodeNodeGlobalNodeSetting(TypedDict, total=False):
@@ -12622,7 +12622,7 @@ NodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlia
 
 class NodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeTransferCallNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -12658,7 +12658,7 @@ NodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlia
 
 class NodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
@@ -13023,7 +13023,7 @@ NodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias 
 
 class NodePressDigitNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodePressDigitNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -13059,7 +13059,7 @@ NodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias 
 
 class NodePressDigitNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
@@ -13383,7 +13383,7 @@ NodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Un
 
 class NodeBranchNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeBranchNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -13419,7 +13419,7 @@ NodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Un
 
 class NodeBranchNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeBranchNodeGlobalNodeSetting(TypedDict, total=False):
@@ -13741,7 +13741,7 @@ NodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union
 
 class NodeSMSNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeSMSNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -13777,7 +13777,7 @@ NodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union
 
 class NodeSMSNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeSMSNodeGlobalNodeSetting(TypedDict, total=False):
@@ -14219,7 +14219,7 @@ NodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscrip
 
 class NodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeExtractDynamicVariablesNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(
@@ -14261,7 +14261,7 @@ NodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscrip
 
 class NodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total=False):
@@ -14501,7 +14501,7 @@ NodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias =
 
 class NodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeAgentSwapNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -14537,7 +14537,7 @@ NodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias =
 
 class NodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeAgentSwapNodeGlobalNodeSetting(TypedDict, total=False):
@@ -14903,7 +14903,7 @@ NodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union
 
 class NodeMcpNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeMcpNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -14939,7 +14939,7 @@ NodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union
 
 class NodeMcpNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeMcpNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeMcpNodeGlobalNodeSetting(TypedDict, total=False):
@@ -15305,7 +15305,7 @@ NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias =
 
 class NodeComponentNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeComponentNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -15341,7 +15341,7 @@ NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias =
 
 class NodeComponentNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeComponentNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeComponentNodeGlobalNodeSetting(TypedDict, total=False):
@@ -15493,7 +15493,7 @@ NodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAl
 
 class NodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeBridgeTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -15529,7 +15529,7 @@ NodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAl
 
 class NodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeBridgeTransferNodeGlobalNodeSetting(TypedDict, total=False):
@@ -15732,7 +15732,7 @@ NodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAl
 
 class NodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeCancelTransferNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(TypedDict, total=False):
@@ -15768,7 +15768,7 @@ NodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAl
 
 class NodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExample(TypedDict, total=False):
     transcript: Required[Iterable[NodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]]
-    """Fine tune the transition condition to this global node"""
+    """Find tune the transition condition to this global node"""
 
 
 class NodeCancelTransferNodeGlobalNodeSetting(TypedDict, total=False):
@@ -15932,7 +15932,7 @@ class Note(TypedDict, total=False):
 
 
 class ToolCustomToolParameters(TypedDict, total=False):
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
@@ -15959,8 +15959,8 @@ class ToolCustomTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["custom"]]
@@ -16032,7 +16032,7 @@ class ToolCustomTool(TypedDict, total=False):
     """
 
     parameters: ToolCustomToolParameters
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
@@ -16080,7 +16080,7 @@ class ToolCustomTool(TypedDict, total=False):
 class ToolCheckAvailabilityCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to check
+    Cal.com Api key that have access to the cal.com event you want to check
     availability for.
     """
 
@@ -16095,7 +16095,7 @@ class ToolCheckAvailabilityCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -16123,7 +16123,7 @@ class ToolCheckAvailabilityCalTool(TypedDict, total=False):
 class ToolBookAppointmentCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to book
+    Cal.com Api key that have access to the cal.com event you want to book
     appointment.
     """
 
@@ -16138,7 +16138,7 @@ class ToolBookAppointmentCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 

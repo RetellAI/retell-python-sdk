@@ -108,7 +108,7 @@ class GeneralToolEndCallTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -501,7 +501,7 @@ class GeneralToolTransferCallTool(BaseModel):
 class GeneralToolCheckAvailabilityCalTool(BaseModel):
     cal_api_key: str
     """
-    Cal.com Api key that has access to the cal.com event you want to check
+    Cal.com Api key that have access to the cal.com event you want to check
     availability for.
     """
 
@@ -516,7 +516,7 @@ class GeneralToolCheckAvailabilityCalTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -541,7 +541,7 @@ class GeneralToolCheckAvailabilityCalTool(BaseModel):
 class GeneralToolBookAppointmentCalTool(BaseModel):
     cal_api_key: str
     """
-    Cal.com Api key that has access to the cal.com event you want to book
+    Cal.com Api key that have access to the cal.com event you want to book
     appointment.
     """
 
@@ -556,7 +556,7 @@ class GeneralToolBookAppointmentCalTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -638,7 +638,7 @@ class GeneralToolPressDigitTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -734,7 +734,7 @@ class GeneralToolSendSMSTool(BaseModel):
 
 
 class GeneralToolCustomToolParameters(BaseModel):
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
@@ -761,8 +761,8 @@ class GeneralToolCustomTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["custom"]
@@ -834,7 +834,7 @@ class GeneralToolCustomTool(BaseModel):
     """
 
     parameters: Optional[GeneralToolCustomToolParameters] = None
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
@@ -884,8 +884,8 @@ class GeneralToolCodeTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["code"]
@@ -1060,8 +1060,8 @@ class GeneralToolExtractDynamicVariableTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["extract_dynamic_variable"]
@@ -1081,7 +1081,7 @@ class GeneralToolBridgeTransferTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1118,7 +1118,7 @@ class GeneralToolCancelTransferTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1258,7 +1258,7 @@ class Mcp(BaseModel):
 class StateEdgeParameters(BaseModel):
     """Describes what parameters you want to extract out when the transition changes.
 
-    The parameters extracted here can be referenced in prompts & function descriptions of later states via dynamic variables. The parameters the function accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+    The parameters extracted here can be referenced in prompts & function descriptions of later states via dynamic variables. The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
     """
 
     properties: object
@@ -1297,7 +1297,7 @@ class StateEdge(BaseModel):
     """Describes what parameters you want to extract out when the transition changes.
 
     The parameters extracted here can be referenced in prompts & function
-    descriptions of later states via dynamic variables. The parameters the function
+    descriptions of later states via dynamic variables. The parameters the functions
     accepts, described as a JSON Schema object. See
     [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for
     documentation about the format.
@@ -1309,7 +1309,7 @@ class StateToolEndCallTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1700,7 +1700,7 @@ class StateToolTransferCallTool(BaseModel):
 class StateToolCheckAvailabilityCalTool(BaseModel):
     cal_api_key: str
     """
-    Cal.com Api key that has access to the cal.com event you want to check
+    Cal.com Api key that have access to the cal.com event you want to check
     availability for.
     """
 
@@ -1715,7 +1715,7 @@ class StateToolCheckAvailabilityCalTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1740,7 +1740,7 @@ class StateToolCheckAvailabilityCalTool(BaseModel):
 class StateToolBookAppointmentCalTool(BaseModel):
     cal_api_key: str
     """
-    Cal.com Api key that has access to the cal.com event you want to book
+    Cal.com Api key that have access to the cal.com event you want to book
     appointment.
     """
 
@@ -1755,7 +1755,7 @@ class StateToolBookAppointmentCalTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1837,7 +1837,7 @@ class StateToolPressDigitTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1933,7 +1933,7 @@ class StateToolSendSMSTool(BaseModel):
 
 
 class StateToolCustomToolParameters(BaseModel):
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
@@ -1960,8 +1960,8 @@ class StateToolCustomTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["custom"]
@@ -2033,7 +2033,7 @@ class StateToolCustomTool(BaseModel):
     """
 
     parameters: Optional[StateToolCustomToolParameters] = None
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
@@ -2083,8 +2083,8 @@ class StateToolCodeTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["code"]
@@ -2259,8 +2259,8 @@ class StateToolExtractDynamicVariableTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Literal["extract_dynamic_variable"]
@@ -2280,7 +2280,7 @@ class StateToolBridgeTransferTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -2317,7 +2317,7 @@ class StateToolCancelTransferTool(BaseModel):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -2429,8 +2429,8 @@ class State(BaseModel):
     name: str
     """Name of the state, must be unique for each state.
 
-    Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum
-    length of 64 (no space allowed).
+    Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a
+    maximum length of 64 (no space allowed).
     """
 
     edges: Optional[List[StateEdge]] = None

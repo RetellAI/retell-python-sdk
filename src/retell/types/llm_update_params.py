@@ -251,7 +251,7 @@ class GeneralToolEndCallTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -640,7 +640,7 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
 class GeneralToolCheckAvailabilityCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to check
+    Cal.com Api key that have access to the cal.com event you want to check
     availability for.
     """
 
@@ -655,7 +655,7 @@ class GeneralToolCheckAvailabilityCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -680,7 +680,7 @@ class GeneralToolCheckAvailabilityCalTool(TypedDict, total=False):
 class GeneralToolBookAppointmentCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to book
+    Cal.com Api key that have access to the cal.com event you want to book
     appointment.
     """
 
@@ -695,7 +695,7 @@ class GeneralToolBookAppointmentCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -777,7 +777,7 @@ class GeneralToolPressDigitTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -873,7 +873,7 @@ class GeneralToolSendSMSTool(TypedDict, total=False):
 
 
 class GeneralToolCustomToolParameters(TypedDict, total=False):
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
@@ -900,8 +900,8 @@ class GeneralToolCustomTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["custom"]]
@@ -973,7 +973,7 @@ class GeneralToolCustomTool(TypedDict, total=False):
     """
 
     parameters: GeneralToolCustomToolParameters
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
@@ -1023,8 +1023,8 @@ class GeneralToolCodeTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["code"]]
@@ -1199,8 +1199,8 @@ class GeneralToolExtractDynamicVariableTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["extract_dynamic_variable"]]
@@ -1220,7 +1220,7 @@ class GeneralToolBridgeTransferTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1257,7 +1257,7 @@ class GeneralToolCancelTransferTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1397,7 +1397,7 @@ class Mcp(TypedDict, total=False):
 class StateEdgeParameters(TypedDict, total=False):
     """Describes what parameters you want to extract out when the transition changes.
 
-    The parameters extracted here can be referenced in prompts & function descriptions of later states via dynamic variables. The parameters the function accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+    The parameters extracted here can be referenced in prompts & function descriptions of later states via dynamic variables. The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
     """
 
     properties: Required[object]
@@ -1436,7 +1436,7 @@ class StateEdge(TypedDict, total=False):
     """Describes what parameters you want to extract out when the transition changes.
 
     The parameters extracted here can be referenced in prompts & function
-    descriptions of later states via dynamic variables. The parameters the function
+    descriptions of later states via dynamic variables. The parameters the functions
     accepts, described as a JSON Schema object. See
     [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for
     documentation about the format.
@@ -1448,7 +1448,7 @@ class StateToolEndCallTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1837,7 +1837,7 @@ class StateToolTransferCallTool(TypedDict, total=False):
 class StateToolCheckAvailabilityCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to check
+    Cal.com Api key that have access to the cal.com event you want to check
     availability for.
     """
 
@@ -1852,7 +1852,7 @@ class StateToolCheckAvailabilityCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1877,7 +1877,7 @@ class StateToolCheckAvailabilityCalTool(TypedDict, total=False):
 class StateToolBookAppointmentCalTool(TypedDict, total=False):
     cal_api_key: Required[str]
     """
-    Cal.com Api key that has access to the cal.com event you want to book
+    Cal.com Api key that have access to the cal.com event you want to book
     appointment.
     """
 
@@ -1892,7 +1892,7 @@ class StateToolBookAppointmentCalTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -1974,7 +1974,7 @@ class StateToolPressDigitTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -2070,7 +2070,7 @@ class StateToolSendSMSTool(TypedDict, total=False):
 
 
 class StateToolCustomToolParameters(TypedDict, total=False):
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     """
@@ -2097,8 +2097,8 @@ class StateToolCustomTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["custom"]]
@@ -2170,7 +2170,7 @@ class StateToolCustomTool(TypedDict, total=False):
     """
 
     parameters: StateToolCustomToolParameters
-    """The parameters the function accepts, described as a JSON Schema object.
+    """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
     for documentation about the format. Omitting parameters defines a function with
@@ -2220,8 +2220,8 @@ class StateToolCodeTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["code"]]
@@ -2396,8 +2396,8 @@ class StateToolExtractDynamicVariableTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain
-    underscores and dashes, with a maximum length of 64 (no space allowed).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     type: Required[Literal["extract_dynamic_variable"]]
@@ -2417,7 +2417,7 @@ class StateToolBridgeTransferTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -2454,7 +2454,7 @@ class StateToolCancelTransferTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or
+    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
     contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
@@ -2566,8 +2566,8 @@ class State(TypedDict, total=False):
     name: Required[str]
     """Name of the state, must be unique for each state.
 
-    Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum
-    length of 64 (no space allowed).
+    Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a
+    maximum length of 64 (no space allowed).
     """
 
     edges: Iterable[StateEdge]
