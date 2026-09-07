@@ -11,6 +11,7 @@ from ..types import (
     call_list_params,
     call_update_params,
     call_update_live_params,
+    call_create_web_v3_params,
     call_create_web_call_params,
     call_create_phone_call_params,
     call_register_phone_call_params,
@@ -32,6 +33,7 @@ from ..types.web_call_response import WebCallResponse
 from ..types.call_list_response import CallListResponse
 from ..types.phone_call_response import PhoneCallResponse
 from ..types.call_update_live_response import CallUpdateLiveResponse
+from ..types.call_create_web_v3_response import CallCreateWebV3Response
 
 __all__ = ["CallResource", "AsyncCallResource"]
 
@@ -413,6 +415,80 @@ class CallResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=WebCallResponse,
+        )
+
+    def create_web_v3(
+        self,
+        *,
+        agent_id: str,
+        agent_override: call_create_web_v3_params.AgentOverride | Omit = omit,
+        agent_version: Union[str, int] | Omit = omit,
+        current_node_id: Optional[str] | Omit = omit,
+        current_state: Optional[str] | Omit = omit,
+        metadata: object | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CallCreateWebV3Response:
+        """
+        Create a new web call and return browser connection details.
+
+        Args:
+          agent_id: Unique id of agent used for the call. Your agent would contain the LLM Websocket
+              url used for this call.
+
+          agent_override: For this particular call, override agent configuration with these settings. This
+              allows you to customize agent behavior for individual calls without modifying
+              the base agent.
+
+          agent_version: The version of the agent to use for the call.
+
+          current_node_id: Start the call at this conversation flow node (stage). Must be a valid node id
+              in the agent's conversation flow. Only applicable when the agent uses
+              conversation flow as the response engine. Ignored for retell-llm agents.
+
+          current_state: Start the conversation in this state (stage). Must be a valid state name in the
+              agent's Retell LLM. Only applicable when the agent uses Retell LLM with states.
+              Ignored for conversation-flow agents.
+
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the call. Not used for processing. You
+              can later get this field from the call object.
+
+          retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
+              your Response Engine prompt and tool description. Only applicable for Response
+              Engine.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/v3/create-web-call",
+            body=maybe_transform(
+                {
+                    "agent_id": agent_id,
+                    "agent_override": agent_override,
+                    "agent_version": agent_version,
+                    "current_node_id": current_node_id,
+                    "current_state": current_state,
+                    "metadata": metadata,
+                    "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
+                },
+                call_create_web_v3_params.CallCreateWebV3Params,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CallCreateWebV3Response,
         )
 
     def register_phone_call(
@@ -993,6 +1069,80 @@ class AsyncCallResource(AsyncAPIResource):
             cast_to=WebCallResponse,
         )
 
+    async def create_web_v3(
+        self,
+        *,
+        agent_id: str,
+        agent_override: call_create_web_v3_params.AgentOverride | Omit = omit,
+        agent_version: Union[str, int] | Omit = omit,
+        current_node_id: Optional[str] | Omit = omit,
+        current_state: Optional[str] | Omit = omit,
+        metadata: object | Omit = omit,
+        retell_llm_dynamic_variables: Dict[str, str] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CallCreateWebV3Response:
+        """
+        Create a new web call and return browser connection details.
+
+        Args:
+          agent_id: Unique id of agent used for the call. Your agent would contain the LLM Websocket
+              url used for this call.
+
+          agent_override: For this particular call, override agent configuration with these settings. This
+              allows you to customize agent behavior for individual calls without modifying
+              the base agent.
+
+          agent_version: The version of the agent to use for the call.
+
+          current_node_id: Start the call at this conversation flow node (stage). Must be a valid node id
+              in the agent's conversation flow. Only applicable when the agent uses
+              conversation flow as the response engine. Ignored for retell-llm agents.
+
+          current_state: Start the conversation in this state (stage). Must be a valid state name in the
+              agent's Retell LLM. Only applicable when the agent uses Retell LLM with states.
+              Ignored for conversation-flow agents.
+
+          metadata: An arbitrary object for storage purpose only. You can put anything here like
+              your internal customer id associated with the call. Not used for processing. You
+              can later get this field from the call object.
+
+          retell_llm_dynamic_variables: Add optional dynamic variables in key value pairs of string that injects into
+              your Response Engine prompt and tool description. Only applicable for Response
+              Engine.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/v3/create-web-call",
+            body=await async_maybe_transform(
+                {
+                    "agent_id": agent_id,
+                    "agent_override": agent_override,
+                    "agent_version": agent_version,
+                    "current_node_id": current_node_id,
+                    "current_state": current_state,
+                    "metadata": metadata,
+                    "retell_llm_dynamic_variables": retell_llm_dynamic_variables,
+                },
+                call_create_web_v3_params.CallCreateWebV3Params,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CallCreateWebV3Response,
+        )
+
     async def register_phone_call(
         self,
         *,
@@ -1214,6 +1364,9 @@ class CallResourceWithRawResponse:
         self.create_web_call = to_raw_response_wrapper(
             call.create_web_call,
         )
+        self.create_web_v3 = to_raw_response_wrapper(
+            call.create_web_v3,
+        )
         self.register_phone_call = to_raw_response_wrapper(
             call.register_phone_call,
         )
@@ -1249,6 +1402,9 @@ class AsyncCallResourceWithRawResponse:
         )
         self.create_web_call = async_to_raw_response_wrapper(
             call.create_web_call,
+        )
+        self.create_web_v3 = async_to_raw_response_wrapper(
+            call.create_web_v3,
         )
         self.register_phone_call = async_to_raw_response_wrapper(
             call.register_phone_call,
@@ -1286,6 +1442,9 @@ class CallResourceWithStreamingResponse:
         self.create_web_call = to_streamed_response_wrapper(
             call.create_web_call,
         )
+        self.create_web_v3 = to_streamed_response_wrapper(
+            call.create_web_v3,
+        )
         self.register_phone_call = to_streamed_response_wrapper(
             call.register_phone_call,
         )
@@ -1321,6 +1480,9 @@ class AsyncCallResourceWithStreamingResponse:
         )
         self.create_web_call = async_to_streamed_response_wrapper(
             call.create_web_call,
+        )
+        self.create_web_v3 = async_to_streamed_response_wrapper(
+            call.create_web_v3,
         )
         self.register_phone_call = async_to_streamed_response_wrapper(
             call.register_phone_call,
