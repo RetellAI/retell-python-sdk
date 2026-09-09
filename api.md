@@ -5,6 +5,7 @@ Types:
 ```python
 from retell.types import (
     CallResponse,
+    CreateWebCallResponse,
     PhoneCallResponse,
     WebCallResponse,
     CallListResponse,
@@ -21,7 +22,7 @@ Methods:
 - <code title="post /v3/list-calls">client.call.<a href="./src/retell/resources/call.py">list</a>(\*\*<a href="src/retell/types/call_list_params.py">params</a>) -> <a href="./src/retell/types/call_list_response.py">CallListResponse</a></code>
 - <code title="delete /v2/delete-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">delete</a>(call_id) -> None</code>
 - <code title="post /v2/create-phone-call">client.call.<a href="./src/retell/resources/call.py">create_phone_call</a>(\*\*<a href="src/retell/types/call_create_phone_call_params.py">params</a>) -> <a href="./src/retell/types/phone_call_response.py">PhoneCallResponse</a></code>
-- <code title="post /v2/create-web-call">client.call.<a href="./src/retell/resources/call.py">create_web_call</a>(\*\*<a href="src/retell/types/call_create_web_call_params.py">params</a>) -> <a href="./src/retell/types/web_call_response.py">WebCallResponse</a></code>
+- <code title="post /v3/create-web-call">client.call.<a href="./src/retell/resources/call.py">create_web_call</a>(\*\*<a href="src/retell/types/call_create_web_call_params.py">params</a>) -> <a href="./src/retell/types/create_web_call_response.py">CreateWebCallResponse</a></code>
 - <code title="post /v2/listen-live-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">listen_live</a>(call_id) -> <a href="./src/retell/types/call_listen_live_response.py">CallListenLiveResponse</a></code>
 - <code title="post /v2/register-phone-call">client.call.<a href="./src/retell/resources/call.py">register_phone_call</a>(\*\*<a href="src/retell/types/call_register_phone_call_params.py">params</a>) -> <a href="./src/retell/types/phone_call_response.py">PhoneCallResponse</a></code>
 - <code title="put /rerun-call-analysis/{call_id}">client.call.<a href="./src/retell/resources/call.py">rerun_analysis</a>(call_id) -> <a href="./src/retell/types/call_response.py">CallResponse</a></code>

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Any, Dict, Union, Optional, cast
 from typing_extensions import Literal
 
@@ -30,9 +29,9 @@ from .._response import (
 from .._constants import DEFAULT_TIMEOUT
 from .._base_client import make_request_options
 from ..types.call_response import CallResponse
-from ..types.web_call_response import WebCallResponse
 from ..types.call_list_response import CallListResponse
 from ..types.phone_call_response import PhoneCallResponse
+from ..types.create_web_call_response import CreateWebCallResponse
 from ..types.call_listen_live_response import CallListenLiveResponse
 from ..types.call_update_live_response import CallUpdateLiveResponse
 from ..types.call_take_over_live_response import CallTakeOverLiveResponse
@@ -344,7 +343,6 @@ class CallResource(SyncAPIResource):
             cast_to=PhoneCallResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     def create_web_call(
         self,
         *,
@@ -361,13 +359,12 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebCallResponse:
-        """Create a new web call
+    ) -> CreateWebCallResponse:
+        """
+        Create a new web call and return browser connection details.
 
         Args:
-          agent_id: Unique id of agent used for the call.
-
-        Your agent would contain the LLM Websocket
+          agent_id: Unique id of agent used for the call. Your agent would contain the LLM Websocket
               url used for this call.
 
           agent_override: For this particular call, override agent configuration with these settings. This
@@ -401,7 +398,7 @@ class CallResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/v2/create-web-call",
+            "/v3/create-web-call",
             body=maybe_transform(
                 {
                     "agent_id": agent_id,
@@ -417,7 +414,7 @@ class CallResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebCallResponse,
+            cast_to=CreateWebCallResponse,
         )
 
     def listen_live(
@@ -999,7 +996,6 @@ class AsyncCallResource(AsyncAPIResource):
             cast_to=PhoneCallResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
     async def create_web_call(
         self,
         *,
@@ -1016,13 +1012,12 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> WebCallResponse:
-        """Create a new web call
+    ) -> CreateWebCallResponse:
+        """
+        Create a new web call and return browser connection details.
 
         Args:
-          agent_id: Unique id of agent used for the call.
-
-        Your agent would contain the LLM Websocket
+          agent_id: Unique id of agent used for the call. Your agent would contain the LLM Websocket
               url used for this call.
 
           agent_override: For this particular call, override agent configuration with these settings. This
@@ -1056,7 +1051,7 @@ class AsyncCallResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/v2/create-web-call",
+            "/v3/create-web-call",
             body=await async_maybe_transform(
                 {
                     "agent_id": agent_id,
@@ -1072,7 +1067,7 @@ class AsyncCallResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=WebCallResponse,
+            cast_to=CreateWebCallResponse,
         )
 
     async def listen_live(
@@ -1371,10 +1366,8 @@ class CallResourceWithRawResponse:
         self.create_phone_call = to_raw_response_wrapper(
             call.create_phone_call,
         )
-        self.create_web_call = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                call.create_web_call,  # pyright: ignore[reportDeprecated],
-            )
+        self.create_web_call = to_raw_response_wrapper(
+            call.create_web_call,
         )
         self.listen_live = to_raw_response_wrapper(
             call.listen_live,
@@ -1415,10 +1408,8 @@ class AsyncCallResourceWithRawResponse:
         self.create_phone_call = async_to_raw_response_wrapper(
             call.create_phone_call,
         )
-        self.create_web_call = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                call.create_web_call,  # pyright: ignore[reportDeprecated],
-            )
+        self.create_web_call = async_to_raw_response_wrapper(
+            call.create_web_call,
         )
         self.listen_live = async_to_raw_response_wrapper(
             call.listen_live,
@@ -1459,10 +1450,8 @@ class CallResourceWithStreamingResponse:
         self.create_phone_call = to_streamed_response_wrapper(
             call.create_phone_call,
         )
-        self.create_web_call = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                call.create_web_call,  # pyright: ignore[reportDeprecated],
-            )
+        self.create_web_call = to_streamed_response_wrapper(
+            call.create_web_call,
         )
         self.listen_live = to_streamed_response_wrapper(
             call.listen_live,
@@ -1503,10 +1492,8 @@ class AsyncCallResourceWithStreamingResponse:
         self.create_phone_call = async_to_streamed_response_wrapper(
             call.create_phone_call,
         )
-        self.create_web_call = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                call.create_web_call,  # pyright: ignore[reportDeprecated],
-            )
+        self.create_web_call = async_to_streamed_response_wrapper(
+            call.create_web_call,
         )
         self.listen_live = async_to_streamed_response_wrapper(
             call.listen_live,
