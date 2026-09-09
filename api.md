@@ -8,6 +8,8 @@ from retell.types import (
     PhoneCallResponse,
     WebCallResponse,
     CallListResponse,
+    CallListenLiveResponse,
+    CallTakeOverLiveResponse,
     CallUpdateLiveResponse,
 )
 ```
@@ -20,9 +22,11 @@ Methods:
 - <code title="delete /v2/delete-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">delete</a>(call_id) -> None</code>
 - <code title="post /v2/create-phone-call">client.call.<a href="./src/retell/resources/call.py">create_phone_call</a>(\*\*<a href="src/retell/types/call_create_phone_call_params.py">params</a>) -> <a href="./src/retell/types/phone_call_response.py">PhoneCallResponse</a></code>
 - <code title="post /v2/create-web-call">client.call.<a href="./src/retell/resources/call.py">create_web_call</a>(\*\*<a href="src/retell/types/call_create_web_call_params.py">params</a>) -> <a href="./src/retell/types/web_call_response.py">WebCallResponse</a></code>
+- <code title="post /v2/listen-live-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">listen_live</a>(call_id) -> <a href="./src/retell/types/call_listen_live_response.py">CallListenLiveResponse</a></code>
 - <code title="post /v2/register-phone-call">client.call.<a href="./src/retell/resources/call.py">register_phone_call</a>(\*\*<a href="src/retell/types/call_register_phone_call_params.py">params</a>) -> <a href="./src/retell/types/phone_call_response.py">PhoneCallResponse</a></code>
 - <code title="put /rerun-call-analysis/{call_id}">client.call.<a href="./src/retell/resources/call.py">rerun_analysis</a>(call_id) -> <a href="./src/retell/types/call_response.py">CallResponse</a></code>
 - <code title="post /v2/stop-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">stop</a>(call_id) -> None</code>
+- <code title="post /v2/take-over-live-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">take_over_live</a>(call_id, \*\*<a href="src/retell/types/call_take_over_live_params.py">params</a>) -> <a href="./src/retell/types/call_take_over_live_response.py">CallTakeOverLiveResponse</a></code>
 - <code title="patch /v2/update-live-call/{call_id}">client.call.<a href="./src/retell/resources/call.py">update_live</a>(call_id, \*\*<a href="src/retell/types/call_update_live_params.py">params</a>) -> <a href="./src/retell/types/call_update_live_response.py">CallUpdateLiveResponse</a></code>
 
 # Chat

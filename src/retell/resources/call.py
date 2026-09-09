@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Any, Dict, Union, Optional, cast
 from typing_extensions import Literal
 
@@ -11,6 +12,7 @@ from ..types import (
     call_list_params,
     call_update_params,
     call_update_live_params,
+    call_take_over_live_params,
     call_create_web_call_params,
     call_create_phone_call_params,
     call_register_phone_call_params,
@@ -31,7 +33,9 @@ from ..types.call_response import CallResponse
 from ..types.web_call_response import WebCallResponse
 from ..types.call_list_response import CallListResponse
 from ..types.phone_call_response import PhoneCallResponse
+from ..types.call_listen_live_response import CallListenLiveResponse
 from ..types.call_update_live_response import CallUpdateLiveResponse
+from ..types.call_take_over_live_response import CallTakeOverLiveResponse
 
 __all__ = ["CallResource", "AsyncCallResource"]
 
@@ -340,6 +344,7 @@ class CallResource(SyncAPIResource):
             cast_to=PhoneCallResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def create_web_call(
         self,
         *,
@@ -413,6 +418,41 @@ class CallResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=WebCallResponse,
+        )
+
+    def listen_live(
+        self,
+        call_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CallListenLiveResponse:
+        """
+        Mint a subscribe-only access token for an in-progress call so a client can
+        listen to live audio. The returned token grants join + subscribe on the call's
+        existing audio room; it cannot publish. The call must be in ONGOING status.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not call_id:
+            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
+        return self._post(
+            path_template("/v2/listen-live-call/{call_id}", call_id=call_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CallListenLiveResponse,
         )
 
     def register_phone_call(
@@ -557,6 +597,47 @@ class CallResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
+        )
+
+    def take_over_live(
+        self,
+        call_id: str,
+        *,
+        participant_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CallTakeOverLiveResponse:
+        """Take over an in-progress call from the AI agent.
+
+        The agent stops responding and
+        the specified live-listen participant is allowed to speak directly to the
+        caller. The call must be in ONGOING status.
+
+        Args:
+          participant_id: The id of the live-listen participant to upgrade, obtained when joining via
+              /v2/listen-live-call.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not call_id:
+            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
+        return self._post(
+            path_template("/v2/take-over-live-call/{call_id}", call_id=call_id),
+            body=maybe_transform({"participant_id": participant_id}, call_take_over_live_params.CallTakeOverLiveParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CallTakeOverLiveResponse,
         )
 
     def update_live(
@@ -918,6 +999,7 @@ class AsyncCallResource(AsyncAPIResource):
             cast_to=PhoneCallResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def create_web_call(
         self,
         *,
@@ -991,6 +1073,41 @@ class AsyncCallResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=WebCallResponse,
+        )
+
+    async def listen_live(
+        self,
+        call_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CallListenLiveResponse:
+        """
+        Mint a subscribe-only access token for an in-progress call so a client can
+        listen to live audio. The returned token grants join + subscribe on the call's
+        existing audio room; it cannot publish. The call must be in ONGOING status.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not call_id:
+            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
+        return await self._post(
+            path_template("/v2/listen-live-call/{call_id}", call_id=call_id),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CallListenLiveResponse,
         )
 
     async def register_phone_call(
@@ -1137,6 +1254,49 @@ class AsyncCallResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def take_over_live(
+        self,
+        call_id: str,
+        *,
+        participant_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> CallTakeOverLiveResponse:
+        """Take over an in-progress call from the AI agent.
+
+        The agent stops responding and
+        the specified live-listen participant is allowed to speak directly to the
+        caller. The call must be in ONGOING status.
+
+        Args:
+          participant_id: The id of the live-listen participant to upgrade, obtained when joining via
+              /v2/listen-live-call.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not call_id:
+            raise ValueError(f"Expected a non-empty value for `call_id` but received {call_id!r}")
+        return await self._post(
+            path_template("/v2/take-over-live-call/{call_id}", call_id=call_id),
+            body=await async_maybe_transform(
+                {"participant_id": participant_id}, call_take_over_live_params.CallTakeOverLiveParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=CallTakeOverLiveResponse,
+        )
+
     async def update_live(
         self,
         call_id: str,
@@ -1211,8 +1371,13 @@ class CallResourceWithRawResponse:
         self.create_phone_call = to_raw_response_wrapper(
             call.create_phone_call,
         )
-        self.create_web_call = to_raw_response_wrapper(
-            call.create_web_call,
+        self.create_web_call = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                call.create_web_call,  # pyright: ignore[reportDeprecated],
+            )
+        )
+        self.listen_live = to_raw_response_wrapper(
+            call.listen_live,
         )
         self.register_phone_call = to_raw_response_wrapper(
             call.register_phone_call,
@@ -1222,6 +1387,9 @@ class CallResourceWithRawResponse:
         )
         self.stop = to_raw_response_wrapper(
             call.stop,
+        )
+        self.take_over_live = to_raw_response_wrapper(
+            call.take_over_live,
         )
         self.update_live = to_raw_response_wrapper(
             call.update_live,
@@ -1247,8 +1415,13 @@ class AsyncCallResourceWithRawResponse:
         self.create_phone_call = async_to_raw_response_wrapper(
             call.create_phone_call,
         )
-        self.create_web_call = async_to_raw_response_wrapper(
-            call.create_web_call,
+        self.create_web_call = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                call.create_web_call,  # pyright: ignore[reportDeprecated],
+            )
+        )
+        self.listen_live = async_to_raw_response_wrapper(
+            call.listen_live,
         )
         self.register_phone_call = async_to_raw_response_wrapper(
             call.register_phone_call,
@@ -1258,6 +1431,9 @@ class AsyncCallResourceWithRawResponse:
         )
         self.stop = async_to_raw_response_wrapper(
             call.stop,
+        )
+        self.take_over_live = async_to_raw_response_wrapper(
+            call.take_over_live,
         )
         self.update_live = async_to_raw_response_wrapper(
             call.update_live,
@@ -1283,8 +1459,13 @@ class CallResourceWithStreamingResponse:
         self.create_phone_call = to_streamed_response_wrapper(
             call.create_phone_call,
         )
-        self.create_web_call = to_streamed_response_wrapper(
-            call.create_web_call,
+        self.create_web_call = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                call.create_web_call,  # pyright: ignore[reportDeprecated],
+            )
+        )
+        self.listen_live = to_streamed_response_wrapper(
+            call.listen_live,
         )
         self.register_phone_call = to_streamed_response_wrapper(
             call.register_phone_call,
@@ -1294,6 +1475,9 @@ class CallResourceWithStreamingResponse:
         )
         self.stop = to_streamed_response_wrapper(
             call.stop,
+        )
+        self.take_over_live = to_streamed_response_wrapper(
+            call.take_over_live,
         )
         self.update_live = to_streamed_response_wrapper(
             call.update_live,
@@ -1319,8 +1503,13 @@ class AsyncCallResourceWithStreamingResponse:
         self.create_phone_call = async_to_streamed_response_wrapper(
             call.create_phone_call,
         )
-        self.create_web_call = async_to_streamed_response_wrapper(
-            call.create_web_call,
+        self.create_web_call = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                call.create_web_call,  # pyright: ignore[reportDeprecated],
+            )
+        )
+        self.listen_live = async_to_streamed_response_wrapper(
+            call.listen_live,
         )
         self.register_phone_call = async_to_streamed_response_wrapper(
             call.register_phone_call,
@@ -1330,6 +1519,9 @@ class AsyncCallResourceWithStreamingResponse:
         )
         self.stop = async_to_streamed_response_wrapper(
             call.stop,
+        )
+        self.take_over_live = async_to_streamed_response_wrapper(
+            call.take_over_live,
         )
         self.update_live = async_to_streamed_response_wrapper(
             call.update_live,
