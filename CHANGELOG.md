@@ -1,5 +1,35 @@
 # Changelog
 
+## [5.65.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.64.0...v5.65.0) (2026-09-10)
+
+
+### Features
+
+* **api:** api update ([baa52dd](https://github.com/RetellAI/retell-python-sdk/commit/baa52ddc907eb44ec3e39c91bf56b34c6e90a9c9))
+* **api:** api update ([fdcf3c4](https://github.com/RetellAI/retell-python-sdk/commit/fdcf3c404dad0bcdf1f68eecda754152d3ecebdd))
+* **api:** api update ([3838870](https://github.com/RetellAI/retell-python-sdk/commit/3838870a600fa938d540adccc456d327f0f1c296))
+* **api:** api update ([e491ec5](https://github.com/RetellAI/retell-python-sdk/commit/e491ec52a39740657baa39c7dc112c8b4128a149))
+* **api:** api update ([97f1623](https://github.com/RetellAI/retell-python-sdk/commit/97f1623a7ecd99b571254a7c361d626dcc970b79))
+* **api:** api update ([16c2274](https://github.com/RetellAI/retell-python-sdk/commit/16c2274134de2f380798476473f037f0bf10275a))
+* **api:** api update ([8d9ee8a](https://github.com/RetellAI/retell-python-sdk/commit/8d9ee8a5ebbedb59ace1ccc9215fb15d25265c56))
+* **api:** release accumulated SDK updates ([#502](https://github.com/RetellAI/retell-python-sdk/issues/502)) ([3877699](https://github.com/RetellAI/retell-python-sdk/commit/38776994e40b240316b99841c03ac669a3c585f9))
+
+
+### Bug Fixes
+
+* **ci:** restore SDK releases with the existing GitHub App ([#503](https://github.com/RetellAI/retell-python-sdk/issues/503)) ([9cbfca1](https://github.com/RetellAI/retell-python-sdk/commit/9cbfca10cfc1146c2f1eac265c0303d170168f05))
+
+
+### Chores
+
+* preserve production workflow files ([16a64fb](https://github.com/RetellAI/retell-python-sdk/commit/16a64fbb69a1aa45dabc9a8f3c186d9baf909c24))
+
+
+### Documentation
+
+* overhaul guide for browser web calls; simplify setup and clarify transcript/audio features ([eb3f0d3](https://github.com/RetellAI/retell-python-sdk/commit/eb3f0d3241547a0b0f127b922afb3609d96b7154))
+* remove `create-web-v3` endpoint from config and map exclusion reasoning ([003036c](https://github.com/RetellAI/retell-python-sdk/commit/003036ccb077a7440b0542a01bcd55e64df625da))
+
 ## [5.64.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.61.0...v5.64.0) (2026-08-23)
 
 
