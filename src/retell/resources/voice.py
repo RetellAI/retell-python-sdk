@@ -105,7 +105,7 @@ class VoiceResource(SyncAPIResource):
         provider_voice_id: str,
         voice_name: str,
         public_user_id: str | Omit = omit,
-        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio"] | Omit = omit,
+        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio", "inworld"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -155,7 +155,7 @@ class VoiceResource(SyncAPIResource):
         *,
         files: SequenceNotStr[FileTypes],
         voice_name: str,
-        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio", "platform"],
+        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio", "platform", "inworld"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -209,7 +209,7 @@ class VoiceResource(SyncAPIResource):
         self,
         *,
         search_query: str,
-        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio"] | Omit = omit,
+        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio", "inworld"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -327,7 +327,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         provider_voice_id: str,
         voice_name: str,
         public_user_id: str | Omit = omit,
-        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio"] | Omit = omit,
+        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio", "inworld"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -377,7 +377,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         *,
         files: SequenceNotStr[FileTypes],
         voice_name: str,
-        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio", "platform"],
+        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio", "platform", "inworld"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -431,7 +431,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         self,
         *,
         search_query: str,
-        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio"] | Omit = omit,
+        voice_provider: Literal["elevenlabs", "cartesia", "minimax", "fish_audio", "inworld"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

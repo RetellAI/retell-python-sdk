@@ -9,10 +9,10 @@ __all__ = ["AppListResponse"]
 
 
 class AppListResponse(BaseModel):
-    has_more: Optional[bool] = None
+    has_more: bool
     """Whether more results are available."""
 
-    items: Optional[List[AppResponse]] = None
+    items: List[AppResponse]
 
     pagination_key: Optional[str] = None
     """Pagination key for the next page."""

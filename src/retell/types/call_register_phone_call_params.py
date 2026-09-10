@@ -108,6 +108,9 @@ class AgentOverrideAgentCustomSttConfig(TypedDict, total=False):
     """Endpointing timeout in milliseconds.
 
     Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI.
+    For AssemblyAI, this sets min_turn_silence (100-3000 ms). max_turn_silence adds
+    half of this value, rounded to the nearest millisecond and bounded to 500-1000
+    ms, with a total cap of 3000 ms.
     """
 
     provider: Required[Literal["azure", "deepgram", "soniox", "assemblyai"]]
@@ -1024,6 +1027,7 @@ class AgentOverrideAgent(TypedDict, total=False):
             "sonic-3",
             "sonic-3-latest",
             "sonic-3.5",
+            "sonic-3.6",
             "tts-1",
             "gpt-4o-mini-tts",
             "speech-02-turbo",
@@ -1031,6 +1035,8 @@ class AgentOverrideAgent(TypedDict, total=False):
             "s1",
             "s2-pro",
             "s2.1-pro",
+            "inworld-tts-2",
+            "inworld-tts-2-flash",
         ]
     ]
     """Select the voice model used for the selected voice.

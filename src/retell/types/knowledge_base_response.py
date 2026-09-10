@@ -80,15 +80,15 @@ class KnowledgeBaseResponse(BaseModel):
     - `error`: Initial indexing failed. Source metadata may be incomplete.
     - `refreshing_in_progress`: An existing knowledge base is being updated. This
       includes indexing newly added sources or running a manual or automatic refresh
-      that re-indexes URLs, Google Drive files, and pages from auto-crawling paths.
-      Previously indexed sources remain available during the update, and the source
-      list may change when it finishes.
+      that re-indexes URLs, Google Drive files, Microsoft OneDrive files, and pages
+      from auto-crawling paths. Previously indexed sources remain available during
+      the update, and the source list may change when it finishes.
     """
 
     enable_auto_refresh: Optional[bool] = None
-    """Whether to enable auto refresh for the knowledge base urls.
-
-    If set to true, will retrieve the data from the specified url every 12 hours.
+    """
+    Whether eligible URL and connected-file sources refresh automatically on a daily
+    cadence.
     """
 
     knowledge_base_sources: Optional[List[KnowledgeBaseSource]] = None

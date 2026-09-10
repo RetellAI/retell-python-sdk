@@ -34,10 +34,10 @@ class Item(BaseModel):
 
 
 class AgentListResponse(BaseModel):
-    has_more: Optional[bool] = None
+    has_more: bool
     """Whether more results are available."""
 
-    items: Optional[List[Item]] = None
+    items: List[Item]
 
     pagination_key: Optional[str] = None
     """Pagination key for the next page."""

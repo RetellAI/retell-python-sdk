@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
+from .._types import SequenceNotStr
+
 __all__ = ["ContactCreateParams"]
 
 
@@ -24,3 +26,6 @@ class ContactCreateParams(TypedDict, total=False):
 
     last_name: str
     """Last name of the contact."""
+
+    tags: SequenceNotStr[str]
+    """Full set of tags for the contact."""

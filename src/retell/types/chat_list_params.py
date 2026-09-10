@@ -13,6 +13,8 @@ __all__ = [
     "FilterCriteriaAgent",
     "FilterCriteriaAgentTag",
     "FilterCriteriaChatID",
+    "FilterCriteriaChatIDStringFilter",
+    "FilterCriteriaChatIDEnumFilter",
     "FilterCriteriaChatStatus",
     "FilterCriteriaChatSuccessful",
     "FilterCriteriaCombinedCost",
@@ -76,7 +78,7 @@ class FilterCriteriaAgent(TypedDict, total=False):
     """The agent ID to filter on."""
 
     version: Iterable[float]
-    """Specific versions to filter on. If not provided, all versions are included."""
+    """Specific versions to filter on. If omitted or empty, all versions are included."""
 
 
 class FilterCriteriaAgentTag(TypedDict, total=False):
@@ -90,15 +92,25 @@ class FilterCriteriaAgentTag(TypedDict, total=False):
     value: Required[SequenceNotStr[str]]
 
 
-class FilterCriteriaChatID(TypedDict, total=False):
-    """Filter by chat ID."""
-
+class FilterCriteriaChatIDStringFilter(TypedDict, total=False):
     op: Required[Literal["eq", "ne", "sw", "ew", "co"]]
     """eq: equal, ne: not equal, sw: starts with, ew: ends with, co: contains"""
 
     type: Required[Literal["string"]]
 
     value: Required[str]
+
+
+class FilterCriteriaChatIDEnumFilter(TypedDict, total=False):
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[SequenceNotStr[str]]
+
+
+FilterCriteriaChatID: TypeAlias = Union[FilterCriteriaChatIDStringFilter, FilterCriteriaChatIDEnumFilter]
 
 
 class FilterCriteriaChatStatus(TypedDict, total=False):
@@ -467,13 +479,21 @@ class FilterCriteria(TypedDict, total=False):
     """Filter by whether the chat was successful."""
 
     combined_cost: FilterCriteriaCombinedCost
-    """Filter by combined cost of the chat."""
+    """Filter by total chat cost in cents."""
 
     custom_analysis_data: Iterable[FilterCriteriaCustomAnalysisData]
-    """Filter by custom analysis data fields."""
+    """Filter by custom post-chat analysis outputs.
+
+    Each filter `key` matches the configured output's `name`.
+    """
 
     custom_attributes: Iterable[FilterCriteriaCustomAttribute]
-    """Filter by custom attributes fields."""
+    """
+    Filter by organization-level attributes that attach business context to chats,
+    such as customer tier or campaign, so chats can be organized and filtered
+    consistently in Chat History. Use the attribute ID as `key` and the chat's
+    attribute value as `value`.
+    """
 
     disconnection_reason: FilterCriteriaDisconnectionReason
 

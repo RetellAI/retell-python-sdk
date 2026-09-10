@@ -15,9 +15,9 @@ class KnowledgeBaseCreateParams(TypedDict, total=False):
     """Name of the knowledge base. Must be less than 40 characters."""
 
     enable_auto_refresh: bool
-    """Whether to enable auto refresh for the knowledge base urls.
-
-    If set to true, will retrieve the data from the specified url every 12 hours.
+    """
+    Whether to refresh eligible URL and connected-file sources automatically on a
+    daily cadence.
     """
 
     knowledge_base_files: SequenceNotStr[FileTypes]

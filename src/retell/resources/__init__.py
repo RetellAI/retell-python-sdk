@@ -48,6 +48,14 @@ from .agent import (
     AgentResourceWithStreamingResponse,
     AsyncAgentResourceWithStreamingResponse,
 )
+from .asset import (
+    AssetResource,
+    AsyncAssetResource,
+    AssetResourceWithRawResponse,
+    AsyncAssetResourceWithRawResponse,
+    AssetResourceWithStreamingResponse,
+    AsyncAssetResourceWithStreamingResponse,
+)
 from .tests import (
     TestsResource,
     AsyncTestsResource,
@@ -222,6 +230,12 @@ __all__ = [
     "AsyncVoiceResourceWithRawResponse",
     "VoiceResourceWithStreamingResponse",
     "AsyncVoiceResourceWithStreamingResponse",
+    "AssetResource",
+    "AsyncAssetResource",
+    "AssetResourceWithRawResponse",
+    "AsyncAssetResourceWithRawResponse",
+    "AssetResourceWithStreamingResponse",
+    "AsyncAssetResourceWithStreamingResponse",
     "ConcurrencyResource",
     "AsyncConcurrencyResource",
     "ConcurrencyResourceWithRawResponse",

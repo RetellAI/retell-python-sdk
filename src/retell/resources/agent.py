@@ -11,6 +11,7 @@ import httpx
 from ..types import (
     agent_list_params,
     agent_create_params,
+    agent_repair_params,
     agent_update_params,
     agent_publish_params,
     agent_retrieve_params,
@@ -31,6 +32,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.agent_response import AgentResponse
 from ..types.agent_list_response import AgentListResponse
+from ..types.agent_repair_response import AgentRepairResponse
 from ..types.agent_get_versions_response import AgentGetVersionsResponse
 from ..types.agent_list_versions_response import AgentListVersionsResponse
 from ..types.agent_create_version_response import AgentCreateVersionResponse
@@ -300,6 +302,7 @@ class AgentResource(SyncAPIResource):
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
+                "sonic-3.6",
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
@@ -307,6 +310,8 @@ class AgentResource(SyncAPIResource):
                 "s1",
                 "s2-pro",
                 "s2.1-pro",
+                "inworld-tts-2",
+                "inworld-tts-2-flash",
             ]
         ]
         | Omit = omit,
@@ -934,6 +939,7 @@ class AgentResource(SyncAPIResource):
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
+                "sonic-3.6",
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
@@ -941,6 +947,8 @@ class AgentResource(SyncAPIResource):
                 "s1",
                 "s2-pro",
                 "s2.1-pro",
+                "inworld-tts-2",
+                "inworld-tts-2-flash",
             ]
         ]
         | Omit = omit,
@@ -1513,10 +1521,8 @@ class AgentResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListVersionsResponse:
-        """List stored versions of a voice or chat agent with pagination.
-
-        Root-level data
-        such as assigned tags is not included.
+        """
+        List stored versions of a voice or chat agent with pagination.
 
         Args:
           limit: Maximum number of items to return.
@@ -1599,6 +1605,58 @@ class AgentResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
+        )
+
+    def repair(
+        self,
+        agent_id: str,
+        *,
+        version: Union[str, int] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AgentRepairResponse:
+        """
+        Remove references to resources that no longer exist in your workspace from an
+        agent draft version and its response engine — tools whose app connection has
+        been deleted, unknown knowledge bases, and deleted shared components — and remap
+        voices that are no longer accessible to a default voice. If the agent's response
+        engine version has been published, the engine is left untouched and only
+        agent-level references are repaired. Repairing an agent with nothing to fix is a
+        no-op.
+
+        Args:
+          version: Optional version of the agent to repair. Default to latest version. Published
+              versions are immutable and cannot be repaired.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        return cast(
+            AgentRepairResponse,
+            self._post(
+                path_template("/repair-agent/{agent_id}", agent_id=agent_id),
+                options=make_request_options(
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=maybe_transform({"version": version}, agent_repair_params.AgentRepairParams),
+                ),
+                cast_to=cast(
+                    Any, AgentRepairResponse
+                ),  # Union types cannot be passed in as arguments in the type system
+            ),
         )
 
 
@@ -1864,6 +1922,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
+                "sonic-3.6",
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
@@ -1871,6 +1930,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 "s1",
                 "s2-pro",
                 "s2.1-pro",
+                "inworld-tts-2",
+                "inworld-tts-2-flash",
             ]
         ]
         | Omit = omit,
@@ -2498,6 +2559,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
+                "sonic-3.6",
                 "tts-1",
                 "gpt-4o-mini-tts",
                 "speech-02-turbo",
@@ -2505,6 +2567,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 "s1",
                 "s2-pro",
                 "s2.1-pro",
+                "inworld-tts-2",
+                "inworld-tts-2-flash",
             ]
         ]
         | Omit = omit,
@@ -3079,10 +3143,8 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AgentListVersionsResponse:
-        """List stored versions of a voice or chat agent with pagination.
-
-        Root-level data
-        such as assigned tags is not included.
+        """
+        List stored versions of a voice or chat agent with pagination.
 
         Args:
           limit: Maximum number of items to return.
@@ -3167,6 +3229,58 @@ class AsyncAgentResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def repair(
+        self,
+        agent_id: str,
+        *,
+        version: Union[str, int] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AgentRepairResponse:
+        """
+        Remove references to resources that no longer exist in your workspace from an
+        agent draft version and its response engine — tools whose app connection has
+        been deleted, unknown knowledge bases, and deleted shared components — and remap
+        voices that are no longer accessible to a default voice. If the agent's response
+        engine version has been published, the engine is left untouched and only
+        agent-level references are repaired. Repairing an agent with nothing to fix is a
+        no-op.
+
+        Args:
+          version: Optional version of the agent to repair. Default to latest version. Published
+              versions are immutable and cannot be repaired.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        return cast(
+            AgentRepairResponse,
+            await self._post(
+                path_template("/repair-agent/{agent_id}", agent_id=agent_id),
+                options=make_request_options(
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    query=await async_maybe_transform({"version": version}, agent_repair_params.AgentRepairParams),
+                ),
+                cast_to=cast(
+                    Any, AgentRepairResponse
+                ),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
+
 
 class AgentResourceWithRawResponse:
     def __init__(self, agent: AgentResource) -> None:
@@ -3203,6 +3317,9 @@ class AgentResourceWithRawResponse:
         )
         self.publish = to_raw_response_wrapper(
             agent.publish,
+        )
+        self.repair = to_raw_response_wrapper(
+            agent.repair,
         )
 
 
@@ -3242,6 +3359,9 @@ class AsyncAgentResourceWithRawResponse:
         self.publish = async_to_raw_response_wrapper(
             agent.publish,
         )
+        self.repair = async_to_raw_response_wrapper(
+            agent.repair,
+        )
 
 
 class AgentResourceWithStreamingResponse:
@@ -3280,6 +3400,9 @@ class AgentResourceWithStreamingResponse:
         self.publish = to_streamed_response_wrapper(
             agent.publish,
         )
+        self.repair = to_streamed_response_wrapper(
+            agent.repair,
+        )
 
 
 class AsyncAgentResourceWithStreamingResponse:
@@ -3317,4 +3440,7 @@ class AsyncAgentResourceWithStreamingResponse:
         )
         self.publish = async_to_streamed_response_wrapper(
             agent.publish,
+        )
+        self.repair = async_to_streamed_response_wrapper(
+            agent.repair,
         )

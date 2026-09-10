@@ -9,10 +9,10 @@ __all__ = ["ConversationFlowListResponse"]
 
 
 class ConversationFlowListResponse(BaseModel):
-    has_more: Optional[bool] = None
+    has_more: bool
     """Whether more results are available."""
 
-    items: Optional[List[ConversationFlowResponse]] = None
+    items: List[ConversationFlowResponse]
 
     pagination_key: Optional[str] = None
     """Pagination key for the next page."""

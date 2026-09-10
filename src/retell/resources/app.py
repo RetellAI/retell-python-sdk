@@ -65,16 +65,19 @@ class AppResource(SyncAPIResource):
     ) -> AppResponse:
         """
         Create an App: the connection to one external system (a CRM, calendar, support
-        desk, and so on), holding its credentials and settings. Providers that
-        authenticate with a key, token, or refresh token can be connected in this one
-        call by passing auth_config; the credential is stored encrypted and never
-        returned. Up to 20 apps per provider.
+        desk, and so on), holding its credentials and settings. Providers with
+        caller-managed credentials accept auth_config. Providers using the OAuth
+        callback must omit auth_config and be authorized through connect-app.
+        Credentials are stored encrypted and never returned. Up to 20 apps per provider.
 
         Args:
           provider: Provider name. Must be valid for the App's type; the supported providers per
               type are listed by list-app-templates.
 
           type: App integration category.
+
+          auth_config: Caller-managed credentials. Providers using the OAuth callback reject
+              auth_config and must be authorized through connect-app.
 
           name: Display name.
 
@@ -130,9 +133,14 @@ class AppResource(SyncAPIResource):
         """Partially update an App.
 
         Omitted fields remain unchanged. Updating auth_config
-        invalidates the cached provider token immediately.
+        or tenant metadata invalidates the cached provider token immediately. Providers
+        using the OAuth callback reject auth_config and must be reauthorized through
+        connect-app.
 
         Args:
+          auth_config: Caller-managed credentials. Providers using the OAuth callback reject
+              auth_config and must be authorized through connect-app.
+
           tenant_id: Sub-account id, for providers that scope requests by a sub-account id on a
               shared host.
 
@@ -421,16 +429,19 @@ class AsyncAppResource(AsyncAPIResource):
     ) -> AppResponse:
         """
         Create an App: the connection to one external system (a CRM, calendar, support
-        desk, and so on), holding its credentials and settings. Providers that
-        authenticate with a key, token, or refresh token can be connected in this one
-        call by passing auth_config; the credential is stored encrypted and never
-        returned. Up to 20 apps per provider.
+        desk, and so on), holding its credentials and settings. Providers with
+        caller-managed credentials accept auth_config. Providers using the OAuth
+        callback must omit auth_config and be authorized through connect-app.
+        Credentials are stored encrypted and never returned. Up to 20 apps per provider.
 
         Args:
           provider: Provider name. Must be valid for the App's type; the supported providers per
               type are listed by list-app-templates.
 
           type: App integration category.
+
+          auth_config: Caller-managed credentials. Providers using the OAuth callback reject
+              auth_config and must be authorized through connect-app.
 
           name: Display name.
 
@@ -486,9 +497,14 @@ class AsyncAppResource(AsyncAPIResource):
         """Partially update an App.
 
         Omitted fields remain unchanged. Updating auth_config
-        invalidates the cached provider token immediately.
+        or tenant metadata invalidates the cached provider token immediately. Providers
+        using the OAuth callback reject auth_config and must be reauthorized through
+        connect-app.
 
         Args:
+          auth_config: Caller-managed credentials. Providers using the OAuth callback reject
+              auth_config and must be authorized through connect-app.
+
           tenant_id: Sub-account id, for providers that scope requests by a sub-account id on a
               shared host.
 

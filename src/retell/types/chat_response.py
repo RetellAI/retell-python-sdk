@@ -270,6 +270,9 @@ class ChatResponse(BaseModel):
     - `error`: Chat encountered error.
     """
 
+    agent_tag: Optional[str] = None
+    """Tag pointing at the agent version used for this chat"""
+
     chat_analysis: Optional[ChatAnalysis] = None
     """
     Post chat analysis that includes information such as sentiment, status, summary,

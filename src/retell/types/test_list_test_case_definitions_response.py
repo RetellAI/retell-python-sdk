@@ -10,10 +10,10 @@ __all__ = ["TestListTestCaseDefinitionsResponse"]
 
 class TestListTestCaseDefinitionsResponse(BaseModel):
     __test__ = False
-    has_more: Optional[bool] = None
+    has_more: bool
     """Whether more results are available."""
 
-    items: Optional[List[TestCaseDefinitionResponse]] = None
+    items: List[TestCaseDefinitionResponse]
 
     pagination_key: Optional[str] = None
     """Pagination key for the next page."""

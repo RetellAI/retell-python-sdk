@@ -55,7 +55,8 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     """
     If set, Retell will send a webhook for inbound calls, where you can override the
     agent ID, set dynamic variables, reject the call, and configure other fields
-    specific to that call.
+    specific to that call. Includes call_inbound.call_id for deduplication across
+    HTTP retries. Early setup failures may not create a call history record.
     """
 
     nickname: str

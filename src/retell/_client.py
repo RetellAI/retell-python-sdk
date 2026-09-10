@@ -43,6 +43,7 @@ if TYPE_CHECKING:
         call,
         chat,
         agent,
+        asset,
         tests,
         voice,
         contact,
@@ -64,6 +65,7 @@ if TYPE_CHECKING:
     from .resources.call import CallResource, AsyncCallResource
     from .resources.chat import ChatResource, AsyncChatResource
     from .resources.agent import AgentResource, AsyncAgentResource
+    from .resources.asset import AssetResource, AsyncAssetResource
     from .resources.tests import TestsResource, AsyncTestsResource
     from .resources.voice import VoiceResource, AsyncVoiceResource
     from .resources.contact import ContactResource, AsyncContactResource
@@ -209,6 +211,12 @@ class Retell(SyncAPIClient):
         from .resources.voice import VoiceResource
 
         return VoiceResource(self)
+
+    @cached_property
+    def asset(self) -> AssetResource:
+        from .resources.asset import AssetResource
+
+        return AssetResource(self)
 
     @cached_property
     def concurrency(self) -> ConcurrencyResource:
@@ -508,6 +516,12 @@ class AsyncRetell(AsyncAPIClient):
         return AsyncVoiceResource(self)
 
     @cached_property
+    def asset(self) -> AsyncAssetResource:
+        from .resources.asset import AsyncAssetResource
+
+        return AsyncAssetResource(self)
+
+    @cached_property
     def concurrency(self) -> AsyncConcurrencyResource:
         from .resources.concurrency import AsyncConcurrencyResource
 
@@ -749,6 +763,12 @@ class RetellWithRawResponse:
         return VoiceResourceWithRawResponse(self._client.voice)
 
     @cached_property
+    def asset(self) -> asset.AssetResourceWithRawResponse:
+        from .resources.asset import AssetResourceWithRawResponse
+
+        return AssetResourceWithRawResponse(self._client.asset)
+
+    @cached_property
     def concurrency(self) -> concurrency.ConcurrencyResourceWithRawResponse:
         from .resources.concurrency import ConcurrencyResourceWithRawResponse
 
@@ -876,6 +896,12 @@ class AsyncRetellWithRawResponse:
         from .resources.voice import AsyncVoiceResourceWithRawResponse
 
         return AsyncVoiceResourceWithRawResponse(self._client.voice)
+
+    @cached_property
+    def asset(self) -> asset.AsyncAssetResourceWithRawResponse:
+        from .resources.asset import AsyncAssetResourceWithRawResponse
+
+        return AsyncAssetResourceWithRawResponse(self._client.asset)
 
     @cached_property
     def concurrency(self) -> concurrency.AsyncConcurrencyResourceWithRawResponse:
@@ -1007,6 +1033,12 @@ class RetellWithStreamedResponse:
         return VoiceResourceWithStreamingResponse(self._client.voice)
 
     @cached_property
+    def asset(self) -> asset.AssetResourceWithStreamingResponse:
+        from .resources.asset import AssetResourceWithStreamingResponse
+
+        return AssetResourceWithStreamingResponse(self._client.asset)
+
+    @cached_property
     def concurrency(self) -> concurrency.ConcurrencyResourceWithStreamingResponse:
         from .resources.concurrency import ConcurrencyResourceWithStreamingResponse
 
@@ -1134,6 +1166,12 @@ class AsyncRetellWithStreamedResponse:
         from .resources.voice import AsyncVoiceResourceWithStreamingResponse
 
         return AsyncVoiceResourceWithStreamingResponse(self._client.voice)
+
+    @cached_property
+    def asset(self) -> asset.AsyncAssetResourceWithStreamingResponse:
+        from .resources.asset import AsyncAssetResourceWithStreamingResponse
+
+        return AsyncAssetResourceWithStreamingResponse(self._client.asset)
 
     @cached_property
     def concurrency(self) -> concurrency.AsyncConcurrencyResourceWithStreamingResponse:
