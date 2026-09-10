@@ -19,18 +19,8 @@ __all__ = [
 
 class ContactBackfillAnalysisDataParams(TypedDict, total=False):
     backfill_attributes: Required[SequenceNotStr[str]]
-    """Contact fields to recompute.
-
-    Each one must still exist as a contact field and have an analysis data mapping
-    configured, otherwise the request is rejected rather than running a job that
-    writes nothing.
-    """
 
     backfill_call_filter: BackfillCallFilter
-    """Optional call filter to scope which calls are processed.
-
-    Supports agent and start_timestamp from the standard call filter.
-    """
 
 
 class BackfillCallFilterAgent(TypedDict, total=False):
@@ -69,11 +59,6 @@ BackfillCallFilterStartTimestamp: TypeAlias = Union[
 
 
 class BackfillCallFilter(TypedDict, total=False):
-    """Optional call filter to scope which calls are processed.
-
-    Supports agent and start_timestamp from the standard call filter.
-    """
-
     agent: Iterable[BackfillCallFilterAgent]
     """Filter calls by agent. Agents are OR-connected."""
 

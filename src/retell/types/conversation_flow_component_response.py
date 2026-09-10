@@ -20,6 +20,7 @@ __all__ = [
     "NodeConversationNodeAlwaysEdgeTransitionConditionEquationCondition",
     "NodeConversationNodeAlwaysEdgeTransitionConditionEquationConditionEquation",
     "NodeConversationNodeAlwaysEdgeTransitionConditionUnionMember2",
+    "NodeConversationNodeCustomSttConfig",
     "NodeConversationNodeDisplayPosition",
     "NodeConversationNodeEdge",
     "NodeConversationNodeEdgeTransitionCondition",
@@ -74,6 +75,7 @@ __all__ = [
     "NodeSubagentNodeAlwaysEdgeTransitionConditionEquationCondition",
     "NodeSubagentNodeAlwaysEdgeTransitionConditionEquationConditionEquation",
     "NodeSubagentNodeAlwaysEdgeTransitionConditionUnionMember2",
+    "NodeSubagentNodeCustomSttConfig",
     "NodeSubagentNodeDisplayPosition",
     "NodeSubagentNodeEdge",
     "NodeSubagentNodeEdgeTransitionCondition",
@@ -688,6 +690,20 @@ class NodeConversationNodeAlwaysEdge(BaseModel):
     """ID of the destination node"""
 
 
+class NodeConversationNodeCustomSttConfig(BaseModel):
+    """Custom transcription settings. Required when stt_mode is custom."""
+
+    endpointing_ms: int
+    """Endpointing timeout in milliseconds.
+
+    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, and 100 for
+    AssemblyAI.
+    """
+
+    provider: Literal["azure", "deepgram", "soniox", "assemblyai"]
+    """ASR provider name."""
+
+
 class NodeConversationNodeDisplayPosition(BaseModel):
     """Position for frontend display"""
 
@@ -1136,6 +1152,9 @@ class NodeConversationNode(BaseModel):
 
     always_edge: Optional[NodeConversationNodeAlwaysEdge] = None
 
+    custom_stt_config: Optional[NodeConversationNodeCustomSttConfig] = None
+    """Custom transcription settings. Required when stt_mode is custom."""
+
     display_position: Optional[NodeConversationNodeDisplayPosition] = None
     """Position for frontend display"""
 
@@ -1180,6 +1199,14 @@ class NodeConversationNode(BaseModel):
     responsiveness: Optional[float] = None
 
     skip_response_edge: Optional[NodeConversationNodeSkipResponseEdge] = None
+
+    stt_mode: Optional[Literal["fast", "accurate", "custom"]] = None
+    """Balance between speed and accuracy.
+
+    Fast optimizes for speed using the provider configuration, accurate optimizes
+    for accuracy using the provider configuration, and custom uses
+    custom_stt_config.
+    """
 
     voice_speed: Optional[float] = None
 
@@ -1246,6 +1273,20 @@ class NodeSubagentNodeAlwaysEdge(BaseModel):
 
     destination_node_id: Optional[str] = None
     """ID of the destination node"""
+
+
+class NodeSubagentNodeCustomSttConfig(BaseModel):
+    """Custom transcription settings. Required when stt_mode is custom."""
+
+    endpointing_ms: int
+    """Endpointing timeout in milliseconds.
+
+    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, and 100 for
+    AssemblyAI.
+    """
+
+    provider: Literal["azure", "deepgram", "soniox", "assemblyai"]
+    """ASR provider name."""
 
 
 class NodeSubagentNodeDisplayPosition(BaseModel):
@@ -2820,6 +2861,9 @@ class NodeSubagentNode(BaseModel):
 
     always_edge: Optional[NodeSubagentNodeAlwaysEdge] = None
 
+    custom_stt_config: Optional[NodeSubagentNodeCustomSttConfig] = None
+    """Custom transcription settings. Required when stt_mode is custom."""
+
     display_position: Optional[NodeSubagentNodeDisplayPosition] = None
     """Position for frontend display"""
 
@@ -2864,6 +2908,14 @@ class NodeSubagentNode(BaseModel):
     responsiveness: Optional[float] = None
 
     skip_response_edge: Optional[NodeSubagentNodeSkipResponseEdge] = None
+
+    stt_mode: Optional[Literal["fast", "accurate", "custom"]] = None
+    """Balance between speed and accuracy.
+
+    Fast optimizes for speed using the provider configuration, accurate optimizes
+    for accuracy using the provider configuration, and custom uses
+    custom_stt_config.
+    """
 
     tool_ids: Optional[List[str]] = None
     """

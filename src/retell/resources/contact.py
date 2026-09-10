@@ -292,17 +292,7 @@ class ContactResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContactBackfillAnalysisDataResponse:
         """
-        Trigger a backfill job that re-applies analysis data mappings to contacts using
-        historical call data. Only one backfill job can run per organization at a time.
-
         Args:
-          backfill_attributes: Contact fields to recompute. Each one must still exist as a contact field and
-              have an analysis data mapping configured, otherwise the request is rejected
-              rather than running a job that writes nothing.
-
-          backfill_call_filter: Optional call filter to scope which calls are processed. Supports agent and
-              start_timestamp from the standard call filter.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -834,17 +824,7 @@ class AsyncContactResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContactBackfillAnalysisDataResponse:
         """
-        Trigger a backfill job that re-applies analysis data mappings to contacts using
-        historical call data. Only one backfill job can run per organization at a time.
-
         Args:
-          backfill_attributes: Contact fields to recompute. Each one must still exist as a contact field and
-              have an analysis data mapping configured, otherwise the request is rejected
-              rather than running a job that writes nothing.
-
-          backfill_call_filter: Optional call filter to scope which calls are processed. Supports agent and
-              start_timestamp from the standard call filter.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

@@ -60,6 +60,10 @@ class TestConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "custom_stt_config": {
+                        "endpointing_ms": 0,
+                        "provider": "azure",
+                    },
                     "display_position": {
                         "x": 0,
                         "y": 0,
@@ -162,6 +166,7 @@ class TestConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "stt_mode": "fast",
                     "voice_speed": 0.5,
                 }
             ],
@@ -368,6 +373,10 @@ class TestConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "custom_stt_config": {
+                        "endpointing_ms": 0,
+                        "provider": "azure",
+                    },
                     "display_position": {
                         "x": 0,
                         "y": 0,
@@ -470,6 +479,7 @@ class TestConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "stt_mode": "fast",
                     "voice_speed": 0.5,
                 }
             ],
@@ -685,6 +695,10 @@ class TestAsyncConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "custom_stt_config": {
+                        "endpointing_ms": 0,
+                        "provider": "azure",
+                    },
                     "display_position": {
                         "x": 0,
                         "y": 0,
@@ -787,6 +801,7 @@ class TestAsyncConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "stt_mode": "fast",
                     "voice_speed": 0.5,
                 }
             ],
@@ -993,6 +1008,10 @@ class TestAsyncConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "custom_stt_config": {
+                        "endpointing_ms": 0,
+                        "provider": "azure",
+                    },
                     "display_position": {
                         "x": 0,
                         "y": 0,
@@ -1095,6 +1114,7 @@ class TestAsyncConversationFlowComponent:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "stt_mode": "fast",
                     "voice_speed": 0.5,
                 }
             ],
