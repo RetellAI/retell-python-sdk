@@ -62,7 +62,7 @@ class TestLlm:
                     "timeout_ms": 0,
                 }
             ],
-            model="gpt-4.1",
+            model="gpt-5.6-terra",
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-realtime-1.5",
@@ -275,7 +275,7 @@ class TestLlm:
                     "timeout_ms": 0,
                 }
             ],
-            model="gpt-4.1",
+            model="gpt-5.6-terra",
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-realtime-1.5",
@@ -540,7 +540,7 @@ class TestAsyncLlm:
                     "timeout_ms": 0,
                 }
             ],
-            model="gpt-4.1",
+            model="gpt-5.6-terra",
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-realtime-1.5",
@@ -753,7 +753,7 @@ class TestAsyncLlm:
                     "timeout_ms": 0,
                 }
             ],
-            model="gpt-4.1",
+            model="gpt-5.6-terra",
             model_high_priority=True,
             model_temperature=0,
             s2s_model="gpt-realtime-1.5",

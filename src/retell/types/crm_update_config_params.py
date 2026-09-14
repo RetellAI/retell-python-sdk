@@ -24,6 +24,14 @@ class CRMUpdateConfigParams(TypedDict, total=False):
     table. Not used by the API itself.
     """
 
+    contact_tags: Optional[SequenceNotStr[str]]
+    """Replaces the organization's available contact tags.
+
+    Tags are trimmed and deduplicated. Omit to leave unchanged, or send null or an
+    empty array to clear the list. Does not change tags already assigned to
+    contacts.
+    """
+
     crm_analysis_data_mappings: Iterable[CRMAnalysisDataMapping]
     """Replaces the stored list."""
 

@@ -13,6 +13,9 @@ class ContactCreateParams(TypedDict, total=False):
     phone_number: Required[str]
     """Phone number of the contact."""
 
+    contact_tags: SequenceNotStr[str]
+    """Full set of tags for the contact."""
+
     custom_fields: object
     """Values must match the types defined in CRM config custom fields.
 
@@ -26,6 +29,3 @@ class ContactCreateParams(TypedDict, total=False):
 
     last_name: str
     """Last name of the contact."""
-
-    tags: SequenceNotStr[str]
-    """Full set of tags for the contact."""

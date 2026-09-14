@@ -20,6 +20,9 @@ class ContactResponse(BaseModel):
     phone_number: str
     """Phone number of the contact."""
 
+    contact_tags: Optional[List[str]] = None
+    """Tags assigned to the contact."""
+
     conversation_count: Optional[float] = None
     """Number of conversations (calls and chats) associated with this contact."""
 
@@ -40,9 +43,6 @@ class ContactResponse(BaseModel):
 
     last_name: Optional[str] = None
     """Last name of the contact."""
-
-    tags: Optional[List[str]] = None
-    """Tags assigned to the contact."""
 
     user_modified_timestamp: Optional[float] = None
     """Epoch milliseconds when the contact was last modified."""

@@ -31,8 +31,6 @@ __all__ = [
     "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
-    "GeneralToolCheckAvailabilityCalTool",
-    "GeneralToolBookAppointmentCalTool",
     "GeneralToolAgentSwapTool",
     "GeneralToolPressDigitTool",
     "GeneralToolSendSMSTool",
@@ -79,8 +77,6 @@ __all__ = [
     "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
     "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
-    "StateToolCheckAvailabilityCalTool",
-    "StateToolBookAppointmentCalTool",
     "StateToolAgentSwapTool",
     "StateToolPressDigitTool",
     "StateToolSendSMSTool",
@@ -183,9 +179,11 @@ class LlmCreateParams(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
-    """Select the underlying text LLM. If not set, would default to gpt-4.1."""
+    """Select the underlying text LLM. If not set, would default to gpt-5.6-terra."""
 
     model_high_priority: Optional[bool]
     """
@@ -632,86 +630,6 @@ class GeneralToolTransferCallTool(TypedDict, total=False):
 
     speak_during_execution: bool
     """If true, will speak during execution."""
-
-
-class GeneralToolCheckAvailabilityCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to check
-    availability for.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """
-    Cal.com event type id number for the cal.com event you want to check
-    availability for. Can be a number or a dynamic variable in the format
-    `{{variable_name}}` that will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["check_availability_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when checking availability, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
-
-
-class GeneralToolBookAppointmentCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to book
-    appointment.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """Cal.com event type id number for the cal.com event you want to book appointment.
-
-    Can be a number or a dynamic variable in the format `{{variable_name}}` that
-    will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["book_appointment_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when booking appointment, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
 
 
 class GeneralToolAgentSwapTool(TypedDict, total=False):
@@ -1348,8 +1266,6 @@ class GeneralToolMcpTool(TypedDict, total=False):
 GeneralTool: TypeAlias = Union[
     GeneralToolEndCallTool,
     GeneralToolTransferCallTool,
-    GeneralToolCheckAvailabilityCalTool,
-    GeneralToolBookAppointmentCalTool,
     GeneralToolAgentSwapTool,
     GeneralToolPressDigitTool,
     GeneralToolSendSMSTool,
@@ -1829,86 +1745,6 @@ class StateToolTransferCallTool(TypedDict, total=False):
 
     speak_during_execution: bool
     """If true, will speak during execution."""
-
-
-class StateToolCheckAvailabilityCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to check
-    availability for.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """
-    Cal.com event type id number for the cal.com event you want to check
-    availability for. Can be a number or a dynamic variable in the format
-    `{{variable_name}}` that will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["check_availability_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when checking availability, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
-
-
-class StateToolBookAppointmentCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to book
-    appointment.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """Cal.com event type id number for the cal.com event you want to book appointment.
-
-    Can be a number or a dynamic variable in the format `{{variable_name}}` that
-    will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["book_appointment_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when booking appointment, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
 
 
 class StateToolAgentSwapTool(TypedDict, total=False):
@@ -2545,8 +2381,6 @@ class StateToolMcpTool(TypedDict, total=False):
 StateTool: TypeAlias = Union[
     StateToolEndCallTool,
     StateToolTransferCallTool,
-    StateToolCheckAvailabilityCalTool,
-    StateToolBookAppointmentCalTool,
     StateToolAgentSwapTool,
     StateToolPressDigitTool,
     StateToolSendSMSTool,

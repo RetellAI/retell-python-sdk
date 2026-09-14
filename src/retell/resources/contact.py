@@ -64,11 +64,11 @@ class ContactResource(SyncAPIResource):
         self,
         *,
         phone_number: str,
+        contact_tags: SequenceNotStr[str] | Omit = omit,
         custom_fields: object | Omit = omit,
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
-        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -82,14 +82,14 @@ class ContactResource(SyncAPIResource):
         Args:
           phone_number: Phone number of the contact.
 
+          contact_tags: Full set of tags for the contact.
+
           custom_fields: Values must match the types defined in CRM config custom fields. Set a value to
               null to clear it.
 
           first_name: First name of the contact.
 
           last_name: Last name of the contact.
-
-          tags: Full set of tags for the contact.
 
           extra_headers: Send extra headers
 
@@ -104,11 +104,11 @@ class ContactResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "phone_number": phone_number,
+                    "contact_tags": contact_tags,
                     "custom_fields": custom_fields,
                     "do_not_call": do_not_call,
                     "first_name": first_name,
                     "last_name": last_name,
-                    "tags": tags,
                 },
                 contact_create_params.ContactCreateParams,
             ),
@@ -122,11 +122,11 @@ class ContactResource(SyncAPIResource):
         self,
         contact_id: str,
         *,
+        contact_tags: SequenceNotStr[str] | Omit = omit,
         custom_fields: object | Omit = omit,
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
-        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -138,14 +138,14 @@ class ContactResource(SyncAPIResource):
         Update an existing contact.
 
         Args:
+          contact_tags: Full replacement set of tags for the contact.
+
           custom_fields: Values must match the types defined in CRM config custom fields. Set a value to
               null to clear it.
 
           first_name: First name of the contact.
 
           last_name: Last name of the contact.
-
-          tags: Full replacement set of tags for the contact.
 
           extra_headers: Send extra headers
 
@@ -161,11 +161,11 @@ class ContactResource(SyncAPIResource):
             path_template("/update-contact/{contact_id}", contact_id=contact_id),
             body=maybe_transform(
                 {
+                    "contact_tags": contact_tags,
                     "custom_fields": custom_fields,
                     "do_not_call": do_not_call,
                     "first_name": first_name,
                     "last_name": last_name,
-                    "tags": tags,
                 },
                 contact_update_params.ContactUpdateParams,
             ),
@@ -321,8 +321,8 @@ class ContactResource(SyncAPIResource):
         *,
         column_mapping: Iterable[contact_create_import_params.ColumnMapping],
         upload_id: str,
+        contact_tags: SequenceNotStr[str] | Omit = omit,
         default_country: str | Omit = omit,
-        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -343,10 +343,10 @@ class ContactResource(SyncAPIResource):
 
           upload_id: Id returned by upload-contact-import-file.
 
-          default_country: Country for parsing phone numbers without a country code. Defaults to US.
-
-          tags: Tags added to every contact in this import. Existing tags are preserved. Omit to
+          contact_tags: Tags added to every contact in this import. Existing tags are preserved. Omit to
               leave tags unchanged.
+
+          default_country: Country for parsing phone numbers without a country code. Defaults to US.
 
           extra_headers: Send extra headers
 
@@ -362,8 +362,8 @@ class ContactResource(SyncAPIResource):
                 {
                     "column_mapping": column_mapping,
                     "upload_id": upload_id,
+                    "contact_tags": contact_tags,
                     "default_country": default_country,
-                    "tags": tags,
                 },
                 contact_create_import_params.ContactCreateImportParams,
             ),
@@ -596,11 +596,11 @@ class AsyncContactResource(AsyncAPIResource):
         self,
         *,
         phone_number: str,
+        contact_tags: SequenceNotStr[str] | Omit = omit,
         custom_fields: object | Omit = omit,
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
-        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -614,14 +614,14 @@ class AsyncContactResource(AsyncAPIResource):
         Args:
           phone_number: Phone number of the contact.
 
+          contact_tags: Full set of tags for the contact.
+
           custom_fields: Values must match the types defined in CRM config custom fields. Set a value to
               null to clear it.
 
           first_name: First name of the contact.
 
           last_name: Last name of the contact.
-
-          tags: Full set of tags for the contact.
 
           extra_headers: Send extra headers
 
@@ -636,11 +636,11 @@ class AsyncContactResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "phone_number": phone_number,
+                    "contact_tags": contact_tags,
                     "custom_fields": custom_fields,
                     "do_not_call": do_not_call,
                     "first_name": first_name,
                     "last_name": last_name,
-                    "tags": tags,
                 },
                 contact_create_params.ContactCreateParams,
             ),
@@ -654,11 +654,11 @@ class AsyncContactResource(AsyncAPIResource):
         self,
         contact_id: str,
         *,
+        contact_tags: SequenceNotStr[str] | Omit = omit,
         custom_fields: object | Omit = omit,
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
         last_name: str | Omit = omit,
-        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -670,14 +670,14 @@ class AsyncContactResource(AsyncAPIResource):
         Update an existing contact.
 
         Args:
+          contact_tags: Full replacement set of tags for the contact.
+
           custom_fields: Values must match the types defined in CRM config custom fields. Set a value to
               null to clear it.
 
           first_name: First name of the contact.
 
           last_name: Last name of the contact.
-
-          tags: Full replacement set of tags for the contact.
 
           extra_headers: Send extra headers
 
@@ -693,11 +693,11 @@ class AsyncContactResource(AsyncAPIResource):
             path_template("/update-contact/{contact_id}", contact_id=contact_id),
             body=await async_maybe_transform(
                 {
+                    "contact_tags": contact_tags,
                     "custom_fields": custom_fields,
                     "do_not_call": do_not_call,
                     "first_name": first_name,
                     "last_name": last_name,
-                    "tags": tags,
                 },
                 contact_update_params.ContactUpdateParams,
             ),
@@ -853,8 +853,8 @@ class AsyncContactResource(AsyncAPIResource):
         *,
         column_mapping: Iterable[contact_create_import_params.ColumnMapping],
         upload_id: str,
+        contact_tags: SequenceNotStr[str] | Omit = omit,
         default_country: str | Omit = omit,
-        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -875,10 +875,10 @@ class AsyncContactResource(AsyncAPIResource):
 
           upload_id: Id returned by upload-contact-import-file.
 
-          default_country: Country for parsing phone numbers without a country code. Defaults to US.
-
-          tags: Tags added to every contact in this import. Existing tags are preserved. Omit to
+          contact_tags: Tags added to every contact in this import. Existing tags are preserved. Omit to
               leave tags unchanged.
+
+          default_country: Country for parsing phone numbers without a country code. Defaults to US.
 
           extra_headers: Send extra headers
 
@@ -894,8 +894,8 @@ class AsyncContactResource(AsyncAPIResource):
                 {
                     "column_mapping": column_mapping,
                     "upload_id": upload_id,
+                    "contact_tags": contact_tags,
                     "default_country": default_country,
-                    "tags": tags,
                 },
                 contact_create_import_params.ContactCreateImportParams,
             ),

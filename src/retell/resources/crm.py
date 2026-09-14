@@ -159,6 +159,7 @@ class CRMResource(SyncAPIResource):
         *,
         app_id: Optional[str] | Omit = omit,
         contact_columns_order: SequenceNotStr[str] | Omit = omit,
+        contact_tags: Optional[SequenceNotStr[str]] | Omit = omit,
         crm_analysis_data_mappings: Iterable[crm_update_config_params.CRMAnalysisDataMapping] | Omit = omit,
         custom_fields: Iterable[crm_update_config_params.CustomField] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -180,6 +181,10 @@ class CRMResource(SyncAPIResource):
 
           contact_columns_order: Preferred display order of contact fields, for clients that render contacts as a
               table. Not used by the API itself.
+
+          contact_tags: Replaces the organization's available contact tags. Tags are trimmed and
+              deduplicated. Omit to leave unchanged, or send null or an empty array to clear
+              the list. Does not change tags already assigned to contacts.
 
           crm_analysis_data_mappings: Replaces the stored list.
 
@@ -203,6 +208,7 @@ class CRMResource(SyncAPIResource):
                 {
                     "app_id": app_id,
                     "contact_columns_order": contact_columns_order,
+                    "contact_tags": contact_tags,
                     "crm_analysis_data_mappings": crm_analysis_data_mappings,
                     "custom_fields": custom_fields,
                 },
@@ -348,6 +354,7 @@ class AsyncCRMResource(AsyncAPIResource):
         *,
         app_id: Optional[str] | Omit = omit,
         contact_columns_order: SequenceNotStr[str] | Omit = omit,
+        contact_tags: Optional[SequenceNotStr[str]] | Omit = omit,
         crm_analysis_data_mappings: Iterable[crm_update_config_params.CRMAnalysisDataMapping] | Omit = omit,
         custom_fields: Iterable[crm_update_config_params.CustomField] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -369,6 +376,10 @@ class AsyncCRMResource(AsyncAPIResource):
 
           contact_columns_order: Preferred display order of contact fields, for clients that render contacts as a
               table. Not used by the API itself.
+
+          contact_tags: Replaces the organization's available contact tags. Tags are trimmed and
+              deduplicated. Omit to leave unchanged, or send null or an empty array to clear
+              the list. Does not change tags already assigned to contacts.
 
           crm_analysis_data_mappings: Replaces the stored list.
 
@@ -392,6 +403,7 @@ class AsyncCRMResource(AsyncAPIResource):
                 {
                     "app_id": app_id,
                     "contact_columns_order": contact_columns_order,
+                    "contact_tags": contact_tags,
                     "crm_analysis_data_mappings": crm_analysis_data_mappings,
                     "custom_fields": custom_fields,
                 },

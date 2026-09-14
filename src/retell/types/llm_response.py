@@ -31,8 +31,6 @@ __all__ = [
     "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
     "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "GeneralToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
-    "GeneralToolCheckAvailabilityCalTool",
-    "GeneralToolBookAppointmentCalTool",
     "GeneralToolAgentSwapTool",
     "GeneralToolPressDigitTool",
     "GeneralToolSendSMSTool",
@@ -79,8 +77,6 @@ __all__ = [
     "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
     "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "StateToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
-    "StateToolCheckAvailabilityCalTool",
-    "StateToolBookAppointmentCalTool",
     "StateToolAgentSwapTool",
     "StateToolPressDigitTool",
     "StateToolSendSMSTool",
@@ -496,86 +492,6 @@ class GeneralToolTransferCallTool(BaseModel):
 
     speak_during_execution: Optional[bool] = None
     """If true, will speak during execution."""
-
-
-class GeneralToolCheckAvailabilityCalTool(BaseModel):
-    cal_api_key: str
-    """
-    Cal.com Api key that have access to the cal.com event you want to check
-    availability for.
-    """
-
-    event_type_id: Union[float, str]
-    """
-    Cal.com event type id number for the cal.com event you want to check
-    availability for. Can be a number or a dynamic variable in the format
-    `{{variable_name}}` that will be resolved at runtime.
-    """
-
-    name: str
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Literal["check_availability_cal"]
-
-    description: Optional[str] = None
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: Optional[str] = None
-    """
-    Timezone to be used when checking availability, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
-
-
-class GeneralToolBookAppointmentCalTool(BaseModel):
-    cal_api_key: str
-    """
-    Cal.com Api key that have access to the cal.com event you want to book
-    appointment.
-    """
-
-    event_type_id: Union[float, str]
-    """Cal.com event type id number for the cal.com event you want to book appointment.
-
-    Can be a number or a dynamic variable in the format `{{variable_name}}` that
-    will be resolved at runtime.
-    """
-
-    name: str
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Literal["book_appointment_cal"]
-
-    description: Optional[str] = None
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: Optional[str] = None
-    """
-    Timezone to be used when booking appointment, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
 
 
 class GeneralToolAgentSwapTool(BaseModel):
@@ -1212,8 +1128,6 @@ class GeneralToolMcpTool(BaseModel):
 GeneralTool: TypeAlias = Union[
     GeneralToolEndCallTool,
     GeneralToolTransferCallTool,
-    GeneralToolCheckAvailabilityCalTool,
-    GeneralToolBookAppointmentCalTool,
     GeneralToolAgentSwapTool,
     GeneralToolPressDigitTool,
     GeneralToolSendSMSTool,
@@ -1695,86 +1609,6 @@ class StateToolTransferCallTool(BaseModel):
 
     speak_during_execution: Optional[bool] = None
     """If true, will speak during execution."""
-
-
-class StateToolCheckAvailabilityCalTool(BaseModel):
-    cal_api_key: str
-    """
-    Cal.com Api key that have access to the cal.com event you want to check
-    availability for.
-    """
-
-    event_type_id: Union[float, str]
-    """
-    Cal.com event type id number for the cal.com event you want to check
-    availability for. Can be a number or a dynamic variable in the format
-    `{{variable_name}}` that will be resolved at runtime.
-    """
-
-    name: str
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Literal["check_availability_cal"]
-
-    description: Optional[str] = None
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: Optional[str] = None
-    """
-    Timezone to be used when checking availability, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
-
-
-class StateToolBookAppointmentCalTool(BaseModel):
-    cal_api_key: str
-    """
-    Cal.com Api key that have access to the cal.com event you want to book
-    appointment.
-    """
-
-    event_type_id: Union[float, str]
-    """Cal.com event type id number for the cal.com event you want to book appointment.
-
-    Can be a number or a dynamic variable in the format `{{variable_name}}` that
-    will be resolved at runtime.
-    """
-
-    name: str
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Literal["book_appointment_cal"]
-
-    description: Optional[str] = None
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: Optional[str] = None
-    """
-    Timezone to be used when booking appointment, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
 
 
 class StateToolAgentSwapTool(BaseModel):
@@ -2411,8 +2245,6 @@ class StateToolMcpTool(BaseModel):
 StateTool: TypeAlias = Union[
     StateToolEndCallTool,
     StateToolTransferCallTool,
-    StateToolCheckAvailabilityCalTool,
-    StateToolBookAppointmentCalTool,
     StateToolAgentSwapTool,
     StateToolPressDigitTool,
     StateToolSendSMSTool,
@@ -2545,9 +2377,11 @@ class LlmResponse(BaseModel):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ] = None
-    """Select the underlying text LLM. If not set, would default to gpt-4.1."""
+    """Select the underlying text LLM. If not set, would default to gpt-5.6-terra."""
 
     api_model_high_priority: Optional[bool] = FieldInfo(alias="model_high_priority", default=None)
     """

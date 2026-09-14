@@ -146,8 +146,6 @@ __all__ = [
     "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
     "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "ComponentNodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
-    "ComponentNodeSubagentNodeToolCheckAvailabilityCalTool",
-    "ComponentNodeSubagentNodeToolBookAppointmentCalTool",
     "ComponentNodeSubagentNodeToolAgentSwapTool",
     "ComponentNodeSubagentNodeToolPressDigitTool",
     "ComponentNodeSubagentNodeToolSendSMSTool",
@@ -608,10 +606,7 @@ __all__ = [
     "ComponentNoteDisplayPosition",
     "ComponentNoteSize",
     "ComponentTool",
-    "ComponentToolCustomTool",
-    "ComponentToolCustomToolParameters",
-    "ComponentToolCheckAvailabilityCalTool",
-    "ComponentToolBookAppointmentCalTool",
+    "ComponentToolParameters",
     "KBConfig",
     "Mcp",
     "ModelChoice",
@@ -750,8 +745,6 @@ __all__ = [
     "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOption",
     "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferPrompt",
     "NodeSubagentNodeToolTransferCallToolTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
-    "NodeSubagentNodeToolCheckAvailabilityCalTool",
-    "NodeSubagentNodeToolBookAppointmentCalTool",
     "NodeSubagentNodeToolAgentSwapTool",
     "NodeSubagentNodeToolPressDigitTool",
     "NodeSubagentNodeToolSendSMSTool",
@@ -1210,10 +1203,7 @@ __all__ = [
     "NoteDisplayPosition",
     "NoteSize",
     "Tool",
-    "ToolCustomTool",
-    "ToolCustomToolParameters",
-    "ToolCheckAvailabilityCalTool",
-    "ToolBookAppointmentCalTool",
+    "ToolParameters",
 ]
 
 
@@ -1787,6 +1777,8 @@ class ComponentNodeConversationNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -2384,6 +2376,8 @@ class ComponentNodeSubagentNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -2852,86 +2846,6 @@ class ComponentNodeSubagentNodeToolTransferCallTool(TypedDict, total=False):
 
     speak_during_execution: bool
     """If true, will speak during execution."""
-
-
-class ComponentNodeSubagentNodeToolCheckAvailabilityCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to check
-    availability for.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """
-    Cal.com event type id number for the cal.com event you want to check
-    availability for. Can be a number or a dynamic variable in the format
-    `{{variable_name}}` that will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["check_availability_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when checking availability, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
-
-
-class ComponentNodeSubagentNodeToolBookAppointmentCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to book
-    appointment.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """Cal.com event type id number for the cal.com event you want to book appointment.
-
-    Can be a number or a dynamic variable in the format `{{variable_name}}` that
-    will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["book_appointment_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when booking appointment, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
 
 
 class ComponentNodeSubagentNodeToolAgentSwapTool(TypedDict, total=False):
@@ -3568,8 +3482,6 @@ class ComponentNodeSubagentNodeToolMcpTool(TypedDict, total=False):
 ComponentNodeSubagentNodeTool: TypeAlias = Union[
     ComponentNodeSubagentNodeToolEndCallTool,
     ComponentNodeSubagentNodeToolTransferCallTool,
-    ComponentNodeSubagentNodeToolCheckAvailabilityCalTool,
-    ComponentNodeSubagentNodeToolBookAppointmentCalTool,
     ComponentNodeSubagentNodeToolAgentSwapTool,
     ComponentNodeSubagentNodeToolPressDigitTool,
     ComponentNodeSubagentNodeToolSendSMSTool,
@@ -3866,6 +3778,8 @@ class ComponentNodeEndNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -4248,6 +4162,8 @@ class ComponentNodeFunctionNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -4642,6 +4558,8 @@ class ComponentNodeCodeNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -5287,6 +5205,8 @@ class ComponentNodeTransferCallNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -5674,6 +5594,8 @@ class ComponentNodePressDigitNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -6037,6 +5959,8 @@ class ComponentNodeBranchNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -6397,6 +6321,8 @@ class ComponentNodeSMSNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -6897,6 +6823,8 @@ class ComponentNodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -7199,6 +7127,8 @@ class ComponentNodeAgentSwapNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -7604,6 +7534,8 @@ class ComponentNodeMcpNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -8216,6 +8148,8 @@ class ComponentNodeBridgeTransferNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -8472,6 +8406,8 @@ class ComponentNodeCancelTransferNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -8589,7 +8525,7 @@ class ComponentNote(TypedDict, total=False):
     """Dimensions of the note on the canvas."""
 
 
-class ComponentToolCustomToolParameters(TypedDict, total=False):
+class ComponentToolParameters(TypedDict, total=False):
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
@@ -8612,7 +8548,7 @@ class ComponentToolCustomToolParameters(TypedDict, total=False):
     """
 
 
-class ComponentToolCustomTool(TypedDict, total=False):
+class ComponentTool(TypedDict, total=False):
     name: Required[str]
     """Name of the tool.
 
@@ -8689,7 +8625,7 @@ class ComponentToolCustomTool(TypedDict, total=False):
     is encoded (see `args_at_root`).
     """
 
-    parameters: ComponentToolCustomToolParameters
+    parameters: ComponentToolParameters
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
@@ -8733,97 +8669,6 @@ class ComponentToolCustomTool(TypedDict, total=False):
 
     tool_id: str
     """Unique identifier for the tool"""
-
-
-class ComponentToolCheckAvailabilityCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to check
-    availability for.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """
-    Cal.com event type id number for the cal.com event you want to check
-    availability for. Can be a number or a dynamic variable in the format
-    `{{variable_name}}` that will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["check_availability_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when checking availability, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
-
-    tool_id: str
-    """Unique identifier for the tool"""
-
-
-class ComponentToolBookAppointmentCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to book
-    appointment.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """Cal.com event type id number for the cal.com event you want to book appointment.
-
-    Can be a number or a dynamic variable in the format `{{variable_name}}` that
-    will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["book_appointment_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when booking appointment, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
-
-    tool_id: str
-    """Unique identifier for the tool"""
-
-
-ComponentTool: TypeAlias = Union[
-    ComponentToolCustomTool, ComponentToolCheckAvailabilityCalTool, ComponentToolBookAppointmentCalTool
-]
 
 
 class Component(TypedDict, total=False):
@@ -8909,6 +8754,8 @@ class ModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -9384,6 +9231,8 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -9974,6 +9823,8 @@ class NodeSubagentNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -10434,86 +10285,6 @@ class NodeSubagentNodeToolTransferCallTool(TypedDict, total=False):
 
     speak_during_execution: bool
     """If true, will speak during execution."""
-
-
-class NodeSubagentNodeToolCheckAvailabilityCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to check
-    availability for.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """
-    Cal.com event type id number for the cal.com event you want to check
-    availability for. Can be a number or a dynamic variable in the format
-    `{{variable_name}}` that will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["check_availability_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when checking availability, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
-
-
-class NodeSubagentNodeToolBookAppointmentCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to book
-    appointment.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """Cal.com event type id number for the cal.com event you want to book appointment.
-
-    Can be a number or a dynamic variable in the format `{{variable_name}}` that
-    will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["book_appointment_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when booking appointment, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
 
 
 class NodeSubagentNodeToolAgentSwapTool(TypedDict, total=False):
@@ -11150,8 +10921,6 @@ class NodeSubagentNodeToolMcpTool(TypedDict, total=False):
 NodeSubagentNodeTool: TypeAlias = Union[
     NodeSubagentNodeToolEndCallTool,
     NodeSubagentNodeToolTransferCallTool,
-    NodeSubagentNodeToolCheckAvailabilityCalTool,
-    NodeSubagentNodeToolBookAppointmentCalTool,
     NodeSubagentNodeToolAgentSwapTool,
     NodeSubagentNodeToolPressDigitTool,
     NodeSubagentNodeToolSendSMSTool,
@@ -11446,6 +11215,8 @@ class NodeEndNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -11822,6 +11593,8 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -12213,6 +11986,8 @@ class NodeCodeNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -12835,6 +12610,8 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -13215,6 +12992,8 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -13575,6 +13354,8 @@ class NodeBranchNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -13933,6 +13714,8 @@ class NodeSMSNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -14417,6 +14200,8 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -14714,6 +14499,8 @@ class NodeAgentSwapNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -15116,6 +14903,8 @@ class NodeMcpNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -15706,6 +15495,8 @@ class NodeBridgeTransferNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -15945,6 +15736,8 @@ class NodeCancelTransferNodeModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -16035,7 +15828,7 @@ class Note(TypedDict, total=False):
     """Dimensions of the note on the canvas."""
 
 
-class ToolCustomToolParameters(TypedDict, total=False):
+class ToolParameters(TypedDict, total=False):
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
@@ -16058,7 +15851,7 @@ class ToolCustomToolParameters(TypedDict, total=False):
     """
 
 
-class ToolCustomTool(TypedDict, total=False):
+class Tool(TypedDict, total=False):
     name: Required[str]
     """Name of the tool.
 
@@ -16135,7 +15928,7 @@ class ToolCustomTool(TypedDict, total=False):
     is encoded (see `args_at_root`).
     """
 
-    parameters: ToolCustomToolParameters
+    parameters: ToolParameters
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
@@ -16179,92 +15972,3 @@ class ToolCustomTool(TypedDict, total=False):
 
     tool_id: str
     """Unique identifier for the tool"""
-
-
-class ToolCheckAvailabilityCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to check
-    availability for.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """
-    Cal.com event type id number for the cal.com event you want to check
-    availability for. Can be a number or a dynamic variable in the format
-    `{{variable_name}}` that will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["check_availability_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when checking availability, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
-
-    tool_id: str
-    """Unique identifier for the tool"""
-
-
-class ToolBookAppointmentCalTool(TypedDict, total=False):
-    cal_api_key: Required[str]
-    """
-    Cal.com Api key that have access to the cal.com event you want to book
-    appointment.
-    """
-
-    event_type_id: Required[Union[float, str]]
-    """Cal.com event type id number for the cal.com event you want to book appointment.
-
-    Can be a number or a dynamic variable in the format `{{variable_name}}` that
-    will be resolved at runtime.
-    """
-
-    name: Required[str]
-    """Name of the tool.
-
-    Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or
-    contain underscores and dashes, with a maximum length of 64 (no space allowed).
-    """
-
-    type: Required[Literal["book_appointment_cal"]]
-
-    description: str
-    """
-    Describes what the tool does, sometimes can also include information about when
-    to call the tool.
-    """
-
-    timezone: str
-    """
-    Timezone to be used when booking appointment, must be in
-    [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
-    Can also be a dynamic variable in the format `{{variable_name}}` that will be
-    resolved at runtime. If not specified, will check if user specified timezone in
-    call, and if not, will use the timezone of the Retell servers.
-    """
-
-    tool_id: str
-    """Unique identifier for the tool"""
-
-
-Tool: TypeAlias = Union[ToolCustomTool, ToolCheckAvailabilityCalTool, ToolBookAppointmentCalTool]
