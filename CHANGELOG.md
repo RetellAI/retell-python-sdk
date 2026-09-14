@@ -1,5 +1,21 @@
 # Changelog
 
+## [6.0.0](https://github.com/RetellAI/retell-python-sdk/compare/v5.66.1...v6.0.0) (2026-09-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **api:** sync removed endpoints from retell-backend
+
+### Features
+
+* **api:** sync removed endpoints from retell-backend ([0153b25](https://github.com/RetellAI/retell-python-sdk/commit/0153b25666e5409410454d09653d33657ee8af72))
+
+
+### Chores
+
+* preserve production workflow files ([3a06229](https://github.com/RetellAI/retell-python-sdk/commit/3a062298434ef62fe88e3c672ab39f335046c40f))
+
 ## [5.66.1](https://github.com/RetellAI/retell-python-sdk/compare/v5.66.0...v5.66.1) (2026-09-11)
 
 
