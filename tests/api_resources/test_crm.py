@@ -154,6 +154,7 @@ class TestCRM:
         crm = client.crm.update_config(
             app_id="app_id",
             contact_columns_order=["string"],
+            contact_tags=["P"],
             crm_analysis_data_mappings=[
                 {
                     "analysis_data_name": "analysis_data_name",
@@ -333,6 +334,7 @@ class TestAsyncCRM:
         crm = await async_client.crm.update_config(
             app_id="app_id",
             contact_columns_order=["string"],
+            contact_tags=["P"],
             crm_analysis_data_mappings=[
                 {
                     "analysis_data_name": "analysis_data_name",

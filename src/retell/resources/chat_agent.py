@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Any, List, Union, Iterable, Optional, cast
 from typing_extensions import Literal
 
@@ -30,7 +29,6 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.chat_agent_response import ChatAgentResponse
 from ..types.chat_agent_list_response import ChatAgentListResponse
-from ..types.chat_agent_get_versions_response import ChatAgentGetVersionsResponse
 from ..types.chat_agent_create_version_response import ChatAgentCreateVersionResponse
 
 __all__ = ["ChatAgentResource", "AsyncChatAgentResource"]
@@ -232,6 +230,8 @@ class ChatAgentResource(SyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -296,7 +296,7 @@ class ChatAgentResource(SyncAPIResource):
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-5.6-terra.
 
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
@@ -576,6 +576,8 @@ class ChatAgentResource(SyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -639,7 +641,7 @@ class ChatAgentResource(SyncAPIResource):
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-5.6-terra.
 
           response_engine: The Response Engine to attach to the agent. It is used to generate responses for
               the agent. You need to create a Response Engine first before attaching it to an
@@ -886,41 +888,6 @@ class ChatAgentResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    @typing_extensions.deprecated("deprecated")
-    def get_versions(
-        self,
-        agent_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ChatAgentGetVersionsResponse:
-        """Get chat agent versions.
-
-        Large version histories may be truncated.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not agent_id:
-            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
-        return self._get(
-            path_template("/get-chat-agent-versions/{agent_id}", agent_id=agent_id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ChatAgentGetVersionsResponse,
-        )
-
     def publish(
         self,
         agent_id: str,
@@ -1165,6 +1132,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -1229,7 +1198,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-5.6-terra.
 
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
@@ -1511,6 +1480,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -1574,7 +1545,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the chat analysis. This will be available
               after the chat ends.
 
-          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-4.1.
+          post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-5.6-terra.
 
           response_engine: The Response Engine to attach to the agent. It is used to generate responses for
               the agent. You need to create a Response Engine first before attaching it to an
@@ -1823,41 +1794,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    @typing_extensions.deprecated("deprecated")
-    async def get_versions(
-        self,
-        agent_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ChatAgentGetVersionsResponse:
-        """Get chat agent versions.
-
-        Large version histories may be truncated.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not agent_id:
-            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
-        return await self._get(
-            path_template("/get-chat-agent-versions/{agent_id}", agent_id=agent_id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ChatAgentGetVersionsResponse,
-        )
-
     async def publish(
         self,
         agent_id: str,
@@ -1931,11 +1867,6 @@ class ChatAgentResourceWithRawResponse:
         self.delete_version = to_raw_response_wrapper(
             chat_agent.delete_version,
         )
-        self.get_versions = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                chat_agent.get_versions,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.publish = to_raw_response_wrapper(
             chat_agent.publish,
         )
@@ -1965,11 +1896,6 @@ class AsyncChatAgentResourceWithRawResponse:
         )
         self.delete_version = async_to_raw_response_wrapper(
             chat_agent.delete_version,
-        )
-        self.get_versions = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                chat_agent.get_versions,  # pyright: ignore[reportDeprecated],
-            )
         )
         self.publish = async_to_raw_response_wrapper(
             chat_agent.publish,
@@ -2001,11 +1927,6 @@ class ChatAgentResourceWithStreamingResponse:
         self.delete_version = to_streamed_response_wrapper(
             chat_agent.delete_version,
         )
-        self.get_versions = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                chat_agent.get_versions,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.publish = to_streamed_response_wrapper(
             chat_agent.publish,
         )
@@ -2035,11 +1956,6 @@ class AsyncChatAgentResourceWithStreamingResponse:
         )
         self.delete_version = async_to_streamed_response_wrapper(
             chat_agent.delete_version,
-        )
-        self.get_versions = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                chat_agent.get_versions,  # pyright: ignore[reportDeprecated],
-            )
         )
         self.publish = async_to_streamed_response_wrapper(
             chat_agent.publish,

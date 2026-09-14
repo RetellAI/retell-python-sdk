@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import typing_extensions
 from typing import Any, List, Union, Iterable, Optional, cast
 from typing_extensions import Literal
 
@@ -33,7 +32,6 @@ from .._base_client import make_request_options
 from ..types.agent_response import AgentResponse
 from ..types.agent_list_response import AgentListResponse
 from ..types.agent_repair_response import AgentRepairResponse
-from ..types.agent_get_versions_response import AgentGetVersionsResponse
 from ..types.agent_list_versions_response import AgentListVersionsResponse
 from ..types.agent_create_version_response import AgentCreateVersionResponse
 
@@ -276,6 +274,8 @@ class AgentResource(SyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -499,7 +499,7 @@ class AgentResource(SyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-5.6-terra.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -911,6 +911,8 @@ class AgentResource(SyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -1131,7 +1133,7 @@ class AgentResource(SyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-5.6-terra.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -1470,41 +1472,6 @@ class AgentResource(SyncAPIResource):
                 query=maybe_transform({"version": version}, agent_delete_version_params.AgentDeleteVersionParams),
             ),
             cast_to=NoneType,
-        )
-
-    @typing_extensions.deprecated("deprecated")
-    def get_versions(
-        self,
-        agent_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AgentGetVersionsResponse:
-        """Get agent versions.
-
-        Large version histories may be truncated.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not agent_id:
-            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
-        return self._get(
-            path_template("/get-agent-versions/{agent_id}", agent_id=agent_id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AgentGetVersionsResponse,
         )
 
     def list_versions(
@@ -1896,6 +1863,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -2119,7 +2088,7 @@ class AsyncAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-5.6-terra.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -2531,6 +2500,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -2751,7 +2722,7 @@ class AsyncAgentResource(AsyncAPIResource):
               pre-defined variables extracted in the call analysis. This will be available
               after the call ends.
 
-          post_call_analysis_model: The model to use for post call analysis. Default to gpt-4.1.
+          post_call_analysis_model: The model to use for post call analysis. Default to gpt-5.6-terra.
 
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
@@ -3094,41 +3065,6 @@ class AsyncAgentResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    @typing_extensions.deprecated("deprecated")
-    async def get_versions(
-        self,
-        agent_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> AgentGetVersionsResponse:
-        """Get agent versions.
-
-        Large version histories may be truncated.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not agent_id:
-            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
-        return await self._get(
-            path_template("/get-agent-versions/{agent_id}", agent_id=agent_id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=AgentGetVersionsResponse,
-        )
-
     async def list_versions(
         self,
         agent_id: str,
@@ -3307,11 +3243,6 @@ class AgentResourceWithRawResponse:
         self.delete_version = to_raw_response_wrapper(
             agent.delete_version,
         )
-        self.get_versions = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                agent.get_versions,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.list_versions = to_raw_response_wrapper(
             agent.list_versions,
         )
@@ -3347,11 +3278,6 @@ class AsyncAgentResourceWithRawResponse:
         )
         self.delete_version = async_to_raw_response_wrapper(
             agent.delete_version,
-        )
-        self.get_versions = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                agent.get_versions,  # pyright: ignore[reportDeprecated],
-            )
         )
         self.list_versions = async_to_raw_response_wrapper(
             agent.list_versions,
@@ -3389,11 +3315,6 @@ class AgentResourceWithStreamingResponse:
         self.delete_version = to_streamed_response_wrapper(
             agent.delete_version,
         )
-        self.get_versions = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                agent.get_versions,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.list_versions = to_streamed_response_wrapper(
             agent.list_versions,
         )
@@ -3429,11 +3350,6 @@ class AsyncAgentResourceWithStreamingResponse:
         )
         self.delete_version = async_to_streamed_response_wrapper(
             agent.delete_version,
-        )
-        self.get_versions = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                agent.get_versions,  # pyright: ignore[reportDeprecated],
-            )
         )
         self.list_versions = async_to_streamed_response_wrapper(
             agent.list_versions,

@@ -457,9 +457,11 @@ class AgentCreateParams(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
-    """The model to use for post call analysis. Default to gpt-4.1."""
+    """The model to use for post call analysis. Default to gpt-5.6-terra."""
 
     pronunciation_dictionary: Optional[Iterable[PronunciationDictionary]]
     """

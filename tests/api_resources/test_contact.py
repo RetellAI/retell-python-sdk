@@ -39,11 +39,11 @@ class TestContact:
     def test_method_create_with_all_params(self, client: Retell) -> None:
         contact = client.contact.create(
             phone_number="phone_number",
+            contact_tags=["P"],
             custom_fields={},
             do_not_call=True,
             first_name="first_name",
             last_name="last_name",
-            tags=["P"],
         )
         assert_matches_type(ContactResponse, contact, path=["response"])
 
@@ -86,11 +86,11 @@ class TestContact:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         contact = client.contact.update(
             contact_id="contact_id",
+            contact_tags=["P"],
             custom_fields={},
             do_not_call=True,
             first_name="first_name",
             last_name="last_name",
-            tags=["P"],
         )
         assert_matches_type(ContactResponse, contact, path=["response"])
 
@@ -144,6 +144,11 @@ class TestContact:
                     "type": "string",
                     "value": "value",
                 },
+                "contact_tags": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
                 "custom_fields": [
                     {
                         "op": "eq",
@@ -171,11 +176,6 @@ class TestContact:
                     "op": "eq",
                     "type": "string",
                     "value": "value",
-                },
-                "tags": {
-                    "op": "in",
-                    "type": "enum",
-                    "value": ["string"],
                 },
             },
             limit=1,
@@ -330,8 +330,8 @@ class TestContact:
                 }
             ],
             upload_id="upload_26f1cbdf5713",
+            contact_tags=["P"],
             default_country="se",
-            tags=["P"],
         )
         assert_matches_type(ContactCreateImportResponse, contact, path=["response"])
 
@@ -618,11 +618,11 @@ class TestAsyncContact:
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         contact = await async_client.contact.create(
             phone_number="phone_number",
+            contact_tags=["P"],
             custom_fields={},
             do_not_call=True,
             first_name="first_name",
             last_name="last_name",
-            tags=["P"],
         )
         assert_matches_type(ContactResponse, contact, path=["response"])
 
@@ -665,11 +665,11 @@ class TestAsyncContact:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         contact = await async_client.contact.update(
             contact_id="contact_id",
+            contact_tags=["P"],
             custom_fields={},
             do_not_call=True,
             first_name="first_name",
             last_name="last_name",
-            tags=["P"],
         )
         assert_matches_type(ContactResponse, contact, path=["response"])
 
@@ -723,6 +723,11 @@ class TestAsyncContact:
                     "type": "string",
                     "value": "value",
                 },
+                "contact_tags": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
                 "custom_fields": [
                     {
                         "op": "eq",
@@ -750,11 +755,6 @@ class TestAsyncContact:
                     "op": "eq",
                     "type": "string",
                     "value": "value",
-                },
-                "tags": {
-                    "op": "in",
-                    "type": "enum",
-                    "value": ["string"],
                 },
             },
             limit=1,
@@ -909,8 +909,8 @@ class TestAsyncContact:
                 }
             ],
             upload_id="upload_26f1cbdf5713",
+            contact_tags=["P"],
             default_country="se",
-            tags=["P"],
         )
         assert_matches_type(ContactCreateImportResponse, contact, path=["response"])
 

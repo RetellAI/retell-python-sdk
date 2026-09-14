@@ -11,6 +11,7 @@ __all__ = [
     "ContactListParams",
     "FilterCriteria",
     "FilterCriteriaContactID",
+    "FilterCriteriaContactTags",
     "FilterCriteriaCustomField",
     "FilterCriteriaCustomFieldStringFilter",
     "FilterCriteriaCustomFieldNumberFilter",
@@ -26,7 +27,6 @@ __all__ = [
     "FilterCriteriaLastConversationTimestampNumberFilter",
     "FilterCriteriaLastConversationTimestampRangeFilter",
     "FilterCriteriaPhoneNumber",
-    "FilterCriteriaTags",
 ]
 
 
@@ -68,6 +68,17 @@ class FilterCriteriaContactID(TypedDict, total=False):
     type: Required[Literal["string"]]
 
     value: Required[str]
+
+
+class FilterCriteriaContactTags(TypedDict, total=False):
+    """Match contacts that have any of the listed tags."""
+
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[SequenceNotStr[str]]
 
 
 class FilterCriteriaCustomFieldStringFilter(TypedDict, total=False):
@@ -223,17 +234,6 @@ class FilterCriteriaPhoneNumber(TypedDict, total=False):
     value: Required[str]
 
 
-class FilterCriteriaTags(TypedDict, total=False):
-    """Match contacts that have any of the listed tags."""
-
-    op: Required[Literal["in"]]
-    """in: value is one of the listed values"""
-
-    type: Required[Literal["enum"]]
-
-    value: Required[SequenceNotStr[str]]
-
-
 class FilterCriteria(TypedDict, total=False):
     """Filter criteria for contacts.
 
@@ -241,6 +241,9 @@ class FilterCriteria(TypedDict, total=False):
     """
 
     contact_id: FilterCriteriaContactID
+
+    contact_tags: FilterCriteriaContactTags
+    """Match contacts that have any of the listed tags."""
 
     custom_fields: Iterable[FilterCriteriaCustomField]
     """Filter by custom contact fields defined in CRM config."""
@@ -262,6 +265,3 @@ class FilterCriteria(TypedDict, total=False):
 
     Stored in E.164, so an `eq` filter needs the full number.
     """
-
-    tags: FilterCriteriaTags
-    """Match contacts that have any of the listed tags."""

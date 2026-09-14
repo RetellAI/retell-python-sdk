@@ -21,14 +21,14 @@ class ContactCreateImportParams(TypedDict, total=False):
     upload_id: Required[str]
     """Id returned by upload-contact-import-file."""
 
-    default_country: str
-    """Country for parsing phone numbers without a country code. Defaults to US."""
-
-    tags: SequenceNotStr[str]
+    contact_tags: SequenceNotStr[str]
     """Tags added to every contact in this import.
 
     Existing tags are preserved. Omit to leave tags unchanged.
     """
+
+    default_country: str
+    """Country for parsing phone numbers without a country code. Defaults to US."""
 
 
 class ColumnMapping(TypedDict, total=False):

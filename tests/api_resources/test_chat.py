@@ -185,6 +185,11 @@ class TestChat:
                         "version": [0],
                     }
                 ],
+                "agent_number": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "value",
+                },
                 "agent_tag": {
                     "op": "in",
                     "type": "enum",
@@ -204,6 +209,11 @@ class TestChat:
                     "op": "eq",
                     "type": "boolean",
                     "value": True,
+                },
+                "chat_type": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["api_chat"],
                 },
                 "combined_cost": {
                     "op": "eq",
@@ -226,6 +236,16 @@ class TestChat:
                         "key": "key",
                     }
                 ],
+                "data_storage_setting": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["everything"],
+                },
+                "direction": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["inbound"],
+                },
                 "disconnection_reason": {
                     "op": "in",
                     "type": "enum",
@@ -245,6 +265,11 @@ class TestChat:
                     "op": "eq",
                     "type": "number",
                     "value": 0,
+                },
+                "user_number": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "value",
                 },
                 "user_sentiment": {
                     "op": "in",
@@ -665,6 +690,11 @@ class TestAsyncChat:
                         "version": [0],
                     }
                 ],
+                "agent_number": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "value",
+                },
                 "agent_tag": {
                     "op": "in",
                     "type": "enum",
@@ -684,6 +714,11 @@ class TestAsyncChat:
                     "op": "eq",
                     "type": "boolean",
                     "value": True,
+                },
+                "chat_type": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["api_chat"],
                 },
                 "combined_cost": {
                     "op": "eq",
@@ -706,6 +741,16 @@ class TestAsyncChat:
                         "key": "key",
                     }
                 ],
+                "data_storage_setting": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["everything"],
+                },
+                "direction": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["inbound"],
+                },
                 "disconnection_reason": {
                     "op": "in",
                     "type": "enum",
@@ -725,6 +770,11 @@ class TestAsyncChat:
                     "op": "eq",
                     "type": "number",
                     "value": 0,
+                },
+                "user_number": {
+                    "op": "eq",
+                    "type": "string",
+                    "value": "value",
                 },
                 "user_sentiment": {
                     "op": "in",

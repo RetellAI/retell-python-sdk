@@ -923,9 +923,11 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
-    """The model to use for post call analysis. Default to gpt-4.1."""
+    """The model to use for post call analysis. Default to gpt-5.6-terra."""
 
     pronunciation_dictionary: Optional[Iterable[TaskAgentOverrideAgentPronunciationDictionary]]
     """
@@ -1152,6 +1154,8 @@ class TaskAgentOverrideConversationFlowModelChoice(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
     """The LLM model to use"""
@@ -1264,9 +1268,11 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
             "gemini-3.5-flash",
             "gemini-3.5-flash-lite",
             "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
         ]
     ]
-    """Select the underlying text LLM. If not set, would default to gpt-4.1."""
+    """Select the underlying text LLM. If not set, would default to gpt-5.6-terra."""
 
     model_high_priority: Optional[bool]
     """

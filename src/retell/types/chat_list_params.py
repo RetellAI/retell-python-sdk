@@ -11,12 +11,14 @@ __all__ = [
     "ChatListParams",
     "FilterCriteria",
     "FilterCriteriaAgent",
+    "FilterCriteriaAgentNumber",
     "FilterCriteriaAgentTag",
     "FilterCriteriaChatID",
     "FilterCriteriaChatIDStringFilter",
     "FilterCriteriaChatIDEnumFilter",
     "FilterCriteriaChatStatus",
     "FilterCriteriaChatSuccessful",
+    "FilterCriteriaChatType",
     "FilterCriteriaCombinedCost",
     "FilterCriteriaCombinedCostNumberFilter",
     "FilterCriteriaCombinedCostRangeFilter",
@@ -34,6 +36,8 @@ __all__ = [
     "FilterCriteriaCustomAttributeRangeFilter",
     "FilterCriteriaCustomAttributeEnumFilter",
     "FilterCriteriaCustomAttributePresentFilter",
+    "FilterCriteriaDataStorageSetting",
+    "FilterCriteriaDirection",
     "FilterCriteriaDisconnectionReason",
     "FilterCriteriaDurationMs",
     "FilterCriteriaDurationMsNumberFilter",
@@ -44,6 +48,7 @@ __all__ = [
     "FilterCriteriaStartTimestamp",
     "FilterCriteriaStartTimestampNumberFilter",
     "FilterCriteriaStartTimestampRangeFilter",
+    "FilterCriteriaUserNumber",
     "FilterCriteriaUserSentiment",
 ]
 
@@ -79,6 +84,17 @@ class FilterCriteriaAgent(TypedDict, total=False):
 
     version: Iterable[float]
     """Specific versions to filter on. If omitted or empty, all versions are included."""
+
+
+class FilterCriteriaAgentNumber(TypedDict, total=False):
+    """Filter by the agent's phone number for SMS chats."""
+
+    op: Required[Literal["eq", "ne", "sw", "ew", "co"]]
+    """eq: equal, ne: not equal, sw: starts with, ew: ends with, co: contains"""
+
+    type: Required[Literal["string"]]
+
+    value: Required[str]
 
 
 class FilterCriteriaAgentTag(TypedDict, total=False):
@@ -130,6 +146,15 @@ class FilterCriteriaChatSuccessful(TypedDict, total=False):
     type: Required[Literal["boolean"]]
 
     value: Required[bool]
+
+
+class FilterCriteriaChatType(TypedDict, total=False):
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[List[Literal["api_chat", "sms_chat"]]]
 
 
 class FilterCriteriaCombinedCostNumberFilter(TypedDict, total=False):
@@ -325,6 +350,24 @@ FilterCriteriaCustomAttribute: TypeAlias = Union[
 ]
 
 
+class FilterCriteriaDataStorageSetting(TypedDict, total=False):
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[List[Literal["everything", "everything_except_pii", "basic_attributes_only"]]]
+
+
+class FilterCriteriaDirection(TypedDict, total=False):
+    op: Required[Literal["in"]]
+    """in: value is one of the listed values"""
+
+    type: Required[Literal["enum"]]
+
+    value: Required[List[Literal["inbound", "outbound"]]]
+
+
 class FilterCriteriaDisconnectionReason(TypedDict, total=False):
     op: Required[Literal["in"]]
     """in: value is one of the listed values"""
@@ -452,6 +495,17 @@ FilterCriteriaStartTimestamp: TypeAlias = Union[
 ]
 
 
+class FilterCriteriaUserNumber(TypedDict, total=False):
+    """Filter by the user's phone number for SMS chats."""
+
+    op: Required[Literal["eq", "ne", "sw", "ew", "co"]]
+    """eq: equal, ne: not equal, sw: starts with, ew: ends with, co: contains"""
+
+    type: Required[Literal["string"]]
+
+    value: Required[str]
+
+
 class FilterCriteriaUserSentiment(TypedDict, total=False):
     op: Required[Literal["in"]]
     """in: value is one of the listed values"""
@@ -467,6 +521,9 @@ class FilterCriteria(TypedDict, total=False):
     agent: Iterable[FilterCriteriaAgent]
     """Filter by agent(s). Agent filters are connected by OR."""
 
+    agent_number: FilterCriteriaAgentNumber
+    """Filter by the agent's phone number for SMS chats."""
+
     agent_tag: FilterCriteriaAgentTag
     """Filter by agent environment tag(s) (e.g. "prod", "staging")."""
 
@@ -477,6 +534,8 @@ class FilterCriteria(TypedDict, total=False):
 
     chat_successful: FilterCriteriaChatSuccessful
     """Filter by whether the chat was successful."""
+
+    chat_type: FilterCriteriaChatType
 
     combined_cost: FilterCriteriaCombinedCost
     """Filter by total chat cost in cents."""
@@ -495,6 +554,10 @@ class FilterCriteria(TypedDict, total=False):
     attribute value as `value`.
     """
 
+    data_storage_setting: FilterCriteriaDataStorageSetting
+
+    direction: FilterCriteriaDirection
+
     disconnection_reason: FilterCriteriaDisconnectionReason
 
     duration_ms: FilterCriteriaDurationMs
@@ -505,5 +568,8 @@ class FilterCriteria(TypedDict, total=False):
 
     start_timestamp: FilterCriteriaStartTimestamp
     """Filter by chat start timestamp (epoch ms)."""
+
+    user_number: FilterCriteriaUserNumber
+    """Filter by the user's phone number for SMS chats."""
 
     user_sentiment: FilterCriteriaUserSentiment

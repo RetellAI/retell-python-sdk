@@ -82,6 +82,8 @@ class LlmResource(SyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -148,7 +150,7 @@ class LlmResource(SyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Select the underlying text LLM. If not set, would default to gpt-4.1.
+          model: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
 
           model_high_priority: If set to true, will use high priority pool with more dedicated resource to
               ensure lower and more consistent latency, default to false. This feature usually
@@ -293,6 +295,8 @@ class LlmResource(SyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -359,7 +363,7 @@ class LlmResource(SyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Select the underlying text LLM. If not set, would default to gpt-4.1.
+          model: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
 
           model_high_priority: If set to true, will use high priority pool with more dedicated resource to
               ensure lower and more consistent latency, default to false. This feature usually
@@ -582,6 +586,8 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -648,7 +654,7 @@ class AsyncLlmResource(AsyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Select the underlying text LLM. If not set, would default to gpt-4.1.
+          model: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
 
           model_high_priority: If set to true, will use high priority pool with more dedicated resource to
               ensure lower and more consistent latency, default to false. This feature usually
@@ -793,6 +799,8 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gemini-3.5-flash",
                 "gemini-3.5-flash-lite",
                 "gemini-3.6-flash",
+                "gemini-3.7-flash",
+                "gemini-3.8-flash",
             ]
         ]
         | Omit = omit,
@@ -859,7 +867,7 @@ class AsyncLlmResource(AsyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Select the underlying text LLM. If not set, would default to gpt-4.1.
+          model: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
 
           model_high_priority: If set to true, will use high priority pool with more dedicated resource to
               ensure lower and more consistent latency, default to false. This feature usually
