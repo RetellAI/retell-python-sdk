@@ -401,6 +401,7 @@ class TestChat:
         chat = client.chat.create_sms_chat(
             from_number="+12137771234",
             to_number="+14155551234",
+            honor_internal_dnc=True,
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             override_agent_version="latest_published",
@@ -906,6 +907,7 @@ class TestAsyncChat:
         chat = await async_client.chat.create_sms_chat(
             from_number="+12137771234",
             to_number="+14155551234",
+            honor_internal_dnc=True,
             metadata={},
             override_agent_id="oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
             override_agent_version="latest_published",

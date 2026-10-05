@@ -39,7 +39,8 @@ class TestContact:
     def test_method_create_with_all_params(self, client: Retell) -> None:
         contact = client.contact.create(
             phone_number="phone_number",
-            contact_tags=["P"],
+            contact_memory="contact_memory",
+            contact_tag_ids=["string"],
             custom_fields={},
             do_not_call=True,
             first_name="first_name",
@@ -86,7 +87,8 @@ class TestContact:
     def test_method_update_with_all_params(self, client: Retell) -> None:
         contact = client.contact.update(
             contact_id="contact_id",
-            contact_tags=["P"],
+            contact_memory="contact_memory",
+            contact_tag_ids=["string"],
             custom_fields={},
             do_not_call=True,
             first_name="first_name",
@@ -138,13 +140,14 @@ class TestContact:
     @parametrize
     def test_method_list_with_all_params(self, client: Retell) -> None:
         contact = client.contact.list(
+            excluded_contact_ids=["string"],
             filter_criteria={
                 "contact_id": {
                     "op": "eq",
                     "type": "string",
                     "value": "value",
                 },
-                "contact_tags": {
+                "contact_tag_ids": {
                     "op": "in",
                     "type": "enum",
                     "value": ["string"],
@@ -254,7 +257,7 @@ class TestContact:
     @parametrize
     def test_method_backfill_analysis_data(self, client: Retell) -> None:
         contact = client.contact.backfill_analysis_data(
-            backfill_attributes=["string"],
+            backfill_attributes=["contact_memory"],
         )
         assert_matches_type(ContactBackfillAnalysisDataResponse, contact, path=["response"])
 
@@ -262,7 +265,7 @@ class TestContact:
     @parametrize
     def test_method_backfill_analysis_data_with_all_params(self, client: Retell) -> None:
         contact = client.contact.backfill_analysis_data(
-            backfill_attributes=["string"],
+            backfill_attributes=["contact_memory"],
             backfill_call_filter={
                 "agent": [
                     {
@@ -283,7 +286,7 @@ class TestContact:
     @parametrize
     def test_raw_response_backfill_analysis_data(self, client: Retell) -> None:
         response = client.contact.with_raw_response.backfill_analysis_data(
-            backfill_attributes=["string"],
+            backfill_attributes=["contact_memory"],
         )
 
         assert response.is_closed is True
@@ -295,7 +298,7 @@ class TestContact:
     @parametrize
     def test_streaming_response_backfill_analysis_data(self, client: Retell) -> None:
         with client.contact.with_streaming_response.backfill_analysis_data(
-            backfill_attributes=["string"],
+            backfill_attributes=["contact_memory"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -618,7 +621,8 @@ class TestAsyncContact:
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         contact = await async_client.contact.create(
             phone_number="phone_number",
-            contact_tags=["P"],
+            contact_memory="contact_memory",
+            contact_tag_ids=["string"],
             custom_fields={},
             do_not_call=True,
             first_name="first_name",
@@ -665,7 +669,8 @@ class TestAsyncContact:
     async def test_method_update_with_all_params(self, async_client: AsyncRetell) -> None:
         contact = await async_client.contact.update(
             contact_id="contact_id",
-            contact_tags=["P"],
+            contact_memory="contact_memory",
+            contact_tag_ids=["string"],
             custom_fields={},
             do_not_call=True,
             first_name="first_name",
@@ -717,13 +722,14 @@ class TestAsyncContact:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncRetell) -> None:
         contact = await async_client.contact.list(
+            excluded_contact_ids=["string"],
             filter_criteria={
                 "contact_id": {
                     "op": "eq",
                     "type": "string",
                     "value": "value",
                 },
-                "contact_tags": {
+                "contact_tag_ids": {
                     "op": "in",
                     "type": "enum",
                     "value": ["string"],
@@ -833,7 +839,7 @@ class TestAsyncContact:
     @parametrize
     async def test_method_backfill_analysis_data(self, async_client: AsyncRetell) -> None:
         contact = await async_client.contact.backfill_analysis_data(
-            backfill_attributes=["string"],
+            backfill_attributes=["contact_memory"],
         )
         assert_matches_type(ContactBackfillAnalysisDataResponse, contact, path=["response"])
 
@@ -841,7 +847,7 @@ class TestAsyncContact:
     @parametrize
     async def test_method_backfill_analysis_data_with_all_params(self, async_client: AsyncRetell) -> None:
         contact = await async_client.contact.backfill_analysis_data(
-            backfill_attributes=["string"],
+            backfill_attributes=["contact_memory"],
             backfill_call_filter={
                 "agent": [
                     {
@@ -862,7 +868,7 @@ class TestAsyncContact:
     @parametrize
     async def test_raw_response_backfill_analysis_data(self, async_client: AsyncRetell) -> None:
         response = await async_client.contact.with_raw_response.backfill_analysis_data(
-            backfill_attributes=["string"],
+            backfill_attributes=["contact_memory"],
         )
 
         assert response.is_closed is True
@@ -874,7 +880,7 @@ class TestAsyncContact:
     @parametrize
     async def test_streaming_response_backfill_analysis_data(self, async_client: AsyncRetell) -> None:
         async with async_client.contact.with_streaming_response.backfill_analysis_data(
-            backfill_attributes=["string"],
+            backfill_attributes=["contact_memory"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

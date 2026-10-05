@@ -43,6 +43,10 @@ class TestChatAgent:
             },
             agent_name="Jarvis",
             auto_close_message="Thank you for chatting. The conversation has ended.",
+            contact_memory_config={
+                "enable_read": True,
+                "enable_update": True,
+            },
             data_storage_retention_days=30,
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
@@ -73,6 +77,73 @@ class TestChatAgent:
                 }
             ],
             post_chat_analysis_model="gpt-4.1-mini",
+            post_session_tools=[
+                {
+                    "app_id": "app_id",
+                    "app_tool_template_name": "app_tool_template_name",
+                    "name": "name",
+                    "provider": "provider",
+                    "type": "integration_app",
+                    "condition": {
+                        "equations": [
+                            {
+                                "left": "left",
+                                "operator": "==",
+                                "right": "right",
+                            }
+                        ],
+                        "operator": "||",
+                        "type": "equation",
+                    },
+                    "depends_on": ["string"],
+                    "description": "description",
+                    "enable_typing_sound": True,
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "output_selection": {
+                        "mode": "all",
+                        "fields": ["string"],
+                    },
+                    "parameters": [
+                        {
+                            "properties": {},
+                            "type": "object",
+                            "required": ["string"],
+                        }
+                    ],
+                    "response_variables": {"contact_first_name": "data.first_name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                }
+            ],
+            pre_session_tools=[
+                {
+                    "app_id": "app_id",
+                    "app_tool_template_name": "app_tool_template_name",
+                    "name": "name",
+                    "provider": "provider",
+                    "type": "integration_app",
+                    "depends_on": ["string"],
+                    "description": "description",
+                    "enable_typing_sound": True,
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "output_selection": {
+                        "mode": "all",
+                        "fields": ["string"],
+                    },
+                    "parameters": [
+                        {
+                            "properties": {},
+                            "type": "object",
+                            "required": ["string"],
+                        }
+                    ],
+                    "response_variables": {"contact_first_name": "data.first_name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                }
+            ],
             signed_url_expiration_ms=86400000,
             timezone="America/New_York",
             version_title="Production hotfix",
@@ -181,6 +252,10 @@ class TestChatAgent:
             version="latest_published",
             agent_name="Jarvis",
             auto_close_message="Thank you for chatting. The conversation has ended.",
+            contact_memory_config={
+                "enable_read": True,
+                "enable_update": True,
+            },
             data_storage_retention_days=30,
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
@@ -211,6 +286,73 @@ class TestChatAgent:
                 }
             ],
             post_chat_analysis_model="gpt-4.1-mini",
+            post_session_tools=[
+                {
+                    "app_id": "app_id",
+                    "app_tool_template_name": "app_tool_template_name",
+                    "name": "name",
+                    "provider": "provider",
+                    "type": "integration_app",
+                    "condition": {
+                        "equations": [
+                            {
+                                "left": "left",
+                                "operator": "==",
+                                "right": "right",
+                            }
+                        ],
+                        "operator": "||",
+                        "type": "equation",
+                    },
+                    "depends_on": ["string"],
+                    "description": "description",
+                    "enable_typing_sound": True,
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "output_selection": {
+                        "mode": "all",
+                        "fields": ["string"],
+                    },
+                    "parameters": [
+                        {
+                            "properties": {},
+                            "type": "object",
+                            "required": ["string"],
+                        }
+                    ],
+                    "response_variables": {"contact_first_name": "data.first_name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                }
+            ],
+            pre_session_tools=[
+                {
+                    "app_id": "app_id",
+                    "app_tool_template_name": "app_tool_template_name",
+                    "name": "name",
+                    "provider": "provider",
+                    "type": "integration_app",
+                    "depends_on": ["string"],
+                    "description": "description",
+                    "enable_typing_sound": True,
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "output_selection": {
+                        "mode": "all",
+                        "fields": ["string"],
+                    },
+                    "parameters": [
+                        {
+                            "properties": {},
+                            "type": "object",
+                            "required": ["string"],
+                        }
+                    ],
+                    "response_variables": {"contact_first_name": "data.first_name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                }
+            ],
             response_engine={
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",
@@ -524,6 +666,10 @@ class TestAsyncChatAgent:
             },
             agent_name="Jarvis",
             auto_close_message="Thank you for chatting. The conversation has ended.",
+            contact_memory_config={
+                "enable_read": True,
+                "enable_update": True,
+            },
             data_storage_retention_days=30,
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
@@ -554,6 +700,73 @@ class TestAsyncChatAgent:
                 }
             ],
             post_chat_analysis_model="gpt-4.1-mini",
+            post_session_tools=[
+                {
+                    "app_id": "app_id",
+                    "app_tool_template_name": "app_tool_template_name",
+                    "name": "name",
+                    "provider": "provider",
+                    "type": "integration_app",
+                    "condition": {
+                        "equations": [
+                            {
+                                "left": "left",
+                                "operator": "==",
+                                "right": "right",
+                            }
+                        ],
+                        "operator": "||",
+                        "type": "equation",
+                    },
+                    "depends_on": ["string"],
+                    "description": "description",
+                    "enable_typing_sound": True,
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "output_selection": {
+                        "mode": "all",
+                        "fields": ["string"],
+                    },
+                    "parameters": [
+                        {
+                            "properties": {},
+                            "type": "object",
+                            "required": ["string"],
+                        }
+                    ],
+                    "response_variables": {"contact_first_name": "data.first_name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                }
+            ],
+            pre_session_tools=[
+                {
+                    "app_id": "app_id",
+                    "app_tool_template_name": "app_tool_template_name",
+                    "name": "name",
+                    "provider": "provider",
+                    "type": "integration_app",
+                    "depends_on": ["string"],
+                    "description": "description",
+                    "enable_typing_sound": True,
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "output_selection": {
+                        "mode": "all",
+                        "fields": ["string"],
+                    },
+                    "parameters": [
+                        {
+                            "properties": {},
+                            "type": "object",
+                            "required": ["string"],
+                        }
+                    ],
+                    "response_variables": {"contact_first_name": "data.first_name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                }
+            ],
             signed_url_expiration_ms=86400000,
             timezone="America/New_York",
             version_title="Production hotfix",
@@ -662,6 +875,10 @@ class TestAsyncChatAgent:
             version="latest_published",
             agent_name="Jarvis",
             auto_close_message="Thank you for chatting. The conversation has ended.",
+            contact_memory_config={
+                "enable_read": True,
+                "enable_update": True,
+            },
             data_storage_retention_days=30,
             data_storage_setting="everything",
             end_chat_after_silence_ms=3600000,
@@ -692,6 +909,73 @@ class TestAsyncChatAgent:
                 }
             ],
             post_chat_analysis_model="gpt-4.1-mini",
+            post_session_tools=[
+                {
+                    "app_id": "app_id",
+                    "app_tool_template_name": "app_tool_template_name",
+                    "name": "name",
+                    "provider": "provider",
+                    "type": "integration_app",
+                    "condition": {
+                        "equations": [
+                            {
+                                "left": "left",
+                                "operator": "==",
+                                "right": "right",
+                            }
+                        ],
+                        "operator": "||",
+                        "type": "equation",
+                    },
+                    "depends_on": ["string"],
+                    "description": "description",
+                    "enable_typing_sound": True,
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "output_selection": {
+                        "mode": "all",
+                        "fields": ["string"],
+                    },
+                    "parameters": [
+                        {
+                            "properties": {},
+                            "type": "object",
+                            "required": ["string"],
+                        }
+                    ],
+                    "response_variables": {"contact_first_name": "data.first_name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                }
+            ],
+            pre_session_tools=[
+                {
+                    "app_id": "app_id",
+                    "app_tool_template_name": "app_tool_template_name",
+                    "name": "name",
+                    "provider": "provider",
+                    "type": "integration_app",
+                    "depends_on": ["string"],
+                    "description": "description",
+                    "enable_typing_sound": True,
+                    "execution_message_description": "execution_message_description",
+                    "execution_message_type": "prompt",
+                    "output_selection": {
+                        "mode": "all",
+                        "fields": ["string"],
+                    },
+                    "parameters": [
+                        {
+                            "properties": {},
+                            "type": "object",
+                            "required": ["string"],
+                        }
+                    ],
+                    "response_variables": {"contact_first_name": "data.first_name"},
+                    "speak_after_execution": True,
+                    "speak_during_execution": True,
+                }
+            ],
             response_engine={
                 "llm_id": "llm_234sdertfsdsfsdf",
                 "type": "retell-llm",

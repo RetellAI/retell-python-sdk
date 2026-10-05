@@ -63,7 +63,7 @@ class TestConversationFlow:
                     "always_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -89,7 +89,7 @@ class TestConversationFlow:
                     "else_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -118,13 +118,13 @@ class TestConversationFlow:
                         }
                     ],
                     "global_node_setting": {
-                        "condition": "condition",
+                        "condition": "x",
                         "cool_down": 1,
                         "go_back_conditions": [
                             {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -169,11 +169,12 @@ class TestConversationFlow:
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "Skip response",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "skippable": True,
                     "stt_mode": "fast",
                     "voice_speed": 0.5,
                 }
@@ -199,7 +200,7 @@ class TestConversationFlow:
                             "always_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -216,7 +217,7 @@ class TestConversationFlow:
                                 {
                                     "id": "id",
                                     "transition_condition": {
-                                        "prompt": "prompt",
+                                        "prompt": "x",
                                         "type": "prompt",
                                     },
                                     "destination_node_id": "destination_node_id",
@@ -225,7 +226,7 @@ class TestConversationFlow:
                             "else_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -254,13 +255,13 @@ class TestConversationFlow:
                                 }
                             ],
                             "global_node_setting": {
-                                "condition": "condition",
+                                "condition": "x",
                                 "cool_down": 1,
                                 "go_back_conditions": [
                                     {
                                         "id": "id",
                                         "transition_condition": {
-                                            "prompt": "prompt",
+                                            "prompt": "x",
                                             "type": "prompt",
                                         },
                                         "destination_node_id": "destination_node_id",
@@ -305,11 +306,12 @@ class TestConversationFlow:
                             "skip_response_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "skippable": True,
                             "stt_mode": "fast",
                             "voice_speed": 0.5,
                         }
@@ -591,7 +593,7 @@ class TestConversationFlow:
                             "always_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -608,7 +610,7 @@ class TestConversationFlow:
                                 {
                                     "id": "id",
                                     "transition_condition": {
-                                        "prompt": "prompt",
+                                        "prompt": "x",
                                         "type": "prompt",
                                     },
                                     "destination_node_id": "destination_node_id",
@@ -617,7 +619,7 @@ class TestConversationFlow:
                             "else_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -646,13 +648,13 @@ class TestConversationFlow:
                                 }
                             ],
                             "global_node_setting": {
-                                "condition": "condition",
+                                "condition": "x",
                                 "cool_down": 1,
                                 "go_back_conditions": [
                                     {
                                         "id": "id",
                                         "transition_condition": {
-                                            "prompt": "prompt",
+                                            "prompt": "x",
                                             "type": "prompt",
                                         },
                                         "destination_node_id": "destination_node_id",
@@ -697,11 +699,12 @@ class TestConversationFlow:
                             "skip_response_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "skippable": True,
                             "stt_mode": "fast",
                             "voice_speed": 0.5,
                         }
@@ -812,7 +815,7 @@ class TestConversationFlow:
                     "always_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -838,7 +841,7 @@ class TestConversationFlow:
                     "else_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -867,13 +870,13 @@ class TestConversationFlow:
                         }
                     ],
                     "global_node_setting": {
-                        "condition": "condition",
+                        "condition": "x",
                         "cool_down": 1,
                         "go_back_conditions": [
                             {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -918,11 +921,12 @@ class TestConversationFlow:
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "Skip response",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "skippable": True,
                     "stt_mode": "fast",
                     "voice_speed": 0.5,
                 }
@@ -1149,7 +1153,7 @@ class TestAsyncConversationFlow:
                     "always_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -1175,7 +1179,7 @@ class TestAsyncConversationFlow:
                     "else_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -1204,13 +1208,13 @@ class TestAsyncConversationFlow:
                         }
                     ],
                     "global_node_setting": {
-                        "condition": "condition",
+                        "condition": "x",
                         "cool_down": 1,
                         "go_back_conditions": [
                             {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -1255,11 +1259,12 @@ class TestAsyncConversationFlow:
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "Skip response",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "skippable": True,
                     "stt_mode": "fast",
                     "voice_speed": 0.5,
                 }
@@ -1285,7 +1290,7 @@ class TestAsyncConversationFlow:
                             "always_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -1302,7 +1307,7 @@ class TestAsyncConversationFlow:
                                 {
                                     "id": "id",
                                     "transition_condition": {
-                                        "prompt": "prompt",
+                                        "prompt": "x",
                                         "type": "prompt",
                                     },
                                     "destination_node_id": "destination_node_id",
@@ -1311,7 +1316,7 @@ class TestAsyncConversationFlow:
                             "else_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -1340,13 +1345,13 @@ class TestAsyncConversationFlow:
                                 }
                             ],
                             "global_node_setting": {
-                                "condition": "condition",
+                                "condition": "x",
                                 "cool_down": 1,
                                 "go_back_conditions": [
                                     {
                                         "id": "id",
                                         "transition_condition": {
-                                            "prompt": "prompt",
+                                            "prompt": "x",
                                             "type": "prompt",
                                         },
                                         "destination_node_id": "destination_node_id",
@@ -1391,11 +1396,12 @@ class TestAsyncConversationFlow:
                             "skip_response_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "skippable": True,
                             "stt_mode": "fast",
                             "voice_speed": 0.5,
                         }
@@ -1677,7 +1683,7 @@ class TestAsyncConversationFlow:
                             "always_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -1694,7 +1700,7 @@ class TestAsyncConversationFlow:
                                 {
                                     "id": "id",
                                     "transition_condition": {
-                                        "prompt": "prompt",
+                                        "prompt": "x",
                                         "type": "prompt",
                                     },
                                     "destination_node_id": "destination_node_id",
@@ -1703,7 +1709,7 @@ class TestAsyncConversationFlow:
                             "else_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -1732,13 +1738,13 @@ class TestAsyncConversationFlow:
                                 }
                             ],
                             "global_node_setting": {
-                                "condition": "condition",
+                                "condition": "x",
                                 "cool_down": 1,
                                 "go_back_conditions": [
                                     {
                                         "id": "id",
                                         "transition_condition": {
-                                            "prompt": "prompt",
+                                            "prompt": "x",
                                             "type": "prompt",
                                         },
                                         "destination_node_id": "destination_node_id",
@@ -1783,11 +1789,12 @@ class TestAsyncConversationFlow:
                             "skip_response_edge": {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "skippable": True,
                             "stt_mode": "fast",
                             "voice_speed": 0.5,
                         }
@@ -1898,7 +1905,7 @@ class TestAsyncConversationFlow:
                     "always_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -1924,7 +1931,7 @@ class TestAsyncConversationFlow:
                     "else_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "prompt",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
@@ -1953,13 +1960,13 @@ class TestAsyncConversationFlow:
                         }
                     ],
                     "global_node_setting": {
-                        "condition": "condition",
+                        "condition": "x",
                         "cool_down": 1,
                         "go_back_conditions": [
                             {
                                 "id": "id",
                                 "transition_condition": {
-                                    "prompt": "prompt",
+                                    "prompt": "x",
                                     "type": "prompt",
                                 },
                                 "destination_node_id": "destination_node_id",
@@ -2004,11 +2011,12 @@ class TestAsyncConversationFlow:
                     "skip_response_edge": {
                         "id": "id",
                         "transition_condition": {
-                            "prompt": "Skip response",
+                            "prompt": "x",
                             "type": "prompt",
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "skippable": True,
                     "stt_mode": "fast",
                     "voice_speed": 0.5,
                 }

@@ -14,6 +14,7 @@ from retell.types import (
     AppListResponse,
     AppTestAuthResponse,
     AppListUsagesResponse,
+    AppGetToolSchemaResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -295,6 +296,68 @@ class TestApp:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             client.app.with_raw_response.get(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_tool_schema(self, client: Retell) -> None:
+        app = client.app.get_tool_schema(
+            app_id="app_id",
+            app_tool_template_name="app_tool_template_name",
+        )
+        assert_matches_type(AppGetToolSchemaResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_get_tool_schema_with_all_params(self, client: Retell) -> None:
+        app = client.app.get_tool_schema(
+            app_id="app_id",
+            app_tool_template_name="app_tool_template_name",
+            parameters=[
+                {
+                    "properties": {},
+                    "type": "object",
+                    "required": ["string"],
+                }
+            ],
+        )
+        assert_matches_type(AppGetToolSchemaResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get_tool_schema(self, client: Retell) -> None:
+        response = client.app.with_raw_response.get_tool_schema(
+            app_id="app_id",
+            app_tool_template_name="app_tool_template_name",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        app = response.parse()
+        assert_matches_type(AppGetToolSchemaResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get_tool_schema(self, client: Retell) -> None:
+        with client.app.with_streaming_response.get_tool_schema(
+            app_id="app_id",
+            app_tool_template_name="app_tool_template_name",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            app = response.parse()
+            assert_matches_type(AppGetToolSchemaResponse, app, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_get_tool_schema(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
+            client.app.with_raw_response.get_tool_schema(
+                app_id="",
+                app_tool_template_name="app_tool_template_name",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -671,6 +734,68 @@ class TestAsyncApp:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
             await async_client.app.with_raw_response.get(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_tool_schema(self, async_client: AsyncRetell) -> None:
+        app = await async_client.app.get_tool_schema(
+            app_id="app_id",
+            app_tool_template_name="app_tool_template_name",
+        )
+        assert_matches_type(AppGetToolSchemaResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_tool_schema_with_all_params(self, async_client: AsyncRetell) -> None:
+        app = await async_client.app.get_tool_schema(
+            app_id="app_id",
+            app_tool_template_name="app_tool_template_name",
+            parameters=[
+                {
+                    "properties": {},
+                    "type": "object",
+                    "required": ["string"],
+                }
+            ],
+        )
+        assert_matches_type(AppGetToolSchemaResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get_tool_schema(self, async_client: AsyncRetell) -> None:
+        response = await async_client.app.with_raw_response.get_tool_schema(
+            app_id="app_id",
+            app_tool_template_name="app_tool_template_name",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        app = await response.parse()
+        assert_matches_type(AppGetToolSchemaResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get_tool_schema(self, async_client: AsyncRetell) -> None:
+        async with async_client.app.with_streaming_response.get_tool_schema(
+            app_id="app_id",
+            app_tool_template_name="app_tool_template_name",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            app = await response.parse()
+            assert_matches_type(AppGetToolSchemaResponse, app, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_get_tool_schema(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_id` but received ''"):
+            await async_client.app.with_raw_response.get_tool_schema(
+                app_id="",
+                app_tool_template_name="app_tool_template_name",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")

@@ -263,6 +263,8 @@ class CallResource(SyncAPIResource):
         to_number: str,
         agent_override: call_create_phone_call_params.AgentOverride | Omit = omit,
         custom_sip_headers: Dict[str, str] | Omit = omit,
+        honor_internal_dnc: bool | Omit = omit,
+        idempotency_key: str | Omit = omit,
         ignore_e164_validation: bool | Omit = omit,
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
@@ -276,7 +278,7 @@ class CallResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneCallResponse:
         """
-        Create a new outbound phone call
+        Create a new outbound phone call.
 
         Args:
           from_number: The number you own in E.164 format. Must be a number purchased from Retell or
@@ -290,6 +292,12 @@ class CallResource(SyncAPIResource):
               the base agent.
 
           custom_sip_headers: Add optional custom SIP headers to the call.
+
+          honor_internal_dnc: If true, the call is rejected with a 400 error when the contact for to_number is
+              marked do_not_call. If omitted, the default value is false.
+
+          idempotency_key: Optional key to retry the same request for up to one hour without creating
+              another call. Use a new key for each new call.
 
           ignore_e164_validation: If true, the e.164 validation will be ignored for the from_number. This can be
               useful when you want to dial to internal pseudo numbers. This only applies when
@@ -329,6 +337,8 @@ class CallResource(SyncAPIResource):
                     "to_number": to_number,
                     "agent_override": agent_override,
                     "custom_sip_headers": custom_sip_headers,
+                    "honor_internal_dnc": honor_internal_dnc,
+                    "idempotency_key": idempotency_key,
                     "ignore_e164_validation": ignore_e164_validation,
                     "metadata": metadata,
                     "override_agent_id": override_agent_id,
@@ -916,6 +926,8 @@ class AsyncCallResource(AsyncAPIResource):
         to_number: str,
         agent_override: call_create_phone_call_params.AgentOverride | Omit = omit,
         custom_sip_headers: Dict[str, str] | Omit = omit,
+        honor_internal_dnc: bool | Omit = omit,
+        idempotency_key: str | Omit = omit,
         ignore_e164_validation: bool | Omit = omit,
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
@@ -929,7 +941,7 @@ class AsyncCallResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneCallResponse:
         """
-        Create a new outbound phone call
+        Create a new outbound phone call.
 
         Args:
           from_number: The number you own in E.164 format. Must be a number purchased from Retell or
@@ -943,6 +955,12 @@ class AsyncCallResource(AsyncAPIResource):
               the base agent.
 
           custom_sip_headers: Add optional custom SIP headers to the call.
+
+          honor_internal_dnc: If true, the call is rejected with a 400 error when the contact for to_number is
+              marked do_not_call. If omitted, the default value is false.
+
+          idempotency_key: Optional key to retry the same request for up to one hour without creating
+              another call. Use a new key for each new call.
 
           ignore_e164_validation: If true, the e.164 validation will be ignored for the from_number. This can be
               useful when you want to dial to internal pseudo numbers. This only applies when
@@ -982,6 +1000,8 @@ class AsyncCallResource(AsyncAPIResource):
                     "to_number": to_number,
                     "agent_override": agent_override,
                     "custom_sip_headers": custom_sip_headers,
+                    "honor_internal_dnc": honor_internal_dnc,
+                    "idempotency_key": idempotency_key,
                     "ignore_e164_validation": ignore_e164_validation,
                     "metadata": metadata,
                     "override_agent_id": override_agent_id,

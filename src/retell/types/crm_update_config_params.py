@@ -7,7 +7,7 @@ from typing_extensions import Literal, Required, TypedDict
 
 from .._types import SequenceNotStr
 
-__all__ = ["CRMUpdateConfigParams", "CRMAnalysisDataMapping", "CustomField"]
+__all__ = ["CRMUpdateConfigParams", "ContactTag", "CRMAnalysisDataMapping", "CustomField"]
 
 
 class CRMUpdateConfigParams(TypedDict, total=False):
@@ -24,12 +24,19 @@ class CRMUpdateConfigParams(TypedDict, total=False):
     table. Not used by the API itself.
     """
 
-    contact_tags: Optional[SequenceNotStr[str]]
+    contact_memory_update_prompt: Optional[str]
+    """Workspace-shared memory rewrite prompt.
+
+    Pass null to restore the built-in preset. Supports conversation dynamic
+    variables using {{variable_name}}.
+    """
+
+    contact_tags: Optional[Iterable[ContactTag]]
     """Replaces the organization's available contact tags.
 
-    Tags are trimmed and deduplicated. Omit to leave unchanged, or send null or an
-    empty array to clear the list. Does not change tags already assigned to
-    contacts.
+    Tag IDs must be unique 32-character hexadecimal strings and labels are trimmed.
+    Omit to leave unchanged, or send null or an empty array to clear the list. Does
+    not change tags already assigned to contacts.
     """
 
     crm_analysis_data_mappings: Iterable[CRMAnalysisDataMapping]
@@ -43,6 +50,13 @@ class CRMUpdateConfigParams(TypedDict, total=False):
     still targets is rejected — send crm_analysis_data_mappings in the same request
     to retarget or drop those mappings.
     """
+
+
+class ContactTag(TypedDict, total=False):
+    id: Required[str]
+
+    label: Required[str]
+    """Human-readable label for the tag."""
 
 
 class CRMAnalysisDataMapping(TypedDict, total=False):

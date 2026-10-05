@@ -19,6 +19,46 @@ __all__ = [
     "LatencyS2s",
     "LatencyTts",
     "LlmTokenUsage",
+    "PostSessionTranscriptWithToolCall",
+    "PostSessionTranscriptWithToolCallUtterance",
+    "PostSessionTranscriptWithToolCallUtteranceWord",
+    "PostSessionTranscriptWithToolCallToolCallInvocationUtterance",
+    "PostSessionTranscriptWithToolCallToolCallResultUtterance",
+    "PostSessionTranscriptWithToolCallNodeTransitionUtterance",
+    "PostSessionTranscriptWithToolCallDtmfUtterance",
+    "PostSessionTranscriptWithToolCallSMSUtterance",
+    "PostSessionTranscriptWithToolCallSMSUtteranceMultimedia",
+    "PostSessionTranscriptWithToolCallInjectedUtterance",
+    "PreSessionTranscriptWithToolCall",
+    "PreSessionTranscriptWithToolCallUtterance",
+    "PreSessionTranscriptWithToolCallUtteranceWord",
+    "PreSessionTranscriptWithToolCallToolCallInvocationUtterance",
+    "PreSessionTranscriptWithToolCallToolCallResultUtterance",
+    "PreSessionTranscriptWithToolCallNodeTransitionUtterance",
+    "PreSessionTranscriptWithToolCallDtmfUtterance",
+    "PreSessionTranscriptWithToolCallSMSUtterance",
+    "PreSessionTranscriptWithToolCallSMSUtteranceMultimedia",
+    "PreSessionTranscriptWithToolCallInjectedUtterance",
+    "ScrubbedPostSessionTranscriptWithToolCall",
+    "ScrubbedPostSessionTranscriptWithToolCallUtterance",
+    "ScrubbedPostSessionTranscriptWithToolCallUtteranceWord",
+    "ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtterance",
+    "ScrubbedPostSessionTranscriptWithToolCallToolCallResultUtterance",
+    "ScrubbedPostSessionTranscriptWithToolCallNodeTransitionUtterance",
+    "ScrubbedPostSessionTranscriptWithToolCallDtmfUtterance",
+    "ScrubbedPostSessionTranscriptWithToolCallSMSUtterance",
+    "ScrubbedPostSessionTranscriptWithToolCallSMSUtteranceMultimedia",
+    "ScrubbedPostSessionTranscriptWithToolCallInjectedUtterance",
+    "ScrubbedPreSessionTranscriptWithToolCall",
+    "ScrubbedPreSessionTranscriptWithToolCallUtterance",
+    "ScrubbedPreSessionTranscriptWithToolCallUtteranceWord",
+    "ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtterance",
+    "ScrubbedPreSessionTranscriptWithToolCallToolCallResultUtterance",
+    "ScrubbedPreSessionTranscriptWithToolCallNodeTransitionUtterance",
+    "ScrubbedPreSessionTranscriptWithToolCallDtmfUtterance",
+    "ScrubbedPreSessionTranscriptWithToolCallSMSUtterance",
+    "ScrubbedPreSessionTranscriptWithToolCallSMSUtteranceMultimedia",
+    "ScrubbedPreSessionTranscriptWithToolCallInjectedUtterance",
     "ScrubbedTranscriptWithToolCall",
     "ScrubbedTranscriptWithToolCallUtterance",
     "ScrubbedTranscriptWithToolCallUtteranceWord",
@@ -380,6 +420,630 @@ class LlmTokenUsage(BaseModel):
 
     values: List[float]
     """All the token count values in the call."""
+
+
+class PostSessionTranscriptWithToolCallUtteranceWord(BaseModel):
+    end: Optional[float] = None
+    """End time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    start: Optional[float] = None
+    """Start time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    word: Optional[str] = None
+    """Word transcript (with punctuation if applicable)."""
+
+
+class PostSessionTranscriptWithToolCallUtterance(BaseModel):
+    content: str
+    """Transcript of the utterances."""
+
+    role: Literal["agent", "user", "transfer_target"]
+    """Documents whether this utterance is spoken by agent or user."""
+
+    words: List[PostSessionTranscriptWithToolCallUtteranceWord]
+    """Array of words in the utterance with the word timestamp.
+
+    Useful for understanding what word was spoken at what time. Note that the word
+    timestamp is not guaranteed to be accurate, it's more like an approximation.
+    """
+
+
+class PostSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
+
+
+class PostSessionTranscriptWithToolCallToolCallResultUtterance(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    role: Literal["tool_call_result"]
+    """This is the result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
+
+class PostSessionTranscriptWithToolCallNodeTransitionUtterance(BaseModel):
+    former_node_id: str
+    """Former node id"""
+
+    former_node_name: str
+    """Former node name"""
+
+    new_node_id: str
+    """New node id"""
+
+    new_node_name: str
+    """New node name"""
+
+    role: Literal["node_transition"]
+    """This is result of a node transition"""
+
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
+
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
+
+
+class PostSessionTranscriptWithToolCallDtmfUtterance(BaseModel):
+    digit: str
+    """The digit pressed by the user.
+
+    Will be a single digit string like "1", "2", "3", "\\**", "#" etc.
+    """
+
+    role: Literal["dtmf"]
+    """Digit pressed by the user from their phone keypad."""
+
+
+class PostSessionTranscriptWithToolCallSMSUtteranceMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class PostSessionTranscriptWithToolCallSMSUtterance(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """
+    SMS message received from the user during the call (for example while the agent
+    is leaving a voicemail). Not part of the spoken conversation.
+    """
+
+    time_sec: float
+    """Time the SMS was received, in seconds relative to the start of the call."""
+
+    multimedia: Optional[List[PostSessionTranscriptWithToolCallSMSUtteranceMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
+class PostSessionTranscriptWithToolCallInjectedUtterance(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    time_sec: float
+    """Time the context was injected, in seconds relative to the start of the call."""
+
+
+PostSessionTranscriptWithToolCall: TypeAlias = Union[
+    PostSessionTranscriptWithToolCallUtterance,
+    PostSessionTranscriptWithToolCallToolCallInvocationUtterance,
+    PostSessionTranscriptWithToolCallToolCallResultUtterance,
+    PostSessionTranscriptWithToolCallNodeTransitionUtterance,
+    PostSessionTranscriptWithToolCallDtmfUtterance,
+    PostSessionTranscriptWithToolCallSMSUtterance,
+    PostSessionTranscriptWithToolCallInjectedUtterance,
+]
+
+
+class PreSessionTranscriptWithToolCallUtteranceWord(BaseModel):
+    end: Optional[float] = None
+    """End time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    start: Optional[float] = None
+    """Start time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    word: Optional[str] = None
+    """Word transcript (with punctuation if applicable)."""
+
+
+class PreSessionTranscriptWithToolCallUtterance(BaseModel):
+    content: str
+    """Transcript of the utterances."""
+
+    role: Literal["agent", "user", "transfer_target"]
+    """Documents whether this utterance is spoken by agent or user."""
+
+    words: List[PreSessionTranscriptWithToolCallUtteranceWord]
+    """Array of words in the utterance with the word timestamp.
+
+    Useful for understanding what word was spoken at what time. Note that the word
+    timestamp is not guaranteed to be accurate, it's more like an approximation.
+    """
+
+
+class PreSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
+
+
+class PreSessionTranscriptWithToolCallToolCallResultUtterance(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    role: Literal["tool_call_result"]
+    """This is the result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
+
+class PreSessionTranscriptWithToolCallNodeTransitionUtterance(BaseModel):
+    former_node_id: str
+    """Former node id"""
+
+    former_node_name: str
+    """Former node name"""
+
+    new_node_id: str
+    """New node id"""
+
+    new_node_name: str
+    """New node name"""
+
+    role: Literal["node_transition"]
+    """This is result of a node transition"""
+
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
+
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
+
+
+class PreSessionTranscriptWithToolCallDtmfUtterance(BaseModel):
+    digit: str
+    """The digit pressed by the user.
+
+    Will be a single digit string like "1", "2", "3", "\\**", "#" etc.
+    """
+
+    role: Literal["dtmf"]
+    """Digit pressed by the user from their phone keypad."""
+
+
+class PreSessionTranscriptWithToolCallSMSUtteranceMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class PreSessionTranscriptWithToolCallSMSUtterance(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """
+    SMS message received from the user during the call (for example while the agent
+    is leaving a voicemail). Not part of the spoken conversation.
+    """
+
+    time_sec: float
+    """Time the SMS was received, in seconds relative to the start of the call."""
+
+    multimedia: Optional[List[PreSessionTranscriptWithToolCallSMSUtteranceMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
+class PreSessionTranscriptWithToolCallInjectedUtterance(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    time_sec: float
+    """Time the context was injected, in seconds relative to the start of the call."""
+
+
+PreSessionTranscriptWithToolCall: TypeAlias = Union[
+    PreSessionTranscriptWithToolCallUtterance,
+    PreSessionTranscriptWithToolCallToolCallInvocationUtterance,
+    PreSessionTranscriptWithToolCallToolCallResultUtterance,
+    PreSessionTranscriptWithToolCallNodeTransitionUtterance,
+    PreSessionTranscriptWithToolCallDtmfUtterance,
+    PreSessionTranscriptWithToolCallSMSUtterance,
+    PreSessionTranscriptWithToolCallInjectedUtterance,
+]
+
+
+class ScrubbedPostSessionTranscriptWithToolCallUtteranceWord(BaseModel):
+    end: Optional[float] = None
+    """End time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    start: Optional[float] = None
+    """Start time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    word: Optional[str] = None
+    """Word transcript (with punctuation if applicable)."""
+
+
+class ScrubbedPostSessionTranscriptWithToolCallUtterance(BaseModel):
+    content: str
+    """Transcript of the utterances."""
+
+    role: Literal["agent", "user", "transfer_target"]
+    """Documents whether this utterance is spoken by agent or user."""
+
+    words: List[ScrubbedPostSessionTranscriptWithToolCallUtteranceWord]
+    """Array of words in the utterance with the word timestamp.
+
+    Useful for understanding what word was spoken at what time. Note that the word
+    timestamp is not guaranteed to be accurate, it's more like an approximation.
+    """
+
+
+class ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
+
+
+class ScrubbedPostSessionTranscriptWithToolCallToolCallResultUtterance(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    role: Literal["tool_call_result"]
+    """This is the result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
+
+class ScrubbedPostSessionTranscriptWithToolCallNodeTransitionUtterance(BaseModel):
+    former_node_id: str
+    """Former node id"""
+
+    former_node_name: str
+    """Former node name"""
+
+    new_node_id: str
+    """New node id"""
+
+    new_node_name: str
+    """New node name"""
+
+    role: Literal["node_transition"]
+    """This is result of a node transition"""
+
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
+
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
+
+
+class ScrubbedPostSessionTranscriptWithToolCallDtmfUtterance(BaseModel):
+    digit: str
+    """The digit pressed by the user.
+
+    Will be a single digit string like "1", "2", "3", "\\**", "#" etc.
+    """
+
+    role: Literal["dtmf"]
+    """Digit pressed by the user from their phone keypad."""
+
+
+class ScrubbedPostSessionTranscriptWithToolCallSMSUtteranceMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class ScrubbedPostSessionTranscriptWithToolCallSMSUtterance(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """
+    SMS message received from the user during the call (for example while the agent
+    is leaving a voicemail). Not part of the spoken conversation.
+    """
+
+    time_sec: float
+    """Time the SMS was received, in seconds relative to the start of the call."""
+
+    multimedia: Optional[List[ScrubbedPostSessionTranscriptWithToolCallSMSUtteranceMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
+class ScrubbedPostSessionTranscriptWithToolCallInjectedUtterance(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    time_sec: float
+    """Time the context was injected, in seconds relative to the start of the call."""
+
+
+ScrubbedPostSessionTranscriptWithToolCall: TypeAlias = Union[
+    ScrubbedPostSessionTranscriptWithToolCallUtterance,
+    ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtterance,
+    ScrubbedPostSessionTranscriptWithToolCallToolCallResultUtterance,
+    ScrubbedPostSessionTranscriptWithToolCallNodeTransitionUtterance,
+    ScrubbedPostSessionTranscriptWithToolCallDtmfUtterance,
+    ScrubbedPostSessionTranscriptWithToolCallSMSUtterance,
+    ScrubbedPostSessionTranscriptWithToolCallInjectedUtterance,
+]
+
+
+class ScrubbedPreSessionTranscriptWithToolCallUtteranceWord(BaseModel):
+    end: Optional[float] = None
+    """End time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    start: Optional[float] = None
+    """Start time of the word in the call in second.
+
+    This is relative audio time, not wall time.
+    """
+
+    word: Optional[str] = None
+    """Word transcript (with punctuation if applicable)."""
+
+
+class ScrubbedPreSessionTranscriptWithToolCallUtterance(BaseModel):
+    content: str
+    """Transcript of the utterances."""
+
+    role: Literal["agent", "user", "transfer_target"]
+    """Documents whether this utterance is spoken by agent or user."""
+
+    words: List[ScrubbedPreSessionTranscriptWithToolCallUtteranceWord]
+    """Array of words in the utterance with the word timestamp.
+
+    Useful for understanding what word was spoken at what time. Note that the word
+    timestamp is not guaranteed to be accurate, it's more like an approximation.
+    """
+
+
+class ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
+
+
+class ScrubbedPreSessionTranscriptWithToolCallToolCallResultUtterance(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    role: Literal["tool_call_result"]
+    """This is the result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
+
+class ScrubbedPreSessionTranscriptWithToolCallNodeTransitionUtterance(BaseModel):
+    former_node_id: str
+    """Former node id"""
+
+    former_node_name: str
+    """Former node name"""
+
+    new_node_id: str
+    """New node id"""
+
+    new_node_name: str
+    """New node name"""
+
+    role: Literal["node_transition"]
+    """This is result of a node transition"""
+
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
+
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
+
+
+class ScrubbedPreSessionTranscriptWithToolCallDtmfUtterance(BaseModel):
+    digit: str
+    """The digit pressed by the user.
+
+    Will be a single digit string like "1", "2", "3", "\\**", "#" etc.
+    """
+
+    role: Literal["dtmf"]
+    """Digit pressed by the user from their phone keypad."""
+
+
+class ScrubbedPreSessionTranscriptWithToolCallSMSUtteranceMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class ScrubbedPreSessionTranscriptWithToolCallSMSUtterance(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """
+    SMS message received from the user during the call (for example while the agent
+    is leaving a voicemail). Not part of the spoken conversation.
+    """
+
+    time_sec: float
+    """Time the SMS was received, in seconds relative to the start of the call."""
+
+    multimedia: Optional[List[ScrubbedPreSessionTranscriptWithToolCallSMSUtteranceMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
+class ScrubbedPreSessionTranscriptWithToolCallInjectedUtterance(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    time_sec: float
+    """Time the context was injected, in seconds relative to the start of the call."""
+
+
+ScrubbedPreSessionTranscriptWithToolCall: TypeAlias = Union[
+    ScrubbedPreSessionTranscriptWithToolCallUtterance,
+    ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtterance,
+    ScrubbedPreSessionTranscriptWithToolCallToolCallResultUtterance,
+    ScrubbedPreSessionTranscriptWithToolCallNodeTransitionUtterance,
+    ScrubbedPreSessionTranscriptWithToolCallDtmfUtterance,
+    ScrubbedPreSessionTranscriptWithToolCallSMSUtterance,
+    ScrubbedPreSessionTranscriptWithToolCallInjectedUtterance,
+]
 
 
 class ScrubbedTranscriptWithToolCallUtteranceWord(BaseModel):
@@ -813,6 +1477,7 @@ class PhoneCallResponse(BaseModel):
         Literal[
             "user_hangup",
             "agent_hangup",
+            "user_requested_dnc",
             "call_transfer",
             "voicemail_reached",
             "ivr_reached",
@@ -821,6 +1486,8 @@ class PhoneCallResponse(BaseModel):
             "concurrency_limit_reached",
             "no_concurrency_fallback",
             "no_valid_payment",
+            "credit_exhausted",
+            "budget_reached",
             "scam_detected",
             "dial_busy",
             "dial_failed",
@@ -830,6 +1497,7 @@ class PhoneCallResponse(BaseModel):
             "telephony_provider_unavailable",
             "sip_routing_error",
             "marked_as_spam",
+            "network_blocked",
             "user_declined",
             "error_llm_websocket_open",
             "error_llm_websocket_lost_connection",
@@ -900,6 +1568,20 @@ class PhoneCallResponse(BaseModel):
     access and automatically expire after 24 hours.
     """
 
+    post_session_transcript_with_tool_calls: Optional[List[PostSessionTranscriptWithToolCall]] = None
+    """
+    Tool call invocations and results of integration tools run after post-call
+    analysis (post-session). Stored separately from the main transcript. Available
+    after call ends if post-session integration tools ran.
+    """
+
+    pre_session_transcript_with_tool_calls: Optional[List[PreSessionTranscriptWithToolCall]] = None
+    """
+    Tool call invocations and results of integration tools run before the session
+    started (pre-session). Stored separately from the main transcript. Available
+    after call ends if pre-session integration tools ran.
+    """
+
     public_log_url: Optional[str] = None
     """
     Public log of the call, containing details about all the requests and responses
@@ -921,6 +1603,20 @@ class PhoneCallResponse(BaseModel):
     Add optional dynamic variables in key value pairs of string that injects into
     your Response Engine prompt and tool description. Only applicable for Response
     Engine.
+    """
+
+    scrubbed_post_session_transcript_with_tool_calls: Optional[List[ScrubbedPostSessionTranscriptWithToolCall]] = None
+    """Post-session integration tool call invocations and results, without PII.
+
+    Available after call ends if post-session integration tools ran and PII
+    scrubbing is enabled.
+    """
+
+    scrubbed_pre_session_transcript_with_tool_calls: Optional[List[ScrubbedPreSessionTranscriptWithToolCall]] = None
+    """Pre-session integration tool call invocations and results, without PII.
+
+    Available after call ends if pre-session integration tools ran and PII scrubbing
+    is enabled.
     """
 
     scrubbed_recording_multi_channel_url: Optional[str] = None

@@ -19,6 +19,12 @@ class ChatCreateSMSChatParams(TypedDict, total=False):
     to_number: Required[str]
     """The phone number to send SMS to in E.164 format"""
 
+    honor_internal_dnc: bool
+    """
+    If true, the chat is rejected with a 400 error when the contact for to_number is
+    marked do_not_call. If omitted, the default value is false.
+    """
+
     metadata: object
     """An arbitrary object for storage purpose only.
 

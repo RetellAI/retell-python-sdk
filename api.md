@@ -343,7 +343,13 @@ Methods:
 Types:
 
 ```python
-from retell.types import AppResponse, AppListResponse, AppListUsagesResponse, AppTestAuthResponse
+from retell.types import (
+    AppResponse,
+    AppListResponse,
+    AppGetToolSchemaResponse,
+    AppListUsagesResponse,
+    AppTestAuthResponse,
+)
 ```
 
 Methods:
@@ -353,6 +359,7 @@ Methods:
 - <code title="get /list-apps">client.app.<a href="./src/retell/resources/app.py">list</a>(\*\*<a href="src/retell/types/app_list_params.py">params</a>) -> <a href="./src/retell/types/app_list_response.py">AppListResponse</a></code>
 - <code title="delete /delete-app/{app_id}">client.app.<a href="./src/retell/resources/app.py">delete</a>(app_id, \*\*<a href="src/retell/types/app_delete_params.py">params</a>) -> None</code>
 - <code title="get /get-app/{app_id}">client.app.<a href="./src/retell/resources/app.py">get</a>(app_id) -> <a href="./src/retell/types/app_response.py">AppResponse</a></code>
+- <code title="post /get-app-tool-schema/{app_id}">client.app.<a href="./src/retell/resources/app.py">get_tool_schema</a>(app_id, \*\*<a href="src/retell/types/app_get_tool_schema_params.py">params</a>) -> <a href="./src/retell/types/app_get_tool_schema_response.py">AppGetToolSchemaResponse</a></code>
 - <code title="get /list-app-usages/{app_id}">client.app.<a href="./src/retell/resources/app.py">list_usages</a>(app_id, \*\*<a href="src/retell/types/app_list_usages_params.py">params</a>) -> <a href="./src/retell/types/app_list_usages_response.py">AppListUsagesResponse</a></code>
 - <code title="post /test-app-auth/{app_id}">client.app.<a href="./src/retell/resources/app.py">test_auth</a>(app_id) -> <a href="./src/retell/types/app_test_auth_response.py">AppTestAuthResponse</a></code>
 

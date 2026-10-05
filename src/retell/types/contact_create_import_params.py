@@ -22,9 +22,10 @@ class ContactCreateImportParams(TypedDict, total=False):
     """Id returned by upload-contact-import-file."""
 
     contact_tags: SequenceNotStr[str]
-    """Tags added to every contact in this import.
+    """Tag labels added to every contact in this import.
 
-    Existing tags are preserved. Omit to leave tags unchanged.
+    Labels are trimmed and deduplicated. New labels are added to the org's CRM
+    config with generated tag IDs.
     """
 
     default_country: str

@@ -19,8 +19,21 @@ __all__ = [
 
 class ContactBackfillAnalysisDataParams(TypedDict, total=False):
     backfill_attributes: Required[SequenceNotStr[str]]
+    """Contact fields to recompute.
+
+    Each one must still exist as a contact field and have an analysis data mapping
+    configured, except for the built-in contact_memory attribute, which requires no
+    mapping and supports requests on its own or alongside mapped fields. Memory
+    backfill skips conversations without retained transcripts.
+    """
 
     backfill_call_filter: BackfillCallFilter
+    """Optional filter to scope which conversations are processed.
+
+    Supports agent and start_timestamp from the standard call filter. The same
+    filter applies to phone calls and SMS chats for both analysis data mappings and
+    contact_memory.
+    """
 
 
 class BackfillCallFilterAgent(TypedDict, total=False):
@@ -59,8 +72,13 @@ BackfillCallFilterStartTimestamp: TypeAlias = Union[
 
 
 class BackfillCallFilter(TypedDict, total=False):
+    """Optional filter to scope which conversations are processed.
+
+    Supports agent and start_timestamp from the standard call filter. The same filter applies to phone calls and SMS chats for both analysis data mappings and contact_memory.
+    """
+
     agent: Iterable[BackfillCallFilterAgent]
-    """Filter calls by agent. Agents are OR-connected."""
+    """Filter conversations by agent. Agents are OR-connected."""
 
     start_timestamp: BackfillCallFilterStartTimestamp
-    """Filter calls by start timestamp (epoch ms)."""
+    """Filter conversations by start timestamp (epoch ms)."""

@@ -11,7 +11,7 @@ __all__ = [
     "ContactListParams",
     "FilterCriteria",
     "FilterCriteriaContactID",
-    "FilterCriteriaContactTags",
+    "FilterCriteriaContactTagIDs",
     "FilterCriteriaCustomField",
     "FilterCriteriaCustomFieldStringFilter",
     "FilterCriteriaCustomFieldNumberFilter",
@@ -31,6 +31,9 @@ __all__ = [
 
 
 class ContactListParams(TypedDict, total=False):
+    excluded_contact_ids: SequenceNotStr[str]
+    """Contact IDs to leave out of both the results and `total`."""
+
     filter_criteria: FilterCriteria
     """Filter criteria for contacts.
 
@@ -55,9 +58,9 @@ class ContactListParams(TypedDict, total=False):
     """Number of records to skip for offset-based pagination."""
 
     sort_order: Literal["asc", "desc"]
-    """Sort contacts by `last_conversation_timestamp` in ascending or descending order.
-
-    Contacts that have never been contacted sort as if their timestamp were 0.
+    """
+    Sort contacts by `created_timestamp` in ascending or descending order (newest
+    first by default). Ties are broken by contact ID in the same direction.
     """
 
 
@@ -70,8 +73,8 @@ class FilterCriteriaContactID(TypedDict, total=False):
     value: Required[str]
 
 
-class FilterCriteriaContactTags(TypedDict, total=False):
-    """Match contacts that have any of the listed tags."""
+class FilterCriteriaContactTagIDs(TypedDict, total=False):
+    """Match contacts that have any of the listed tag IDs."""
 
     op: Required[Literal["in"]]
     """in: value is one of the listed values"""
@@ -242,8 +245,8 @@ class FilterCriteria(TypedDict, total=False):
 
     contact_id: FilterCriteriaContactID
 
-    contact_tags: FilterCriteriaContactTags
-    """Match contacts that have any of the listed tags."""
+    contact_tag_ids: FilterCriteriaContactTagIDs
+    """Match contacts that have any of the listed tag IDs."""
 
     custom_fields: Iterable[FilterCriteriaCustomField]
     """Filter by custom contact fields defined in CRM config."""

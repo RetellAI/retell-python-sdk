@@ -357,6 +357,7 @@ class ChatResource(SyncAPIResource):
         *,
         from_number: str,
         to_number: str,
+        honor_internal_dnc: bool | Omit = omit,
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
         override_agent_version: Union[str, int] | Omit = omit,
@@ -378,6 +379,9 @@ class ChatResource(SyncAPIResource):
               from Retell or imported to Retell with SMS capability.
 
           to_number: The phone number to send SMS to in E.164 format
+
+          honor_internal_dnc: If true, the chat is rejected with a 400 error when the contact for to_number is
+              marked do_not_call. If omitted, the default value is false.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the chat. Not used for processing. You
@@ -408,6 +412,7 @@ class ChatResource(SyncAPIResource):
                 {
                     "from_number": from_number,
                     "to_number": to_number,
+                    "honor_internal_dnc": honor_internal_dnc,
                     "metadata": metadata,
                     "override_agent_id": override_agent_id,
                     "override_agent_version": override_agent_version,
@@ -814,6 +819,7 @@ class AsyncChatResource(AsyncAPIResource):
         *,
         from_number: str,
         to_number: str,
+        honor_internal_dnc: bool | Omit = omit,
         metadata: object | Omit = omit,
         override_agent_id: str | Omit = omit,
         override_agent_version: Union[str, int] | Omit = omit,
@@ -835,6 +841,9 @@ class AsyncChatResource(AsyncAPIResource):
               from Retell or imported to Retell with SMS capability.
 
           to_number: The phone number to send SMS to in E.164 format
+
+          honor_internal_dnc: If true, the chat is rejected with a 400 error when the contact for to_number is
+              marked do_not_call. If omitted, the default value is false.
 
           metadata: An arbitrary object for storage purpose only. You can put anything here like
               your internal customer id associated with the chat. Not used for processing. You
@@ -865,6 +874,7 @@ class AsyncChatResource(AsyncAPIResource):
                 {
                     "from_number": from_number,
                     "to_number": to_number,
+                    "honor_internal_dnc": honor_internal_dnc,
                     "metadata": metadata,
                     "override_agent_id": override_agent_id,
                     "override_agent_version": override_agent_version,

@@ -60,6 +60,7 @@ class ChatAgentResource(SyncAPIResource):
         response_engine: chat_agent_create_params.ResponseEngine,
         agent_name: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
+        contact_memory_config: chat_agent_create_params.ContactMemoryConfig | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
@@ -221,9 +222,16 @@ class ChatAgentResource(SyncAPIResource):
                 "gpt-5.5",
                 "gpt-5.6-terra",
                 "gpt-5.6-luna",
+                "gpt-6-astra",
+                "gpt-6-sol",
+                "gpt-6.1-sol",
+                "gpt-6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-opus",
+                "claude-5.5-opus",
                 "claude-5-sonnet",
+                "claude-5.5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -235,6 +243,8 @@ class ChatAgentResource(SyncAPIResource):
             ]
         ]
         | Omit = omit,
+        post_session_tools: Optional[Iterable[chat_agent_create_params.PostSessionTool]] | Omit = omit,
+        pre_session_tools: Optional[Iterable[chat_agent_create_params.PreSessionTool]] | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         timezone: Optional[str] | Omit = omit,
         version_title: Optional[str] | Omit = omit,
@@ -260,6 +270,12 @@ class ChatAgentResource(SyncAPIResource):
           agent_name: The name of the chat agent. Only used for your own reference.
 
           auto_close_message: Message to display when the chat is automatically closed.
+
+          contact_memory_config: Contact memory settings for phone calls and SMS chats. Creating an agent
+              defaults enable_update to false and enable_read to true. Updates only change the
+              supplied flags; omitted flags stay unchanged and an empty object has no effect.
+              Set a flag to false to disable it. The configuration cannot be cleared. Existing
+              agents without this configuration have both disabled.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
               between 1 and 730 days. If not set, data is retained forever (no automatic
@@ -298,6 +314,12 @@ class ChatAgentResource(SyncAPIResource):
 
           post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-5.6-terra.
 
+          post_session_tools: Integration (Agent Functions) tools run as a dependency graph at chat end, after
+              post-chat analysis. Each tool can be gated by a condition. Set to null to clear.
+
+          pre_session_tools: Integration (Agent Functions) tools run as a dependency graph before the chat's
+              first message. Outputs are injected as dynamic variables. Set to null to clear.
+
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
               apply.
@@ -333,6 +355,7 @@ class ChatAgentResource(SyncAPIResource):
                     "response_engine": response_engine,
                     "agent_name": agent_name,
                     "auto_close_message": auto_close_message,
+                    "contact_memory_config": contact_memory_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
@@ -343,6 +366,8 @@ class ChatAgentResource(SyncAPIResource):
                     "pii_config": pii_config,
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
+                    "post_session_tools": post_session_tools,
+                    "pre_session_tools": pre_session_tools,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "timezone": timezone,
                     "version_title": version_title,
@@ -406,6 +431,7 @@ class ChatAgentResource(SyncAPIResource):
         version: Union[str, int] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
+        contact_memory_config: chat_agent_update_params.ContactMemoryConfig | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
@@ -567,9 +593,16 @@ class ChatAgentResource(SyncAPIResource):
                 "gpt-5.5",
                 "gpt-5.6-terra",
                 "gpt-5.6-luna",
+                "gpt-6-astra",
+                "gpt-6-sol",
+                "gpt-6.1-sol",
+                "gpt-6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-opus",
+                "claude-5.5-opus",
                 "claude-5-sonnet",
+                "claude-5.5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -581,6 +614,8 @@ class ChatAgentResource(SyncAPIResource):
             ]
         ]
         | Omit = omit,
+        post_session_tools: Optional[Iterable[chat_agent_update_params.PostSessionTool]] | Omit = omit,
+        pre_session_tools: Optional[Iterable[chat_agent_update_params.PreSessionTool]] | Omit = omit,
         response_engine: chat_agent_update_params.ResponseEngine | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         timezone: Optional[str] | Omit = omit,
@@ -605,6 +640,12 @@ class ChatAgentResource(SyncAPIResource):
           agent_name: The name of the chat agent. Only used for your own reference.
 
           auto_close_message: Message to display when the chat is automatically closed.
+
+          contact_memory_config: Contact memory settings for phone calls and SMS chats. Creating an agent
+              defaults enable_update to false and enable_read to true. Updates only change the
+              supplied flags; omitted flags stay unchanged and an empty object has no effect.
+              Set a flag to false to disable it. The configuration cannot be cleared. Existing
+              agents without this configuration have both disabled.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
               between 1 and 730 days. If not set, data is retained forever (no automatic
@@ -642,6 +683,12 @@ class ChatAgentResource(SyncAPIResource):
               after the chat ends.
 
           post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-5.6-terra.
+
+          post_session_tools: Integration (Agent Functions) tools run as a dependency graph at chat end, after
+              post-chat analysis. Each tool can be gated by a condition. Set to null to clear.
+
+          pre_session_tools: Integration (Agent Functions) tools run as a dependency graph before the chat's
+              first message. Outputs are injected as dynamic variables. Set to null to clear.
 
           response_engine: The Response Engine to attach to the agent. It is used to generate responses for
               the agent. You need to create a Response Engine first before attaching it to an
@@ -683,6 +730,7 @@ class ChatAgentResource(SyncAPIResource):
                 {
                     "agent_name": agent_name,
                     "auto_close_message": auto_close_message,
+                    "contact_memory_config": contact_memory_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
@@ -693,6 +741,8 @@ class ChatAgentResource(SyncAPIResource):
                     "pii_config": pii_config,
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
+                    "post_session_tools": post_session_tools,
+                    "pre_session_tools": pre_session_tools,
                     "response_engine": response_engine,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "timezone": timezone,
@@ -962,6 +1012,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         response_engine: chat_agent_create_params.ResponseEngine,
         agent_name: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
+        contact_memory_config: chat_agent_create_params.ContactMemoryConfig | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
@@ -1123,9 +1174,16 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "gpt-5.5",
                 "gpt-5.6-terra",
                 "gpt-5.6-luna",
+                "gpt-6-astra",
+                "gpt-6-sol",
+                "gpt-6.1-sol",
+                "gpt-6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-opus",
+                "claude-5.5-opus",
                 "claude-5-sonnet",
+                "claude-5.5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -1137,6 +1195,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
             ]
         ]
         | Omit = omit,
+        post_session_tools: Optional[Iterable[chat_agent_create_params.PostSessionTool]] | Omit = omit,
+        pre_session_tools: Optional[Iterable[chat_agent_create_params.PreSessionTool]] | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         timezone: Optional[str] | Omit = omit,
         version_title: Optional[str] | Omit = omit,
@@ -1162,6 +1222,12 @@ class AsyncChatAgentResource(AsyncAPIResource):
           agent_name: The name of the chat agent. Only used for your own reference.
 
           auto_close_message: Message to display when the chat is automatically closed.
+
+          contact_memory_config: Contact memory settings for phone calls and SMS chats. Creating an agent
+              defaults enable_update to false and enable_read to true. Updates only change the
+              supplied flags; omitted flags stay unchanged and an empty object has no effect.
+              Set a flag to false to disable it. The configuration cannot be cleared. Existing
+              agents without this configuration have both disabled.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
               between 1 and 730 days. If not set, data is retained forever (no automatic
@@ -1200,6 +1266,12 @@ class AsyncChatAgentResource(AsyncAPIResource):
 
           post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-5.6-terra.
 
+          post_session_tools: Integration (Agent Functions) tools run as a dependency graph at chat end, after
+              post-chat analysis. Each tool can be gated by a condition. Set to null to clear.
+
+          pre_session_tools: Integration (Agent Functions) tools run as a dependency graph before the chat's
+              first message. Outputs are injected as dynamic variables. Set to null to clear.
+
           signed_url_expiration_ms: The expiration time for the signed url in milliseconds. Only applicable when
               opt_in_signed_url is true. If not set, default value of 86400000 (24 hours) will
               apply.
@@ -1235,6 +1307,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "response_engine": response_engine,
                     "agent_name": agent_name,
                     "auto_close_message": auto_close_message,
+                    "contact_memory_config": contact_memory_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
@@ -1245,6 +1318,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "pii_config": pii_config,
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
+                    "post_session_tools": post_session_tools,
+                    "pre_session_tools": pre_session_tools,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "timezone": timezone,
                     "version_title": version_title,
@@ -1310,6 +1385,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         version: Union[str, int] | Omit = omit,
         agent_name: Optional[str] | Omit = omit,
         auto_close_message: Optional[str] | Omit = omit,
+        contact_memory_config: chat_agent_update_params.ContactMemoryConfig | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Optional[Literal["everything", "everything_except_pii", "basic_attributes_only"]]
         | Omit = omit,
@@ -1471,9 +1547,16 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "gpt-5.5",
                 "gpt-5.6-terra",
                 "gpt-5.6-luna",
+                "gpt-6-astra",
+                "gpt-6-sol",
+                "gpt-6.1-sol",
+                "gpt-6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-opus",
+                "claude-5.5-opus",
                 "claude-5-sonnet",
+                "claude-5.5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -1485,6 +1568,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
             ]
         ]
         | Omit = omit,
+        post_session_tools: Optional[Iterable[chat_agent_update_params.PostSessionTool]] | Omit = omit,
+        pre_session_tools: Optional[Iterable[chat_agent_update_params.PreSessionTool]] | Omit = omit,
         response_engine: chat_agent_update_params.ResponseEngine | Omit = omit,
         signed_url_expiration_ms: Optional[int] | Omit = omit,
         timezone: Optional[str] | Omit = omit,
@@ -1509,6 +1594,12 @@ class AsyncChatAgentResource(AsyncAPIResource):
           agent_name: The name of the chat agent. Only used for your own reference.
 
           auto_close_message: Message to display when the chat is automatically closed.
+
+          contact_memory_config: Contact memory settings for phone calls and SMS chats. Creating an agent
+              defaults enable_update to false and enable_read to true. Updates only change the
+              supplied flags; omitted flags stay unchanged and an empty object has no effect.
+              Set a flag to false to disable it. The configuration cannot be cleared. Existing
+              agents without this configuration have both disabled.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
               between 1 and 730 days. If not set, data is retained forever (no automatic
@@ -1546,6 +1637,12 @@ class AsyncChatAgentResource(AsyncAPIResource):
               after the chat ends.
 
           post_chat_analysis_model: The model to use for post chat analysis. Default to gpt-5.6-terra.
+
+          post_session_tools: Integration (Agent Functions) tools run as a dependency graph at chat end, after
+              post-chat analysis. Each tool can be gated by a condition. Set to null to clear.
+
+          pre_session_tools: Integration (Agent Functions) tools run as a dependency graph before the chat's
+              first message. Outputs are injected as dynamic variables. Set to null to clear.
 
           response_engine: The Response Engine to attach to the agent. It is used to generate responses for
               the agent. You need to create a Response Engine first before attaching it to an
@@ -1587,6 +1684,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 {
                     "agent_name": agent_name,
                     "auto_close_message": auto_close_message,
+                    "contact_memory_config": contact_memory_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "end_chat_after_silence_ms": end_chat_after_silence_ms,
@@ -1597,6 +1695,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     "pii_config": pii_config,
                     "post_chat_analysis_data": post_chat_analysis_data,
                     "post_chat_analysis_model": post_chat_analysis_model,
+                    "post_session_tools": post_session_tools,
+                    "pre_session_tools": pre_session_tools,
                     "response_engine": response_engine,
                     "signed_url_expiration_ms": signed_url_expiration_ms,
                     "timezone": timezone,

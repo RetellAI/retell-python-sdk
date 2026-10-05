@@ -2,11 +2,19 @@
 
 from __future__ import annotations
 
+from typing import Iterable
 from typing_extensions import Literal
 
 import httpx
 
-from ..types import app_list_params, app_create_params, app_delete_params, app_update_params, app_list_usages_params
+from ..types import (
+    app_list_params,
+    app_create_params,
+    app_delete_params,
+    app_update_params,
+    app_list_usages_params,
+    app_get_tool_schema_params,
+)
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -22,6 +30,7 @@ from ..types.app_response import AppResponse
 from ..types.app_list_response import AppListResponse
 from ..types.app_test_auth_response import AppTestAuthResponse
 from ..types.app_list_usages_response import AppListUsagesResponse
+from ..types.app_get_tool_schema_response import AppGetToolSchemaResponse
 
 __all__ = ["AppResource", "AsyncAppResource"]
 
@@ -68,7 +77,8 @@ class AppResource(SyncAPIResource):
         desk, and so on), holding its credentials and settings. Providers with
         caller-managed credentials accept auth_config. Providers using the OAuth
         callback must omit auth_config and be authorized through connect-app.
-        Credentials are stored encrypted and never returned. Up to 20 apps per provider.
+        Credentials are stored encrypted and never returned. Up to 20 apps per provider
+        by default, unless a custom limit is configured for the organization.
 
         Args:
           provider: Provider name. Must be valid for the App's type; the supported providers per
@@ -300,6 +310,61 @@ class AppResource(SyncAPIResource):
             cast_to=AppResponse,
         )
 
+    def get_tool_schema(
+        self,
+        app_id: str,
+        *,
+        app_tool_template_name: str,
+        parameters: Iterable[app_get_tool_schema_params.Parameter] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AppGetToolSchemaResponse:
+        """
+        One round of multi-step schema resolution for an app tool template against a
+        connected App. parameters is the input parameters resolved so far, with
+        properties configured by const or description, and is empty on the first call.
+        Returns the next input_schema to fill; complete marks the last round (it may
+        accompany the final input_schema) and may include an optional response_schema.
+        Input-schema property descriptions provide the default text for LLM inference,
+        and each property's default_input_mode ("const" or "description") is the input
+        mode to preselect for it. A property may also carry extra_info ({ text?, link?
+        }), guidance to render under its editor, e.g. a docs link on how to find an id.
+        Used by the tool config UI.
+
+        Args:
+          app_tool_template_name: The app tool template name (the provider's catalog tool name).
+
+          parameters: The input parameters resolved so far; empty on the first call.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not app_id:
+            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
+        return self._post(
+            path_template("/get-app-tool-schema/{app_id}", app_id=app_id),
+            body=maybe_transform(
+                {
+                    "app_tool_template_name": app_tool_template_name,
+                    "parameters": parameters,
+                },
+                app_get_tool_schema_params.AppGetToolSchemaParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AppGetToolSchemaResponse,
+        )
+
     def list_usages(
         self,
         app_id: str,
@@ -432,7 +497,8 @@ class AsyncAppResource(AsyncAPIResource):
         desk, and so on), holding its credentials and settings. Providers with
         caller-managed credentials accept auth_config. Providers using the OAuth
         callback must omit auth_config and be authorized through connect-app.
-        Credentials are stored encrypted and never returned. Up to 20 apps per provider.
+        Credentials are stored encrypted and never returned. Up to 20 apps per provider
+        by default, unless a custom limit is configured for the organization.
 
         Args:
           provider: Provider name. Must be valid for the App's type; the supported providers per
@@ -664,6 +730,61 @@ class AsyncAppResource(AsyncAPIResource):
             cast_to=AppResponse,
         )
 
+    async def get_tool_schema(
+        self,
+        app_id: str,
+        *,
+        app_tool_template_name: str,
+        parameters: Iterable[app_get_tool_schema_params.Parameter] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AppGetToolSchemaResponse:
+        """
+        One round of multi-step schema resolution for an app tool template against a
+        connected App. parameters is the input parameters resolved so far, with
+        properties configured by const or description, and is empty on the first call.
+        Returns the next input_schema to fill; complete marks the last round (it may
+        accompany the final input_schema) and may include an optional response_schema.
+        Input-schema property descriptions provide the default text for LLM inference,
+        and each property's default_input_mode ("const" or "description") is the input
+        mode to preselect for it. A property may also carry extra_info ({ text?, link?
+        }), guidance to render under its editor, e.g. a docs link on how to find an id.
+        Used by the tool config UI.
+
+        Args:
+          app_tool_template_name: The app tool template name (the provider's catalog tool name).
+
+          parameters: The input parameters resolved so far; empty on the first call.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not app_id:
+            raise ValueError(f"Expected a non-empty value for `app_id` but received {app_id!r}")
+        return await self._post(
+            path_template("/get-app-tool-schema/{app_id}", app_id=app_id),
+            body=await async_maybe_transform(
+                {
+                    "app_tool_template_name": app_tool_template_name,
+                    "parameters": parameters,
+                },
+                app_get_tool_schema_params.AppGetToolSchemaParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=AppGetToolSchemaResponse,
+        )
+
     async def list_usages(
         self,
         app_id: str,
@@ -773,6 +894,9 @@ class AppResourceWithRawResponse:
         self.get = to_raw_response_wrapper(
             app.get,
         )
+        self.get_tool_schema = to_raw_response_wrapper(
+            app.get_tool_schema,
+        )
         self.list_usages = to_raw_response_wrapper(
             app.list_usages,
         )
@@ -799,6 +923,9 @@ class AsyncAppResourceWithRawResponse:
         )
         self.get = async_to_raw_response_wrapper(
             app.get,
+        )
+        self.get_tool_schema = async_to_raw_response_wrapper(
+            app.get_tool_schema,
         )
         self.list_usages = async_to_raw_response_wrapper(
             app.list_usages,
@@ -827,6 +954,9 @@ class AppResourceWithStreamingResponse:
         self.get = to_streamed_response_wrapper(
             app.get,
         )
+        self.get_tool_schema = to_streamed_response_wrapper(
+            app.get_tool_schema,
+        )
         self.list_usages = to_streamed_response_wrapper(
             app.list_usages,
         )
@@ -853,6 +983,9 @@ class AsyncAppResourceWithStreamingResponse:
         )
         self.get = async_to_streamed_response_wrapper(
             app.get,
+        )
+        self.get_tool_schema = async_to_streamed_response_wrapper(
+            app.get_tool_schema,
         )
         self.list_usages = async_to_streamed_response_wrapper(
             app.list_usages,

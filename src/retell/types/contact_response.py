@@ -4,7 +4,15 @@ from typing import List, Optional
 
 from .._models import BaseModel
 
-__all__ = ["ContactResponse"]
+__all__ = ["ContactResponse", "ContactTag"]
+
+
+class ContactTag(BaseModel):
+    id: str
+    """Unique identifier for the tag."""
+
+    label: str
+    """Human-readable label for the tag."""
 
 
 class ContactResponse(BaseModel):
@@ -20,8 +28,17 @@ class ContactResponse(BaseModel):
     phone_number: str
     """Phone number of the contact."""
 
-    contact_tags: Optional[List[str]] = None
-    """Tags assigned to the contact."""
+    contact_memory: Optional[str] = None
+    """Running brief shared across this contact's phone calls and SMS chats.
+
+    Omitted when unset.
+    """
+
+    contact_tags: Optional[List[ContactTag]] = None
+    """Assigned tag IDs and labels from the organization's CRM config.
+
+    IDs absent from the config are omitted.
+    """
 
     conversation_count: Optional[float] = None
     """Number of conversations (calls and chats) associated with this contact."""

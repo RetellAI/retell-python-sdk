@@ -5,7 +5,15 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["CRMConfig", "CRMAnalysisDataMapping", "CustomField"]
+__all__ = ["CRMConfig", "ContactTag", "CRMAnalysisDataMapping", "CustomField"]
+
+
+class ContactTag(BaseModel):
+    id: str
+    """Unique identifier for the tag."""
+
+    label: str
+    """Human-readable label for the tag."""
 
 
 class CRMAnalysisDataMapping(BaseModel):
@@ -51,6 +59,16 @@ class CustomField(BaseModel):
 
 
 class CRMConfig(BaseModel):
+    contact_memory_update_prompt: Optional[str] = None
+    """Workspace-shared memory rewrite prompt.
+
+    Null uses the built-in preset. Supports conversation dynamic variables using
+    {{variable_name}}.
+    """
+
+    default_contact_memory_update_prompt: str
+    """Built-in memory rewrite prompt."""
+
     org_id: str
 
     app_id: Optional[str] = None
@@ -62,7 +80,7 @@ class CRMConfig(BaseModel):
     table. Not used by the API itself.
     """
 
-    contact_tags: Optional[List[str]] = None
+    contact_tags: Optional[List[ContactTag]] = None
     """Tags available to contacts in this organization."""
 
     crm_analysis_data_mappings: Optional[List[CRMAnalysisDataMapping]] = None
