@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import TypedDict
 
 from .._types import SequenceNotStr
@@ -10,8 +11,11 @@ __all__ = ["ContactUpdateParams"]
 
 
 class ContactUpdateParams(TypedDict, total=False):
-    contact_tags: SequenceNotStr[str]
-    """Full replacement set of tags for the contact."""
+    contact_memory: Optional[str]
+    """Contact memory text. Pass null to clear."""
+
+    contact_tag_ids: SequenceNotStr[str]
+    """Full replacement set of tag IDs for the contact."""
 
     custom_fields: object
     """Values must match the types defined in CRM config custom fields.

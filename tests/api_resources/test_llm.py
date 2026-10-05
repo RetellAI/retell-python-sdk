@@ -38,6 +38,7 @@ class TestLlm:
                 {
                     "name": "end_call",
                     "type": "end_call",
+                    "custom_sip_headers": {"foo": "string"},
                     "description": "End the call with user.",
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
@@ -251,6 +252,7 @@ class TestLlm:
                 {
                     "name": "end_call",
                     "type": "end_call",
+                    "custom_sip_headers": {"foo": "string"},
                     "description": "End the call with user.",
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
@@ -516,6 +518,7 @@ class TestAsyncLlm:
                 {
                     "name": "end_call",
                     "type": "end_call",
+                    "custom_sip_headers": {"foo": "string"},
                     "description": "End the call with user.",
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
@@ -729,6 +732,7 @@ class TestAsyncLlm:
                 {
                     "name": "end_call",
                     "type": "end_call",
+                    "custom_sip_headers": {"foo": "string"},
                     "description": "End the call with user.",
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",

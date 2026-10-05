@@ -78,12 +78,14 @@ class AgentResource(SyncAPIResource):
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         call_screening_option: Optional[agent_create_params.CallScreeningOption] | Omit = omit,
+        contact_memory_config: agent_create_params.ContactMemoryConfig | Omit = omit,
         custom_stt_config: Optional[agent_create_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dnc_detection: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
         enable_expressive_mode: bool | Omit = omit,
@@ -265,9 +267,16 @@ class AgentResource(SyncAPIResource):
                 "gpt-5.5",
                 "gpt-5.6-terra",
                 "gpt-5.6-luna",
+                "gpt-6-astra",
+                "gpt-6-sol",
+                "gpt-6.1-sol",
+                "gpt-6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-opus",
+                "claude-5.5-opus",
                 "claude-5-sonnet",
+                "claude-5.5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -279,6 +288,8 @@ class AgentResource(SyncAPIResource):
             ]
         ]
         | Omit = omit,
+        post_session_tools: Optional[Iterable[agent_create_params.PostSessionTool]] | Omit = omit,
+        pre_session_tools: Optional[Iterable[agent_create_params.PreSessionTool]] | Omit = omit,
         pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]] | Omit = omit,
         reminder_max_count: int | Omit = omit,
         reminder_trigger_ms: float | Omit = omit,
@@ -291,14 +302,13 @@ class AgentResource(SyncAPIResource):
         version_description: Optional[str] | Omit = omit,
         version_title: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
-        voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
-        | Omit = omit,
         voice_model: Optional[
             Literal[
                 "eleven_flash_v2",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
+                "eleven_v4_turbo",
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
@@ -410,6 +420,12 @@ class AgentResource(SyncAPIResource):
               instructions for identity and call purpose questions. Set this to null to
               disable call screen prompt instructions.
 
+          contact_memory_config: Contact memory settings for phone calls and SMS chats. Creating an agent
+              defaults enable_update to false and enable_read to true. Updates only change the
+              supplied flags; omitted flags stay unchanged and an empty object has no effect.
+              Set a flag to false to disable it. The configuration cannot be cleared. Existing
+              agents without this configuration have both disabled.
+
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
@@ -433,6 +449,11 @@ class AgentResource(SyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_dnc_detection: If set to true, the agent recognizes requests to stop calling or contacting the
+              user, confirms once, and on a clear yes ends the call with disconnection reason
+              user_requested_dnc and sets do_not_call to true on the contact for the user's
+              phone number. If unset, default value false will apply.
 
           enable_dynamic_responsiveness: If set to true, the agent will dynamically adjust how quickly it responds based
               on the user's speech rate and past turn-taking behavior in the call. If unset,
@@ -501,6 +522,18 @@ class AgentResource(SyncAPIResource):
 
           post_call_analysis_model: The model to use for post call analysis. Default to gpt-5.6-terra.
 
+          post_session_tools: Integration (Agent Functions) tools run as a dependency graph during teardown,
+              after post-call analysis. Each tool can be gated by a condition. On calls the
+              graph is stopped after five minutes so teardown can finish. Set to null to
+              clear.
+
+          pre_session_tools: Integration (Agent Functions) tools run as a dependency graph during session
+              setup, before the agent's first message. Outputs are injected as dynamic
+              variables. On calls the graph gets one minute unless an outbound caller will be
+              dialed after setup, in which case it gets five minutes. Past that session
+              initialization continues and any remaining tools finish in the background, so
+              their outputs no longer reach the agent's prompt. Set to null to clear.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
               provider supports this feature. Set to null to remove pronunciation dictionary
@@ -541,9 +574,6 @@ class AgentResource(SyncAPIResource):
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
-
-          voice_emotion: Controls the emotional tone of the agent's voice. Currently supported for
-              Cartesia and Minimax TTS providers. If unset, no emotion will be used.
 
           voice_model: Select the voice model used for the selected voice. Each provider has a set of
               available voice models. Set to null to remove voice model selection, and default
@@ -602,11 +632,13 @@ class AgentResource(SyncAPIResource):
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "call_screening_option": call_screening_option,
+                    "contact_memory_config": contact_memory_config,
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dnc_detection": enable_dnc_detection,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_expressive_mode": enable_expressive_mode,
@@ -624,6 +656,8 @@ class AgentResource(SyncAPIResource):
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
+                    "post_session_tools": post_session_tools,
+                    "pre_session_tools": pre_session_tools,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
@@ -636,7 +670,6 @@ class AgentResource(SyncAPIResource):
                     "version_description": version_description,
                     "version_title": version_title,
                     "vocab_specialization": vocab_specialization,
-                    "voice_emotion": voice_emotion,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -715,12 +748,14 @@ class AgentResource(SyncAPIResource):
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         call_screening_option: Optional[agent_update_params.CallScreeningOption] | Omit = omit,
+        contact_memory_config: agent_update_params.ContactMemoryConfig | Omit = omit,
         custom_stt_config: Optional[agent_update_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dnc_detection: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
         enable_expressive_mode: bool | Omit = omit,
@@ -902,9 +937,16 @@ class AgentResource(SyncAPIResource):
                 "gpt-5.5",
                 "gpt-5.6-terra",
                 "gpt-5.6-luna",
+                "gpt-6-astra",
+                "gpt-6-sol",
+                "gpt-6.1-sol",
+                "gpt-6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-opus",
+                "claude-5.5-opus",
                 "claude-5-sonnet",
+                "claude-5.5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -916,6 +958,8 @@ class AgentResource(SyncAPIResource):
             ]
         ]
         | Omit = omit,
+        post_session_tools: Optional[Iterable[agent_update_params.PostSessionTool]] | Omit = omit,
+        pre_session_tools: Optional[Iterable[agent_update_params.PreSessionTool]] | Omit = omit,
         pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]] | Omit = omit,
         reminder_max_count: int | Omit = omit,
         reminder_trigger_ms: float | Omit = omit,
@@ -929,8 +973,6 @@ class AgentResource(SyncAPIResource):
         version_description: Optional[str] | Omit = omit,
         version_title: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
-        voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
-        | Omit = omit,
         voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
@@ -938,6 +980,7 @@ class AgentResource(SyncAPIResource):
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
+                "eleven_v4_turbo",
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
@@ -1044,6 +1087,12 @@ class AgentResource(SyncAPIResource):
               instructions for identity and call purpose questions. Set this to null to
               disable call screen prompt instructions.
 
+          contact_memory_config: Contact memory settings for phone calls and SMS chats. Creating an agent
+              defaults enable_update to false and enable_read to true. Updates only change the
+              supplied flags; omitted flags stay unchanged and an empty object has no effect.
+              Set a flag to false to disable it. The configuration cannot be cleared. Existing
+              agents without this configuration have both disabled.
+
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
@@ -1067,6 +1116,11 @@ class AgentResource(SyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_dnc_detection: If set to true, the agent recognizes requests to stop calling or contacting the
+              user, confirms once, and on a clear yes ends the call with disconnection reason
+              user_requested_dnc and sets do_not_call to true on the contact for the user's
+              phone number. If unset, default value false will apply.
 
           enable_dynamic_responsiveness: If set to true, the agent will dynamically adjust how quickly it responds based
               on the user's speech rate and past turn-taking behavior in the call. If unset,
@@ -1135,6 +1189,18 @@ class AgentResource(SyncAPIResource):
 
           post_call_analysis_model: The model to use for post call analysis. Default to gpt-5.6-terra.
 
+          post_session_tools: Integration (Agent Functions) tools run as a dependency graph during teardown,
+              after post-call analysis. Each tool can be gated by a condition. On calls the
+              graph is stopped after five minutes so teardown can finish. Set to null to
+              clear.
+
+          pre_session_tools: Integration (Agent Functions) tools run as a dependency graph during session
+              setup, before the agent's first message. Outputs are injected as dynamic
+              variables. On calls the graph gets one minute unless an outbound caller will be
+              dialed after setup, in which case it gets five minutes. Past that session
+              initialization continues and any remaining tools finish in the background, so
+              their outputs no longer reach the agent's prompt. Set to null to clear.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
               provider supports this feature. Set to null to remove pronunciation dictionary
@@ -1179,9 +1245,6 @@ class AgentResource(SyncAPIResource):
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
-
-          voice_emotion: Controls the emotional tone of the agent's voice. Currently supported for
-              Cartesia and Minimax TTS providers. If unset, no emotion will be used.
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -1243,11 +1306,13 @@ class AgentResource(SyncAPIResource):
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "call_screening_option": call_screening_option,
+                    "contact_memory_config": contact_memory_config,
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dnc_detection": enable_dnc_detection,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_expressive_mode": enable_expressive_mode,
@@ -1265,6 +1330,8 @@ class AgentResource(SyncAPIResource):
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
+                    "post_session_tools": post_session_tools,
+                    "pre_session_tools": pre_session_tools,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
@@ -1278,7 +1345,6 @@ class AgentResource(SyncAPIResource):
                     "version_description": version_description,
                     "version_title": version_title,
                     "vocab_specialization": vocab_specialization,
-                    "voice_emotion": voice_emotion,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
@@ -1667,12 +1733,14 @@ class AsyncAgentResource(AsyncAPIResource):
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         call_screening_option: Optional[agent_create_params.CallScreeningOption] | Omit = omit,
+        contact_memory_config: agent_create_params.ContactMemoryConfig | Omit = omit,
         custom_stt_config: Optional[agent_create_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dnc_detection: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
         enable_expressive_mode: bool | Omit = omit,
@@ -1854,9 +1922,16 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-5.5",
                 "gpt-5.6-terra",
                 "gpt-5.6-luna",
+                "gpt-6-astra",
+                "gpt-6-sol",
+                "gpt-6.1-sol",
+                "gpt-6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-opus",
+                "claude-5.5-opus",
                 "claude-5-sonnet",
+                "claude-5.5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -1868,6 +1943,8 @@ class AsyncAgentResource(AsyncAPIResource):
             ]
         ]
         | Omit = omit,
+        post_session_tools: Optional[Iterable[agent_create_params.PostSessionTool]] | Omit = omit,
+        pre_session_tools: Optional[Iterable[agent_create_params.PreSessionTool]] | Omit = omit,
         pronunciation_dictionary: Optional[Iterable[agent_create_params.PronunciationDictionary]] | Omit = omit,
         reminder_max_count: int | Omit = omit,
         reminder_trigger_ms: float | Omit = omit,
@@ -1880,14 +1957,13 @@ class AsyncAgentResource(AsyncAPIResource):
         version_description: Optional[str] | Omit = omit,
         version_title: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
-        voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
-        | Omit = omit,
         voice_model: Optional[
             Literal[
                 "eleven_flash_v2",
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
+                "eleven_v4_turbo",
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
@@ -1999,6 +2075,12 @@ class AsyncAgentResource(AsyncAPIResource):
               instructions for identity and call purpose questions. Set this to null to
               disable call screen prompt instructions.
 
+          contact_memory_config: Contact memory settings for phone calls and SMS chats. Creating an agent
+              defaults enable_update to false and enable_read to true. Updates only change the
+              supplied flags; omitted flags stay unchanged and an empty object has no effect.
+              Set a flag to false to disable it. The configuration cannot be cleared. Existing
+              agents without this configuration have both disabled.
+
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
@@ -2022,6 +2104,11 @@ class AsyncAgentResource(AsyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_dnc_detection: If set to true, the agent recognizes requests to stop calling or contacting the
+              user, confirms once, and on a clear yes ends the call with disconnection reason
+              user_requested_dnc and sets do_not_call to true on the contact for the user's
+              phone number. If unset, default value false will apply.
 
           enable_dynamic_responsiveness: If set to true, the agent will dynamically adjust how quickly it responds based
               on the user's speech rate and past turn-taking behavior in the call. If unset,
@@ -2090,6 +2177,18 @@ class AsyncAgentResource(AsyncAPIResource):
 
           post_call_analysis_model: The model to use for post call analysis. Default to gpt-5.6-terra.
 
+          post_session_tools: Integration (Agent Functions) tools run as a dependency graph during teardown,
+              after post-call analysis. Each tool can be gated by a condition. On calls the
+              graph is stopped after five minutes so teardown can finish. Set to null to
+              clear.
+
+          pre_session_tools: Integration (Agent Functions) tools run as a dependency graph during session
+              setup, before the agent's first message. Outputs are injected as dynamic
+              variables. On calls the graph gets one minute unless an outbound caller will be
+              dialed after setup, in which case it gets five minutes. Past that session
+              initialization continues and any remaining tools finish in the background, so
+              their outputs no longer reach the agent's prompt. Set to null to clear.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
               provider supports this feature. Set to null to remove pronunciation dictionary
@@ -2130,9 +2229,6 @@ class AsyncAgentResource(AsyncAPIResource):
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
-
-          voice_emotion: Controls the emotional tone of the agent's voice. Currently supported for
-              Cartesia and Minimax TTS providers. If unset, no emotion will be used.
 
           voice_model: Select the voice model used for the selected voice. Each provider has a set of
               available voice models. Set to null to remove voice model selection, and default
@@ -2191,11 +2287,13 @@ class AsyncAgentResource(AsyncAPIResource):
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "call_screening_option": call_screening_option,
+                    "contact_memory_config": contact_memory_config,
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dnc_detection": enable_dnc_detection,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_expressive_mode": enable_expressive_mode,
@@ -2213,6 +2311,8 @@ class AsyncAgentResource(AsyncAPIResource):
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
+                    "post_session_tools": post_session_tools,
+                    "pre_session_tools": pre_session_tools,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
@@ -2225,7 +2325,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "version_description": version_description,
                     "version_title": version_title,
                     "vocab_specialization": vocab_specialization,
-                    "voice_emotion": voice_emotion,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,
                     "voice_temperature": voice_temperature,
@@ -2304,12 +2403,14 @@ class AsyncAgentResource(AsyncAPIResource):
         begin_message_delay_ms: int | Omit = omit,
         boosted_keywords: Optional[SequenceNotStr[str]] | Omit = omit,
         call_screening_option: Optional[agent_update_params.CallScreeningOption] | Omit = omit,
+        contact_memory_config: agent_update_params.ContactMemoryConfig | Omit = omit,
         custom_stt_config: Optional[agent_update_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_dnc_detection: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
         enable_expressive_mode: bool | Omit = omit,
@@ -2491,9 +2592,16 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gpt-5.5",
                 "gpt-5.6-terra",
                 "gpt-5.6-luna",
+                "gpt-6-astra",
+                "gpt-6-sol",
+                "gpt-6.1-sol",
+                "gpt-6-luna",
                 "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
+                "claude-5-opus",
+                "claude-5.5-opus",
                 "claude-5-sonnet",
+                "claude-5.5-sonnet",
                 "claude-4.5-haiku",
                 "gemini-3.0-flash",
                 "gemini-3.1-flash-lite",
@@ -2505,6 +2613,8 @@ class AsyncAgentResource(AsyncAPIResource):
             ]
         ]
         | Omit = omit,
+        post_session_tools: Optional[Iterable[agent_update_params.PostSessionTool]] | Omit = omit,
+        pre_session_tools: Optional[Iterable[agent_update_params.PreSessionTool]] | Omit = omit,
         pronunciation_dictionary: Optional[Iterable[agent_update_params.PronunciationDictionary]] | Omit = omit,
         reminder_max_count: int | Omit = omit,
         reminder_trigger_ms: float | Omit = omit,
@@ -2518,8 +2628,6 @@ class AsyncAgentResource(AsyncAPIResource):
         version_description: Optional[str] | Omit = omit,
         version_title: Optional[str] | Omit = omit,
         vocab_specialization: Literal["general", "medical"] | Omit = omit,
-        voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]]
-        | Omit = omit,
         voice_id: str | Omit = omit,
         voice_model: Optional[
             Literal[
@@ -2527,6 +2635,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
+                "eleven_v4_turbo",
                 "sonic-3",
                 "sonic-3-latest",
                 "sonic-3.5",
@@ -2633,6 +2742,12 @@ class AsyncAgentResource(AsyncAPIResource):
               instructions for identity and call purpose questions. Set this to null to
               disable call screen prompt instructions.
 
+          contact_memory_config: Contact memory settings for phone calls and SMS chats. Creating an agent
+              defaults enable_update to false and enable_read to true. Updates only change the
+              supplied flags; omitted flags stay unchanged and an empty object has no effect.
+              Set a flag to false to disable it. The configuration cannot be cleared. Existing
+              agents without this configuration have both disabled.
+
           custom_stt_config: Custom STT configuration. Only used when stt_mode is set to custom.
 
           data_storage_retention_days: Number of days to retain call/chat data before automatic deletion. Must be
@@ -2656,6 +2771,11 @@ class AsyncAgentResource(AsyncAPIResource):
               phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
+
+          enable_dnc_detection: If set to true, the agent recognizes requests to stop calling or contacting the
+              user, confirms once, and on a clear yes ends the call with disconnection reason
+              user_requested_dnc and sets do_not_call to true on the contact for the user's
+              phone number. If unset, default value false will apply.
 
           enable_dynamic_responsiveness: If set to true, the agent will dynamically adjust how quickly it responds based
               on the user's speech rate and past turn-taking behavior in the call. If unset,
@@ -2724,6 +2844,18 @@ class AsyncAgentResource(AsyncAPIResource):
 
           post_call_analysis_model: The model to use for post call analysis. Default to gpt-5.6-terra.
 
+          post_session_tools: Integration (Agent Functions) tools run as a dependency graph during teardown,
+              after post-call analysis. Each tool can be gated by a condition. On calls the
+              graph is stopped after five minutes so teardown can finish. Set to null to
+              clear.
+
+          pre_session_tools: Integration (Agent Functions) tools run as a dependency graph during session
+              setup, before the agent's first message. Outputs are injected as dynamic
+              variables. On calls the graph gets one minute unless an outbound caller will be
+              dialed after setup, in which case it gets five minutes. Past that session
+              initialization continues and any remaining tools finish in the background, so
+              their outputs no longer reach the agent's prompt. Set to null to clear.
+
           pronunciation_dictionary: A list of words / phrases and their pronunciation to be used to guide the audio
               synthesize for consistent pronunciation. Check the dashboard to see what
               provider supports this feature. Set to null to remove pronunciation dictionary
@@ -2768,9 +2900,6 @@ class AsyncAgentResource(AsyncAPIResource):
           vocab_specialization: If set, determines the vocabulary set to use for transcription. This setting
               only applies for English agents, for non English agent, this setting is a no-op.
               Default to general.
-
-          voice_emotion: Controls the emotional tone of the agent's voice. Currently supported for
-              Cartesia and Minimax TTS providers. If unset, no emotion will be used.
 
           voice_id: Unique voice id used for the agent. Find list of available voices and their
               preview in Dashboard.
@@ -2832,11 +2961,13 @@ class AsyncAgentResource(AsyncAPIResource):
                     "begin_message_delay_ms": begin_message_delay_ms,
                     "boosted_keywords": boosted_keywords,
                     "call_screening_option": call_screening_option,
+                    "contact_memory_config": contact_memory_config,
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_dnc_detection": enable_dnc_detection,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
                     "enable_expressive_mode": enable_expressive_mode,
@@ -2854,6 +2985,8 @@ class AsyncAgentResource(AsyncAPIResource):
                     "pii_config": pii_config,
                     "post_call_analysis_data": post_call_analysis_data,
                     "post_call_analysis_model": post_call_analysis_model,
+                    "post_session_tools": post_session_tools,
+                    "pre_session_tools": pre_session_tools,
                     "pronunciation_dictionary": pronunciation_dictionary,
                     "reminder_max_count": reminder_max_count,
                     "reminder_trigger_ms": reminder_trigger_ms,
@@ -2867,7 +3000,6 @@ class AsyncAgentResource(AsyncAPIResource):
                     "version_description": version_description,
                     "version_title": version_title,
                     "vocab_specialization": vocab_specialization,
-                    "voice_emotion": voice_emotion,
                     "voice_id": voice_id,
                     "voice_model": voice_model,
                     "voice_speed": voice_speed,

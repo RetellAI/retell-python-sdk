@@ -86,7 +86,8 @@ class CRMConfig(BaseModel):
     inbound_sync_mappings: Optional[List[CRMConfigInboundSyncMapping]] = None
     """Field mappings applied when syncing CRM records into Retell contacts.
 
-    Must include phone_number, which is the field the two systems are matched on.
+    Must include phone_number, which is the field the two systems are matched on. A
+    do_not_call mapping can mark contacts as do-not-call but never clears the flag.
     """
 
     outbound_sync_mappings: Optional[List[CRMConfigOutboundSyncMapping]] = None

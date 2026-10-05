@@ -44,6 +44,10 @@ __all__ = [
     "NodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeConversationNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeConversationNodeGlobalNodeSetting",
+    "NodeConversationNodeGlobalNodeSettingCondition",
+    "NodeConversationNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeConversationNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeConversationNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeConversationNodeGlobalNodeSettingGoBackCondition",
     "NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -99,6 +103,10 @@ __all__ = [
     "NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeSubagentNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeSubagentNodeGlobalNodeSetting",
+    "NodeSubagentNodeGlobalNodeSettingCondition",
+    "NodeSubagentNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeSubagentNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeSubagentNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeSubagentNodeGlobalNodeSettingGoBackCondition",
     "NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -163,9 +171,18 @@ __all__ = [
     "NodeSubagentNodeToolBridgeTransferTool",
     "NodeSubagentNodeToolCancelTransferTool",
     "NodeSubagentNodeToolMcpTool",
+    "NodeSubagentNodeToolAppTool",
+    "NodeSubagentNodeToolAppToolOutputSelection",
+    "NodeSubagentNodeToolAppToolOutputSelectionUnionMember0",
+    "NodeSubagentNodeToolAppToolOutputSelectionUnionMember1",
+    "NodeSubagentNodeToolAppToolParameter",
     "NodeEndNode",
     "NodeEndNodeDisplayPosition",
     "NodeEndNodeGlobalNodeSetting",
+    "NodeEndNodeGlobalNodeSettingCondition",
+    "NodeEndNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeEndNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeEndNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeEndNodeGlobalNodeSettingGoBackCondition",
     "NodeEndNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -204,6 +221,10 @@ __all__ = [
     "NodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeFunctionNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeFunctionNodeGlobalNodeSetting",
+    "NodeFunctionNodeGlobalNodeSettingCondition",
+    "NodeFunctionNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeFunctionNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeFunctionNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeFunctionNodeGlobalNodeSettingGoBackCondition",
     "NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -242,6 +263,10 @@ __all__ = [
     "NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeCodeNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeCodeNodeGlobalNodeSetting",
+    "NodeCodeNodeGlobalNodeSettingCondition",
+    "NodeCodeNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeCodeNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeCodeNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeCodeNodeGlobalNodeSettingGoBackCondition",
     "NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -289,6 +314,10 @@ __all__ = [
     "NodeTransferCallNodeTransferOptionTransferOptionAgenticWarmTransferPublicHandoffOptionWarmTransferStaticMessage",
     "NodeTransferCallNodeDisplayPosition",
     "NodeTransferCallNodeGlobalNodeSetting",
+    "NodeTransferCallNodeGlobalNodeSettingCondition",
+    "NodeTransferCallNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeTransferCallNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeTransferCallNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeTransferCallNodeGlobalNodeSettingGoBackCondition",
     "NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -328,6 +357,10 @@ __all__ = [
     "NodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodePressDigitNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodePressDigitNodeGlobalNodeSetting",
+    "NodePressDigitNodeGlobalNodeSettingCondition",
+    "NodePressDigitNodeGlobalNodeSettingConditionPromptCondition",
+    "NodePressDigitNodeGlobalNodeSettingConditionEquationCondition",
+    "NodePressDigitNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodePressDigitNodeGlobalNodeSettingGoBackCondition",
     "NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -363,6 +396,10 @@ __all__ = [
     "NodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeBranchNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeBranchNodeGlobalNodeSetting",
+    "NodeBranchNodeGlobalNodeSettingCondition",
+    "NodeBranchNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeBranchNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeBranchNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeBranchNodeGlobalNodeSettingGoBackCondition",
     "NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -398,6 +435,10 @@ __all__ = [
     "NodeSMSNodeSuccessEdgeTransitionConditionUnionMember2",
     "NodeSMSNodeDisplayPosition",
     "NodeSMSNodeGlobalNodeSetting",
+    "NodeSMSNodeGlobalNodeSettingCondition",
+    "NodeSMSNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeSMSNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeSMSNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeSMSNodeGlobalNodeSettingGoBackCondition",
     "NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -438,6 +479,10 @@ __all__ = [
     "NodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeExtractDynamicVariablesNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeExtractDynamicVariablesNodeGlobalNodeSetting",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingCondition",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackCondition",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -463,6 +508,10 @@ __all__ = [
     "NodeAgentSwapNodeEdgeTransitionConditionUnionMember2",
     "NodeAgentSwapNodeDisplayPosition",
     "NodeAgentSwapNodeGlobalNodeSetting",
+    "NodeAgentSwapNodeGlobalNodeSettingCondition",
+    "NodeAgentSwapNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeAgentSwapNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeAgentSwapNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeAgentSwapNodeGlobalNodeSettingGoBackCondition",
     "NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -501,6 +550,10 @@ __all__ = [
     "NodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeMcpNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeMcpNodeGlobalNodeSetting",
+    "NodeMcpNodeGlobalNodeSettingCondition",
+    "NodeMcpNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeMcpNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeMcpNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeMcpNodeGlobalNodeSettingGoBackCondition",
     "NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -539,6 +592,10 @@ __all__ = [
     "NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember1",
     "NodeComponentNodeFinetuneTransitionExampleTranscriptUnionMember2",
     "NodeComponentNodeGlobalNodeSetting",
+    "NodeComponentNodeGlobalNodeSettingCondition",
+    "NodeComponentNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeComponentNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeComponentNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeComponentNodeGlobalNodeSettingGoBackCondition",
     "NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -557,6 +614,10 @@ __all__ = [
     "NodeBridgeTransferNode",
     "NodeBridgeTransferNodeDisplayPosition",
     "NodeBridgeTransferNodeGlobalNodeSetting",
+    "NodeBridgeTransferNodeGlobalNodeSettingCondition",
+    "NodeBridgeTransferNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeBridgeTransferNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeBridgeTransferNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeBridgeTransferNodeGlobalNodeSettingGoBackCondition",
     "NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -579,6 +640,10 @@ __all__ = [
     "NodeCancelTransferNode",
     "NodeCancelTransferNodeDisplayPosition",
     "NodeCancelTransferNodeGlobalNodeSetting",
+    "NodeCancelTransferNodeGlobalNodeSettingCondition",
+    "NodeCancelTransferNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeCancelTransferNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeCancelTransferNodeGlobalNodeSettingConditionEquationConditionEquation",
     "NodeCancelTransferNodeGlobalNodeSettingGoBackCondition",
     "NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -604,7 +669,13 @@ __all__ = [
     "NoteDisplayPosition",
     "NoteSize",
     "Tool",
-    "ToolParameters",
+    "ToolCustomTool",
+    "ToolCustomToolParameters",
+    "ToolAppTool",
+    "ToolAppToolOutputSelection",
+    "ToolAppToolOutputSelectionUnionMember0",
+    "ToolAppToolOutputSelectionUnionMember1",
+    "ToolAppToolParameter",
 ]
 
 
@@ -676,6 +747,10 @@ NodeConversationNodeAlwaysEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeConversationNodeAlwaysEdge(BaseModel):
+    """
+    For conversation and subagent nodes, transitions unconditionally after the user responds. Use as the node's only outgoing edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -691,11 +766,11 @@ class NodeConversationNodeCustomSttConfig(BaseModel):
     endpointing_ms: int
     """Endpointing timeout in milliseconds.
 
-    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, and 100 for
-    AssemblyAI.
+    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI,
+    and 100 for Muse. Muse detects turn ends itself and ignores this value.
     """
 
-    provider: Literal["azure", "deepgram", "soniox", "assemblyai"]
+    provider: Literal["azure", "deepgram", "soniox", "assemblyai", "muse"]
     """ASR provider name."""
 
 
@@ -743,6 +818,11 @@ NodeConversationNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeConversationNodeEdge(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -799,6 +879,10 @@ NodeConversationNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeConversationNodeElseEdge(BaseModel):
+    """
+    Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -889,6 +973,42 @@ class NodeConversationNodeFinetuneTransitionExample(BaseModel):
     """Optional destination node ID"""
 
 
+class NodeConversationNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeConversationNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeConversationNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeConversationNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeConversationNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeConversationNodeGlobalNodeSettingConditionPromptCondition,
+    NodeConversationNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -925,6 +1045,11 @@ NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAli
 
 
 class NodeConversationNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -1007,8 +1132,12 @@ class NodeConversationNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeConversationNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeConversationNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -1058,9 +1187,16 @@ class NodeConversationNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -1126,6 +1262,10 @@ NodeConversationNodeSkipResponseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeConversationNodeSkipResponseEdge(BaseModel):
+    """
+    For conversation and subagent nodes, transitions after the agent finishes speaking, without waiting for a user response. Use as the node's only outgoing edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -1148,6 +1288,10 @@ class NodeConversationNode(BaseModel):
     """If set, overrides the agent-level allow_dtmf_interruption for this node only."""
 
     always_edge: Optional[NodeConversationNodeAlwaysEdge] = None
+    """
+    For conversation and subagent nodes, transitions unconditionally after the user
+    responds. Use as the node's only outgoing edge.
+    """
 
     custom_stt_config: Optional[NodeConversationNodeCustomSttConfig] = None
     """Custom transcription settings. Required when stt_mode is custom."""
@@ -1158,6 +1302,11 @@ class NodeConversationNode(BaseModel):
     edges: Optional[List[NodeConversationNodeEdge]] = None
 
     else_edge: Optional[NodeConversationNodeElseEdge] = None
+    """
+    Fallback transition used when no conditional edge or global-node condition
+    matches. Evaluated at the same point as the node's conditional edges; for
+    conversation and subagent nodes, an unmatched user response follows this edge.
+    """
 
     finetune_conversation_examples: Optional[List[NodeConversationNodeFinetuneConversationExample]] = None
 
@@ -1196,6 +1345,17 @@ class NodeConversationNode(BaseModel):
     responsiveness: Optional[float] = None
 
     skip_response_edge: Optional[NodeConversationNodeSkipResponseEdge] = None
+    """
+    For conversation and subagent nodes, transitions after the agent finishes
+    speaking, without waiting for a user response. Use as the node's only outgoing
+    edge.
+    """
+
+    skippable: Optional[bool] = None
+    """
+    Allow skipping this node when its questions are already answered in the current
+    conversation or in saved contact memory when memory reading is enabled.
+    """
 
     stt_mode: Optional[Literal["fast", "accurate", "custom"]] = None
     """Balance between speed and accuracy.
@@ -1263,6 +1423,10 @@ NodeSubagentNodeAlwaysEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeSubagentNodeAlwaysEdge(BaseModel):
+    """
+    For conversation and subagent nodes, transitions unconditionally after the user responds. Use as the node's only outgoing edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -1278,11 +1442,11 @@ class NodeSubagentNodeCustomSttConfig(BaseModel):
     endpointing_ms: int
     """Endpointing timeout in milliseconds.
 
-    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, and 100 for
-    AssemblyAI.
+    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI,
+    and 100 for Muse. Muse detects turn ends itself and ignores this value.
     """
 
-    provider: Literal["azure", "deepgram", "soniox", "assemblyai"]
+    provider: Literal["azure", "deepgram", "soniox", "assemblyai", "muse"]
     """ASR provider name."""
 
 
@@ -1329,6 +1493,11 @@ NodeSubagentNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeSubagentNodeEdge(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -1385,6 +1554,10 @@ NodeSubagentNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeSubagentNodeElseEdge(BaseModel):
+    """
+    Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -1475,6 +1648,42 @@ class NodeSubagentNodeFinetuneTransitionExample(BaseModel):
     """Optional destination node ID"""
 
 
+class NodeSubagentNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeSubagentNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSubagentNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeSubagentNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeSubagentNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeSubagentNodeGlobalNodeSettingConditionPromptCondition,
+    NodeSubagentNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -1511,6 +1720,11 @@ NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias =
 
 
 class NodeSubagentNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -1593,8 +1807,12 @@ class NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeSubagentNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeSubagentNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -1644,9 +1862,16 @@ class NodeSubagentNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -1712,6 +1937,10 @@ NodeSubagentNodeSkipResponseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeSubagentNodeSkipResponseEdge(BaseModel):
+    """
+    For conversation and subagent nodes, transitions after the agent finishes speaking, without waiting for a user response. Use as the node's only outgoing edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -1731,6 +1960,12 @@ class NodeSubagentNodeToolEndCallTool(BaseModel):
     """
 
     type: Literal["end_call"]
+
+    custom_sip_headers: Optional[Dict[str, str]] = None
+    """Custom SIP headers sent on the outgoing BYE when ending the call.
+
+    Header names must start with X- or x-. Supports dynamic variables.
+    """
 
     description: Optional[str] = None
     """
@@ -2168,6 +2403,14 @@ class NodeSubagentNodeToolAgentSwapTool(BaseModel):
     """
 
     speak_during_execution: Optional[bool] = None
+
+    use_swap_agent_max_duration: Optional[bool] = None
+    """
+    If true, restart the max call duration timer at the swap using the destination
+    agent's max_call_duration_ms, capped so the whole call never exceeds 2 hours.
+    Otherwise, the timer already running is left unchanged. Voice calls only.
+    Defaults to false.
+    """
 
     webhook_setting: Optional[Literal["both_agents", "only_destination_agent", "only_source_agent"]] = None
     """Webhook setting for the agent swap, defaults to only source."""
@@ -2749,6 +2992,155 @@ class NodeSubagentNodeToolMcpTool(BaseModel):
     """
 
 
+class NodeSubagentNodeToolAppToolOutputSelectionUnionMember0(BaseModel):
+    mode: Literal["all"]
+
+    fields: Optional[List[str]] = None
+    """Not used at runtime; stored and returned as-is for the UI."""
+
+
+class NodeSubagentNodeToolAppToolOutputSelectionUnionMember1(BaseModel):
+    fields: List[str]
+    """
+    The only response fields the agent and the transcript see, as dot-paths into the
+    response schema returned by get-app-tool-schema. Everything else is dropped.
+    Selecting a parent keeps its whole subtree. A plain segment traverses arrays
+    element-wise (deals.properties.amount keeps that field on every deal), while
+    key[n] selects one element (deals[0].id keeps only the first deal's id); paths
+    that match nothing contribute nothing.
+    """
+
+    mode: Literal["subset"]
+
+
+NodeSubagentNodeToolAppToolOutputSelection: TypeAlias = Union[
+    NodeSubagentNodeToolAppToolOutputSelectionUnionMember0, NodeSubagentNodeToolAppToolOutputSelectionUnionMember1
+]
+
+
+class NodeSubagentNodeToolAppToolParameter(BaseModel):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
+    properties: object
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Literal["object"]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: Optional[List[str]] = None
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class NodeSubagentNodeToolAppTool(BaseModel):
+    app_id: str
+    """The connection (App) this tool runs against.
+
+    Must be a connection in the organization whose provider matches this tool's
+    provider.
+    """
+
+    app_tool_template_name: str
+    """
+    Name of the catalog template within the provider, as listed by
+    list-app-templates.
+    """
+
+    name: str
+    """Name of the tool.
+
+    Must be unique within the phase's tools; referenced by depends_on.
+    """
+
+    provider: str
+    """Provider of the connection.
+
+    Must match the connection's provider; supported providers are listed by
+    list-app-templates.
+    """
+
+    type: Literal["integration_app"]
+
+    description: Optional[str] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Overrides the catalog template's LLM-facing description.
+    """
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, play a typing sound on the agent audio track while this
+    tool is executing. Useful when the tool takes a noticeable amount of time to
+    prevent silence on the call.
+    """
+
+    execution_message_description: Optional[str] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. The message for the agent to speak when executing the tool. Only
+    applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Type of execution message. "prompt" means the agent will use
+    execution_message_description as a prompt to generate the message. "static_text"
+    means the agent will speak the execution_message_description directly. Defaults
+    to "prompt".
+    """
+
+    output_selection: Optional[NodeSubagentNodeToolAppToolOutputSelection] = None
+    """What the agent and the transcript see of the tool's response.
+
+    Omit to send the full response. Does not affect response_variables, which are
+    always extracted from the raw response.
+    """
+
+    parameters: Optional[List[NodeSubagentNodeToolAppToolParameter]] = None
+    """The resolved input parameters, in order.
+
+    Properties may pin a value with const (including {{variable}} references) or
+    provide a description for LLM inference. Each property may also record
+    selected*input_mode, the editor mode the user selected ("const_enum",
+    "const_boolean", "const_value", "description_custom", or "description_preset");
+    it is stored and returned as-is, used only by the tool config UI. Omit the key
+    when no mode is recorded; when set, const*_ modes require a non-empty const, and
+    description\\___ modes must omit const entirely. Each parameter's required list
+    must match the schema returned by the corresponding step of the
+    get-app-tool-schema loop.
+    """
+
+    response_variables: Optional[Dict[str, str]] = None
+    """
+    Mapping of a dynamic-variable name to the response field (dot-path) it is
+    populated from. Missing paths are ignored.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Determines whether the agent would call LLM another time and speak
+    when the result of the tool is obtained.
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, will speak during execution.
+    """
+
+
 NodeSubagentNodeTool: TypeAlias = Union[
     NodeSubagentNodeToolEndCallTool,
     NodeSubagentNodeToolTransferCallTool,
@@ -2761,6 +3153,7 @@ NodeSubagentNodeTool: TypeAlias = Union[
     NodeSubagentNodeToolBridgeTransferTool,
     NodeSubagentNodeToolCancelTransferTool,
     NodeSubagentNodeToolMcpTool,
+    NodeSubagentNodeToolAppTool,
 ]
 
 
@@ -2777,6 +3170,10 @@ class NodeSubagentNode(BaseModel):
     """If set, overrides the agent-level allow_dtmf_interruption for this node only."""
 
     always_edge: Optional[NodeSubagentNodeAlwaysEdge] = None
+    """
+    For conversation and subagent nodes, transitions unconditionally after the user
+    responds. Use as the node's only outgoing edge.
+    """
 
     custom_stt_config: Optional[NodeSubagentNodeCustomSttConfig] = None
     """Custom transcription settings. Required when stt_mode is custom."""
@@ -2787,6 +3184,11 @@ class NodeSubagentNode(BaseModel):
     edges: Optional[List[NodeSubagentNodeEdge]] = None
 
     else_edge: Optional[NodeSubagentNodeElseEdge] = None
+    """
+    Fallback transition used when no conditional edge or global-node condition
+    matches. Evaluated at the same point as the node's conditional edges; for
+    conversation and subagent nodes, an unmatched user response follows this edge.
+    """
 
     finetune_conversation_examples: Optional[List[NodeSubagentNodeFinetuneConversationExample]] = None
 
@@ -2825,6 +3227,17 @@ class NodeSubagentNode(BaseModel):
     responsiveness: Optional[float] = None
 
     skip_response_edge: Optional[NodeSubagentNodeSkipResponseEdge] = None
+    """
+    For conversation and subagent nodes, transitions after the agent finishes
+    speaking, without waiting for a user response. Use as the node's only outgoing
+    edge.
+    """
+
+    skippable: Optional[bool] = None
+    """
+    Allow skipping this node when its questions are already answered in the current
+    conversation or in saved contact memory when memory reading is enabled.
+    """
 
     stt_mode: Optional[Literal["fast", "accurate", "custom"]] = None
     """Balance between speed and accuracy.
@@ -2855,6 +3268,40 @@ class NodeEndNodeDisplayPosition(BaseModel):
     x: Optional[float] = None
 
     y: Optional[float] = None
+
+
+class NodeEndNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeEndNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeEndNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeEndNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeEndNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str, NodeEndNodeGlobalNodeSettingConditionPromptCondition, NodeEndNodeGlobalNodeSettingConditionEquationCondition
+]
 
 
 class NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
@@ -2893,6 +3340,11 @@ NodeEndNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Unio
 
 
 class NodeEndNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -2975,8 +3427,12 @@ class NodeEndNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeEndNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeEndNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -3034,9 +3490,16 @@ class NodeEndNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -3061,6 +3524,12 @@ class NodeEndNode(BaseModel):
 
     type: Literal["end"]
     """Type of the node"""
+
+    custom_sip_headers: Optional[Dict[str, str]] = None
+    """Custom SIP headers sent on the outgoing BYE when ending the call.
+
+    Header names must start with X- or x-. Supports dynamic variables.
+    """
 
     display_position: Optional[NodeEndNodeDisplayPosition] = None
     """Position for frontend display"""
@@ -3122,6 +3591,11 @@ NodeFunctionNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeFunctionNodeEdge(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -3178,6 +3652,10 @@ NodeFunctionNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeFunctionNodeElseEdge(BaseModel):
+    """
+    Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -3229,6 +3707,42 @@ class NodeFunctionNodeFinetuneTransitionExample(BaseModel):
     """Optional destination node ID"""
 
 
+class NodeFunctionNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeFunctionNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeFunctionNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeFunctionNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeFunctionNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeFunctionNodeGlobalNodeSettingConditionPromptCondition,
+    NodeFunctionNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -3265,6 +3779,11 @@ NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias =
 
 
 class NodeFunctionNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -3347,8 +3866,12 @@ class NodeFunctionNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeFunctionNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeFunctionNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -3406,9 +3929,16 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -3449,6 +3979,11 @@ class NodeFunctionNode(BaseModel):
     edges: Optional[List[NodeFunctionNodeEdge]] = None
 
     else_edge: Optional[NodeFunctionNodeElseEdge] = None
+    """
+    Fallback transition used when no conditional edge or global-node condition
+    matches. Evaluated at the same point as the node's conditional edges; for
+    conversation and subagent nodes, an unmatched user response follows this edge.
+    """
 
     enable_typing_sound: Optional[bool] = None
     """If true, play a typing sound while this function executes."""
@@ -3511,6 +4046,11 @@ NodeCodeNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeCodeNodeEdge(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -3567,6 +4107,10 @@ NodeCodeNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeCodeNodeElseEdge(BaseModel):
+    """
+    Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -3618,6 +4162,40 @@ class NodeCodeNodeFinetuneTransitionExample(BaseModel):
     """Optional destination node ID"""
 
 
+class NodeCodeNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeCodeNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeCodeNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeCodeNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeCodeNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str, NodeCodeNodeGlobalNodeSettingConditionPromptCondition, NodeCodeNodeGlobalNodeSettingConditionEquationCondition
+]
+
+
 class NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -3654,6 +4232,11 @@ NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Uni
 
 
 class NodeCodeNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -3736,8 +4319,12 @@ class NodeCodeNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeCodeNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeCodeNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -3795,9 +4382,16 @@ class NodeCodeNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -3835,6 +4429,11 @@ class NodeCodeNode(BaseModel):
     edges: Optional[List[NodeCodeNodeEdge]] = None
 
     else_edge: Optional[NodeCodeNodeElseEdge] = None
+    """
+    Fallback transition used when no conditional edge or global-node condition
+    matches. Evaluated at the same point as the node's conditional edges; for
+    conversation and subagent nodes, an unmatched user response follows this edge.
+    """
 
     enable_typing_sound: Optional[bool] = None
     """If true, play a typing sound while code executes."""
@@ -3914,6 +4513,10 @@ NodeTransferCallNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeTransferCallNodeEdge(BaseModel):
+    """
+    Transition followed by a transfer_call or agent_swap node when the transfer fails. Evaluated after the transfer attempt finishes.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -4234,6 +4837,42 @@ class NodeTransferCallNodeDisplayPosition(BaseModel):
     y: Optional[float] = None
 
 
+class NodeTransferCallNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeTransferCallNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeTransferCallNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeTransferCallNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeTransferCallNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeTransferCallNodeGlobalNodeSettingConditionPromptCondition,
+    NodeTransferCallNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -4270,6 +4909,11 @@ NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAli
 
 
 class NodeTransferCallNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -4352,8 +4996,12 @@ class NodeTransferCallNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeTransferCallNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeTransferCallNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -4411,9 +5059,16 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -4437,6 +5092,10 @@ class NodeTransferCallNode(BaseModel):
     """Unique identifier for the node"""
 
     edge: NodeTransferCallNodeEdge
+    """
+    Transition followed by a transfer_call or agent_swap node when the transfer
+    fails. Evaluated after the transfer attempt finishes.
+    """
 
     transfer_destination: NodeTransferCallNodeTransferDestination
 
@@ -4524,6 +5183,11 @@ NodePressDigitNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodePressDigitNodeEdge(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -4580,6 +5244,10 @@ NodePressDigitNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodePressDigitNodeElseEdge(BaseModel):
+    """
+    Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -4631,6 +5299,42 @@ class NodePressDigitNodeFinetuneTransitionExample(BaseModel):
     """Optional destination node ID"""
 
 
+class NodePressDigitNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodePressDigitNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodePressDigitNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodePressDigitNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodePressDigitNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodePressDigitNodeGlobalNodeSettingConditionPromptCondition,
+    NodePressDigitNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -4667,6 +5371,11 @@ NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias
 
 
 class NodePressDigitNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -4749,8 +5458,12 @@ class NodePressDigitNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodePressDigitNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodePressDigitNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -4787,9 +5500,16 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -4826,6 +5546,11 @@ class NodePressDigitNode(BaseModel):
     edges: Optional[List[NodePressDigitNodeEdge]] = None
 
     else_edge: Optional[NodePressDigitNodeElseEdge] = None
+    """
+    Fallback transition used when no conditional edge or global-node condition
+    matches. Evaluated at the same point as the node's conditional edges; for
+    conversation and subagent nodes, an unmatched user response follows this edge.
+    """
 
     finetune_transition_examples: Optional[List[NodePressDigitNodeFinetuneTransitionExample]] = None
 
@@ -4884,6 +5609,10 @@ NodeBranchNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeBranchNodeElseEdge(BaseModel):
+    """
+    Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -4936,6 +5665,11 @@ NodeBranchNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeBranchNodeEdge(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -4987,6 +5721,42 @@ class NodeBranchNodeFinetuneTransitionExample(BaseModel):
     """Optional destination node ID"""
 
 
+class NodeBranchNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeBranchNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeBranchNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeBranchNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeBranchNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeBranchNodeGlobalNodeSettingConditionPromptCondition,
+    NodeBranchNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -5023,6 +5793,11 @@ NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = U
 
 
 class NodeBranchNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -5105,8 +5880,12 @@ class NodeBranchNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeBranchNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeBranchNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -5143,9 +5922,16 @@ class NodeBranchNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -5169,6 +5955,11 @@ class NodeBranchNode(BaseModel):
     """Unique identifier for the node"""
 
     else_edge: NodeBranchNodeElseEdge
+    """
+    Fallback transition used when no conditional edge or global-node condition
+    matches. Evaluated at the same point as the node's conditional edges; for
+    conversation and subagent nodes, an unmatched user response follows this edge.
+    """
 
     type: Literal["branch"]
     """Type of the node"""
@@ -5217,12 +6008,12 @@ class NodeSMSNodeFailedEdgeTransitionConditionEquationCondition(BaseModel):
     type: Literal["equation"]
 
     prompt: Optional[Literal["Failed to send"]] = None
-    """Must be "failed to send" for SMS failed edge"""
+    """Must be "Failed to send" for SMS failed edge"""
 
 
 class NodeSMSNodeFailedEdgeTransitionConditionUnionMember2(BaseModel):
     prompt: Literal["Failed to send"]
-    """Must be "failed to send" for SMS failed edge"""
+    """Must be "Failed to send" for SMS failed edge"""
 
     type: Literal["prompt"]
 
@@ -5235,6 +6026,10 @@ NodeSMSNodeFailedEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeSMSNodeFailedEdge(BaseModel):
+    """
+    Transition followed by an SMS node when generating the message content or sending the message fails.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -5308,12 +6103,12 @@ class NodeSMSNodeSuccessEdgeTransitionConditionEquationCondition(BaseModel):
     type: Literal["equation"]
 
     prompt: Optional[Literal["Sent successfully"]] = None
-    """Must be "sent successfully" for SMS success edge"""
+    """Must be "Sent successfully" for SMS success edge"""
 
 
 class NodeSMSNodeSuccessEdgeTransitionConditionUnionMember2(BaseModel):
     prompt: Literal["Sent successfully"]
-    """Must be "sent successfully" for SMS success edge"""
+    """Must be "Sent successfully" for SMS success edge"""
 
     type: Literal["prompt"]
 
@@ -5326,6 +6121,8 @@ NodeSMSNodeSuccessEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeSMSNodeSuccessEdge(BaseModel):
+    """Transition followed by an SMS node after the send operation reports success."""
+
     id: str
     """Unique identifier for the edge"""
 
@@ -5341,6 +6138,40 @@ class NodeSMSNodeDisplayPosition(BaseModel):
     x: Optional[float] = None
 
     y: Optional[float] = None
+
+
+class NodeSMSNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeSMSNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSMSNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeSMSNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeSMSNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str, NodeSMSNodeGlobalNodeSettingConditionPromptCondition, NodeSMSNodeGlobalNodeSettingConditionEquationCondition
+]
 
 
 class NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
@@ -5379,6 +6210,11 @@ NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Unio
 
 
 class NodeSMSNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -5461,8 +6297,12 @@ class NodeSMSNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeSMSNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeSMSNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -5499,9 +6339,16 @@ class NodeSMSNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -5525,10 +6372,15 @@ class NodeSMSNode(BaseModel):
     """Unique identifier for the node"""
 
     failed_edge: NodeSMSNodeFailedEdge
+    """
+    Transition followed by an SMS node when generating the message content or
+    sending the message fails.
+    """
 
     instruction: NodeSMSNodeInstruction
 
     success_edge: NodeSMSNodeSuccessEdge
+    """Transition followed by an SMS node after the send operation reports success."""
 
     type: Literal["sms"]
     """Type of the node"""
@@ -5698,6 +6550,11 @@ NodeExtractDynamicVariablesNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeExtractDynamicVariablesNodeEdge(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -5754,6 +6611,10 @@ NodeExtractDynamicVariablesNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeExtractDynamicVariablesNodeElseEdge(BaseModel):
+    """
+    Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -5805,6 +6666,42 @@ class NodeExtractDynamicVariablesNodeFinetuneTransitionExample(BaseModel):
     """Optional destination node ID"""
 
 
+class NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeExtractDynamicVariablesNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionPromptCondition,
+    NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -5845,6 +6742,11 @@ NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditi
 
 
 class NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -5927,8 +6829,12 @@ class NodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExample(Ba
 
 
 class NodeExtractDynamicVariablesNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeExtractDynamicVariablesNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -5969,9 +6875,16 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -6005,6 +6918,11 @@ class NodeExtractDynamicVariablesNode(BaseModel):
     edges: Optional[List[NodeExtractDynamicVariablesNodeEdge]] = None
 
     else_edge: Optional[NodeExtractDynamicVariablesNodeElseEdge] = None
+    """
+    Fallback transition used when no conditional edge or global-node condition
+    matches. Evaluated at the same point as the node's conditional edges; for
+    conversation and subagent nodes, an unmatched user response follows this edge.
+    """
 
     enable_typing_sound: Optional[bool] = None
     """If true, play a typing sound while this extract step executes."""
@@ -6087,6 +7005,42 @@ class NodeAgentSwapNodeDisplayPosition(BaseModel):
     y: Optional[float] = None
 
 
+class NodeAgentSwapNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeAgentSwapNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeAgentSwapNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeAgentSwapNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeAgentSwapNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeAgentSwapNodeGlobalNodeSettingConditionPromptCondition,
+    NodeAgentSwapNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -6123,6 +7077,11 @@ NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias 
 
 
 class NodeAgentSwapNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -6205,8 +7164,12 @@ class NodeAgentSwapNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeAgentSwapNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeAgentSwapNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -6264,9 +7227,16 @@ class NodeAgentSwapNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -6333,6 +7303,14 @@ class NodeAgentSwapNode(BaseModel):
     speak_during_execution: Optional[bool] = None
     """If true, will speak during execution"""
 
+    use_swap_agent_max_duration: Optional[bool] = None
+    """
+    If true, restart the max call duration timer at the swap using the destination
+    agent's max_call_duration_ms, capped so the whole call never exceeds 2 hours.
+    Otherwise, the timer already running is left unchanged. Voice calls only.
+    Defaults to false.
+    """
+
     webhook_setting: Optional[Literal["both_agents", "only_destination_agent", "only_source_agent"]] = None
     """Webhook setting for the agent swap, defaults to only source."""
 
@@ -6380,6 +7358,11 @@ NodeMcpNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeMcpNodeEdge(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -6436,6 +7419,10 @@ NodeMcpNodeElseEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeMcpNodeElseEdge(BaseModel):
+    """
+    Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -6487,6 +7474,40 @@ class NodeMcpNodeFinetuneTransitionExample(BaseModel):
     """Optional destination node ID"""
 
 
+class NodeMcpNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeMcpNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeMcpNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeMcpNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeMcpNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str, NodeMcpNodeGlobalNodeSettingConditionPromptCondition, NodeMcpNodeGlobalNodeSettingConditionEquationCondition
+]
+
+
 class NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -6523,6 +7544,11 @@ NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Unio
 
 
 class NodeMcpNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -6605,8 +7631,12 @@ class NodeMcpNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeMcpNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeMcpNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -6664,9 +7694,16 @@ class NodeMcpNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -6707,6 +7744,11 @@ class NodeMcpNode(BaseModel):
     edges: Optional[List[NodeMcpNodeEdge]] = None
 
     else_edge: Optional[NodeMcpNodeElseEdge] = None
+    """
+    Fallback transition used when no conditional edge or global-node condition
+    matches. Evaluated at the same point as the node's conditional edges; for
+    conversation and subagent nodes, an unmatched user response follows this edge.
+    """
 
     enable_typing_sound: Optional[bool] = None
     """If true, play a typing sound while MCP tool executes."""
@@ -6834,6 +7876,11 @@ NodeComponentNodeEdgeTransitionCondition: TypeAlias = Union[
 
 
 class NodeComponentNodeEdge(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -6885,6 +7932,42 @@ class NodeComponentNodeFinetuneTransitionExample(BaseModel):
     """Optional destination node ID"""
 
 
+class NodeComponentNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeComponentNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeComponentNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeComponentNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeComponentNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeComponentNodeGlobalNodeSettingConditionPromptCondition,
+    NodeComponentNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -6921,6 +8004,11 @@ NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias 
 
 
 class NodeComponentNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -7003,8 +8091,12 @@ class NodeComponentNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeComponentNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeComponentNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -7067,6 +8159,42 @@ class NodeBridgeTransferNodeDisplayPosition(BaseModel):
     y: Optional[float] = None
 
 
+class NodeBridgeTransferNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeBridgeTransferNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeBridgeTransferNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeBridgeTransferNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeBridgeTransferNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeBridgeTransferNodeGlobalNodeSettingConditionPromptCondition,
+    NodeBridgeTransferNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -7103,6 +8231,11 @@ NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeA
 
 
 class NodeBridgeTransferNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -7185,8 +8318,12 @@ class NodeBridgeTransferNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeBridgeTransferNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeBridgeTransferNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -7244,9 +8381,16 @@ class NodeBridgeTransferNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -7300,6 +8444,42 @@ class NodeCancelTransferNodeDisplayPosition(BaseModel):
     y: Optional[float] = None
 
 
+class NodeCancelTransferNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeCancelTransferNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeCancelTransferNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeCancelTransferNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeCancelTransferNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeCancelTransferNodeGlobalNodeSettingConditionPromptCondition,
+    NodeCancelTransferNodeGlobalNodeSettingConditionEquationCondition,
+]
+
+
 class NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
     prompt: str
     """Prompt condition text"""
@@ -7336,6 +8516,11 @@ NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeA
 
 
 class NodeCancelTransferNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
     id: str
     """Unique identifier for the edge"""
 
@@ -7418,8 +8603,12 @@ class NodeCancelTransferNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
 
 
 class NodeCancelTransferNodeGlobalNodeSetting(BaseModel):
-    condition: str
-    """Condition for global node activation, cannot be empty"""
+    condition: NodeCancelTransferNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
+    or equation condition.
+    """
 
     cool_down: Optional[float] = None
     """
@@ -7477,9 +8666,16 @@ class NodeCancelTransferNodeModelChoice(BaseModel):
         "gpt-5.5",
         "gpt-5.6-terra",
         "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
         "claude-4.5-sonnet",
         "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
         "claude-5-sonnet",
+        "claude-5.5-sonnet",
         "claude-4.5-haiku",
         "gemini-3.0-flash",
         "gemini-3.1-flash-lite",
@@ -7604,7 +8800,7 @@ class Note(BaseModel):
     """Dimensions of the note on the canvas."""
 
 
-class ToolParameters(BaseModel):
+class ToolCustomToolParameters(BaseModel):
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
@@ -7627,7 +8823,7 @@ class ToolParameters(BaseModel):
     """
 
 
-class Tool(BaseModel):
+class ToolCustomTool(BaseModel):
     name: str
     """Name of the tool.
 
@@ -7704,7 +8900,7 @@ class Tool(BaseModel):
     is encoded (see `args_at_root`).
     """
 
-    parameters: Optional[ToolParameters] = None
+    parameters: Optional[ToolCustomToolParameters] = None
     """The parameters the functions accepts, described as a JSON Schema object.
 
     See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
@@ -7748,6 +8944,161 @@ class Tool(BaseModel):
 
     tool_id: Optional[str] = None
     """Unique identifier for the tool"""
+
+
+class ToolAppToolOutputSelectionUnionMember0(BaseModel):
+    mode: Literal["all"]
+
+    fields: Optional[List[str]] = None
+    """Not used at runtime; stored and returned as-is for the UI."""
+
+
+class ToolAppToolOutputSelectionUnionMember1(BaseModel):
+    fields: List[str]
+    """
+    The only response fields the agent and the transcript see, as dot-paths into the
+    response schema returned by get-app-tool-schema. Everything else is dropped.
+    Selecting a parent keeps its whole subtree. A plain segment traverses arrays
+    element-wise (deals.properties.amount keeps that field on every deal), while
+    key[n] selects one element (deals[0].id keeps only the first deal's id); paths
+    that match nothing contribute nothing.
+    """
+
+    mode: Literal["subset"]
+
+
+ToolAppToolOutputSelection: TypeAlias = Union[
+    ToolAppToolOutputSelectionUnionMember0, ToolAppToolOutputSelectionUnionMember1
+]
+
+
+class ToolAppToolParameter(BaseModel):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
+    properties: object
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Literal["object"]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: Optional[List[str]] = None
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class ToolAppTool(BaseModel):
+    app_id: str
+    """The connection (App) this tool runs against.
+
+    Must be a connection in the organization whose provider matches this tool's
+    provider.
+    """
+
+    app_tool_template_name: str
+    """
+    Name of the catalog template within the provider, as listed by
+    list-app-templates.
+    """
+
+    name: str
+    """Name of the tool.
+
+    Must be unique within the phase's tools; referenced by depends_on.
+    """
+
+    provider: str
+    """Provider of the connection.
+
+    Must match the connection's provider; supported providers are listed by
+    list-app-templates.
+    """
+
+    type: Literal["integration_app"]
+
+    description: Optional[str] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Overrides the catalog template's LLM-facing description.
+    """
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, play a typing sound on the agent audio track while this
+    tool is executing. Useful when the tool takes a noticeable amount of time to
+    prevent silence on the call.
+    """
+
+    execution_message_description: Optional[str] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. The message for the agent to speak when executing the tool. Only
+    applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Type of execution message. "prompt" means the agent will use
+    execution_message_description as a prompt to generate the message. "static_text"
+    means the agent will speak the execution_message_description directly. Defaults
+    to "prompt".
+    """
+
+    output_selection: Optional[ToolAppToolOutputSelection] = None
+    """What the agent and the transcript see of the tool's response.
+
+    Omit to send the full response. Does not affect response_variables, which are
+    always extracted from the raw response.
+    """
+
+    parameters: Optional[List[ToolAppToolParameter]] = None
+    """The resolved input parameters, in order.
+
+    Properties may pin a value with const (including {{variable}} references) or
+    provide a description for LLM inference. Each property may also record
+    selected*input_mode, the editor mode the user selected ("const_enum",
+    "const_boolean", "const_value", "description_custom", or "description_preset");
+    it is stored and returned as-is, used only by the tool config UI. Omit the key
+    when no mode is recorded; when set, const*_ modes require a non-empty const, and
+    description\\___ modes must omit const entirely. Each parameter's required list
+    must match the schema returned by the corresponding step of the
+    get-app-tool-schema loop.
+    """
+
+    response_variables: Optional[Dict[str, str]] = None
+    """
+    Mapping of a dynamic-variable name to the response field (dot-path) it is
+    populated from. Missing paths are ignored.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Determines whether the agent would call LLM another time and speak
+    when the result of the tool is obtained.
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, will speak during execution.
+    """
+
+    tool_id: Optional[str] = None
+    """Unique identifier for the tool"""
+
+
+Tool: TypeAlias = Union[ToolCustomTool, ToolAppTool]
 
 
 class ConversationFlowComponentResponse(BaseModel):

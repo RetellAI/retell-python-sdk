@@ -11,5 +11,8 @@ class IdentityRetrieveResponse(BaseModel):
     api_key_name: Optional[str] = None
     """Display name of the API key used, if it has one."""
 
+    org_id: str
+    """ID of the org that owns the API key."""
+
     org_name: str
     """Display name of the org."""

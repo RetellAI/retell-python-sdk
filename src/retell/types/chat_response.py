@@ -20,6 +20,46 @@ __all__ = [
     "MessageWithToolCallInjectedMessageBase",
     "MessageWithToolCallSMSMessageBase",
     "MessageWithToolCallSMSMessageBaseMultimedia",
+    "PostSessionMessageWithToolCall",
+    "PostSessionMessageWithToolCallMessageBase",
+    "PostSessionMessageWithToolCallMessageBaseMultimedia",
+    "PostSessionMessageWithToolCallToolCallInvocationMessageBase",
+    "PostSessionMessageWithToolCallToolCallResultMessageBase",
+    "PostSessionMessageWithToolCallNodeTransitionMessageBase",
+    "PostSessionMessageWithToolCallStateTransitionMessageBase",
+    "PostSessionMessageWithToolCallInjectedMessageBase",
+    "PostSessionMessageWithToolCallSMSMessageBase",
+    "PostSessionMessageWithToolCallSMSMessageBaseMultimedia",
+    "PreSessionMessageWithToolCall",
+    "PreSessionMessageWithToolCallMessageBase",
+    "PreSessionMessageWithToolCallMessageBaseMultimedia",
+    "PreSessionMessageWithToolCallToolCallInvocationMessageBase",
+    "PreSessionMessageWithToolCallToolCallResultMessageBase",
+    "PreSessionMessageWithToolCallNodeTransitionMessageBase",
+    "PreSessionMessageWithToolCallStateTransitionMessageBase",
+    "PreSessionMessageWithToolCallInjectedMessageBase",
+    "PreSessionMessageWithToolCallSMSMessageBase",
+    "PreSessionMessageWithToolCallSMSMessageBaseMultimedia",
+    "ScrubbedPostSessionMessageWithToolCall",
+    "ScrubbedPostSessionMessageWithToolCallMessageBase",
+    "ScrubbedPostSessionMessageWithToolCallMessageBaseMultimedia",
+    "ScrubbedPostSessionMessageWithToolCallToolCallInvocationMessageBase",
+    "ScrubbedPostSessionMessageWithToolCallToolCallResultMessageBase",
+    "ScrubbedPostSessionMessageWithToolCallNodeTransitionMessageBase",
+    "ScrubbedPostSessionMessageWithToolCallStateTransitionMessageBase",
+    "ScrubbedPostSessionMessageWithToolCallInjectedMessageBase",
+    "ScrubbedPostSessionMessageWithToolCallSMSMessageBase",
+    "ScrubbedPostSessionMessageWithToolCallSMSMessageBaseMultimedia",
+    "ScrubbedPreSessionMessageWithToolCall",
+    "ScrubbedPreSessionMessageWithToolCallMessageBase",
+    "ScrubbedPreSessionMessageWithToolCallMessageBaseMultimedia",
+    "ScrubbedPreSessionMessageWithToolCallToolCallInvocationMessageBase",
+    "ScrubbedPreSessionMessageWithToolCallToolCallResultMessageBase",
+    "ScrubbedPreSessionMessageWithToolCallNodeTransitionMessageBase",
+    "ScrubbedPreSessionMessageWithToolCallStateTransitionMessageBase",
+    "ScrubbedPreSessionMessageWithToolCallInjectedMessageBase",
+    "ScrubbedPreSessionMessageWithToolCallSMSMessageBase",
+    "ScrubbedPreSessionMessageWithToolCallSMSMessageBaseMultimedia",
 ]
 
 
@@ -254,6 +294,746 @@ MessageWithToolCall: TypeAlias = Union[
 ]
 
 
+class PostSessionMessageWithToolCallMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class PostSessionMessageWithToolCallMessageBase(BaseModel):
+    content: str
+    """Content of the message"""
+
+    role: Literal["agent", "user"]
+    """Documents whether this message is sent by agent or user."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    multimedia: Optional[List[PostSessionMessageWithToolCallMessageBaseMultimedia]] = None
+    """Multimedia attachments received with this message (MMS).
+
+    Display only; a textual summary of each attachment is already included in
+    content. Response only — supplying it in a request has no effect and is silently
+    ignored. Omitted from PII-scrubbed messages.
+    """
+
+
+class PostSessionMessageWithToolCallToolCallInvocationMessageBase(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
+
+
+class PostSessionMessageWithToolCallToolCallResultMessageBase(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    role: Literal["tool_call_result"]
+    """This is the result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
+
+class PostSessionMessageWithToolCallNodeTransitionMessageBase(BaseModel):
+    role: Literal["node_transition"]
+    """This is a node transition."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    former_node_id: Optional[str] = None
+    """Former node id"""
+
+    former_node_name: Optional[str] = None
+    """Former node name"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    new_node_id: Optional[str] = None
+    """New node id"""
+
+    new_node_name: Optional[str] = None
+    """New node name"""
+
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
+
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
+
+
+class PostSessionMessageWithToolCallStateTransitionMessageBase(BaseModel):
+    role: Literal["state_transition"]
+    """This is a state transition."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    former_state_name: Optional[str] = None
+    """Former state name"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    new_state_name: Optional[str] = None
+    """New state name"""
+
+
+class PostSessionMessageWithToolCallInjectedMessageBase(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+
+class PostSessionMessageWithToolCallSMSMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class PostSessionMessageWithToolCallSMSMessageBase(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """SMS message exchanged during the call (for example received from the user).
+
+    Woven into the transcript and shown to the agent, but not part of the spoken
+    conversation.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    multimedia: Optional[List[PostSessionMessageWithToolCallSMSMessageBaseMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
+PostSessionMessageWithToolCall: TypeAlias = Union[
+    PostSessionMessageWithToolCallMessageBase,
+    PostSessionMessageWithToolCallToolCallInvocationMessageBase,
+    PostSessionMessageWithToolCallToolCallResultMessageBase,
+    PostSessionMessageWithToolCallNodeTransitionMessageBase,
+    PostSessionMessageWithToolCallStateTransitionMessageBase,
+    PostSessionMessageWithToolCallInjectedMessageBase,
+    PostSessionMessageWithToolCallSMSMessageBase,
+]
+
+
+class PreSessionMessageWithToolCallMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class PreSessionMessageWithToolCallMessageBase(BaseModel):
+    content: str
+    """Content of the message"""
+
+    role: Literal["agent", "user"]
+    """Documents whether this message is sent by agent or user."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    multimedia: Optional[List[PreSessionMessageWithToolCallMessageBaseMultimedia]] = None
+    """Multimedia attachments received with this message (MMS).
+
+    Display only; a textual summary of each attachment is already included in
+    content. Response only — supplying it in a request has no effect and is silently
+    ignored. Omitted from PII-scrubbed messages.
+    """
+
+
+class PreSessionMessageWithToolCallToolCallInvocationMessageBase(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
+
+
+class PreSessionMessageWithToolCallToolCallResultMessageBase(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    role: Literal["tool_call_result"]
+    """This is the result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
+
+class PreSessionMessageWithToolCallNodeTransitionMessageBase(BaseModel):
+    role: Literal["node_transition"]
+    """This is a node transition."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    former_node_id: Optional[str] = None
+    """Former node id"""
+
+    former_node_name: Optional[str] = None
+    """Former node name"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    new_node_id: Optional[str] = None
+    """New node id"""
+
+    new_node_name: Optional[str] = None
+    """New node name"""
+
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
+
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
+
+
+class PreSessionMessageWithToolCallStateTransitionMessageBase(BaseModel):
+    role: Literal["state_transition"]
+    """This is a state transition."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    former_state_name: Optional[str] = None
+    """Former state name"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    new_state_name: Optional[str] = None
+    """New state name"""
+
+
+class PreSessionMessageWithToolCallInjectedMessageBase(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+
+class PreSessionMessageWithToolCallSMSMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class PreSessionMessageWithToolCallSMSMessageBase(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """SMS message exchanged during the call (for example received from the user).
+
+    Woven into the transcript and shown to the agent, but not part of the spoken
+    conversation.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    multimedia: Optional[List[PreSessionMessageWithToolCallSMSMessageBaseMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
+PreSessionMessageWithToolCall: TypeAlias = Union[
+    PreSessionMessageWithToolCallMessageBase,
+    PreSessionMessageWithToolCallToolCallInvocationMessageBase,
+    PreSessionMessageWithToolCallToolCallResultMessageBase,
+    PreSessionMessageWithToolCallNodeTransitionMessageBase,
+    PreSessionMessageWithToolCallStateTransitionMessageBase,
+    PreSessionMessageWithToolCallInjectedMessageBase,
+    PreSessionMessageWithToolCallSMSMessageBase,
+]
+
+
+class ScrubbedPostSessionMessageWithToolCallMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class ScrubbedPostSessionMessageWithToolCallMessageBase(BaseModel):
+    content: str
+    """Content of the message"""
+
+    role: Literal["agent", "user"]
+    """Documents whether this message is sent by agent or user."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    multimedia: Optional[List[ScrubbedPostSessionMessageWithToolCallMessageBaseMultimedia]] = None
+    """Multimedia attachments received with this message (MMS).
+
+    Display only; a textual summary of each attachment is already included in
+    content. Response only — supplying it in a request has no effect and is silently
+    ignored. Omitted from PII-scrubbed messages.
+    """
+
+
+class ScrubbedPostSessionMessageWithToolCallToolCallInvocationMessageBase(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
+
+
+class ScrubbedPostSessionMessageWithToolCallToolCallResultMessageBase(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    role: Literal["tool_call_result"]
+    """This is the result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
+
+class ScrubbedPostSessionMessageWithToolCallNodeTransitionMessageBase(BaseModel):
+    role: Literal["node_transition"]
+    """This is a node transition."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    former_node_id: Optional[str] = None
+    """Former node id"""
+
+    former_node_name: Optional[str] = None
+    """Former node name"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    new_node_id: Optional[str] = None
+    """New node id"""
+
+    new_node_name: Optional[str] = None
+    """New node name"""
+
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
+
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
+
+
+class ScrubbedPostSessionMessageWithToolCallStateTransitionMessageBase(BaseModel):
+    role: Literal["state_transition"]
+    """This is a state transition."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    former_state_name: Optional[str] = None
+    """Former state name"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    new_state_name: Optional[str] = None
+    """New state name"""
+
+
+class ScrubbedPostSessionMessageWithToolCallInjectedMessageBase(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+
+class ScrubbedPostSessionMessageWithToolCallSMSMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class ScrubbedPostSessionMessageWithToolCallSMSMessageBase(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """SMS message exchanged during the call (for example received from the user).
+
+    Woven into the transcript and shown to the agent, but not part of the spoken
+    conversation.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    multimedia: Optional[List[ScrubbedPostSessionMessageWithToolCallSMSMessageBaseMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
+ScrubbedPostSessionMessageWithToolCall: TypeAlias = Union[
+    ScrubbedPostSessionMessageWithToolCallMessageBase,
+    ScrubbedPostSessionMessageWithToolCallToolCallInvocationMessageBase,
+    ScrubbedPostSessionMessageWithToolCallToolCallResultMessageBase,
+    ScrubbedPostSessionMessageWithToolCallNodeTransitionMessageBase,
+    ScrubbedPostSessionMessageWithToolCallStateTransitionMessageBase,
+    ScrubbedPostSessionMessageWithToolCallInjectedMessageBase,
+    ScrubbedPostSessionMessageWithToolCallSMSMessageBase,
+]
+
+
+class ScrubbedPreSessionMessageWithToolCallMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class ScrubbedPreSessionMessageWithToolCallMessageBase(BaseModel):
+    content: str
+    """Content of the message"""
+
+    role: Literal["agent", "user"]
+    """Documents whether this message is sent by agent or user."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    multimedia: Optional[List[ScrubbedPreSessionMessageWithToolCallMessageBaseMultimedia]] = None
+    """Multimedia attachments received with this message (MMS).
+
+    Display only; a textual summary of each attachment is already included in
+    content. Response only — supplying it in a request has no effect and is silently
+    ignored. Omitted from PII-scrubbed messages.
+    """
+
+
+class ScrubbedPreSessionMessageWithToolCallToolCallInvocationMessageBase(BaseModel):
+    arguments: str
+    """Arguments for this tool call, it's a stringified JSON object."""
+
+    name: str
+    """Name of the function in this tool call."""
+
+    role: Literal["tool_call_invocation"]
+    """This is a tool call invocation."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    thought_signature: Optional[str] = None
+    """Optional thought signature from Google Gemini thinking models.
+
+    This is used internally to maintain reasoning chain in multi-turn function
+    calling.
+    """
+
+
+class ScrubbedPreSessionMessageWithToolCallToolCallResultMessageBase(BaseModel):
+    content: str
+    """Result of the tool call, can be a string, a stringified json, etc."""
+
+    role: Literal["tool_call_result"]
+    """This is the result of a tool call."""
+
+    tool_call_id: str
+    """Tool call id, globally unique."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    successful: Optional[bool] = None
+    """Whether the tool call was successful."""
+
+
+class ScrubbedPreSessionMessageWithToolCallNodeTransitionMessageBase(BaseModel):
+    role: Literal["node_transition"]
+    """This is a node transition."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    former_node_id: Optional[str] = None
+    """Former node id"""
+
+    former_node_name: Optional[str] = None
+    """Former node name"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    new_node_id: Optional[str] = None
+    """New node id"""
+
+    new_node_name: Optional[str] = None
+    """New node name"""
+
+    transition_type: Optional[Literal["global", "global_go_back", "interrupt_go_back", "normal"]] = None
+    """How this node was reached.
+
+    "global" means a global node transition, "global_go_back" means returning from a
+    global node, "interrupt_go_back" means going back due to user interruption, and
+    "normal" means a regular edge transition.
+    """
+
+
+class ScrubbedPreSessionMessageWithToolCallStateTransitionMessageBase(BaseModel):
+    role: Literal["state_transition"]
+    """This is a state transition."""
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    former_state_name: Optional[str] = None
+    """Former state name"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    new_state_name: Optional[str] = None
+    """New state name"""
+
+
+class ScrubbedPreSessionMessageWithToolCallInjectedMessageBase(BaseModel):
+    content: str
+    """The injected context text."""
+
+    role: Literal["injected"]
+    """External context injected into the conversation via the update-live-call API.
+
+    Not spoken by either party.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+
+class ScrubbedPreSessionMessageWithToolCallSMSMessageBaseMultimedia(BaseModel):
+    url: str
+    """URL of the multimedia attachment."""
+
+    summary: Optional[str] = None
+    """Optional textual summary of the attachment."""
+
+
+class ScrubbedPreSessionMessageWithToolCallSMSMessageBase(BaseModel):
+    content: str
+    """Text content of the SMS message."""
+
+    role: Literal["sms"]
+    """SMS message exchanged during the call (for example received from the user).
+
+    Woven into the transcript and shown to the agent, but not part of the spoken
+    conversation.
+    """
+
+    created_timestamp: Optional[int] = None
+    """Create timestamp of the message"""
+
+    message_id: Optional[str] = None
+    """Unique id of the message"""
+
+    multimedia: Optional[List[ScrubbedPreSessionMessageWithToolCallSMSMessageBaseMultimedia]] = None
+    """Multimedia attachments (MMS).
+
+    Display only; not relayed into the spoken conversation.
+    """
+
+
+ScrubbedPreSessionMessageWithToolCall: TypeAlias = Union[
+    ScrubbedPreSessionMessageWithToolCallMessageBase,
+    ScrubbedPreSessionMessageWithToolCallToolCallInvocationMessageBase,
+    ScrubbedPreSessionMessageWithToolCallToolCallResultMessageBase,
+    ScrubbedPreSessionMessageWithToolCallNodeTransitionMessageBase,
+    ScrubbedPreSessionMessageWithToolCallStateTransitionMessageBase,
+    ScrubbedPreSessionMessageWithToolCallInjectedMessageBase,
+    ScrubbedPreSessionMessageWithToolCallSMSMessageBase,
+]
+
+
 class ChatResponse(BaseModel):
     agent_id: str
     """Corresponding chat agent id of this chat."""
@@ -308,11 +1088,40 @@ class ChatResponse(BaseModel):
     object.
     """
 
+    post_session_message_with_tool_calls: Optional[List[PostSessionMessageWithToolCall]] = None
+    """
+    Tool call invocations and results of integration tools run after post-chat
+    analysis (post-session). Stored separately from the main transcript. Available
+    after chat ends if post-session integration tools ran.
+    """
+
+    pre_session_message_with_tool_calls: Optional[List[PreSessionMessageWithToolCall]] = None
+    """
+    Tool call invocations and results of integration tools run before the chat's
+    first message (pre-session). Stored separately from the main transcript.
+    Available once pre-session integration tools have run (from the chat's first
+    turn).
+    """
+
     retell_llm_dynamic_variables: Optional[Dict[str, str]] = None
     """
     Add optional dynamic variables in key value pairs of string that injects into
     your Response Engine prompt and tool description. Only applicable for Response
     Engine.
+    """
+
+    scrubbed_post_session_message_with_tool_calls: Optional[List[ScrubbedPostSessionMessageWithToolCall]] = None
+    """Post-session integration tool call invocations and results, without PII.
+
+    Available after chat ends if post-session integration tools ran and PII
+    scrubbing is enabled.
+    """
+
+    scrubbed_pre_session_message_with_tool_calls: Optional[List[ScrubbedPreSessionMessageWithToolCall]] = None
+    """Pre-session integration tool call invocations and results, without PII.
+
+    Available after chat ends if pre-session integration tools ran and PII scrubbing
+    is enabled.
     """
 
     start_timestamp: Optional[int] = None

@@ -50,6 +50,11 @@ __all__ = [
     "GeneralToolBridgeTransferTool",
     "GeneralToolCancelTransferTool",
     "GeneralToolMcpTool",
+    "GeneralToolAppTool",
+    "GeneralToolAppToolOutputSelection",
+    "GeneralToolAppToolOutputSelectionUnionMember0",
+    "GeneralToolAppToolOutputSelectionUnionMember1",
+    "GeneralToolAppToolParameter",
     "KBConfig",
     "Mcp",
     "State",
@@ -96,6 +101,11 @@ __all__ = [
     "StateToolBridgeTransferTool",
     "StateToolCancelTransferTool",
     "StateToolMcpTool",
+    "StateToolAppTool",
+    "StateToolAppToolOutputSelection",
+    "StateToolAppToolOutputSelectionUnionMember0",
+    "StateToolAppToolOutputSelectionUnionMember1",
+    "StateToolAppToolParameter",
 ]
 
 
@@ -173,9 +183,16 @@ class LlmUpdateParams(TypedDict, total=False):
             "gpt-5.5",
             "gpt-5.6-terra",
             "gpt-5.6-luna",
+            "gpt-6-astra",
+            "gpt-6-sol",
+            "gpt-6.1-sol",
+            "gpt-6-luna",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-opus",
+            "claude-5.5-opus",
             "claude-5-sonnet",
+            "claude-5.5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -254,6 +271,12 @@ class GeneralToolEndCallTool(TypedDict, total=False):
     """
 
     type: Required[Literal["end_call"]]
+
+    custom_sip_headers: Dict[str, str]
+    """Custom SIP headers sent on the outgoing BYE when ending the call.
+
+    Header names must start with X- or x-. Supports dynamic variables.
+    """
 
     description: str
     """
@@ -685,6 +708,14 @@ class GeneralToolAgentSwapTool(TypedDict, total=False):
     """
 
     speak_during_execution: bool
+
+    use_swap_agent_max_duration: bool
+    """
+    If true, restart the max call duration timer at the swap using the destination
+    agent's max_call_duration_ms, capped so the whole call never exceeds 2 hours.
+    Otherwise, the timer already running is left unchanged. Voice calls only.
+    Defaults to false.
+    """
 
     webhook_setting: Literal["both_agents", "only_destination_agent", "only_source_agent"]
     """Webhook setting for the agent swap, defaults to only source."""
@@ -1266,6 +1297,155 @@ class GeneralToolMcpTool(TypedDict, total=False):
     """
 
 
+class GeneralToolAppToolOutputSelectionUnionMember0(TypedDict, total=False):
+    mode: Required[Literal["all"]]
+
+    fields: SequenceNotStr[str]
+    """Not used at runtime; stored and returned as-is for the UI."""
+
+
+class GeneralToolAppToolOutputSelectionUnionMember1(TypedDict, total=False):
+    fields: Required[SequenceNotStr[str]]
+    """
+    The only response fields the agent and the transcript see, as dot-paths into the
+    response schema returned by get-app-tool-schema. Everything else is dropped.
+    Selecting a parent keeps its whole subtree. A plain segment traverses arrays
+    element-wise (deals.properties.amount keeps that field on every deal), while
+    key[n] selects one element (deals[0].id keeps only the first deal's id); paths
+    that match nothing contribute nothing.
+    """
+
+    mode: Required[Literal["subset"]]
+
+
+GeneralToolAppToolOutputSelection: TypeAlias = Union[
+    GeneralToolAppToolOutputSelectionUnionMember0, GeneralToolAppToolOutputSelectionUnionMember1
+]
+
+
+class GeneralToolAppToolParameter(TypedDict, total=False):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
+    properties: Required[object]
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Required[Literal["object"]]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: SequenceNotStr[str]
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class GeneralToolAppTool(TypedDict, total=False):
+    app_id: Required[str]
+    """The connection (App) this tool runs against.
+
+    Must be a connection in the organization whose provider matches this tool's
+    provider.
+    """
+
+    app_tool_template_name: Required[str]
+    """
+    Name of the catalog template within the provider, as listed by
+    list-app-templates.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within the phase's tools; referenced by depends_on.
+    """
+
+    provider: Required[str]
+    """Provider of the connection.
+
+    Must match the connection's provider; supported providers are listed by
+    list-app-templates.
+    """
+
+    type: Required[Literal["integration_app"]]
+
+    description: str
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Overrides the catalog template's LLM-facing description.
+    """
+
+    enable_typing_sound: bool
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, play a typing sound on the agent audio track while this
+    tool is executing. Useful when the tool takes a noticeable amount of time to
+    prevent silence on the call.
+    """
+
+    execution_message_description: str
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. The message for the agent to speak when executing the tool. Only
+    applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Type of execution message. "prompt" means the agent will use
+    execution_message_description as a prompt to generate the message. "static_text"
+    means the agent will speak the execution_message_description directly. Defaults
+    to "prompt".
+    """
+
+    output_selection: GeneralToolAppToolOutputSelection
+    """What the agent and the transcript see of the tool's response.
+
+    Omit to send the full response. Does not affect response_variables, which are
+    always extracted from the raw response.
+    """
+
+    parameters: Iterable[GeneralToolAppToolParameter]
+    """The resolved input parameters, in order.
+
+    Properties may pin a value with const (including {{variable}} references) or
+    provide a description for LLM inference. Each property may also record
+    selected*input_mode, the editor mode the user selected ("const_enum",
+    "const_boolean", "const_value", "description_custom", or "description_preset");
+    it is stored and returned as-is, used only by the tool config UI. Omit the key
+    when no mode is recorded; when set, const*_ modes require a non-empty const, and
+    description\\___ modes must omit const entirely. Each parameter's required list
+    must match the schema returned by the corresponding step of the
+    get-app-tool-schema loop.
+    """
+
+    response_variables: Dict[str, str]
+    """
+    Mapping of a dynamic-variable name to the response field (dot-path) it is
+    populated from. Missing paths are ignored.
+    """
+
+    speak_after_execution: bool
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Determines whether the agent would call LLM another time and speak
+    when the result of the tool is obtained.
+    """
+
+    speak_during_execution: bool
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, will speak during execution.
+    """
+
+
 GeneralTool: TypeAlias = Union[
     GeneralToolEndCallTool,
     GeneralToolTransferCallTool,
@@ -1278,6 +1458,7 @@ GeneralTool: TypeAlias = Union[
     GeneralToolBridgeTransferTool,
     GeneralToolCancelTransferTool,
     GeneralToolMcpTool,
+    GeneralToolAppTool,
 ]
 
 
@@ -1369,6 +1550,12 @@ class StateToolEndCallTool(TypedDict, total=False):
     """
 
     type: Required[Literal["end_call"]]
+
+    custom_sip_headers: Dict[str, str]
+    """Custom SIP headers sent on the outgoing BYE when ending the call.
+
+    Header names must start with X- or x-. Supports dynamic variables.
+    """
 
     description: str
     """
@@ -1800,6 +1987,14 @@ class StateToolAgentSwapTool(TypedDict, total=False):
     """
 
     speak_during_execution: bool
+
+    use_swap_agent_max_duration: bool
+    """
+    If true, restart the max call duration timer at the swap using the destination
+    agent's max_call_duration_ms, capped so the whole call never exceeds 2 hours.
+    Otherwise, the timer already running is left unchanged. Voice calls only.
+    Defaults to false.
+    """
 
     webhook_setting: Literal["both_agents", "only_destination_agent", "only_source_agent"]
     """Webhook setting for the agent swap, defaults to only source."""
@@ -2381,6 +2576,155 @@ class StateToolMcpTool(TypedDict, total=False):
     """
 
 
+class StateToolAppToolOutputSelectionUnionMember0(TypedDict, total=False):
+    mode: Required[Literal["all"]]
+
+    fields: SequenceNotStr[str]
+    """Not used at runtime; stored and returned as-is for the UI."""
+
+
+class StateToolAppToolOutputSelectionUnionMember1(TypedDict, total=False):
+    fields: Required[SequenceNotStr[str]]
+    """
+    The only response fields the agent and the transcript see, as dot-paths into the
+    response schema returned by get-app-tool-schema. Everything else is dropped.
+    Selecting a parent keeps its whole subtree. A plain segment traverses arrays
+    element-wise (deals.properties.amount keeps that field on every deal), while
+    key[n] selects one element (deals[0].id keeps only the first deal's id); paths
+    that match nothing contribute nothing.
+    """
+
+    mode: Required[Literal["subset"]]
+
+
+StateToolAppToolOutputSelection: TypeAlias = Union[
+    StateToolAppToolOutputSelectionUnionMember0, StateToolAppToolOutputSelectionUnionMember1
+]
+
+
+class StateToolAppToolParameter(TypedDict, total=False):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
+    properties: Required[object]
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Required[Literal["object"]]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: SequenceNotStr[str]
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class StateToolAppTool(TypedDict, total=False):
+    app_id: Required[str]
+    """The connection (App) this tool runs against.
+
+    Must be a connection in the organization whose provider matches this tool's
+    provider.
+    """
+
+    app_tool_template_name: Required[str]
+    """
+    Name of the catalog template within the provider, as listed by
+    list-app-templates.
+    """
+
+    name: Required[str]
+    """Name of the tool.
+
+    Must be unique within the phase's tools; referenced by depends_on.
+    """
+
+    provider: Required[str]
+    """Provider of the connection.
+
+    Must match the connection's provider; supported providers are listed by
+    list-app-templates.
+    """
+
+    type: Required[Literal["integration_app"]]
+
+    description: str
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Overrides the catalog template's LLM-facing description.
+    """
+
+    enable_typing_sound: bool
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, play a typing sound on the agent audio track while this
+    tool is executing. Useful when the tool takes a noticeable amount of time to
+    prevent silence on the call.
+    """
+
+    execution_message_description: str
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. The message for the agent to speak when executing the tool. Only
+    applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Literal["prompt", "static_text"]
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Type of execution message. "prompt" means the agent will use
+    execution_message_description as a prompt to generate the message. "static_text"
+    means the agent will speak the execution_message_description directly. Defaults
+    to "prompt".
+    """
+
+    output_selection: StateToolAppToolOutputSelection
+    """What the agent and the transcript see of the tool's response.
+
+    Omit to send the full response. Does not affect response_variables, which are
+    always extracted from the raw response.
+    """
+
+    parameters: Iterable[StateToolAppToolParameter]
+    """The resolved input parameters, in order.
+
+    Properties may pin a value with const (including {{variable}} references) or
+    provide a description for LLM inference. Each property may also record
+    selected*input_mode, the editor mode the user selected ("const_enum",
+    "const_boolean", "const_value", "description_custom", or "description_preset");
+    it is stored and returned as-is, used only by the tool config UI. Omit the key
+    when no mode is recorded; when set, const*_ modes require a non-empty const, and
+    description\\___ modes must omit const entirely. Each parameter's required list
+    must match the schema returned by the corresponding step of the
+    get-app-tool-schema loop.
+    """
+
+    response_variables: Dict[str, str]
+    """
+    Mapping of a dynamic-variable name to the response field (dot-path) it is
+    populated from. Missing paths are ignored.
+    """
+
+    speak_after_execution: bool
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Determines whether the agent would call LLM another time and speak
+    when the result of the tool is obtained.
+    """
+
+    speak_during_execution: bool
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, will speak during execution.
+    """
+
+
 StateTool: TypeAlias = Union[
     StateToolEndCallTool,
     StateToolTransferCallTool,
@@ -2393,6 +2737,7 @@ StateTool: TypeAlias = Union[
     StateToolBridgeTransferTool,
     StateToolCancelTransferTool,
     StateToolMcpTool,
+    StateToolAppTool,
 ]
 
 

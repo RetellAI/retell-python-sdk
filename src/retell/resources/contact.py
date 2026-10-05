@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Mapping, Iterable, cast
+from typing import Mapping, Iterable, Optional, cast
 from typing_extensions import Literal
 
 import httpx
@@ -64,7 +64,8 @@ class ContactResource(SyncAPIResource):
         self,
         *,
         phone_number: str,
-        contact_tags: SequenceNotStr[str] | Omit = omit,
+        contact_memory: Optional[str] | Omit = omit,
+        contact_tag_ids: SequenceNotStr[str] | Omit = omit,
         custom_fields: object | Omit = omit,
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
@@ -82,7 +83,9 @@ class ContactResource(SyncAPIResource):
         Args:
           phone_number: Phone number of the contact.
 
-          contact_tags: Full set of tags for the contact.
+          contact_memory: Contact memory text.
+
+          contact_tag_ids: Full set of tag IDs for the contact.
 
           custom_fields: Values must match the types defined in CRM config custom fields. Set a value to
               null to clear it.
@@ -104,7 +107,8 @@ class ContactResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "phone_number": phone_number,
-                    "contact_tags": contact_tags,
+                    "contact_memory": contact_memory,
+                    "contact_tag_ids": contact_tag_ids,
                     "custom_fields": custom_fields,
                     "do_not_call": do_not_call,
                     "first_name": first_name,
@@ -122,7 +126,8 @@ class ContactResource(SyncAPIResource):
         self,
         contact_id: str,
         *,
-        contact_tags: SequenceNotStr[str] | Omit = omit,
+        contact_memory: Optional[str] | Omit = omit,
+        contact_tag_ids: SequenceNotStr[str] | Omit = omit,
         custom_fields: object | Omit = omit,
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
@@ -134,11 +139,14 @@ class ContactResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContactResponse:
-        """
-        Update an existing contact.
+        """Update an existing contact.
 
         Args:
-          contact_tags: Full replacement set of tags for the contact.
+          contact_memory: Contact memory text.
+
+        Pass null to clear.
+
+          contact_tag_ids: Full replacement set of tag IDs for the contact.
 
           custom_fields: Values must match the types defined in CRM config custom fields. Set a value to
               null to clear it.
@@ -161,7 +169,8 @@ class ContactResource(SyncAPIResource):
             path_template("/update-contact/{contact_id}", contact_id=contact_id),
             body=maybe_transform(
                 {
-                    "contact_tags": contact_tags,
+                    "contact_memory": contact_memory,
+                    "contact_tag_ids": contact_tag_ids,
                     "custom_fields": custom_fields,
                     "do_not_call": do_not_call,
                     "first_name": first_name,
@@ -178,6 +187,7 @@ class ContactResource(SyncAPIResource):
     def list(
         self,
         *,
+        excluded_contact_ids: SequenceNotStr[str] | Omit = omit,
         filter_criteria: contact_list_params.FilterCriteria | Omit = omit,
         limit: float | Omit = omit,
         pagination_key: str | Omit = omit,
@@ -192,12 +202,14 @@ class ContactResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContactListResponse:
         """
-        List contacts, newest conversation first by default, with the total count of
-        matches alongside the page. Page through results with `pagination_key`; `skip`
-        is available for offset-style paging but is slower on large contact sets and can
-        repeat or miss rows as contacts are updated.
+        List contacts, newest created first by default, with the total count of matches
+        alongside the page. Page through results with `pagination_key`; `skip` is
+        available for offset-style paging but is slower on large contact sets and can
+        repeat or miss rows as contacts are added or deleted.
 
         Args:
+          excluded_contact_ids: Contact IDs to leave out of both the results and `total`.
+
           filter_criteria: Filter criteria for contacts. All conditions are implicitly connected with AND.
               first_name and last_name are not filterable here; use search_query to match on
               those.
@@ -212,8 +224,8 @@ class ContactResource(SyncAPIResource):
 
           skip: Number of records to skip for offset-based pagination.
 
-          sort_order: Sort contacts by `last_conversation_timestamp` in ascending or descending order.
-              Contacts that have never been contacted sort as if their timestamp were 0.
+          sort_order: Sort contacts by `created_timestamp` in ascending or descending order (newest
+              first by default). Ties are broken by contact ID in the same direction.
 
           extra_headers: Send extra headers
 
@@ -227,6 +239,7 @@ class ContactResource(SyncAPIResource):
             "/list-contacts",
             body=maybe_transform(
                 {
+                    "excluded_contact_ids": excluded_contact_ids,
                     "filter_criteria": filter_criteria,
                     "limit": limit,
                     "pagination_key": pagination_key,
@@ -292,7 +305,27 @@ class ContactResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContactBackfillAnalysisDataResponse:
         """
+        Trigger a backfill job that re-applies analysis data mappings to contacts using
+        historical call and SMS chat data. Only one backfill job can run per
+        organization at a time. Select contact_memory to rewrite memory from matching
+        ended phone calls and SMS chats in chronological order, one conversation at a
+        time, with no conversation-count cap. Backfill starts with the contact's
+        existing memory. Each rewrite builds on the previous result, and the final
+        successful result is saved once per contact. When mapped analysis fields and
+        contact_memory are selected together, they are saved together in one contact
+        update. Memory rewrites use the currently stored contact fields.
+
         Args:
+          backfill_attributes: Contact fields to recompute. Each one must still exist as a contact field and
+              have an analysis data mapping configured, except for the built-in contact_memory
+              attribute, which requires no mapping and supports requests on its own or
+              alongside mapped fields. Memory backfill skips conversations without retained
+              transcripts.
+
+          backfill_call_filter: Optional filter to scope which conversations are processed. Supports agent and
+              start_timestamp from the standard call filter. The same filter applies to phone
+              calls and SMS chats for both analysis data mappings and contact_memory.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -343,8 +376,9 @@ class ContactResource(SyncAPIResource):
 
           upload_id: Id returned by upload-contact-import-file.
 
-          contact_tags: Tags added to every contact in this import. Existing tags are preserved. Omit to
-              leave tags unchanged.
+          contact_tags: Tag labels added to every contact in this import. Labels are trimmed and
+              deduplicated. New labels are added to the org's CRM config with generated tag
+              IDs.
 
           default_country: Country for parsing phone numbers without a country code. Defaults to US.
 
@@ -596,7 +630,8 @@ class AsyncContactResource(AsyncAPIResource):
         self,
         *,
         phone_number: str,
-        contact_tags: SequenceNotStr[str] | Omit = omit,
+        contact_memory: Optional[str] | Omit = omit,
+        contact_tag_ids: SequenceNotStr[str] | Omit = omit,
         custom_fields: object | Omit = omit,
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
@@ -614,7 +649,9 @@ class AsyncContactResource(AsyncAPIResource):
         Args:
           phone_number: Phone number of the contact.
 
-          contact_tags: Full set of tags for the contact.
+          contact_memory: Contact memory text.
+
+          contact_tag_ids: Full set of tag IDs for the contact.
 
           custom_fields: Values must match the types defined in CRM config custom fields. Set a value to
               null to clear it.
@@ -636,7 +673,8 @@ class AsyncContactResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "phone_number": phone_number,
-                    "contact_tags": contact_tags,
+                    "contact_memory": contact_memory,
+                    "contact_tag_ids": contact_tag_ids,
                     "custom_fields": custom_fields,
                     "do_not_call": do_not_call,
                     "first_name": first_name,
@@ -654,7 +692,8 @@ class AsyncContactResource(AsyncAPIResource):
         self,
         contact_id: str,
         *,
-        contact_tags: SequenceNotStr[str] | Omit = omit,
+        contact_memory: Optional[str] | Omit = omit,
+        contact_tag_ids: SequenceNotStr[str] | Omit = omit,
         custom_fields: object | Omit = omit,
         do_not_call: bool | Omit = omit,
         first_name: str | Omit = omit,
@@ -666,11 +705,14 @@ class AsyncContactResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContactResponse:
-        """
-        Update an existing contact.
+        """Update an existing contact.
 
         Args:
-          contact_tags: Full replacement set of tags for the contact.
+          contact_memory: Contact memory text.
+
+        Pass null to clear.
+
+          contact_tag_ids: Full replacement set of tag IDs for the contact.
 
           custom_fields: Values must match the types defined in CRM config custom fields. Set a value to
               null to clear it.
@@ -693,7 +735,8 @@ class AsyncContactResource(AsyncAPIResource):
             path_template("/update-contact/{contact_id}", contact_id=contact_id),
             body=await async_maybe_transform(
                 {
-                    "contact_tags": contact_tags,
+                    "contact_memory": contact_memory,
+                    "contact_tag_ids": contact_tag_ids,
                     "custom_fields": custom_fields,
                     "do_not_call": do_not_call,
                     "first_name": first_name,
@@ -710,6 +753,7 @@ class AsyncContactResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        excluded_contact_ids: SequenceNotStr[str] | Omit = omit,
         filter_criteria: contact_list_params.FilterCriteria | Omit = omit,
         limit: float | Omit = omit,
         pagination_key: str | Omit = omit,
@@ -724,12 +768,14 @@ class AsyncContactResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContactListResponse:
         """
-        List contacts, newest conversation first by default, with the total count of
-        matches alongside the page. Page through results with `pagination_key`; `skip`
-        is available for offset-style paging but is slower on large contact sets and can
-        repeat or miss rows as contacts are updated.
+        List contacts, newest created first by default, with the total count of matches
+        alongside the page. Page through results with `pagination_key`; `skip` is
+        available for offset-style paging but is slower on large contact sets and can
+        repeat or miss rows as contacts are added or deleted.
 
         Args:
+          excluded_contact_ids: Contact IDs to leave out of both the results and `total`.
+
           filter_criteria: Filter criteria for contacts. All conditions are implicitly connected with AND.
               first_name and last_name are not filterable here; use search_query to match on
               those.
@@ -744,8 +790,8 @@ class AsyncContactResource(AsyncAPIResource):
 
           skip: Number of records to skip for offset-based pagination.
 
-          sort_order: Sort contacts by `last_conversation_timestamp` in ascending or descending order.
-              Contacts that have never been contacted sort as if their timestamp were 0.
+          sort_order: Sort contacts by `created_timestamp` in ascending or descending order (newest
+              first by default). Ties are broken by contact ID in the same direction.
 
           extra_headers: Send extra headers
 
@@ -759,6 +805,7 @@ class AsyncContactResource(AsyncAPIResource):
             "/list-contacts",
             body=await async_maybe_transform(
                 {
+                    "excluded_contact_ids": excluded_contact_ids,
                     "filter_criteria": filter_criteria,
                     "limit": limit,
                     "pagination_key": pagination_key,
@@ -824,7 +871,27 @@ class AsyncContactResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ContactBackfillAnalysisDataResponse:
         """
+        Trigger a backfill job that re-applies analysis data mappings to contacts using
+        historical call and SMS chat data. Only one backfill job can run per
+        organization at a time. Select contact_memory to rewrite memory from matching
+        ended phone calls and SMS chats in chronological order, one conversation at a
+        time, with no conversation-count cap. Backfill starts with the contact's
+        existing memory. Each rewrite builds on the previous result, and the final
+        successful result is saved once per contact. When mapped analysis fields and
+        contact_memory are selected together, they are saved together in one contact
+        update. Memory rewrites use the currently stored contact fields.
+
         Args:
+          backfill_attributes: Contact fields to recompute. Each one must still exist as a contact field and
+              have an analysis data mapping configured, except for the built-in contact_memory
+              attribute, which requires no mapping and supports requests on its own or
+              alongside mapped fields. Memory backfill skips conversations without retained
+              transcripts.
+
+          backfill_call_filter: Optional filter to scope which conversations are processed. Supports agent and
+              start_timestamp from the standard call filter. The same filter applies to phone
+              calls and SMS chats for both analysis data mappings and contact_memory.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -875,8 +942,9 @@ class AsyncContactResource(AsyncAPIResource):
 
           upload_id: Id returned by upload-contact-import-file.
 
-          contact_tags: Tags added to every contact in this import. Existing tags are preserved. Omit to
-              leave tags unchanged.
+          contact_tags: Tag labels added to every contact in this import. Labels are trimmed and
+              deduplicated. New labels are added to the org's CRM config with generated tag
+              IDs.
 
           default_country: Country for parsing phone numbers without a country code. Defaults to US.
 

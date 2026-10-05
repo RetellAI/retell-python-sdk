@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Required, TypedDict
 
 from .._types import SequenceNotStr
@@ -13,8 +14,11 @@ class ContactCreateParams(TypedDict, total=False):
     phone_number: Required[str]
     """Phone number of the contact."""
 
-    contact_tags: SequenceNotStr[str]
-    """Full set of tags for the contact."""
+    contact_memory: Optional[str]
+    """Contact memory text."""
+
+    contact_tag_ids: SequenceNotStr[str]
+    """Full set of tag IDs for the contact."""
 
     custom_fields: object
     """Values must match the types defined in CRM config custom fields.

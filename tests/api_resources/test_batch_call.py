@@ -49,6 +49,10 @@ class TestBatchCall:
                                 "agent_identity": "Acme Health scheduling team",
                                 "call_purpose": "confirming your appointment for tomorrow",
                             },
+                            "contact_memory_config": {
+                                "enable_read": True,
+                                "enable_update": True,
+                            },
                             "custom_stt_config": {
                                 "endpointing_ms": 0,
                                 "provider": "azure",
@@ -57,6 +61,7 @@ class TestBatchCall:
                             "data_storage_setting": "everything",
                             "denoising_mode": "noise-cancellation",
                             "enable_backchannel": True,
+                            "enable_dnc_detection": False,
                             "enable_dynamic_responsiveness": True,
                             "enable_dynamic_voice_speed": True,
                             "enable_expressive_mode": True,
@@ -103,6 +108,73 @@ class TestBatchCall:
                                 }
                             ],
                             "post_call_analysis_model": "gpt-4.1-mini",
+                            "post_session_tools": [
+                                {
+                                    "app_id": "app_id",
+                                    "app_tool_template_name": "app_tool_template_name",
+                                    "name": "name",
+                                    "provider": "provider",
+                                    "type": "integration_app",
+                                    "condition": {
+                                        "equations": [
+                                            {
+                                                "left": "left",
+                                                "operator": "==",
+                                                "right": "right",
+                                            }
+                                        ],
+                                        "operator": "||",
+                                        "type": "equation",
+                                    },
+                                    "depends_on": ["string"],
+                                    "description": "description",
+                                    "enable_typing_sound": True,
+                                    "execution_message_description": "execution_message_description",
+                                    "execution_message_type": "prompt",
+                                    "output_selection": {
+                                        "mode": "all",
+                                        "fields": ["string"],
+                                    },
+                                    "parameters": [
+                                        {
+                                            "properties": {},
+                                            "type": "object",
+                                            "required": ["string"],
+                                        }
+                                    ],
+                                    "response_variables": {"contact_first_name": "data.first_name"},
+                                    "speak_after_execution": True,
+                                    "speak_during_execution": True,
+                                }
+                            ],
+                            "pre_session_tools": [
+                                {
+                                    "app_id": "app_id",
+                                    "app_tool_template_name": "app_tool_template_name",
+                                    "name": "name",
+                                    "provider": "provider",
+                                    "type": "integration_app",
+                                    "depends_on": ["string"],
+                                    "description": "description",
+                                    "enable_typing_sound": True,
+                                    "execution_message_description": "execution_message_description",
+                                    "execution_message_type": "prompt",
+                                    "output_selection": {
+                                        "mode": "all",
+                                        "fields": ["string"],
+                                    },
+                                    "parameters": [
+                                        {
+                                            "properties": {},
+                                            "type": "object",
+                                            "required": ["string"],
+                                        }
+                                    ],
+                                    "response_variables": {"contact_first_name": "data.first_name"},
+                                    "speak_after_execution": True,
+                                    "speak_during_execution": True,
+                                }
+                            ],
                             "pronunciation_dictionary": [
                                 {
                                     "alphabet": "ipa",
@@ -130,7 +202,6 @@ class TestBatchCall:
                             "version_description": "Customer support agent for handling product inquiries",
                             "version_title": "Production hotfix",
                             "vocab_specialization": "general",
-                            "voice_emotion": "calm",
                             "voice_id": "retell-Cimo",
                             "voice_model": "eleven_flash_v2",
                             "voice_speed": 1,
@@ -269,6 +340,10 @@ class TestAsyncBatchCall:
                                 "agent_identity": "Acme Health scheduling team",
                                 "call_purpose": "confirming your appointment for tomorrow",
                             },
+                            "contact_memory_config": {
+                                "enable_read": True,
+                                "enable_update": True,
+                            },
                             "custom_stt_config": {
                                 "endpointing_ms": 0,
                                 "provider": "azure",
@@ -277,6 +352,7 @@ class TestAsyncBatchCall:
                             "data_storage_setting": "everything",
                             "denoising_mode": "noise-cancellation",
                             "enable_backchannel": True,
+                            "enable_dnc_detection": False,
                             "enable_dynamic_responsiveness": True,
                             "enable_dynamic_voice_speed": True,
                             "enable_expressive_mode": True,
@@ -323,6 +399,73 @@ class TestAsyncBatchCall:
                                 }
                             ],
                             "post_call_analysis_model": "gpt-4.1-mini",
+                            "post_session_tools": [
+                                {
+                                    "app_id": "app_id",
+                                    "app_tool_template_name": "app_tool_template_name",
+                                    "name": "name",
+                                    "provider": "provider",
+                                    "type": "integration_app",
+                                    "condition": {
+                                        "equations": [
+                                            {
+                                                "left": "left",
+                                                "operator": "==",
+                                                "right": "right",
+                                            }
+                                        ],
+                                        "operator": "||",
+                                        "type": "equation",
+                                    },
+                                    "depends_on": ["string"],
+                                    "description": "description",
+                                    "enable_typing_sound": True,
+                                    "execution_message_description": "execution_message_description",
+                                    "execution_message_type": "prompt",
+                                    "output_selection": {
+                                        "mode": "all",
+                                        "fields": ["string"],
+                                    },
+                                    "parameters": [
+                                        {
+                                            "properties": {},
+                                            "type": "object",
+                                            "required": ["string"],
+                                        }
+                                    ],
+                                    "response_variables": {"contact_first_name": "data.first_name"},
+                                    "speak_after_execution": True,
+                                    "speak_during_execution": True,
+                                }
+                            ],
+                            "pre_session_tools": [
+                                {
+                                    "app_id": "app_id",
+                                    "app_tool_template_name": "app_tool_template_name",
+                                    "name": "name",
+                                    "provider": "provider",
+                                    "type": "integration_app",
+                                    "depends_on": ["string"],
+                                    "description": "description",
+                                    "enable_typing_sound": True,
+                                    "execution_message_description": "execution_message_description",
+                                    "execution_message_type": "prompt",
+                                    "output_selection": {
+                                        "mode": "all",
+                                        "fields": ["string"],
+                                    },
+                                    "parameters": [
+                                        {
+                                            "properties": {},
+                                            "type": "object",
+                                            "required": ["string"],
+                                        }
+                                    ],
+                                    "response_variables": {"contact_first_name": "data.first_name"},
+                                    "speak_after_execution": True,
+                                    "speak_during_execution": True,
+                                }
+                            ],
                             "pronunciation_dictionary": [
                                 {
                                     "alphabet": "ipa",
@@ -350,7 +493,6 @@ class TestAsyncBatchCall:
                             "version_description": "Customer support agent for handling product inquiries",
                             "version_title": "Production hotfix",
                             "vocab_specialization": "general",
-                            "voice_emotion": "calm",
                             "voice_id": "retell-Cimo",
                             "voice_model": "eleven_flash_v2",
                             "voice_speed": 1,

@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
 from .._models import BaseModel
@@ -12,6 +12,7 @@ __all__ = [
     "ResponseEngineResponseEngineCustomLm",
     "ResponseEngineResponseEngineConversationFlow",
     "CallScreeningOption",
+    "ContactMemoryConfig",
     "CustomSttConfig",
     "GuardrailConfig",
     "HandbookConfig",
@@ -24,6 +25,37 @@ __all__ = [
     "PostCallAnalysisDataBooleanAnalysisData",
     "PostCallAnalysisDataNumberAnalysisData",
     "PostCallAnalysisDataCallPresetAnalysisData",
+    "PostSessionTool",
+    "PostSessionToolAppTool",
+    "PostSessionToolAppToolCondition",
+    "PostSessionToolAppToolConditionEquation",
+    "PostSessionToolAppToolOutputSelection",
+    "PostSessionToolAppToolOutputSelectionUnionMember0",
+    "PostSessionToolAppToolOutputSelectionUnionMember1",
+    "PostSessionToolAppToolParameter",
+    "PostSessionToolCustomTool",
+    "PostSessionToolCustomToolCondition",
+    "PostSessionToolCustomToolConditionEquation",
+    "PostSessionToolCustomToolParameters",
+    "PostSessionToolCodeTool",
+    "PostSessionToolCodeToolCondition",
+    "PostSessionToolCodeToolConditionEquation",
+    "PostSessionToolSendSMSTool",
+    "PostSessionToolSendSMSToolSMSContent",
+    "PostSessionToolSendSMSToolSMSContentSMSContentPredefined",
+    "PostSessionToolSendSMSToolSMSContentSMSContentInferred",
+    "PostSessionToolSendSMSToolSMSContentSMSContentTemplate",
+    "PostSessionToolSendSMSToolCondition",
+    "PostSessionToolSendSMSToolConditionEquation",
+    "PreSessionTool",
+    "PreSessionToolAppTool",
+    "PreSessionToolAppToolOutputSelection",
+    "PreSessionToolAppToolOutputSelectionUnionMember0",
+    "PreSessionToolAppToolOutputSelectionUnionMember1",
+    "PreSessionToolAppToolParameter",
+    "PreSessionToolCustomTool",
+    "PreSessionToolCustomToolParameters",
+    "PreSessionToolCodeTool",
     "PronunciationDictionary",
     "UserDtmfOptions",
     "VoicemailOption",
@@ -90,19 +122,42 @@ class CallScreeningOption(BaseModel):
     """
 
 
+class ContactMemoryConfig(BaseModel):
+    """Contact memory settings for phone calls and SMS chats.
+
+    Creating an agent defaults enable_update to false and enable_read to true. Updates only change the supplied flags; omitted flags stay unchanged and an empty object has no effect. Set a flag to false to disable it. The configuration cannot be cleared. Existing agents without this configuration have both disabled.
+    """
+
+    enable_read: Optional[bool] = None
+    """Automatically add saved contact memory to the agent prompt.
+
+    Skippable nodes can use answers from the current conversation even when this
+    setting is disabled. Contact dynamic variables, including contact_memory, remain
+    available regardless of this setting.
+    """
+
+    enable_update: Optional[bool] = None
+    """Rewrite the contact memory after each conversation.
+
+    Requires storing conversation data. Chat agents must also have
+    end_chat_after_silence_ms set.
+    """
+
+
 class CustomSttConfig(BaseModel):
     """Custom STT configuration. Only used when stt_mode is set to custom."""
 
     endpointing_ms: int
     """Endpointing timeout in milliseconds.
 
-    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI.
-    For AssemblyAI, this sets min_turn_silence (100-3000 ms). max_turn_silence adds
-    half of this value, rounded to the nearest millisecond and bounded to 500-1000
-    ms, with a total cap of 3000 ms.
+    Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI,
+    100 for Muse. For AssemblyAI, this sets min_turn_silence (100-3000 ms).
+    max_turn_silence adds half of this value, rounded to the nearest millisecond and
+    bounded to 500-1000 ms, with a total cap of 3000 ms. Muse detects turn ends
+    itself and ignores this value.
     """
 
-    provider: Literal["azure", "deepgram", "soniox", "assemblyai"]
+    provider: Literal["azure", "deepgram", "soniox", "assemblyai", "muse"]
     """ASR provider name."""
 
 
@@ -373,6 +428,952 @@ PostCallAnalysisData: TypeAlias = Union[
 ]
 
 
+class PostSessionToolAppToolConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class PostSessionToolAppToolCondition(BaseModel):
+    """Optional gate; the step only runs when the condition holds.
+
+    Defaults to always running.
+    """
+
+    equations: List[PostSessionToolAppToolConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+class PostSessionToolAppToolOutputSelectionUnionMember0(BaseModel):
+    mode: Literal["all"]
+
+    fields: Optional[List[str]] = None
+    """Not used at runtime; stored and returned as-is for the UI."""
+
+
+class PostSessionToolAppToolOutputSelectionUnionMember1(BaseModel):
+    fields: List[str]
+    """
+    The only response fields the agent and the transcript see, as dot-paths into the
+    response schema returned by get-app-tool-schema. Everything else is dropped.
+    Selecting a parent keeps its whole subtree. A plain segment traverses arrays
+    element-wise (deals.properties.amount keeps that field on every deal), while
+    key[n] selects one element (deals[0].id keeps only the first deal's id); paths
+    that match nothing contribute nothing.
+    """
+
+    mode: Literal["subset"]
+
+
+PostSessionToolAppToolOutputSelection: TypeAlias = Union[
+    PostSessionToolAppToolOutputSelectionUnionMember0, PostSessionToolAppToolOutputSelectionUnionMember1
+]
+
+
+class PostSessionToolAppToolParameter(BaseModel):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
+    properties: object
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Literal["object"]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: Optional[List[str]] = None
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class PostSessionToolAppTool(BaseModel):
+    app_id: str
+    """The connection (App) this tool runs against.
+
+    Must be a connection in the organization whose provider matches this tool's
+    provider.
+    """
+
+    app_tool_template_name: str
+    """
+    Name of the catalog template within the provider, as listed by
+    list-app-templates.
+    """
+
+    name: str
+    """Name of the tool.
+
+    Must be unique within the phase's tools; referenced by depends_on.
+    """
+
+    provider: str
+    """Provider of the connection.
+
+    Must match the connection's provider; supported providers are listed by
+    list-app-templates.
+    """
+
+    type: Literal["integration_app"]
+
+    condition: Optional[PostSessionToolAppToolCondition] = None
+    """Optional gate; the step only runs when the condition holds.
+
+    Defaults to always running.
+    """
+
+    depends_on: Optional[List[str]] = None
+    """Names of tools that must run before this one."""
+
+    description: Optional[str] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Overrides the catalog template's LLM-facing description.
+    """
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, play a typing sound on the agent audio track while this
+    tool is executing. Useful when the tool takes a noticeable amount of time to
+    prevent silence on the call.
+    """
+
+    execution_message_description: Optional[str] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. The message for the agent to speak when executing the tool. Only
+    applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Type of execution message. "prompt" means the agent will use
+    execution_message_description as a prompt to generate the message. "static_text"
+    means the agent will speak the execution_message_description directly. Defaults
+    to "prompt".
+    """
+
+    output_selection: Optional[PostSessionToolAppToolOutputSelection] = None
+    """What the agent and the transcript see of the tool's response.
+
+    Omit to send the full response. Does not affect response_variables, which are
+    always extracted from the raw response.
+    """
+
+    parameters: Optional[List[PostSessionToolAppToolParameter]] = None
+    """The resolved input parameters, in order.
+
+    Properties may pin a value with const (including {{variable}} references) or
+    provide a description for LLM inference. Each property may also record
+    selected*input_mode, the editor mode the user selected ("const_enum",
+    "const_boolean", "const_value", "description_custom", or "description_preset");
+    it is stored and returned as-is, used only by the tool config UI. Omit the key
+    when no mode is recorded; when set, const*_ modes require a non-empty const, and
+    description\\___ modes must omit const entirely. Each parameter's required list
+    must match the schema returned by the corresponding step of the
+    get-app-tool-schema loop.
+    """
+
+    response_variables: Optional[Dict[str, str]] = None
+    """
+    Mapping of a dynamic-variable name to the response field (dot-path) it is
+    populated from. Missing paths are ignored.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Determines whether the agent would call LLM another time and speak
+    when the result of the tool is obtained.
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, will speak during execution.
+    """
+
+
+class PostSessionToolCustomToolConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class PostSessionToolCustomToolCondition(BaseModel):
+    """Optional gate; the step only runs when the condition holds.
+
+    Defaults to always running.
+    """
+
+    equations: List[PostSessionToolCustomToolConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+class PostSessionToolCustomToolParameters(BaseModel):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
+    properties: object
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Literal["object"]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: Optional[List[str]] = None
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class PostSessionToolCustomTool(BaseModel):
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Literal["custom"]
+
+    url: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    args_at_root: Optional[bool] = None
+    """
+    If set to true, the parameters will be passed as root level JSON object instead
+    of nested under "args".
+    """
+
+    condition: Optional[PostSessionToolCustomToolCondition] = None
+    """Optional gate; the step only runs when the condition holds.
+
+    Defaults to always running.
+    """
+
+    depends_on: Optional[List[str]] = None
+    """Names of tools that must run before this one."""
+
+    description: Optional[str] = None
+    """Describes what this tool does and when to call this tool."""
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing. Useful when the tool takes a noticeable amount of time to prevent
+    silence on the call.
+    """
+
+    execution_message_description: Optional[str] = None
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true. Can write what to say or
+    even provide examples. The default is "The message you will say to callee when
+    calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    headers: Optional[Dict[str, str]] = None
+    """Headers to add to the request."""
+
+    max_retry: Optional[int] = None
+    """
+    Maximum number of times to retry the request after a failed attempt, from 0 (no
+    retry) to 5. Retries happen on any failure, with exponential backoff between
+    attempts; the backoff delay is not configurable. `timeout_ms` applies per
+    attempt rather than as a budget across all attempts, so an attempt that times
+    out is still retried and the worst-case total duration is `timeout_ms`
+    multiplied by (`max_retry` + 1) as well as any latency incurred by the
+    exponential backoff + jitter between each retry. Only the final attempt's result
+    is reported to the agent. Because retries repeat the request, only set this
+    above 0 if your endpoint is idempotent — a retried request may be processed more
+    than once. Defaults to 0 (no retry).
+    """
+
+    method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
+    """Method to use for the request, default to POST."""
+
+    parameter_type: Optional[Literal["json", "form"]] = None
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
+
+    parameters: Optional[PostSessionToolCustomToolParameters] = None
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
+    for documentation about the format. Omitting parameters defines a function with
+    an empty parameter list.
+    """
+
+    query_params: Optional[Dict[str, str]] = None
+    """Query parameters to append to the request URL."""
+
+    response_variables: Optional[Dict[str, str]] = None
+    """A mapping of variable names to JSON paths in the response body.
+
+    These values will be extracted from the response and made available as dynamic
+    variables for use.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
+    """
+
+    timeout_ms: Optional[int] = None
+    """The maximum time in milliseconds the tool can run before it's considered
+    timeout.
+
+    If the tool times out, the agent would have that info. The minimum value allowed
+    is 1000 ms (1 s), and maximum value allowed is 600,000 ms (10 min). By default,
+    this is set to 120,000 ms (2 min).
+    """
+
+
+class PostSessionToolCodeToolConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class PostSessionToolCodeToolCondition(BaseModel):
+    """Optional gate; the step only runs when the condition holds.
+
+    Defaults to always running.
+    """
+
+    equations: List[PostSessionToolCodeToolConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+class PostSessionToolCodeTool(BaseModel):
+    code: str
+    """JavaScript code to execute in the sandbox."""
+
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Literal["code"]
+
+    condition: Optional[PostSessionToolCodeToolCondition] = None
+    """Optional gate; the step only runs when the condition holds.
+
+    Defaults to always running.
+    """
+
+    depends_on: Optional[List[str]] = None
+    """Names of tools that must run before this one."""
+
+    description: Optional[str] = None
+    """Describes what this tool does and when to call this tool."""
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
+
+    execution_message_description: Optional[str] = None
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    response_variables: Optional[Dict[str, str]] = None
+    """A mapping of variable names to JSON paths in the code execution result.
+
+    These mapped values will be extracted and added as dynamic variables.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained.
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the tool.
+    """
+
+    timeout_ms: Optional[int] = None
+    """The maximum time in milliseconds the code can run before it's considered
+    timeout.
+
+    Defaults to 30,000 ms (30 s).
+    """
+
+
+class PostSessionToolSendSMSToolSMSContentSMSContentPredefined(BaseModel):
+    text: Optional[str] = None
+    """The static message to be sent in the SMS. Can contain dynamic variables."""
+
+    type: Optional[Literal["predefined"]] = None
+
+
+class PostSessionToolSendSMSToolSMSContentSMSContentInferred(BaseModel):
+    prompt: Optional[str] = None
+    """The prompt to be used to help infer the SMS content.
+
+    The model will take the global prompt, the call transcript, and this prompt
+    together to deduce the right message to send. Can contain dynamic variables.
+    """
+
+    type: Optional[Literal["inferred"]] = None
+
+
+class PostSessionToolSendSMSToolSMSContentSMSContentTemplate(BaseModel):
+    template: Literal["info_collection"]
+    """The template to use for the SMS content.
+
+    "info_collection" sends a predefined message requesting information from the
+    user.
+    """
+
+    type: Literal["template"]
+
+
+PostSessionToolSendSMSToolSMSContent: TypeAlias = Union[
+    PostSessionToolSendSMSToolSMSContentSMSContentPredefined,
+    PostSessionToolSendSMSToolSMSContentSMSContentInferred,
+    PostSessionToolSendSMSToolSMSContentSMSContentTemplate,
+]
+
+
+class PostSessionToolSendSMSToolConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class PostSessionToolSendSMSToolCondition(BaseModel):
+    """Optional gate; the step only runs when the condition holds.
+
+    Defaults to always running.
+    """
+
+    equations: List[PostSessionToolSendSMSToolConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+class PostSessionToolSendSMSTool(BaseModel):
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges).
+    """
+
+    sms_content: PostSessionToolSendSMSToolSMSContent
+
+    type: Literal["send_sms"]
+
+    condition: Optional[PostSessionToolSendSMSToolCondition] = None
+    """Optional gate; the step only runs when the condition holds.
+
+    Defaults to always running.
+    """
+
+    depends_on: Optional[List[str]] = None
+    """Names of tools that must run before this one."""
+
+    description: Optional[str] = None
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    execution_message_description: Optional[str] = None
+    """Describes what to say before sending the SMS.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """If true, the agent will speak a short line before sending the SMS.
+
+    If omitted, defaults to true (same as end_call / transfer_call tools).
+    """
+
+
+PostSessionTool: TypeAlias = Union[
+    PostSessionToolAppTool, PostSessionToolCustomTool, PostSessionToolCodeTool, PostSessionToolSendSMSTool
+]
+
+
+class PreSessionToolAppToolOutputSelectionUnionMember0(BaseModel):
+    mode: Literal["all"]
+
+    fields: Optional[List[str]] = None
+    """Not used at runtime; stored and returned as-is for the UI."""
+
+
+class PreSessionToolAppToolOutputSelectionUnionMember1(BaseModel):
+    fields: List[str]
+    """
+    The only response fields the agent and the transcript see, as dot-paths into the
+    response schema returned by get-app-tool-schema. Everything else is dropped.
+    Selecting a parent keeps its whole subtree. A plain segment traverses arrays
+    element-wise (deals.properties.amount keeps that field on every deal), while
+    key[n] selects one element (deals[0].id keeps only the first deal's id); paths
+    that match nothing contribute nothing.
+    """
+
+    mode: Literal["subset"]
+
+
+PreSessionToolAppToolOutputSelection: TypeAlias = Union[
+    PreSessionToolAppToolOutputSelectionUnionMember0, PreSessionToolAppToolOutputSelectionUnionMember1
+]
+
+
+class PreSessionToolAppToolParameter(BaseModel):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
+    properties: object
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Literal["object"]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: Optional[List[str]] = None
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class PreSessionToolAppTool(BaseModel):
+    app_id: str
+    """The connection (App) this tool runs against.
+
+    Must be a connection in the organization whose provider matches this tool's
+    provider.
+    """
+
+    app_tool_template_name: str
+    """
+    Name of the catalog template within the provider, as listed by
+    list-app-templates.
+    """
+
+    name: str
+    """Name of the tool.
+
+    Must be unique within the phase's tools; referenced by depends_on.
+    """
+
+    provider: str
+    """Provider of the connection.
+
+    Must match the connection's provider; supported providers are listed by
+    list-app-templates.
+    """
+
+    type: Literal["integration_app"]
+
+    depends_on: Optional[List[str]] = None
+    """Names of tools that must run before this one."""
+
+    description: Optional[str] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Overrides the catalog template's LLM-facing description.
+    """
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, play a typing sound on the agent audio track while this
+    tool is executing. Useful when the tool takes a noticeable amount of time to
+    prevent silence on the call.
+    """
+
+    execution_message_description: Optional[str] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. The message for the agent to speak when executing the tool. Only
+    applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Type of execution message. "prompt" means the agent will use
+    execution_message_description as a prompt to generate the message. "static_text"
+    means the agent will speak the execution_message_description directly. Defaults
+    to "prompt".
+    """
+
+    output_selection: Optional[PreSessionToolAppToolOutputSelection] = None
+    """What the agent and the transcript see of the tool's response.
+
+    Omit to send the full response. Does not affect response_variables, which are
+    always extracted from the raw response.
+    """
+
+    parameters: Optional[List[PreSessionToolAppToolParameter]] = None
+    """The resolved input parameters, in order.
+
+    Properties may pin a value with const (including {{variable}} references) or
+    provide a description for LLM inference. Each property may also record
+    selected*input_mode, the editor mode the user selected ("const_enum",
+    "const_boolean", "const_value", "description_custom", or "description_preset");
+    it is stored and returned as-is, used only by the tool config UI. Omit the key
+    when no mode is recorded; when set, const*_ modes require a non-empty const, and
+    description\\___ modes must omit const entirely. Each parameter's required list
+    must match the schema returned by the corresponding step of the
+    get-app-tool-schema loop.
+    """
+
+    response_variables: Optional[Dict[str, str]] = None
+    """
+    Mapping of a dynamic-variable name to the response field (dot-path) it is
+    populated from. Missing paths are ignored.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. Determines whether the agent would call LLM another time and speak
+    when the result of the tool is obtained.
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """
+    Only applies to during conversation functions; ignored by the pre/post
+    conversation. If true, will speak during execution.
+    """
+
+
+class PreSessionToolCustomToolParameters(BaseModel):
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    """
+
+    properties: object
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Literal["object"]
+    """Type must be "object" for a JSON Schema object."""
+
+    required: Optional[List[str]] = None
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
+class PreSessionToolCustomTool(BaseModel):
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Literal["custom"]
+
+    url: str
+    """
+    Describes what the tool does, sometimes can also include information about when
+    to call the tool.
+    """
+
+    args_at_root: Optional[bool] = None
+    """
+    If set to true, the parameters will be passed as root level JSON object instead
+    of nested under "args".
+    """
+
+    depends_on: Optional[List[str]] = None
+    """Names of tools that must run before this one."""
+
+    description: Optional[str] = None
+    """Describes what this tool does and when to call this tool."""
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing. Useful when the tool takes a noticeable amount of time to prevent
+    silence on the call.
+    """
+
+    execution_message_description: Optional[str] = None
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true. Can write what to say or
+    even provide examples. The default is "The message you will say to callee when
+    calling this tool. Make sure it fits into the conversation smoothly.".
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    headers: Optional[Dict[str, str]] = None
+    """Headers to add to the request."""
+
+    max_retry: Optional[int] = None
+    """
+    Maximum number of times to retry the request after a failed attempt, from 0 (no
+    retry) to 5. Retries happen on any failure, with exponential backoff between
+    attempts; the backoff delay is not configurable. `timeout_ms` applies per
+    attempt rather than as a budget across all attempts, so an attempt that times
+    out is still retried and the worst-case total duration is `timeout_ms`
+    multiplied by (`max_retry` + 1) as well as any latency incurred by the
+    exponential backoff + jitter between each retry. Only the final attempt's result
+    is reported to the agent. Because retries repeat the request, only set this
+    above 0 if your endpoint is idempotent — a retried request may be processed more
+    than once. Defaults to 0 (no retry).
+    """
+
+    method: Optional[Literal["GET", "POST", "PUT", "PATCH", "DELETE"]] = None
+    """Method to use for the request, default to POST."""
+
+    parameter_type: Optional[Literal["json", "form"]] = None
+    """
+    How the tool's `parameters` are authored and shown in the dashboard editor —
+    "form" for the visual parameter builder, "json" for a raw JSON Schema. Both
+    produce the same `parameters` schema; this does not change how the request body
+    is encoded (see `args_at_root`).
+    """
+
+    parameters: Optional[PreSessionToolCustomToolParameters] = None
+    """The parameters the functions accepts, described as a JSON Schema object.
+
+    See [JSON Schema reference](https://json-schema.org/understanding-json-schema/)
+    for documentation about the format. Omitting parameters defines a function with
+    an empty parameter list.
+    """
+
+    query_params: Optional[Dict[str, str]] = None
+    """Query parameters to append to the request URL."""
+
+    response_variables: Optional[Dict[str, str]] = None
+    """A mapping of variable names to JSON paths in the response body.
+
+    These values will be extracted from the response and made available as dynamic
+    variables for use.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained. Usually this needs to get turned on so user can
+    get update for the function call.
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the function. Recommend to turn on if your function call
+    takes over 1s (including network) to complete, so that your agent remains
+    responsive.
+    """
+
+    timeout_ms: Optional[int] = None
+    """The maximum time in milliseconds the tool can run before it's considered
+    timeout.
+
+    If the tool times out, the agent would have that info. The minimum value allowed
+    is 1000 ms (1 s), and maximum value allowed is 600,000 ms (10 min). By default,
+    this is set to 120,000 ms (2 min).
+    """
+
+
+class PreSessionToolCodeTool(BaseModel):
+    code: str
+    """JavaScript code to execute in the sandbox."""
+
+    name: str
+    """Name of the tool.
+
+    Must be unique within all tools available to LLM at any given time (general
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
+    """
+
+    type: Literal["code"]
+
+    depends_on: Optional[List[str]] = None
+    """Names of tools that must run before this one."""
+
+    description: Optional[str] = None
+    """Describes what this tool does and when to call this tool."""
+
+    enable_typing_sound: Optional[bool] = None
+    """
+    If true, play a typing sound on the agent audio track while this tool is
+    executing.
+    """
+
+    execution_message_description: Optional[str] = None
+    """The description for the sentence agent say during execution.
+
+    Only applicable when speak_during_execution is true.
+    """
+
+    execution_message_type: Optional[Literal["prompt", "static_text"]] = None
+    """Type of execution message.
+
+    "prompt" means the agent will use execution_message_description as a prompt to
+    generate the message. "static_text" means the agent will speak the
+    execution_message_description directly. Defaults to "prompt".
+    """
+
+    response_variables: Optional[Dict[str, str]] = None
+    """A mapping of variable names to JSON paths in the code execution result.
+
+    These mapped values will be extracted and added as dynamic variables.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """
+    Determines whether the agent would call LLM another time and speak when the
+    result of function is obtained.
+    """
+
+    speak_during_execution: Optional[bool] = None
+    """
+    Determines whether the agent would say sentence like "One moment, let me check
+    that." when executing the tool.
+    """
+
+    timeout_ms: Optional[int] = None
+    """The maximum time in milliseconds the code can run before it's considered
+    timeout.
+
+    Defaults to 30,000 ms (30 s).
+    """
+
+
+PreSessionTool: TypeAlias = Union[PreSessionToolAppTool, PreSessionToolCustomTool, PreSessionToolCodeTool]
+
+
 class PronunciationDictionary(BaseModel):
     alphabet: Literal["ipa", "cmu", "pinyin", "jyutping"]
     """The phonetic alphabet to use.
@@ -577,6 +1578,16 @@ class AgentResponse(BaseModel):
     disable call screen prompt instructions.
     """
 
+    contact_memory_config: Optional[ContactMemoryConfig] = None
+    """Contact memory settings for phone calls and SMS chats.
+
+    Creating an agent defaults enable_update to false and enable_read to true.
+    Updates only change the supplied flags; omitted flags stay unchanged and an
+    empty object has no effect. Set a flag to false to disable it. The configuration
+    cannot be cleared. Existing agents without this configuration have both
+    disabled.
+    """
+
     custom_stt_config: Optional[CustomSttConfig] = None
     """Custom STT configuration. Only used when stt_mode is set to custom."""
 
@@ -614,6 +1625,14 @@ class AgentResponse(BaseModel):
     phrases like "yeah", "uh-huh" to signify interest and engagement). Backchannel
     when enabled tends to show up more in longer user utterances. If not set, agent
     will not backchannel.
+    """
+
+    enable_dnc_detection: Optional[bool] = None
+    """
+    If set to true, the agent recognizes requests to stop calling or contacting the
+    user, confirms once, and on a clear yes ends the call with disconnection reason
+    user_requested_dnc and sets do_not_call to true on the contact for the user's
+    phone number. If unset, default value false will apply.
     """
 
     enable_dynamic_responsiveness: Optional[bool] = None
@@ -895,9 +1914,16 @@ class AgentResponse(BaseModel):
             "gpt-5.5",
             "gpt-5.6-terra",
             "gpt-5.6-luna",
+            "gpt-6-astra",
+            "gpt-6-sol",
+            "gpt-6.1-sol",
+            "gpt-6-luna",
             "claude-4.5-sonnet",
             "claude-4.6-sonnet",
+            "claude-5-opus",
+            "claude-5.5-opus",
             "claude-5-sonnet",
+            "claude-5.5-sonnet",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
@@ -909,6 +1935,24 @@ class AgentResponse(BaseModel):
         ]
     ] = None
     """The model to use for post call analysis. Default to gpt-5.6-terra."""
+
+    post_session_tools: Optional[List[PostSessionTool]] = None
+    """
+    Integration (Agent Functions) tools run as a dependency graph during teardown,
+    after post-call analysis. Each tool can be gated by a condition. On calls the
+    graph is stopped after five minutes so teardown can finish. Set to null to
+    clear.
+    """
+
+    pre_session_tools: Optional[List[PreSessionTool]] = None
+    """
+    Integration (Agent Functions) tools run as a dependency graph during session
+    setup, before the agent's first message. Outputs are injected as dynamic
+    variables. On calls the graph gets one minute unless an outbound caller will be
+    dialed after setup, in which case it gets five minutes. Past that session
+    initialization continues and any remaining tools finish in the background, so
+    their outputs no longer reach the agent's prompt. Set to null to clear.
+    """
 
     pronunciation_dictionary: Optional[List[PronunciationDictionary]] = None
     """
@@ -984,19 +2028,13 @@ class AgentResponse(BaseModel):
     setting is a no-op. Default to general.
     """
 
-    voice_emotion: Optional[Literal["calm", "sympathetic", "happy", "sad", "angry", "fearful", "surprised"]] = None
-    """Controls the emotional tone of the agent's voice.
-
-    Currently supported for Cartesia and Minimax TTS providers. If unset, no emotion
-    will be used.
-    """
-
     voice_model: Optional[
         Literal[
             "eleven_flash_v2",
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
             "eleven_v3",
+            "eleven_v4_turbo",
             "sonic-3",
             "sonic-3-latest",
             "sonic-3.5",
