@@ -1,5 +1,17 @@
 # Changelog
 
+## [6.1.1](https://github.com/RetellAI/retell-python-sdk/compare/v6.1.0...v6.1.1) (2026-10-05)
+
+
+### Bug Fixes
+
+* **sdks:** re-anchor custom-code seals on staging main ([3e38345](https://github.com/RetellAI/retell-python-sdk/commit/3e3834561aa158d32dc62dae2b56376cf0d5cc37))
+
+
+### Chores
+
+* preserve production workflow files ([d85dc66](https://github.com/RetellAI/retell-python-sdk/commit/d85dc6654b07a82282fde10248caec09f792c78f))
+
 ## [6.1.0](https://github.com/RetellAI/retell-python-sdk/compare/v6.0.1...v6.1.0) (2026-10-05)
 
 
