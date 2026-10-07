@@ -68,6 +68,7 @@ class TestConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "boosted_keywords": ["string"],
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
@@ -205,6 +206,7 @@ class TestConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "boosted_keywords": ["string"],
                             "custom_stt_config": {
                                 "endpointing_ms": 0,
                                 "provider": "azure",
@@ -598,6 +600,7 @@ class TestConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "boosted_keywords": ["string"],
                             "custom_stt_config": {
                                 "endpointing_ms": 0,
                                 "provider": "azure",
@@ -820,6 +823,7 @@ class TestConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "boosted_keywords": ["string"],
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
@@ -1158,6 +1162,7 @@ class TestAsyncConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "boosted_keywords": ["string"],
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
@@ -1295,6 +1300,7 @@ class TestAsyncConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "boosted_keywords": ["string"],
                             "custom_stt_config": {
                                 "endpointing_ms": 0,
                                 "provider": "azure",
@@ -1688,6 +1694,7 @@ class TestAsyncConversationFlow:
                                 },
                                 "destination_node_id": "destination_node_id",
                             },
+                            "boosted_keywords": ["string"],
                             "custom_stt_config": {
                                 "endpointing_ms": 0,
                                 "provider": "azure",
@@ -1910,6 +1917,7 @@ class TestAsyncConversationFlow:
                         },
                         "destination_node_id": "destination_node_id",
                     },
+                    "boosted_keywords": ["string"],
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",

@@ -72,6 +72,8 @@ __all__ = [
     "TaskAgentOverrideConversationFlow",
     "TaskAgentOverrideConversationFlowKBConfig",
     "TaskAgentOverrideConversationFlowModelChoice",
+    "TaskAgentOverrideConversationFlowModelChoiceModelChoiceCascading",
+    "TaskAgentOverrideConversationFlowModelChoiceModelChoiceS2S",
     "TaskAgentOverrideRetellLlm",
     "TaskAgentOverrideRetellLlmKBConfig",
     "CallTimeWindow",
@@ -1647,6 +1649,16 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
       apply.
     """
 
+    denoising_enhancement_level: Optional[float]
+    """Controls the enhancement level for background voice cancellation.
+
+    Set to 0 to bypass background voice cancellation without BVC charges. Value
+    ranging from [0,1]. Only applicable when denoising_mode is
+    noise-and-background-speech-cancellation. Defaults to 0.8 if no value is
+    configured. Set to null to clear the configured value. Omitting this field
+    preserves the existing value.
+    """
+
     denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
     """If set, determines what denoising mode to use.
 
@@ -2075,6 +2087,8 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "eleven_flash_v2_5",
             "eleven_multilingual_v2",
             "eleven_v3",
+            "eleven_v3_conversational",
+            "eleven_v4",
             "eleven_v4_turbo",
             "sonic-3",
             "sonic-3-latest",
@@ -2173,9 +2187,7 @@ class TaskAgentOverrideConversationFlowKBConfig(TypedDict, total=False):
     """Max number of knowledge base chunks to retrieve"""
 
 
-class TaskAgentOverrideConversationFlowModelChoice(TypedDict, total=False):
-    """The model choice for the conversation flow."""
-
+class TaskAgentOverrideConversationFlowModelChoiceModelChoiceCascading(TypedDict, total=False):
     model: Required[
         Literal[
             "gpt-4.1",
@@ -2219,6 +2231,29 @@ class TaskAgentOverrideConversationFlowModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class TaskAgentOverrideConversationFlowModelChoiceModelChoiceS2S(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-realtime-2.1",
+            "gpt-realtime-2.1-mini",
+            "gpt-realtime-2",
+            "gpt-realtime-1.5",
+            "gpt-realtime",
+            "gpt-realtime-mini",
+        ]
+    ]
+    """The speech-to-speech model to use"""
+
+    type: Required[Literal["s2s"]]
+    """Type of model choice"""
+
+
+TaskAgentOverrideConversationFlowModelChoice: TypeAlias = Union[
+    TaskAgentOverrideConversationFlowModelChoiceModelChoiceCascading,
+    TaskAgentOverrideConversationFlowModelChoiceModelChoiceS2S,
+]
 
 
 class TaskAgentOverrideConversationFlow(TypedDict, total=False):

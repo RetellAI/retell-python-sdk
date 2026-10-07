@@ -82,6 +82,7 @@ class AgentResource(SyncAPIResource):
         custom_stt_config: Optional[agent_create_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
+        denoising_enhancement_level: Optional[float] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
@@ -308,6 +309,8 @@ class AgentResource(SyncAPIResource):
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
+                "eleven_v3_conversational",
+                "eleven_v4",
                 "eleven_v4_turbo",
                 "sonic-3",
                 "sonic-3-latest",
@@ -441,6 +444,13 @@ class AgentResource(SyncAPIResource):
               - `basic_attributes_only`: Store only basic attributes; no
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
+
+          denoising_enhancement_level: Controls the enhancement level for background voice cancellation. Set to 0 to
+              bypass background voice cancellation without BVC charges. Value ranging from
+              [0,1]. Only applicable when denoising_mode is
+              noise-and-background-speech-cancellation. Defaults to 0.8 if no value is
+              configured. Set to null to clear the configured value. Omitting this field
+              preserves the existing value.
 
           denoising_mode: If set, determines what denoising mode to use. Use "no-denoise" to bypass all
               audio denoising. Default to noise-cancellation.
@@ -636,6 +646,7 @@ class AgentResource(SyncAPIResource):
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
+                    "denoising_enhancement_level": denoising_enhancement_level,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "enable_dnc_detection": enable_dnc_detection,
@@ -752,6 +763,7 @@ class AgentResource(SyncAPIResource):
         custom_stt_config: Optional[agent_update_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
+        denoising_enhancement_level: Optional[float] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
@@ -980,6 +992,8 @@ class AgentResource(SyncAPIResource):
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
+                "eleven_v3_conversational",
+                "eleven_v4",
                 "eleven_v4_turbo",
                 "sonic-3",
                 "sonic-3-latest",
@@ -1108,6 +1122,13 @@ class AgentResource(SyncAPIResource):
               - `basic_attributes_only`: Store only basic attributes; no
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
+
+          denoising_enhancement_level: Controls the enhancement level for background voice cancellation. Set to 0 to
+              bypass background voice cancellation without BVC charges. Value ranging from
+              [0,1]. Only applicable when denoising_mode is
+              noise-and-background-speech-cancellation. Defaults to 0.8 if no value is
+              configured. Set to null to clear the configured value. Omitting this field
+              preserves the existing value.
 
           denoising_mode: If set, determines what denoising mode to use. Use "no-denoise" to bypass all
               audio denoising. Default to noise-cancellation.
@@ -1310,6 +1331,7 @@ class AgentResource(SyncAPIResource):
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
+                    "denoising_enhancement_level": denoising_enhancement_level,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "enable_dnc_detection": enable_dnc_detection,
@@ -1737,6 +1759,7 @@ class AsyncAgentResource(AsyncAPIResource):
         custom_stt_config: Optional[agent_create_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
+        denoising_enhancement_level: Optional[float] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
@@ -1963,6 +1986,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
+                "eleven_v3_conversational",
+                "eleven_v4",
                 "eleven_v4_turbo",
                 "sonic-3",
                 "sonic-3-latest",
@@ -2096,6 +2121,13 @@ class AsyncAgentResource(AsyncAPIResource):
               - `basic_attributes_only`: Store only basic attributes; no
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
+
+          denoising_enhancement_level: Controls the enhancement level for background voice cancellation. Set to 0 to
+              bypass background voice cancellation without BVC charges. Value ranging from
+              [0,1]. Only applicable when denoising_mode is
+              noise-and-background-speech-cancellation. Defaults to 0.8 if no value is
+              configured. Set to null to clear the configured value. Omitting this field
+              preserves the existing value.
 
           denoising_mode: If set, determines what denoising mode to use. Use "no-denoise" to bypass all
               audio denoising. Default to noise-cancellation.
@@ -2291,6 +2323,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
+                    "denoising_enhancement_level": denoising_enhancement_level,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "enable_dnc_detection": enable_dnc_detection,
@@ -2407,6 +2440,7 @@ class AsyncAgentResource(AsyncAPIResource):
         custom_stt_config: Optional[agent_update_params.CustomSttConfig] | Omit = omit,
         data_storage_retention_days: Optional[int] | Omit = omit,
         data_storage_setting: Literal["everything", "everything_except_pii", "basic_attributes_only"] | Omit = omit,
+        denoising_enhancement_level: Optional[float] | Omit = omit,
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
@@ -2635,6 +2669,8 @@ class AsyncAgentResource(AsyncAPIResource):
                 "eleven_flash_v2_5",
                 "eleven_multilingual_v2",
                 "eleven_v3",
+                "eleven_v3_conversational",
+                "eleven_v4",
                 "eleven_v4_turbo",
                 "sonic-3",
                 "sonic-3-latest",
@@ -2763,6 +2799,13 @@ class AsyncAgentResource(AsyncAPIResource):
               - `basic_attributes_only`: Store only basic attributes; no
                 transcripts/recordings/logs. If not set, default value of "everything" will
                 apply.
+
+          denoising_enhancement_level: Controls the enhancement level for background voice cancellation. Set to 0 to
+              bypass background voice cancellation without BVC charges. Value ranging from
+              [0,1]. Only applicable when denoising_mode is
+              noise-and-background-speech-cancellation. Defaults to 0.8 if no value is
+              configured. Set to null to clear the configured value. Omitting this field
+              preserves the existing value.
 
           denoising_mode: If set, determines what denoising mode to use. Use "no-denoise" to bypass all
               audio denoising. Default to noise-cancellation.
@@ -2965,6 +3008,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "custom_stt_config": custom_stt_config,
                     "data_storage_retention_days": data_storage_retention_days,
                     "data_storage_setting": data_storage_setting,
+                    "denoising_enhancement_level": denoising_enhancement_level,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
                     "enable_dnc_detection": enable_dnc_detection,
