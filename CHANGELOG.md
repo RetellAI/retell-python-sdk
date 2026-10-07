@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.2.1](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.0...v6.2.1) (2026-10-07)
+
+
+### Chores
+
+* preserve production workflow files ([365fbd2](https://github.com/RetellAI/retell-python-sdk/commit/365fbd2fb5610341dc1d35c2e9a9a3082cf903bc))
+* **sdks:** refresh generated assets ([137f031](https://github.com/RetellAI/retell-python-sdk/commit/137f0317220d163256636de41cfd83568b579701))
+
 ## [6.2.0](https://github.com/RetellAI/retell-python-sdk/compare/v6.1.1...v6.2.0) (2026-10-07)
 
 
