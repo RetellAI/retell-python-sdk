@@ -10,6 +10,8 @@ from .._types import SequenceNotStr
 __all__ = [
     "ConversationFlowCreateParams",
     "ModelChoice",
+    "ModelChoiceModelChoiceCascading",
+    "ModelChoiceModelChoiceS2S",
     "Node",
     "NodeConversationNode",
     "NodeConversationNodeInstruction",
@@ -49,6 +51,9 @@ __all__ = [
     "NodeConversationNodeGlobalNodeSettingConditionPromptCondition",
     "NodeConversationNodeGlobalNodeSettingConditionEquationCondition",
     "NodeConversationNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeConversationNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeConversationNodeGlobalNodeSettingGoBackCondition",
     "NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -108,6 +113,9 @@ __all__ = [
     "NodeSubagentNodeGlobalNodeSettingConditionPromptCondition",
     "NodeSubagentNodeGlobalNodeSettingConditionEquationCondition",
     "NodeSubagentNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeSubagentNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeSubagentNodeGlobalNodeSettingGoBackCondition",
     "NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -184,6 +192,9 @@ __all__ = [
     "NodeEndNodeGlobalNodeSettingConditionPromptCondition",
     "NodeEndNodeGlobalNodeSettingConditionEquationCondition",
     "NodeEndNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeEndNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeEndNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeEndNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeEndNodeGlobalNodeSettingGoBackCondition",
     "NodeEndNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -226,6 +237,9 @@ __all__ = [
     "NodeFunctionNodeGlobalNodeSettingConditionPromptCondition",
     "NodeFunctionNodeGlobalNodeSettingConditionEquationCondition",
     "NodeFunctionNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeFunctionNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeFunctionNodeGlobalNodeSettingGoBackCondition",
     "NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -268,6 +282,9 @@ __all__ = [
     "NodeCodeNodeGlobalNodeSettingConditionPromptCondition",
     "NodeCodeNodeGlobalNodeSettingConditionEquationCondition",
     "NodeCodeNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeCodeNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeCodeNodeGlobalNodeSettingGoBackCondition",
     "NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -319,6 +336,9 @@ __all__ = [
     "NodeTransferCallNodeGlobalNodeSettingConditionPromptCondition",
     "NodeTransferCallNodeGlobalNodeSettingConditionEquationCondition",
     "NodeTransferCallNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeTransferCallNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeTransferCallNodeGlobalNodeSettingGoBackCondition",
     "NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -362,6 +382,9 @@ __all__ = [
     "NodePressDigitNodeGlobalNodeSettingConditionPromptCondition",
     "NodePressDigitNodeGlobalNodeSettingConditionEquationCondition",
     "NodePressDigitNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodePressDigitNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodePressDigitNodeGlobalNodeSettingGoBackCondition",
     "NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -401,6 +424,9 @@ __all__ = [
     "NodeBranchNodeGlobalNodeSettingConditionPromptCondition",
     "NodeBranchNodeGlobalNodeSettingConditionEquationCondition",
     "NodeBranchNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeBranchNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeBranchNodeGlobalNodeSettingGoBackCondition",
     "NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -440,6 +466,9 @@ __all__ = [
     "NodeSMSNodeGlobalNodeSettingConditionPromptCondition",
     "NodeSMSNodeGlobalNodeSettingConditionEquationCondition",
     "NodeSMSNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeSMSNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeSMSNodeGlobalNodeSettingGoBackCondition",
     "NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -484,6 +513,9 @@ __all__ = [
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionPromptCondition",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationCondition",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackCondition",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -513,6 +545,9 @@ __all__ = [
     "NodeAgentSwapNodeGlobalNodeSettingConditionPromptCondition",
     "NodeAgentSwapNodeGlobalNodeSettingConditionEquationCondition",
     "NodeAgentSwapNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeAgentSwapNodeGlobalNodeSettingGoBackCondition",
     "NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -555,6 +590,9 @@ __all__ = [
     "NodeMcpNodeGlobalNodeSettingConditionPromptCondition",
     "NodeMcpNodeGlobalNodeSettingConditionEquationCondition",
     "NodeMcpNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeMcpNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeMcpNodeGlobalNodeSettingGoBackCondition",
     "NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -597,6 +635,9 @@ __all__ = [
     "NodeComponentNodeGlobalNodeSettingConditionPromptCondition",
     "NodeComponentNodeGlobalNodeSettingConditionEquationCondition",
     "NodeComponentNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeComponentNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeComponentNodeGlobalNodeSettingGoBackCondition",
     "NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -619,6 +660,9 @@ __all__ = [
     "NodeBridgeTransferNodeGlobalNodeSettingConditionPromptCondition",
     "NodeBridgeTransferNodeGlobalNodeSettingConditionEquationCondition",
     "NodeBridgeTransferNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeBridgeTransferNodeGlobalNodeSettingGoBackCondition",
     "NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -645,6 +689,9 @@ __all__ = [
     "NodeCancelTransferNodeGlobalNodeSettingConditionPromptCondition",
     "NodeCancelTransferNodeGlobalNodeSettingConditionEquationCondition",
     "NodeCancelTransferNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "NodeCancelTransferNodeGlobalNodeSettingGoBackCondition",
     "NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "NodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -705,6 +752,9 @@ __all__ = [
     "ComponentNodeConversationNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeConversationNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeConversationNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeConversationNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeConversationNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeConversationNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeConversationNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -764,6 +814,9 @@ __all__ = [
     "ComponentNodeSubagentNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeSubagentNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeSubagentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -840,6 +893,9 @@ __all__ = [
     "ComponentNodeEndNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeEndNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeEndNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeEndNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeEndNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeEndNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeEndNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeEndNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeEndNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -882,6 +938,9 @@ __all__ = [
     "ComponentNodeFunctionNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeFunctionNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeFunctionNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -924,6 +983,9 @@ __all__ = [
     "ComponentNodeCodeNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeCodeNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeCodeNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeCodeNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeCodeNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeCodeNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeCodeNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -975,6 +1037,9 @@ __all__ = [
     "ComponentNodeTransferCallNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeTransferCallNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeTransferCallNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -1018,6 +1083,9 @@ __all__ = [
     "ComponentNodePressDigitNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodePressDigitNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodePressDigitNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -1057,6 +1125,9 @@ __all__ = [
     "ComponentNodeBranchNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeBranchNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeBranchNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeBranchNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeBranchNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeBranchNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeBranchNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -1096,6 +1167,9 @@ __all__ = [
     "ComponentNodeSMSNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeSMSNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeSMSNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeSMSNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeSMSNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeSMSNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeSMSNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -1140,6 +1214,9 @@ __all__ = [
     "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -1169,6 +1246,9 @@ __all__ = [
     "ComponentNodeAgentSwapNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeAgentSwapNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeAgentSwapNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -1211,6 +1291,9 @@ __all__ = [
     "ComponentNodeMcpNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeMcpNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeMcpNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeMcpNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeMcpNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeMcpNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeMcpNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -1253,6 +1336,9 @@ __all__ = [
     "ComponentNodeComponentNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeComponentNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeComponentNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeComponentNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeComponentNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeComponentNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeComponentNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -1275,6 +1361,9 @@ __all__ = [
     "ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeBridgeTransferNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeBridgeTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -1301,6 +1390,9 @@ __all__ = [
     "ComponentNodeCancelTransferNodeGlobalNodeSettingConditionPromptCondition",
     "ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationCondition",
     "ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
     "ComponentNodeCancelTransferNodeGlobalNodeSettingGoBackCondition",
     "ComponentNodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionCondition",
     "ComponentNodeCancelTransferNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
@@ -1425,9 +1517,7 @@ class ConversationFlowCreateParams(TypedDict, total=False):
     """Tools available in the conversation flow."""
 
 
-class ModelChoice(TypedDict, total=False):
-    """The model choice for the conversation flow."""
-
+class ModelChoiceModelChoiceCascading(TypedDict, total=False):
     model: Required[
         Literal[
             "gpt-4.1",
@@ -1471,6 +1561,26 @@ class ModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+
+class ModelChoiceModelChoiceS2S(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-realtime-2.1",
+            "gpt-realtime-2.1-mini",
+            "gpt-realtime-2",
+            "gpt-realtime-1.5",
+            "gpt-realtime",
+            "gpt-realtime-mini",
+        ]
+    ]
+    """The speech-to-speech model to use"""
+
+    type: Required[Literal["s2s"]]
+    """Type of model choice"""
+
+
+ModelChoice: TypeAlias = Union[ModelChoiceModelChoiceCascading, ModelChoiceModelChoiceS2S]
 
 
 class NodeConversationNodeInstructionNodeInstructionPrompt(TypedDict, total=False):
@@ -1796,10 +1906,53 @@ class NodeConversationNodeGlobalNodeSettingConditionEquationCondition(TypedDict,
     type: Required[Literal["equation"]]
 
 
+class NodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeConversationNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeConversationNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodeConversationNodeGlobalNodeSettingConditionPromptCondition,
     NodeConversationNodeGlobalNodeSettingConditionEquationCondition,
+    NodeConversationNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -1933,8 +2086,8 @@ class NodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeConversationNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -2091,6 +2244,14 @@ class NodeConversationNode(TypedDict, total=False):
     """
     For conversation and subagent nodes, transitions unconditionally after the user
     responds. Use as the node's only outgoing edge.
+    """
+
+    boosted_keywords: Optional[SequenceNotStr[str]]
+    """If set, replaces the agent-level boosted_keywords while this node is active.
+
+    Set to an empty list to disable boosted keywords for this node. Entries may
+    reference dynamic variables with `{{variable}}` syntax, resolved when the node
+    is entered.
     """
 
     custom_stt_config: Optional[NodeConversationNodeCustomSttConfig]
@@ -2477,10 +2638,53 @@ class NodeSubagentNodeGlobalNodeSettingConditionEquationCondition(TypedDict, tot
     type: Required[Literal["equation"]]
 
 
+class NodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeSubagentNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeSubagentNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodeSubagentNodeGlobalNodeSettingConditionPromptCondition,
     NodeSubagentNodeGlobalNodeSettingConditionEquationCondition,
+    NodeSubagentNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -2614,8 +2818,8 @@ class NodeSubagentNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeSubagentNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -3979,6 +4183,14 @@ class NodeSubagentNode(TypedDict, total=False):
     responds. Use as the node's only outgoing edge.
     """
 
+    boosted_keywords: Optional[SequenceNotStr[str]]
+    """If set, replaces the agent-level boosted_keywords while this node is active.
+
+    Set to an empty list to disable boosted keywords for this node. Entries may
+    reference dynamic variables with `{{variable}}` syntax, resolved when the node
+    is entered.
+    """
+
     custom_stt_config: Optional[NodeSubagentNodeCustomSttConfig]
     """Custom transcription settings. Required when stt_mode is custom."""
 
@@ -4103,8 +4315,53 @@ class NodeEndNodeGlobalNodeSettingConditionEquationCondition(TypedDict, total=Fa
     type: Required[Literal["equation"]]
 
 
+class NodeEndNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeEndNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeEndNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeEndNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeEndNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeEndNodeGlobalNodeSettingCondition: TypeAlias = Union[
-    str, NodeEndNodeGlobalNodeSettingConditionPromptCondition, NodeEndNodeGlobalNodeSettingConditionEquationCondition
+    str,
+    NodeEndNodeGlobalNodeSettingConditionPromptCondition,
+    NodeEndNodeGlobalNodeSettingConditionEquationCondition,
+    NodeEndNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -4236,8 +4493,8 @@ class NodeEndNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeEndNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -4544,10 +4801,53 @@ class NodeFunctionNodeGlobalNodeSettingConditionEquationCondition(TypedDict, tot
     type: Required[Literal["equation"]]
 
 
+class NodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeFunctionNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeFunctionNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodeFunctionNodeGlobalNodeSettingConditionPromptCondition,
     NodeFunctionNodeGlobalNodeSettingConditionEquationCondition,
+    NodeFunctionNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -4681,8 +4981,8 @@ class NodeFunctionNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeFunctionNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -5005,8 +5305,53 @@ class NodeCodeNodeGlobalNodeSettingConditionEquationCondition(TypedDict, total=F
     type: Required[Literal["equation"]]
 
 
+class NodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeCodeNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeCodeNodeGlobalNodeSettingCondition: TypeAlias = Union[
-    str, NodeCodeNodeGlobalNodeSettingConditionPromptCondition, NodeCodeNodeGlobalNodeSettingConditionEquationCondition
+    str,
+    NodeCodeNodeGlobalNodeSettingConditionPromptCondition,
+    NodeCodeNodeGlobalNodeSettingConditionEquationCondition,
+    NodeCodeNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -5138,8 +5483,8 @@ class NodeCodeNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeCodeNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -5686,10 +6031,53 @@ class NodeTransferCallNodeGlobalNodeSettingConditionEquationCondition(TypedDict,
     type: Required[Literal["equation"]]
 
 
+class NodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeTransferCallNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeTransferCallNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodeTransferCallNodeGlobalNodeSettingConditionPromptCondition,
     NodeTransferCallNodeGlobalNodeSettingConditionEquationCondition,
+    NodeTransferCallNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -5823,8 +6211,8 @@ class NodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeTransferCallNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -6154,10 +6542,53 @@ class NodePressDigitNodeGlobalNodeSettingConditionEquationCondition(TypedDict, t
     type: Required[Literal["equation"]]
 
 
+class NodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodePressDigitNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodePressDigitNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodePressDigitNodeGlobalNodeSettingConditionPromptCondition,
     NodePressDigitNodeGlobalNodeSettingConditionEquationCondition,
+    NodePressDigitNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -6291,8 +6722,8 @@ class NodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodePressDigitNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -6582,10 +7013,53 @@ class NodeBranchNodeGlobalNodeSettingConditionEquationCondition(TypedDict, total
     type: Required[Literal["equation"]]
 
 
+class NodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeBranchNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeBranchNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodeBranchNodeGlobalNodeSettingConditionPromptCondition,
     NodeBranchNodeGlobalNodeSettingConditionEquationCondition,
+    NodeBranchNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -6719,8 +7193,8 @@ class NodeBranchNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeBranchNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -7007,8 +7481,53 @@ class NodeSMSNodeGlobalNodeSettingConditionEquationCondition(TypedDict, total=Fa
     type: Required[Literal["equation"]]
 
 
+class NodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeSMSNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeSMSNodeGlobalNodeSettingCondition: TypeAlias = Union[
-    str, NodeSMSNodeGlobalNodeSettingConditionPromptCondition, NodeSMSNodeGlobalNodeSettingConditionEquationCondition
+    str,
+    NodeSMSNodeGlobalNodeSettingConditionPromptCondition,
+    NodeSMSNodeGlobalNodeSettingConditionEquationCondition,
+    NodeSMSNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -7140,8 +7659,8 @@ class NodeSMSNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeSMSNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -7537,10 +8056,57 @@ class NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationCondition
     type: Required[Literal["equation"]]
 
 
+class NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(
+    TypedDict, total=False
+):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeExtractDynamicVariablesNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionPromptCondition,
     NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationCondition,
+    NodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -7692,8 +8258,8 @@ class NodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeExtractDynamicVariablesNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -7890,10 +8456,53 @@ class NodeAgentSwapNodeGlobalNodeSettingConditionEquationCondition(TypedDict, to
     type: Required[Literal["equation"]]
 
 
+class NodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeAgentSwapNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodeAgentSwapNodeGlobalNodeSettingConditionPromptCondition,
     NodeAgentSwapNodeGlobalNodeSettingConditionEquationCondition,
+    NodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -8027,8 +8636,8 @@ class NodeAgentSwapNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeAgentSwapNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -8365,8 +8974,53 @@ class NodeMcpNodeGlobalNodeSettingConditionEquationCondition(TypedDict, total=Fa
     type: Required[Literal["equation"]]
 
 
+class NodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeMcpNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeMcpNodeGlobalNodeSettingCondition: TypeAlias = Union[
-    str, NodeMcpNodeGlobalNodeSettingConditionPromptCondition, NodeMcpNodeGlobalNodeSettingConditionEquationCondition
+    str,
+    NodeMcpNodeGlobalNodeSettingConditionPromptCondition,
+    NodeMcpNodeGlobalNodeSettingConditionEquationCondition,
+    NodeMcpNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -8498,8 +9152,8 @@ class NodeMcpNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeMcpNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -8827,10 +9481,53 @@ class NodeComponentNodeGlobalNodeSettingConditionEquationCondition(TypedDict, to
     type: Required[Literal["equation"]]
 
 
+class NodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeComponentNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeComponentNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodeComponentNodeGlobalNodeSettingConditionPromptCondition,
     NodeComponentNodeGlobalNodeSettingConditionEquationCondition,
+    NodeComponentNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -8964,8 +9661,8 @@ class NodeComponentNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeComponentNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -9058,10 +9755,53 @@ class NodeBridgeTransferNodeGlobalNodeSettingConditionEquationCondition(TypedDic
     type: Required[Literal["equation"]]
 
 
+class NodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeBridgeTransferNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodeBridgeTransferNodeGlobalNodeSettingConditionPromptCondition,
     NodeBridgeTransferNodeGlobalNodeSettingConditionEquationCondition,
+    NodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -9197,8 +9937,8 @@ class NodeBridgeTransferNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeBridgeTransferNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -9351,10 +10091,53 @@ class NodeCancelTransferNodeGlobalNodeSettingConditionEquationCondition(TypedDic
     type: Required[Literal["equation"]]
 
 
+class NodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class NodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[NodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: NodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 NodeCancelTransferNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     NodeCancelTransferNodeGlobalNodeSettingConditionPromptCondition,
     NodeCancelTransferNodeGlobalNodeSettingConditionEquationCondition,
+    NodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -9490,8 +10273,8 @@ class NodeCancelTransferNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[NodeCancelTransferNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -9958,10 +10741,57 @@ class ComponentNodeConversationNodeGlobalNodeSettingConditionEquationCondition(T
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(
+    TypedDict, total=False
+):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeConversationNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[ComponentNodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeConversationNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeConversationNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeConversationNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeConversationNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeConversationNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -10113,8 +10943,8 @@ class ComponentNodeConversationNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeConversationNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -10273,6 +11103,14 @@ class ComponentNodeConversationNode(TypedDict, total=False):
     """
     For conversation and subagent nodes, transitions unconditionally after the user
     responds. Use as the node's only outgoing edge.
+    """
+
+    boosted_keywords: Optional[SequenceNotStr[str]]
+    """If set, replaces the agent-level boosted_keywords while this node is active.
+
+    Set to an empty list to disable boosted keywords for this node. Entries may
+    reference dynamic variables with `{{variable}}` syntax, resolved when the node
+    is entered.
     """
 
     custom_stt_config: Optional[ComponentNodeConversationNodeCustomSttConfig]
@@ -10660,10 +11498,53 @@ class ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationCondition(Typed
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeSubagentNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeSubagentNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeSubagentNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -10801,8 +11682,8 @@ class ComponentNodeSubagentNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeSubagentNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -12175,6 +13056,14 @@ class ComponentNodeSubagentNode(TypedDict, total=False):
     responds. Use as the node's only outgoing edge.
     """
 
+    boosted_keywords: Optional[SequenceNotStr[str]]
+    """If set, replaces the agent-level boosted_keywords while this node is active.
+
+    Set to an empty list to disable boosted keywords for this node. Entries may
+    reference dynamic variables with `{{variable}}` syntax, resolved when the node
+    is entered.
+    """
+
     custom_stt_config: Optional[ComponentNodeSubagentNodeCustomSttConfig]
     """Custom transcription settings. Required when stt_mode is custom."""
 
@@ -12299,10 +13188,53 @@ class ComponentNodeEndNodeGlobalNodeSettingConditionEquationCondition(TypedDict,
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeEndNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeEndNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeEndNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeEndNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeEndNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeEndNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeEndNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeEndNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeEndNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -12436,8 +13368,8 @@ class ComponentNodeEndNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeEndNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -12745,10 +13677,53 @@ class ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationCondition(Typed
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeFunctionNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeFunctionNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeFunctionNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -12886,8 +13861,8 @@ class ComponentNodeFunctionNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeFunctionNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -13212,10 +14187,53 @@ class ComponentNodeCodeNodeGlobalNodeSettingConditionEquationCondition(TypedDict
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeCodeNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeCodeNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeCodeNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeCodeNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeCodeNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeCodeNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -13349,8 +14367,8 @@ class ComponentNodeCodeNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeCodeNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -13901,10 +14919,57 @@ class ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationCondition(T
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(
+    TypedDict, total=False
+):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeTransferCallNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeTransferCallNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeTransferCallNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -14056,8 +15121,8 @@ class ComponentNodeTransferCallNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeTransferCallNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -14389,10 +15454,55 @@ class ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationCondition(Typ
     type: Required[Literal["equation"]]
 
 
+class ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(
+    TypedDict, total=False
+):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodePressDigitNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodePressDigitNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodePressDigitNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -14532,8 +15642,8 @@ class ComponentNodePressDigitNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodePressDigitNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -14824,10 +15934,53 @@ class ComponentNodeBranchNodeGlobalNodeSettingConditionEquationCondition(TypedDi
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeBranchNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeBranchNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeBranchNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeBranchNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeBranchNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeBranchNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -14963,8 +16116,8 @@ class ComponentNodeBranchNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeBranchNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -15251,10 +16404,53 @@ class ComponentNodeSMSNodeGlobalNodeSettingConditionEquationCondition(TypedDict,
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeSMSNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeSMSNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeSMSNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeSMSNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeSMSNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeSMSNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -15388,8 +16584,8 @@ class ComponentNodeSMSNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeSMSNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -15795,10 +16991,61 @@ class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquation
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionEquation(
+    TypedDict, total=False
+):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(
+    TypedDict, total=False
+):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: (
+        ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    )
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -15956,8 +17203,8 @@ class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSetting(TypedDict, total
     condition: Required[ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -16158,10 +17405,55 @@ class ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationCondition(Type
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(
+    TypedDict, total=False
+):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeAgentSwapNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeAgentSwapNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeAgentSwapNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -16299,8 +17591,8 @@ class ComponentNodeAgentSwapNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeAgentSwapNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -16639,10 +17931,53 @@ class ComponentNodeMcpNodeGlobalNodeSettingConditionEquationCondition(TypedDict,
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(TypedDict, total=False):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeMcpNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeMcpNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeMcpNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeMcpNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeMcpNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeMcpNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -16776,8 +18111,8 @@ class ComponentNodeMcpNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeMcpNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -17106,10 +18441,55 @@ class ComponentNodeComponentNodeGlobalNodeSettingConditionEquationCondition(Type
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(
+    TypedDict, total=False
+):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeComponentNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[Iterable[ComponentNodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionEquation]]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeComponentNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeComponentNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeComponentNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeComponentNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeComponentNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -17247,8 +18627,8 @@ class ComponentNodeComponentNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeComponentNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -17341,10 +18721,57 @@ class ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationCondition
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(
+    TypedDict, total=False
+):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeBridgeTransferNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeBridgeTransferNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -17496,8 +18923,8 @@ class ComponentNodeBridgeTransferNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeBridgeTransferNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
@@ -17651,10 +19078,57 @@ class ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationCondition
     type: Required[Literal["equation"]]
 
 
+class ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation(TypedDict, total=False):
+    left: Required[str]
+    """Left side of the equation"""
+
+    operator: Required[Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]]
+
+    right: str
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(
+    TypedDict, total=False
+):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: Required[str]
+    """Prompt condition text"""
+
+    type: Required[Literal["prompt"]]
+
+
+class ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptCondition(TypedDict, total=False):
+    equations: Required[
+        Iterable[ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionEquation]
+    ]
+
+    operator: Required[Literal["||", "&&"]]
+
+    type: Required[Literal["equation_prompt"]]
+
+    prompt_condition: ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
 ComponentNodeCancelTransferNodeGlobalNodeSettingCondition: TypeAlias = Union[
     str,
     ComponentNodeCancelTransferNodeGlobalNodeSettingConditionPromptCondition,
     ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationCondition,
+    ComponentNodeCancelTransferNodeGlobalNodeSettingConditionEquationPromptCondition,
 ]
 
 
@@ -17806,8 +19280,8 @@ class ComponentNodeCancelTransferNodeGlobalNodeSetting(TypedDict, total=False):
     condition: Required[ComponentNodeCancelTransferNodeGlobalNodeSettingCondition]
     """Condition for global node activation.
 
-    A string is a prompt condition and cannot be empty. Also accepts a typed prompt
-    or equation condition.
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
     """
 
     cool_down: float
