@@ -1934,6 +1934,7 @@ class AgentResponse(BaseModel):
             "claude-5.5-opus",
             "claude-5-sonnet",
             "claude-5.5-sonnet",
+            "claude-5.5-haiku",
             "claude-4.5-haiku",
             "gemini-3.0-flash",
             "gemini-3.1-flash-lite",
