@@ -785,7 +785,8 @@ class GeneralToolSendSMSTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     sms_content: Required[GeneralToolSendSMSToolSMSContent]
@@ -1361,7 +1362,9 @@ class GeneralToolAppTool(TypedDict, total=False):
     name: Required[str]
     """Name of the tool.
 
-    Must be unique within the phase's tools; referenced by depends_on.
+    Must be unique within the phase's tools; referenced by depends_on. Must be
+    consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum
+    length of 64 (no space allowed).
     """
 
     provider: Required[str]
@@ -2064,7 +2067,8 @@ class StateToolSendSMSTool(TypedDict, total=False):
     """Name of the tool.
 
     Must be unique within all tools available to LLM at any given time (general
-    tools + state tools + state edges).
+    tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or
+    contain underscores and dashes, with a maximum length of 64 (no space allowed).
     """
 
     sms_content: Required[StateToolSendSMSToolSMSContent]
@@ -2640,7 +2644,9 @@ class StateToolAppTool(TypedDict, total=False):
     name: Required[str]
     """Name of the tool.
 
-    Must be unique within the phase's tools; referenced by depends_on.
+    Must be unique within the phase's tools; referenced by depends_on. Must be
+    consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum
+    length of 64 (no space allowed).
     """
 
     provider: Required[str]
