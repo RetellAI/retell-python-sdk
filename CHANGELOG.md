@@ -1,5 +1,17 @@
 # Changelog
 
+## [6.2.3](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.2...v6.2.3) (2026-10-08)
+
+
+### Bug Fixes
+
+* **api:** sync OpenAPI from retell-backend ([88b031a](https://github.com/RetellAI/retell-python-sdk/commit/88b031a72fb1ccf923203d5a9e7a486f50bf13ed))
+
+
+### Chores
+
+* preserve production workflow files ([52266a3](https://github.com/RetellAI/retell-python-sdk/commit/52266a3eda82ec7734137301b44b01118ae66239))
+
 ## [6.2.2](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.1...v6.2.2) (2026-10-08)
 
 
