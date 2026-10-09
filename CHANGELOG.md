@@ -1,5 +1,17 @@
 # Changelog
 
+## [6.2.5](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.4...v6.2.5) (2026-10-09)
+
+
+### Bug Fixes
+
+* **api:** Add name character and length requirements to AppTool and SendSMSTool tool names. ([54eb1fe](https://github.com/RetellAI/retell-python-sdk/commit/54eb1feba6c1892d9e7c2b929958f3d43c94ce71))
+
+
+### Chores
+
+* **sdks:** refresh generated assets ([35e68a3](https://github.com/RetellAI/retell-python-sdk/commit/35e68a3a55aaa4c1eee5be6bcb00f5a8d159e557))
+
 ## [6.2.4](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.3...v6.2.4) (2026-10-08)
 
 
