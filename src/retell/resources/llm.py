@@ -61,7 +61,6 @@ class LlmResource(SyncAPIResource):
             Literal[
                 "gpt-4.1",
                 "gpt-4.1-mini",
-                "gpt-4.1-nano",
                 "gpt-5",
                 "gpt-5-mini",
                 "gpt-5-nano",
@@ -77,7 +76,6 @@ class LlmResource(SyncAPIResource):
                 "gpt-6-sol",
                 "gpt-6.1-sol",
                 "gpt-6-luna",
-                "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-5-opus",
                 "claude-5.5-opus",
@@ -282,7 +280,6 @@ class LlmResource(SyncAPIResource):
             Literal[
                 "gpt-4.1",
                 "gpt-4.1-mini",
-                "gpt-4.1-nano",
                 "gpt-5",
                 "gpt-5-mini",
                 "gpt-5-nano",
@@ -298,7 +295,6 @@ class LlmResource(SyncAPIResource):
                 "gpt-6-sol",
                 "gpt-6.1-sol",
                 "gpt-6-luna",
-                "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-5-opus",
                 "claude-5.5-opus",
@@ -581,7 +577,6 @@ class AsyncLlmResource(AsyncAPIResource):
             Literal[
                 "gpt-4.1",
                 "gpt-4.1-mini",
-                "gpt-4.1-nano",
                 "gpt-5",
                 "gpt-5-mini",
                 "gpt-5-nano",
@@ -597,7 +592,6 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gpt-6-sol",
                 "gpt-6.1-sol",
                 "gpt-6-luna",
-                "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-5-opus",
                 "claude-5.5-opus",
@@ -802,7 +796,6 @@ class AsyncLlmResource(AsyncAPIResource):
             Literal[
                 "gpt-4.1",
                 "gpt-4.1-mini",
-                "gpt-4.1-nano",
                 "gpt-5",
                 "gpt-5-mini",
                 "gpt-5-nano",
@@ -818,7 +811,6 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gpt-6-sol",
                 "gpt-6.1-sol",
                 "gpt-6-luna",
-                "claude-4.5-sonnet",
                 "claude-4.6-sonnet",
                 "claude-5-opus",
                 "claude-5.5-opus",

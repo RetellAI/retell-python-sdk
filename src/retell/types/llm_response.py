@@ -2700,7 +2700,6 @@ class LlmResponse(BaseModel):
         Literal[
             "gpt-4.1",
             "gpt-4.1-mini",
-            "gpt-4.1-nano",
             "gpt-5",
             "gpt-5-mini",
             "gpt-5-nano",
@@ -2716,7 +2715,6 @@ class LlmResponse(BaseModel):
             "gpt-6-sol",
             "gpt-6.1-sol",
             "gpt-6-luna",
-            "claude-4.5-sonnet",
             "claude-4.6-sonnet",
             "claude-5-opus",
             "claude-5.5-opus",
