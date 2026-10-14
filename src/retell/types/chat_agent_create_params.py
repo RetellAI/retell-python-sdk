@@ -309,6 +309,7 @@ class ChatAgentCreateParams(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-argon",
         ]
     ]
     """The model to use for post chat analysis. Default to gpt-5.6-terra."""

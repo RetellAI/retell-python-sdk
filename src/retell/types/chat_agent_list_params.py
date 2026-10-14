@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["ChatAgentListParams", "FilterCriteria", "FilterCriteriaChannel"]
+__all__ = ["ChatAgentListParams", "FilterCriteria", "FilterCriteriaChannel", "FilterCriteriaIsTransferAgent"]
 
 
 class ChatAgentListParams(TypedDict, total=False):
@@ -30,10 +30,23 @@ class FilterCriteriaChannel(TypedDict, total=False):
     value: Required[Literal["voice", "chat"]]
 
 
+class FilterCriteriaIsTransferAgent(TypedDict, total=False):
+    """Filter by whether the agent is a transfer agent."""
+
+    op: Required[Literal["eq"]]
+
+    type: Required[Literal["boolean"]]
+
+    value: Required[bool]
+
+
 class FilterCriteria(TypedDict, total=False):
     """Filters for listing agents. All provided filters are connected with AND."""
 
     channel: FilterCriteriaChannel
+
+    is_transfer_agent: FilterCriteriaIsTransferAgent
+    """Filter by whether the agent is a transfer agent."""
 
     query: str
     """

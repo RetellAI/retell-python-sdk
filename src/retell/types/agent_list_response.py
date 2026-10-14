@@ -32,6 +32,9 @@ class Item(BaseModel):
     Either the time of last update or creation if no updates available.
     """
 
+    is_transfer_agent: Optional[bool] = None
+    """Whether the agent is a transfer agent used for agentic warm transfer."""
+
 
 class AgentListResponse(BaseModel):
     has_more: bool

@@ -96,6 +96,7 @@ class TestAgent:
                 "speech_normalization": True,
             },
             interruption_sensitivity=1,
+            is_transfer_agent=True,
             ivr_option={
                 "action": {"type": "hangup"},
                 "detection_prompt": "detection_prompt",
@@ -561,6 +562,11 @@ class TestAgent:
                     "type": "string",
                     "value": "voice",
                 },
+                "is_transfer_agent": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
                 "query": "query",
             },
         )
@@ -962,6 +968,7 @@ class TestAsyncAgent:
                 "speech_normalization": True,
             },
             interruption_sensitivity=1,
+            is_transfer_agent=True,
             ivr_option={
                 "action": {"type": "hangup"},
                 "detection_prompt": "detection_prompt",
@@ -1426,6 +1433,11 @@ class TestAsyncAgent:
                     "op": "eq",
                     "type": "string",
                     "value": "voice",
+                },
+                "is_transfer_agent": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
                 },
                 "query": "query",
             },

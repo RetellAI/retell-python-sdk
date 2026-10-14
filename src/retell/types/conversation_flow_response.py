@@ -2028,6 +2028,7 @@ class ComponentNodeConversationNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -2758,6 +2759,7 @@ class ComponentNodeSubagentNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -4444,6 +4446,7 @@ class ComponentNodeEndNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -4931,6 +4934,7 @@ class ComponentNodeFunctionNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -5431,6 +5435,7 @@ class ComponentNodeCodeNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -6169,6 +6174,7 @@ class ComponentNodeTransferCallNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -6663,6 +6669,7 @@ class ComponentNodePressDigitNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -7130,6 +7137,7 @@ class ComponentNodeBranchNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -7593,6 +7601,7 @@ class ComponentNodeSMSNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -8179,6 +8188,7 @@ class ComponentNodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -8584,6 +8594,7 @@ class ComponentNodeAgentSwapNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -9098,6 +9109,7 @@ class ComponentNodeMcpNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -9890,6 +9902,7 @@ class ComponentNodeBridgeTransferNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -10230,6 +10243,7 @@ class ComponentNodeCancelTransferNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -10739,6 +10753,7 @@ class ModelChoiceModelChoiceCascading(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -11337,6 +11352,7 @@ class NodeConversationNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -12062,6 +12078,7 @@ class NodeSubagentNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -13745,6 +13762,7 @@ class NodeEndNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -14226,6 +14244,7 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -14723,6 +14742,7 @@ class NodeCodeNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -15444,6 +15464,7 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -15929,6 +15950,7 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -16393,6 +16415,7 @@ class NodeBranchNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -16854,6 +16877,7 @@ class NodeSMSNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -17434,6 +17458,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -17828,6 +17853,7 @@ class NodeAgentSwapNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -18339,6 +18365,7 @@ class NodeMcpNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -19113,6 +19140,7 @@ class NodeBridgeTransferNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
@@ -19442,6 +19470,7 @@ class NodeCancelTransferNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-argon",
     ]
     """The LLM model to use"""
 
