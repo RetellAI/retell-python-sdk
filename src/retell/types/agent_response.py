@@ -1737,6 +1737,9 @@ class AgentResponse(BaseModel):
     is_published: Optional[bool] = None
     """Whether the agent is published."""
 
+    is_transfer_agent: Optional[bool] = None
+    """Whether the agent is a transfer agent used for agentic warm transfer."""
+
     ivr_option: Optional[IvrOption] = None
     """
     If this option is set, the call will try to detect IVR in the first 3 minutes of
@@ -1946,6 +1949,7 @@ class AgentResponse(BaseModel):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-argon",
         ]
     ] = None
     """The model to use for post call analysis. Default to gpt-5.6-terra."""

@@ -2729,6 +2729,7 @@ class LlmResponse(BaseModel):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-argon",
         ]
     ] = None
     """Select the underlying text LLM. If not set, would default to gpt-5.6-terra."""

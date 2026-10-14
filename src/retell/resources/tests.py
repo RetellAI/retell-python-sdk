@@ -141,6 +141,7 @@ class TestsResource(SyncAPIResource):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-argon",
         ]
         | Omit = omit,
         tool_mocks: Iterable[test_create_test_case_definition_params.ToolMock] | Omit = omit,
@@ -549,6 +550,7 @@ class TestsResource(SyncAPIResource):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-argon",
         ]
         | Omit = omit,
         metrics: SequenceNotStr[str] | Omit = omit,
@@ -720,6 +722,7 @@ class AsyncTestsResource(AsyncAPIResource):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-argon",
         ]
         | Omit = omit,
         tool_mocks: Iterable[test_create_test_case_definition_params.ToolMock] | Omit = omit,
@@ -1128,6 +1131,7 @@ class AsyncTestsResource(AsyncAPIResource):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-argon",
         ]
         | Omit = omit,
         metrics: SequenceNotStr[str] | Omit = omit,

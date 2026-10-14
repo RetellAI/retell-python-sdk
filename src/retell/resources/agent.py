@@ -111,6 +111,7 @@ class AgentResource(SyncAPIResource):
         guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
         handbook_config: agent_create_params.HandbookConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
+        is_transfer_agent: bool | Omit = omit,
         ivr_option: Optional[agent_create_params.IvrOption] | Omit = omit,
         language: Union[
             Literal[
@@ -285,6 +286,7 @@ class AgentResource(SyncAPIResource):
                 "gemini-3.6-flash",
                 "gemini-3.7-flash",
                 "gemini-3.8-flash",
+                "gemini-4-argon",
             ]
         ]
         | Omit = omit,
@@ -504,6 +506,11 @@ class AgentResource(SyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
+          is_transfer_agent: Whether to create the agent as a transfer agent for agentic warm transfer. You
+              can only set this field when creating the agent. The response engine must also
+              be configured for transfer use with is_transfer_llm or is_transfer_cf. Custom
+              LLM agents cannot be transfer agents.
+
           ivr_option: If this option is set, the call will try to detect IVR in the first 3 minutes of
               the call. Actions defined will be applied when the IVR is detected. Set this to
               null to disable IVR detection.
@@ -659,6 +666,7 @@ class AgentResource(SyncAPIResource):
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
                     "interruption_sensitivity": interruption_sensitivity,
+                    "is_transfer_agent": is_transfer_agent,
                     "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
@@ -965,6 +973,7 @@ class AgentResource(SyncAPIResource):
                 "gemini-3.6-flash",
                 "gemini-3.7-flash",
                 "gemini-3.8-flash",
+                "gemini-4-argon",
             ]
         ]
         | Omit = omit,
@@ -1786,6 +1795,7 @@ class AsyncAgentResource(AsyncAPIResource):
         guardrail_config: agent_create_params.GuardrailConfig | Omit = omit,
         handbook_config: agent_create_params.HandbookConfig | Omit = omit,
         interruption_sensitivity: float | Omit = omit,
+        is_transfer_agent: bool | Omit = omit,
         ivr_option: Optional[agent_create_params.IvrOption] | Omit = omit,
         language: Union[
             Literal[
@@ -1960,6 +1970,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gemini-3.6-flash",
                 "gemini-3.7-flash",
                 "gemini-3.8-flash",
+                "gemini-4-argon",
             ]
         ]
         | Omit = omit,
@@ -2179,6 +2190,11 @@ class AsyncAgentResource(AsyncAPIResource):
               unset, default value 1 will apply. When this is set to 0, agent would never be
               interrupted.
 
+          is_transfer_agent: Whether to create the agent as a transfer agent for agentic warm transfer. You
+              can only set this field when creating the agent. The response engine must also
+              be configured for transfer use with is_transfer_llm or is_transfer_cf. Custom
+              LLM agents cannot be transfer agents.
+
           ivr_option: If this option is set, the call will try to detect IVR in the first 3 minutes of
               the call. Actions defined will be applied when the IVR is detected. Set this to
               null to disable IVR detection.
@@ -2334,6 +2350,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "guardrail_config": guardrail_config,
                     "handbook_config": handbook_config,
                     "interruption_sensitivity": interruption_sensitivity,
+                    "is_transfer_agent": is_transfer_agent,
                     "ivr_option": ivr_option,
                     "language": language,
                     "max_call_duration_ms": max_call_duration_ms,
@@ -2640,6 +2657,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 "gemini-3.6-flash",
                 "gemini-3.7-flash",
                 "gemini-3.8-flash",
+                "gemini-4-argon",
             ]
         ]
         | Omit = omit,

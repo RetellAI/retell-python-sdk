@@ -420,6 +420,11 @@ class TestChatAgent:
                     "type": "string",
                     "value": "voice",
                 },
+                "is_transfer_agent": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
                 "query": "query",
             },
         )
@@ -1042,6 +1047,11 @@ class TestAsyncChatAgent:
                     "op": "eq",
                     "type": "string",
                     "value": "voice",
+                },
+                "is_transfer_agent": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
                 },
                 "query": "query",
             },

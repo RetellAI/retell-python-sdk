@@ -317,6 +317,14 @@ class AgentCreateParams(TypedDict, total=False):
     agent would never be interrupted.
     """
 
+    is_transfer_agent: bool
+    """Whether to create the agent as a transfer agent for agentic warm transfer.
+
+    You can only set this field when creating the agent. The response engine must
+    also be configured for transfer use with is_transfer_llm or is_transfer_cf.
+    Custom LLM agents cannot be transfer agents.
+    """
+
     ivr_option: Optional[IvrOption]
     """
     If this option is set, the call will try to detect IVR in the first 3 minutes of
@@ -525,6 +533,7 @@ class AgentCreateParams(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-argon",
         ]
     ]
     """The model to use for post call analysis. Default to gpt-5.6-terra."""
