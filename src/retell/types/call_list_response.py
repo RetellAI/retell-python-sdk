@@ -157,7 +157,7 @@ class ItemV3WebCallResponseLatencyE2E(BaseModel):
 
 class ItemV3WebCallResponseLatencyKnowledgeBase(BaseModel):
     """
-    Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
+    Knowledge base latency (from the triggering of knowledge base retrieval to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
     """
 
     max: Optional[float] = None
@@ -327,7 +327,7 @@ class ItemV3WebCallResponseLatency(BaseModel):
 
     knowledge_base: Optional[ItemV3WebCallResponseLatencyKnowledgeBase] = None
     """
-    Knowledge base latency (from the triggering of knowledge base retrival to all
+    Knowledge base latency (from the triggering of knowledge base retrieval to all
     relevant context received) tracking of the call. Only populated when using
     knowledge base feature for the agent of the call.
     """
@@ -714,7 +714,7 @@ class ItemV3PhoneCallResponseLatencyE2E(BaseModel):
 
 class ItemV3PhoneCallResponseLatencyKnowledgeBase(BaseModel):
     """
-    Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
+    Knowledge base latency (from the triggering of knowledge base retrieval to all relevant context received) tracking of the call. Only populated when using knowledge base feature for the agent of the call.
     """
 
     max: Optional[float] = None
@@ -884,7 +884,7 @@ class ItemV3PhoneCallResponseLatency(BaseModel):
 
     knowledge_base: Optional[ItemV3PhoneCallResponseLatencyKnowledgeBase] = None
     """
-    Knowledge base latency (from the triggering of knowledge base retrival to all
+    Knowledge base latency (from the triggering of knowledge base retrieval to all
     relevant context received) tracking of the call. Only populated when using
     knowledge base feature for the agent of the call.
     """
