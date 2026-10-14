@@ -622,7 +622,8 @@ class CallResource(SyncAPIResource):
 
         The agent stops responding and
         the specified live-listen participant is allowed to speak directly to the
-        caller. The call must be in ONGOING status.
+        caller. The call must be in ONGOING status. Gateway calls cannot be taken over
+        while a PCI session is active.
 
         Args:
           participant_id: The id of the live-listen participant to upgrade, obtained when joining via
@@ -1285,7 +1286,8 @@ class AsyncCallResource(AsyncAPIResource):
 
         The agent stops responding and
         the specified live-listen participant is allowed to speak directly to the
-        caller. The call must be in ONGOING status.
+        caller. The call must be in ONGOING status. Gateway calls cannot be taken over
+        while a PCI session is active.
 
         Args:
           participant_id: The id of the live-listen participant to upgrade, obtained when joining via
