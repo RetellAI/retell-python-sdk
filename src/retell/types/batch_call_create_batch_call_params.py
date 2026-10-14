@@ -1531,7 +1531,7 @@ class TaskAgentOverrideAgentVoicemailOption(TypedDict, total=False):
 class TaskAgentOverrideAgent(TypedDict, total=False):
     """Override agent configuration settings.
 
-    Any properties specified here will override the base agent configuration for this call.
+    Any properties specified here will override the base agent configuration for this call. If a Retell LLM or Conversation Flow response engine is specified without a version, it uses the latest version.
     """
 
     agent_name: Optional[str]
@@ -2425,7 +2425,8 @@ class TaskAgentOverride(TypedDict, total=False):
     """Override agent configuration settings.
 
     Any properties specified here will override the base agent configuration for
-    this call.
+    this call. If a Retell LLM or Conversation Flow response engine is specified
+    without a version, it uses the latest version.
     """
 
     conversation_flow: TaskAgentOverrideConversationFlow
