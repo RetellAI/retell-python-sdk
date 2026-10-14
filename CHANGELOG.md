@@ -1,5 +1,14 @@
 # Changelog
 
+## [6.2.6](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.5...v6.2.6) (2026-10-13)
+
+
+### Bug Fixes
+
+* **api:** Add the new `type` field to tool call invocation messages and document known values. ([4ce4443](https://github.com/RetellAI/retell-python-sdk/commit/4ce4443a9b473b2d86d34f55d617225f533a5259))
+* **api:** Clarify that `name` contains the configured tool or node name, not the tool kind. ([4ce4443](https://github.com/RetellAI/retell-python-sdk/commit/4ce4443a9b473b2d86d34f55d617225f533a5259))
+* **api:** Remove gpt-4.1-nano and claude-4.5-sonnet from LLM model enums. ([7cdf93e](https://github.com/RetellAI/retell-python-sdk/commit/7cdf93e62c6c783370ba761fb436bb28049918a8))
+
 ## [6.2.5](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.4...v6.2.5) (2026-10-09)
 
 
