@@ -2135,6 +2135,13 @@ class ComponentNodeConversationNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
     prompt: Required[str]
@@ -2873,6 +2880,13 @@ class ComponentNodeSubagentNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
@@ -4571,6 +4585,13 @@ class ComponentNodeEndNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class ComponentNodeEndNode(TypedDict, total=False):
     id: Required[str]
@@ -5064,6 +5085,13 @@ class ComponentNodeFunctionNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class ComponentNodeFunctionNode(TypedDict, total=False):
@@ -5569,6 +5597,13 @@ class ComponentNodeCodeNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class ComponentNodeCodeNode(TypedDict, total=False):
@@ -6325,6 +6360,13 @@ class ComponentNodeTransferCallNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class ComponentNodeTransferCallNode(TypedDict, total=False):
     id: Required[str]
@@ -6824,6 +6866,13 @@ class ComponentNodePressDigitNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class ComponentNodePressDigitNode(TypedDict, total=False):
     id: Required[str]
@@ -7298,6 +7347,13 @@ class ComponentNodeBranchNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class ComponentNodeBranchNode(TypedDict, total=False):
     id: Required[str]
@@ -7765,6 +7821,13 @@ class ComponentNodeSMSNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class ComponentNodeSMSNode(TypedDict, total=False):
@@ -8389,6 +8452,13 @@ class ComponentNodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class ComponentNodeExtractDynamicVariablesNode(TypedDict, total=False):
     id: Required[str]
@@ -8794,6 +8864,13 @@ class ComponentNodeAgentSwapNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class ComponentNodeAgentSwapNode(TypedDict, total=False):
@@ -9313,6 +9390,13 @@ class ComponentNodeMcpNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class ComponentNodeMcpNode(TypedDict, total=False):
@@ -10127,6 +10211,13 @@ class ComponentNodeBridgeTransferNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class ComponentNodeBridgeTransferNode(TypedDict, total=False):
     id: Required[str]
@@ -10483,6 +10574,13 @@ class ComponentNodeCancelTransferNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class ComponentNodeCancelTransferNode(TypedDict, total=False):
@@ -10993,6 +11091,13 @@ class ModelChoiceModelChoiceCascading(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class ModelChoiceModelChoiceS2S(TypedDict, total=False):
@@ -11598,6 +11703,13 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class NodeConversationNodeSkipResponseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
@@ -12330,6 +12442,13 @@ class NodeSubagentNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class NodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition(TypedDict, total=False):
@@ -14017,6 +14136,13 @@ class NodeEndNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class NodeEndNode(TypedDict, total=False):
     id: Required[str]
@@ -14504,6 +14630,13 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class NodeFunctionNode(TypedDict, total=False):
@@ -15006,6 +15139,13 @@ class NodeCodeNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class NodeCodeNode(TypedDict, total=False):
@@ -15735,6 +15875,13 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class NodeTransferCallNode(TypedDict, total=False):
     id: Required[str]
@@ -16225,6 +16372,13 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class NodePressDigitNode(TypedDict, total=False):
     id: Required[str]
@@ -16696,6 +16850,13 @@ class NodeBranchNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class NodeBranchNode(TypedDict, total=False):
     id: Required[str]
@@ -17161,6 +17322,13 @@ class NodeSMSNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class NodeSMSNode(TypedDict, total=False):
@@ -17761,6 +17929,13 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class NodeExtractDynamicVariablesNode(TypedDict, total=False):
     id: Required[str]
@@ -18159,6 +18334,13 @@ class NodeAgentSwapNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class NodeAgentSwapNode(TypedDict, total=False):
@@ -18675,6 +18857,13 @@ class NodeMcpNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class NodeMcpNode(TypedDict, total=False):
@@ -19461,6 +19650,13 @@ class NodeBridgeTransferNodeModelChoice(TypedDict, total=False):
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
 
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
 
 class NodeBridgeTransferNode(TypedDict, total=False):
     id: Required[str]
@@ -19796,6 +19992,13 @@ class NodeCancelTransferNodeModelChoice(TypedDict, total=False):
 
     high_priority: bool
     """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: bool
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
 
 
 class NodeCancelTransferNode(TypedDict, total=False):

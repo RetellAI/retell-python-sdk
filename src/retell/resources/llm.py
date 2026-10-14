@@ -96,6 +96,7 @@ class LlmResource(SyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
+        model_ultrafast: Optional[bool] | Omit = omit,
         s2s_model: Optional[
             Literal[
                 "gpt-realtime-2.1",
@@ -168,6 +169,11 @@ class LlmResource(SyncAPIResource):
               unset, default value 0 will apply. Note that for tool calling, a lower value is
               recommended.
 
+          model_ultrafast: If set to true, will use the ultrafast tier for much faster response generation,
+              default to false. Only supported by gpt-6.1-sol on voice agents; ignored
+              otherwise. Takes precedence over model_high_priority. This feature comes with a
+              higher cost.
+
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
@@ -209,6 +215,7 @@ class LlmResource(SyncAPIResource):
                     "model": model,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
+                    "model_ultrafast": model_ultrafast,
                     "s2s_model": s2s_model,
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
@@ -316,6 +323,7 @@ class LlmResource(SyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
+        model_ultrafast: Optional[bool] | Omit = omit,
         s2s_model: Optional[
             Literal[
                 "gpt-realtime-2.1",
@@ -388,6 +396,11 @@ class LlmResource(SyncAPIResource):
               unset, default value 0 will apply. Note that for tool calling, a lower value is
               recommended.
 
+          model_ultrafast: If set to true, will use the ultrafast tier for much faster response generation,
+              default to false. Only supported by gpt-6.1-sol on voice agents; ignored
+              otherwise. Takes precedence over model_high_priority. This feature comes with a
+              higher cost.
+
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
@@ -431,6 +444,7 @@ class LlmResource(SyncAPIResource):
                     "model": model,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
+                    "model_ultrafast": model_ultrafast,
                     "s2s_model": s2s_model,
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
@@ -614,6 +628,7 @@ class AsyncLlmResource(AsyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
+        model_ultrafast: Optional[bool] | Omit = omit,
         s2s_model: Optional[
             Literal[
                 "gpt-realtime-2.1",
@@ -686,6 +701,11 @@ class AsyncLlmResource(AsyncAPIResource):
               unset, default value 0 will apply. Note that for tool calling, a lower value is
               recommended.
 
+          model_ultrafast: If set to true, will use the ultrafast tier for much faster response generation,
+              default to false. Only supported by gpt-6.1-sol on voice agents; ignored
+              otherwise. Takes precedence over model_high_priority. This feature comes with a
+              higher cost.
+
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
@@ -727,6 +747,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "model": model,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
+                    "model_ultrafast": model_ultrafast,
                     "s2s_model": s2s_model,
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
@@ -834,6 +855,7 @@ class AsyncLlmResource(AsyncAPIResource):
         | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
+        model_ultrafast: Optional[bool] | Omit = omit,
         s2s_model: Optional[
             Literal[
                 "gpt-realtime-2.1",
@@ -906,6 +928,11 @@ class AsyncLlmResource(AsyncAPIResource):
               unset, default value 0 will apply. Note that for tool calling, a lower value is
               recommended.
 
+          model_ultrafast: If set to true, will use the ultrafast tier for much faster response generation,
+              default to false. Only supported by gpt-6.1-sol on voice agents; ignored
+              otherwise. Takes precedence over model_high_priority. This feature comes with a
+              higher cost.
+
           s2s_model: Select the underlying speech to speech model. Can only set this or model, not
               both.
 
@@ -949,6 +976,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "model": model,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
+                    "model_ultrafast": model_ultrafast,
                     "s2s_model": s2s_model,
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
