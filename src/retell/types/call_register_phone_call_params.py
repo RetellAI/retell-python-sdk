@@ -1528,7 +1528,7 @@ class AgentOverrideAgentVoicemailOption(TypedDict, total=False):
 class AgentOverrideAgent(TypedDict, total=False):
     """Override agent configuration settings.
 
-    Any properties specified here will override the base agent configuration for this call.
+    Any properties specified here will override the base agent configuration for this call. If a Retell LLM or Conversation Flow response engine is specified without a version, it uses the latest version.
     """
 
     agent_name: Optional[str]
@@ -2421,7 +2421,8 @@ class AgentOverride(TypedDict, total=False):
     """Override agent configuration settings.
 
     Any properties specified here will override the base agent configuration for
-    this call.
+    this call. If a Retell LLM or Conversation Flow response engine is specified
+    without a version, it uses the latest version.
     """
 
     conversation_flow: AgentOverrideConversationFlow
