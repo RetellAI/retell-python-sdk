@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.2.7](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.6...v6.2.7) (2026-10-15)
+
+
+### Bug Fixes
+
+* **api:** Add a 409 Conflict response for takeOverLiveCall when a PCI session is active. ([c383015](https://github.com/RetellAI/retell-python-sdk/commit/c383015b5b211949fe6b77a9d880beb7342689b5))
+* **api:** Add is_transfer_agent to agent create requests, agent responses, and agent list filters. ([c3eaf6d](https://github.com/RetellAI/retell-python-sdk/commit/c3eaf6d20dd3bc2972d08fc418043bc4ea642aed))
+* **api:** Add model_ultrafast and ultrafast override fields to Retell LLM configurations. ([207e06f](https://github.com/RetellAI/retell-python-sdk/commit/207e06fb009116fcaacd4ce708d186271f01769e))
+* **api:** api update ([87bdfdd](https://github.com/RetellAI/retell-python-sdk/commit/87bdfdd67eb16fad3988e5913cd263f40ec5483b))
+* **api:** Clarify that AgentOverrideRequest uses the latest version when no response-engine version is provided. ([747ff86](https://github.com/RetellAI/retell-python-sdk/commit/747ff86e2ec32bdcd164cf1330adead3439226b8))
+
 ## [6.2.6](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.5...v6.2.6) (2026-10-13)
 
 
