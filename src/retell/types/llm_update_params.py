@@ -38,6 +38,12 @@ __all__ = [
     "GeneralToolSendSMSToolSMSContentSMSContentPredefined",
     "GeneralToolSendSMSToolSMSContentSMSContentInferred",
     "GeneralToolSendSMSToolSMSContentSMSContentTemplate",
+    "GeneralToolSendSMSToolSMSDestination",
+    "GeneralToolSendSMSToolSMSDestinationDestinationCustomerNumber",
+    "GeneralToolSendSMSToolSMSDestinationDestinationPhoneNumber",
+    "GeneralToolSendSMSToolSMSSender",
+    "GeneralToolSendSMSToolSMSSenderSenderCurrentNumber",
+    "GeneralToolSendSMSToolSMSSenderSenderRetellLongCode",
     "GeneralToolCustomTool",
     "GeneralToolCustomToolParameters",
     "GeneralToolCodeTool",
@@ -89,6 +95,12 @@ __all__ = [
     "StateToolSendSMSToolSMSContentSMSContentPredefined",
     "StateToolSendSMSToolSMSContentSMSContentInferred",
     "StateToolSendSMSToolSMSContentSMSContentTemplate",
+    "StateToolSendSMSToolSMSDestination",
+    "StateToolSendSMSToolSMSDestinationDestinationCustomerNumber",
+    "StateToolSendSMSToolSMSDestinationDestinationPhoneNumber",
+    "StateToolSendSMSToolSMSSender",
+    "StateToolSendSMSToolSMSSenderSenderCurrentNumber",
+    "StateToolSendSMSToolSMSSenderSenderRetellLongCode",
     "StateToolCustomTool",
     "StateToolCustomToolParameters",
     "StateToolCodeTool",
@@ -790,6 +802,45 @@ GeneralToolSendSMSToolSMSContent: TypeAlias = Union[
 ]
 
 
+class GeneralToolSendSMSToolSMSDestinationDestinationCustomerNumber(TypedDict, total=False):
+    type: Required[Literal["customer_number"]]
+
+
+class GeneralToolSendSMSToolSMSDestinationDestinationPhoneNumber(TypedDict, total=False):
+    phone_number: Required[str]
+    """Destination phone number in E.164 format."""
+
+    type: Required[Literal["phone_number"]]
+
+    ignore_e164_validation: bool
+    """
+    If true, skip E.164 validation for this phone number (same semantics as
+    transfer_call ignore_e164_validation).
+    """
+
+
+GeneralToolSendSMSToolSMSDestination: TypeAlias = Union[
+    GeneralToolSendSMSToolSMSDestinationDestinationCustomerNumber,
+    GeneralToolSendSMSToolSMSDestinationDestinationPhoneNumber,
+    Optional[object],
+]
+
+
+class GeneralToolSendSMSToolSMSSenderSenderCurrentNumber(TypedDict, total=False):
+    type: Required[Literal["current_number"]]
+
+
+class GeneralToolSendSMSToolSMSSenderSenderRetellLongCode(TypedDict, total=False):
+    type: Required[Literal["retell_long_code"]]
+
+
+GeneralToolSendSMSToolSMSSender: TypeAlias = Union[
+    GeneralToolSendSMSToolSMSSenderSenderCurrentNumber,
+    GeneralToolSendSMSToolSMSSenderSenderRetellLongCode,
+    Optional[object],
+]
+
+
 class GeneralToolSendSMSTool(TypedDict, total=False):
     name: Required[str]
     """Name of the tool.
@@ -822,6 +873,21 @@ class GeneralToolSendSMSTool(TypedDict, total=False):
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
     """
+
+    sms_destination: GeneralToolSendSMSToolSMSDestination
+    """SMS destination number configuration.
+
+    If omitted, the message is sent to the customer number on the call.
+    """
+
+    sms_sender: GeneralToolSendSMSToolSMSSender
+    """SMS sender number configuration.
+
+    If omitted, the message is sent from the agent's phone number.
+    """
+
+    speak_after_execution: bool
+    """Whether the agent should speak after the SMS tool finishes execution."""
 
     speak_during_execution: bool
     """If true, the agent will speak a short line before sending the SMS.
@@ -2072,6 +2138,45 @@ StateToolSendSMSToolSMSContent: TypeAlias = Union[
 ]
 
 
+class StateToolSendSMSToolSMSDestinationDestinationCustomerNumber(TypedDict, total=False):
+    type: Required[Literal["customer_number"]]
+
+
+class StateToolSendSMSToolSMSDestinationDestinationPhoneNumber(TypedDict, total=False):
+    phone_number: Required[str]
+    """Destination phone number in E.164 format."""
+
+    type: Required[Literal["phone_number"]]
+
+    ignore_e164_validation: bool
+    """
+    If true, skip E.164 validation for this phone number (same semantics as
+    transfer_call ignore_e164_validation).
+    """
+
+
+StateToolSendSMSToolSMSDestination: TypeAlias = Union[
+    StateToolSendSMSToolSMSDestinationDestinationCustomerNumber,
+    StateToolSendSMSToolSMSDestinationDestinationPhoneNumber,
+    Optional[object],
+]
+
+
+class StateToolSendSMSToolSMSSenderSenderCurrentNumber(TypedDict, total=False):
+    type: Required[Literal["current_number"]]
+
+
+class StateToolSendSMSToolSMSSenderSenderRetellLongCode(TypedDict, total=False):
+    type: Required[Literal["retell_long_code"]]
+
+
+StateToolSendSMSToolSMSSender: TypeAlias = Union[
+    StateToolSendSMSToolSMSSenderSenderCurrentNumber,
+    StateToolSendSMSToolSMSSenderSenderRetellLongCode,
+    Optional[object],
+]
+
+
 class StateToolSendSMSTool(TypedDict, total=False):
     name: Required[str]
     """Name of the tool.
@@ -2104,6 +2209,21 @@ class StateToolSendSMSTool(TypedDict, total=False):
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
     """
+
+    sms_destination: StateToolSendSMSToolSMSDestination
+    """SMS destination number configuration.
+
+    If omitted, the message is sent to the customer number on the call.
+    """
+
+    sms_sender: StateToolSendSMSToolSMSSender
+    """SMS sender number configuration.
+
+    If omitted, the message is sent from the agent's phone number.
+    """
+
+    speak_after_execution: bool
+    """Whether the agent should speak after the SMS tool finishes execution."""
 
     speak_during_execution: bool
     """If true, the agent will speak a short line before sending the SMS.

@@ -38,6 +38,12 @@ __all__ = [
     "GeneralToolSendSMSToolSMSContentSMSContentPredefined",
     "GeneralToolSendSMSToolSMSContentSMSContentInferred",
     "GeneralToolSendSMSToolSMSContentSMSContentTemplate",
+    "GeneralToolSendSMSToolSMSDestination",
+    "GeneralToolSendSMSToolSMSDestinationDestinationCustomerNumber",
+    "GeneralToolSendSMSToolSMSDestinationDestinationPhoneNumber",
+    "GeneralToolSendSMSToolSMSSender",
+    "GeneralToolSendSMSToolSMSSenderSenderCurrentNumber",
+    "GeneralToolSendSMSToolSMSSenderSenderRetellLongCode",
     "GeneralToolCustomTool",
     "GeneralToolCustomToolParameters",
     "GeneralToolCodeTool",
@@ -89,6 +95,12 @@ __all__ = [
     "StateToolSendSMSToolSMSContentSMSContentPredefined",
     "StateToolSendSMSToolSMSContentSMSContentInferred",
     "StateToolSendSMSToolSMSContentSMSContentTemplate",
+    "StateToolSendSMSToolSMSDestination",
+    "StateToolSendSMSToolSMSDestinationDestinationCustomerNumber",
+    "StateToolSendSMSToolSMSDestinationDestinationPhoneNumber",
+    "StateToolSendSMSToolSMSSender",
+    "StateToolSendSMSToolSMSSenderSenderCurrentNumber",
+    "StateToolSendSMSToolSMSSenderSenderRetellLongCode",
     "StateToolCustomTool",
     "StateToolCustomToolParameters",
     "StateToolCodeTool",
@@ -634,6 +646,45 @@ GeneralToolSendSMSToolSMSContent: TypeAlias = Union[
 ]
 
 
+class GeneralToolSendSMSToolSMSDestinationDestinationCustomerNumber(BaseModel):
+    type: Literal["customer_number"]
+
+
+class GeneralToolSendSMSToolSMSDestinationDestinationPhoneNumber(BaseModel):
+    phone_number: str
+    """Destination phone number in E.164 format."""
+
+    type: Literal["phone_number"]
+
+    ignore_e164_validation: Optional[bool] = None
+    """
+    If true, skip E.164 validation for this phone number (same semantics as
+    transfer_call ignore_e164_validation).
+    """
+
+
+GeneralToolSendSMSToolSMSDestination: TypeAlias = Union[
+    GeneralToolSendSMSToolSMSDestinationDestinationCustomerNumber,
+    GeneralToolSendSMSToolSMSDestinationDestinationPhoneNumber,
+    Optional[object],
+]
+
+
+class GeneralToolSendSMSToolSMSSenderSenderCurrentNumber(BaseModel):
+    type: Literal["current_number"]
+
+
+class GeneralToolSendSMSToolSMSSenderSenderRetellLongCode(BaseModel):
+    type: Literal["retell_long_code"]
+
+
+GeneralToolSendSMSToolSMSSender: TypeAlias = Union[
+    GeneralToolSendSMSToolSMSSenderSenderCurrentNumber,
+    GeneralToolSendSMSToolSMSSenderSenderRetellLongCode,
+    Optional[object],
+]
+
+
 class GeneralToolSendSMSTool(BaseModel):
     name: str
     """Name of the tool.
@@ -666,6 +717,21 @@ class GeneralToolSendSMSTool(BaseModel):
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
     """
+
+    sms_destination: Optional[GeneralToolSendSMSToolSMSDestination] = None
+    """SMS destination number configuration.
+
+    If omitted, the message is sent to the customer number on the call.
+    """
+
+    sms_sender: Optional[GeneralToolSendSMSToolSMSSender] = None
+    """SMS sender number configuration.
+
+    If omitted, the message is sent from the agent's phone number.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """Whether the agent should speak after the SMS tool finishes execution."""
 
     speak_during_execution: Optional[bool] = None
     """If true, the agent will speak a short line before sending the SMS.
@@ -1918,6 +1984,45 @@ StateToolSendSMSToolSMSContent: TypeAlias = Union[
 ]
 
 
+class StateToolSendSMSToolSMSDestinationDestinationCustomerNumber(BaseModel):
+    type: Literal["customer_number"]
+
+
+class StateToolSendSMSToolSMSDestinationDestinationPhoneNumber(BaseModel):
+    phone_number: str
+    """Destination phone number in E.164 format."""
+
+    type: Literal["phone_number"]
+
+    ignore_e164_validation: Optional[bool] = None
+    """
+    If true, skip E.164 validation for this phone number (same semantics as
+    transfer_call ignore_e164_validation).
+    """
+
+
+StateToolSendSMSToolSMSDestination: TypeAlias = Union[
+    StateToolSendSMSToolSMSDestinationDestinationCustomerNumber,
+    StateToolSendSMSToolSMSDestinationDestinationPhoneNumber,
+    Optional[object],
+]
+
+
+class StateToolSendSMSToolSMSSenderSenderCurrentNumber(BaseModel):
+    type: Literal["current_number"]
+
+
+class StateToolSendSMSToolSMSSenderSenderRetellLongCode(BaseModel):
+    type: Literal["retell_long_code"]
+
+
+StateToolSendSMSToolSMSSender: TypeAlias = Union[
+    StateToolSendSMSToolSMSSenderSenderCurrentNumber,
+    StateToolSendSMSToolSMSSenderSenderRetellLongCode,
+    Optional[object],
+]
+
+
 class StateToolSendSMSTool(BaseModel):
     name: str
     """Name of the tool.
@@ -1950,6 +2055,21 @@ class StateToolSendSMSTool(BaseModel):
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
     """
+
+    sms_destination: Optional[StateToolSendSMSToolSMSDestination] = None
+    """SMS destination number configuration.
+
+    If omitted, the message is sent to the customer number on the call.
+    """
+
+    sms_sender: Optional[StateToolSendSMSToolSMSSender] = None
+    """SMS sender number configuration.
+
+    If omitted, the message is sent from the agent's phone number.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """Whether the agent should speak after the SMS tool finishes execution."""
 
     speak_during_execution: Optional[bool] = None
     """If true, the agent will speak a short line before sending the SMS.

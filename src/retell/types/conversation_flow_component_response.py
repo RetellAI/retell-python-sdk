@@ -165,6 +165,12 @@ __all__ = [
     "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentPredefined",
     "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentInferred",
     "NodeSubagentNodeToolSendSMSToolSMSContentSMSContentTemplate",
+    "NodeSubagentNodeToolSendSMSToolSMSDestination",
+    "NodeSubagentNodeToolSendSMSToolSMSDestinationDestinationCustomerNumber",
+    "NodeSubagentNodeToolSendSMSToolSMSDestinationDestinationPhoneNumber",
+    "NodeSubagentNodeToolSendSMSToolSMSSender",
+    "NodeSubagentNodeToolSendSMSToolSMSSenderSenderCurrentNumber",
+    "NodeSubagentNodeToolSendSMSToolSMSSenderSenderRetellLongCode",
     "NodeSubagentNodeToolCustomTool",
     "NodeSubagentNodeToolCustomToolParameters",
     "NodeSubagentNodeToolCodeTool",
@@ -482,6 +488,12 @@ __all__ = [
     "NodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "NodeSMSNodeModelChoice",
+    "NodeSMSNodeSMSDestination",
+    "NodeSMSNodeSMSDestinationDestinationCustomerNumber",
+    "NodeSMSNodeSMSDestinationDestinationPhoneNumber",
+    "NodeSMSNodeSMSSender",
+    "NodeSMSNodeSMSSenderSenderCurrentNumber",
+    "NodeSMSNodeSMSSenderSenderRetellLongCode",
     "NodeExtractDynamicVariablesNode",
     "NodeExtractDynamicVariablesNodeVariable",
     "NodeExtractDynamicVariablesNodeVariableStringAnalysisData",
@@ -2632,6 +2644,45 @@ NodeSubagentNodeToolSendSMSToolSMSContent: TypeAlias = Union[
 ]
 
 
+class NodeSubagentNodeToolSendSMSToolSMSDestinationDestinationCustomerNumber(BaseModel):
+    type: Literal["customer_number"]
+
+
+class NodeSubagentNodeToolSendSMSToolSMSDestinationDestinationPhoneNumber(BaseModel):
+    phone_number: str
+    """Destination phone number in E.164 format."""
+
+    type: Literal["phone_number"]
+
+    ignore_e164_validation: Optional[bool] = None
+    """
+    If true, skip E.164 validation for this phone number (same semantics as
+    transfer_call ignore_e164_validation).
+    """
+
+
+NodeSubagentNodeToolSendSMSToolSMSDestination: TypeAlias = Union[
+    NodeSubagentNodeToolSendSMSToolSMSDestinationDestinationCustomerNumber,
+    NodeSubagentNodeToolSendSMSToolSMSDestinationDestinationPhoneNumber,
+    Optional[object],
+]
+
+
+class NodeSubagentNodeToolSendSMSToolSMSSenderSenderCurrentNumber(BaseModel):
+    type: Literal["current_number"]
+
+
+class NodeSubagentNodeToolSendSMSToolSMSSenderSenderRetellLongCode(BaseModel):
+    type: Literal["retell_long_code"]
+
+
+NodeSubagentNodeToolSendSMSToolSMSSender: TypeAlias = Union[
+    NodeSubagentNodeToolSendSMSToolSMSSenderSenderCurrentNumber,
+    NodeSubagentNodeToolSendSMSToolSMSSenderSenderRetellLongCode,
+    Optional[object],
+]
+
+
 class NodeSubagentNodeToolSendSMSTool(BaseModel):
     name: str
     """Name of the tool.
@@ -2664,6 +2715,21 @@ class NodeSubagentNodeToolSendSMSTool(BaseModel):
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
     """
+
+    sms_destination: Optional[NodeSubagentNodeToolSendSMSToolSMSDestination] = None
+    """SMS destination number configuration.
+
+    If omitted, the message is sent to the customer number on the call.
+    """
+
+    sms_sender: Optional[NodeSubagentNodeToolSendSMSToolSMSSender] = None
+    """SMS sender number configuration.
+
+    If omitted, the message is sent from the agent's phone number.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """Whether the agent should speak after the SMS tool finishes execution."""
 
     speak_during_execution: Optional[bool] = None
     """If true, the agent will speak a short line before sending the SMS.
@@ -6893,6 +6959,43 @@ class NodeSMSNodeModelChoice(BaseModel):
     """
 
 
+class NodeSMSNodeSMSDestinationDestinationCustomerNumber(BaseModel):
+    type: Literal["customer_number"]
+
+
+class NodeSMSNodeSMSDestinationDestinationPhoneNumber(BaseModel):
+    phone_number: str
+    """Destination phone number in E.164 format."""
+
+    type: Literal["phone_number"]
+
+    ignore_e164_validation: Optional[bool] = None
+    """
+    If true, skip E.164 validation for this phone number (same semantics as
+    transfer_call ignore_e164_validation).
+    """
+
+
+NodeSMSNodeSMSDestination: TypeAlias = Union[
+    NodeSMSNodeSMSDestinationDestinationCustomerNumber,
+    NodeSMSNodeSMSDestinationDestinationPhoneNumber,
+    Optional[object],
+]
+
+
+class NodeSMSNodeSMSSenderSenderCurrentNumber(BaseModel):
+    type: Literal["current_number"]
+
+
+class NodeSMSNodeSMSSenderSenderRetellLongCode(BaseModel):
+    type: Literal["retell_long_code"]
+
+
+NodeSMSNodeSMSSender: TypeAlias = Union[
+    NodeSMSNodeSMSSenderSenderCurrentNumber, NodeSMSNodeSMSSenderSenderRetellLongCode, Optional[object]
+]
+
+
 class NodeSMSNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -6920,6 +7023,18 @@ class NodeSMSNode(BaseModel):
 
     name: Optional[str] = None
     """Optional name for display purposes"""
+
+    sms_destination: Optional[NodeSMSNodeSMSDestination] = None
+    """SMS destination number configuration.
+
+    If omitted, the message is sent to the customer number on the call.
+    """
+
+    sms_sender: Optional[NodeSMSNodeSMSSender] = None
+    """SMS sender number configuration.
+
+    If omitted, the message is sent from the agent's phone number.
+    """
 
 
 class NodeExtractDynamicVariablesNodeVariableStringAnalysisData(BaseModel):

@@ -47,6 +47,12 @@ __all__ = [
     "AgentOverrideAgentPostSessionToolSendSMSToolSMSContentSMSContentTemplate",
     "AgentOverrideAgentPostSessionToolSendSMSToolCondition",
     "AgentOverrideAgentPostSessionToolSendSMSToolConditionEquation",
+    "AgentOverrideAgentPostSessionToolSendSMSToolSMSDestination",
+    "AgentOverrideAgentPostSessionToolSendSMSToolSMSDestinationDestinationCustomerNumber",
+    "AgentOverrideAgentPostSessionToolSendSMSToolSMSDestinationDestinationPhoneNumber",
+    "AgentOverrideAgentPostSessionToolSendSMSToolSMSSender",
+    "AgentOverrideAgentPostSessionToolSendSMSToolSMSSenderSenderCurrentNumber",
+    "AgentOverrideAgentPostSessionToolSendSMSToolSMSSenderSenderRetellLongCode",
     "AgentOverrideAgentPreSessionTool",
     "AgentOverrideAgentPreSessionToolAppTool",
     "AgentOverrideAgentPreSessionToolAppToolOutputSelection",
@@ -972,6 +978,45 @@ class AgentOverrideAgentPostSessionToolSendSMSToolCondition(TypedDict, total=Fal
     type: Required[Literal["equation"]]
 
 
+class AgentOverrideAgentPostSessionToolSendSMSToolSMSDestinationDestinationCustomerNumber(TypedDict, total=False):
+    type: Required[Literal["customer_number"]]
+
+
+class AgentOverrideAgentPostSessionToolSendSMSToolSMSDestinationDestinationPhoneNumber(TypedDict, total=False):
+    phone_number: Required[str]
+    """Destination phone number in E.164 format."""
+
+    type: Required[Literal["phone_number"]]
+
+    ignore_e164_validation: bool
+    """
+    If true, skip E.164 validation for this phone number (same semantics as
+    transfer_call ignore_e164_validation).
+    """
+
+
+AgentOverrideAgentPostSessionToolSendSMSToolSMSDestination: TypeAlias = Union[
+    AgentOverrideAgentPostSessionToolSendSMSToolSMSDestinationDestinationCustomerNumber,
+    AgentOverrideAgentPostSessionToolSendSMSToolSMSDestinationDestinationPhoneNumber,
+    Optional[object],
+]
+
+
+class AgentOverrideAgentPostSessionToolSendSMSToolSMSSenderSenderCurrentNumber(TypedDict, total=False):
+    type: Required[Literal["current_number"]]
+
+
+class AgentOverrideAgentPostSessionToolSendSMSToolSMSSenderSenderRetellLongCode(TypedDict, total=False):
+    type: Required[Literal["retell_long_code"]]
+
+
+AgentOverrideAgentPostSessionToolSendSMSToolSMSSender: TypeAlias = Union[
+    AgentOverrideAgentPostSessionToolSendSMSToolSMSSenderSenderCurrentNumber,
+    AgentOverrideAgentPostSessionToolSendSMSToolSMSSenderSenderRetellLongCode,
+    Optional[object],
+]
+
+
 class AgentOverrideAgentPostSessionToolSendSMSTool(TypedDict, total=False):
     name: Required[str]
     """Name of the tool.
@@ -1013,6 +1058,21 @@ class AgentOverrideAgentPostSessionToolSendSMSTool(TypedDict, total=False):
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
     """
+
+    sms_destination: AgentOverrideAgentPostSessionToolSendSMSToolSMSDestination
+    """SMS destination number configuration.
+
+    If omitted, the message is sent to the customer number on the call.
+    """
+
+    sms_sender: AgentOverrideAgentPostSessionToolSendSMSToolSMSSender
+    """SMS sender number configuration.
+
+    If omitted, the message is sent from the agent's phone number.
+    """
+
+    speak_after_execution: bool
+    """Whether the agent should speak after the SMS tool finishes execution."""
 
     speak_during_execution: bool
     """If true, the agent will speak a short line before sending the SMS.
@@ -1837,7 +1897,6 @@ class AgentOverrideAgent(TypedDict, total=False):
             "ur-IN",
             "yue-CN",
             "uk-UA",
-            "multi",
         ],
         List[
             Literal[
@@ -1910,10 +1969,7 @@ class AgentOverrideAgent(TypedDict, total=False):
     """Specifies what language(s) the agent will operate in.
 
     Accepts either a single locale (e.g. `en-US`) or an array of locales for
-    multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is
-    deprecated but still accepted as a scalar, and is stored and returned as the ten
-    locales it used to mean. It must not appear inside the array form. Send an
-    explicit locale array instead. If unset, defaults to `en-US`.
+    multilingual agents (e.g. `["en-US","es-ES"]`). If unset, defaults to `en-US`.
     """
 
     max_call_duration_ms: int

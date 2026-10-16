@@ -178,7 +178,6 @@ class AgentResource(SyncAPIResource):
                 "ur-IN",
                 "yue-CN",
                 "uk-UA",
-                "multi",
             ],
             List[
                 Literal[
@@ -517,10 +516,7 @@ class AgentResource(SyncAPIResource):
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
-              `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted
-              as a scalar, and is stored and returned as the ten locales it used to mean. It
-              must not appear inside the array form. Send an explicit locale array instead. If
-              unset, defaults to `en-US`.
+              `["en-US","es-ES"]`). If unset, defaults to `en-US`.
 
           max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
@@ -865,7 +861,6 @@ class AgentResource(SyncAPIResource):
                 "ur-IN",
                 "yue-CN",
                 "uk-UA",
-                "multi",
             ],
             List[
                 Literal[
@@ -1196,10 +1191,7 @@ class AgentResource(SyncAPIResource):
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
-              `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted
-              as a scalar, and is stored and returned as the ten locales it used to mean. It
-              must not appear inside the array form. Send an explicit locale array instead. If
-              unset, defaults to `en-US`.
+              `["en-US","es-ES"]`). If unset, defaults to `en-US`.
 
           max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
@@ -1862,7 +1854,6 @@ class AsyncAgentResource(AsyncAPIResource):
                 "ur-IN",
                 "yue-CN",
                 "uk-UA",
-                "multi",
             ],
             List[
                 Literal[
@@ -2201,10 +2192,7 @@ class AsyncAgentResource(AsyncAPIResource):
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
-              `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted
-              as a scalar, and is stored and returned as the ten locales it used to mean. It
-              must not appear inside the array form. Send an explicit locale array instead. If
-              unset, defaults to `en-US`.
+              `["en-US","es-ES"]`). If unset, defaults to `en-US`.
 
           max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is
@@ -2549,7 +2537,6 @@ class AsyncAgentResource(AsyncAPIResource):
                 "ur-IN",
                 "yue-CN",
                 "uk-UA",
-                "multi",
             ],
             List[
                 Literal[
@@ -2880,10 +2867,7 @@ class AsyncAgentResource(AsyncAPIResource):
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
-              `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted
-              as a scalar, and is stored and returned as the ten locales it used to mean. It
-              must not appear inside the array form. Send an explicit locale array instead. If
-              unset, defaults to `en-US`.
+              `["en-US","es-ES"]`). If unset, defaults to `en-US`.
 
           max_call_duration_ms: Maximum allowed length for the call, will force end the call if reached. The
               minimum value allowed is 60,000 ms (1 min), and maximum value allowed is

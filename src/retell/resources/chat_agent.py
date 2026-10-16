@@ -132,7 +132,6 @@ class ChatAgentResource(SyncAPIResource):
                 "ur-IN",
                 "yue-CN",
                 "uk-UA",
-                "multi",
             ],
             List[
                 Literal[
@@ -298,10 +297,7 @@ class ChatAgentResource(SyncAPIResource):
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
-              `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted
-              as a scalar, and is stored and returned as the ten locales it used to mean. It
-              must not appear inside the array form. Send an explicit locale array instead. If
-              unset, defaults to `en-US`.
+              `["en-US","es-ES"]`). If unset, defaults to `en-US`.
 
           opt_in_signed_url: Whether this agent opts in to signed url for public log. If not set, default
               value of false will apply.
@@ -503,7 +499,6 @@ class ChatAgentResource(SyncAPIResource):
                 "ur-IN",
                 "yue-CN",
                 "uk-UA",
-                "multi",
             ],
             List[
                 Literal[
@@ -668,10 +663,7 @@ class ChatAgentResource(SyncAPIResource):
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
-              `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted
-              as a scalar, and is stored and returned as the ten locales it used to mean. It
-              must not appear inside the array form. Send an explicit locale array instead. If
-              unset, defaults to `en-US`.
+              `["en-US","es-ES"]`). If unset, defaults to `en-US`.
 
           opt_in_signed_url: Whether this agent opts in to signed url for public log. If not set, default
               value of false will apply.
@@ -1084,7 +1076,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "ur-IN",
                 "yue-CN",
                 "uk-UA",
-                "multi",
             ],
             List[
                 Literal[
@@ -1250,10 +1241,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
-              `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted
-              as a scalar, and is stored and returned as the ten locales it used to mean. It
-              must not appear inside the array form. Send an explicit locale array instead. If
-              unset, defaults to `en-US`.
+              `["en-US","es-ES"]`). If unset, defaults to `en-US`.
 
           opt_in_signed_url: Whether this agent opts in to signed url for public log. If not set, default
               value of false will apply.
@@ -1457,7 +1445,6 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 "ur-IN",
                 "yue-CN",
                 "uk-UA",
-                "multi",
             ],
             List[
                 Literal[
@@ -1622,10 +1609,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
-              `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted
-              as a scalar, and is stored and returned as the ten locales it used to mean. It
-              must not appear inside the array form. Send an explicit locale array instead. If
-              unset, defaults to `en-US`.
+              `["en-US","es-ES"]`). If unset, defaults to `en-US`.
 
           opt_in_signed_url: Whether this agent opts in to signed url for public log. If not set, default
               value of false will apply.
