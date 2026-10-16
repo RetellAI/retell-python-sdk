@@ -45,6 +45,12 @@ __all__ = [
     "PostSessionToolSendSMSToolSMSContentSMSContentTemplate",
     "PostSessionToolSendSMSToolCondition",
     "PostSessionToolSendSMSToolConditionEquation",
+    "PostSessionToolSendSMSToolSMSDestination",
+    "PostSessionToolSendSMSToolSMSDestinationDestinationCustomerNumber",
+    "PostSessionToolSendSMSToolSMSDestinationDestinationPhoneNumber",
+    "PostSessionToolSendSMSToolSMSSender",
+    "PostSessionToolSendSMSToolSMSSenderSenderCurrentNumber",
+    "PostSessionToolSendSMSToolSMSSenderSenderRetellLongCode",
     "PreSessionTool",
     "PreSessionToolAppTool",
     "PreSessionToolAppToolOutputSelection",
@@ -379,7 +385,6 @@ class AgentUpdateParams(TypedDict, total=False):
             "ur-IN",
             "yue-CN",
             "uk-UA",
-            "multi",
         ],
         List[
             Literal[
@@ -452,10 +457,7 @@ class AgentUpdateParams(TypedDict, total=False):
     """Specifies what language(s) the agent will operate in.
 
     Accepts either a single locale (e.g. `en-US`) or an array of locales for
-    multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is
-    deprecated but still accepted as a scalar, and is stored and returned as the ten
-    locales it used to mean. It must not appear inside the array form. Send an
-    explicit locale array instead. If unset, defaults to `en-US`.
+    multilingual agents (e.g. `["en-US","es-ES"]`). If unset, defaults to `en-US`.
     """
 
     max_call_duration_ms: int
@@ -1575,6 +1577,45 @@ class PostSessionToolSendSMSToolCondition(TypedDict, total=False):
     type: Required[Literal["equation"]]
 
 
+class PostSessionToolSendSMSToolSMSDestinationDestinationCustomerNumber(TypedDict, total=False):
+    type: Required[Literal["customer_number"]]
+
+
+class PostSessionToolSendSMSToolSMSDestinationDestinationPhoneNumber(TypedDict, total=False):
+    phone_number: Required[str]
+    """Destination phone number in E.164 format."""
+
+    type: Required[Literal["phone_number"]]
+
+    ignore_e164_validation: bool
+    """
+    If true, skip E.164 validation for this phone number (same semantics as
+    transfer_call ignore_e164_validation).
+    """
+
+
+PostSessionToolSendSMSToolSMSDestination: TypeAlias = Union[
+    PostSessionToolSendSMSToolSMSDestinationDestinationCustomerNumber,
+    PostSessionToolSendSMSToolSMSDestinationDestinationPhoneNumber,
+    Optional[object],
+]
+
+
+class PostSessionToolSendSMSToolSMSSenderSenderCurrentNumber(TypedDict, total=False):
+    type: Required[Literal["current_number"]]
+
+
+class PostSessionToolSendSMSToolSMSSenderSenderRetellLongCode(TypedDict, total=False):
+    type: Required[Literal["retell_long_code"]]
+
+
+PostSessionToolSendSMSToolSMSSender: TypeAlias = Union[
+    PostSessionToolSendSMSToolSMSSenderSenderCurrentNumber,
+    PostSessionToolSendSMSToolSMSSenderSenderRetellLongCode,
+    Optional[object],
+]
+
+
 class PostSessionToolSendSMSTool(TypedDict, total=False):
     name: Required[str]
     """Name of the tool.
@@ -1616,6 +1657,21 @@ class PostSessionToolSendSMSTool(TypedDict, total=False):
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
     """
+
+    sms_destination: PostSessionToolSendSMSToolSMSDestination
+    """SMS destination number configuration.
+
+    If omitted, the message is sent to the customer number on the call.
+    """
+
+    sms_sender: PostSessionToolSendSMSToolSMSSender
+    """SMS sender number configuration.
+
+    If omitted, the message is sent from the agent's phone number.
+    """
+
+    speak_after_execution: bool
+    """Whether the agent should speak after the SMS tool finishes execution."""
 
     speak_during_execution: bool
     """If true, the agent will speak a short line before sending the SMS.

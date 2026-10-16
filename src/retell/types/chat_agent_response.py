@@ -43,6 +43,12 @@ __all__ = [
     "PostSessionToolSendSMSToolSMSContentSMSContentTemplate",
     "PostSessionToolSendSMSToolCondition",
     "PostSessionToolSendSMSToolConditionEquation",
+    "PostSessionToolSendSMSToolSMSDestination",
+    "PostSessionToolSendSMSToolSMSDestinationDestinationCustomerNumber",
+    "PostSessionToolSendSMSToolSMSDestinationDestinationPhoneNumber",
+    "PostSessionToolSendSMSToolSMSSender",
+    "PostSessionToolSendSMSToolSMSSenderSenderCurrentNumber",
+    "PostSessionToolSendSMSToolSMSSenderSenderRetellLongCode",
     "PreSessionTool",
     "PreSessionToolAppTool",
     "PreSessionToolAppToolOutputSelection",
@@ -865,6 +871,45 @@ class PostSessionToolSendSMSToolCondition(BaseModel):
     type: Literal["equation"]
 
 
+class PostSessionToolSendSMSToolSMSDestinationDestinationCustomerNumber(BaseModel):
+    type: Literal["customer_number"]
+
+
+class PostSessionToolSendSMSToolSMSDestinationDestinationPhoneNumber(BaseModel):
+    phone_number: str
+    """Destination phone number in E.164 format."""
+
+    type: Literal["phone_number"]
+
+    ignore_e164_validation: Optional[bool] = None
+    """
+    If true, skip E.164 validation for this phone number (same semantics as
+    transfer_call ignore_e164_validation).
+    """
+
+
+PostSessionToolSendSMSToolSMSDestination: TypeAlias = Union[
+    PostSessionToolSendSMSToolSMSDestinationDestinationCustomerNumber,
+    PostSessionToolSendSMSToolSMSDestinationDestinationPhoneNumber,
+    Optional[object],
+]
+
+
+class PostSessionToolSendSMSToolSMSSenderSenderCurrentNumber(BaseModel):
+    type: Literal["current_number"]
+
+
+class PostSessionToolSendSMSToolSMSSenderSenderRetellLongCode(BaseModel):
+    type: Literal["retell_long_code"]
+
+
+PostSessionToolSendSMSToolSMSSender: TypeAlias = Union[
+    PostSessionToolSendSMSToolSMSSenderSenderCurrentNumber,
+    PostSessionToolSendSMSToolSMSSenderSenderRetellLongCode,
+    Optional[object],
+]
+
+
 class PostSessionToolSendSMSTool(BaseModel):
     name: str
     """Name of the tool.
@@ -906,6 +951,21 @@ class PostSessionToolSendSMSTool(BaseModel):
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
     """
+
+    sms_destination: Optional[PostSessionToolSendSMSToolSMSDestination] = None
+    """SMS destination number configuration.
+
+    If omitted, the message is sent to the customer number on the call.
+    """
+
+    sms_sender: Optional[PostSessionToolSendSMSToolSMSSender] = None
+    """SMS sender number configuration.
+
+    If omitted, the message is sent from the agent's phone number.
+    """
+
+    speak_after_execution: Optional[bool] = None
+    """Whether the agent should speak after the SMS tool finishes execution."""
 
     speak_during_execution: Optional[bool] = None
     """If true, the agent will speak a short line before sending the SMS.
@@ -1430,7 +1490,6 @@ class ChatAgentResponse(BaseModel):
             "ur-IN",
             "yue-CN",
             "uk-UA",
-            "multi",
         ],
         List[
             Literal[
@@ -1504,10 +1563,7 @@ class ChatAgentResponse(BaseModel):
     """Specifies what language(s) the agent will operate in.
 
     Accepts either a single locale (e.g. `en-US`) or an array of locales for
-    multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is
-    deprecated but still accepted as a scalar, and is stored and returned as the ten
-    locales it used to mean. It must not appear inside the array form. Send an
-    explicit locale array instead. If unset, defaults to `en-US`.
+    multilingual agents (e.g. `["en-US","es-ES"]`). If unset, defaults to `en-US`.
     """
 
     opt_in_signed_url: Optional[bool] = None
