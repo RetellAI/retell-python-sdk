@@ -1,5 +1,14 @@
 # Changelog
 
+## [6.2.8](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.7...v6.2.8) (2026-10-17)
+
+
+### Bug Fixes
+
+* **api:** Add SMS sender and destination options, plus `speak_after_execution`, to SMS tools and nodes. ([8d6d4ff](https://github.com/RetellAI/retell-python-sdk/commit/8d6d4ff219a02bb7bb516a0305f2a15ae93167f9))
+* **api:** Clarify chart type behavior and revise the live-call takeover description for PCI sessions. ([8d6d4ff](https://github.com/RetellAI/retell-python-sdk/commit/8d6d4ff219a02bb7bb516a0305f2a15ae93167f9))
+* **api:** Remove the deprecated `multi` scalar from agent language fields; use a locale or locale array instead. ([8d6d4ff](https://github.com/RetellAI/retell-python-sdk/commit/8d6d4ff219a02bb7bb516a0305f2a15ae93167f9))
+
 ## [6.2.7](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.6...v6.2.7) (2026-10-15)
 
 
