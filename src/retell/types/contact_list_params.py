@@ -32,7 +32,7 @@ __all__ = [
 
 class ContactListParams(TypedDict, total=False):
     excluded_contact_ids: SequenceNotStr[str]
-    """Contact IDs to leave out of both the results and `total`."""
+    """Contact IDs to leave out of both the results and `total`, at most 1,000."""
 
     filter_criteria: FilterCriteria
     """Filter criteria for contacts.
