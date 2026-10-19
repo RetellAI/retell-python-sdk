@@ -208,7 +208,7 @@ class ContactResource(SyncAPIResource):
         repeat or miss rows as contacts are added or deleted.
 
         Args:
-          excluded_contact_ids: Contact IDs to leave out of both the results and `total`.
+          excluded_contact_ids: Contact IDs to leave out of both the results and `total`, at most 1,000.
 
           filter_criteria: Filter criteria for contacts. All conditions are implicitly connected with AND.
               first_name and last_name are not filterable here; use search_query to match on
@@ -774,7 +774,7 @@ class AsyncContactResource(AsyncAPIResource):
         repeat or miss rows as contacts are added or deleted.
 
         Args:
-          excluded_contact_ids: Contact IDs to leave out of both the results and `total`.
+          excluded_contact_ids: Contact IDs to leave out of both the results and `total`, at most 1,000.
 
           filter_criteria: Filter criteria for contacts. All conditions are implicitly connected with AND.
               first_name and last_name are not filterable here; use search_query to match on
