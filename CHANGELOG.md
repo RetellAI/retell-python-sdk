@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.2.9](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.8...v6.2.9) (2026-10-20)
+
+
+### Bug Fixes
+
+* **api:** Clarify that excluded_contact_ids accepts at most 1,000 contact IDs. ([67e7ac5](https://github.com/RetellAI/retell-python-sdk/commit/67e7ac58388cbe884f3e97c42e61badbc07c1514))
+
 ## [6.2.8](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.7...v6.2.8) (2026-10-17)
 
 
