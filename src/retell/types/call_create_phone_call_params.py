@@ -79,8 +79,22 @@ __all__ = [
     "AgentOverrideConversationFlowModelChoice",
     "AgentOverrideConversationFlowModelChoiceModelChoiceCascading",
     "AgentOverrideConversationFlowModelChoiceModelChoiceS2S",
+    "AgentOverrideConversationFlowModelConfig",
+    "AgentOverrideConversationFlowModelConfigCascadingModelConfig",
+    "AgentOverrideConversationFlowModelConfigCascadingModelConfigBackup",
+    "AgentOverrideConversationFlowModelConfigCascadingModelConfigBackupBackupModelRef",
+    "AgentOverrideConversationFlowModelConfigCascadingModelConfigPrimary",
+    "AgentOverrideConversationFlowModelConfigS2SModelConfig",
+    "AgentOverrideConversationFlowModelConfigS2SModelConfigPrimary",
     "AgentOverrideRetellLlm",
     "AgentOverrideRetellLlmKBConfig",
+    "AgentOverrideRetellLlmModelConfig",
+    "AgentOverrideRetellLlmModelConfigCascadingModelConfig",
+    "AgentOverrideRetellLlmModelConfigCascadingModelConfigBackup",
+    "AgentOverrideRetellLlmModelConfigCascadingModelConfigBackupBackupModelRef",
+    "AgentOverrideRetellLlmModelConfigCascadingModelConfigPrimary",
+    "AgentOverrideRetellLlmModelConfigS2SModelConfig",
+    "AgentOverrideRetellLlmModelConfigS2SModelConfigPrimary",
 ]
 
 
@@ -2354,10 +2368,170 @@ AgentOverrideConversationFlowModelChoice: TypeAlias = Union[
 ]
 
 
+class AgentOverrideConversationFlowModelConfigCascadingModelConfigBackupBackupModelRef(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5.4-mini",
+            "gpt-5.4-nano",
+            "gpt-5.5",
+            "gpt-5.6-terra",
+            "gpt-5.6-luna",
+            "gpt-6-astra",
+            "gpt-6-sol",
+            "gpt-6.1-sol",
+            "gpt-6-luna",
+            "claude-4.6-sonnet",
+            "claude-5-opus",
+            "claude-5.5-opus",
+            "claude-5-sonnet",
+            "claude-5.5-sonnet",
+            "claude-5.5-haiku",
+            "claude-4.5-haiku",
+            "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
+            "gemini-4-argon",
+        ]
+    ]
+    """Available LLM models for agents."""
+
+    kick_in_timeout_ms: int
+    """
+    How long to prefer the primary model's output while both models run, in
+    milliseconds. Defaults to 1500.
+    """
+
+    tier: Literal["standard", "fast", "ultrafast"]
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+AgentOverrideConversationFlowModelConfigCascadingModelConfigBackup: TypeAlias = Union[
+    AgentOverrideConversationFlowModelConfigCascadingModelConfigBackupBackupModelRef, Optional[object]
+]
+
+
+class AgentOverrideConversationFlowModelConfigCascadingModelConfigPrimary(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5.4-mini",
+            "gpt-5.4-nano",
+            "gpt-5.5",
+            "gpt-5.6-terra",
+            "gpt-5.6-luna",
+            "gpt-6-astra",
+            "gpt-6-sol",
+            "gpt-6.1-sol",
+            "gpt-6-luna",
+            "claude-4.6-sonnet",
+            "claude-5-opus",
+            "claude-5.5-opus",
+            "claude-5-sonnet",
+            "claude-5.5-sonnet",
+            "claude-5.5-haiku",
+            "claude-4.5-haiku",
+            "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
+            "gemini-4-argon",
+        ]
+    ]
+    """Available LLM models for agents."""
+
+    tier: Literal["standard", "fast", "ultrafast"]
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class AgentOverrideConversationFlowModelConfigCascadingModelConfig(TypedDict, total=False):
+    backup: AgentOverrideConversationFlowModelConfigCascadingModelConfigBackup
+    """
+    A text LLM that runs alongside the primary and takes over when the primary is
+    slow.
+    """
+
+    primary: AgentOverrideConversationFlowModelConfigCascadingModelConfigPrimary
+
+    temperature: float
+    """Randomness of the response, from 0 to 1.
+
+    Defaults to 0; a lower value is recommended for tool calling.
+    """
+
+    type: Literal["cascading"]
+    """Runs a text LLM with a separate voice. This is the default type."""
+
+
+class AgentOverrideConversationFlowModelConfigS2SModelConfigPrimary(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-realtime-2.1",
+            "gpt-realtime-2.1-mini",
+            "gpt-realtime-2",
+            "gpt-realtime-1.5",
+            "gpt-realtime",
+            "gpt-realtime-mini",
+        ]
+    ]
+    """The speech-to-speech model to use"""
+
+
+class AgentOverrideConversationFlowModelConfigS2SModelConfig(TypedDict, total=False):
+    primary: AgentOverrideConversationFlowModelConfigS2SModelConfigPrimary
+
+    temperature: float
+    """Randomness of the response, from 0 to 1.
+
+    Defaults to 0; a lower value is recommended for tool calling.
+    """
+
+    type: Literal["s2s"]
+    """Runs a speech-to-speech model."""
+
+
+AgentOverrideConversationFlowModelConfig: TypeAlias = Union[
+    AgentOverrideConversationFlowModelConfigCascadingModelConfig, AgentOverrideConversationFlowModelConfigS2SModelConfig
+]
+
+
 class AgentOverrideConversationFlow(TypedDict, total=False):
     """Override conversation flow configuration settings.
 
-    Only applicable when using conversation flow as the response engine. Supported attributes - model_choice, model_temperature, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms.
+    Only applicable when using conversation flow as the response engine. Supported attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms. A model_config override cannot remove the backup model.
     """
 
     begin_after_user_silence_ms: Optional[int]
@@ -2375,13 +2549,20 @@ class AgentOverrideConversationFlow(TypedDict, total=False):
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
     model_choice: AgentOverrideConversationFlowModelChoice
-    """The model choice for the conversation flow."""
+    """Deprecated, use model_config. Ignored when model_config is set."""
+
+    model_config: AgentOverrideConversationFlowModelConfig
+    """Model settings for the response engine.
+
+    type decides which models primary and backup accept. On update, each top-level
+    key replaces the current one and omitted keys are kept; set backup to null to
+    remove it. Changing type requires primary and clears backup, while temperature
+    carries over. In agent_override, type is required whenever primary is set, and
+    backup cannot be removed.
+    """
 
     model_temperature: Optional[float]
-    """Controls the randomness of the model's responses.
-
-    Lower values make responses more deterministic.
-    """
+    """Deprecated, use model_config.temperature. Ignored when model_config is set."""
 
     start_speaker: Literal["user", "agent"]
     """Who starts the conversation - user or agent."""
@@ -2403,10 +2584,170 @@ class AgentOverrideRetellLlmKBConfig(TypedDict, total=False):
     """Max number of knowledge base chunks to retrieve"""
 
 
+class AgentOverrideRetellLlmModelConfigCascadingModelConfigBackupBackupModelRef(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5.4-mini",
+            "gpt-5.4-nano",
+            "gpt-5.5",
+            "gpt-5.6-terra",
+            "gpt-5.6-luna",
+            "gpt-6-astra",
+            "gpt-6-sol",
+            "gpt-6.1-sol",
+            "gpt-6-luna",
+            "claude-4.6-sonnet",
+            "claude-5-opus",
+            "claude-5.5-opus",
+            "claude-5-sonnet",
+            "claude-5.5-sonnet",
+            "claude-5.5-haiku",
+            "claude-4.5-haiku",
+            "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
+            "gemini-4-argon",
+        ]
+    ]
+    """Available LLM models for agents."""
+
+    kick_in_timeout_ms: int
+    """
+    How long to prefer the primary model's output while both models run, in
+    milliseconds. Defaults to 1500.
+    """
+
+    tier: Literal["standard", "fast", "ultrafast"]
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+AgentOverrideRetellLlmModelConfigCascadingModelConfigBackup: TypeAlias = Union[
+    AgentOverrideRetellLlmModelConfigCascadingModelConfigBackupBackupModelRef, Optional[object]
+]
+
+
+class AgentOverrideRetellLlmModelConfigCascadingModelConfigPrimary(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-4.1",
+            "gpt-4.1-mini",
+            "gpt-5",
+            "gpt-5-mini",
+            "gpt-5-nano",
+            "gpt-5.1",
+            "gpt-5.2",
+            "gpt-5.4",
+            "gpt-5.4-mini",
+            "gpt-5.4-nano",
+            "gpt-5.5",
+            "gpt-5.6-terra",
+            "gpt-5.6-luna",
+            "gpt-6-astra",
+            "gpt-6-sol",
+            "gpt-6.1-sol",
+            "gpt-6-luna",
+            "claude-4.6-sonnet",
+            "claude-5-opus",
+            "claude-5.5-opus",
+            "claude-5-sonnet",
+            "claude-5.5-sonnet",
+            "claude-5.5-haiku",
+            "claude-4.5-haiku",
+            "gemini-3.0-flash",
+            "gemini-3.1-flash-lite",
+            "gemini-3.5-flash",
+            "gemini-3.5-flash-lite",
+            "gemini-3.6-flash",
+            "gemini-3.7-flash",
+            "gemini-3.8-flash",
+            "gemini-4-argon",
+        ]
+    ]
+    """Available LLM models for agents."""
+
+    tier: Literal["standard", "fast", "ultrafast"]
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class AgentOverrideRetellLlmModelConfigCascadingModelConfig(TypedDict, total=False):
+    backup: AgentOverrideRetellLlmModelConfigCascadingModelConfigBackup
+    """
+    A text LLM that runs alongside the primary and takes over when the primary is
+    slow.
+    """
+
+    primary: AgentOverrideRetellLlmModelConfigCascadingModelConfigPrimary
+
+    temperature: float
+    """Randomness of the response, from 0 to 1.
+
+    Defaults to 0; a lower value is recommended for tool calling.
+    """
+
+    type: Literal["cascading"]
+    """Runs a text LLM with a separate voice. This is the default type."""
+
+
+class AgentOverrideRetellLlmModelConfigS2SModelConfigPrimary(TypedDict, total=False):
+    model: Required[
+        Literal[
+            "gpt-realtime-2.1",
+            "gpt-realtime-2.1-mini",
+            "gpt-realtime-2",
+            "gpt-realtime-1.5",
+            "gpt-realtime",
+            "gpt-realtime-mini",
+        ]
+    ]
+    """The speech-to-speech model to use"""
+
+
+class AgentOverrideRetellLlmModelConfigS2SModelConfig(TypedDict, total=False):
+    primary: AgentOverrideRetellLlmModelConfigS2SModelConfigPrimary
+
+    temperature: float
+    """Randomness of the response, from 0 to 1.
+
+    Defaults to 0; a lower value is recommended for tool calling.
+    """
+
+    type: Literal["s2s"]
+    """Runs a speech-to-speech model."""
+
+
+AgentOverrideRetellLlmModelConfig: TypeAlias = Union[
+    AgentOverrideRetellLlmModelConfigCascadingModelConfig, AgentOverrideRetellLlmModelConfigS2SModelConfig
+]
+
+
 class AgentOverrideRetellLlm(TypedDict, total=False):
     """Override Retell LLM configuration settings.
 
-    Only applicable when using Retell LLM as the response engine. Supported attributes - model, s2s_model, model_temperature, model_high_priority, model_ultrafast, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message.
+    Only applicable when using Retell LLM as the response engine. Supported attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message. A model_config override cannot remove the backup model or switch a speech-to-speech LLM to a cascading model.
     """
 
     begin_after_user_silence_ms: Optional[int]
@@ -2466,29 +2807,31 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gemini-4-argon",
         ]
     ]
-    """Select the underlying text LLM. If not set, would default to gpt-5.6-terra."""
+    """Available LLM models for agents."""
+
+    model_config: AgentOverrideRetellLlmModelConfig
+    """Model settings for the response engine.
+
+    type decides which models primary and backup accept. On update, each top-level
+    key replaces the current one and omitted keys are kept; set backup to null to
+    remove it. Changing type requires primary and clears backup, while temperature
+    carries over. In agent_override, type is required whenever primary is set, and
+    backup cannot be removed.
+    """
 
     model_high_priority: Optional[bool]
-    """
-    If set to true, will use high priority pool with more dedicated resource to
-    ensure lower and more consistent latency, default to false. This feature usually
-    comes with a higher cost.
+    """Deprecated, use model_config.primary.tier fast.
+
+    Ignored when model_config is set.
     """
 
     model_temperature: float
-    """If set, will control the randomness of the response.
-
-    Value ranging from [0,1]. Lower value means more deterministic, while higher
-    value means more random. If unset, default value 0 will apply. Note that for
-    tool calling, a lower value is recommended.
-    """
+    """Deprecated, use model_config.temperature. Ignored when model_config is set."""
 
     model_ultrafast: Optional[bool]
-    """
-    If set to true, will use the ultrafast tier for much faster response generation,
-    default to false. Only supported by gpt-6.1-sol on voice agents; ignored
-    otherwise. Takes precedence over model_high_priority. This feature comes with a
-    higher cost.
+    """Deprecated, use model_config.primary.tier ultrafast.
+
+    Ignored when model_config is set.
     """
 
     s2s_model: Optional[
@@ -2501,10 +2844,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-realtime-mini",
         ]
     ]
-    """Select the underlying speech to speech model.
-
-    Can only set this or model, not both.
-    """
+    """The speech-to-speech model to use"""
 
     start_speaker: Literal["user", "agent"]
     """The speaker who starts the conversation.
@@ -2537,15 +2877,17 @@ class AgentOverride(TypedDict, total=False):
     """Override conversation flow configuration settings.
 
     Only applicable when using conversation flow as the response engine. Supported
-    attributes - model_choice, model_temperature, tool_call_strict_mode,
-    knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms.
+    attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config,
+    start_speaker, begin_after_user_silence_ms. A model_config override cannot
+    remove the backup model.
     """
 
     retell_llm: AgentOverrideRetellLlm
     """Override Retell LLM configuration settings.
 
     Only applicable when using Retell LLM as the response engine. Supported
-    attributes - model, s2s_model, model_temperature, model_high_priority,
-    model_ultrafast, tool_call_strict_mode, knowledge_base_ids, kb_config,
-    start_speaker, begin_after_user_silence_ms, begin_message.
+    attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config,
+    start_speaker, begin_after_user_silence_ms, begin_message. A model_config
+    override cannot remove the backup model or switch a speech-to-speech LLM to a
+    cascading model.
     """

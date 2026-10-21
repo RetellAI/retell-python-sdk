@@ -24,10 +24,6 @@ class TestConversationFlow:
     @parametrize
     def test_method_create(self, client: Retell) -> None:
         conversation_flow = client.conversation_flow.create(
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-            },
             nodes=[
                 {
                     "id": "start",
@@ -46,12 +42,6 @@ class TestConversationFlow:
     @parametrize
     def test_method_create_with_all_params(self, client: Retell) -> None:
         conversation_flow = client.conversation_flow.create(
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-                "high_priority": True,
-                "ultrafast": True,
-            },
             nodes=[
                 {
                     "id": "start",
@@ -164,6 +154,12 @@ class TestConversationFlow:
                         "type": "cascading",
                         "high_priority": True,
                         "ultrafast": True,
+                    },
+                    "model_config": {
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        }
                     },
                     "name": "name",
                     "reminder_max_count": 0,
@@ -304,6 +300,12 @@ class TestConversationFlow:
                                 "high_priority": True,
                                 "ultrafast": True,
                             },
+                            "model_config": {
+                                "primary": {
+                                    "model": "gpt-4.1",
+                                    "tier": "standard",
+                                }
+                            },
                             "name": "name",
                             "reminder_max_count": 0,
                             "reminder_trigger_ms": 1,
@@ -409,6 +411,25 @@ class TestConversationFlow:
                     "timeout_ms": 0,
                 }
             ],
+            model_choice={
+                "model": "gpt-4.1",
+                "type": "cascading",
+                "high_priority": True,
+                "ultrafast": True,
+            },
+            model_config={
+                "backup": {
+                    "model": "gpt-4.1",
+                    "kick_in_timeout_ms": 300,
+                    "tier": "standard",
+                },
+                "primary": {
+                    "model": "gpt-4.1",
+                    "tier": "standard",
+                },
+                "temperature": 0,
+                "type": "cascading",
+            },
             model_temperature=0.7,
             notes=[
                 {
@@ -463,10 +484,6 @@ class TestConversationFlow:
     @parametrize
     def test_raw_response_create(self, client: Retell) -> None:
         response = client.conversation_flow.with_raw_response.create(
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-            },
             nodes=[
                 {
                     "id": "start",
@@ -489,10 +506,6 @@ class TestConversationFlow:
     @parametrize
     def test_streaming_response_create(self, client: Retell) -> None:
         with client.conversation_flow.with_streaming_response.create(
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-            },
             nodes=[
                 {
                     "id": "start",
@@ -699,6 +712,12 @@ class TestConversationFlow:
                                 "high_priority": True,
                                 "ultrafast": True,
                             },
+                            "model_config": {
+                                "primary": {
+                                    "model": "gpt-4.1",
+                                    "tier": "standard",
+                                }
+                            },
                             "name": "name",
                             "reminder_max_count": 0,
                             "reminder_trigger_ms": 1,
@@ -809,6 +828,19 @@ class TestConversationFlow:
                 "type": "cascading",
                 "high_priority": True,
                 "ultrafast": True,
+            },
+            model_config={
+                "backup": {
+                    "model": "gpt-4.1",
+                    "kick_in_timeout_ms": 300,
+                    "tier": "standard",
+                },
+                "primary": {
+                    "model": "gpt-4.1",
+                    "tier": "standard",
+                },
+                "temperature": 0,
+                "type": "cascading",
             },
             model_temperature=0.7,
             nodes=[
@@ -923,6 +955,12 @@ class TestConversationFlow:
                         "type": "cascading",
                         "high_priority": True,
                         "ultrafast": True,
+                    },
+                    "model_config": {
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        }
                     },
                     "name": "name",
                     "reminder_max_count": 0,
@@ -1124,10 +1162,6 @@ class TestAsyncConversationFlow:
     @parametrize
     async def test_method_create(self, async_client: AsyncRetell) -> None:
         conversation_flow = await async_client.conversation_flow.create(
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-            },
             nodes=[
                 {
                     "id": "start",
@@ -1146,12 +1180,6 @@ class TestAsyncConversationFlow:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         conversation_flow = await async_client.conversation_flow.create(
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-                "high_priority": True,
-                "ultrafast": True,
-            },
             nodes=[
                 {
                     "id": "start",
@@ -1264,6 +1292,12 @@ class TestAsyncConversationFlow:
                         "type": "cascading",
                         "high_priority": True,
                         "ultrafast": True,
+                    },
+                    "model_config": {
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        }
                     },
                     "name": "name",
                     "reminder_max_count": 0,
@@ -1404,6 +1438,12 @@ class TestAsyncConversationFlow:
                                 "high_priority": True,
                                 "ultrafast": True,
                             },
+                            "model_config": {
+                                "primary": {
+                                    "model": "gpt-4.1",
+                                    "tier": "standard",
+                                }
+                            },
                             "name": "name",
                             "reminder_max_count": 0,
                             "reminder_trigger_ms": 1,
@@ -1509,6 +1549,25 @@ class TestAsyncConversationFlow:
                     "timeout_ms": 0,
                 }
             ],
+            model_choice={
+                "model": "gpt-4.1",
+                "type": "cascading",
+                "high_priority": True,
+                "ultrafast": True,
+            },
+            model_config={
+                "backup": {
+                    "model": "gpt-4.1",
+                    "kick_in_timeout_ms": 300,
+                    "tier": "standard",
+                },
+                "primary": {
+                    "model": "gpt-4.1",
+                    "tier": "standard",
+                },
+                "temperature": 0,
+                "type": "cascading",
+            },
             model_temperature=0.7,
             notes=[
                 {
@@ -1563,10 +1622,6 @@ class TestAsyncConversationFlow:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncRetell) -> None:
         response = await async_client.conversation_flow.with_raw_response.create(
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-            },
             nodes=[
                 {
                     "id": "start",
@@ -1589,10 +1644,6 @@ class TestAsyncConversationFlow:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncRetell) -> None:
         async with async_client.conversation_flow.with_streaming_response.create(
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-            },
             nodes=[
                 {
                     "id": "start",
@@ -1799,6 +1850,12 @@ class TestAsyncConversationFlow:
                                 "high_priority": True,
                                 "ultrafast": True,
                             },
+                            "model_config": {
+                                "primary": {
+                                    "model": "gpt-4.1",
+                                    "tier": "standard",
+                                }
+                            },
                             "name": "name",
                             "reminder_max_count": 0,
                             "reminder_trigger_ms": 1,
@@ -1909,6 +1966,19 @@ class TestAsyncConversationFlow:
                 "type": "cascading",
                 "high_priority": True,
                 "ultrafast": True,
+            },
+            model_config={
+                "backup": {
+                    "model": "gpt-4.1",
+                    "kick_in_timeout_ms": 300,
+                    "tier": "standard",
+                },
+                "primary": {
+                    "model": "gpt-4.1",
+                    "tier": "standard",
+                },
+                "temperature": 0,
+                "type": "cascading",
             },
             model_temperature=0.7,
             nodes=[
@@ -2023,6 +2093,12 @@ class TestAsyncConversationFlow:
                         "type": "cascading",
                         "high_priority": True,
                         "ultrafast": True,
+                    },
+                    "model_config": {
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        }
                     },
                     "name": "name",
                     "reminder_max_count": 0,

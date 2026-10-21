@@ -54,7 +54,6 @@ class ConversationFlowResource(SyncAPIResource):
     def create(
         self,
         *,
-        model_choice: conversation_flow_create_params.ModelChoice,
         nodes: Iterable[conversation_flow_create_params.Node],
         start_speaker: Literal["user", "agent"],
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
@@ -67,6 +66,8 @@ class ConversationFlowResource(SyncAPIResource):
         kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | Omit = omit,
+        model_choice: conversation_flow_create_params.ModelChoice | Omit = omit,
+        model_config: conversation_flow_create_params.ModelConfig | Omit = omit,
         model_temperature: Optional[float] | Omit = omit,
         notes: Optional[Iterable[conversation_flow_create_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
@@ -85,8 +86,6 @@ class ConversationFlowResource(SyncAPIResource):
         generate response output for the agent.
 
         Args:
-          model_choice: The model choice for the conversation flow.
-
           nodes: Array of nodes in the conversation flow.
 
           start_speaker: Who starts the conversation - user or agent.
@@ -117,8 +116,15 @@ class ConversationFlowResource(SyncAPIResource):
 
           mcps: A list of MCP server configurations to use for this conversation flow.
 
-          model_temperature: Controls the randomness of the model's responses. Lower values make responses
-              more deterministic.
+          model_choice: Deprecated, use model_config. Ignored when model_config is set.
+
+          model_config: Model settings for the response engine. type decides which models primary and
+              backup accept. On update, each top-level key replaces the current one and
+              omitted keys are kept; set backup to null to remove it. Changing type requires
+              primary and clears backup, while temperature carries over. In agent_override,
+              type is required whenever primary is set, and backup cannot be removed.
+
+          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
           notes: Visual annotations displayed on the flow canvas.
 
@@ -141,7 +147,6 @@ class ConversationFlowResource(SyncAPIResource):
             "/create-conversation-flow",
             body=maybe_transform(
                 {
-                    "model_choice": model_choice,
                     "nodes": nodes,
                     "start_speaker": start_speaker,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
@@ -154,6 +159,8 @@ class ConversationFlowResource(SyncAPIResource):
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
+                    "model_choice": model_choice,
+                    "model_config": model_config,
                     "model_temperature": model_temperature,
                     "notes": notes,
                     "start_node_id": start_node_id,
@@ -229,6 +236,7 @@ class ConversationFlowResource(SyncAPIResource):
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_update_params.Mcp]] | Omit = omit,
         model_choice: conversation_flow_update_params.ModelChoice | Omit = omit,
+        model_config: conversation_flow_update_params.ModelConfig | Omit = omit,
         model_temperature: Optional[float] | Omit = omit,
         nodes: Iterable[conversation_flow_update_params.Node] | Omit = omit,
         notes: Optional[Iterable[conversation_flow_update_params.Note]] | Omit = omit,
@@ -275,10 +283,15 @@ class ConversationFlowResource(SyncAPIResource):
 
           mcps: A list of MCP server configurations to use for this conversation flow.
 
-          model_choice: The model choice for the conversation flow.
+          model_choice: Deprecated, use model_config. Ignored when model_config is set.
 
-          model_temperature: Controls the randomness of the model's responses. Lower values make responses
-              more deterministic.
+          model_config: Model settings for the response engine. type decides which models primary and
+              backup accept. On update, each top-level key replaces the current one and
+              omitted keys are kept; set backup to null to remove it. Changing type requires
+              primary and clears backup, while temperature carries over. In agent_override,
+              type is required whenever primary is set, and backup cannot be removed.
+
+          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
           nodes: Array of nodes in the conversation flow.
 
@@ -322,6 +335,7 @@ class ConversationFlowResource(SyncAPIResource):
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
                     "model_choice": model_choice,
+                    "model_config": model_config,
                     "model_temperature": model_temperature,
                     "nodes": nodes,
                     "notes": notes,
@@ -467,7 +481,6 @@ class AsyncConversationFlowResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        model_choice: conversation_flow_create_params.ModelChoice,
         nodes: Iterable[conversation_flow_create_params.Node],
         start_speaker: Literal["user", "agent"],
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
@@ -480,6 +493,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         kb_config: conversation_flow_create_params.KBConfig | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_create_params.Mcp]] | Omit = omit,
+        model_choice: conversation_flow_create_params.ModelChoice | Omit = omit,
+        model_config: conversation_flow_create_params.ModelConfig | Omit = omit,
         model_temperature: Optional[float] | Omit = omit,
         notes: Optional[Iterable[conversation_flow_create_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
@@ -498,8 +513,6 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         generate response output for the agent.
 
         Args:
-          model_choice: The model choice for the conversation flow.
-
           nodes: Array of nodes in the conversation flow.
 
           start_speaker: Who starts the conversation - user or agent.
@@ -530,8 +543,15 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           mcps: A list of MCP server configurations to use for this conversation flow.
 
-          model_temperature: Controls the randomness of the model's responses. Lower values make responses
-              more deterministic.
+          model_choice: Deprecated, use model_config. Ignored when model_config is set.
+
+          model_config: Model settings for the response engine. type decides which models primary and
+              backup accept. On update, each top-level key replaces the current one and
+              omitted keys are kept; set backup to null to remove it. Changing type requires
+              primary and clears backup, while temperature carries over. In agent_override,
+              type is required whenever primary is set, and backup cannot be removed.
+
+          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
           notes: Visual annotations displayed on the flow canvas.
 
@@ -554,7 +574,6 @@ class AsyncConversationFlowResource(AsyncAPIResource):
             "/create-conversation-flow",
             body=await async_maybe_transform(
                 {
-                    "model_choice": model_choice,
                     "nodes": nodes,
                     "start_speaker": start_speaker,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
@@ -567,6 +586,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
+                    "model_choice": model_choice,
+                    "model_config": model_config,
                     "model_temperature": model_temperature,
                     "notes": notes,
                     "start_node_id": start_node_id,
@@ -642,6 +663,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[conversation_flow_update_params.Mcp]] | Omit = omit,
         model_choice: conversation_flow_update_params.ModelChoice | Omit = omit,
+        model_config: conversation_flow_update_params.ModelConfig | Omit = omit,
         model_temperature: Optional[float] | Omit = omit,
         nodes: Iterable[conversation_flow_update_params.Node] | Omit = omit,
         notes: Optional[Iterable[conversation_flow_update_params.Note]] | Omit = omit,
@@ -688,10 +710,15 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           mcps: A list of MCP server configurations to use for this conversation flow.
 
-          model_choice: The model choice for the conversation flow.
+          model_choice: Deprecated, use model_config. Ignored when model_config is set.
 
-          model_temperature: Controls the randomness of the model's responses. Lower values make responses
-              more deterministic.
+          model_config: Model settings for the response engine. type decides which models primary and
+              backup accept. On update, each top-level key replaces the current one and
+              omitted keys are kept; set backup to null to remove it. Changing type requires
+              primary and clears backup, while temperature carries over. In agent_override,
+              type is required whenever primary is set, and backup cannot be removed.
+
+          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
           nodes: Array of nodes in the conversation flow.
 
@@ -735,6 +762,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
                     "model_choice": model_choice,
+                    "model_config": model_config,
                     "model_temperature": model_temperature,
                     "nodes": nodes,
                     "notes": notes,

@@ -567,6 +567,19 @@ class TestCall:
                         "high_priority": True,
                         "ultrafast": True,
                     },
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
                     "tool_call_strict_mode": True,
@@ -580,6 +593,19 @@ class TestCall:
                     },
                     "knowledge_base_ids": ["string"],
                     "model": "gpt-5.6-terra",
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_high_priority": True,
                     "model_temperature": 0,
                     "model_ultrafast": True,
@@ -838,6 +864,19 @@ class TestCall:
                         "high_priority": True,
                         "ultrafast": True,
                     },
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
                     "tool_call_strict_mode": True,
@@ -851,6 +890,19 @@ class TestCall:
                     },
                     "knowledge_base_ids": ["string"],
                     "model": "gpt-5.6-terra",
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_high_priority": True,
                     "model_temperature": 0,
                     "model_ultrafast": True,
@@ -1146,6 +1198,19 @@ class TestCall:
                         "high_priority": True,
                         "ultrafast": True,
                     },
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
                     "tool_call_strict_mode": True,
@@ -1159,6 +1224,19 @@ class TestCall:
                     },
                     "knowledge_base_ids": ["string"],
                     "model": "gpt-5.6-terra",
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_high_priority": True,
                     "model_temperature": 0,
                     "model_ultrafast": True,
@@ -1942,6 +2020,19 @@ class TestAsyncCall:
                         "high_priority": True,
                         "ultrafast": True,
                     },
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
                     "tool_call_strict_mode": True,
@@ -1955,6 +2046,19 @@ class TestAsyncCall:
                     },
                     "knowledge_base_ids": ["string"],
                     "model": "gpt-5.6-terra",
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_high_priority": True,
                     "model_temperature": 0,
                     "model_ultrafast": True,
@@ -2213,6 +2317,19 @@ class TestAsyncCall:
                         "high_priority": True,
                         "ultrafast": True,
                     },
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
                     "tool_call_strict_mode": True,
@@ -2226,6 +2343,19 @@ class TestAsyncCall:
                     },
                     "knowledge_base_ids": ["string"],
                     "model": "gpt-5.6-terra",
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_high_priority": True,
                     "model_temperature": 0,
                     "model_ultrafast": True,
@@ -2521,6 +2651,19 @@ class TestAsyncCall:
                         "high_priority": True,
                         "ultrafast": True,
                     },
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
                     "tool_call_strict_mode": True,
@@ -2534,6 +2677,19 @@ class TestAsyncCall:
                     },
                     "knowledge_base_ids": ["string"],
                     "model": "gpt-5.6-terra",
+                    "model_config": {
+                        "backup": {
+                            "model": "gpt-4.1",
+                            "kick_in_timeout_ms": 300,
+                            "tier": "standard",
+                        },
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        },
+                        "temperature": 0,
+                        "type": "cascading",
+                    },
                     "model_high_priority": True,
                     "model_temperature": 0,
                     "model_ultrafast": True,

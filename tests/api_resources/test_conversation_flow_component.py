@@ -156,6 +156,12 @@ class TestConversationFlowComponent:
                         "high_priority": True,
                         "ultrafast": True,
                     },
+                    "model_config": {
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        }
+                    },
                     "name": "name",
                     "reminder_max_count": 0,
                     "reminder_trigger_ms": 1,
@@ -471,6 +477,12 @@ class TestConversationFlowComponent:
                         "type": "cascading",
                         "high_priority": True,
                         "ultrafast": True,
+                    },
+                    "model_config": {
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        }
                     },
                     "name": "name",
                     "reminder_max_count": 0,
@@ -797,6 +809,12 @@ class TestAsyncConversationFlowComponent:
                         "high_priority": True,
                         "ultrafast": True,
                     },
+                    "model_config": {
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        }
+                    },
                     "name": "name",
                     "reminder_max_count": 0,
                     "reminder_trigger_ms": 1,
@@ -1112,6 +1130,12 @@ class TestAsyncConversationFlowComponent:
                         "type": "cascading",
                         "high_priority": True,
                         "ultrafast": True,
+                    },
+                    "model_config": {
+                        "primary": {
+                            "model": "gpt-4.1",
+                            "tier": "standard",
+                        }
                     },
                     "name": "name",
                     "reminder_max_count": 0,
