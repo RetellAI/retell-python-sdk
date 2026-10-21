@@ -1563,6 +1563,7 @@ class ModelConfigS2SModelConfigPrimary(BaseModel):
         "gpt-realtime-1.5",
         "gpt-realtime",
         "gpt-realtime-mini",
+        "grok-voice-3.0",
     ]
     """The speech-to-speech model to use"""
 
@@ -3076,6 +3077,7 @@ class LlmResponse(BaseModel):
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ] = None
     """The speech-to-speech model to use"""

@@ -2349,6 +2349,7 @@ class TaskAgentOverrideConversationFlowModelChoiceModelChoiceS2S(TypedDict, tota
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ]
     """The speech-to-speech model to use"""
@@ -2500,6 +2501,7 @@ class TaskAgentOverrideConversationFlowModelConfigS2SModelConfigPrimary(TypedDic
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ]
     """The speech-to-speech model to use"""
@@ -2717,6 +2719,7 @@ class TaskAgentOverrideRetellLlmModelConfigS2SModelConfigPrimary(TypedDict, tota
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ]
     """The speech-to-speech model to use"""
@@ -2838,6 +2841,7 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ]
     """The speech-to-speech model to use"""

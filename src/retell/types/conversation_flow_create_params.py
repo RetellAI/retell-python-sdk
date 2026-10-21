@@ -22410,6 +22410,7 @@ class ModelChoiceModelChoiceS2S(TypedDict, total=False):
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ]
     """The speech-to-speech model to use"""
@@ -22558,6 +22559,7 @@ class ModelConfigS2SModelConfigPrimary(TypedDict, total=False):
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ]
     """The speech-to-speech model to use"""
