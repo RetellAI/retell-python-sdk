@@ -150,6 +150,7 @@ class TestAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -178,6 +179,7 @@ class TestAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -428,6 +430,7 @@ class TestAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -456,6 +459,7 @@ class TestAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -1022,6 +1026,7 @@ class TestAsyncAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -1050,6 +1055,7 @@ class TestAsyncAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -1300,6 +1306,7 @@ class TestAsyncAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -1328,6 +1335,7 @@ class TestAsyncAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],

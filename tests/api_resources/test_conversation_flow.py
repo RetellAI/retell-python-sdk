@@ -372,6 +372,7 @@ class TestConversationFlow:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                             "query_params": {
@@ -464,6 +465,7 @@ class TestConversationFlow:
                     "parameters": {
                         "properties": {},
                         "type": "object",
+                        "additional_properties": True,
                         "required": ["string"],
                     },
                     "query_params": {
@@ -784,6 +786,7 @@ class TestConversationFlow:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                             "query_params": {
@@ -1013,6 +1016,7 @@ class TestConversationFlow:
                     "parameters": {
                         "properties": {},
                         "type": "object",
+                        "additional_properties": True,
                         "required": ["string"],
                     },
                     "query_params": {
@@ -1510,6 +1514,7 @@ class TestAsyncConversationFlow:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                             "query_params": {
@@ -1602,6 +1607,7 @@ class TestAsyncConversationFlow:
                     "parameters": {
                         "properties": {},
                         "type": "object",
+                        "additional_properties": True,
                         "required": ["string"],
                     },
                     "query_params": {
@@ -1922,6 +1928,7 @@ class TestAsyncConversationFlow:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                             "query_params": {
@@ -2151,6 +2158,7 @@ class TestAsyncConversationFlow:
                     "parameters": {
                         "properties": {},
                         "type": "object",
+                        "additional_properties": True,
                         "required": ["string"],
                     },
                     "query_params": {

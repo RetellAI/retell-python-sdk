@@ -475,6 +475,7 @@ class TestCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -503,6 +504,7 @@ class TestCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -772,6 +774,7 @@ class TestCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -800,6 +803,7 @@ class TestCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -1106,6 +1110,7 @@ class TestCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -1134,6 +1139,7 @@ class TestCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -1928,6 +1934,7 @@ class TestAsyncCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -1956,6 +1963,7 @@ class TestAsyncCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -2225,6 +2233,7 @@ class TestAsyncCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -2253,6 +2262,7 @@ class TestAsyncCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -2559,6 +2569,7 @@ class TestAsyncCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],
@@ -2587,6 +2598,7 @@ class TestAsyncCall:
                                 {
                                     "properties": {},
                                     "type": "object",
+                                    "additional_properties": True,
                                     "required": ["string"],
                                 }
                             ],

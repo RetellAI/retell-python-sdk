@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 from typing import Dict, List, Union, Iterable, Optional
-from typing_extensions import Literal, Required, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
+from .._utils import PropertyInfo
 
 __all__ = [
     "CallRegisterPhoneCallParams",
@@ -532,6 +533,12 @@ class AgentOverrideAgentPostSessionToolAppToolParameter(TypedDict, total=False):
     type: Required[Literal["object"]]
     """Type must be "object" for a JSON Schema object."""
 
+    additional_properties: Annotated[bool, PropertyInfo(alias="additionalProperties")]
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
     required: SequenceNotStr[str]
     """List of names of required property when generating this parameter.
 
@@ -692,6 +699,12 @@ class AgentOverrideAgentPostSessionToolCustomToolParameters(TypedDict, total=Fal
 
     type: Required[Literal["object"]]
     """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Annotated[bool, PropertyInfo(alias="additionalProperties")]
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
 
     required: SequenceNotStr[str]
     """List of names of required property when generating this parameter.
@@ -1145,6 +1158,12 @@ class AgentOverrideAgentPreSessionToolAppToolParameter(TypedDict, total=False):
     type: Required[Literal["object"]]
     """Type must be "object" for a JSON Schema object."""
 
+    additional_properties: Annotated[bool, PropertyInfo(alias="additionalProperties")]
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
     required: SequenceNotStr[str]
     """List of names of required property when generating this parameter.
 
@@ -1272,6 +1291,12 @@ class AgentOverrideAgentPreSessionToolCustomToolParameters(TypedDict, total=Fals
 
     type: Required[Literal["object"]]
     """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Annotated[bool, PropertyInfo(alias="additionalProperties")]
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
 
     required: SequenceNotStr[str]
     """List of names of required property when generating this parameter.

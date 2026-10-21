@@ -93,6 +93,7 @@ class TestLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                         }
@@ -131,6 +132,7 @@ class TestLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                         }
@@ -153,6 +155,7 @@ class TestLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                             "query_params": {
@@ -321,6 +324,7 @@ class TestLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                         }
@@ -359,6 +363,7 @@ class TestLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                         }
@@ -381,6 +386,7 @@ class TestLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                             "query_params": {
@@ -601,6 +607,7 @@ class TestAsyncLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                         }
@@ -639,6 +646,7 @@ class TestAsyncLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                         }
@@ -661,6 +669,7 @@ class TestAsyncLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                             "query_params": {
@@ -829,6 +838,7 @@ class TestAsyncLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                         }
@@ -867,6 +877,7 @@ class TestAsyncLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                         }
@@ -889,6 +900,7 @@ class TestAsyncLlm:
                             "parameters": {
                                 "properties": {},
                                 "type": "object",
+                                "additional_properties": True,
                                 "required": ["string"],
                             },
                             "query_params": {

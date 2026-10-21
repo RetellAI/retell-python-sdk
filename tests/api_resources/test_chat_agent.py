@@ -108,6 +108,7 @@ class TestChatAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -136,6 +137,7 @@ class TestChatAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -317,6 +319,7 @@ class TestChatAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -345,6 +348,7 @@ class TestChatAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -736,6 +740,7 @@ class TestAsyncChatAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -764,6 +769,7 @@ class TestAsyncChatAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -945,6 +951,7 @@ class TestAsyncChatAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],
@@ -973,6 +980,7 @@ class TestAsyncChatAgent:
                         {
                             "properties": {},
                             "type": "object",
+                            "additional_properties": True,
                             "required": ["string"],
                         }
                     ],

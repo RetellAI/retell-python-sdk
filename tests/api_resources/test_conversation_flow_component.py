@@ -228,6 +228,7 @@ class TestConversationFlowComponent:
                     "parameters": {
                         "properties": {},
                         "type": "object",
+                        "additional_properties": True,
                         "required": ["string"],
                     },
                     "query_params": {
@@ -533,6 +534,7 @@ class TestConversationFlowComponent:
                     "parameters": {
                         "properties": {},
                         "type": "object",
+                        "additional_properties": True,
                         "required": ["string"],
                     },
                     "query_params": {
@@ -881,6 +883,7 @@ class TestAsyncConversationFlowComponent:
                     "parameters": {
                         "properties": {},
                         "type": "object",
+                        "additional_properties": True,
                         "required": ["string"],
                     },
                     "query_params": {
@@ -1186,6 +1189,7 @@ class TestAsyncConversationFlowComponent:
                     "parameters": {
                         "properties": {},
                         "type": "object",
+                        "additional_properties": True,
                         "required": ["string"],
                     },
                     "query_params": {
