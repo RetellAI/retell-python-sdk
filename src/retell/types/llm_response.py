@@ -63,6 +63,13 @@ __all__ = [
     "GeneralToolAppToolParameter",
     "KBConfig",
     "Mcp",
+    "ModelConfig",
+    "ModelConfigCascadingModelConfig",
+    "ModelConfigCascadingModelConfigBackup",
+    "ModelConfigCascadingModelConfigBackupBackupModelRef",
+    "ModelConfigCascadingModelConfigPrimary",
+    "ModelConfigS2SModelConfig",
+    "ModelConfigS2SModelConfigPrimary",
     "State",
     "StateEdge",
     "StateEdgeParameters",
@@ -1410,6 +1417,158 @@ class Mcp(BaseModel):
 
     Default to 120,000 ms (2 minutes).
     """
+
+
+class ModelConfigCascadingModelConfigBackupBackupModelRef(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    kick_in_timeout_ms: Optional[int] = None
+    """
+    How long to prefer the primary model's output while both models run, in
+    milliseconds. Defaults to 1500.
+    """
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+ModelConfigCascadingModelConfigBackup: TypeAlias = Union[
+    ModelConfigCascadingModelConfigBackupBackupModelRef, Optional[object]
+]
+
+
+class ModelConfigCascadingModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ModelConfigCascadingModelConfig(BaseModel):
+    backup: Optional[ModelConfigCascadingModelConfigBackup] = None
+    """
+    A text LLM that runs alongside the primary and takes over when the primary is
+    slow.
+    """
+
+    primary: Optional[ModelConfigCascadingModelConfigPrimary] = None
+
+    temperature: Optional[float] = None
+    """Randomness of the response, from 0 to 1.
+
+    Defaults to 0; a lower value is recommended for tool calling.
+    """
+
+    type: Optional[Literal["cascading"]] = None
+    """Runs a text LLM with a separate voice. This is the default type."""
+
+
+class ModelConfigS2SModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-realtime-2.1",
+        "gpt-realtime-2.1-mini",
+        "gpt-realtime-2",
+        "gpt-realtime-1.5",
+        "gpt-realtime",
+        "gpt-realtime-mini",
+    ]
+    """The speech-to-speech model to use"""
+
+
+class ModelConfigS2SModelConfig(BaseModel):
+    primary: Optional[ModelConfigS2SModelConfigPrimary] = None
+
+    temperature: Optional[float] = None
+    """Randomness of the response, from 0 to 1.
+
+    Defaults to 0; a lower value is recommended for tool calling.
+    """
+
+    type: Optional[Literal["s2s"]] = None
+    """Runs a speech-to-speech model."""
+
+
+ModelConfig: TypeAlias = Union[ModelConfigCascadingModelConfig, ModelConfigS2SModelConfig]
 
 
 class StateEdgeParameters(BaseModel):
@@ -2852,29 +3011,31 @@ class LlmResponse(BaseModel):
             "gemini-4-argon",
         ]
     ] = None
-    """Select the underlying text LLM. If not set, would default to gpt-5.6-terra."""
+    """Available LLM models for agents."""
+
+    api_model_config: Optional[ModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model settings for the response engine.
+
+    type decides which models primary and backup accept. On update, each top-level
+    key replaces the current one and omitted keys are kept; set backup to null to
+    remove it. Changing type requires primary and clears backup, while temperature
+    carries over. In agent_override, type is required whenever primary is set, and
+    backup cannot be removed.
+    """
 
     api_model_high_priority: Optional[bool] = FieldInfo(alias="model_high_priority", default=None)
-    """
-    If set to true, will use high priority pool with more dedicated resource to
-    ensure lower and more consistent latency, default to false. This feature usually
-    comes with a higher cost.
+    """Deprecated, use model_config.primary.tier fast.
+
+    Ignored when model_config is set.
     """
 
     api_model_temperature: Optional[float] = FieldInfo(alias="model_temperature", default=None)
-    """If set, will control the randomness of the response.
-
-    Value ranging from [0,1]. Lower value means more deterministic, while higher
-    value means more random. If unset, default value 0 will apply. Note that for
-    tool calling, a lower value is recommended.
-    """
+    """Deprecated, use model_config.temperature. Ignored when model_config is set."""
 
     api_model_ultrafast: Optional[bool] = FieldInfo(alias="model_ultrafast", default=None)
-    """
-    If set to true, will use the ultrafast tier for much faster response generation,
-    default to false. Only supported by gpt-6.1-sol on voice agents; ignored
-    otherwise. Takes precedence over model_high_priority. This feature comes with a
-    higher cost.
+    """Deprecated, use model_config.primary.tier ultrafast.
+
+    Ignored when model_config is set.
     """
 
     s2s_model: Optional[
@@ -2887,10 +3048,7 @@ class LlmResponse(BaseModel):
             "gpt-realtime-mini",
         ]
     ] = None
-    """Select the underlying speech to speech model.
-
-    Can only set this or model, not both.
-    """
+    """The speech-to-speech model to use"""
 
     start_speaker: Optional[Literal["user", "agent"]] = None
     """The speaker who starts the conversation.

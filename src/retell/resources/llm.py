@@ -94,6 +94,7 @@ class LlmResource(SyncAPIResource):
             ]
         ]
         | Omit = omit,
+        model_config: llm_create_params.ModelConfig | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
         model_ultrafast: Optional[bool] | Omit = omit,
@@ -158,24 +159,23 @@ class LlmResource(SyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
+          model: Available LLM models for agents.
 
-          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
-              ensure lower and more consistent latency, default to false. This feature usually
-              comes with a higher cost.
+          model_config: Model settings for the response engine. type decides which models primary and
+              backup accept. On update, each top-level key replaces the current one and
+              omitted keys are kept; set backup to null to remove it. Changing type requires
+              primary and clears backup, while temperature carries over. In agent_override,
+              type is required whenever primary is set, and backup cannot be removed.
 
-          model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
-              Lower value means more deterministic, while higher value means more random. If
-              unset, default value 0 will apply. Note that for tool calling, a lower value is
-              recommended.
+          model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
+              set.
 
-          model_ultrafast: If set to true, will use the ultrafast tier for much faster response generation,
-              default to false. Only supported by gpt-6.1-sol on voice agents; ignored
-              otherwise. Takes precedence over model_high_priority. This feature comes with a
-              higher cost.
+          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
-          s2s_model: Select the underlying speech to speech model. Can only set this or model, not
-              both.
+          model_ultrafast: Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config
+              is set.
+
+          s2s_model: The speech-to-speech model to use
 
           start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
               'agent'.
@@ -213,6 +213,7 @@ class LlmResource(SyncAPIResource):
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
                     "model": model,
+                    "model_config": model_config,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "model_ultrafast": model_ultrafast,
@@ -321,6 +322,7 @@ class LlmResource(SyncAPIResource):
             ]
         ]
         | Omit = omit,
+        model_config: llm_update_params.ModelConfig | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
         model_ultrafast: Optional[bool] | Omit = omit,
@@ -385,24 +387,23 @@ class LlmResource(SyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
+          model: Available LLM models for agents.
 
-          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
-              ensure lower and more consistent latency, default to false. This feature usually
-              comes with a higher cost.
+          model_config: Model settings for the response engine. type decides which models primary and
+              backup accept. On update, each top-level key replaces the current one and
+              omitted keys are kept; set backup to null to remove it. Changing type requires
+              primary and clears backup, while temperature carries over. In agent_override,
+              type is required whenever primary is set, and backup cannot be removed.
 
-          model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
-              Lower value means more deterministic, while higher value means more random. If
-              unset, default value 0 will apply. Note that for tool calling, a lower value is
-              recommended.
+          model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
+              set.
 
-          model_ultrafast: If set to true, will use the ultrafast tier for much faster response generation,
-              default to false. Only supported by gpt-6.1-sol on voice agents; ignored
-              otherwise. Takes precedence over model_high_priority. This feature comes with a
-              higher cost.
+          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
-          s2s_model: Select the underlying speech to speech model. Can only set this or model, not
-              both.
+          model_ultrafast: Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config
+              is set.
+
+          s2s_model: The speech-to-speech model to use
 
           start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
               'agent'.
@@ -442,6 +443,7 @@ class LlmResource(SyncAPIResource):
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
                     "model": model,
+                    "model_config": model_config,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "model_ultrafast": model_ultrafast,
@@ -626,6 +628,7 @@ class AsyncLlmResource(AsyncAPIResource):
             ]
         ]
         | Omit = omit,
+        model_config: llm_create_params.ModelConfig | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
         model_ultrafast: Optional[bool] | Omit = omit,
@@ -690,24 +693,23 @@ class AsyncLlmResource(AsyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
+          model: Available LLM models for agents.
 
-          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
-              ensure lower and more consistent latency, default to false. This feature usually
-              comes with a higher cost.
+          model_config: Model settings for the response engine. type decides which models primary and
+              backup accept. On update, each top-level key replaces the current one and
+              omitted keys are kept; set backup to null to remove it. Changing type requires
+              primary and clears backup, while temperature carries over. In agent_override,
+              type is required whenever primary is set, and backup cannot be removed.
 
-          model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
-              Lower value means more deterministic, while higher value means more random. If
-              unset, default value 0 will apply. Note that for tool calling, a lower value is
-              recommended.
+          model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
+              set.
 
-          model_ultrafast: If set to true, will use the ultrafast tier for much faster response generation,
-              default to false. Only supported by gpt-6.1-sol on voice agents; ignored
-              otherwise. Takes precedence over model_high_priority. This feature comes with a
-              higher cost.
+          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
-          s2s_model: Select the underlying speech to speech model. Can only set this or model, not
-              both.
+          model_ultrafast: Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config
+              is set.
+
+          s2s_model: The speech-to-speech model to use
 
           start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
               'agent'.
@@ -745,6 +747,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
                     "model": model,
+                    "model_config": model_config,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "model_ultrafast": model_ultrafast,
@@ -853,6 +856,7 @@ class AsyncLlmResource(AsyncAPIResource):
             ]
         ]
         | Omit = omit,
+        model_config: llm_update_params.ModelConfig | Omit = omit,
         model_high_priority: Optional[bool] | Omit = omit,
         model_temperature: float | Omit = omit,
         model_ultrafast: Optional[bool] | Omit = omit,
@@ -917,24 +921,23 @@ class AsyncLlmResource(AsyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
+          model: Available LLM models for agents.
 
-          model_high_priority: If set to true, will use high priority pool with more dedicated resource to
-              ensure lower and more consistent latency, default to false. This feature usually
-              comes with a higher cost.
+          model_config: Model settings for the response engine. type decides which models primary and
+              backup accept. On update, each top-level key replaces the current one and
+              omitted keys are kept; set backup to null to remove it. Changing type requires
+              primary and clears backup, while temperature carries over. In agent_override,
+              type is required whenever primary is set, and backup cannot be removed.
 
-          model_temperature: If set, will control the randomness of the response. Value ranging from [0,1].
-              Lower value means more deterministic, while higher value means more random. If
-              unset, default value 0 will apply. Note that for tool calling, a lower value is
-              recommended.
+          model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
+              set.
 
-          model_ultrafast: If set to true, will use the ultrafast tier for much faster response generation,
-              default to false. Only supported by gpt-6.1-sol on voice agents; ignored
-              otherwise. Takes precedence over model_high_priority. This feature comes with a
-              higher cost.
+          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
-          s2s_model: Select the underlying speech to speech model. Can only set this or model, not
-              both.
+          model_ultrafast: Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config
+              is set.
+
+          s2s_model: The speech-to-speech model to use
 
           start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
               'agent'.
@@ -974,6 +977,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
                     "model": model,
+                    "model_config": model_config,
                     "model_high_priority": model_high_priority,
                     "model_temperature": model_temperature,
                     "model_ultrafast": model_ultrafast,

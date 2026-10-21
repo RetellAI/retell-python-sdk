@@ -70,6 +70,9 @@ __all__ = [
     "ComponentNodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "ComponentNodeConversationNodeKBConfig",
     "ComponentNodeConversationNodeModelChoice",
+    "ComponentNodeConversationNodeModelConfig",
+    "ComponentNodeConversationNodeModelConfigNodeModelConfig",
+    "ComponentNodeConversationNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeConversationNodeSkipResponseEdge",
     "ComponentNodeConversationNodeSkipResponseEdgeTransitionCondition",
     "ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionPromptCondition",
@@ -132,6 +135,9 @@ __all__ = [
     "ComponentNodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "ComponentNodeSubagentNodeKBConfig",
     "ComponentNodeSubagentNodeModelChoice",
+    "ComponentNodeSubagentNodeModelConfig",
+    "ComponentNodeSubagentNodeModelConfigNodeModelConfig",
+    "ComponentNodeSubagentNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeSubagentNodeSkipResponseEdge",
     "ComponentNodeSubagentNodeSkipResponseEdgeTransitionCondition",
     "ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition",
@@ -219,6 +225,9 @@ __all__ = [
     "ComponentNodeEndNodeInstructionNodeInstructionPrompt",
     "ComponentNodeEndNodeInstructionNodeInstructionStaticText",
     "ComponentNodeEndNodeModelChoice",
+    "ComponentNodeEndNodeModelConfig",
+    "ComponentNodeEndNodeModelConfigNodeModelConfig",
+    "ComponentNodeEndNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeFunctionNode",
     "ComponentNodeFunctionNodeDisplayPosition",
     "ComponentNodeFunctionNodeEdge",
@@ -264,6 +273,9 @@ __all__ = [
     "ComponentNodeFunctionNodeInstructionNodeInstructionPrompt",
     "ComponentNodeFunctionNodeInstructionNodeInstructionStaticText",
     "ComponentNodeFunctionNodeModelChoice",
+    "ComponentNodeFunctionNodeModelConfig",
+    "ComponentNodeFunctionNodeModelConfigNodeModelConfig",
+    "ComponentNodeFunctionNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeCodeNode",
     "ComponentNodeCodeNodeDisplayPosition",
     "ComponentNodeCodeNodeEdge",
@@ -309,6 +321,9 @@ __all__ = [
     "ComponentNodeCodeNodeInstructionNodeInstructionPrompt",
     "ComponentNodeCodeNodeInstructionNodeInstructionStaticText",
     "ComponentNodeCodeNodeModelChoice",
+    "ComponentNodeCodeNodeModelConfig",
+    "ComponentNodeCodeNodeModelConfigNodeModelConfig",
+    "ComponentNodeCodeNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeTransferCallNode",
     "ComponentNodeTransferCallNodeEdge",
     "ComponentNodeTransferCallNodeEdgeTransitionCondition",
@@ -363,6 +378,9 @@ __all__ = [
     "ComponentNodeTransferCallNodeInstructionNodeInstructionPrompt",
     "ComponentNodeTransferCallNodeInstructionNodeInstructionStaticText",
     "ComponentNodeTransferCallNodeModelChoice",
+    "ComponentNodeTransferCallNodeModelConfig",
+    "ComponentNodeTransferCallNodeModelConfigNodeModelConfig",
+    "ComponentNodeTransferCallNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodePressDigitNode",
     "ComponentNodePressDigitNodeInstruction",
     "ComponentNodePressDigitNodeDisplayPosition",
@@ -406,6 +424,9 @@ __all__ = [
     "ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "ComponentNodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "ComponentNodePressDigitNodeModelChoice",
+    "ComponentNodePressDigitNodeModelConfig",
+    "ComponentNodePressDigitNodeModelConfigNodeModelConfig",
+    "ComponentNodePressDigitNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeBranchNode",
     "ComponentNodeBranchNodeElseEdge",
     "ComponentNodeBranchNodeElseEdgeTransitionCondition",
@@ -448,6 +469,9 @@ __all__ = [
     "ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "ComponentNodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "ComponentNodeBranchNodeModelChoice",
+    "ComponentNodeBranchNodeModelConfig",
+    "ComponentNodeBranchNodeModelConfigNodeModelConfig",
+    "ComponentNodeBranchNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeSMSNode",
     "ComponentNodeSMSNodeFailedEdge",
     "ComponentNodeSMSNodeFailedEdgeTransitionCondition",
@@ -490,6 +514,9 @@ __all__ = [
     "ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "ComponentNodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "ComponentNodeSMSNodeModelChoice",
+    "ComponentNodeSMSNodeModelConfig",
+    "ComponentNodeSMSNodeModelConfigNodeModelConfig",
+    "ComponentNodeSMSNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeSMSNodeSMSDestination",
     "ComponentNodeSMSNodeSMSDestinationDestinationCustomerNumber",
     "ComponentNodeSMSNodeSMSDestinationDestinationPhoneNumber",
@@ -543,6 +570,9 @@ __all__ = [
     "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "ComponentNodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "ComponentNodeExtractDynamicVariablesNodeModelChoice",
+    "ComponentNodeExtractDynamicVariablesNodeModelConfig",
+    "ComponentNodeExtractDynamicVariablesNodeModelConfigNodeModelConfig",
+    "ComponentNodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeAgentSwapNode",
     "ComponentNodeAgentSwapNodeEdge",
     "ComponentNodeAgentSwapNodeEdgeTransitionCondition",
@@ -578,6 +608,9 @@ __all__ = [
     "ComponentNodeAgentSwapNodeInstructionNodeInstructionPrompt",
     "ComponentNodeAgentSwapNodeInstructionNodeInstructionStaticText",
     "ComponentNodeAgentSwapNodeModelChoice",
+    "ComponentNodeAgentSwapNodeModelConfig",
+    "ComponentNodeAgentSwapNodeModelConfigNodeModelConfig",
+    "ComponentNodeAgentSwapNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeMcpNode",
     "ComponentNodeMcpNodeDisplayPosition",
     "ComponentNodeMcpNodeEdge",
@@ -623,6 +656,9 @@ __all__ = [
     "ComponentNodeMcpNodeInstructionNodeInstructionPrompt",
     "ComponentNodeMcpNodeInstructionNodeInstructionStaticText",
     "ComponentNodeMcpNodeModelChoice",
+    "ComponentNodeMcpNodeModelConfig",
+    "ComponentNodeMcpNodeModelConfigNodeModelConfig",
+    "ComponentNodeMcpNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeComponentNode",
     "ComponentNodeComponentNodeElseEdge",
     "ComponentNodeComponentNodeElseEdgeTransitionCondition",
@@ -693,6 +729,9 @@ __all__ = [
     "ComponentNodeBridgeTransferNodeInstructionNodeInstructionPrompt",
     "ComponentNodeBridgeTransferNodeInstructionNodeInstructionStaticText",
     "ComponentNodeBridgeTransferNodeModelChoice",
+    "ComponentNodeBridgeTransferNodeModelConfig",
+    "ComponentNodeBridgeTransferNodeModelConfigNodeModelConfig",
+    "ComponentNodeBridgeTransferNodeModelConfigNodeModelConfigPrimary",
     "ComponentNodeCancelTransferNode",
     "ComponentNodeCancelTransferNodeDisplayPosition",
     "ComponentNodeCancelTransferNodeGlobalNodeSetting",
@@ -722,6 +761,9 @@ __all__ = [
     "ComponentNodeCancelTransferNodeInstructionNodeInstructionPrompt",
     "ComponentNodeCancelTransferNodeInstructionNodeInstructionStaticText",
     "ComponentNodeCancelTransferNodeModelChoice",
+    "ComponentNodeCancelTransferNodeModelConfig",
+    "ComponentNodeCancelTransferNodeModelConfigNodeModelConfig",
+    "ComponentNodeCancelTransferNodeModelConfigNodeModelConfigPrimary",
     "ComponentBeginTagDisplayPosition",
     "ComponentMcp",
     "ComponentNote",
@@ -740,6 +782,13 @@ __all__ = [
     "ModelChoice",
     "ModelChoiceModelChoiceCascading",
     "ModelChoiceModelChoiceS2S",
+    "ModelConfig",
+    "ModelConfigCascadingModelConfig",
+    "ModelConfigCascadingModelConfigBackup",
+    "ModelConfigCascadingModelConfigBackupBackupModelRef",
+    "ModelConfigCascadingModelConfigPrimary",
+    "ModelConfigS2SModelConfig",
+    "ModelConfigS2SModelConfigPrimary",
     "Node",
     "NodeConversationNode",
     "NodeConversationNodeInstruction",
@@ -799,6 +848,9 @@ __all__ = [
     "NodeConversationNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "NodeConversationNodeKBConfig",
     "NodeConversationNodeModelChoice",
+    "NodeConversationNodeModelConfig",
+    "NodeConversationNodeModelConfigNodeModelConfig",
+    "NodeConversationNodeModelConfigNodeModelConfigPrimary",
     "NodeConversationNodeSkipResponseEdge",
     "NodeConversationNodeSkipResponseEdgeTransitionCondition",
     "NodeConversationNodeSkipResponseEdgeTransitionConditionPromptCondition",
@@ -861,6 +913,9 @@ __all__ = [
     "NodeSubagentNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "NodeSubagentNodeKBConfig",
     "NodeSubagentNodeModelChoice",
+    "NodeSubagentNodeModelConfig",
+    "NodeSubagentNodeModelConfigNodeModelConfig",
+    "NodeSubagentNodeModelConfigNodeModelConfigPrimary",
     "NodeSubagentNodeSkipResponseEdge",
     "NodeSubagentNodeSkipResponseEdgeTransitionCondition",
     "NodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition",
@@ -948,6 +1003,9 @@ __all__ = [
     "NodeEndNodeInstructionNodeInstructionPrompt",
     "NodeEndNodeInstructionNodeInstructionStaticText",
     "NodeEndNodeModelChoice",
+    "NodeEndNodeModelConfig",
+    "NodeEndNodeModelConfigNodeModelConfig",
+    "NodeEndNodeModelConfigNodeModelConfigPrimary",
     "NodeFunctionNode",
     "NodeFunctionNodeDisplayPosition",
     "NodeFunctionNodeEdge",
@@ -993,6 +1051,9 @@ __all__ = [
     "NodeFunctionNodeInstructionNodeInstructionPrompt",
     "NodeFunctionNodeInstructionNodeInstructionStaticText",
     "NodeFunctionNodeModelChoice",
+    "NodeFunctionNodeModelConfig",
+    "NodeFunctionNodeModelConfigNodeModelConfig",
+    "NodeFunctionNodeModelConfigNodeModelConfigPrimary",
     "NodeCodeNode",
     "NodeCodeNodeDisplayPosition",
     "NodeCodeNodeEdge",
@@ -1038,6 +1099,9 @@ __all__ = [
     "NodeCodeNodeInstructionNodeInstructionPrompt",
     "NodeCodeNodeInstructionNodeInstructionStaticText",
     "NodeCodeNodeModelChoice",
+    "NodeCodeNodeModelConfig",
+    "NodeCodeNodeModelConfigNodeModelConfig",
+    "NodeCodeNodeModelConfigNodeModelConfigPrimary",
     "NodeTransferCallNode",
     "NodeTransferCallNodeEdge",
     "NodeTransferCallNodeEdgeTransitionCondition",
@@ -1092,6 +1156,9 @@ __all__ = [
     "NodeTransferCallNodeInstructionNodeInstructionPrompt",
     "NodeTransferCallNodeInstructionNodeInstructionStaticText",
     "NodeTransferCallNodeModelChoice",
+    "NodeTransferCallNodeModelConfig",
+    "NodeTransferCallNodeModelConfigNodeModelConfig",
+    "NodeTransferCallNodeModelConfigNodeModelConfigPrimary",
     "NodePressDigitNode",
     "NodePressDigitNodeInstruction",
     "NodePressDigitNodeDisplayPosition",
@@ -1135,6 +1202,9 @@ __all__ = [
     "NodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodePressDigitNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "NodePressDigitNodeModelChoice",
+    "NodePressDigitNodeModelConfig",
+    "NodePressDigitNodeModelConfigNodeModelConfig",
+    "NodePressDigitNodeModelConfigNodeModelConfigPrimary",
     "NodeBranchNode",
     "NodeBranchNodeElseEdge",
     "NodeBranchNodeElseEdgeTransitionCondition",
@@ -1177,6 +1247,9 @@ __all__ = [
     "NodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodeBranchNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "NodeBranchNodeModelChoice",
+    "NodeBranchNodeModelConfig",
+    "NodeBranchNodeModelConfigNodeModelConfig",
+    "NodeBranchNodeModelConfigNodeModelConfigPrimary",
     "NodeSMSNode",
     "NodeSMSNodeFailedEdge",
     "NodeSMSNodeFailedEdgeTransitionCondition",
@@ -1219,6 +1292,9 @@ __all__ = [
     "NodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodeSMSNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "NodeSMSNodeModelChoice",
+    "NodeSMSNodeModelConfig",
+    "NodeSMSNodeModelConfigNodeModelConfig",
+    "NodeSMSNodeModelConfigNodeModelConfigPrimary",
     "NodeSMSNodeSMSDestination",
     "NodeSMSNodeSMSDestinationDestinationCustomerNumber",
     "NodeSMSNodeSMSDestinationDestinationPhoneNumber",
@@ -1272,6 +1348,9 @@ __all__ = [
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
     "NodeExtractDynamicVariablesNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
     "NodeExtractDynamicVariablesNodeModelChoice",
+    "NodeExtractDynamicVariablesNodeModelConfig",
+    "NodeExtractDynamicVariablesNodeModelConfigNodeModelConfig",
+    "NodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary",
     "NodeAgentSwapNode",
     "NodeAgentSwapNodeEdge",
     "NodeAgentSwapNodeEdgeTransitionCondition",
@@ -1307,6 +1386,9 @@ __all__ = [
     "NodeAgentSwapNodeInstructionNodeInstructionPrompt",
     "NodeAgentSwapNodeInstructionNodeInstructionStaticText",
     "NodeAgentSwapNodeModelChoice",
+    "NodeAgentSwapNodeModelConfig",
+    "NodeAgentSwapNodeModelConfigNodeModelConfig",
+    "NodeAgentSwapNodeModelConfigNodeModelConfigPrimary",
     "NodeMcpNode",
     "NodeMcpNodeDisplayPosition",
     "NodeMcpNodeEdge",
@@ -1352,6 +1434,9 @@ __all__ = [
     "NodeMcpNodeInstructionNodeInstructionPrompt",
     "NodeMcpNodeInstructionNodeInstructionStaticText",
     "NodeMcpNodeModelChoice",
+    "NodeMcpNodeModelConfig",
+    "NodeMcpNodeModelConfigNodeModelConfig",
+    "NodeMcpNodeModelConfigNodeModelConfigPrimary",
     "NodeComponentNode",
     "NodeComponentNodeElseEdge",
     "NodeComponentNodeElseEdgeTransitionCondition",
@@ -1422,6 +1507,9 @@ __all__ = [
     "NodeBridgeTransferNodeInstructionNodeInstructionPrompt",
     "NodeBridgeTransferNodeInstructionNodeInstructionStaticText",
     "NodeBridgeTransferNodeModelChoice",
+    "NodeBridgeTransferNodeModelConfig",
+    "NodeBridgeTransferNodeModelConfigNodeModelConfig",
+    "NodeBridgeTransferNodeModelConfigNodeModelConfigPrimary",
     "NodeCancelTransferNode",
     "NodeCancelTransferNodeDisplayPosition",
     "NodeCancelTransferNodeGlobalNodeSetting",
@@ -1451,6 +1539,9 @@ __all__ = [
     "NodeCancelTransferNodeInstructionNodeInstructionPrompt",
     "NodeCancelTransferNodeInstructionNodeInstructionStaticText",
     "NodeCancelTransferNodeModelChoice",
+    "NodeCancelTransferNodeModelConfig",
+    "NodeCancelTransferNodeModelConfigNodeModelConfig",
+    "NodeCancelTransferNodeModelConfigNodeModelConfigPrimary",
     "Note",
     "NoteDisplayPosition",
     "NoteSize",
@@ -2020,6 +2111,11 @@ class ComponentNodeConversationNodeKBConfig(BaseModel):
 
 
 class ComponentNodeConversationNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -2068,6 +2164,64 @@ class ComponentNodeConversationNodeModelChoice(BaseModel):
     false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
     precedence over high_priority.
     """
+
+
+class ComponentNodeConversationNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeConversationNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeConversationNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeConversationNodeModelConfig: TypeAlias = Union[
+    ComponentNodeConversationNodeModelConfigNodeModelConfig, Optional[object]
+]
 
 
 class ComponentNodeConversationNodeSkipResponseEdgeTransitionConditionPromptCondition(BaseModel):
@@ -2189,6 +2343,14 @@ class ComponentNodeConversationNode(BaseModel):
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
     api_model_choice: Optional[ComponentNodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeConversationNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -2758,6 +2920,11 @@ class ComponentNodeSubagentNodeKBConfig(BaseModel):
 
 
 class ComponentNodeSubagentNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -2806,6 +2973,64 @@ class ComponentNodeSubagentNodeModelChoice(BaseModel):
     false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
     precedence over high_priority.
     """
+
+
+class ComponentNodeSubagentNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeSubagentNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeSubagentNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeSubagentNodeModelConfig: TypeAlias = Union[
+    ComponentNodeSubagentNodeModelConfigNodeModelConfig, Optional[object]
+]
 
 
 class ComponentNodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition(BaseModel):
@@ -4192,6 +4417,14 @@ class ComponentNodeSubagentNode(BaseModel):
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
     api_model_choice: Optional[ComponentNodeSubagentNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeSubagentNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -4506,6 +4739,11 @@ ComponentNodeEndNodeInstruction: TypeAlias = Union[
 
 
 class ComponentNodeEndNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -4556,6 +4794,62 @@ class ComponentNodeEndNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodeEndNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeEndNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeEndNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeEndNodeModelConfig: TypeAlias = Union[ComponentNodeEndNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class ComponentNodeEndNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -4578,6 +4872,14 @@ class ComponentNodeEndNode(BaseModel):
     """What to say when ending the call, only used when speak during execution"""
 
     api_model_choice: Optional[ComponentNodeEndNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeEndNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -5001,6 +5303,11 @@ ComponentNodeFunctionNodeInstruction: TypeAlias = Union[
 
 
 class ComponentNodeFunctionNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -5051,6 +5358,64 @@ class ComponentNodeFunctionNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodeFunctionNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeFunctionNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeFunctionNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeFunctionNodeModelConfig: TypeAlias = Union[
+    ComponentNodeFunctionNodeModelConfigNodeModelConfig, Optional[object]
+]
+
+
 class ComponentNodeFunctionNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -5089,6 +5454,14 @@ class ComponentNodeFunctionNode(BaseModel):
     instruction: Optional[ComponentNodeFunctionNodeInstruction] = None
 
     api_model_choice: Optional[ComponentNodeFunctionNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeFunctionNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -5509,6 +5882,11 @@ ComponentNodeCodeNodeInstruction: TypeAlias = Union[
 
 
 class ComponentNodeCodeNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -5559,6 +5937,62 @@ class ComponentNodeCodeNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodeCodeNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeCodeNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeCodeNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeCodeNodeModelConfig: TypeAlias = Union[ComponentNodeCodeNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class ComponentNodeCodeNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -5594,6 +6028,14 @@ class ComponentNodeCodeNode(BaseModel):
     instruction: Optional[ComponentNodeCodeNodeInstruction] = None
 
     api_model_choice: Optional[ComponentNodeCodeNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeCodeNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -6255,6 +6697,11 @@ ComponentNodeTransferCallNodeInstruction: TypeAlias = Union[
 
 
 class ComponentNodeTransferCallNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -6305,6 +6752,64 @@ class ComponentNodeTransferCallNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodeTransferCallNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeTransferCallNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeTransferCallNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeTransferCallNodeModelConfig: TypeAlias = Union[
+    ComponentNodeTransferCallNodeModelConfigNodeModelConfig, Optional[object]
+]
+
+
 class ComponentNodeTransferCallNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -6342,6 +6847,14 @@ class ComponentNodeTransferCallNode(BaseModel):
     """What to say when transferring the call, only used when speak during execution"""
 
     api_model_choice: Optional[ComponentNodeTransferCallNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeTransferCallNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -6757,6 +7270,11 @@ class ComponentNodePressDigitNodeGlobalNodeSetting(BaseModel):
 
 
 class ComponentNodePressDigitNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -6807,6 +7325,64 @@ class ComponentNodePressDigitNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodePressDigitNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodePressDigitNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodePressDigitNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodePressDigitNodeModelConfig: TypeAlias = Union[
+    ComponentNodePressDigitNodeModelConfigNodeModelConfig, Optional[object]
+]
+
+
 class ComponentNodePressDigitNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -6836,6 +7412,14 @@ class ComponentNodePressDigitNode(BaseModel):
     global_node_setting: Optional[ComponentNodePressDigitNodeGlobalNodeSetting] = None
 
     api_model_choice: Optional[ComponentNodePressDigitNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodePressDigitNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -7232,6 +7816,11 @@ class ComponentNodeBranchNodeGlobalNodeSetting(BaseModel):
 
 
 class ComponentNodeBranchNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -7282,6 +7871,64 @@ class ComponentNodeBranchNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodeBranchNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeBranchNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeBranchNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeBranchNodeModelConfig: TypeAlias = Union[
+    ComponentNodeBranchNodeModelConfigNodeModelConfig, Optional[object]
+]
+
+
 class ComponentNodeBranchNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -7306,6 +7953,14 @@ class ComponentNodeBranchNode(BaseModel):
     global_node_setting: Optional[ComponentNodeBranchNodeGlobalNodeSetting] = None
 
     api_model_choice: Optional[ComponentNodeBranchNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeBranchNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -7703,6 +8358,11 @@ class ComponentNodeSMSNodeGlobalNodeSetting(BaseModel):
 
 
 class ComponentNodeSMSNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -7751,6 +8411,62 @@ class ComponentNodeSMSNodeModelChoice(BaseModel):
     false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
     precedence over high_priority.
     """
+
+
+class ComponentNodeSMSNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeSMSNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeSMSNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeSMSNodeModelConfig: TypeAlias = Union[ComponentNodeSMSNodeModelConfigNodeModelConfig, Optional[object]]
 
 
 class ComponentNodeSMSNodeSMSDestinationDestinationCustomerNumber(BaseModel):
@@ -7816,6 +8532,14 @@ class ComponentNodeSMSNode(BaseModel):
     global_node_setting: Optional[ComponentNodeSMSNodeGlobalNodeSetting] = None
 
     api_model_choice: Optional[ComponentNodeSMSNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeSMSNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -8348,6 +9072,11 @@ class ComponentNodeExtractDynamicVariablesNodeGlobalNodeSetting(BaseModel):
 
 
 class ComponentNodeExtractDynamicVariablesNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -8398,6 +9127,64 @@ class ComponentNodeExtractDynamicVariablesNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeExtractDynamicVariablesNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeExtractDynamicVariablesNodeModelConfig: TypeAlias = Union[
+    ComponentNodeExtractDynamicVariablesNodeModelConfigNodeModelConfig, Optional[object]
+]
+
+
 class ComponentNodeExtractDynamicVariablesNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -8431,6 +9218,16 @@ class ComponentNodeExtractDynamicVariablesNode(BaseModel):
     api_model_choice: Optional[ComponentNodeExtractDynamicVariablesNodeModelChoice] = FieldInfo(
         alias="model_choice", default=None
     )
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeExtractDynamicVariablesNodeModelConfig] = FieldInfo(
+        alias="model_config", default=None
+    )
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -8761,6 +9558,11 @@ ComponentNodeAgentSwapNodeInstruction: TypeAlias = Union[
 
 
 class ComponentNodeAgentSwapNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -8811,6 +9613,64 @@ class ComponentNodeAgentSwapNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodeAgentSwapNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeAgentSwapNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeAgentSwapNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeAgentSwapNodeModelConfig: TypeAlias = Union[
+    ComponentNodeAgentSwapNodeModelConfigNodeModelConfig, Optional[object]
+]
+
+
 class ComponentNodeAgentSwapNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -8852,6 +9712,14 @@ class ComponentNodeAgentSwapNode(BaseModel):
     """
 
     api_model_choice: Optional[ComponentNodeAgentSwapNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeAgentSwapNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -9283,6 +10151,11 @@ ComponentNodeMcpNodeInstruction: TypeAlias = Union[
 
 
 class ComponentNodeMcpNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -9333,6 +10206,62 @@ class ComponentNodeMcpNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodeMcpNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeMcpNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeMcpNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeMcpNodeModelConfig: TypeAlias = Union[ComponentNodeMcpNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class ComponentNodeMcpNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -9372,6 +10301,14 @@ class ComponentNodeMcpNode(BaseModel):
     """What to say when calling the function, only used when speak during execution"""
 
     api_model_choice: Optional[ComponentNodeMcpNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeMcpNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -10083,6 +11020,11 @@ ComponentNodeBridgeTransferNodeInstruction: TypeAlias = Union[
 
 
 class ComponentNodeBridgeTransferNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -10133,6 +11075,64 @@ class ComponentNodeBridgeTransferNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodeBridgeTransferNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeBridgeTransferNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeBridgeTransferNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeBridgeTransferNodeModelConfig: TypeAlias = Union[
+    ComponentNodeBridgeTransferNodeModelConfigNodeModelConfig, Optional[object]
+]
+
+
 class ComponentNodeBridgeTransferNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -10154,6 +11154,16 @@ class ComponentNodeBridgeTransferNode(BaseModel):
     api_model_choice: Optional[ComponentNodeBridgeTransferNodeModelChoice] = FieldInfo(
         alias="model_choice", default=None
     )
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeBridgeTransferNodeModelConfig] = FieldInfo(
+        alias="model_config", default=None
+    )
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -10431,6 +11441,11 @@ ComponentNodeCancelTransferNodeInstruction: TypeAlias = Union[
 
 
 class ComponentNodeCancelTransferNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -10481,6 +11496,64 @@ class ComponentNodeCancelTransferNodeModelChoice(BaseModel):
     """
 
 
+class ComponentNodeCancelTransferNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ComponentNodeCancelTransferNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: ComponentNodeCancelTransferNodeModelConfigNodeModelConfigPrimary
+
+
+ComponentNodeCancelTransferNodeModelConfig: TypeAlias = Union[
+    ComponentNodeCancelTransferNodeModelConfigNodeModelConfig, Optional[object]
+]
+
+
 class ComponentNodeCancelTransferNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -10502,6 +11575,16 @@ class ComponentNodeCancelTransferNode(BaseModel):
     api_model_choice: Optional[ComponentNodeCancelTransferNodeModelChoice] = FieldInfo(
         alias="model_choice", default=None
     )
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[ComponentNodeCancelTransferNodeModelConfig] = FieldInfo(
+        alias="model_config", default=None
+    )
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -11014,6 +12097,158 @@ class ModelChoiceModelChoiceS2S(BaseModel):
 
 
 ModelChoice: TypeAlias = Union[ModelChoiceModelChoiceCascading, ModelChoiceModelChoiceS2S]
+
+
+class ModelConfigCascadingModelConfigBackupBackupModelRef(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    kick_in_timeout_ms: Optional[int] = None
+    """
+    How long to prefer the primary model's output while both models run, in
+    milliseconds. Defaults to 1500.
+    """
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+ModelConfigCascadingModelConfigBackup: TypeAlias = Union[
+    ModelConfigCascadingModelConfigBackupBackupModelRef, Optional[object]
+]
+
+
+class ModelConfigCascadingModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ModelConfigCascadingModelConfig(BaseModel):
+    backup: Optional[ModelConfigCascadingModelConfigBackup] = None
+    """
+    A text LLM that runs alongside the primary and takes over when the primary is
+    slow.
+    """
+
+    primary: Optional[ModelConfigCascadingModelConfigPrimary] = None
+
+    temperature: Optional[float] = None
+    """Randomness of the response, from 0 to 1.
+
+    Defaults to 0; a lower value is recommended for tool calling.
+    """
+
+    type: Optional[Literal["cascading"]] = None
+    """Runs a text LLM with a separate voice. This is the default type."""
+
+
+class ModelConfigS2SModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-realtime-2.1",
+        "gpt-realtime-2.1-mini",
+        "gpt-realtime-2",
+        "gpt-realtime-1.5",
+        "gpt-realtime",
+        "gpt-realtime-mini",
+    ]
+    """The speech-to-speech model to use"""
+
+
+class ModelConfigS2SModelConfig(BaseModel):
+    primary: Optional[ModelConfigS2SModelConfigPrimary] = None
+
+    temperature: Optional[float] = None
+    """Randomness of the response, from 0 to 1.
+
+    Defaults to 0; a lower value is recommended for tool calling.
+    """
+
+    type: Optional[Literal["s2s"]] = None
+    """Runs a speech-to-speech model."""
+
+
+ModelConfig: TypeAlias = Union[ModelConfigCascadingModelConfig, ModelConfigS2SModelConfig]
 
 
 class NodeConversationNodeInstructionNodeInstructionPrompt(BaseModel):
@@ -11554,6 +12789,11 @@ class NodeConversationNodeKBConfig(BaseModel):
 
 
 class NodeConversationNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -11602,6 +12842,62 @@ class NodeConversationNodeModelChoice(BaseModel):
     false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
     precedence over high_priority.
     """
+
+
+class NodeConversationNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeConversationNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeConversationNodeModelConfigNodeModelConfigPrimary
+
+
+NodeConversationNodeModelConfig: TypeAlias = Union[NodeConversationNodeModelConfigNodeModelConfig, Optional[object]]
 
 
 class NodeConversationNodeSkipResponseEdgeTransitionConditionPromptCondition(BaseModel):
@@ -11723,6 +13019,14 @@ class NodeConversationNode(BaseModel):
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
     api_model_choice: Optional[NodeConversationNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeConversationNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -12287,6 +13591,11 @@ class NodeSubagentNodeKBConfig(BaseModel):
 
 
 class NodeSubagentNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -12335,6 +13644,62 @@ class NodeSubagentNodeModelChoice(BaseModel):
     false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
     precedence over high_priority.
     """
+
+
+class NodeSubagentNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeSubagentNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeSubagentNodeModelConfigNodeModelConfigPrimary
+
+
+NodeSubagentNodeModelConfig: TypeAlias = Union[NodeSubagentNodeModelConfigNodeModelConfig, Optional[object]]
 
 
 class NodeSubagentNodeSkipResponseEdgeTransitionConditionPromptCondition(BaseModel):
@@ -13720,6 +15085,14 @@ class NodeSubagentNode(BaseModel):
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
     api_model_choice: Optional[NodeSubagentNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeSubagentNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -14032,6 +15405,11 @@ NodeEndNodeInstruction: TypeAlias = Union[
 
 
 class NodeEndNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -14082,6 +15460,62 @@ class NodeEndNodeModelChoice(BaseModel):
     """
 
 
+class NodeEndNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeEndNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeEndNodeModelConfigNodeModelConfigPrimary
+
+
+NodeEndNodeModelConfig: TypeAlias = Union[NodeEndNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class NodeEndNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -14104,6 +15538,14 @@ class NodeEndNode(BaseModel):
     """What to say when ending the call, only used when speak during execution"""
 
     api_model_choice: Optional[NodeEndNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeEndNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -14521,6 +15963,11 @@ NodeFunctionNodeInstruction: TypeAlias = Union[
 
 
 class NodeFunctionNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -14571,6 +16018,62 @@ class NodeFunctionNodeModelChoice(BaseModel):
     """
 
 
+class NodeFunctionNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeFunctionNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeFunctionNodeModelConfigNodeModelConfigPrimary
+
+
+NodeFunctionNodeModelConfig: TypeAlias = Union[NodeFunctionNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class NodeFunctionNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -14609,6 +16112,14 @@ class NodeFunctionNode(BaseModel):
     instruction: Optional[NodeFunctionNodeInstruction] = None
 
     api_model_choice: Optional[NodeFunctionNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeFunctionNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -15026,6 +16537,11 @@ NodeCodeNodeInstruction: TypeAlias = Union[
 
 
 class NodeCodeNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -15076,6 +16592,62 @@ class NodeCodeNodeModelChoice(BaseModel):
     """
 
 
+class NodeCodeNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeCodeNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeCodeNodeModelConfigNodeModelConfigPrimary
+
+
+NodeCodeNodeModelConfig: TypeAlias = Union[NodeCodeNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class NodeCodeNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -15111,6 +16683,14 @@ class NodeCodeNode(BaseModel):
     instruction: Optional[NodeCodeNodeInstruction] = None
 
     api_model_choice: Optional[NodeCodeNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeCodeNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -15755,6 +17335,11 @@ NodeTransferCallNodeInstruction: TypeAlias = Union[
 
 
 class NodeTransferCallNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -15805,6 +17390,62 @@ class NodeTransferCallNodeModelChoice(BaseModel):
     """
 
 
+class NodeTransferCallNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeTransferCallNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeTransferCallNodeModelConfigNodeModelConfigPrimary
+
+
+NodeTransferCallNodeModelConfig: TypeAlias = Union[NodeTransferCallNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class NodeTransferCallNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -15842,6 +17483,14 @@ class NodeTransferCallNode(BaseModel):
     """What to say when transferring the call, only used when speak during execution"""
 
     api_model_choice: Optional[NodeTransferCallNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeTransferCallNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -16248,6 +17897,11 @@ class NodePressDigitNodeGlobalNodeSetting(BaseModel):
 
 
 class NodePressDigitNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -16298,6 +17952,62 @@ class NodePressDigitNodeModelChoice(BaseModel):
     """
 
 
+class NodePressDigitNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodePressDigitNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodePressDigitNodeModelConfigNodeModelConfigPrimary
+
+
+NodePressDigitNodeModelConfig: TypeAlias = Union[NodePressDigitNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class NodePressDigitNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -16327,6 +18037,14 @@ class NodePressDigitNode(BaseModel):
     global_node_setting: Optional[NodePressDigitNodeGlobalNodeSetting] = None
 
     api_model_choice: Optional[NodePressDigitNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodePressDigitNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -16720,6 +18438,11 @@ class NodeBranchNodeGlobalNodeSetting(BaseModel):
 
 
 class NodeBranchNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -16770,6 +18493,62 @@ class NodeBranchNodeModelChoice(BaseModel):
     """
 
 
+class NodeBranchNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeBranchNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeBranchNodeModelConfigNodeModelConfigPrimary
+
+
+NodeBranchNodeModelConfig: TypeAlias = Union[NodeBranchNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class NodeBranchNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -16794,6 +18573,14 @@ class NodeBranchNode(BaseModel):
     global_node_setting: Optional[NodeBranchNodeGlobalNodeSetting] = None
 
     api_model_choice: Optional[NodeBranchNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeBranchNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -17189,6 +18976,11 @@ class NodeSMSNodeGlobalNodeSetting(BaseModel):
 
 
 class NodeSMSNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -17237,6 +19029,62 @@ class NodeSMSNodeModelChoice(BaseModel):
     false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
     precedence over high_priority.
     """
+
+
+class NodeSMSNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeSMSNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeSMSNodeModelConfigNodeModelConfigPrimary
+
+
+NodeSMSNodeModelConfig: TypeAlias = Union[NodeSMSNodeModelConfigNodeModelConfig, Optional[object]]
 
 
 class NodeSMSNodeSMSDestinationDestinationCustomerNumber(BaseModel):
@@ -17300,6 +19148,14 @@ class NodeSMSNode(BaseModel):
     global_node_setting: Optional[NodeSMSNodeGlobalNodeSetting] = None
 
     api_model_choice: Optional[NodeSMSNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeSMSNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -17826,6 +19682,11 @@ class NodeExtractDynamicVariablesNodeGlobalNodeSetting(BaseModel):
 
 
 class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -17876,6 +19737,64 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
     """
 
 
+class NodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeExtractDynamicVariablesNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary
+
+
+NodeExtractDynamicVariablesNodeModelConfig: TypeAlias = Union[
+    NodeExtractDynamicVariablesNodeModelConfigNodeModelConfig, Optional[object]
+]
+
+
 class NodeExtractDynamicVariablesNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -17907,6 +19826,16 @@ class NodeExtractDynamicVariablesNode(BaseModel):
     api_model_choice: Optional[NodeExtractDynamicVariablesNodeModelChoice] = FieldInfo(
         alias="model_choice", default=None
     )
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeExtractDynamicVariablesNodeModelConfig] = FieldInfo(
+        alias="model_config", default=None
+    )
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -18228,6 +20157,11 @@ NodeAgentSwapNodeInstruction: TypeAlias = Union[
 
 
 class NodeAgentSwapNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -18278,6 +20212,62 @@ class NodeAgentSwapNodeModelChoice(BaseModel):
     """
 
 
+class NodeAgentSwapNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeAgentSwapNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeAgentSwapNodeModelConfigNodeModelConfigPrimary
+
+
+NodeAgentSwapNodeModelConfig: TypeAlias = Union[NodeAgentSwapNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class NodeAgentSwapNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -18319,6 +20309,14 @@ class NodeAgentSwapNode(BaseModel):
     """
 
     api_model_choice: Optional[NodeAgentSwapNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeAgentSwapNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -18747,6 +20745,11 @@ NodeMcpNodeInstruction: TypeAlias = Union[
 
 
 class NodeMcpNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -18797,6 +20800,62 @@ class NodeMcpNodeModelChoice(BaseModel):
     """
 
 
+class NodeMcpNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeMcpNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeMcpNodeModelConfigNodeModelConfigPrimary
+
+
+NodeMcpNodeModelConfig: TypeAlias = Union[NodeMcpNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class NodeMcpNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -18836,6 +20895,14 @@ class NodeMcpNode(BaseModel):
     """What to say when calling the function, only used when speak during execution"""
 
     api_model_choice: Optional[NodeMcpNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeMcpNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -19529,6 +21596,11 @@ NodeBridgeTransferNodeInstruction: TypeAlias = Union[
 
 
 class NodeBridgeTransferNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -19579,6 +21651,62 @@ class NodeBridgeTransferNodeModelChoice(BaseModel):
     """
 
 
+class NodeBridgeTransferNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeBridgeTransferNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeBridgeTransferNodeModelConfigNodeModelConfigPrimary
+
+
+NodeBridgeTransferNodeModelConfig: TypeAlias = Union[NodeBridgeTransferNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class NodeBridgeTransferNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -19598,6 +21726,14 @@ class NodeBridgeTransferNode(BaseModel):
     """
 
     api_model_choice: Optional[NodeBridgeTransferNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeBridgeTransferNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -19866,6 +22002,11 @@ NodeCancelTransferNodeInstruction: TypeAlias = Union[
 
 
 class NodeCancelTransferNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
     model: Literal[
         "gpt-4.1",
         "gpt-4.1-mini",
@@ -19916,6 +22057,62 @@ class NodeCancelTransferNodeModelChoice(BaseModel):
     """
 
 
+class NodeCancelTransferNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeCancelTransferNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeCancelTransferNodeModelConfigNodeModelConfigPrimary
+
+
+NodeCancelTransferNodeModelConfig: TypeAlias = Union[NodeCancelTransferNodeModelConfigNodeModelConfig, Optional[object]]
+
+
 class NodeCancelTransferNode(BaseModel):
     id: str
     """Unique identifier for the node"""
@@ -19935,6 +22132,14 @@ class NodeCancelTransferNode(BaseModel):
     """
 
     api_model_choice: Optional[NodeCancelTransferNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeCancelTransferNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
 
     name: Optional[str] = None
     """Optional name for display purposes"""
@@ -20356,13 +22561,20 @@ class ConversationFlowResponse(BaseModel):
     """A list of MCP server configurations to use for this conversation flow."""
 
     api_model_choice: Optional[ModelChoice] = FieldInfo(alias="model_choice", default=None)
-    """The model choice for the conversation flow."""
+    """Deprecated, use model_config. Ignored when model_config is set."""
+
+    api_model_config: Optional[ModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model settings for the response engine.
+
+    type decides which models primary and backup accept. On update, each top-level
+    key replaces the current one and omitted keys are kept; set backup to null to
+    remove it. Changing type requires primary and clears backup, while temperature
+    carries over. In agent_override, type is required whenever primary is set, and
+    backup cannot be removed.
+    """
 
     api_model_temperature: Optional[float] = FieldInfo(alias="model_temperature", default=None)
-    """Controls the randomness of the model's responses.
-
-    Lower values make responses more deterministic.
-    """
+    """Deprecated, use model_config.temperature. Ignored when model_config is set."""
 
     nodes: Optional[List[Node]] = None
     """Array of nodes in the conversation flow."""
