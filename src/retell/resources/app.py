@@ -333,7 +333,8 @@ class AppResource(SyncAPIResource):
         and each property's default_input_mode ("const" or "description") is the input
         mode to preselect for it. A property may also carry extra_info ({ text?, link?
         }), guidance to render under its editor, e.g. a docs link on how to find an id.
-        Used by the tool config UI.
+        Used by the tool config UI. enum_labels maps enum values to display labels;
+        forbid_literal_const allows only description or a {{variable}}.
 
         Args:
           app_tool_template_name: The app tool template name (the provider's catalog tool name).
@@ -753,7 +754,8 @@ class AsyncAppResource(AsyncAPIResource):
         and each property's default_input_mode ("const" or "description") is the input
         mode to preselect for it. A property may also carry extra_info ({ text?, link?
         }), guidance to render under its editor, e.g. a docs link on how to find an id.
-        Used by the tool config UI.
+        Used by the tool config UI. enum_labels maps enum values to display labels;
+        forbid_literal_const allows only description or a {{variable}}.
 
         Args:
           app_tool_template_name: The app tool template name (the provider's catalog tool name).

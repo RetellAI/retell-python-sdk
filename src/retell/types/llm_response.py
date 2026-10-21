@@ -762,6 +762,12 @@ class GeneralToolCustomToolParameters(BaseModel):
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
 
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.
 
@@ -1264,6 +1270,12 @@ class GeneralToolAppToolParameter(BaseModel):
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
 
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.
 
@@ -1585,6 +1597,12 @@ class StateEdgeParameters(BaseModel):
 
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
 
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.
@@ -2252,6 +2270,12 @@ class StateToolCustomToolParameters(BaseModel):
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
 
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.
 
@@ -2753,6 +2777,12 @@ class StateToolAppToolParameter(BaseModel):
 
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
 
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.

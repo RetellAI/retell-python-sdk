@@ -3,6 +3,8 @@
 from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
+from pydantic import Field as FieldInfo
+
 from .._models import BaseModel
 
 __all__ = [
@@ -411,6 +413,12 @@ class PostSessionToolAppToolParameter(BaseModel):
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
 
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.
 
@@ -571,6 +579,12 @@ class PostSessionToolCustomToolParameters(BaseModel):
 
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
 
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.
@@ -1020,6 +1034,12 @@ class PreSessionToolAppToolParameter(BaseModel):
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
 
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.
 
@@ -1147,6 +1167,12 @@ class PreSessionToolCustomToolParameters(BaseModel):
 
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
 
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.

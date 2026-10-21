@@ -140,6 +140,7 @@ class TestBatchCall:
                                         {
                                             "properties": {},
                                             "type": "object",
+                                            "additional_properties": True,
                                             "required": ["string"],
                                         }
                                     ],
@@ -168,6 +169,7 @@ class TestBatchCall:
                                         {
                                             "properties": {},
                                             "type": "object",
+                                            "additional_properties": True,
                                             "required": ["string"],
                                         }
                                     ],
@@ -460,6 +462,7 @@ class TestAsyncBatchCall:
                                         {
                                             "properties": {},
                                             "type": "object",
+                                            "additional_properties": True,
                                             "required": ["string"],
                                         }
                                     ],
@@ -488,6 +491,7 @@ class TestAsyncBatchCall:
                                         {
                                             "properties": {},
                                             "type": "object",
+                                            "additional_properties": True,
                                             "required": ["string"],
                                         }
                                     ],

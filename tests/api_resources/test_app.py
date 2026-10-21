@@ -317,6 +317,7 @@ class TestApp:
                 {
                     "properties": {},
                     "type": "object",
+                    "additional_properties": True,
                     "required": ["string"],
                 }
             ],
@@ -755,6 +756,7 @@ class TestAsyncApp:
                 {
                     "properties": {},
                     "type": "object",
+                    "additional_properties": True,
                     "required": ["string"],
                 }
             ],

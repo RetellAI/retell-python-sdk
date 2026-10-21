@@ -3,6 +3,8 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
+from pydantic import Field as FieldInfo
+
 from .._models import BaseModel
 
 __all__ = ["AppGetToolSchemaResponse", "InputSchema", "ResponseSchema"]
@@ -22,6 +24,12 @@ class InputSchema(BaseModel):
 
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
 
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.
@@ -45,6 +53,12 @@ class ResponseSchema(BaseModel):
 
     type: Literal["object"]
     """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
 
     required: Optional[List[str]] = None
     """List of names of required property when generating this parameter.
