@@ -106,6 +106,7 @@ class LlmResource(SyncAPIResource):
                 "gpt-realtime-1.5",
                 "gpt-realtime",
                 "gpt-realtime-mini",
+                "grok-voice-3.0",
             ]
         ]
         | Omit = omit,
@@ -334,6 +335,7 @@ class LlmResource(SyncAPIResource):
                 "gpt-realtime-1.5",
                 "gpt-realtime",
                 "gpt-realtime-mini",
+                "grok-voice-3.0",
             ]
         ]
         | Omit = omit,
@@ -640,6 +642,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gpt-realtime-1.5",
                 "gpt-realtime",
                 "gpt-realtime-mini",
+                "grok-voice-3.0",
             ]
         ]
         | Omit = omit,
@@ -868,6 +871,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gpt-realtime-1.5",
                 "gpt-realtime",
                 "gpt-realtime-mini",
+                "grok-voice-3.0",
             ]
         ]
         | Omit = omit,

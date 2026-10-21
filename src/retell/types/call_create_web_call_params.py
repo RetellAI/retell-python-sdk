@@ -2355,6 +2355,7 @@ class AgentOverrideConversationFlowModelChoiceModelChoiceS2S(TypedDict, total=Fa
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ]
     """The speech-to-speech model to use"""
@@ -2505,6 +2506,7 @@ class AgentOverrideConversationFlowModelConfigS2SModelConfigPrimary(TypedDict, t
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ]
     """The speech-to-speech model to use"""
@@ -2721,6 +2723,7 @@ class AgentOverrideRetellLlmModelConfigS2SModelConfigPrimary(TypedDict, total=Fa
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ]
     """The speech-to-speech model to use"""
@@ -2842,6 +2845,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-realtime-1.5",
             "gpt-realtime",
             "gpt-realtime-mini",
+            "grok-voice-3.0",
         ]
     ]
     """The speech-to-speech model to use"""
