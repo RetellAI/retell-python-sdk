@@ -1,5 +1,18 @@
 # Changelog
 
+## [6.2.10](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.9...v6.2.10) (2026-10-22)
+
+
+### Bug Fixes
+
+* **api:** Add additionalProperties to integration response schemas and document enum_labels and forbid_literal_const for app tool schema resolution. ([a94026d](https://github.com/RetellAI/retell-python-sdk/commit/a94026d6e13adc3a80a18f451aed3532e690b36b))
+* **api:** Add avatar_url to voice objects and update the provider description. ([5051697](https://github.com/RetellAI/retell-python-sdk/commit/50516971c2af899fc92442b30934be9971bceecc))
+* **api:** Add grok-voice-3.0 to S2S model enums and allow xai voice providers. ([5051697](https://github.com/RetellAI/retell-python-sdk/commit/50516971c2af899fc92442b30934be9971bceecc))
+* **api:** Add model_config to agent overrides, Retell LLM overrides, conversation flow overrides, and node definitions. ([4258ce7](https://github.com/RetellAI/retell-python-sdk/commit/4258ce7127f6213d4cdce55790bcbca12ae7ebec))
+* **api:** Add SipCodecList to custom phone number import and update requests, and to phone number responses. ([9944e2a](https://github.com/RetellAI/retell-python-sdk/commit/9944e2a4dcbe2dcd12aa66f5c884cd619abc903c))
+* **api:** Deprecate model_choice, model_temperature, model, s2s_model, model_high_priority, and model_ultrafast in favor of model_config. ([4258ce7](https://github.com/RetellAI/retell-python-sdk/commit/4258ce7127f6213d4cdce55790bcbca12ae7ebec))
+* **api:** Deprecate the states field in the Retell LLM schema. ([635b8a2](https://github.com/RetellAI/retell-python-sdk/commit/635b8a2444d3c49a11e48030c1e42e4028d53a89))
+
 ## [6.2.9](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.8...v6.2.9) (2026-10-20)
 
 
