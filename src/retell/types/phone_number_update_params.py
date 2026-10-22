@@ -35,6 +35,14 @@ class PhoneNumberUpdateParams(TypedDict, total=False):
     number.
     """
 
+    codecs: SequenceNotStr[str]
+    """
+    SIP codec preferences for custom phone numbers only, used for inbound and
+    outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not
+    support this setting. An empty list uses the gateway's default codecs. Codec
+    names are extensible and are not limited to the examples.
+    """
+
     fallback_number: Optional[str]
     """
     When inbound call concurrency is reached and a slot does not free up after

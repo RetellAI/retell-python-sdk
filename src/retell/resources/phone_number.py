@@ -195,6 +195,7 @@ class PhoneNumberResource(SyncAPIResource):
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         auth_password: str | Omit = omit,
         auth_username: str | Omit = omit,
+        codecs: SequenceNotStr[str] | Omit = omit,
         fallback_number: Optional[str] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_update_params.InboundAgent]] | Omit = omit,
         inbound_sms_agents: Optional[Iterable[phone_number_update_params.InboundSMSAgent]] | Omit = omit,
@@ -212,8 +213,10 @@ class PhoneNumberResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberResponse:
-        """
-        Update agent bound to a purchased phone number
+        """Update settings for a phone number.
+
+        SIP codec preferences apply only to custom
+        phone numbers.
 
         Args:
           allowed_inbound_country_list: List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed.
@@ -227,6 +230,11 @@ class PhoneNumberResource(SyncAPIResource):
 
           auth_username: The username used for authentication for the SIP trunk to update for the phone
               number.
+
+          codecs: SIP codec preferences for custom phone numbers only, used for inbound and
+              outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not
+              support this setting. An empty list uses the gateway's default codecs. Codec
+              names are extensible and are not limited to the examples.
 
           fallback_number: When inbound call concurrency is reached and a slot does not free up after
               extended ringing, the call will fall back to this number. Can be either a Retell
@@ -286,6 +294,7 @@ class PhoneNumberResource(SyncAPIResource):
                     "allowed_outbound_country_list": allowed_outbound_country_list,
                     "auth_password": auth_password,
                     "auth_username": auth_username,
+                    "codecs": codecs,
                     "fallback_number": fallback_number,
                     "inbound_agents": inbound_agents,
                     "inbound_sms_agents": inbound_sms_agents,
@@ -396,6 +405,7 @@ class PhoneNumberResource(SyncAPIResource):
         termination_uri: str,
         allowed_inbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
+        codecs: SequenceNotStr[str] | Omit = omit,
         ignore_e164_validation: bool | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_import_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
@@ -428,6 +438,11 @@ class PhoneNumberResource(SyncAPIResource):
 
           allowed_outbound_country_list: List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed. If
               not set or empty, calls to all countries are allowed.
+
+          codecs: SIP codec preferences for custom phone numbers only, used for inbound and
+              outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not
+              support this setting. An empty list uses the gateway's default codecs. Codec
+              names are extensible and are not limited to the examples.
 
           ignore_e164_validation: If true, E.164 validation for phone_number is skipped. This is useful for
               internal pseudo numbers when using custom telephony. If omitted, default is
@@ -472,6 +487,7 @@ class PhoneNumberResource(SyncAPIResource):
                     "termination_uri": termination_uri,
                     "allowed_inbound_country_list": allowed_inbound_country_list,
                     "allowed_outbound_country_list": allowed_outbound_country_list,
+                    "codecs": codecs,
                     "ignore_e164_validation": ignore_e164_validation,
                     "inbound_agents": inbound_agents,
                     "inbound_webhook_url": inbound_webhook_url,
@@ -655,6 +671,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         auth_password: str | Omit = omit,
         auth_username: str | Omit = omit,
+        codecs: SequenceNotStr[str] | Omit = omit,
         fallback_number: Optional[str] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_update_params.InboundAgent]] | Omit = omit,
         inbound_sms_agents: Optional[Iterable[phone_number_update_params.InboundSMSAgent]] | Omit = omit,
@@ -672,8 +689,10 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PhoneNumberResponse:
-        """
-        Update agent bound to a purchased phone number
+        """Update settings for a phone number.
+
+        SIP codec preferences apply only to custom
+        phone numbers.
 
         Args:
           allowed_inbound_country_list: List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed.
@@ -687,6 +706,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           auth_username: The username used for authentication for the SIP trunk to update for the phone
               number.
+
+          codecs: SIP codec preferences for custom phone numbers only, used for inbound and
+              outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not
+              support this setting. An empty list uses the gateway's default codecs. Codec
+              names are extensible and are not limited to the examples.
 
           fallback_number: When inbound call concurrency is reached and a slot does not free up after
               extended ringing, the call will fall back to this number. Can be either a Retell
@@ -746,6 +770,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "allowed_outbound_country_list": allowed_outbound_country_list,
                     "auth_password": auth_password,
                     "auth_username": auth_username,
+                    "codecs": codecs,
                     "fallback_number": fallback_number,
                     "inbound_agents": inbound_agents,
                     "inbound_sms_agents": inbound_sms_agents,
@@ -856,6 +881,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         termination_uri: str,
         allowed_inbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
         allowed_outbound_country_list: Optional[SequenceNotStr[str]] | Omit = omit,
+        codecs: SequenceNotStr[str] | Omit = omit,
         ignore_e164_validation: bool | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_import_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
@@ -888,6 +914,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           allowed_outbound_country_list: List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed. If
               not set or empty, calls to all countries are allowed.
+
+          codecs: SIP codec preferences for custom phone numbers only, used for inbound and
+              outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not
+              support this setting. An empty list uses the gateway's default codecs. Codec
+              names are extensible and are not limited to the examples.
 
           ignore_e164_validation: If true, E.164 validation for phone_number is skipped. This is useful for
               internal pseudo numbers when using custom telephony. If omitted, default is
@@ -932,6 +963,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "termination_uri": termination_uri,
                     "allowed_inbound_country_list": allowed_inbound_country_list,
                     "allowed_outbound_country_list": allowed_outbound_country_list,
+                    "codecs": codecs,
                     "ignore_e164_validation": ignore_e164_validation,
                     "inbound_agents": inbound_agents,
                     "inbound_webhook_url": inbound_webhook_url,

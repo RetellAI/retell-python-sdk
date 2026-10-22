@@ -111,6 +111,14 @@ class SipOutboundTrunkConfig(BaseModel):
     auth_username: Optional[str] = None
     """The username used for authenticating the SIP trunk for the phone number."""
 
+    codecs: Optional[List[str]] = None
+    """
+    SIP codec preferences for custom phone numbers only, used for inbound and
+    outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not
+    support this setting. An empty list uses the gateway's default codecs. Codec
+    names are extensible and are not limited to the examples.
+    """
+
     termination_uri: Optional[str] = None
     """The termination URI for the SIP trunk for the phone number."""
 
