@@ -23,6 +23,9 @@ class Item(BaseModel):
 
     channel: Literal["voice", "chat"]
 
+    is_suspended: bool
+    """Whether the agent is currently suspended."""
+
     tags: Dict[str, ItemTags]
     """Authoritative root tags for this agent, keyed by tag name."""
 
