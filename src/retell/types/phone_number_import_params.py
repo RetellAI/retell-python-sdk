@@ -37,6 +37,14 @@ class PhoneNumberImportParams(TypedDict, total=False):
     If not set or empty, calls to all countries are allowed.
     """
 
+    codecs: SequenceNotStr[str]
+    """
+    SIP codec preferences for custom phone numbers only, used for inbound and
+    outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not
+    support this setting. An empty list uses the gateway's default codecs. Codec
+    names are extensible and are not limited to the examples.
+    """
+
     ignore_e164_validation: bool
     """If true, E.164 validation for phone_number is skipped.
 
