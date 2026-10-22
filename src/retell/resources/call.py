@@ -329,6 +329,13 @@ class CallResource(SyncAPIResource):
         """
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 120
+        options = make_request_options(
+            extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+        )
+        if not is_given(idempotency_key):
+            # Without an idempotency_key the API can't tell a retry from a new call, so retrying after a
+            # timeout or a 5xx could dial to_number a second time. Pass idempotency_key to keep retries.
+            options["max_retries"] = 0
         return self._post(
             "/v2/create-phone-call",
             body=maybe_transform(
@@ -347,9 +354,7 @@ class CallResource(SyncAPIResource):
                 },
                 call_create_phone_call_params.CallCreatePhoneCallParams,
             ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=options,
             cast_to=PhoneCallResponse,
         )
 
@@ -993,6 +998,13 @@ class AsyncCallResource(AsyncAPIResource):
         """
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 120
+        options = make_request_options(
+            extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+        )
+        if not is_given(idempotency_key):
+            # Without an idempotency_key the API can't tell a retry from a new call, so retrying after a
+            # timeout or a 5xx could dial to_number a second time. Pass idempotency_key to keep retries.
+            options["max_retries"] = 0
         return await self._post(
             "/v2/create-phone-call",
             body=await async_maybe_transform(
@@ -1011,9 +1023,7 @@ class AsyncCallResource(AsyncAPIResource):
                 },
                 call_create_phone_call_params.CallCreatePhoneCallParams,
             ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
+            options=options,
             cast_to=PhoneCallResponse,
         )
 
