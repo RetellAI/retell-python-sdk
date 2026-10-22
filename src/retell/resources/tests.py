@@ -69,6 +69,7 @@ class TestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> BatchTestResponse:
         """
         Create a batch test to run multiple test cases
@@ -96,7 +97,11 @@ class TestsResource(SyncAPIResource):
                 test_create_batch_test_params.TestCreateBatchTestParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=BatchTestResponse,
         )
@@ -151,6 +156,7 @@ class TestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestCaseDefinitionResponse:
         """
         Create a new test case definition
@@ -193,7 +199,11 @@ class TestsResource(SyncAPIResource):
                 test_create_test_case_definition_params.TestCreateTestCaseDefinitionParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=TestCaseDefinitionResponse,
         )
@@ -208,6 +218,7 @@ class TestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete a test case definition
@@ -232,7 +243,11 @@ class TestsResource(SyncAPIResource):
                 test_case_definition_id=test_case_definition_id,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -247,6 +262,7 @@ class TestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> BatchTestResponse:
         """
         Get a batch test job by ID
@@ -267,7 +283,11 @@ class TestsResource(SyncAPIResource):
         return self._get(
             path_template("/get-batch-test/{test_case_batch_job_id}", test_case_batch_job_id=test_case_batch_job_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=BatchTestResponse,
         )
@@ -282,6 +302,7 @@ class TestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestCaseDefinitionResponse:
         """
         Get a test case definition by ID
@@ -304,7 +325,11 @@ class TestsResource(SyncAPIResource):
                 "/get-test-case-definition/{test_case_definition_id}", test_case_definition_id=test_case_definition_id
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=TestCaseDefinitionResponse,
         )
@@ -319,6 +344,7 @@ class TestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestCaseJobResponse:
         """
         Get a test case job (test run) by ID
@@ -337,7 +363,11 @@ class TestsResource(SyncAPIResource):
         return self._get(
             path_template("/get-test-run/{test_case_job_id}", test_case_job_id=test_case_job_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=TestCaseJobResponse,
         )
@@ -357,6 +387,7 @@ class TestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestListBatchTestsResponse:
         """
         List batch test jobs with pagination
@@ -389,6 +420,7 @@ class TestsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "type": type,
@@ -418,6 +450,7 @@ class TestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestListTestCaseDefinitionsResponse:
         """
         List test case definitions with pagination
@@ -448,6 +481,7 @@ class TestsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "type": type,
@@ -474,6 +508,7 @@ class TestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestListTestRunsResponse:
         """
         List test case jobs (test runs) for a batch test job with pagination
@@ -502,6 +537,7 @@ class TestsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -564,6 +600,7 @@ class TestsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestCaseDefinitionResponse:
         """
         Update a test case definition
@@ -613,7 +650,11 @@ class TestsResource(SyncAPIResource):
                 test_update_test_case_definition_params.TestUpdateTestCaseDefinitionParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=TestCaseDefinitionResponse,
         )
@@ -650,6 +691,7 @@ class AsyncTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> BatchTestResponse:
         """
         Create a batch test to run multiple test cases
@@ -677,7 +719,11 @@ class AsyncTestsResource(AsyncAPIResource):
                 test_create_batch_test_params.TestCreateBatchTestParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=BatchTestResponse,
         )
@@ -732,6 +778,7 @@ class AsyncTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestCaseDefinitionResponse:
         """
         Create a new test case definition
@@ -774,7 +821,11 @@ class AsyncTestsResource(AsyncAPIResource):
                 test_create_test_case_definition_params.TestCreateTestCaseDefinitionParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=TestCaseDefinitionResponse,
         )
@@ -789,6 +840,7 @@ class AsyncTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete a test case definition
@@ -813,7 +865,11 @@ class AsyncTestsResource(AsyncAPIResource):
                 test_case_definition_id=test_case_definition_id,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -828,6 +884,7 @@ class AsyncTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> BatchTestResponse:
         """
         Get a batch test job by ID
@@ -848,7 +905,11 @@ class AsyncTestsResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-batch-test/{test_case_batch_job_id}", test_case_batch_job_id=test_case_batch_job_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=BatchTestResponse,
         )
@@ -863,6 +924,7 @@ class AsyncTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestCaseDefinitionResponse:
         """
         Get a test case definition by ID
@@ -885,7 +947,11 @@ class AsyncTestsResource(AsyncAPIResource):
                 "/get-test-case-definition/{test_case_definition_id}", test_case_definition_id=test_case_definition_id
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=TestCaseDefinitionResponse,
         )
@@ -900,6 +966,7 @@ class AsyncTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestCaseJobResponse:
         """
         Get a test case job (test run) by ID
@@ -918,7 +985,11 @@ class AsyncTestsResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-test-run/{test_case_job_id}", test_case_job_id=test_case_job_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=TestCaseJobResponse,
         )
@@ -938,6 +1009,7 @@ class AsyncTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestListBatchTestsResponse:
         """
         List batch test jobs with pagination
@@ -970,6 +1042,7 @@ class AsyncTestsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "type": type,
@@ -999,6 +1072,7 @@ class AsyncTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestListTestCaseDefinitionsResponse:
         """
         List test case definitions with pagination
@@ -1029,6 +1103,7 @@ class AsyncTestsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "type": type,
@@ -1055,6 +1130,7 @@ class AsyncTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestListTestRunsResponse:
         """
         List test case jobs (test runs) for a batch test job with pagination
@@ -1083,6 +1159,7 @@ class AsyncTestsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -1145,6 +1222,7 @@ class AsyncTestsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> TestCaseDefinitionResponse:
         """
         Update a test case definition
@@ -1194,7 +1272,11 @@ class AsyncTestsResource(AsyncAPIResource):
                 test_update_test_case_definition_params.TestUpdateTestCaseDefinitionParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=TestCaseDefinitionResponse,
         )

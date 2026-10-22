@@ -48,12 +48,17 @@ class IdentityResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> IdentityRetrieveResponse:
         """Get info about the API key used to authenticate, and the org that owns it."""
         return self._get(
             "/get-api-key-info",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=IdentityRetrieveResponse,
         )
@@ -88,12 +93,17 @@ class AsyncIdentityResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> IdentityRetrieveResponse:
         """Get info about the API key used to authenticate, and the org that owns it."""
         return await self._get(
             "/get-api-key-info",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=IdentityRetrieveResponse,
         )

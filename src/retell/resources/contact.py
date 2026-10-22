@@ -76,6 +76,7 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactResponse:
         """
         Create a new contact.
@@ -117,7 +118,11 @@ class ContactResource(SyncAPIResource):
                 contact_create_params.ContactCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactResponse,
         )
@@ -138,6 +143,7 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactResponse:
         """Update an existing contact.
 
@@ -179,7 +185,11 @@ class ContactResource(SyncAPIResource):
                 contact_update_params.ContactUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactResponse,
         )
@@ -200,6 +210,7 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactListResponse:
         """
         List contacts, newest created first by default, with the total count of matches
@@ -250,7 +261,11 @@ class ContactResource(SyncAPIResource):
                 contact_list_params.ContactListParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactListResponse,
         )
@@ -265,6 +280,7 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """Delete a contact.
 
@@ -287,7 +303,11 @@ class ContactResource(SyncAPIResource):
         return self._delete(
             path_template("/delete-contact/{contact_id}", contact_id=contact_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -303,6 +323,7 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactBackfillAnalysisDataResponse:
         """
         Trigger a backfill job that re-applies analysis data mappings to contacts using
@@ -344,7 +365,11 @@ class ContactResource(SyncAPIResource):
                 contact_backfill_analysis_data_params.ContactBackfillAnalysisDataParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactBackfillAnalysisDataResponse,
         )
@@ -362,6 +387,7 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactCreateImportResponse:
         """
         Start an incremental contact import from an uploaded CSV: creates new contacts
@@ -402,7 +428,11 @@ class ContactResource(SyncAPIResource):
                 contact_create_import_params.ContactCreateImportParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactCreateImportResponse,
         )
@@ -417,6 +447,7 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactResponse:
         """
         Retrieve a contact by ID.
@@ -435,7 +466,11 @@ class ContactResource(SyncAPIResource):
         return self._get(
             path_template("/get-contact/{contact_id}", contact_id=contact_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactResponse,
         )
@@ -449,12 +484,17 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactGetBackfillJobStatusResponse:
         """Get the status of the contact analysis data backfill job."""
         return self._get(
             "/get-backfill-contact-job-status",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactGetBackfillJobStatusResponse,
         )
@@ -469,6 +509,7 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactResponse:
         """Retrieve a contact by phone number.
 
@@ -489,7 +530,11 @@ class ContactResource(SyncAPIResource):
         return self._get(
             path_template("/get-contact-by-phone/{phone_number}", phone_number=phone_number),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactResponse,
         )
@@ -503,12 +548,17 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactGetImportResponse:
         """Status and counts for the org's current or latest contact import."""
         return self._get(
             "/get-contact-import",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactGetImportResponse,
         )
@@ -525,6 +575,7 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactListConversationsResponse:
         """
         List a contact's conversations (inbound calls, outbound calls, and chats) merged
@@ -553,6 +604,7 @@ class ContactResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -574,6 +626,7 @@ class ContactResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactUploadImportFileResponse:
         """Upload a CSV file for a contact import.
 
@@ -600,7 +653,11 @@ class ContactResource(SyncAPIResource):
             body=maybe_transform(body, contact_upload_import_file_params.ContactUploadImportFileParams),
             files=files,
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactUploadImportFileResponse,
         )
@@ -642,6 +699,7 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactResponse:
         """
         Create a new contact.
@@ -683,7 +741,11 @@ class AsyncContactResource(AsyncAPIResource):
                 contact_create_params.ContactCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactResponse,
         )
@@ -704,6 +766,7 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactResponse:
         """Update an existing contact.
 
@@ -745,7 +808,11 @@ class AsyncContactResource(AsyncAPIResource):
                 contact_update_params.ContactUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactResponse,
         )
@@ -766,6 +833,7 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactListResponse:
         """
         List contacts, newest created first by default, with the total count of matches
@@ -816,7 +884,11 @@ class AsyncContactResource(AsyncAPIResource):
                 contact_list_params.ContactListParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactListResponse,
         )
@@ -831,6 +903,7 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """Delete a contact.
 
@@ -853,7 +926,11 @@ class AsyncContactResource(AsyncAPIResource):
         return await self._delete(
             path_template("/delete-contact/{contact_id}", contact_id=contact_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -869,6 +946,7 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactBackfillAnalysisDataResponse:
         """
         Trigger a backfill job that re-applies analysis data mappings to contacts using
@@ -910,7 +988,11 @@ class AsyncContactResource(AsyncAPIResource):
                 contact_backfill_analysis_data_params.ContactBackfillAnalysisDataParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactBackfillAnalysisDataResponse,
         )
@@ -928,6 +1010,7 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactCreateImportResponse:
         """
         Start an incremental contact import from an uploaded CSV: creates new contacts
@@ -968,7 +1051,11 @@ class AsyncContactResource(AsyncAPIResource):
                 contact_create_import_params.ContactCreateImportParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactCreateImportResponse,
         )
@@ -983,6 +1070,7 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactResponse:
         """
         Retrieve a contact by ID.
@@ -1001,7 +1089,11 @@ class AsyncContactResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-contact/{contact_id}", contact_id=contact_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactResponse,
         )
@@ -1015,12 +1107,17 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactGetBackfillJobStatusResponse:
         """Get the status of the contact analysis data backfill job."""
         return await self._get(
             "/get-backfill-contact-job-status",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactGetBackfillJobStatusResponse,
         )
@@ -1035,6 +1132,7 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactResponse:
         """Retrieve a contact by phone number.
 
@@ -1055,7 +1153,11 @@ class AsyncContactResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-contact-by-phone/{phone_number}", phone_number=phone_number),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactResponse,
         )
@@ -1069,12 +1171,17 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactGetImportResponse:
         """Status and counts for the org's current or latest contact import."""
         return await self._get(
             "/get-contact-import",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactGetImportResponse,
         )
@@ -1091,6 +1198,7 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactListConversationsResponse:
         """
         List a contact's conversations (inbound calls, outbound calls, and chats) merged
@@ -1119,6 +1227,7 @@ class AsyncContactResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -1140,6 +1249,7 @@ class AsyncContactResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ContactUploadImportFileResponse:
         """Upload a CSV file for a contact import.
 
@@ -1166,7 +1276,11 @@ class AsyncContactResource(AsyncAPIResource):
             body=await async_maybe_transform(body, contact_upload_import_file_params.ContactUploadImportFileParams),
             files=files,
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ContactUploadImportFileResponse,
         )

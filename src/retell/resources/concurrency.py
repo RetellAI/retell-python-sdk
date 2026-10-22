@@ -48,12 +48,17 @@ class ConcurrencyResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConcurrencyRetrieveResponse:
         """Get the current concurrency and concurrency limit of the org"""
         return self._get(
             "/get-concurrency",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ConcurrencyRetrieveResponse,
         )
@@ -88,12 +93,17 @@ class AsyncConcurrencyResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConcurrencyRetrieveResponse:
         """Get the current concurrency and concurrency limit of the org"""
         return await self._get(
             "/get-concurrency",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ConcurrencyRetrieveResponse,
         )

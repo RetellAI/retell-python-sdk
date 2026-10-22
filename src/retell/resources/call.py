@@ -69,6 +69,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallResponse:
         """
         Retrieve details of a specific call
@@ -89,7 +90,11 @@ class CallResource(SyncAPIResource):
             self._get(
                 path_template("/v2/get-call/{call_id}", call_id=call_id),
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    max_retries=max_retries,
                 ),
                 cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
             ),
@@ -108,6 +113,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallResponse:
         """
         Update metadata and sensitive data storage settings for an existing call.
@@ -152,7 +158,11 @@ class CallResource(SyncAPIResource):
                     call_update_params.CallUpdateParams,
                 ),
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    max_retries=max_retries,
                 ),
                 cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
             ),
@@ -173,6 +183,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallListResponse:
         """
         List calls with unified cursor pagination response.
@@ -217,7 +228,11 @@ class CallResource(SyncAPIResource):
                 call_list_params.CallListParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CallListResponse,
         )
@@ -232,6 +247,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete a specific call and its associated data
@@ -251,7 +267,11 @@ class CallResource(SyncAPIResource):
         return self._delete(
             path_template("/v2/delete-call/{call_id}", call_id=call_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -276,6 +296,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneCallResponse:
         """
         Create a new outbound phone call.
@@ -327,6 +348,8 @@ class CallResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(max_retries):
+            max_retries = 0
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 120
         return self._post(
@@ -348,7 +371,11 @@ class CallResource(SyncAPIResource):
                 call_create_phone_call_params.CallCreatePhoneCallParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneCallResponse,
         )
@@ -369,6 +396,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CreateWebCallResponse:
         """
         Create a new web call and return browser connection details.
@@ -422,7 +450,11 @@ class CallResource(SyncAPIResource):
                 call_create_web_call_params.CallCreateWebCallParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CreateWebCallResponse,
         )
@@ -437,6 +469,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallListenLiveResponse:
         """
         Mint a subscribe-only access token for an in-progress call so a client can
@@ -457,7 +490,11 @@ class CallResource(SyncAPIResource):
         return self._post(
             path_template("/v2/listen-live-call/{call_id}", call_id=call_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CallListenLiveResponse,
         )
@@ -479,6 +516,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneCallResponse:
         """
         Register a new phone call for custom telephony
@@ -530,7 +568,11 @@ class CallResource(SyncAPIResource):
                 call_register_phone_call_params.CallRegisterPhoneCallParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneCallResponse,
         )
@@ -545,6 +587,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallResponse:
         """Rerun post-call analysis for a specific call.
 
@@ -566,7 +609,11 @@ class CallResource(SyncAPIResource):
             self._put(
                 path_template("/rerun-call-analysis/{call_id}", call_id=call_id),
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    max_retries=max_retries,
                 ),
                 cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
             ),
@@ -582,6 +629,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Stop an ongoing call.
@@ -601,7 +649,11 @@ class CallResource(SyncAPIResource):
         return self._post(
             path_template("/v2/stop-call/{call_id}", call_id=call_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -617,6 +669,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallTakeOverLiveResponse:
         """Take over an in-progress call from the AI agent.
 
@@ -643,7 +696,11 @@ class CallResource(SyncAPIResource):
             path_template("/v2/take-over-live-call/{call_id}", call_id=call_id),
             body=maybe_transform({"participant_id": participant_id}, call_take_over_live_params.CallTakeOverLiveParams),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CallTakeOverLiveResponse,
         )
@@ -660,6 +717,7 @@ class CallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallUpdateLiveResponse:
         """Update an ongoing call at runtime.
 
@@ -697,7 +755,11 @@ class CallResource(SyncAPIResource):
                 call_update_live_params.CallUpdateLiveParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CallUpdateLiveResponse,
         )
@@ -733,6 +795,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallResponse:
         """
         Retrieve details of a specific call
@@ -753,7 +816,11 @@ class AsyncCallResource(AsyncAPIResource):
             await self._get(
                 path_template("/v2/get-call/{call_id}", call_id=call_id),
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    max_retries=max_retries,
                 ),
                 cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
             ),
@@ -772,6 +839,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallResponse:
         """
         Update metadata and sensitive data storage settings for an existing call.
@@ -816,7 +884,11 @@ class AsyncCallResource(AsyncAPIResource):
                     call_update_params.CallUpdateParams,
                 ),
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    max_retries=max_retries,
                 ),
                 cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
             ),
@@ -837,6 +909,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallListResponse:
         """
         List calls with unified cursor pagination response.
@@ -881,7 +954,11 @@ class AsyncCallResource(AsyncAPIResource):
                 call_list_params.CallListParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CallListResponse,
         )
@@ -896,6 +973,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete a specific call and its associated data
@@ -915,7 +993,11 @@ class AsyncCallResource(AsyncAPIResource):
         return await self._delete(
             path_template("/v2/delete-call/{call_id}", call_id=call_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -940,6 +1022,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneCallResponse:
         """
         Create a new outbound phone call.
@@ -991,6 +1074,8 @@ class AsyncCallResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(max_retries):
+            max_retries = 0
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 120
         return await self._post(
@@ -1012,7 +1097,11 @@ class AsyncCallResource(AsyncAPIResource):
                 call_create_phone_call_params.CallCreatePhoneCallParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneCallResponse,
         )
@@ -1033,6 +1122,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CreateWebCallResponse:
         """
         Create a new web call and return browser connection details.
@@ -1086,7 +1176,11 @@ class AsyncCallResource(AsyncAPIResource):
                 call_create_web_call_params.CallCreateWebCallParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CreateWebCallResponse,
         )
@@ -1101,6 +1195,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallListenLiveResponse:
         """
         Mint a subscribe-only access token for an in-progress call so a client can
@@ -1121,7 +1216,11 @@ class AsyncCallResource(AsyncAPIResource):
         return await self._post(
             path_template("/v2/listen-live-call/{call_id}", call_id=call_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CallListenLiveResponse,
         )
@@ -1143,6 +1242,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneCallResponse:
         """
         Register a new phone call for custom telephony
@@ -1194,7 +1294,11 @@ class AsyncCallResource(AsyncAPIResource):
                 call_register_phone_call_params.CallRegisterPhoneCallParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneCallResponse,
         )
@@ -1209,6 +1313,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallResponse:
         """Rerun post-call analysis for a specific call.
 
@@ -1230,7 +1335,11 @@ class AsyncCallResource(AsyncAPIResource):
             await self._put(
                 path_template("/rerun-call-analysis/{call_id}", call_id=call_id),
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    max_retries=max_retries,
                 ),
                 cast_to=cast(Any, CallResponse),  # Union types cannot be passed in as arguments in the type system
             ),
@@ -1246,6 +1355,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Stop an ongoing call.
@@ -1265,7 +1375,11 @@ class AsyncCallResource(AsyncAPIResource):
         return await self._post(
             path_template("/v2/stop-call/{call_id}", call_id=call_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -1281,6 +1395,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallTakeOverLiveResponse:
         """Take over an in-progress call from the AI agent.
 
@@ -1309,7 +1424,11 @@ class AsyncCallResource(AsyncAPIResource):
                 {"participant_id": participant_id}, call_take_over_live_params.CallTakeOverLiveParams
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CallTakeOverLiveResponse,
         )
@@ -1326,6 +1445,7 @@ class AsyncCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CallUpdateLiveResponse:
         """Update an ongoing call at runtime.
 
@@ -1363,7 +1483,11 @@ class AsyncCallResource(AsyncAPIResource):
                 call_update_live_params.CallUpdateLiveParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CallUpdateLiveResponse,
         )

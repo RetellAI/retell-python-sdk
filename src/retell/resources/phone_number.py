@@ -72,6 +72,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Buy a new phone number & Bind agents
@@ -149,7 +150,11 @@ class PhoneNumberResource(SyncAPIResource):
                 phone_number_create_params.PhoneNumberCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneNumberResponse,
         )
@@ -164,6 +169,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Retrieve details of a specific phone number
@@ -182,7 +188,11 @@ class PhoneNumberResource(SyncAPIResource):
         return self._get(
             path_template("/get-phone-number/{phone_number}", phone_number=phone_number),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneNumberResponse,
         )
@@ -212,6 +222,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """Update settings for a phone number.
 
@@ -309,7 +320,11 @@ class PhoneNumberResource(SyncAPIResource):
                 phone_number_update_params.PhoneNumberUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneNumberResponse,
         )
@@ -326,6 +341,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneNumberListResponse:
         """
         List phone numbers with pagination
@@ -352,6 +368,7 @@ class PhoneNumberResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -374,6 +391,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing phone number
@@ -393,7 +411,11 @@ class PhoneNumberResource(SyncAPIResource):
         return self._delete(
             path_template("/delete-phone-number/{phone_number}", phone_number=phone_number),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -420,6 +442,7 @@ class PhoneNumberResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Import a phone number from custom telephony & Bind agents
@@ -500,7 +523,11 @@ class PhoneNumberResource(SyncAPIResource):
                 phone_number_import_params.PhoneNumberImportParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneNumberResponse,
         )
@@ -548,6 +575,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Buy a new phone number & Bind agents
@@ -625,7 +653,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                 phone_number_create_params.PhoneNumberCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneNumberResponse,
         )
@@ -640,6 +672,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Retrieve details of a specific phone number
@@ -658,7 +691,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-phone-number/{phone_number}", phone_number=phone_number),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneNumberResponse,
         )
@@ -688,6 +725,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """Update settings for a phone number.
 
@@ -785,7 +823,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                 phone_number_update_params.PhoneNumberUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneNumberResponse,
         )
@@ -802,6 +844,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneNumberListResponse:
         """
         List phone numbers with pagination
@@ -828,6 +871,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -850,6 +894,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing phone number
@@ -869,7 +914,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         return await self._delete(
             path_template("/delete-phone-number/{phone_number}", phone_number=phone_number),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -896,6 +945,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PhoneNumberResponse:
         """
         Import a phone number from custom telephony & Bind agents
@@ -976,7 +1026,11 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                 phone_number_import_params.PhoneNumberImportParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=PhoneNumberResponse,
         )

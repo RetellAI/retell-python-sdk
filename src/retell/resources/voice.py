@@ -57,6 +57,7 @@ class VoiceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> VoiceResponse:
         """
         Retrieve details of a specific voice
@@ -75,7 +76,11 @@ class VoiceResource(SyncAPIResource):
         return self._get(
             path_template("/get-voice/{voice_id}", voice_id=voice_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=VoiceResponse,
         )
@@ -89,12 +94,17 @@ class VoiceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> VoiceListResponse:
         """List all voices available to the user"""
         return self._get(
             "/list-voices",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=VoiceListResponse,
         )
@@ -112,6 +122,7 @@ class VoiceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> VoiceResponse:
         """
         Add a community voice to the voice library
@@ -145,7 +156,11 @@ class VoiceResource(SyncAPIResource):
                 voice_add_resource_params.VoiceAddResourceParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=VoiceResponse,
         )
@@ -162,6 +177,7 @@ class VoiceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> VoiceResponse:
         """
         Clone a voice from audio files
@@ -200,7 +216,11 @@ class VoiceResource(SyncAPIResource):
             body=maybe_transform(body, voice_clone_params.VoiceCloneParams),
             files=extracted_files,
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=VoiceResponse,
         )
@@ -216,6 +236,7 @@ class VoiceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> VoiceSearchResponse:
         """
         Search for community voices from voice providers
@@ -243,7 +264,11 @@ class VoiceResource(SyncAPIResource):
                 voice_search_params.VoiceSearchParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=VoiceSearchResponse,
         )
@@ -279,6 +304,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> VoiceResponse:
         """
         Retrieve details of a specific voice
@@ -297,7 +323,11 @@ class AsyncVoiceResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-voice/{voice_id}", voice_id=voice_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=VoiceResponse,
         )
@@ -311,12 +341,17 @@ class AsyncVoiceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> VoiceListResponse:
         """List all voices available to the user"""
         return await self._get(
             "/list-voices",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=VoiceListResponse,
         )
@@ -334,6 +369,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> VoiceResponse:
         """
         Add a community voice to the voice library
@@ -367,7 +403,11 @@ class AsyncVoiceResource(AsyncAPIResource):
                 voice_add_resource_params.VoiceAddResourceParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=VoiceResponse,
         )
@@ -384,6 +424,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> VoiceResponse:
         """
         Clone a voice from audio files
@@ -422,7 +463,11 @@ class AsyncVoiceResource(AsyncAPIResource):
             body=await async_maybe_transform(body, voice_clone_params.VoiceCloneParams),
             files=extracted_files,
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=VoiceResponse,
         )
@@ -438,6 +483,7 @@ class AsyncVoiceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> VoiceSearchResponse:
         """
         Search for community voices from voice providers
@@ -465,7 +511,11 @@ class AsyncVoiceResource(AsyncAPIResource):
                 voice_search_params.VoiceSearchParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=VoiceSearchResponse,
         )

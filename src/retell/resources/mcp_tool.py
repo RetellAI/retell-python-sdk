@@ -56,6 +56,7 @@ class McpToolResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> McpToolGetMcpToolsResponse:
         """
         Get MCP tools for a specific agent
@@ -85,6 +86,7 @@ class McpToolResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "mcp_id": mcp_id,
@@ -131,6 +133,7 @@ class AsyncMcpToolResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> McpToolGetMcpToolsResponse:
         """
         Get MCP tools for a specific agent
@@ -160,6 +163,7 @@ class AsyncMcpToolResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "mcp_id": mcp_id,

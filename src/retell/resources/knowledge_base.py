@@ -61,6 +61,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Create a new knowledge base
@@ -115,7 +116,11 @@ class KnowledgeBaseResource(SyncAPIResource):
             body=maybe_transform(body, knowledge_base_create_params.KnowledgeBaseCreateParams),
             files=files,
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=KnowledgeBaseResponse,
         )
@@ -130,6 +135,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Retrieve details of a specific knowledge base
@@ -148,7 +154,11 @@ class KnowledgeBaseResource(SyncAPIResource):
         return self._get(
             path_template("/get-knowledge-base/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=KnowledgeBaseResponse,
         )
@@ -162,12 +172,17 @@ class KnowledgeBaseResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> KnowledgeBaseListResponse:
         """List all knowledge bases"""
         return self._get(
             "/list-knowledge-bases",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=KnowledgeBaseListResponse,
         )
@@ -182,6 +197,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing knowledge base
@@ -201,7 +217,11 @@ class KnowledgeBaseResource(SyncAPIResource):
         return self._delete(
             path_template("/delete-knowledge-base/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -219,6 +239,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Add sources to a knowledge base
@@ -259,7 +280,11 @@ class KnowledgeBaseResource(SyncAPIResource):
             body=maybe_transform(body, knowledge_base_add_sources_params.KnowledgeBaseAddSourcesParams),
             files=files,
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=KnowledgeBaseResponse,
         )
@@ -275,6 +300,7 @@ class KnowledgeBaseResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Delete an existing source from knowledge base
@@ -299,7 +325,11 @@ class KnowledgeBaseResource(SyncAPIResource):
                 source_id=source_id,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=KnowledgeBaseResponse,
         )
@@ -341,6 +371,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Create a new knowledge base
@@ -395,7 +426,11 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
             body=await async_maybe_transform(body, knowledge_base_create_params.KnowledgeBaseCreateParams),
             files=files,
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=KnowledgeBaseResponse,
         )
@@ -410,6 +445,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Retrieve details of a specific knowledge base
@@ -428,7 +464,11 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-knowledge-base/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=KnowledgeBaseResponse,
         )
@@ -442,12 +482,17 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> KnowledgeBaseListResponse:
         """List all knowledge bases"""
         return await self._get(
             "/list-knowledge-bases",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=KnowledgeBaseListResponse,
         )
@@ -462,6 +507,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing knowledge base
@@ -481,7 +527,11 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         return await self._delete(
             path_template("/delete-knowledge-base/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -499,6 +549,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Add sources to a knowledge base
@@ -539,7 +590,11 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
             body=await async_maybe_transform(body, knowledge_base_add_sources_params.KnowledgeBaseAddSourcesParams),
             files=files,
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=KnowledgeBaseResponse,
         )
@@ -555,6 +610,7 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> KnowledgeBaseResponse:
         """
         Delete an existing source from knowledge base
@@ -579,7 +635,11 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
                 source_id=source_id,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=KnowledgeBaseResponse,
         )
