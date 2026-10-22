@@ -61,6 +61,7 @@ class PlaygroundResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PlaygroundCompletionResponse:
         """Stateless playground completion.
 
@@ -117,6 +118,7 @@ class PlaygroundResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"version": version}, playground_completion_params.PlaygroundCompletionParams),
             ),
             cast_to=PlaygroundCompletionResponse,
@@ -160,6 +162,7 @@ class AsyncPlaygroundResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> PlaygroundCompletionResponse:
         """Stateless playground completion.
 
@@ -216,6 +219,7 @@ class AsyncPlaygroundResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {"version": version}, playground_completion_params.PlaygroundCompletionParams
                 ),

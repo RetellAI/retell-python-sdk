@@ -55,6 +55,7 @@ class ExportRequestResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ExportRequestListResponse:
         """
         List export requests with pagination
@@ -81,6 +82,7 @@ class ExportRequestResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -126,6 +128,7 @@ class AsyncExportRequestResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ExportRequestListResponse:
         """
         List export requests with pagination
@@ -152,6 +155,7 @@ class AsyncExportRequestResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,

@@ -67,6 +67,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowComponentResponse:
         """
         Create a new shared conversation flow component
@@ -112,7 +113,11 @@ class ConversationFlowComponentResource(SyncAPIResource):
                 conversation_flow_component_create_params.ConversationFlowComponentCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ConversationFlowComponentResponse,
         )
@@ -127,6 +132,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowComponentResponse:
         """
         Get a shared conversation flow component
@@ -150,7 +156,11 @@ class ConversationFlowComponentResource(SyncAPIResource):
                 conversation_flow_component_id=conversation_flow_component_id,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ConversationFlowComponentResponse,
         )
@@ -174,6 +184,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowComponentResponse:
         """
         Update an existing shared conversation flow component
@@ -226,7 +237,11 @@ class ConversationFlowComponentResource(SyncAPIResource):
                 conversation_flow_component_update_params.ConversationFlowComponentUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ConversationFlowComponentResponse,
         )
@@ -243,6 +258,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowComponentListResponse:
         """
         List shared conversation flow components with pagination
@@ -269,6 +285,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -291,6 +308,7 @@ class ConversationFlowComponentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """Delete a shared conversation flow component.
 
@@ -317,7 +335,11 @@ class ConversationFlowComponentResource(SyncAPIResource):
                 conversation_flow_component_id=conversation_flow_component_id,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -361,6 +383,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowComponentResponse:
         """
         Create a new shared conversation flow component
@@ -406,7 +429,11 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                 conversation_flow_component_create_params.ConversationFlowComponentCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ConversationFlowComponentResponse,
         )
@@ -421,6 +448,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowComponentResponse:
         """
         Get a shared conversation flow component
@@ -444,7 +472,11 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                 conversation_flow_component_id=conversation_flow_component_id,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ConversationFlowComponentResponse,
         )
@@ -468,6 +500,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowComponentResponse:
         """
         Update an existing shared conversation flow component
@@ -520,7 +553,11 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                 conversation_flow_component_update_params.ConversationFlowComponentUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ConversationFlowComponentResponse,
         )
@@ -537,6 +574,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowComponentListResponse:
         """
         List shared conversation flow components with pagination
@@ -563,6 +601,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -585,6 +624,7 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """Delete a shared conversation flow component.
 
@@ -611,7 +651,11 @@ class AsyncConversationFlowComponentResource(AsyncAPIResource):
                 conversation_flow_component_id=conversation_flow_component_id,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )

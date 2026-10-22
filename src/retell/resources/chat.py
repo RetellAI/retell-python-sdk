@@ -66,6 +66,7 @@ class ChatResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Create a chat session
@@ -104,7 +105,11 @@ class ChatResource(SyncAPIResource):
                 chat_create_params.ChatCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatResponse,
         )
@@ -119,6 +124,7 @@ class ChatResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Retrieve details of a specific chat
@@ -137,7 +143,11 @@ class ChatResource(SyncAPIResource):
         return self._get(
             path_template("/get-chat/{chat_id}", chat_id=chat_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatResponse,
         )
@@ -156,6 +166,7 @@ class ChatResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Update metadata and sensitive data storage settings for an existing chat.
@@ -204,7 +215,11 @@ class ChatResource(SyncAPIResource):
                 chat_update_params.ChatUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatResponse,
         )
@@ -224,6 +239,7 @@ class ChatResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatListResponse:
         """
         List chats with unified cursor pagination response.
@@ -268,7 +284,11 @@ class ChatResource(SyncAPIResource):
                 chat_list_params.ChatListParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatListResponse,
         )
@@ -283,6 +303,7 @@ class ChatResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing chat
@@ -302,7 +323,11 @@ class ChatResource(SyncAPIResource):
         return self._delete(
             path_template("/delete-chat/{chat_id}", chat_id=chat_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -318,6 +343,7 @@ class ChatResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatCreateChatCompletionResponse:
         """
         Create a chat completion message
@@ -347,7 +373,11 @@ class ChatResource(SyncAPIResource):
                 chat_create_chat_completion_params.ChatCreateChatCompletionParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatCreateChatCompletionResponse,
         )
@@ -368,6 +398,7 @@ class ChatResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Start an outbound SMS chat conversation with a phone number using the specified
@@ -406,6 +437,8 @@ class ChatResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(max_retries):
+            max_retries = 0
         return self._post(
             "/create-sms-chat",
             body=maybe_transform(
@@ -421,7 +454,11 @@ class ChatResource(SyncAPIResource):
                 chat_create_sms_chat_params.ChatCreateSMSChatParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatResponse,
         )
@@ -436,6 +473,7 @@ class ChatResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         End an ongoing chat
@@ -455,7 +493,11 @@ class ChatResource(SyncAPIResource):
         return self._patch(
             path_template("/end-chat/{chat_id}", chat_id=chat_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -470,6 +512,7 @@ class ChatResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatResponse:
         """Rerun post-chat analysis for a specific chat.
 
@@ -489,7 +532,11 @@ class ChatResource(SyncAPIResource):
         return self._put(
             path_template("/rerun-chat-analysis/{chat_id}", chat_id=chat_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatResponse,
         )
@@ -528,6 +575,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Create a chat session
@@ -566,7 +614,11 @@ class AsyncChatResource(AsyncAPIResource):
                 chat_create_params.ChatCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatResponse,
         )
@@ -581,6 +633,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Retrieve details of a specific chat
@@ -599,7 +652,11 @@ class AsyncChatResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-chat/{chat_id}", chat_id=chat_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatResponse,
         )
@@ -618,6 +675,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Update metadata and sensitive data storage settings for an existing chat.
@@ -666,7 +724,11 @@ class AsyncChatResource(AsyncAPIResource):
                 chat_update_params.ChatUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatResponse,
         )
@@ -686,6 +748,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatListResponse:
         """
         List chats with unified cursor pagination response.
@@ -730,7 +793,11 @@ class AsyncChatResource(AsyncAPIResource):
                 chat_list_params.ChatListParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatListResponse,
         )
@@ -745,6 +812,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing chat
@@ -764,7 +832,11 @@ class AsyncChatResource(AsyncAPIResource):
         return await self._delete(
             path_template("/delete-chat/{chat_id}", chat_id=chat_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -780,6 +852,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatCreateChatCompletionResponse:
         """
         Create a chat completion message
@@ -809,7 +882,11 @@ class AsyncChatResource(AsyncAPIResource):
                 chat_create_chat_completion_params.ChatCreateChatCompletionParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatCreateChatCompletionResponse,
         )
@@ -830,6 +907,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatResponse:
         """
         Start an outbound SMS chat conversation with a phone number using the specified
@@ -868,6 +946,8 @@ class AsyncChatResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(max_retries):
+            max_retries = 0
         return await self._post(
             "/create-sms-chat",
             body=await async_maybe_transform(
@@ -883,7 +963,11 @@ class AsyncChatResource(AsyncAPIResource):
                 chat_create_sms_chat_params.ChatCreateSMSChatParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatResponse,
         )
@@ -898,6 +982,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         End an ongoing chat
@@ -917,7 +1002,11 @@ class AsyncChatResource(AsyncAPIResource):
         return await self._patch(
             path_template("/end-chat/{chat_id}", chat_id=chat_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -932,6 +1021,7 @@ class AsyncChatResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatResponse:
         """Rerun post-chat analysis for a specific chat.
 
@@ -951,7 +1041,11 @@ class AsyncChatResource(AsyncAPIResource):
         return await self._put(
             path_template("/rerun-chat-analysis/{chat_id}", chat_id=chat_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatResponse,
         )

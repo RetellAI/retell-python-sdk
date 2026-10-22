@@ -54,6 +54,7 @@ class AssetResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AssetCreateResponse:
         """Upload an image or audio asset.
 
@@ -87,7 +88,11 @@ class AssetResource(SyncAPIResource):
             body=maybe_transform(body, asset_create_params.AssetCreateParams),
             files=files,
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AssetCreateResponse,
         )
@@ -123,6 +128,7 @@ class AsyncAssetResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AssetCreateResponse:
         """Upload an image or audio asset.
 
@@ -156,7 +162,11 @@ class AsyncAssetResource(AsyncAPIResource):
             body=await async_maybe_transform(body, asset_create_params.AssetCreateParams),
             files=files,
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AssetCreateResponse,
         )

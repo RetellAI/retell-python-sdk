@@ -71,6 +71,7 @@ class AppResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppResponse:
         """
         Create an App: the connection to one external system (a CRM, calendar, support
@@ -119,7 +120,11 @@ class AppResource(SyncAPIResource):
                 app_create_params.AppCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AppResponse,
         )
@@ -139,6 +144,7 @@ class AppResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppResponse:
         """Partially update an App.
 
@@ -179,7 +185,11 @@ class AppResource(SyncAPIResource):
                 app_update_params.AppUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AppResponse,
         )
@@ -196,6 +206,7 @@ class AppResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppListResponse:
         """
         List Apps in the organization (paginated).
@@ -222,6 +233,7 @@ class AppResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -245,6 +257,7 @@ class AppResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """Delete an App.
 
@@ -272,6 +285,7 @@ class AppResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"force_delete": force_delete}, app_delete_params.AppDeleteParams),
             ),
             cast_to=NoneType,
@@ -287,6 +301,7 @@ class AppResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppResponse:
         """
         Get an App by id.
@@ -305,7 +320,11 @@ class AppResource(SyncAPIResource):
         return self._get(
             path_template("/get-app/{app_id}", app_id=app_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AppResponse,
         )
@@ -322,6 +341,7 @@ class AppResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppGetToolSchemaResponse:
         """
         One round of multi-step schema resolution for an app tool template against a
@@ -361,7 +381,11 @@ class AppResource(SyncAPIResource):
                 app_get_tool_schema_params.AppGetToolSchemaParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AppGetToolSchemaResponse,
         )
@@ -379,6 +403,7 @@ class AppResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppListUsagesResponse:
         """
         List the agents and knowledge bases referencing an App, most recently configured
@@ -408,6 +433,7 @@ class AppResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -430,6 +456,7 @@ class AppResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppTestAuthResponse:
         """
         Probe the App's stored credentials by making a minimal authenticated call to the
@@ -450,7 +477,11 @@ class AppResource(SyncAPIResource):
         return self._post(
             path_template("/test-app-auth/{app_id}", app_id=app_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AppTestAuthResponse,
         )
@@ -492,6 +523,7 @@ class AsyncAppResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppResponse:
         """
         Create an App: the connection to one external system (a CRM, calendar, support
@@ -540,7 +572,11 @@ class AsyncAppResource(AsyncAPIResource):
                 app_create_params.AppCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AppResponse,
         )
@@ -560,6 +596,7 @@ class AsyncAppResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppResponse:
         """Partially update an App.
 
@@ -600,7 +637,11 @@ class AsyncAppResource(AsyncAPIResource):
                 app_update_params.AppUpdateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AppResponse,
         )
@@ -617,6 +658,7 @@ class AsyncAppResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppListResponse:
         """
         List Apps in the organization (paginated).
@@ -643,6 +685,7 @@ class AsyncAppResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -666,6 +709,7 @@ class AsyncAppResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """Delete an App.
 
@@ -693,6 +737,7 @@ class AsyncAppResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform({"force_delete": force_delete}, app_delete_params.AppDeleteParams),
             ),
             cast_to=NoneType,
@@ -708,6 +753,7 @@ class AsyncAppResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppResponse:
         """
         Get an App by id.
@@ -726,7 +772,11 @@ class AsyncAppResource(AsyncAPIResource):
         return await self._get(
             path_template("/get-app/{app_id}", app_id=app_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AppResponse,
         )
@@ -743,6 +793,7 @@ class AsyncAppResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppGetToolSchemaResponse:
         """
         One round of multi-step schema resolution for an app tool template against a
@@ -782,7 +833,11 @@ class AsyncAppResource(AsyncAPIResource):
                 app_get_tool_schema_params.AppGetToolSchemaParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AppGetToolSchemaResponse,
         )
@@ -800,6 +855,7 @@ class AsyncAppResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppListUsagesResponse:
         """
         List the agents and knowledge bases referencing an App, most recently configured
@@ -829,6 +885,7 @@ class AsyncAppResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -851,6 +908,7 @@ class AsyncAppResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AppTestAuthResponse:
         """
         Probe the App's stored credentials by making a minimal authenticated call to the
@@ -871,7 +929,11 @@ class AsyncAppResource(AsyncAPIResource):
         return await self._post(
             path_template("/test-app-auth/{app_id}", app_id=app_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AppTestAuthResponse,
         )

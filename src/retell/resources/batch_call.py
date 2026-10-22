@@ -59,6 +59,7 @@ class BatchCallResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> BatchCallResponse:
         """Create a batch call
 
@@ -94,6 +95,8 @@ class BatchCallResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(max_retries):
+            max_retries = 0
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 300
         return self._post(
@@ -110,7 +113,11 @@ class BatchCallResource(SyncAPIResource):
                 batch_call_create_batch_call_params.BatchCallCreateBatchCallParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=BatchCallResponse,
         )
@@ -151,6 +158,7 @@ class AsyncBatchCallResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> BatchCallResponse:
         """Create a batch call
 
@@ -186,6 +194,8 @@ class AsyncBatchCallResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not is_given(max_retries):
+            max_retries = 0
         if not is_given(timeout) and self._client.timeout == DEFAULT_TIMEOUT:
             timeout = 300
         return await self._post(
@@ -202,7 +212,11 @@ class AsyncBatchCallResource(AsyncAPIResource):
                 batch_call_create_batch_call_params.BatchCallCreateBatchCallParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=BatchCallResponse,
         )

@@ -355,6 +355,7 @@ class AgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Create a new agent
@@ -696,7 +697,11 @@ class AgentResource(SyncAPIResource):
                 agent_create_params.AgentCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AgentResponse,
         )
@@ -712,6 +717,7 @@ class AgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Retrieve details of a specific agent
@@ -737,6 +743,7 @@ class AgentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"version": version}, agent_retrieve_params.AgentRetrieveParams),
             ),
             cast_to=AgentResponse,
@@ -1040,6 +1047,7 @@ class AgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Update an existing agent's latest draft version
@@ -1383,6 +1391,7 @@ class AgentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"version": version}, agent_update_params.AgentUpdateParams),
             ),
             cast_to=AgentResponse,
@@ -1401,6 +1410,7 @@ class AgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentListResponse:
         """
         List unique agents with pagination.
@@ -1430,6 +1440,7 @@ class AgentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -1452,6 +1463,7 @@ class AgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing agent
@@ -1471,7 +1483,11 @@ class AgentResource(SyncAPIResource):
         return self._delete(
             path_template("/delete-agent/{agent_id}", agent_id=agent_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -1487,6 +1503,7 @@ class AgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentCreateVersionResponse:
         """
         Create a new draft agent version from a base version.
@@ -1512,7 +1529,11 @@ class AgentResource(SyncAPIResource):
                     {"base_version": base_version}, agent_create_version_params.AgentCreateVersionParams
                 ),
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    max_retries=max_retries,
                 ),
                 cast_to=cast(
                     Any, AgentCreateVersionResponse
@@ -1531,6 +1552,7 @@ class AgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete a specific agent version.
@@ -1556,6 +1578,7 @@ class AgentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"version": version}, agent_delete_version_params.AgentDeleteVersionParams),
             ),
             cast_to=NoneType,
@@ -1574,6 +1597,7 @@ class AgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentListVersionsResponse:
         """
         List stored versions of a voice or chat agent with pagination.
@@ -1602,6 +1626,7 @@ class AgentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -1627,6 +1652,7 @@ class AgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Publish an existing draft version in place.
@@ -1656,7 +1682,11 @@ class AgentResource(SyncAPIResource):
                 agent_publish_params.AgentPublishParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -1672,6 +1702,7 @@ class AgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentRepairResponse:
         """
         Remove references to resources that no longer exist in your workspace from an
@@ -1705,6 +1736,7 @@ class AgentResource(SyncAPIResource):
                     extra_query=extra_query,
                     extra_body=extra_body,
                     timeout=timeout,
+                    max_retries=max_retries,
                     query=maybe_transform({"version": version}, agent_repair_params.AgentRepairParams),
                 ),
                 cast_to=cast(
@@ -2031,6 +2063,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Create a new agent
@@ -2372,7 +2405,11 @@ class AsyncAgentResource(AsyncAPIResource):
                 agent_create_params.AgentCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=AgentResponse,
         )
@@ -2388,6 +2425,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Retrieve details of a specific agent
@@ -2413,6 +2451,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform({"version": version}, agent_retrieve_params.AgentRetrieveParams),
             ),
             cast_to=AgentResponse,
@@ -2716,6 +2755,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentResponse:
         """
         Update an existing agent's latest draft version
@@ -3059,6 +3099,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform({"version": version}, agent_update_params.AgentUpdateParams),
             ),
             cast_to=AgentResponse,
@@ -3077,6 +3118,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentListResponse:
         """
         List unique agents with pagination.
@@ -3106,6 +3148,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -3128,6 +3171,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing agent
@@ -3147,7 +3191,11 @@ class AsyncAgentResource(AsyncAPIResource):
         return await self._delete(
             path_template("/delete-agent/{agent_id}", agent_id=agent_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -3163,6 +3211,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentCreateVersionResponse:
         """
         Create a new draft agent version from a base version.
@@ -3188,7 +3237,11 @@ class AsyncAgentResource(AsyncAPIResource):
                     {"base_version": base_version}, agent_create_version_params.AgentCreateVersionParams
                 ),
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    max_retries=max_retries,
                 ),
                 cast_to=cast(
                     Any, AgentCreateVersionResponse
@@ -3207,6 +3260,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete a specific agent version.
@@ -3232,6 +3286,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {"version": version}, agent_delete_version_params.AgentDeleteVersionParams
                 ),
@@ -3252,6 +3307,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentListVersionsResponse:
         """
         List stored versions of a voice or chat agent with pagination.
@@ -3280,6 +3336,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -3305,6 +3362,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Publish an existing draft version in place.
@@ -3334,7 +3392,11 @@ class AsyncAgentResource(AsyncAPIResource):
                 agent_publish_params.AgentPublishParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -3350,6 +3412,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> AgentRepairResponse:
         """
         Remove references to resources that no longer exist in your workspace from an
@@ -3383,6 +3446,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     extra_query=extra_query,
                     extra_body=extra_body,
                     timeout=timeout,
+                    max_retries=max_retries,
                     query=await async_maybe_transform({"version": version}, agent_repair_params.AgentRepairParams),
                 ),
                 cast_to=cast(

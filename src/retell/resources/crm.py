@@ -55,6 +55,7 @@ class CRMResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CRMConfig:
         """
         Get the organization's CRM configuration: which CRM app is linked, the custom
@@ -64,7 +65,11 @@ class CRMResource(SyncAPIResource):
         return self._get(
             "/get-crm-config",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CRMConfig,
         )
@@ -79,6 +84,7 @@ class CRMResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CRMGetSchemaResponse:
         """
         Get the contact schema of the connected CRM: the fields available on its contact
@@ -104,6 +110,7 @@ class CRMResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"app_id": app_id}, crm_get_schema_params.CRMGetSchemaParams),
             ),
             cast_to=CRMGetSchemaResponse,
@@ -118,6 +125,7 @@ class CRMResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CRMGetSyncJobStatusResponse:
         """
         Get the status of the organization's contact sync, whether it was started
@@ -126,7 +134,11 @@ class CRMResource(SyncAPIResource):
         return self._get(
             "/get-sync-job-status",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CRMGetSyncJobStatusResponse,
         )
@@ -140,6 +152,7 @@ class CRMResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CRMRunSyncJobResponse:
         """
         Start a contact sync with the linked CRM app immediately, instead of waiting for
@@ -149,7 +162,11 @@ class CRMResource(SyncAPIResource):
         return self._post(
             "/run-sync-job",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CRMRunSyncJobResponse,
         )
@@ -169,6 +186,7 @@ class CRMResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CRMConfig:
         """Update the organization's CRM configuration.
 
@@ -221,7 +239,11 @@ class CRMResource(SyncAPIResource):
                 crm_update_config_params.CRMUpdateConfigParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CRMConfig,
         )
@@ -256,6 +278,7 @@ class AsyncCRMResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CRMConfig:
         """
         Get the organization's CRM configuration: which CRM app is linked, the custom
@@ -265,7 +288,11 @@ class AsyncCRMResource(AsyncAPIResource):
         return await self._get(
             "/get-crm-config",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CRMConfig,
         )
@@ -280,6 +307,7 @@ class AsyncCRMResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CRMGetSchemaResponse:
         """
         Get the contact schema of the connected CRM: the fields available on its contact
@@ -305,6 +333,7 @@ class AsyncCRMResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform({"app_id": app_id}, crm_get_schema_params.CRMGetSchemaParams),
             ),
             cast_to=CRMGetSchemaResponse,
@@ -319,6 +348,7 @@ class AsyncCRMResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CRMGetSyncJobStatusResponse:
         """
         Get the status of the organization's contact sync, whether it was started
@@ -327,7 +357,11 @@ class AsyncCRMResource(AsyncAPIResource):
         return await self._get(
             "/get-sync-job-status",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CRMGetSyncJobStatusResponse,
         )
@@ -341,6 +375,7 @@ class AsyncCRMResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CRMRunSyncJobResponse:
         """
         Start a contact sync with the linked CRM app immediately, instead of waiting for
@@ -350,7 +385,11 @@ class AsyncCRMResource(AsyncAPIResource):
         return await self._post(
             "/run-sync-job",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CRMRunSyncJobResponse,
         )
@@ -370,6 +409,7 @@ class AsyncCRMResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> CRMConfig:
         """Update the organization's CRM configuration.
 
@@ -422,7 +462,11 @@ class AsyncCRMResource(AsyncAPIResource):
                 crm_update_config_params.CRMUpdateConfigParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=CRMConfig,
         )

@@ -1949,6 +1949,7 @@ def make_request_options(
     extra_body: Body | None = None,
     idempotency_key: str | None = None,
     timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    max_retries: int | NotGiven = not_given,
     post_parser: PostParser | NotGiven = not_given,
 ) -> RequestOptions:
     """Create a dict of type RequestOptions without keys of NotGiven values."""
@@ -1967,6 +1968,9 @@ def make_request_options(
 
     if not isinstance(timeout, NotGiven):
         options["timeout"] = timeout
+
+    if is_given(max_retries):
+        options["max_retries"] = max_retries
 
     if idempotency_key is not None:
         options["idempotency_key"] = idempotency_key

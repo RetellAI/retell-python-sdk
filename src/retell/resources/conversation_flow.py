@@ -79,6 +79,7 @@ class ConversationFlowResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """Create a new Conversation Flow that can be attached to an agent.
 
@@ -170,7 +171,11 @@ class ConversationFlowResource(SyncAPIResource):
                 conversation_flow_create_params.ConversationFlowCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ConversationFlowResponse,
         )
@@ -186,6 +191,7 @@ class ConversationFlowResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """
         Retrieve details of a specific Conversation Flow
@@ -213,6 +219,7 @@ class ConversationFlowResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {"version": version}, conversation_flow_retrieve_params.ConversationFlowRetrieveParams
                 ),
@@ -250,6 +257,7 @@ class ConversationFlowResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """
         Update an existing conversation flow
@@ -351,6 +359,7 @@ class ConversationFlowResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {"version": version}, conversation_flow_update_params.ConversationFlowUpdateParams
                 ),
@@ -370,6 +379,7 @@ class ConversationFlowResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowListResponse:
         """
         List conversation flows with pagination
@@ -396,6 +406,7 @@ class ConversationFlowResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -419,6 +430,7 @@ class ConversationFlowResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete a conversation flow and all its versions
@@ -450,6 +462,7 @@ class ConversationFlowResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {"force_delete": force_delete}, conversation_flow_delete_params.ConversationFlowDeleteParams
                 ),
@@ -506,6 +519,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """Create a new Conversation Flow that can be attached to an agent.
 
@@ -597,7 +611,11 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                 conversation_flow_create_params.ConversationFlowCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ConversationFlowResponse,
         )
@@ -613,6 +631,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """
         Retrieve details of a specific Conversation Flow
@@ -640,6 +659,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {"version": version}, conversation_flow_retrieve_params.ConversationFlowRetrieveParams
                 ),
@@ -677,6 +697,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowResponse:
         """
         Update an existing conversation flow
@@ -778,6 +799,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {"version": version}, conversation_flow_update_params.ConversationFlowUpdateParams
                 ),
@@ -797,6 +819,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ConversationFlowListResponse:
         """
         List conversation flows with pagination
@@ -823,6 +846,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -846,6 +870,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete a conversation flow and all its versions
@@ -877,6 +902,7 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {"force_delete": force_delete}, conversation_flow_delete_params.ConversationFlowDeleteParams
                 ),

@@ -257,6 +257,7 @@ class ChatAgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatAgentResponse:
         """
         Create a new chat agent
@@ -374,7 +375,11 @@ class ChatAgentResource(SyncAPIResource):
                 chat_agent_create_params.ChatAgentCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatAgentResponse,
         )
@@ -390,6 +395,7 @@ class ChatAgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatAgentResponse:
         """
         Retrieve details of a specific chat agent
@@ -415,6 +421,7 @@ class ChatAgentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"version": version}, chat_agent_retrieve_params.ChatAgentRetrieveParams),
             ),
             cast_to=ChatAgentResponse,
@@ -625,6 +632,7 @@ class ChatAgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatAgentResponse:
         """
         Update an existing chat agent
@@ -750,6 +758,7 @@ class ChatAgentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"version": version}, chat_agent_update_params.ChatAgentUpdateParams),
             ),
             cast_to=ChatAgentResponse,
@@ -768,6 +777,7 @@ class ChatAgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatAgentListResponse:
         """
         List unique agents with pagination.
@@ -797,6 +807,7 @@ class ChatAgentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -819,6 +830,7 @@ class ChatAgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing chat agent
@@ -838,7 +850,11 @@ class ChatAgentResource(SyncAPIResource):
         return self._delete(
             path_template("/delete-chat-agent/{agent_id}", agent_id=agent_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -854,6 +870,7 @@ class ChatAgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatAgentCreateVersionResponse:
         """
         Create a new draft agent version from a base version.
@@ -879,7 +896,11 @@ class ChatAgentResource(SyncAPIResource):
                     {"base_version": base_version}, chat_agent_create_version_params.ChatAgentCreateVersionParams
                 ),
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    max_retries=max_retries,
                 ),
                 cast_to=cast(
                     Any, ChatAgentCreateVersionResponse
@@ -898,6 +919,7 @@ class ChatAgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete a specific agent version.
@@ -923,6 +945,7 @@ class ChatAgentResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {"version": version}, chat_agent_delete_version_params.ChatAgentDeleteVersionParams
                 ),
@@ -943,6 +966,7 @@ class ChatAgentResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Publish an existing draft version in place.
@@ -972,7 +996,11 @@ class ChatAgentResource(SyncAPIResource):
                 chat_agent_publish_params.ChatAgentPublishParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -1201,6 +1229,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatAgentResponse:
         """
         Create a new chat agent
@@ -1318,7 +1347,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 chat_agent_create_params.ChatAgentCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=ChatAgentResponse,
         )
@@ -1334,6 +1367,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatAgentResponse:
         """
         Retrieve details of a specific chat agent
@@ -1359,6 +1393,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {"version": version}, chat_agent_retrieve_params.ChatAgentRetrieveParams
                 ),
@@ -1571,6 +1606,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatAgentResponse:
         """
         Update an existing chat agent
@@ -1696,6 +1732,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform({"version": version}, chat_agent_update_params.ChatAgentUpdateParams),
             ),
             cast_to=ChatAgentResponse,
@@ -1714,6 +1751,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatAgentListResponse:
         """
         List unique agents with pagination.
@@ -1745,6 +1783,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -1767,6 +1806,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing chat agent
@@ -1786,7 +1826,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
         return await self._delete(
             path_template("/delete-chat-agent/{agent_id}", agent_id=agent_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )
@@ -1802,6 +1846,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> ChatAgentCreateVersionResponse:
         """
         Create a new draft agent version from a base version.
@@ -1827,7 +1872,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
                     {"base_version": base_version}, chat_agent_create_version_params.ChatAgentCreateVersionParams
                 ),
                 options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                    extra_headers=extra_headers,
+                    extra_query=extra_query,
+                    extra_body=extra_body,
+                    timeout=timeout,
+                    max_retries=max_retries,
                 ),
                 cast_to=cast(
                     Any, ChatAgentCreateVersionResponse
@@ -1846,6 +1895,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete a specific agent version.
@@ -1871,6 +1921,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {"version": version}, chat_agent_delete_version_params.ChatAgentDeleteVersionParams
                 ),
@@ -1891,6 +1942,7 @@ class AsyncChatAgentResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Publish an existing draft version in place.
@@ -1920,7 +1972,11 @@ class AsyncChatAgentResource(AsyncAPIResource):
                 chat_agent_publish_params.ChatAgentPublishParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=NoneType,
         )

@@ -120,6 +120,7 @@ class LlmResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> LlmResponse:
         """Create a new Retell LLM Response Engine that can be attached to an agent.
 
@@ -227,7 +228,11 @@ class LlmResource(SyncAPIResource):
                 llm_create_params.LlmCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=LlmResponse,
         )
@@ -243,6 +248,7 @@ class LlmResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> LlmResponse:
         """
         Retrieve details of a specific Retell LLM Response Engine
@@ -267,6 +273,7 @@ class LlmResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"version": version}, llm_retrieve_params.LlmRetrieveParams),
             ),
             cast_to=LlmResponse,
@@ -349,6 +356,7 @@ class LlmResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> LlmResponse:
         """
         Update an existing Retell LLM Response Engine
@@ -462,6 +470,7 @@ class LlmResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"version": version}, llm_update_params.LlmUpdateParams),
             ),
             cast_to=LlmResponse,
@@ -479,6 +488,7 @@ class LlmResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> LlmListResponse:
         """
         List Retell LLM Response Engines with pagination
@@ -505,6 +515,7 @@ class LlmResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform(
                     {
                         "limit": limit,
@@ -528,6 +539,7 @@ class LlmResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing Retell LLM Response Engine
@@ -555,6 +567,7 @@ class LlmResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=maybe_transform({"force_delete": force_delete}, llm_delete_params.LlmDeleteParams),
             ),
             cast_to=NoneType,
@@ -656,6 +669,7 @@ class AsyncLlmResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> LlmResponse:
         """Create a new Retell LLM Response Engine that can be attached to an agent.
 
@@ -763,7 +777,11 @@ class AsyncLlmResource(AsyncAPIResource):
                 llm_create_params.LlmCreateParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
             ),
             cast_to=LlmResponse,
         )
@@ -779,6 +797,7 @@ class AsyncLlmResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> LlmResponse:
         """
         Retrieve details of a specific Retell LLM Response Engine
@@ -803,6 +822,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform({"version": version}, llm_retrieve_params.LlmRetrieveParams),
             ),
             cast_to=LlmResponse,
@@ -885,6 +905,7 @@ class AsyncLlmResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> LlmResponse:
         """
         Update an existing Retell LLM Response Engine
@@ -998,6 +1019,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform({"version": version}, llm_update_params.LlmUpdateParams),
             ),
             cast_to=LlmResponse,
@@ -1015,6 +1037,7 @@ class AsyncLlmResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> LlmListResponse:
         """
         List Retell LLM Response Engines with pagination
@@ -1041,6 +1064,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform(
                     {
                         "limit": limit,
@@ -1064,6 +1088,7 @@ class AsyncLlmResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
     ) -> None:
         """
         Delete an existing Retell LLM Response Engine
@@ -1091,6 +1116,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
+                max_retries=max_retries,
                 query=await async_maybe_transform({"force_delete": force_delete}, llm_delete_params.LlmDeleteParams),
             ),
             cast_to=NoneType,
