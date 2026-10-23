@@ -199,6 +199,7 @@ class AppResource(SyncAPIResource):
         *,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
+        privacy_scope: Literal["standard", "pci"] | Omit = omit,
         sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -215,6 +216,9 @@ class AppResource(SyncAPIResource):
           limit: Maximum number of items to return.
 
           pagination_key: Pagination key for fetching the next page.
+
+          privacy_scope: Only include functions with this scope and apps providing them. Omit to include
+              all scopes.
 
           sort_order: Sort order for results.
 
@@ -238,6 +242,7 @@ class AppResource(SyncAPIResource):
                     {
                         "limit": limit,
                         "pagination_key": pagination_key,
+                        "privacy_scope": privacy_scope,
                         "sort_order": sort_order,
                     },
                     app_list_params.AppListParams,
@@ -651,6 +656,7 @@ class AsyncAppResource(AsyncAPIResource):
         *,
         limit: int | Omit = omit,
         pagination_key: str | Omit = omit,
+        privacy_scope: Literal["standard", "pci"] | Omit = omit,
         sort_order: Literal["ascending", "descending"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -667,6 +673,9 @@ class AsyncAppResource(AsyncAPIResource):
           limit: Maximum number of items to return.
 
           pagination_key: Pagination key for fetching the next page.
+
+          privacy_scope: Only include functions with this scope and apps providing them. Omit to include
+              all scopes.
 
           sort_order: Sort order for results.
 
@@ -690,6 +699,7 @@ class AsyncAppResource(AsyncAPIResource):
                     {
                         "limit": limit,
                         "pagination_key": pagination_key,
+                        "privacy_scope": privacy_scope,
                         "sort_order": sort_order,
                     },
                     app_list_params.AppListParams,
