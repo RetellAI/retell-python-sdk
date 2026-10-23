@@ -14,5 +14,11 @@ class AppListParams(TypedDict, total=False):
     pagination_key: str
     """Pagination key for fetching the next page."""
 
+    privacy_scope: Literal["standard", "pci"]
+    """Only include functions with this scope and apps providing them.
+
+    Omit to include all scopes.
+    """
+
     sort_order: Literal["ascending", "descending"]
     """Sort order for results."""

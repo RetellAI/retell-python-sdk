@@ -179,6 +179,7 @@ class TestApp:
         app = client.app.list(
             limit=1000,
             pagination_key="pagination_key",
+            privacy_scope="standard",
             sort_order="ascending",
         )
         assert_matches_type(AppListResponse, app, path=["response"])
@@ -618,6 +619,7 @@ class TestAsyncApp:
         app = await async_client.app.list(
             limit=1000,
             pagination_key="pagination_key",
+            privacy_scope="standard",
             sort_order="ascending",
         )
         assert_matches_type(AppListResponse, app, path=["response"])
