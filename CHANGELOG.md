@@ -1,5 +1,14 @@
 # Changelog
 
+## [6.2.11](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.10...v6.2.11) (2026-10-23)
+
+
+### Bug Fixes
+
+* **api:** Add is_suspended to AgentListItemResponse and require it in list results. ([ccd217e](https://github.com/RetellAI/retell-python-sdk/commit/ccd217e444b532f382dbcb6fdaaacfcf27108b86))
+* **sdks:** disable retries for outbound creation methods ([6361cfa](https://github.com/RetellAI/retell-python-sdk/commit/6361cfa6d7dd4b43335a0979cef5273752e2e5c8))
+* **sdks:** honor Python request option defaults ([c3db944](https://github.com/RetellAI/retell-python-sdk/commit/c3db944dac3f5aa7163a7aad49a0bacbcdea2a6e))
+
 ## [6.2.10](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.9...v6.2.10) (2026-10-22)
 
 
