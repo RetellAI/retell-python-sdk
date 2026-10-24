@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.2.12](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.11...v6.2.12) (2026-10-24)
+
+
+### Bug Fixes
+
+* **api:** Add the privacy_scope query parameter to listApps and document the PrivacyScope enum. ([8442f2e](https://github.com/RetellAI/retell-python-sdk/commit/8442f2eb1f859b60154c24c92f7a53a66fcd5732))
+
 ## [6.2.11](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.10...v6.2.11) (2026-10-23)
 
 
