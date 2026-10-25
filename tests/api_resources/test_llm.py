@@ -30,6 +30,13 @@ class TestLlm:
     @parametrize
     def test_method_create_with_all_params(self, client: Retell) -> None:
         llm = client.llm.create(
+            backup_model={
+                "model": "gpt-4.1",
+                "type": "cascading",
+                "backup_kick_in_timeout": 300,
+                "high_priority": True,
+                "ultrafast": True,
+            },
             begin_after_user_silence_ms=2000,
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
@@ -261,6 +268,13 @@ class TestLlm:
         llm = client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
             version=1,
+            backup_model={
+                "model": "gpt-4.1",
+                "type": "cascading",
+                "backup_kick_in_timeout": 300,
+                "high_priority": True,
+                "ultrafast": True,
+            },
             begin_after_user_silence_ms=2000,
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
@@ -544,6 +558,13 @@ class TestAsyncLlm:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncRetell) -> None:
         llm = await async_client.llm.create(
+            backup_model={
+                "model": "gpt-4.1",
+                "type": "cascading",
+                "backup_kick_in_timeout": 300,
+                "high_priority": True,
+                "ultrafast": True,
+            },
             begin_after_user_silence_ms=2000,
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},
@@ -775,6 +796,13 @@ class TestAsyncLlm:
         llm = await async_client.llm.update(
             llm_id="16b980523634a6dc504898cda492e939",
             version=1,
+            backup_model={
+                "model": "gpt-4.1",
+                "type": "cascading",
+                "backup_kick_in_timeout": 300,
+                "high_priority": True,
+                "ultrafast": True,
+            },
             begin_after_user_silence_ms=2000,
             begin_message="Hey I am a virtual assistant calling from Retell Hospital.",
             default_dynamic_variables={"customer_name": "John Doe"},

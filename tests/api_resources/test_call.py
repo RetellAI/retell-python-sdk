@@ -557,6 +557,13 @@ class TestCall:
                     "webhook_url": "https://webhook-url-here",
                 },
                 "conversation_flow": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "kb_config": {
                         "filter_score": 0.6,
@@ -587,6 +594,13 @@ class TestCall:
                     "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "begin_message": "Hey I am a virtual assistant calling from Retell Hospital.",
                     "kb_config": {
@@ -856,6 +870,13 @@ class TestCall:
                     "webhook_url": "https://webhook-url-here",
                 },
                 "conversation_flow": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "kb_config": {
                         "filter_score": 0.6,
@@ -886,6 +907,13 @@ class TestCall:
                     "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "begin_message": "Hey I am a virtual assistant calling from Retell Hospital.",
                     "kb_config": {
@@ -1192,6 +1220,13 @@ class TestCall:
                     "webhook_url": "https://webhook-url-here",
                 },
                 "conversation_flow": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "kb_config": {
                         "filter_score": 0.6,
@@ -1222,6 +1257,13 @@ class TestCall:
                     "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "begin_message": "Hey I am a virtual assistant calling from Retell Hospital.",
                     "kb_config": {
@@ -2016,6 +2058,13 @@ class TestAsyncCall:
                     "webhook_url": "https://webhook-url-here",
                 },
                 "conversation_flow": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "kb_config": {
                         "filter_score": 0.6,
@@ -2046,6 +2095,13 @@ class TestAsyncCall:
                     "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "begin_message": "Hey I am a virtual assistant calling from Retell Hospital.",
                     "kb_config": {
@@ -2315,6 +2371,13 @@ class TestAsyncCall:
                     "webhook_url": "https://webhook-url-here",
                 },
                 "conversation_flow": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "kb_config": {
                         "filter_score": 0.6,
@@ -2345,6 +2408,13 @@ class TestAsyncCall:
                     "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "begin_message": "Hey I am a virtual assistant calling from Retell Hospital.",
                     "kb_config": {
@@ -2651,6 +2721,13 @@ class TestAsyncCall:
                     "webhook_url": "https://webhook-url-here",
                 },
                 "conversation_flow": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "kb_config": {
                         "filter_score": 0.6,
@@ -2681,6 +2758,13 @@ class TestAsyncCall:
                     "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
+                    "backup_model": {
+                        "model": "gpt-4.1",
+                        "type": "cascading",
+                        "backup_kick_in_timeout": 300,
+                        "high_priority": True,
+                        "ultrafast": True,
+                    },
                     "begin_after_user_silence_ms": 2000,
                     "begin_message": "Hey I am a virtual assistant calling from Retell Hospital.",
                     "kb_config": {
