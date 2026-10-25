@@ -22,7 +22,11 @@ __all__ = [
     "PostSessionTranscriptWithToolCall",
     "PostSessionTranscriptWithToolCallUtterance",
     "PostSessionTranscriptWithToolCallUtteranceWord",
+    "PostSessionTranscriptWithToolCallUtteranceMetadata",
+    "PostSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed",
     "PostSessionTranscriptWithToolCallToolCallInvocationUtterance",
+    "PostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata",
+    "PostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed",
     "PostSessionTranscriptWithToolCallToolCallResultUtterance",
     "PostSessionTranscriptWithToolCallNodeTransitionUtterance",
     "PostSessionTranscriptWithToolCallDtmfUtterance",
@@ -32,7 +36,11 @@ __all__ = [
     "PreSessionTranscriptWithToolCall",
     "PreSessionTranscriptWithToolCallUtterance",
     "PreSessionTranscriptWithToolCallUtteranceWord",
+    "PreSessionTranscriptWithToolCallUtteranceMetadata",
+    "PreSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed",
     "PreSessionTranscriptWithToolCallToolCallInvocationUtterance",
+    "PreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata",
+    "PreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed",
     "PreSessionTranscriptWithToolCallToolCallResultUtterance",
     "PreSessionTranscriptWithToolCallNodeTransitionUtterance",
     "PreSessionTranscriptWithToolCallDtmfUtterance",
@@ -42,7 +50,11 @@ __all__ = [
     "ScrubbedPostSessionTranscriptWithToolCall",
     "ScrubbedPostSessionTranscriptWithToolCallUtterance",
     "ScrubbedPostSessionTranscriptWithToolCallUtteranceWord",
+    "ScrubbedPostSessionTranscriptWithToolCallUtteranceMetadata",
+    "ScrubbedPostSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed",
     "ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtterance",
+    "ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata",
+    "ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed",
     "ScrubbedPostSessionTranscriptWithToolCallToolCallResultUtterance",
     "ScrubbedPostSessionTranscriptWithToolCallNodeTransitionUtterance",
     "ScrubbedPostSessionTranscriptWithToolCallDtmfUtterance",
@@ -52,7 +64,11 @@ __all__ = [
     "ScrubbedPreSessionTranscriptWithToolCall",
     "ScrubbedPreSessionTranscriptWithToolCallUtterance",
     "ScrubbedPreSessionTranscriptWithToolCallUtteranceWord",
+    "ScrubbedPreSessionTranscriptWithToolCallUtteranceMetadata",
+    "ScrubbedPreSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed",
     "ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtterance",
+    "ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata",
+    "ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed",
     "ScrubbedPreSessionTranscriptWithToolCallToolCallResultUtterance",
     "ScrubbedPreSessionTranscriptWithToolCallNodeTransitionUtterance",
     "ScrubbedPreSessionTranscriptWithToolCallDtmfUtterance",
@@ -62,7 +78,11 @@ __all__ = [
     "ScrubbedTranscriptWithToolCall",
     "ScrubbedTranscriptWithToolCallUtterance",
     "ScrubbedTranscriptWithToolCallUtteranceWord",
+    "ScrubbedTranscriptWithToolCallUtteranceMetadata",
+    "ScrubbedTranscriptWithToolCallUtteranceMetadataBackupModelUsed",
     "ScrubbedTranscriptWithToolCallToolCallInvocationUtterance",
+    "ScrubbedTranscriptWithToolCallToolCallInvocationUtteranceMetadata",
+    "ScrubbedTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed",
     "ScrubbedTranscriptWithToolCallToolCallResultUtterance",
     "ScrubbedTranscriptWithToolCallNodeTransitionUtterance",
     "ScrubbedTranscriptWithToolCallDtmfUtterance",
@@ -71,10 +91,16 @@ __all__ = [
     "ScrubbedTranscriptWithToolCallInjectedUtterance",
     "TranscriptObject",
     "TranscriptObjectWord",
+    "TranscriptObjectMetadata",
+    "TranscriptObjectMetadataBackupModelUsed",
     "TranscriptWithToolCall",
     "TranscriptWithToolCallUtterance",
     "TranscriptWithToolCallUtteranceWord",
+    "TranscriptWithToolCallUtteranceMetadata",
+    "TranscriptWithToolCallUtteranceMetadataBackupModelUsed",
     "TranscriptWithToolCallToolCallInvocationUtterance",
+    "TranscriptWithToolCallToolCallInvocationUtteranceMetadata",
+    "TranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed",
     "TranscriptWithToolCallToolCallResultUtterance",
     "TranscriptWithToolCallNodeTransitionUtterance",
     "TranscriptWithToolCallDtmfUtterance",
@@ -438,6 +464,62 @@ class PostSessionTranscriptWithToolCallUtteranceWord(BaseModel):
     """Word transcript (with punctuation if applicable)."""
 
 
+class PostSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed(BaseModel):
+    """
+    The first backup model used in the Retell-managed response associated with this utterance, including tool-only requests. Does not imply every word was generated by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class PostSessionTranscriptWithToolCallUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[PostSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed] = None
+    """
+    The first backup model used in the Retell-managed response associated with this
+    utterance, including tool-only requests. Does not imply every word was generated
+    by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    interrupt_id: Optional[int] = None
+    """Custom LLM agent interruption identifier, when available."""
+
+    is_backchannel: Optional[bool] = None
+    """Whether the utterance is a backchannel acknowledgment."""
+
+    response_id: Optional[int] = None
+    """Call-scoped agent response identifier, when available."""
+
+
 class PostSessionTranscriptWithToolCallUtterance(BaseModel):
     content: str
     """Transcript of the utterances."""
@@ -451,6 +533,51 @@ class PostSessionTranscriptWithToolCallUtterance(BaseModel):
     Useful for understanding what word was spoken at what time. Note that the word
     timestamp is not guaranteed to be accurate, it's more like an approximation.
     """
+
+    metadata: Optional[PostSessionTranscriptWithToolCallUtteranceMetadata] = None
+
+
+class PostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed(BaseModel):
+    """Backup model that generated this tool invocation."""
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class PostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[PostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed] = (
+        None
+    )
+    """Backup model that generated this tool invocation."""
 
 
 class PostSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
@@ -470,6 +597,8 @@ class PostSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
 
     tool_call_id: str
     """Tool call id, globally unique."""
+
+    metadata: Optional[PostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata] = None
 
     thought_signature: Optional[str] = None
     """Optional thought signature from Google Gemini thinking models.
@@ -609,6 +738,62 @@ class PreSessionTranscriptWithToolCallUtteranceWord(BaseModel):
     """Word transcript (with punctuation if applicable)."""
 
 
+class PreSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed(BaseModel):
+    """
+    The first backup model used in the Retell-managed response associated with this utterance, including tool-only requests. Does not imply every word was generated by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class PreSessionTranscriptWithToolCallUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[PreSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed] = None
+    """
+    The first backup model used in the Retell-managed response associated with this
+    utterance, including tool-only requests. Does not imply every word was generated
+    by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    interrupt_id: Optional[int] = None
+    """Custom LLM agent interruption identifier, when available."""
+
+    is_backchannel: Optional[bool] = None
+    """Whether the utterance is a backchannel acknowledgment."""
+
+    response_id: Optional[int] = None
+    """Call-scoped agent response identifier, when available."""
+
+
 class PreSessionTranscriptWithToolCallUtterance(BaseModel):
     content: str
     """Transcript of the utterances."""
@@ -622,6 +807,51 @@ class PreSessionTranscriptWithToolCallUtterance(BaseModel):
     Useful for understanding what word was spoken at what time. Note that the word
     timestamp is not guaranteed to be accurate, it's more like an approximation.
     """
+
+    metadata: Optional[PreSessionTranscriptWithToolCallUtteranceMetadata] = None
+
+
+class PreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed(BaseModel):
+    """Backup model that generated this tool invocation."""
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class PreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[PreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed] = (
+        None
+    )
+    """Backup model that generated this tool invocation."""
 
 
 class PreSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
@@ -641,6 +871,8 @@ class PreSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
 
     tool_call_id: str
     """Tool call id, globally unique."""
+
+    metadata: Optional[PreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata] = None
 
     thought_signature: Optional[str] = None
     """Optional thought signature from Google Gemini thinking models.
@@ -780,6 +1012,62 @@ class ScrubbedPostSessionTranscriptWithToolCallUtteranceWord(BaseModel):
     """Word transcript (with punctuation if applicable)."""
 
 
+class ScrubbedPostSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed(BaseModel):
+    """
+    The first backup model used in the Retell-managed response associated with this utterance, including tool-only requests. Does not imply every word was generated by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class ScrubbedPostSessionTranscriptWithToolCallUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[ScrubbedPostSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed] = None
+    """
+    The first backup model used in the Retell-managed response associated with this
+    utterance, including tool-only requests. Does not imply every word was generated
+    by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    interrupt_id: Optional[int] = None
+    """Custom LLM agent interruption identifier, when available."""
+
+    is_backchannel: Optional[bool] = None
+    """Whether the utterance is a backchannel acknowledgment."""
+
+    response_id: Optional[int] = None
+    """Call-scoped agent response identifier, when available."""
+
+
 class ScrubbedPostSessionTranscriptWithToolCallUtterance(BaseModel):
     content: str
     """Transcript of the utterances."""
@@ -793,6 +1081,51 @@ class ScrubbedPostSessionTranscriptWithToolCallUtterance(BaseModel):
     Useful for understanding what word was spoken at what time. Note that the word
     timestamp is not guaranteed to be accurate, it's more like an approximation.
     """
+
+    metadata: Optional[ScrubbedPostSessionTranscriptWithToolCallUtteranceMetadata] = None
+
+
+class ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed(BaseModel):
+    """Backup model that generated this tool invocation."""
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[
+        ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed
+    ] = None
+    """Backup model that generated this tool invocation."""
 
 
 class ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
@@ -812,6 +1145,8 @@ class ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseM
 
     tool_call_id: str
     """Tool call id, globally unique."""
+
+    metadata: Optional[ScrubbedPostSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata] = None
 
     thought_signature: Optional[str] = None
     """Optional thought signature from Google Gemini thinking models.
@@ -951,6 +1286,62 @@ class ScrubbedPreSessionTranscriptWithToolCallUtteranceWord(BaseModel):
     """Word transcript (with punctuation if applicable)."""
 
 
+class ScrubbedPreSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed(BaseModel):
+    """
+    The first backup model used in the Retell-managed response associated with this utterance, including tool-only requests. Does not imply every word was generated by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class ScrubbedPreSessionTranscriptWithToolCallUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[ScrubbedPreSessionTranscriptWithToolCallUtteranceMetadataBackupModelUsed] = None
+    """
+    The first backup model used in the Retell-managed response associated with this
+    utterance, including tool-only requests. Does not imply every word was generated
+    by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    interrupt_id: Optional[int] = None
+    """Custom LLM agent interruption identifier, when available."""
+
+    is_backchannel: Optional[bool] = None
+    """Whether the utterance is a backchannel acknowledgment."""
+
+    response_id: Optional[int] = None
+    """Call-scoped agent response identifier, when available."""
+
+
 class ScrubbedPreSessionTranscriptWithToolCallUtterance(BaseModel):
     content: str
     """Transcript of the utterances."""
@@ -964,6 +1355,51 @@ class ScrubbedPreSessionTranscriptWithToolCallUtterance(BaseModel):
     Useful for understanding what word was spoken at what time. Note that the word
     timestamp is not guaranteed to be accurate, it's more like an approximation.
     """
+
+    metadata: Optional[ScrubbedPreSessionTranscriptWithToolCallUtteranceMetadata] = None
+
+
+class ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed(BaseModel):
+    """Backup model that generated this tool invocation."""
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[
+        ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed
+    ] = None
+    """Backup model that generated this tool invocation."""
 
 
 class ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
@@ -983,6 +1419,8 @@ class ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtterance(BaseMo
 
     tool_call_id: str
     """Tool call id, globally unique."""
+
+    metadata: Optional[ScrubbedPreSessionTranscriptWithToolCallToolCallInvocationUtteranceMetadata] = None
 
     thought_signature: Optional[str] = None
     """Optional thought signature from Google Gemini thinking models.
@@ -1122,6 +1560,62 @@ class ScrubbedTranscriptWithToolCallUtteranceWord(BaseModel):
     """Word transcript (with punctuation if applicable)."""
 
 
+class ScrubbedTranscriptWithToolCallUtteranceMetadataBackupModelUsed(BaseModel):
+    """
+    The first backup model used in the Retell-managed response associated with this utterance, including tool-only requests. Does not imply every word was generated by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class ScrubbedTranscriptWithToolCallUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[ScrubbedTranscriptWithToolCallUtteranceMetadataBackupModelUsed] = None
+    """
+    The first backup model used in the Retell-managed response associated with this
+    utterance, including tool-only requests. Does not imply every word was generated
+    by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    interrupt_id: Optional[int] = None
+    """Custom LLM agent interruption identifier, when available."""
+
+    is_backchannel: Optional[bool] = None
+    """Whether the utterance is a backchannel acknowledgment."""
+
+    response_id: Optional[int] = None
+    """Call-scoped agent response identifier, when available."""
+
+
 class ScrubbedTranscriptWithToolCallUtterance(BaseModel):
     content: str
     """Transcript of the utterances."""
@@ -1135,6 +1629,49 @@ class ScrubbedTranscriptWithToolCallUtterance(BaseModel):
     Useful for understanding what word was spoken at what time. Note that the word
     timestamp is not guaranteed to be accurate, it's more like an approximation.
     """
+
+    metadata: Optional[ScrubbedTranscriptWithToolCallUtteranceMetadata] = None
+
+
+class ScrubbedTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed(BaseModel):
+    """Backup model that generated this tool invocation."""
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class ScrubbedTranscriptWithToolCallToolCallInvocationUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[ScrubbedTranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed] = None
+    """Backup model that generated this tool invocation."""
 
 
 class ScrubbedTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
@@ -1154,6 +1691,8 @@ class ScrubbedTranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
 
     tool_call_id: str
     """Tool call id, globally unique."""
+
+    metadata: Optional[ScrubbedTranscriptWithToolCallToolCallInvocationUtteranceMetadata] = None
 
     thought_signature: Optional[str] = None
     """Optional thought signature from Google Gemini thinking models.
@@ -1293,6 +1832,62 @@ class TranscriptObjectWord(BaseModel):
     """Word transcript (with punctuation if applicable)."""
 
 
+class TranscriptObjectMetadataBackupModelUsed(BaseModel):
+    """
+    The first backup model used in the Retell-managed response associated with this utterance, including tool-only requests. Does not imply every word was generated by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class TranscriptObjectMetadata(BaseModel):
+    backup_model_used: Optional[TranscriptObjectMetadataBackupModelUsed] = None
+    """
+    The first backup model used in the Retell-managed response associated with this
+    utterance, including tool-only requests. Does not imply every word was generated
+    by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    interrupt_id: Optional[int] = None
+    """Custom LLM agent interruption identifier, when available."""
+
+    is_backchannel: Optional[bool] = None
+    """Whether the utterance is a backchannel acknowledgment."""
+
+    response_id: Optional[int] = None
+    """Call-scoped agent response identifier, when available."""
+
+
 class TranscriptObject(BaseModel):
     content: str
     """Transcript of the utterances."""
@@ -1306,6 +1901,8 @@ class TranscriptObject(BaseModel):
     Useful for understanding what word was spoken at what time. Note that the word
     timestamp is not guaranteed to be accurate, it's more like an approximation.
     """
+
+    metadata: Optional[TranscriptObjectMetadata] = None
 
 
 class TranscriptWithToolCallUtteranceWord(BaseModel):
@@ -1325,6 +1922,62 @@ class TranscriptWithToolCallUtteranceWord(BaseModel):
     """Word transcript (with punctuation if applicable)."""
 
 
+class TranscriptWithToolCallUtteranceMetadataBackupModelUsed(BaseModel):
+    """
+    The first backup model used in the Retell-managed response associated with this utterance, including tool-only requests. Does not imply every word was generated by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class TranscriptWithToolCallUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[TranscriptWithToolCallUtteranceMetadataBackupModelUsed] = None
+    """
+    The first backup model used in the Retell-managed response associated with this
+    utterance, including tool-only requests. Does not imply every word was generated
+    by the backup model. Absent when no backup was used or for backchannels.
+    """
+
+    interrupt_id: Optional[int] = None
+    """Custom LLM agent interruption identifier, when available."""
+
+    is_backchannel: Optional[bool] = None
+    """Whether the utterance is a backchannel acknowledgment."""
+
+    response_id: Optional[int] = None
+    """Call-scoped agent response identifier, when available."""
+
+
 class TranscriptWithToolCallUtterance(BaseModel):
     content: str
     """Transcript of the utterances."""
@@ -1338,6 +1991,49 @@ class TranscriptWithToolCallUtterance(BaseModel):
     Useful for understanding what word was spoken at what time. Note that the word
     timestamp is not guaranteed to be accurate, it's more like an approximation.
     """
+
+    metadata: Optional[TranscriptWithToolCallUtteranceMetadata] = None
+
+
+class TranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed(BaseModel):
+    """Backup model that generated this tool invocation."""
+
+    backup_model: str
+    """Backup model configured for this request."""
+
+    model: str
+    """Actual selected model after routing and retries."""
+
+    primary_model: str
+    """Primary model configured for this request."""
+
+    reason: Literal["primary_failed", "preference_expired", "first_usable"]
+    """Why the backup won.
+
+    primary_failed means primary attempts failed; preference_expired means backup
+    was ready within the primary preference window; first_usable means backup became
+    ready after that window and won the race.
+    """
+
+    selection_latency_ms: float
+    """Elapsed milliseconds from race start to winner selection."""
+
+    backup_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until backup produced usable output.
+
+    Omitted when unavailable.
+    """
+
+    primary_ready_ms: Optional[float] = None
+    """Elapsed milliseconds until primary produced usable output.
+
+    Omitted if primary was not ready when the winner was selected.
+    """
+
+
+class TranscriptWithToolCallToolCallInvocationUtteranceMetadata(BaseModel):
+    backup_model_used: Optional[TranscriptWithToolCallToolCallInvocationUtteranceMetadataBackupModelUsed] = None
+    """Backup model that generated this tool invocation."""
 
 
 class TranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
@@ -1357,6 +2053,8 @@ class TranscriptWithToolCallToolCallInvocationUtterance(BaseModel):
 
     tool_call_id: str
     """Tool call id, globally unique."""
+
+    metadata: Optional[TranscriptWithToolCallToolCallInvocationUtteranceMetadata] = None
 
     thought_signature: Optional[str] = None
     """Optional thought signature from Google Gemini thinking models.
