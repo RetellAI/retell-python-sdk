@@ -2529,7 +2529,7 @@ TaskAgentOverrideConversationFlowModelConfig: TypeAlias = Union[
 class TaskAgentOverrideConversationFlow(TypedDict, total=False):
     """Override conversation flow configuration settings.
 
-    Only applicable when using conversation flow as the response engine. Supported attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms. A model_config override cannot remove the backup model.
+    Only applicable when using conversation flow as the response engine. Supported attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms. A model_config override can set backup to null to remove it for this call.
     """
 
     begin_after_user_silence_ms: Optional[int]
@@ -2555,8 +2555,8 @@ class TaskAgentOverrideConversationFlow(TypedDict, total=False):
     type decides which models primary and backup accept. On update, each top-level
     key replaces the current one and omitted keys are kept; set backup to null to
     remove it. Changing type requires primary and clears backup, while temperature
-    carries over. In agent_override, type is required whenever primary is set, and
-    backup cannot be removed.
+    carries over. In agent_override, type is required whenever primary is set;
+    setting backup to null disables it for that call only.
     """
 
     model_temperature: Optional[float]
@@ -2746,7 +2746,7 @@ TaskAgentOverrideRetellLlmModelConfig: TypeAlias = Union[
 class TaskAgentOverrideRetellLlm(TypedDict, total=False):
     """Override Retell LLM configuration settings.
 
-    Only applicable when using Retell LLM as the response engine. Supported attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message. A model_config override cannot remove the backup model or switch a speech-to-speech LLM to a cascading model.
+    Only applicable when using Retell LLM as the response engine. Supported attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message. A model_config override can set backup to null to remove it for this call, but cannot switch a speech-to-speech LLM to a cascading model.
     """
 
     begin_after_user_silence_ms: Optional[int]
@@ -2814,8 +2814,8 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
     type decides which models primary and backup accept. On update, each top-level
     key replaces the current one and omitted keys are kept; set backup to null to
     remove it. Changing type requires primary and clears backup, while temperature
-    carries over. In agent_override, type is required whenever primary is set, and
-    backup cannot be removed.
+    carries over. In agent_override, type is required whenever primary is set;
+    setting backup to null disables it for that call only.
     """
 
     model_high_priority: Optional[bool]
@@ -2878,8 +2878,8 @@ class TaskAgentOverride(TypedDict, total=False):
 
     Only applicable when using conversation flow as the response engine. Supported
     attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config,
-    start_speaker, begin_after_user_silence_ms. A model_config override cannot
-    remove the backup model.
+    start_speaker, begin_after_user_silence_ms. A model_config override can set
+    backup to null to remove it for this call.
     """
 
     retell_llm: TaskAgentOverrideRetellLlm
@@ -2888,8 +2888,8 @@ class TaskAgentOverride(TypedDict, total=False):
     Only applicable when using Retell LLM as the response engine. Supported
     attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config,
     start_speaker, begin_after_user_silence_ms, begin_message. A model_config
-    override cannot remove the backup model or switch a speech-to-speech LLM to a
-    cascading model.
+    override can set backup to null to remove it for this call, but cannot switch a
+    speech-to-speech LLM to a cascading model.
     """
 
 

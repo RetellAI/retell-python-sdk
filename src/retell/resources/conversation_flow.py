@@ -123,7 +123,8 @@ class ConversationFlowResource(SyncAPIResource):
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
-              type is required whenever primary is set, and backup cannot be removed.
+              type is required whenever primary is set; setting backup to null disables it for
+              that call only.
 
           model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
@@ -297,7 +298,8 @@ class ConversationFlowResource(SyncAPIResource):
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
-              type is required whenever primary is set, and backup cannot be removed.
+              type is required whenever primary is set; setting backup to null disables it for
+              that call only.
 
           model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
@@ -563,7 +565,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
-              type is required whenever primary is set, and backup cannot be removed.
+              type is required whenever primary is set; setting backup to null disables it for
+              that call only.
 
           model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 
@@ -737,7 +740,8 @@ class AsyncConversationFlowResource(AsyncAPIResource):
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
-              type is required whenever primary is set, and backup cannot be removed.
+              type is required whenever primary is set; setting backup to null disables it for
+              that call only.
 
           model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
 

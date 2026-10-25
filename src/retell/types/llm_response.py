@@ -3050,8 +3050,8 @@ class LlmResponse(BaseModel):
     type decides which models primary and backup accept. On update, each top-level
     key replaces the current one and omitted keys are kept; set backup to null to
     remove it. Changing type requires primary and clears backup, while temperature
-    carries over. In agent_override, type is required whenever primary is set, and
-    backup cannot be removed.
+    carries over. In agent_override, type is required whenever primary is set;
+    setting backup to null disables it for that call only.
     """
 
     api_model_high_priority: Optional[bool] = FieldInfo(alias="model_high_priority", default=None)

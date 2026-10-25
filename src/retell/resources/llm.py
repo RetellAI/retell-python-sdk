@@ -167,7 +167,8 @@ class LlmResource(SyncAPIResource):
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
-              type is required whenever primary is set, and backup cannot be removed.
+              type is required whenever primary is set; setting backup to null disables it for
+              that call only.
 
           model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
               set.
@@ -403,7 +404,8 @@ class LlmResource(SyncAPIResource):
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
-              type is required whenever primary is set, and backup cannot be removed.
+              type is required whenever primary is set; setting backup to null disables it for
+              that call only.
 
           model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
               set.
@@ -716,7 +718,8 @@ class AsyncLlmResource(AsyncAPIResource):
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
-              type is required whenever primary is set, and backup cannot be removed.
+              type is required whenever primary is set; setting backup to null disables it for
+              that call only.
 
           model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
               set.
@@ -952,7 +955,8 @@ class AsyncLlmResource(AsyncAPIResource):
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
-              type is required whenever primary is set, and backup cannot be removed.
+              type is required whenever primary is set; setting backup to null disables it for
+              that call only.
 
           model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
               set.
