@@ -48,6 +48,7 @@ class LlmResource(SyncAPIResource):
     def create(
         self,
         *,
+        backup_model: llm_create_params.BackupModel | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -128,6 +129,9 @@ class LlmResource(SyncAPIResource):
         is used to generate response output for the agent.
 
         Args:
+          backup_model: Backup models are supported only for call agents. Response engines with a backup
+              model cannot be used by chat agents.
+
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
               agent is configured to wait for the user to speak first. If not set, the agent
@@ -206,6 +210,7 @@ class LlmResource(SyncAPIResource):
             "/create-retell-llm",
             body=maybe_transform(
                 {
+                    "backup_model": backup_model,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -285,6 +290,7 @@ class LlmResource(SyncAPIResource):
         llm_id: str,
         *,
         version: int | Omit = omit,
+        backup_model: llm_update_params.BackupModel | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -364,6 +370,9 @@ class LlmResource(SyncAPIResource):
 
         Args:
           version: Optional version of the API to use for this request. Default to latest version.
+
+          backup_model: Backup models are supported only for call agents. Response engines with a backup
+              model cannot be used by chat agents.
 
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
@@ -445,6 +454,7 @@ class LlmResource(SyncAPIResource):
             path_template("/update-retell-llm/{llm_id}", llm_id=llm_id),
             body=maybe_transform(
                 {
+                    "backup_model": backup_model,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -599,6 +609,7 @@ class AsyncLlmResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        backup_model: llm_create_params.BackupModel | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -679,6 +690,9 @@ class AsyncLlmResource(AsyncAPIResource):
         is used to generate response output for the agent.
 
         Args:
+          backup_model: Backup models are supported only for call agents. Response engines with a backup
+              model cannot be used by chat agents.
+
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
               agent is configured to wait for the user to speak first. If not set, the agent
@@ -757,6 +771,7 @@ class AsyncLlmResource(AsyncAPIResource):
             "/create-retell-llm",
             body=await async_maybe_transform(
                 {
+                    "backup_model": backup_model,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -836,6 +851,7 @@ class AsyncLlmResource(AsyncAPIResource):
         llm_id: str,
         *,
         version: int | Omit = omit,
+        backup_model: llm_update_params.BackupModel | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -915,6 +931,9 @@ class AsyncLlmResource(AsyncAPIResource):
 
         Args:
           version: Optional version of the API to use for this request. Default to latest version.
+
+          backup_model: Backup models are supported only for call agents. Response engines with a backup
+              model cannot be used by chat agents.
 
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
@@ -996,6 +1015,7 @@ class AsyncLlmResource(AsyncAPIResource):
             path_template("/update-retell-llm/{llm_id}", llm_id=llm_id),
             body=await async_maybe_transform(
                 {
+                    "backup_model": backup_model,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
