@@ -142,6 +142,7 @@ class TestAgent:
                     "enable_typing_sound": True,
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
+                    "execution_status_variable": "execution_status_variable",
                     "output_selection": {
                         "mode": "all",
                         "fields": ["string"],
@@ -171,6 +172,7 @@ class TestAgent:
                     "enable_typing_sound": True,
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
+                    "execution_status_variable": "execution_status_variable",
                     "output_selection": {
                         "mode": "all",
                         "fields": ["string"],
@@ -422,6 +424,7 @@ class TestAgent:
                     "enable_typing_sound": True,
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
+                    "execution_status_variable": "execution_status_variable",
                     "output_selection": {
                         "mode": "all",
                         "fields": ["string"],
@@ -451,6 +454,7 @@ class TestAgent:
                     "enable_typing_sound": True,
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
+                    "execution_status_variable": "execution_status_variable",
                     "output_selection": {
                         "mode": "all",
                         "fields": ["string"],
@@ -1018,6 +1022,7 @@ class TestAsyncAgent:
                     "enable_typing_sound": True,
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
+                    "execution_status_variable": "execution_status_variable",
                     "output_selection": {
                         "mode": "all",
                         "fields": ["string"],
@@ -1047,6 +1052,7 @@ class TestAsyncAgent:
                     "enable_typing_sound": True,
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
+                    "execution_status_variable": "execution_status_variable",
                     "output_selection": {
                         "mode": "all",
                         "fields": ["string"],
@@ -1298,6 +1304,7 @@ class TestAsyncAgent:
                     "enable_typing_sound": True,
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
+                    "execution_status_variable": "execution_status_variable",
                     "output_selection": {
                         "mode": "all",
                         "fields": ["string"],
@@ -1327,6 +1334,7 @@ class TestAsyncAgent:
                     "enable_typing_sound": True,
                     "execution_message_description": "execution_message_description",
                     "execution_message_type": "prompt",
+                    "execution_status_variable": "execution_status_variable",
                     "output_selection": {
                         "mode": "all",
                         "fields": ["string"],

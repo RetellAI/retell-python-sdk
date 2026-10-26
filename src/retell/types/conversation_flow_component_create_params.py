@@ -1368,6 +1368,7 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -1421,6 +1422,7 @@ class NodeConversationNodeModelConfigNodeModelConfigPrimary(TypedDict, total=Fal
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2178,6 +2180,7 @@ class NodeSubagentNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2231,6 +2234,7 @@ class NodeSubagentNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -3027,6 +3031,12 @@ class NodeSubagentNodeToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -3133,6 +3143,12 @@ class NodeSubagentNodeToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -3403,6 +3419,12 @@ class NodeSubagentNodeToolMcpTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     input_schema: Dict[str, str]
     """The input schema of the MCP tool."""
 
@@ -3545,6 +3567,12 @@ class NodeSubagentNodeToolAppTool(TypedDict, total=False):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: NodeSubagentNodeToolAppToolOutputSelection
@@ -4008,6 +4036,7 @@ class NodeEndNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -4061,6 +4090,7 @@ class NodeEndNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -4574,6 +4604,7 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -4627,6 +4658,7 @@ class NodeFunctionNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -5154,6 +5186,7 @@ class NodeCodeNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -5207,6 +5240,7 @@ class NodeCodeNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -5273,6 +5307,12 @@ class NodeCodeNode(TypedDict, total=False):
 
     enable_typing_sound: bool
     """If true, play a typing sound while code executes."""
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
 
     finetune_transition_examples: Iterable[NodeCodeNodeFinetuneTransitionExample]
 
@@ -5960,6 +6000,7 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -6013,6 +6054,7 @@ class NodeTransferCallNodeModelConfigNodeModelConfigPrimary(TypedDict, total=Fal
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -6528,6 +6570,7 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -6581,6 +6624,7 @@ class NodePressDigitNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -7077,6 +7121,7 @@ class NodeBranchNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -7130,6 +7175,7 @@ class NodeBranchNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -7621,6 +7667,7 @@ class NodeSMSNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -7674,6 +7721,7 @@ class NodeSMSNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -8347,6 +8395,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -8400,6 +8449,7 @@ class NodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary(TypedDict
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -8826,6 +8876,7 @@ class NodeAgentSwapNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -8879,6 +8930,7 @@ class NodeAgentSwapNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False)
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -9420,6 +9472,7 @@ class NodeMcpNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -9473,6 +9526,7 @@ class NodeMcpNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -9542,6 +9596,12 @@ class NodeMcpNode(TypedDict, total=False):
 
     enable_typing_sound: bool
     """If true, play a typing sound while MCP tool executes."""
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
 
     finetune_transition_examples: Iterable[NodeMcpNodeFinetuneTransitionExample]
 
@@ -10283,6 +10343,7 @@ class NodeBridgeTransferNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -10336,6 +10397,7 @@ class NodeBridgeTransferNodeModelConfigNodeModelConfigPrimary(TypedDict, total=F
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -10697,6 +10759,7 @@ class NodeCancelTransferNodeModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -10750,6 +10813,7 @@ class NodeCancelTransferNodeModelConfigNodeModelConfigPrimary(TypedDict, total=F
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -10981,6 +11045,12 @@ class ToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -11169,6 +11239,12 @@ class ToolAppTool(TypedDict, total=False):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: ToolAppToolOutputSelection

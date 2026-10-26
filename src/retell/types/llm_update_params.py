@@ -213,6 +213,7 @@ class LlmUpdateParams(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -321,6 +322,7 @@ class BackupModelBackupModelChoice(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -1058,6 +1060,12 @@ class GeneralToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -1164,6 +1172,12 @@ class GeneralToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -1434,6 +1448,12 @@ class GeneralToolMcpTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     input_schema: Dict[str, str]
     """The input schema of the MCP tool."""
 
@@ -1578,6 +1598,12 @@ class GeneralToolAppTool(TypedDict, total=False):
     to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     output_selection: GeneralToolAppToolOutputSelection
     """What the agent and the transcript see of the tool's response.
 
@@ -1688,6 +1714,7 @@ class ModelConfigCascadingModelConfigBackupBackupModelRef(TypedDict, total=False
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -1748,6 +1775,7 @@ class ModelConfigCascadingModelConfigPrimary(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2576,6 +2604,12 @@ class StateToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -2682,6 +2716,12 @@ class StateToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -2952,6 +2992,12 @@ class StateToolMcpTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     input_schema: Dict[str, str]
     """The input schema of the MCP tool."""
 
@@ -3094,6 +3140,12 @@ class StateToolAppTool(TypedDict, total=False):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: StateToolAppToolOutputSelection

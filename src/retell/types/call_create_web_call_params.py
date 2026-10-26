@@ -630,6 +630,12 @@ class AgentOverrideAgentPostSessionToolAppTool(TypedDict, total=False):
     to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     output_selection: AgentOverrideAgentPostSessionToolAppToolOutputSelection
     """What the agent and the transcript see of the tool's response.
 
@@ -785,6 +791,12 @@ class AgentOverrideAgentPostSessionToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -927,6 +939,12 @@ class AgentOverrideAgentPostSessionToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -1249,6 +1267,12 @@ class AgentOverrideAgentPreSessionToolAppTool(TypedDict, total=False):
     to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     output_selection: AgentOverrideAgentPreSessionToolAppToolOutputSelection
     """What the agent and the transcript see of the tool's response.
 
@@ -1371,6 +1395,12 @@ class AgentOverrideAgentPreSessionToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -1480,6 +1510,12 @@ class AgentOverrideAgentPreSessionToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -2066,6 +2102,7 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2311,6 +2348,7 @@ class AgentOverrideConversationFlowBackupModelBackupModelChoice(TypedDict, total
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2386,6 +2424,7 @@ class AgentOverrideConversationFlowModelChoiceModelChoiceCascading(TypedDict, to
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2467,6 +2506,7 @@ class AgentOverrideConversationFlowModelConfigCascadingModelConfigBackupBackupMo
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2527,6 +2567,7 @@ class AgentOverrideConversationFlowModelConfigCascadingModelConfigPrimary(TypedD
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2687,6 +2728,7 @@ class AgentOverrideRetellLlmBackupModelBackupModelChoice(TypedDict, total=False)
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2767,6 +2809,7 @@ class AgentOverrideRetellLlmModelConfigCascadingModelConfigBackupBackupModelRef(
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2827,6 +2870,7 @@ class AgentOverrideRetellLlmModelConfigCascadingModelConfigPrimary(TypedDict, to
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
@@ -2962,6 +3006,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gpt-6-astra",
             "gpt-6-sol",
             "gpt-6.1-sol",
+            "gpt-6.1-terra",
             "gpt-6-luna",
             "claude-4.6-sonnet",
             "claude-5-opus",
