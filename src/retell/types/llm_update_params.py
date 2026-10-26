@@ -1058,6 +1058,12 @@ class GeneralToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -1164,6 +1170,12 @@ class GeneralToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -1434,6 +1446,12 @@ class GeneralToolMcpTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     input_schema: Dict[str, str]
     """The input schema of the MCP tool."""
 
@@ -1576,6 +1594,12 @@ class GeneralToolAppTool(TypedDict, total=False):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: GeneralToolAppToolOutputSelection
@@ -2576,6 +2600,12 @@ class StateToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -2682,6 +2712,12 @@ class StateToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -2952,6 +2988,12 @@ class StateToolMcpTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     input_schema: Dict[str, str]
     """The input schema of the MCP tool."""
 
@@ -3094,6 +3136,12 @@ class StateToolAppTool(TypedDict, total=False):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: StateToolAppToolOutputSelection

@@ -655,6 +655,12 @@ class AgentOverrideAgentPostSessionToolAppTool(TypedDict, total=False):
     to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     output_selection: AgentOverrideAgentPostSessionToolAppToolOutputSelection
     """What the agent and the transcript see of the tool's response.
 
@@ -810,6 +816,12 @@ class AgentOverrideAgentPostSessionToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -952,6 +964,12 @@ class AgentOverrideAgentPostSessionToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -1274,6 +1292,12 @@ class AgentOverrideAgentPreSessionToolAppTool(TypedDict, total=False):
     to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     output_selection: AgentOverrideAgentPreSessionToolAppToolOutputSelection
     """What the agent and the transcript see of the tool's response.
 
@@ -1396,6 +1420,12 @@ class AgentOverrideAgentPreSessionToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -1505,6 +1535,12 @@ class AgentOverrideAgentPreSessionToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]

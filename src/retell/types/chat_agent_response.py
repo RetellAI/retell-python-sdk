@@ -497,6 +497,12 @@ class PostSessionToolAppTool(BaseModel):
     to "prompt".
     """
 
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     output_selection: Optional[PostSessionToolAppToolOutputSelection] = None
     """What the agent and the transcript see of the tool's response.
 
@@ -652,6 +658,12 @@ class PostSessionToolCustomTool(BaseModel):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Optional[Dict[str, str]] = None
     """Headers to add to the request."""
 
@@ -794,6 +806,12 @@ class PostSessionToolCodeTool(BaseModel):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Optional[Dict[str, str]] = None
@@ -1112,6 +1130,12 @@ class PreSessionToolAppTool(BaseModel):
     to "prompt".
     """
 
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     output_selection: Optional[PreSessionToolAppToolOutputSelection] = None
     """What the agent and the transcript see of the tool's response.
 
@@ -1234,6 +1258,12 @@ class PreSessionToolCustomTool(BaseModel):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Optional[Dict[str, str]] = None
     """Headers to add to the request."""
 
@@ -1343,6 +1373,12 @@ class PreSessionToolCodeTool(BaseModel):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Optional[Dict[str, str]] = None

@@ -2988,6 +2988,12 @@ class NodeSubagentNodeToolCustomTool(BaseModel):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Optional[Dict[str, str]] = None
     """Headers to add to the request."""
 
@@ -3094,6 +3100,12 @@ class NodeSubagentNodeToolCodeTool(BaseModel):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Optional[Dict[str, str]] = None
@@ -3364,6 +3376,12 @@ class NodeSubagentNodeToolMcpTool(BaseModel):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     input_schema: Optional[Dict[str, str]] = None
     """The input schema of the MCP tool."""
 
@@ -3506,6 +3524,12 @@ class NodeSubagentNodeToolAppTool(BaseModel):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: Optional[NodeSubagentNodeToolAppToolOutputSelection] = None
@@ -5214,6 +5238,12 @@ class NodeCodeNode(BaseModel):
 
     enable_typing_sound: Optional[bool] = None
     """If true, play a typing sound while code executes."""
+
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
 
     finetune_transition_examples: Optional[List[NodeCodeNodeFinetuneTransitionExample]] = None
 
@@ -9426,6 +9456,12 @@ class NodeMcpNode(BaseModel):
     enable_typing_sound: Optional[bool] = None
     """If true, play a typing sound while MCP tool executes."""
 
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     finetune_transition_examples: Optional[List[NodeMcpNodeFinetuneTransitionExample]] = None
 
     global_node_setting: Optional[NodeMcpNodeGlobalNodeSetting] = None
@@ -10844,6 +10880,12 @@ class ToolCustomTool(BaseModel):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Optional[Dict[str, str]] = None
     """Headers to add to the request."""
 
@@ -11032,6 +11074,12 @@ class ToolAppTool(BaseModel):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: Optional[str] = None
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: Optional[ToolAppToolOutputSelection] = None

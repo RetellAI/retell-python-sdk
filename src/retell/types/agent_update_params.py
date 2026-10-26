@@ -1202,6 +1202,12 @@ class PostSessionToolAppTool(TypedDict, total=False):
     to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     output_selection: PostSessionToolAppToolOutputSelection
     """What the agent and the transcript see of the tool's response.
 
@@ -1357,6 +1363,12 @@ class PostSessionToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -1499,6 +1511,12 @@ class PostSessionToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -1817,6 +1835,12 @@ class PreSessionToolAppTool(TypedDict, total=False):
     to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     output_selection: PreSessionToolAppToolOutputSelection
     """What the agent and the transcript see of the tool's response.
 
@@ -1939,6 +1963,12 @@ class PreSessionToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -2048,6 +2078,12 @@ class PreSessionToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]

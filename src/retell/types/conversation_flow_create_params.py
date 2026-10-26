@@ -3870,6 +3870,12 @@ class NodeSubagentNodeToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -3976,6 +3982,12 @@ class NodeSubagentNodeToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -4246,6 +4258,12 @@ class NodeSubagentNodeToolMcpTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     input_schema: Dict[str, str]
     """The input schema of the MCP tool."""
 
@@ -4388,6 +4406,12 @@ class NodeSubagentNodeToolAppTool(TypedDict, total=False):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: NodeSubagentNodeToolAppToolOutputSelection
@@ -6116,6 +6140,12 @@ class NodeCodeNode(TypedDict, total=False):
 
     enable_typing_sound: bool
     """If true, play a typing sound while code executes."""
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
 
     finetune_transition_examples: Iterable[NodeCodeNodeFinetuneTransitionExample]
 
@@ -10386,6 +10416,12 @@ class NodeMcpNode(TypedDict, total=False):
     enable_typing_sound: bool
     """If true, play a typing sound while MCP tool executes."""
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     finetune_transition_examples: Iterable[NodeMcpNodeFinetuneTransitionExample]
 
     global_node_setting: NodeMcpNodeGlobalNodeSetting
@@ -14026,6 +14062,12 @@ class ComponentNodeSubagentNodeToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -14132,6 +14174,12 @@ class ComponentNodeSubagentNodeToolCodeTool(TypedDict, total=False):
     "prompt" means the agent will use execution_message_description as a prompt to
     generate the message. "static_text" means the agent will speak the
     execution_message_description directly. Defaults to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     response_variables: Dict[str, str]
@@ -14402,6 +14450,12 @@ class ComponentNodeSubagentNodeToolMcpTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     input_schema: Dict[str, str]
     """The input schema of the MCP tool."""
 
@@ -14545,6 +14599,12 @@ class ComponentNodeSubagentNodeToolAppTool(TypedDict, total=False):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: ComponentNodeSubagentNodeToolAppToolOutputSelection
@@ -16286,6 +16346,12 @@ class ComponentNodeCodeNode(TypedDict, total=False):
 
     enable_typing_sound: bool
     """If true, play a typing sound while code executes."""
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
 
     finetune_transition_examples: Iterable[ComponentNodeCodeNodeFinetuneTransitionExample]
 
@@ -20641,6 +20707,12 @@ class ComponentNodeMcpNode(TypedDict, total=False):
     enable_typing_sound: bool
     """If true, play a typing sound while MCP tool executes."""
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     finetune_transition_examples: Iterable[ComponentNodeMcpNodeFinetuneTransitionExample]
 
     global_node_setting: ComponentNodeMcpNodeGlobalNodeSetting
@@ -22132,6 +22204,12 @@ class ComponentToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -22320,6 +22398,12 @@ class ComponentToolAppTool(TypedDict, total=False):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: ComponentToolAppToolOutputSelection
@@ -22773,6 +22857,12 @@ class ToolCustomTool(TypedDict, total=False):
     execution_message_description directly. Defaults to "prompt".
     """
 
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
+    """
+
     headers: Dict[str, str]
     """Headers to add to the request."""
 
@@ -22961,6 +23051,12 @@ class ToolAppTool(TypedDict, total=False):
     execution_message_description as a prompt to generate the message. "static_text"
     means the agent will speak the execution_message_description directly. Defaults
     to "prompt".
+    """
+
+    execution_status_variable: str
+    """Dynamic variable to store execution status as "success" or "failure".
+
+    Tools skipped by conditions or dependencies leave it unchanged.
     """
 
     output_selection: ToolAppToolOutputSelection
