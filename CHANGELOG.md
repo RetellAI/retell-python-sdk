@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.2.14](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.13...v6.2.14) (2026-10-27)
+
+
+### Bug Fixes
+
+* **api:** sync OpenAPI from retell-backend ([4fb221a](https://github.com/RetellAI/retell-python-sdk/commit/4fb221a9db2650ce96172bf212d9667ab63b8ea1))
+
 ## [6.2.13](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.12...v6.2.13) (2026-10-26)
 
 
