@@ -208,6 +208,7 @@ class PhoneNumberResource(SyncAPIResource):
         codecs: SequenceNotStr[str] | Omit = omit,
         fallback_number: Optional[str] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_update_params.InboundAgent]] | Omit = omit,
+        inbound_fallback_enabled: bool | Omit = omit,
         inbound_sms_agents: Optional[Iterable[phone_number_update_params.InboundSMSAgent]] | Omit = omit,
         inbound_sms_webhook_url: Optional[str] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
@@ -256,6 +257,10 @@ class PhoneNumberResource(SyncAPIResource):
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
               proportional to the weight. Total weights must add up to 1.
+
+          inbound_fallback_enabled: Whether to enable inbound fallback for this phone number. When enabled, inbound
+              calls are transferred to the fallback number. Requires fallback_number to be
+              set.
 
           inbound_sms_agents: Inbound SMS agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound SMS, with probability
@@ -308,6 +313,7 @@ class PhoneNumberResource(SyncAPIResource):
                     "codecs": codecs,
                     "fallback_number": fallback_number,
                     "inbound_agents": inbound_agents,
+                    "inbound_fallback_enabled": inbound_fallback_enabled,
                     "inbound_sms_agents": inbound_sms_agents,
                     "inbound_sms_webhook_url": inbound_sms_webhook_url,
                     "inbound_webhook_url": inbound_webhook_url,
@@ -711,6 +717,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         codecs: SequenceNotStr[str] | Omit = omit,
         fallback_number: Optional[str] | Omit = omit,
         inbound_agents: Optional[Iterable[phone_number_update_params.InboundAgent]] | Omit = omit,
+        inbound_fallback_enabled: bool | Omit = omit,
         inbound_sms_agents: Optional[Iterable[phone_number_update_params.InboundSMSAgent]] | Omit = omit,
         inbound_sms_webhook_url: Optional[str] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
@@ -759,6 +766,10 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           inbound_agents: Inbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound call, with probability
               proportional to the weight. Total weights must add up to 1.
+
+          inbound_fallback_enabled: Whether to enable inbound fallback for this phone number. When enabled, inbound
+              calls are transferred to the fallback number. Requires fallback_number to be
+              set.
 
           inbound_sms_agents: Inbound SMS agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each inbound SMS, with probability
@@ -811,6 +822,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
                     "codecs": codecs,
                     "fallback_number": fallback_number,
                     "inbound_agents": inbound_agents,
+                    "inbound_fallback_enabled": inbound_fallback_enabled,
                     "inbound_sms_agents": inbound_sms_agents,
                     "inbound_sms_webhook_url": inbound_sms_webhook_url,
                     "inbound_webhook_url": inbound_webhook_url,
