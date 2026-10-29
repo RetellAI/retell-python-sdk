@@ -334,6 +334,45 @@ class KnowledgeBaseResource(SyncAPIResource):
             cast_to=KnowledgeBaseResponse,
         )
 
+    def refresh(
+        self,
+        knowledge_base_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> None:
+        """
+        Manually refresh a knowledge base
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not knowledge_base_id:
+            raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            path_template("/refresh-knowledge-base/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+            ),
+            cast_to=NoneType,
+        )
+
 
 class AsyncKnowledgeBaseResource(AsyncAPIResource):
     @cached_property
@@ -644,6 +683,45 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
             cast_to=KnowledgeBaseResponse,
         )
 
+    async def refresh(
+        self,
+        knowledge_base_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> None:
+        """
+        Manually refresh a knowledge base
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not knowledge_base_id:
+            raise ValueError(f"Expected a non-empty value for `knowledge_base_id` but received {knowledge_base_id!r}")
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            path_template("/refresh-knowledge-base/{knowledge_base_id}", knowledge_base_id=knowledge_base_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+            ),
+            cast_to=NoneType,
+        )
+
 
 class KnowledgeBaseResourceWithRawResponse:
     def __init__(self, knowledge_base: KnowledgeBaseResource) -> None:
@@ -666,6 +744,9 @@ class KnowledgeBaseResourceWithRawResponse:
         )
         self.delete_source = to_raw_response_wrapper(
             knowledge_base.delete_source,
+        )
+        self.refresh = to_raw_response_wrapper(
+            knowledge_base.refresh,
         )
 
 
@@ -691,6 +772,9 @@ class AsyncKnowledgeBaseResourceWithRawResponse:
         self.delete_source = async_to_raw_response_wrapper(
             knowledge_base.delete_source,
         )
+        self.refresh = async_to_raw_response_wrapper(
+            knowledge_base.refresh,
+        )
 
 
 class KnowledgeBaseResourceWithStreamingResponse:
@@ -715,6 +799,9 @@ class KnowledgeBaseResourceWithStreamingResponse:
         self.delete_source = to_streamed_response_wrapper(
             knowledge_base.delete_source,
         )
+        self.refresh = to_streamed_response_wrapper(
+            knowledge_base.refresh,
+        )
 
 
 class AsyncKnowledgeBaseResourceWithStreamingResponse:
@@ -738,4 +825,7 @@ class AsyncKnowledgeBaseResourceWithStreamingResponse:
         )
         self.delete_source = async_to_streamed_response_wrapper(
             knowledge_base.delete_source,
+        )
+        self.refresh = async_to_streamed_response_wrapper(
+            knowledge_base.refresh,
         )
