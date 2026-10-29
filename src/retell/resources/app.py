@@ -13,6 +13,7 @@ from ..types import (
     app_delete_params,
     app_update_params,
     app_list_usages_params,
+    app_list_templates_params,
     app_get_tool_schema_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
@@ -30,6 +31,7 @@ from ..types.app_response import AppResponse
 from ..types.app_list_response import AppListResponse
 from ..types.app_test_auth_response import AppTestAuthResponse
 from ..types.app_list_usages_response import AppListUsagesResponse
+from ..types.app_list_templates_response import AppListTemplatesResponse
 from ..types.app_get_tool_schema_response import AppGetToolSchemaResponse
 
 __all__ = ["AppResource", "AsyncAppResource"]
@@ -395,6 +397,60 @@ class AppResource(SyncAPIResource):
                 max_retries=max_retries,
             ),
             cast_to=AppGetToolSchemaResponse,
+        )
+
+    def list_templates(
+        self,
+        *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        privacy_scope: Literal["standard", "pci"] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> AppListTemplatesResponse:
+        """
+        List the static catalog of available integration apps — provider, display name,
+        description, and the tools each exposes. Not the organization's connected Apps.
+
+        Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
+          privacy_scope: Only include functions with this scope and apps providing them. Omit to include
+              all scopes.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/list-app-templates",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+                query=maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "privacy_scope": privacy_scope,
+                    },
+                    app_list_templates_params.AppListTemplatesParams,
+                ),
+            ),
+            cast_to=AppListTemplatesResponse,
         )
 
     def list_usages(
@@ -856,6 +912,60 @@ class AsyncAppResource(AsyncAPIResource):
             cast_to=AppGetToolSchemaResponse,
         )
 
+    async def list_templates(
+        self,
+        *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        privacy_scope: Literal["standard", "pci"] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> AppListTemplatesResponse:
+        """
+        List the static catalog of available integration apps — provider, display name,
+        description, and the tools each exposes. Not the organization's connected Apps.
+
+        Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
+          privacy_scope: Only include functions with this scope and apps providing them. Omit to include
+              all scopes.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/list-app-templates",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+                query=await async_maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "privacy_scope": privacy_scope,
+                    },
+                    app_list_templates_params.AppListTemplatesParams,
+                ),
+            ),
+            cast_to=AppListTemplatesResponse,
+        )
+
     async def list_usages(
         self,
         app_id: str,
@@ -975,6 +1085,9 @@ class AppResourceWithRawResponse:
         self.get_tool_schema = to_raw_response_wrapper(
             app.get_tool_schema,
         )
+        self.list_templates = to_raw_response_wrapper(
+            app.list_templates,
+        )
         self.list_usages = to_raw_response_wrapper(
             app.list_usages,
         )
@@ -1004,6 +1117,9 @@ class AsyncAppResourceWithRawResponse:
         )
         self.get_tool_schema = async_to_raw_response_wrapper(
             app.get_tool_schema,
+        )
+        self.list_templates = async_to_raw_response_wrapper(
+            app.list_templates,
         )
         self.list_usages = async_to_raw_response_wrapper(
             app.list_usages,
@@ -1035,6 +1151,9 @@ class AppResourceWithStreamingResponse:
         self.get_tool_schema = to_streamed_response_wrapper(
             app.get_tool_schema,
         )
+        self.list_templates = to_streamed_response_wrapper(
+            app.list_templates,
+        )
         self.list_usages = to_streamed_response_wrapper(
             app.list_usages,
         )
@@ -1064,6 +1183,9 @@ class AsyncAppResourceWithStreamingResponse:
         )
         self.get_tool_schema = async_to_streamed_response_wrapper(
             app.get_tool_schema,
+        )
+        self.list_templates = async_to_streamed_response_wrapper(
+            app.list_templates,
         )
         self.list_usages = async_to_streamed_response_wrapper(
             app.list_usages,
