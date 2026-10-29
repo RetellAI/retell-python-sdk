@@ -15,6 +15,7 @@ from retell.types import (
     AppTestAuthResponse,
     AppListUsagesResponse,
     AppGetToolSchemaResponse,
+    AppListTemplatesResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -361,6 +362,44 @@ class TestApp:
                 app_id="",
                 app_tool_template_name="app_tool_template_name",
             )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_templates(self, client: Retell) -> None:
+        app = client.app.list_templates()
+        assert_matches_type(AppListTemplatesResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_list_templates_with_all_params(self, client: Retell) -> None:
+        app = client.app.list_templates(
+            limit=1000,
+            pagination_key="pagination_key",
+            privacy_scope="standard",
+        )
+        assert_matches_type(AppListTemplatesResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_list_templates(self, client: Retell) -> None:
+        response = client.app.with_raw_response.list_templates()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        app = response.parse()
+        assert_matches_type(AppListTemplatesResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_list_templates(self, client: Retell) -> None:
+        with client.app.with_streaming_response.list_templates() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            app = response.parse()
+            assert_matches_type(AppListTemplatesResponse, app, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -801,6 +840,44 @@ class TestAsyncApp:
                 app_id="",
                 app_tool_template_name="app_tool_template_name",
             )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_templates(self, async_client: AsyncRetell) -> None:
+        app = await async_client.app.list_templates()
+        assert_matches_type(AppListTemplatesResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_list_templates_with_all_params(self, async_client: AsyncRetell) -> None:
+        app = await async_client.app.list_templates(
+            limit=1000,
+            pagination_key="pagination_key",
+            privacy_scope="standard",
+        )
+        assert_matches_type(AppListTemplatesResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_list_templates(self, async_client: AsyncRetell) -> None:
+        response = await async_client.app.with_raw_response.list_templates()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        app = await response.parse()
+        assert_matches_type(AppListTemplatesResponse, app, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_list_templates(self, async_client: AsyncRetell) -> None:
+        async with async_client.app.with_streaming_response.list_templates() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            app = await response.parse()
+            assert_matches_type(AppListTemplatesResponse, app, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize

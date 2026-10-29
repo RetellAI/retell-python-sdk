@@ -68,6 +68,7 @@ from .chat_agent_update_params import ChatAgentUpdateParams as ChatAgentUpdatePa
 from .create_web_call_response import CreateWebCallResponse as CreateWebCallResponse
 from .crm_update_config_params import CRMUpdateConfigParams as CRMUpdateConfigParams
 from .phone_number_list_params import PhoneNumberListParams as PhoneNumberListParams
+from .app_list_templates_params import AppListTemplatesParams as AppListTemplatesParams
 from .call_listen_live_response import CallListenLiveResponse as CallListenLiveResponse
 from .call_update_live_response import CallUpdateLiveResponse as CallUpdateLiveResponse
 from .chat_agent_publish_params import ChatAgentPublishParams as ChatAgentPublishParams
@@ -87,6 +88,7 @@ from .phone_number_update_params import PhoneNumberUpdateParams as PhoneNumberUp
 from .test_list_test_runs_params import TestListTestRunsParams as TestListTestRunsParams
 from .agent_create_version_params import AgentCreateVersionParams as AgentCreateVersionParams
 from .agent_delete_version_params import AgentDeleteVersionParams as AgentDeleteVersionParams
+from .app_list_templates_response import AppListTemplatesResponse as AppListTemplatesResponse
 from .call_create_web_call_params import CallCreateWebCallParams as CallCreateWebCallParams
 from .chat_create_sms_chat_params import ChatCreateSMSChatParams as ChatCreateSMSChatParams
 from .contact_get_import_response import ContactGetImportResponse as ContactGetImportResponse
