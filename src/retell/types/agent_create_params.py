@@ -654,6 +654,7 @@ class AgentCreateParams(TypedDict, total=False):
             "s1",
             "s2-pro",
             "s2.1-pro",
+            "drama-3",
             "inworld-tts-2",
             "inworld-tts-2-flash",
         ]
