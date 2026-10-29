@@ -177,6 +177,7 @@ Methods:
 - <code title="delete /delete-knowledge-base/{knowledge_base_id}">client.knowledge_base.<a href="./src/retell/resources/knowledge_base.py">delete</a>(knowledge_base_id) -> None</code>
 - <code title="post /add-knowledge-base-sources/{knowledge_base_id}">client.knowledge_base.<a href="./src/retell/resources/knowledge_base.py">add_sources</a>(knowledge_base_id, \*\*<a href="src/retell/types/knowledge_base_add_sources_params.py">params</a>) -> <a href="./src/retell/types/knowledge_base_response.py">KnowledgeBaseResponse</a></code>
 - <code title="delete /delete-knowledge-base-source/{knowledge_base_id}/source/{source_id}">client.knowledge_base.<a href="./src/retell/resources/knowledge_base.py">delete_source</a>(source_id, \*, knowledge_base_id) -> <a href="./src/retell/types/knowledge_base_response.py">KnowledgeBaseResponse</a></code>
+- <code title="post /refresh-knowledge-base/{knowledge_base_id}">client.knowledge_base.<a href="./src/retell/resources/knowledge_base.py">refresh</a>(knowledge_base_id) -> None</code>
 
 # Voice
 

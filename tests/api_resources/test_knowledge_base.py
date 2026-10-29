@@ -295,6 +295,48 @@ class TestKnowledgeBase:
                 knowledge_base_id="kb_1234567890",
             )
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_refresh(self, client: Retell) -> None:
+        knowledge_base = client.knowledge_base.refresh(
+            "knowledge_base_1234567890",
+        )
+        assert knowledge_base is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_refresh(self, client: Retell) -> None:
+        response = client.knowledge_base.with_raw_response.refresh(
+            "knowledge_base_1234567890",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        knowledge_base = response.parse()
+        assert knowledge_base is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_refresh(self, client: Retell) -> None:
+        with client.knowledge_base.with_streaming_response.refresh(
+            "knowledge_base_1234567890",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            knowledge_base = response.parse()
+            assert knowledge_base is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_refresh(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `knowledge_base_id` but received ''"):
+            client.knowledge_base.with_raw_response.refresh(
+                "",
+            )
+
 
 class TestAsyncKnowledgeBase:
     parametrize = pytest.mark.parametrize(
@@ -574,4 +616,46 @@ class TestAsyncKnowledgeBase:
             await async_client.knowledge_base.with_raw_response.delete_source(
                 source_id="",
                 knowledge_base_id="kb_1234567890",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_refresh(self, async_client: AsyncRetell) -> None:
+        knowledge_base = await async_client.knowledge_base.refresh(
+            "knowledge_base_1234567890",
+        )
+        assert knowledge_base is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_refresh(self, async_client: AsyncRetell) -> None:
+        response = await async_client.knowledge_base.with_raw_response.refresh(
+            "knowledge_base_1234567890",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        knowledge_base = await response.parse()
+        assert knowledge_base is None
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_refresh(self, async_client: AsyncRetell) -> None:
+        async with async_client.knowledge_base.with_streaming_response.refresh(
+            "knowledge_base_1234567890",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            knowledge_base = await response.parse()
+            assert knowledge_base is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_refresh(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `knowledge_base_id` but received ''"):
+            await async_client.knowledge_base.with_raw_response.refresh(
+                "",
             )
