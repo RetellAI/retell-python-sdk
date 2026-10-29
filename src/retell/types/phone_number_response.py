@@ -179,6 +179,12 @@ class PhoneNumberResponse(BaseModel):
     with probability proportional to the weight. Total weights must add up to 1.
     """
 
+    inbound_fallback_enabled: Optional[bool] = None
+    """Whether inbound fallback is enabled for this phone number.
+
+    When enabled, inbound calls are transferred to the fallback number.
+    """
+
     inbound_sms_agents: Optional[List[InboundSMSAgent]] = None
     """Inbound SMS agents to bind to the number with weights.
 

@@ -148,6 +148,7 @@ class TestPhoneNumber:
                     "agent_version": 1,
                 }
             ],
+            inbound_fallback_enabled=True,
             inbound_sms_agents=[
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",
@@ -494,6 +495,7 @@ class TestAsyncPhoneNumber:
                     "agent_version": 1,
                 }
             ],
+            inbound_fallback_enabled=True,
             inbound_sms_agents=[
                 {
                     "agent_id": "oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD",

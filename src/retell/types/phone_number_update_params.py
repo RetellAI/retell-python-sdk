@@ -59,6 +59,13 @@ class PhoneNumberUpdateParams(TypedDict, total=False):
     with probability proportional to the weight. Total weights must add up to 1.
     """
 
+    inbound_fallback_enabled: bool
+    """Whether to enable inbound fallback for this phone number.
+
+    When enabled, inbound calls are transferred to the fallback number. Requires
+    fallback_number to be set.
+    """
+
     inbound_sms_agents: Optional[Iterable[InboundSMSAgent]]
     """Inbound SMS agents to bind to the number with weights.
 
