@@ -593,7 +593,6 @@ class TestCall:
                     },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
-                    "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
                     "backup_model": {
@@ -629,7 +628,6 @@ class TestCall:
                     "model_ultrafast": True,
                     "s2s_model": "gpt-realtime-1.5",
                     "start_speaker": "user",
-                    "tool_call_strict_mode": True,
                 },
             },
             custom_sip_headers={"X-Custom-Header": "Custom Value"},
@@ -908,7 +906,6 @@ class TestCall:
                     },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
-                    "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
                     "backup_model": {
@@ -944,7 +941,6 @@ class TestCall:
                     "model_ultrafast": True,
                     "s2s_model": "gpt-realtime-1.5",
                     "start_speaker": "user",
-                    "tool_call_strict_mode": True,
                 },
             },
             agent_version="latest_published",
@@ -1260,7 +1256,6 @@ class TestCall:
                     },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
-                    "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
                     "backup_model": {
@@ -1296,7 +1291,6 @@ class TestCall:
                     "model_ultrafast": True,
                     "s2s_model": "gpt-realtime-1.5",
                     "start_speaker": "user",
-                    "tool_call_strict_mode": True,
                 },
             },
             agent_version="latest_published",
@@ -2100,7 +2094,6 @@ class TestAsyncCall:
                     },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
-                    "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
                     "backup_model": {
@@ -2136,7 +2129,6 @@ class TestAsyncCall:
                     "model_ultrafast": True,
                     "s2s_model": "gpt-realtime-1.5",
                     "start_speaker": "user",
-                    "tool_call_strict_mode": True,
                 },
             },
             custom_sip_headers={"X-Custom-Header": "Custom Value"},
@@ -2415,7 +2407,6 @@ class TestAsyncCall:
                     },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
-                    "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
                     "backup_model": {
@@ -2451,7 +2442,6 @@ class TestAsyncCall:
                     "model_ultrafast": True,
                     "s2s_model": "gpt-realtime-1.5",
                     "start_speaker": "user",
-                    "tool_call_strict_mode": True,
                 },
             },
             agent_version="latest_published",
@@ -2767,7 +2757,6 @@ class TestAsyncCall:
                     },
                     "model_temperature": 0.7,
                     "start_speaker": "agent",
-                    "tool_call_strict_mode": True,
                 },
                 "retell_llm": {
                     "backup_model": {
@@ -2803,7 +2792,6 @@ class TestAsyncCall:
                     "model_ultrafast": True,
                     "s2s_model": "gpt-realtime-1.5",
                     "start_speaker": "user",
-                    "tool_call_strict_mode": True,
                 },
             },
             agent_version="latest_published",

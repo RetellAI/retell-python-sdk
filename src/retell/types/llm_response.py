@@ -3232,11 +3232,5 @@ class LlmResponse(BaseModel):
     one state).
     """
 
-    tool_call_strict_mode: Optional[bool] = None
-    """Whether to use strict mode for tool calls.
-
-    Only applicable when using certain supported models.
-    """
-
     version: Optional[int] = None
     """Version of the Retell LLM Response Engine."""

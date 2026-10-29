@@ -115,7 +115,6 @@ class LlmResource(SyncAPIResource):
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
-        tool_call_strict_mode: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -196,9 +195,6 @@ class LlmResource(SyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
-              supported models.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -230,7 +226,6 @@ class LlmResource(SyncAPIResource):
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
-                    "tool_call_strict_mode": tool_call_strict_mode,
                 },
                 llm_create_params.LlmCreateParams,
             ),
@@ -358,7 +353,6 @@ class LlmResource(SyncAPIResource):
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
-        tool_call_strict_mode: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -439,9 +433,6 @@ class LlmResource(SyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
-              supported models.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -475,7 +466,6 @@ class LlmResource(SyncAPIResource):
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
-                    "tool_call_strict_mode": tool_call_strict_mode,
                 },
                 llm_update_params.LlmUpdateParams,
             ),
@@ -678,7 +668,6 @@ class AsyncLlmResource(AsyncAPIResource):
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
-        tool_call_strict_mode: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -759,9 +748,6 @@ class AsyncLlmResource(AsyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
-              supported models.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -793,7 +779,6 @@ class AsyncLlmResource(AsyncAPIResource):
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
-                    "tool_call_strict_mode": tool_call_strict_mode,
                 },
                 llm_create_params.LlmCreateParams,
             ),
@@ -921,7 +906,6 @@ class AsyncLlmResource(AsyncAPIResource):
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
-        tool_call_strict_mode: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1002,9 +986,6 @@ class AsyncLlmResource(AsyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
-              supported models.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1038,7 +1019,6 @@ class AsyncLlmResource(AsyncAPIResource):
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
-                    "tool_call_strict_mode": tool_call_strict_mode,
                 },
                 llm_update_params.LlmUpdateParams,
             ),

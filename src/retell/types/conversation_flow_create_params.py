@@ -1638,12 +1638,6 @@ class ConversationFlowCreateParams(TypedDict, total=False):
     start_node_id: Optional[str]
     """ID of the start node in the conversation flow."""
 
-    tool_call_strict_mode: Optional[bool]
-    """Whether to use strict mode for tool calls.
-
-    Only applicable when using certain supported models.
-    """
-
     tools: Optional[Iterable[Tool]]
     """Tools available in the conversation flow."""
 

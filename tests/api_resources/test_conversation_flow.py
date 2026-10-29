@@ -455,7 +455,6 @@ class TestConversationFlow:
                 }
             ],
             start_node_id="start",
-            tool_call_strict_mode=True,
             tools=[
                 {
                     "name": "get_customer_info",
@@ -1015,7 +1014,6 @@ class TestConversationFlow:
             ],
             start_node_id="start",
             start_speaker="agent",
-            tool_call_strict_mode=True,
             tools=[
                 {
                     "name": "get_customer_info",
@@ -1615,7 +1613,6 @@ class TestAsyncConversationFlow:
                 }
             ],
             start_node_id="start",
-            tool_call_strict_mode=True,
             tools=[
                 {
                     "name": "get_customer_info",
@@ -2175,7 +2172,6 @@ class TestAsyncConversationFlow:
             ],
             start_node_id="start",
             start_speaker="agent",
-            tool_call_strict_mode=True,
             tools=[
                 {
                     "name": "get_customer_info",
