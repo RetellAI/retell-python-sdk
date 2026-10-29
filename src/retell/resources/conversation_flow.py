@@ -72,7 +72,6 @@ class ConversationFlowResource(SyncAPIResource):
         model_temperature: Optional[float] | Omit = omit,
         notes: Optional[Iterable[conversation_flow_create_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
-        tool_call_strict_mode: Optional[bool] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_create_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -136,9 +135,6 @@ class ConversationFlowResource(SyncAPIResource):
 
           start_node_id: ID of the start node in the conversation flow.
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
-              supported models.
-
           tools: Tools available in the conversation flow.
 
           extra_headers: Send extra headers
@@ -171,7 +167,6 @@ class ConversationFlowResource(SyncAPIResource):
                     "model_temperature": model_temperature,
                     "notes": notes,
                     "start_node_id": start_node_id,
-                    "tool_call_strict_mode": tool_call_strict_mode,
                     "tools": tools,
                 },
                 conversation_flow_create_params.ConversationFlowCreateParams,
@@ -256,7 +251,6 @@ class ConversationFlowResource(SyncAPIResource):
         notes: Optional[Iterable[conversation_flow_update_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
-        tool_call_strict_mode: Optional[bool] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_update_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -320,9 +314,6 @@ class ConversationFlowResource(SyncAPIResource):
 
           start_speaker: Who starts the conversation - user or agent.
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
-              supported models.
-
           tools: Tools available in the conversation flow.
 
           extra_headers: Send extra headers
@@ -361,7 +352,6 @@ class ConversationFlowResource(SyncAPIResource):
                     "notes": notes,
                     "start_node_id": start_node_id,
                     "start_speaker": start_speaker,
-                    "tool_call_strict_mode": tool_call_strict_mode,
                     "tools": tools,
                 },
                 conversation_flow_update_params.ConversationFlowUpdateParams,
@@ -524,7 +514,6 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         model_temperature: Optional[float] | Omit = omit,
         notes: Optional[Iterable[conversation_flow_create_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
-        tool_call_strict_mode: Optional[bool] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_create_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -588,9 +577,6 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           start_node_id: ID of the start node in the conversation flow.
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
-              supported models.
-
           tools: Tools available in the conversation flow.
 
           extra_headers: Send extra headers
@@ -623,7 +609,6 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "model_temperature": model_temperature,
                     "notes": notes,
                     "start_node_id": start_node_id,
-                    "tool_call_strict_mode": tool_call_strict_mode,
                     "tools": tools,
                 },
                 conversation_flow_create_params.ConversationFlowCreateParams,
@@ -708,7 +693,6 @@ class AsyncConversationFlowResource(AsyncAPIResource):
         notes: Optional[Iterable[conversation_flow_update_params.Note]] | Omit = omit,
         start_node_id: Optional[str] | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
-        tool_call_strict_mode: Optional[bool] | Omit = omit,
         tools: Optional[Iterable[conversation_flow_update_params.Tool]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -772,9 +756,6 @@ class AsyncConversationFlowResource(AsyncAPIResource):
 
           start_speaker: Who starts the conversation - user or agent.
 
-          tool_call_strict_mode: Whether to use strict mode for tool calls. Only applicable when using certain
-              supported models.
-
           tools: Tools available in the conversation flow.
 
           extra_headers: Send extra headers
@@ -813,7 +794,6 @@ class AsyncConversationFlowResource(AsyncAPIResource):
                     "notes": notes,
                     "start_node_id": start_node_id,
                     "start_speaker": start_speaker,
-                    "tool_call_strict_mode": tool_call_strict_mode,
                     "tools": tools,
                 },
                 conversation_flow_update_params.ConversationFlowUpdateParams,

@@ -22873,11 +22873,5 @@ class ConversationFlowResponse(BaseModel):
     start_speaker: Optional[Literal["user", "agent"]] = None
     """Who starts the conversation - user or agent."""
 
-    tool_call_strict_mode: Optional[bool] = None
-    """Whether to use strict mode for tool calls.
-
-    Only applicable when using certain supported models.
-    """
-
     tools: Optional[List[Tool]] = None
     """Tools available in the conversation flow."""

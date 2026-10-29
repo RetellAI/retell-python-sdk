@@ -1641,12 +1641,6 @@ class ConversationFlowUpdateParams(TypedDict, total=False):
     start_speaker: Literal["user", "agent"]
     """Who starts the conversation - user or agent."""
 
-    tool_call_strict_mode: Optional[bool]
-    """Whether to use strict mode for tool calls.
-
-    Only applicable when using certain supported models.
-    """
-
     tools: Optional[Iterable[Tool]]
     """Tools available in the conversation flow."""
 

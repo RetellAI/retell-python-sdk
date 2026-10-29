@@ -178,7 +178,6 @@ class TestLlm:
                     ],
                 },
             ],
-            tool_call_strict_mode=True,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -417,7 +416,6 @@ class TestLlm:
                     ],
                 },
             ],
-            tool_call_strict_mode=True,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -708,7 +706,6 @@ class TestAsyncLlm:
                     ],
                 },
             ],
-            tool_call_strict_mode=True,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -947,7 +944,6 @@ class TestAsyncLlm:
                     ],
                 },
             ],
-            tool_call_strict_mode=True,
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 

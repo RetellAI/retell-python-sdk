@@ -258,7 +258,6 @@ class TestBatchCall:
                             },
                             "model_temperature": 0.7,
                             "start_speaker": "agent",
-                            "tool_call_strict_mode": True,
                         },
                         "retell_llm": {
                             "backup_model": {
@@ -294,7 +293,6 @@ class TestBatchCall:
                             "model_ultrafast": True,
                             "s2s_model": "gpt-realtime-1.5",
                             "start_speaker": "user",
-                            "tool_call_strict_mode": True,
                         },
                     },
                     "custom_sip_headers": {"X-Custom-Header": "Custom Value"},
@@ -596,7 +594,6 @@ class TestAsyncBatchCall:
                             },
                             "model_temperature": 0.7,
                             "start_speaker": "agent",
-                            "tool_call_strict_mode": True,
                         },
                         "retell_llm": {
                             "backup_model": {
@@ -632,7 +629,6 @@ class TestAsyncBatchCall:
                             "model_ultrafast": True,
                             "s2s_model": "gpt-realtime-1.5",
                             "start_speaker": "user",
-                            "tool_call_strict_mode": True,
                         },
                     },
                     "custom_sip_headers": {"X-Custom-Header": "Custom Value"},

@@ -288,12 +288,6 @@ class LlmCreateParams(TypedDict, total=False):
     one state).
     """
 
-    tool_call_strict_mode: Optional[bool]
-    """Whether to use strict mode for tool calls.
-
-    Only applicable when using certain supported models.
-    """
-
 
 class BackupModelBackupModelChoice(TypedDict, total=False):
     """Backup models are supported only for call agents.

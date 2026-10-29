@@ -2653,7 +2653,7 @@ AgentOverrideConversationFlowModelConfig: TypeAlias = Union[
 class AgentOverrideConversationFlow(TypedDict, total=False):
     """Override conversation flow configuration settings.
 
-    Only applicable when using conversation flow as the response engine. Supported attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms. A model_config override can set backup to null to remove it for this call.
+    Only applicable when using conversation flow as the response engine. Supported attributes - model_config, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms. A model_config override can set backup to null to remove it for this call.
     """
 
     backup_model: AgentOverrideConversationFlowBackupModel
@@ -2696,12 +2696,6 @@ class AgentOverrideConversationFlow(TypedDict, total=False):
 
     start_speaker: Literal["user", "agent"]
     """Who starts the conversation - user or agent."""
-
-    tool_call_strict_mode: Optional[bool]
-    """Whether to use strict mode for tool calls.
-
-    Only applicable when using certain supported models.
-    """
 
 
 class AgentOverrideRetellLlmBackupModelBackupModelChoice(TypedDict, total=False):
@@ -2956,7 +2950,7 @@ AgentOverrideRetellLlmModelConfig: TypeAlias = Union[
 class AgentOverrideRetellLlm(TypedDict, total=False):
     """Override Retell LLM configuration settings.
 
-    Only applicable when using Retell LLM as the response engine. Supported attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message. A model_config override can set backup to null to remove it for this call, but cannot switch a speech-to-speech LLM to a cascading model.
+    Only applicable when using Retell LLM as the response engine. Supported attributes - model_config, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message. A model_config override can set backup to null to remove it for this call, but cannot switch a speech-to-speech LLM to a cascading model.
     """
 
     backup_model: AgentOverrideRetellLlmBackupModel
@@ -3071,12 +3065,6 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
     Required. Must be either 'user' or 'agent'.
     """
 
-    tool_call_strict_mode: Optional[bool]
-    """Whether to use strict mode for tool calls.
-
-    Only applicable when using certain supported models.
-    """
-
 
 class AgentOverride(TypedDict, total=False):
     """For this particular call, override agent configuration with these settings.
@@ -3096,17 +3084,17 @@ class AgentOverride(TypedDict, total=False):
     """Override conversation flow configuration settings.
 
     Only applicable when using conversation flow as the response engine. Supported
-    attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config,
-    start_speaker, begin_after_user_silence_ms. A model_config override can set
-    backup to null to remove it for this call.
+    attributes - model_config, knowledge_base_ids, kb_config, start_speaker,
+    begin_after_user_silence_ms. A model_config override can set backup to null to
+    remove it for this call.
     """
 
     retell_llm: AgentOverrideRetellLlm
     """Override Retell LLM configuration settings.
 
     Only applicable when using Retell LLM as the response engine. Supported
-    attributes - model_config, tool_call_strict_mode, knowledge_base_ids, kb_config,
-    start_speaker, begin_after_user_silence_ms, begin_message. A model_config
-    override can set backup to null to remove it for this call, but cannot switch a
-    speech-to-speech LLM to a cascading model.
+    attributes - model_config, knowledge_base_ids, kb_config, start_speaker,
+    begin_after_user_silence_ms, begin_message. A model_config override can set
+    backup to null to remove it for this call, but cannot switch a speech-to-speech
+    LLM to a cascading model.
     """
