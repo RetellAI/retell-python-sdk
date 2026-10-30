@@ -791,6 +791,11 @@ __all__ = [
     "ModelConfigCascadingModelConfigPrimary",
     "ModelConfigS2SModelConfig",
     "ModelConfigS2SModelConfigPrimary",
+    "ModelConfigDuplexModelConfig",
+    "ModelConfigDuplexModelConfigBackend",
+    "ModelConfigDuplexModelConfigBackup",
+    "ModelConfigDuplexModelConfigBackupBackupModelRef",
+    "ModelConfigDuplexModelConfigPrimary",
     "Node",
     "NodeConversationNode",
     "NodeConversationNodeInstruction",
@@ -12455,7 +12460,155 @@ class ModelConfigS2SModelConfig(BaseModel):
     """Runs a speech-to-speech model."""
 
 
-ModelConfig: TypeAlias = Union[ModelConfigCascadingModelConfig, ModelConfigS2SModelConfig]
+class ModelConfigDuplexModelConfigBackend(BaseModel):
+    """The text LLM that answers the voice model's delegations."""
+
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6.1-terra",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class ModelConfigDuplexModelConfigBackupBackupModelRef(BaseModel):
+    """Backup models are supported only for call agents.
+
+    Response engines with a backup model cannot be used by chat agents.
+    """
+
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6.1-terra",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    kick_in_timeout_ms: Optional[int] = None
+    """
+    How long to prefer the primary model's output while both models run, in
+    milliseconds. Defaults to 1500.
+    """
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+ModelConfigDuplexModelConfigBackup: TypeAlias = Union[
+    ModelConfigDuplexModelConfigBackupBackupModelRef, Optional[object]
+]
+
+
+class ModelConfigDuplexModelConfigPrimary(BaseModel):
+    model: Literal["gpt-live-1"]
+
+
+class ModelConfigDuplexModelConfig(BaseModel):
+    """Retell LLMs only.
+
+    A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend and voice_prompt. Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
+    """
+
+    backend: Optional[ModelConfigDuplexModelConfigBackend] = None
+    """The text LLM that answers the voice model's delegations."""
+
+    backup: Optional[ModelConfigDuplexModelConfigBackup] = None
+    """A backup for the backend model."""
+
+    primary: Optional[ModelConfigDuplexModelConfigPrimary] = None
+
+    temperature: Optional[float] = None
+    """Randomness of the response, from 0 to 1.
+
+    Defaults to 0; a lower value is recommended for tool calling.
+    """
+
+    type: Optional[Literal["duplex"]] = None
+    """Runs a full-duplex voice model with a cascading backend."""
+
+    voice_prompt: Optional[str] = None
+    """The voice model's prompt, at most 15,000 tokens.
+
+    The LLM's general_prompt is the backend's prompt.
+    """
+
+
+ModelConfig: TypeAlias = Union[ModelConfigCascadingModelConfig, ModelConfigS2SModelConfig, ModelConfigDuplexModelConfig]
 
 
 class NodeConversationNodeInstructionNodeInstructionPrompt(BaseModel):
