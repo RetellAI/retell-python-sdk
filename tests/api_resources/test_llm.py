@@ -117,6 +117,8 @@ class TestLlm:
                             "transfer_option": {
                                 "type": "cold_transfer",
                                 "cold_transfer_mode": "sip_refer",
+                                "custom_on_hold_music_asset_id": "asset_abc123def456",
+                                "on_hold_music": "none",
                                 "show_transferee_as_caller": False,
                                 "transfer_ring_duration_ms": 5000,
                             },
@@ -355,6 +357,8 @@ class TestLlm:
                             "transfer_option": {
                                 "type": "cold_transfer",
                                 "cold_transfer_mode": "sip_refer",
+                                "custom_on_hold_music_asset_id": "asset_abc123def456",
+                                "on_hold_music": "none",
                                 "show_transferee_as_caller": False,
                                 "transfer_ring_duration_ms": 5000,
                             },
@@ -645,6 +649,8 @@ class TestAsyncLlm:
                             "transfer_option": {
                                 "type": "cold_transfer",
                                 "cold_transfer_mode": "sip_refer",
+                                "custom_on_hold_music_asset_id": "asset_abc123def456",
+                                "on_hold_music": "none",
                                 "show_transferee_as_caller": False,
                                 "transfer_ring_duration_ms": 5000,
                             },
@@ -883,6 +889,8 @@ class TestAsyncLlm:
                             "transfer_option": {
                                 "type": "cold_transfer",
                                 "cold_transfer_mode": "sip_refer",
+                                "custom_on_hold_music_asset_id": "asset_abc123def456",
+                                "on_hold_music": "none",
                                 "show_transferee_as_caller": False,
                                 "transfer_ring_duration_ms": 5000,
                             },
