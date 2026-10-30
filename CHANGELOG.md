@@ -1,5 +1,25 @@
 # Changelog
 
+## [6.2.15](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.14...v6.2.15) (2026-10-30)
+
+
+### Bug Fixes
+
+* **api:** Add a knowledge base refresh method for POST /refresh-knowledge-base/{knowledge_base_id}. ([e0cdde4](https://github.com/RetellAI/retell-python-sdk/commit/e0cdde4decf3bd15d592c1fc2969a050c999b877))
+* **api:** Add drama-3 as a selectable voice model option. ([1560423](https://github.com/RetellAI/retell-python-sdk/commit/1560423414b29681ea84336f6d851b769967de18))
+* **api:** Add duplex as a response engine model type with a gpt-live-1 primary model, a text LLM backend, optional backup, and voice_prompt up to 15,000 tokens. ([52475ce](https://github.com/RetellAI/retell-python-sdk/commit/52475ce526f84defa77caaf6e63868a39c746b12))
+* **api:** Add list-templates to the app resource, calling get /list-app-templates to list the catalog of available integration app templates. ([9075dee](https://github.com/RetellAI/retell-python-sdk/commit/9075dee38b89f45845f3700c372f3719305ae2bc))
+* **api:** Add on_hold_music to cold transfer options, with custom_on_hold_music_asset_id required when on_hold_music is custom. ([8959fad](https://github.com/RetellAI/retell-python-sdk/commit/8959fad861924d13fa091861b437941fe39c37ef))
+* **api:** Add the optional inbound_fallback_enabled boolean to phone number objects and phone number update requests. ([090c6ac](https://github.com/RetellAI/retell-python-sdk/commit/090c6acaf3ac9953baa58d638d9b868809c83aec))
+* **api:** Add the optional privacy scope, limit, and pagination key query parameters to the list-app-templates request. ([9075dee](https://github.com/RetellAI/retell-python-sdk/commit/9075dee38b89f45845f3700c372f3719305ae2bc))
+* **api:** Clarify createApp docs that providers supporting both OAuth and caller-managed credentials, such as Cal.com, also accept API keys. ([e8fc8ae](https://github.com/RetellAI/retell-python-sdk/commit/e8fc8ae92d4bf7adebc0adea7bd83131ee7a921c))
+* **api:** Clarify updateApp docs that OAuth-only providers reject auth_config, while providers like Cal.com still accept caller-managed credentials. ([e8fc8ae](https://github.com/RetellAI/retell-python-sdk/commit/e8fc8ae92d4bf7adebc0adea7bd83131ee7a921c))
+* **api:** Duplex is for Retell LLMs only and requires backend and voice_prompt. ([52475ce](https://github.com/RetellAI/retell-python-sdk/commit/52475ce526f84defa77caaf6e63868a39c746b12))
+* **api:** In duplex, tools' speak_during_execution is ignored and speak_after_execution is always on. ([52475ce](https://github.com/RetellAI/retell-python-sdk/commit/52475ce526f84defa77caaf6e63868a39c746b12))
+* **api:** Remove tool_call_strict_mode from Retell LLM and conversation flow settings, including call-level overrides. ([dcc4f99](https://github.com/RetellAI/retell-python-sdk/commit/dcc4f993bd62a5575ce378a6bea670a2a8348958))
+* **api:** Return a knowledge base source-addition quota error for 429 responses from knowledge base creation and source addition. ([e0cdde4](https://github.com/RetellAI/retell-python-sdk/commit/e0cdde4decf3bd15d592c1fc2969a050c999b877))
+* **api:** Update requests with inbound_fallback_enabled true require fallback_number to be set. ([090c6ac](https://github.com/RetellAI/retell-python-sdk/commit/090c6acaf3ac9953baa58d638d9b868809c83aec))
+
 ## [6.2.14](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.13...v6.2.14) (2026-10-27)
 
 
