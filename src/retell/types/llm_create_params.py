@@ -447,6 +447,20 @@ class GeneralToolTransferCallToolTransferOptionTransferOptionColdTransfer(TypedD
     `sip_invite`, will use SIP INVITE to transfer the call.
     """
 
+    custom_on_hold_music_asset_id: str
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]
+    """The music to play while the caller is being transferred.
+
+    If omitted, preserves the existing transfer audio behavior. Use `custom`
+    together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
+    """
+
     show_transferee_as_caller: bool
     """
     If set to true, will show transferee (the user, not the AI agent) as caller when
@@ -1989,6 +2003,20 @@ class StateToolTransferCallToolTransferOptionTransferOptionColdTransfer(TypedDic
 
     If set to `sip_refer`, will use SIP REFER to transfer the call. If set to
     `sip_invite`, will use SIP INVITE to transfer the call.
+    """
+
+    custom_on_hold_music_asset_id: str
+    """Asset ID of the uploaded hold music to play.
+
+    Required when `on_hold_music` is `custom`. Must reference an audio asset owned
+    by the organization (see create-asset).
+    """
+
+    on_hold_music: Literal["none", "relaxing_sound", "uplifting_beats", "ringtone", "custom"]
+    """The music to play while the caller is being transferred.
+
+    If omitted, preserves the existing transfer audio behavior. Use `custom`
+    together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
     """
 
     show_transferee_as_caller: bool
