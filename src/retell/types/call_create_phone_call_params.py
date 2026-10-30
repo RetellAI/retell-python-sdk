@@ -2806,7 +2806,7 @@ class AgentOverrideConversationFlowModelConfigDuplexModelConfigPrimary(TypedDict
 class AgentOverrideConversationFlowModelConfigDuplexModelConfig(TypedDict, total=False):
     """Retell LLMs only.
 
-    A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend and voice_prompt. Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
+    A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend, and the Retell LLM's voice_prompt. Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
     """
 
     backend: AgentOverrideConversationFlowModelConfigDuplexModelConfigBackend
@@ -2825,12 +2825,6 @@ class AgentOverrideConversationFlowModelConfigDuplexModelConfig(TypedDict, total
 
     type: Literal["duplex"]
     """Runs a full-duplex voice model with a cascading backend."""
-
-    voice_prompt: str
-    """The voice model's prompt, at most 15,000 tokens.
-
-    The LLM's general_prompt is the backend's prompt.
-    """
 
 
 AgentOverrideConversationFlowModelConfig: TypeAlias = Union[
@@ -3257,7 +3251,7 @@ class AgentOverrideRetellLlmModelConfigDuplexModelConfigPrimary(TypedDict, total
 class AgentOverrideRetellLlmModelConfigDuplexModelConfig(TypedDict, total=False):
     """Retell LLMs only.
 
-    A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend and voice_prompt. Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
+    A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend, and the Retell LLM's voice_prompt. Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
     """
 
     backend: AgentOverrideRetellLlmModelConfigDuplexModelConfigBackend
@@ -3276,12 +3270,6 @@ class AgentOverrideRetellLlmModelConfigDuplexModelConfig(TypedDict, total=False)
 
     type: Literal["duplex"]
     """Runs a full-duplex voice model with a cascading backend."""
-
-    voice_prompt: str
-    """The voice model's prompt, at most 15,000 tokens.
-
-    The LLM's general_prompt is the backend's prompt.
-    """
 
 
 AgentOverrideRetellLlmModelConfig: TypeAlias = Union[

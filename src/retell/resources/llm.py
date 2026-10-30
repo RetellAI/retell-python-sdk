@@ -115,6 +115,7 @@ class LlmResource(SyncAPIResource):
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
+        voice_prompt: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -195,6 +196,10 @@ class LlmResource(SyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
+          voice_prompt: Prompt for the voice model when model_config.type is duplex, at most 15,000
+              tokens. Required for duplex, where general_prompt is the backend's prompt. Kept
+              when you switch models.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -226,6 +231,7 @@ class LlmResource(SyncAPIResource):
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
+                    "voice_prompt": voice_prompt,
                 },
                 llm_create_params.LlmCreateParams,
             ),
@@ -353,6 +359,7 @@ class LlmResource(SyncAPIResource):
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
+        voice_prompt: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -433,6 +440,10 @@ class LlmResource(SyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
+          voice_prompt: Prompt for the voice model when model_config.type is duplex, at most 15,000
+              tokens. Required for duplex, where general_prompt is the backend's prompt. Kept
+              when you switch models.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -466,6 +477,7 @@ class LlmResource(SyncAPIResource):
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
+                    "voice_prompt": voice_prompt,
                 },
                 llm_update_params.LlmUpdateParams,
             ),
@@ -668,6 +680,7 @@ class AsyncLlmResource(AsyncAPIResource):
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
+        voice_prompt: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -748,6 +761,10 @@ class AsyncLlmResource(AsyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
+          voice_prompt: Prompt for the voice model when model_config.type is duplex, at most 15,000
+              tokens. Required for duplex, where general_prompt is the backend's prompt. Kept
+              when you switch models.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -779,6 +796,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
+                    "voice_prompt": voice_prompt,
                 },
                 llm_create_params.LlmCreateParams,
             ),
@@ -906,6 +924,7 @@ class AsyncLlmResource(AsyncAPIResource):
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
+        voice_prompt: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -986,6 +1005,10 @@ class AsyncLlmResource(AsyncAPIResource):
               If this field is not set, the agent would only have general prompt and general
               tools (essentially one state).
 
+          voice_prompt: Prompt for the voice model when model_config.type is duplex, at most 15,000
+              tokens. Required for duplex, where general_prompt is the backend's prompt. Kept
+              when you switch models.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1019,6 +1042,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
+                    "voice_prompt": voice_prompt,
                 },
                 llm_update_params.LlmUpdateParams,
             ),

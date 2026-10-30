@@ -180,6 +180,7 @@ class TestLlm:
                     ],
                 },
             ],
+            voice_prompt="You are a friendly voice assistant for ...",
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -420,6 +421,7 @@ class TestLlm:
                     ],
                 },
             ],
+            voice_prompt="You are a friendly voice assistant for ...",
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -712,6 +714,7 @@ class TestAsyncLlm:
                     ],
                 },
             ],
+            voice_prompt="You are a friendly voice assistant for ...",
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
@@ -952,6 +955,7 @@ class TestAsyncLlm:
                     ],
                 },
             ],
+            voice_prompt="You are a friendly voice assistant for ...",
         )
         assert_matches_type(LlmResponse, llm, path=["response"])
 
