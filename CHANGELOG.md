@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.2.16](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.15...v6.2.16) (2026-10-31)
+
+
+### Bug Fixes
+
+* **api:** Add voice_prompt to Retell LLM settings, required when model_config type is duplex. ([a3eae6f](https://github.com/RetellAI/retell-python-sdk/commit/a3eae6f8551e7764ec2bc085691e7686584d1d19))
+* **api:** Remove voice_prompt from duplex model_config settings. ([a3eae6f](https://github.com/RetellAI/retell-python-sdk/commit/a3eae6f8551e7764ec2bc085691e7686584d1d19))
+
 ## [6.2.15](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.14...v6.2.15) (2026-10-30)
 
 
