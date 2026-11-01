@@ -117,8 +117,8 @@ class ContactMemoryConfig(BaseModel):
     enable_update: Optional[bool] = None
     """Rewrite the contact memory after each conversation.
 
-    Requires storing conversation data. Chat agents must also have
-    end_chat_after_silence_ms set.
+    Cannot be enabled for payment agents. Requires storing conversation data. Chat
+    agents must also have end_chat_after_silence_ms set.
     """
 
 
