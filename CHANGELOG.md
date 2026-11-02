@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.2.17](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.16...v6.2.17) (2026-11-02)
+
+
+### Bug Fixes
+
+* **api:** Add TextUtterance with required role and content fields, separate from utterances that include word timestamps. ([adc80fe](https://github.com/RetellAI/retell-python-sdk/commit/adc80fe9c10ee23f37a519758d731f79cc618e2c))
+
 ## [6.2.16](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.15...v6.2.16) (2026-10-31)
 
 
