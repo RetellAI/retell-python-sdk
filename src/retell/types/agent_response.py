@@ -474,11 +474,11 @@ class PostSessionToolAppToolOutputSelectionUnionMember1(BaseModel):
     fields: List[str]
     """
     The only response fields the agent and the transcript see, as dot-paths into the
-    response schema returned by get-app-tool-schema. Everything else is dropped.
-    Selecting a parent keeps its whole subtree. A plain segment traverses arrays
-    element-wise (deals.properties.amount keeps that field on every deal), while
-    key[n] selects one element (deals[0].id keeps only the first deal's id); paths
-    that match nothing contribute nothing.
+    response (for app tools, the response schema returned by get-app-tool-schema).
+    Everything else is dropped. Selecting a parent keeps its whole subtree. A plain
+    segment traverses arrays element-wise (deals.properties.amount keeps that field
+    on every deal), while key[n] selects one element (deals[0].id keeps only the
+    first deal's id); paths that match nothing contribute nothing.
     """
 
     mode: Literal["subset"]
@@ -595,10 +595,12 @@ class PostSessionToolAppTool(BaseModel):
     """
 
     output_selection: Optional[PostSessionToolAppToolOutputSelection] = None
-    """What the agent and the transcript see of the tool's response.
+    """Which fields of a successful JSON tool response the agent and the transcript
+    see.
 
-    Omit to send the full response. Does not affect response_variables, which are
-    always extracted from the raw response.
+    Omit to keep all fields. Does not affect response_variables, which are always
+    extracted from the raw response. Non-JSON responses and failed tool results are
+    not filtered. Response size limits still apply.
     """
 
     parameters: Optional[List[PostSessionToolAppToolParameter]] = None
@@ -1113,11 +1115,11 @@ class PreSessionToolAppToolOutputSelectionUnionMember1(BaseModel):
     fields: List[str]
     """
     The only response fields the agent and the transcript see, as dot-paths into the
-    response schema returned by get-app-tool-schema. Everything else is dropped.
-    Selecting a parent keeps its whole subtree. A plain segment traverses arrays
-    element-wise (deals.properties.amount keeps that field on every deal), while
-    key[n] selects one element (deals[0].id keeps only the first deal's id); paths
-    that match nothing contribute nothing.
+    response (for app tools, the response schema returned by get-app-tool-schema).
+    Everything else is dropped. Selecting a parent keeps its whole subtree. A plain
+    segment traverses arrays element-wise (deals.properties.amount keeps that field
+    on every deal), while key[n] selects one element (deals[0].id keeps only the
+    first deal's id); paths that match nothing contribute nothing.
     """
 
     mode: Literal["subset"]
@@ -1228,10 +1230,12 @@ class PreSessionToolAppTool(BaseModel):
     """
 
     output_selection: Optional[PreSessionToolAppToolOutputSelection] = None
-    """What the agent and the transcript see of the tool's response.
+    """Which fields of a successful JSON tool response the agent and the transcript
+    see.
 
-    Omit to send the full response. Does not affect response_variables, which are
-    always extracted from the raw response.
+    Omit to keep all fields. Does not affect response_variables, which are always
+    extracted from the raw response. Non-JSON responses and failed tool results are
+    not filtered. Response size limits still apply.
     """
 
     parameters: Optional[List[PreSessionToolAppToolParameter]] = None

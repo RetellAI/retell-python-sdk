@@ -107,6 +107,7 @@ __all__ = [
     "TranscriptWithToolCallSMSUtterance",
     "TranscriptWithToolCallSMSUtteranceMultimedia",
     "TranscriptWithToolCallInjectedUtterance",
+    "UnbilledResponsePeriod",
 ]
 
 
@@ -2177,6 +2178,23 @@ TranscriptWithToolCall: TypeAlias = Union[
 ]
 
 
+class UnbilledResponsePeriod(BaseModel):
+    end_ms: float
+    """End of the span in milliseconds from call start."""
+
+    start_ms: float
+    """Start of the span in milliseconds from call start."""
+
+    type: Optional[Literal["cascading", "s2s", "duplex"]] = None
+    """The engine that ran during the span.
+
+    A span is split where an agent swap changes the engine. `cascading` credits LLM
+    and TTS time, `s2s` credits the realtime model's time, and `duplex` credits only
+    the backend model's time, because the duplex voice model is still billed in
+    full. Absent when the engine is not known.
+    """
+
+
 class WebCallResponse(BaseModel):
     access_token: str
     """Access token to enter the web call room.
@@ -2446,4 +2464,24 @@ class WebCallResponse(BaseModel):
     """Transfer end timestamp (milliseconds since epoch) of the call.
 
     Available after transfer call ends.
+    """
+
+    unbilled_response_periods: Optional[List[UnbilledResponsePeriod]] = None
+    """
+    Spans of the call with no user or agent speech and no call event (start of a
+    DTMF entry, SMS, node transition, tool call start or result, or injected
+    message), minus the first 10 seconds of each such gap. A tool call's run time
+    counts as silence, since no LLM or TTS is working then. Payment time is not
+    included. LLM, TTS, realtime (speech-to-speech) model time and the LLM token
+    surcharge are not billed over these spans. Other products, such as the voice
+    engine, and full-duplex (GPT Live) voice models are still billed over them. Each
+    product's reduction is rounded down to whole seconds. Times are in milliseconds
+    from the start of the call. Only present when such spans occurred.
+    """
+
+    unbilled_response_seconds: Optional[float] = None
+    """Total seconds of `unbilled_response_periods`, rounded down.
+
+    See `unbilled_response_periods` for what is and is not billed over them. Only
+    present when `unbilled_response_periods` is present.
     """
