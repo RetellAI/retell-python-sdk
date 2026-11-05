@@ -5,7 +5,7 @@ from typing_extensions import Literal, TypeAlias
 
 from .._models import BaseModel
 
-__all__ = ["AppListUsagesResponse", "Item", "ItemAgentAppUsage", "ItemKnowledgeBaseAppUsage"]
+__all__ = ["AppListUsagesResponse", "Item", "ItemAgentAppUsage", "ItemKnowledgeBaseAppUsage", "ItemAlertRuleAppUsage"]
 
 
 class ItemAgentAppUsage(BaseModel):
@@ -35,7 +35,19 @@ class ItemKnowledgeBaseAppUsage(BaseModel):
     """Current knowledge base name; omitted if it was deleted."""
 
 
-Item: TypeAlias = Union[ItemAgentAppUsage, ItemKnowledgeBaseAppUsage]
+class ItemAlertRuleAppUsage(BaseModel):
+    alert_rule_id: str
+
+    configured_timestamp: float
+    """When this reference was last recorded, in milliseconds."""
+
+    type: Literal["alert_rule"]
+
+    alert_rule_name: Optional[str] = None
+    """Current alert rule name; omitted if it was deleted."""
+
+
+Item: TypeAlias = Union[ItemAgentAppUsage, ItemKnowledgeBaseAppUsage, ItemAlertRuleAppUsage]
 
 
 class AppListUsagesResponse(BaseModel):

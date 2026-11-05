@@ -270,8 +270,9 @@ class AppResource(SyncAPIResource):
     ) -> None:
         """Delete an App.
 
-        Fails when agents or knowledge bases still reference it, unless
-        force_delete is set. If a CRM config is linked to this App, the link is cleared.
+        Fails when agents, knowledge bases, or alert rules still
+        reference it, unless force_delete is set. If a CRM config is linked to this App,
+        the link is cleared.
 
         Args:
           force_delete: Delete even when the App is still referenced.
@@ -469,8 +470,8 @@ class AppResource(SyncAPIResource):
         max_retries: int | NotGiven = not_given,
     ) -> AppListUsagesResponse:
         """
-        List the agents and knowledge bases referencing an App, most recently configured
-        first by default.
+        List the agents, knowledge bases, and alert rules referencing an App, most
+        recently configured first by default.
 
         Args:
           limit: Maximum number of items to return.
@@ -783,8 +784,9 @@ class AsyncAppResource(AsyncAPIResource):
     ) -> None:
         """Delete an App.
 
-        Fails when agents or knowledge bases still reference it, unless
-        force_delete is set. If a CRM config is linked to this App, the link is cleared.
+        Fails when agents, knowledge bases, or alert rules still
+        reference it, unless force_delete is set. If a CRM config is linked to this App,
+        the link is cleared.
 
         Args:
           force_delete: Delete even when the App is still referenced.
@@ -982,8 +984,8 @@ class AsyncAppResource(AsyncAPIResource):
         max_retries: int | NotGiven = not_given,
     ) -> AppListUsagesResponse:
         """
-        List the agents and knowledge bases referencing an App, most recently configured
-        first by default.
+        List the agents, knowledge bases, and alert rules referencing an App, most
+        recently configured first by default.
 
         Args:
           limit: Maximum number of items to return.
