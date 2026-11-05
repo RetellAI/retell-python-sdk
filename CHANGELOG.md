@@ -1,5 +1,19 @@
 # Changelog
 
+## [6.2.18](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.17...v6.2.18) (2026-11-05)
+
+
+### Bug Fixes
+
+* **api:** Add required remaining_ingestion_quota, which may be null, and ingestion_limits fields to knowledge base responses. ([5478267](https://github.com/RetellAI/retell-python-sdk/commit/5478267372af01b6776b7a093413ad1cd30df4e4))
+* **api:** Add tell-1 to the model options. ([fdd7cf3](https://github.com/RetellAI/retell-python-sdk/commit/fdd7cf3986852846edbe9fdb6e0343a767ecf64b))
+* **api:** Add unbilled_response_periods and unbilled_response_seconds to call cost data. ([1aae418](https://github.com/RetellAI/retell-python-sdk/commit/1aae418de36ec01fad84239d43fdc0e07620d7fa))
+* **api:** Block deleteApp when alert rules reference the App, unless force_delete is set. ([56192d5](https://github.com/RetellAI/retell-python-sdk/commit/56192d5db3689ff1d2238c88b5d692b35c36197f))
+* **api:** Include alert rules in listAppUsages results with alert_rule_id and alert_rule_name. ([56192d5](https://github.com/RetellAI/retell-python-sdk/commit/56192d5db3689ff1d2238c88b5d692b35c36197f))
+* **api:** Make all fields optional in alert rule requests. ([56192d5](https://github.com/RetellAI/retell-python-sdk/commit/56192d5db3689ff1d2238c88b5d692b35c36197f))
+* **api:** Periods list silent spans, with start and end times in milliseconds, excluded from LLM, TTS, and realtime model billing. ([1aae418](https://github.com/RetellAI/retell-python-sdk/commit/1aae418de36ec01fad84239d43fdc0e07620d7fa))
+* **api:** Remove tell-1 from the supported model options. ([1deb6b8](https://github.com/RetellAI/retell-python-sdk/commit/1deb6b8e21c151660af65236ea87e64b876b47e7))
+
 ## [6.2.17](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.16...v6.2.17) (2026-11-02)
 
 
