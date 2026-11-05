@@ -7,11 +7,59 @@ from .._models import BaseModel
 
 __all__ = [
     "KnowledgeBaseResponse",
+    "IngestionLimits",
+    "RemainingIngestionQuota",
     "KnowledgeBaseSource",
     "KnowledgeBaseSourceKnowledgeBaseSourceDocument",
     "KnowledgeBaseSourceKnowledgeBaseSourceText",
     "KnowledgeBaseSourceKnowledgeBaseSourceURL",
 ]
+
+
+class IngestionLimits(BaseModel):
+    """Effective rolling 30-day ingestion limits.
+
+    Each KB has an independent budget. Lifetime fill allowance
+    and structural source-count caps are separate.
+    """
+
+    files: int
+    """Shared limit for uploaded documents and all connected-file sources."""
+
+    texts: int
+    """Limit for pasted-text sources."""
+
+    urls: int
+    """Limit for URL sources."""
+
+
+class RemainingIngestionQuota(BaseModel):
+    """
+    Ingestion quota available to this knowledge base at response time.
+    Includes unused lifetime fill allowance plus remaining rolling
+    30-day per-KB capacity. Pending reservations already consume
+    capacity. Default per-KB rolling limits are 25 files, 50 texts,
+    and 200 URLs; organization-specific increases are reflected in
+    these counts.
+    Legacy knowledge bases without fill allowance receive rolling
+    capacity only. Deleting sources does not restore ingestion quota.
+    These counts do not include the separate limits on how many sources
+    a KB can hold, and do not guarantee a concurrent request will succeed.
+    Create and add-source responses include reservations for accepted
+    sources; background discovery and processing may change the counts.
+    Returns null if current usage cannot be read. Null means unavailable,
+    not zero remaining capacity. Configured ingestion_limits are still
+    returned. Quota enforcement remains required for ingestion requests.
+    """
+
+    files: int
+    """Remaining additions in the shared uploaded-file and connector bucket."""
+
+    texts: int
+    """Remaining pasted-text additions."""
+
+    urls: int
+    """Remaining URL additions."""
 
 
 class KnowledgeBaseSourceKnowledgeBaseSourceDocument(BaseModel):
@@ -64,11 +112,34 @@ KnowledgeBaseSource: TypeAlias = Union[
 
 
 class KnowledgeBaseResponse(BaseModel):
+    ingestion_limits: IngestionLimits
+    """Effective rolling 30-day ingestion limits.
+
+    Each KB has an independent budget. Lifetime fill allowance and structural
+    source-count caps are separate.
+    """
+
     knowledge_base_id: str
     """Unique id of the knowledge base."""
 
     knowledge_base_name: str
     """Name of the knowledge base. Must be less than 40 characters."""
+
+    remaining_ingestion_quota: Optional[RemainingIngestionQuota] = None
+    """
+    Ingestion quota available to this knowledge base at response time. Includes
+    unused lifetime fill allowance plus remaining rolling 30-day per-KB capacity.
+    Pending reservations already consume capacity. Default per-KB rolling limits are
+    25 files, 50 texts, and 200 URLs; organization-specific increases are reflected
+    in these counts. Legacy knowledge bases without fill allowance receive rolling
+    capacity only. Deleting sources does not restore ingestion quota. These counts
+    do not include the separate limits on how many sources a KB can hold, and do not
+    guarantee a concurrent request will succeed. Create and add-source responses
+    include reservations for accepted sources; background discovery and processing
+    may change the counts. Returns null if current usage cannot be read. Null means
+    unavailable, not zero remaining capacity. Configured ingestion_limits are still
+    returned. Quota enforcement remains required for ingestion requests.
+    """
 
     status: Literal["in_progress", "complete", "error", "refreshing_in_progress"]
     """Current processing state of the knowledge base:
