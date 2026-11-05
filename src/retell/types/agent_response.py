@@ -2058,7 +2058,6 @@ class AgentResponse(BaseModel):
             "gpt-6.1-sol",
             "gpt-6.1-terra",
             "gpt-6-luna",
-            "tell-1",
             "claude-4.6-sonnet",
             "claude-5-opus",
             "claude-5.5-opus",
