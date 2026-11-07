@@ -142,7 +142,7 @@ class PhoneNumberResponse(BaseModel):
     characters), used as the unique identifier for phone number APIs.
     """
 
-    phone_number_type: Literal["retell-twilio", "retell-telnyx", "custom"]
+    phone_number_type: Literal["retell-twilio", "retell-telnyx", "retell-bandwidth", "custom"]
     """Type of the phone number."""
 
     allowed_inbound_country_list: Optional[List[str]] = None

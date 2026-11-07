@@ -61,7 +61,7 @@ class PhoneNumberResource(SyncAPIResource):
         inbound_agents: Optional[Iterable[phone_number_create_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: str | Omit = omit,
-        number_provider: Literal["twilio", "telnyx"] | Omit = omit,
+        number_provider: Literal["twilio", "telnyx", "bandwidth"] | Omit = omit,
         outbound_agents: Optional[Iterable[phone_number_create_params.OutboundAgent]] | Omit = omit,
         phone_number: str | Omit = omit,
         toll_free: bool | Omit = omit,
@@ -107,7 +107,8 @@ class PhoneNumberResource(SyncAPIResource):
 
           nickname: Nickname of the number. This is for your reference only.
 
-          number_provider: The provider to purchase the phone number from. Default to twilio.
+          number_provider: The provider to purchase the phone number from. Default to twilio. Bandwidth
+              numbers only support UDP transport.
 
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
@@ -119,7 +120,7 @@ class PhoneNumberResource(SyncAPIResource):
           toll_free: Whether to purchase a toll-free number. Toll-free numbers incur higher costs.
 
           transport: Outbound transport protocol to use for the phone number. Valid values are "TLS",
-              "TCP" and "UDP". Default is "TCP".
+              "TCP" and "UDP". Default is "TCP". Bandwidth numbers only support "UDP".
 
           extra_headers: Send extra headers
 
@@ -570,7 +571,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
         inbound_agents: Optional[Iterable[phone_number_create_params.InboundAgent]] | Omit = omit,
         inbound_webhook_url: Optional[str] | Omit = omit,
         nickname: str | Omit = omit,
-        number_provider: Literal["twilio", "telnyx"] | Omit = omit,
+        number_provider: Literal["twilio", "telnyx", "bandwidth"] | Omit = omit,
         outbound_agents: Optional[Iterable[phone_number_create_params.OutboundAgent]] | Omit = omit,
         phone_number: str | Omit = omit,
         toll_free: bool | Omit = omit,
@@ -616,7 +617,8 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
 
           nickname: Nickname of the number. This is for your reference only.
 
-          number_provider: The provider to purchase the phone number from. Default to twilio.
+          number_provider: The provider to purchase the phone number from. Default to twilio. Bandwidth
+              numbers only support UDP transport.
 
           outbound_agents: Outbound agents to bind to the number with weights. If set and non-empty, one
               agent will be picked randomly for each outbound call, with probability
@@ -628,7 +630,7 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
           toll_free: Whether to purchase a toll-free number. Toll-free numbers incur higher costs.
 
           transport: Outbound transport protocol to use for the phone number. Valid values are "TLS",
-              "TCP" and "UDP". Default is "TCP".
+              "TCP" and "UDP". Default is "TCP". Bandwidth numbers only support "UDP".
 
           extra_headers: Send extra headers
 
