@@ -1,5 +1,15 @@
 # Changelog
 
+## [6.2.19](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.18...v6.2.19) (2026-11-07)
+
+
+### Bug Fixes
+
+* **api:** Add bandwidth as a number_provider option for phone number purchase requests. ([2725091](https://github.com/RetellAI/retell-python-sdk/commit/2725091e38c54923791d5cc7706dc00cc0415257))
+* **api:** Add retell-bandwidth as a phone_number_type value. ([2725091](https://github.com/RetellAI/retell-python-sdk/commit/2725091e38c54923791d5cc7706dc00cc0415257))
+* **api:** Document that Bandwidth numbers only support UDP transport. ([2725091](https://github.com/RetellAI/retell-python-sdk/commit/2725091e38c54923791d5cc7706dc00cc0415257))
+* **api:** Remove unbilled_response_periods and unbilled_response_seconds from call cost objects. ([6776adf](https://github.com/RetellAI/retell-python-sdk/commit/6776adfc52f2c1e941f609bd5a8f65a4fb025dd9))
+
 ## [6.2.18](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.17...v6.2.18) (2026-11-05)
 
 
