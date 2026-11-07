@@ -62,8 +62,11 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     nickname: str
     """Nickname of the number. This is for your reference only."""
 
-    number_provider: Literal["twilio", "telnyx"]
-    """The provider to purchase the phone number from. Default to twilio."""
+    number_provider: Literal["twilio", "telnyx", "bandwidth"]
+    """The provider to purchase the phone number from.
+
+    Default to twilio. Bandwidth numbers only support UDP transport.
+    """
 
     outbound_agents: Optional[Iterable[OutboundAgent]]
     """Outbound agents to bind to the number with weights.
@@ -84,7 +87,8 @@ class PhoneNumberCreateParams(TypedDict, total=False):
     transport: Optional[str]
     """Outbound transport protocol to use for the phone number.
 
-    Valid values are "TLS", "TCP" and "UDP". Default is "TCP".
+    Valid values are "TLS", "TCP" and "UDP". Default is "TCP". Bandwidth numbers
+    only support "UDP".
     """
 
 

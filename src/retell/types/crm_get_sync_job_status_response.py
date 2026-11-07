@@ -18,7 +18,10 @@ class CRMGetSyncJobStatusResponse(BaseModel):
     """Epoch milliseconds when the job started."""
 
     succeeded: Optional[float] = None
-    """Number of items processed successfully so far."""
+    """Number of items processed successfully so far.
+
+    For a CSV import, rows sharing a phone number count once.
+    """
 
     triggered_by: Optional[Literal["manual", "cron"]] = None
     """
