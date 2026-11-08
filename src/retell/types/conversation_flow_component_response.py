@@ -143,6 +143,9 @@ __all__ = [
     "NodeSubagentNodeSkipResponseEdgeTransitionConditionEquationConditionEquation",
     "NodeSubagentNodeSkipResponseEdgeTransitionConditionUnionMember2",
     "NodeSubagentNodeTool",
+    "NodeSubagentNodeToolEscalateChatTool",
+    "NodeSubagentNodeToolEscalateChatToolDestination",
+    "NodeSubagentNodeToolEscalateChatToolDestinationDestination",
     "NodeSubagentNodeToolEndCallTool",
     "NodeSubagentNodeToolTransferCallTool",
     "NodeSubagentNodeToolTransferCallToolTransferDestination",
@@ -322,6 +325,43 @@ __all__ = [
     "NodeCodeNodeModelConfig",
     "NodeCodeNodeModelConfigNodeModelConfig",
     "NodeCodeNodeModelConfigNodeModelConfigPrimary",
+    "NodeEscalateChatNode",
+    "NodeEscalateChatNodeDestination",
+    "NodeEscalateChatNodeDestinationDestination",
+    "NodeEscalateChatNodeEdge",
+    "NodeEscalateChatNodeEdgeTransitionCondition",
+    "NodeEscalateChatNodeEdgeTransitionConditionPromptCondition",
+    "NodeEscalateChatNodeEdgeTransitionConditionEquationCondition",
+    "NodeEscalateChatNodeEdgeTransitionConditionEquationConditionEquation",
+    "NodeEscalateChatNodeEdgeTransitionConditionUnionMember2",
+    "NodeEscalateChatNodeDisplayPosition",
+    "NodeEscalateChatNodeGlobalNodeSetting",
+    "NodeEscalateChatNodeGlobalNodeSettingCondition",
+    "NodeEscalateChatNodeGlobalNodeSettingConditionPromptCondition",
+    "NodeEscalateChatNodeGlobalNodeSettingConditionEquationCondition",
+    "NodeEscalateChatNodeGlobalNodeSettingConditionEquationConditionEquation",
+    "NodeEscalateChatNodeGlobalNodeSettingConditionEquationPromptCondition",
+    "NodeEscalateChatNodeGlobalNodeSettingConditionEquationPromptConditionEquation",
+    "NodeEscalateChatNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition",
+    "NodeEscalateChatNodeGlobalNodeSettingGoBackCondition",
+    "NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionCondition",
+    "NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition",
+    "NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition",
+    "NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation",
+    "NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExample",
+    "NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscript",
+    "NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0",
+    "NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1",
+    "NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2",
+    "NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExample",
+    "NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscript",
+    "NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0",
+    "NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1",
+    "NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2",
+    "NodeEscalateChatNodeModelChoice",
+    "NodeEscalateChatNodeModelConfig",
+    "NodeEscalateChatNodeModelConfigNodeModelConfig",
+    "NodeEscalateChatNodeModelConfigNodeModelConfigPrimary",
     "NodeTransferCallNode",
     "NodeTransferCallNodeEdge",
     "NodeTransferCallNodeEdgeTransitionCondition",
@@ -2293,6 +2333,45 @@ class NodeSubagentNodeSkipResponseEdge(BaseModel):
     """ID of the destination node"""
 
 
+class NodeSubagentNodeToolEscalateChatToolDestinationDestination(BaseModel):
+    method: Literal["POST", "PUT"]
+
+    url: str
+    """Customer webhook URL for transfer requests and forwarded SMS messages."""
+
+    body: Optional[Dict[str, object]] = None
+    """Customer-defined fields nested in args on chat_transfer_requested events.
+
+    String values support dynamic variables such as {{customer_id}}, including
+    inside nested objects and arrays. Field names and non-string values are
+    preserved.
+    """
+
+    headers: Optional[Dict[str, str]] = None
+
+    max_retry: Optional[int] = None
+
+    query_params: Optional[Dict[str, str]] = None
+
+    timeout_ms: Optional[int] = None
+
+
+class NodeSubagentNodeToolEscalateChatToolDestination(BaseModel):
+    destination: NodeSubagentNodeToolEscalateChatToolDestinationDestination
+
+    type: Literal["webhook"]
+
+
+class NodeSubagentNodeToolEscalateChatTool(BaseModel):
+    destination: NodeSubagentNodeToolEscalateChatToolDestination
+
+    name: str
+
+    type: Literal["escalate_chat"]
+
+    description: Optional[str] = None
+
+
 class NodeSubagentNodeToolEndCallTool(BaseModel):
     name: str
     """Name of the tool.
@@ -3594,6 +3673,7 @@ class NodeSubagentNodeToolAppTool(BaseModel):
 
 
 NodeSubagentNodeTool: TypeAlias = Union[
+    NodeSubagentNodeToolEscalateChatTool,
     NodeSubagentNodeToolEndCallTool,
     NodeSubagentNodeToolTransferCallTool,
     NodeSubagentNodeToolAgentSwapTool,
@@ -5305,6 +5385,470 @@ class NodeCodeNode(BaseModel):
 
     Defaults to 30,000 ms (30 s).
     """
+
+
+class NodeEscalateChatNodeDestinationDestination(BaseModel):
+    method: Literal["POST", "PUT"]
+
+    url: str
+    """Customer webhook URL for transfer requests and forwarded SMS messages."""
+
+    body: Optional[Dict[str, object]] = None
+    """Customer-defined fields nested in args on chat_transfer_requested events.
+
+    String values support dynamic variables such as {{customer_id}}, including
+    inside nested objects and arrays. Field names and non-string values are
+    preserved.
+    """
+
+    headers: Optional[Dict[str, str]] = None
+
+    max_retry: Optional[int] = None
+
+    query_params: Optional[Dict[str, str]] = None
+
+    timeout_ms: Optional[int] = None
+
+
+class NodeEscalateChatNodeDestination(BaseModel):
+    destination: NodeEscalateChatNodeDestinationDestination
+
+    type: Literal["webhook"]
+
+
+class NodeEscalateChatNodeEdgeTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeEscalateChatNodeEdgeTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeEscalateChatNodeEdgeTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodeEscalateChatNodeEdgeTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+    prompt: Optional[Literal["Escalation failed"]] = None
+
+
+class NodeEscalateChatNodeEdgeTransitionConditionUnionMember2(BaseModel):
+    prompt: Literal["Escalation failed"]
+
+    type: Literal["prompt"]
+
+
+NodeEscalateChatNodeEdgeTransitionCondition: TypeAlias = Union[
+    NodeEscalateChatNodeEdgeTransitionConditionPromptCondition,
+    NodeEscalateChatNodeEdgeTransitionConditionEquationCondition,
+    NodeEscalateChatNodeEdgeTransitionConditionUnionMember2,
+]
+
+
+class NodeEscalateChatNodeEdge(BaseModel):
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodeEscalateChatNodeEdgeTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class NodeEscalateChatNodeDisplayPosition(BaseModel):
+    """Position for frontend display"""
+
+    x: Optional[float] = None
+
+    y: Optional[float] = None
+
+
+class NodeEscalateChatNodeGlobalNodeSettingConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeEscalateChatNodeGlobalNodeSettingConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeEscalateChatNodeGlobalNodeSettingConditionEquationCondition(BaseModel):
+    equations: List[NodeEscalateChatNodeGlobalNodeSettingConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+class NodeEscalateChatNodeGlobalNodeSettingConditionEquationPromptConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeEscalateChatNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition(BaseModel):
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise the prompt uses normal prompt transition timing.
+    """
+
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeEscalateChatNodeGlobalNodeSettingConditionEquationPromptCondition(BaseModel):
+    equations: List[NodeEscalateChatNodeGlobalNodeSettingConditionEquationPromptConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation_prompt"]
+
+    prompt_condition: Optional[NodeEscalateChatNodeGlobalNodeSettingConditionEquationPromptConditionPromptCondition] = (
+        None
+    )
+    """Optional prompt combined with the equations by operator.
+
+    Omit to evaluate only equations. With no equations, only the prompt is
+    evaluated. Deterministic matches take priority; otherwise the prompt uses normal
+    prompt transition timing.
+    """
+
+
+NodeEscalateChatNodeGlobalNodeSettingCondition: TypeAlias = Union[
+    str,
+    NodeEscalateChatNodeGlobalNodeSettingConditionPromptCondition,
+    NodeEscalateChatNodeGlobalNodeSettingConditionEquationCondition,
+    NodeEscalateChatNodeGlobalNodeSettingConditionEquationPromptCondition,
+]
+
+
+class NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition(BaseModel):
+    prompt: str
+    """Prompt condition text"""
+
+    type: Literal["prompt"]
+
+
+class NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation(BaseModel):
+    left: str
+    """Left side of the equation"""
+
+    operator: Literal["==", "!=", ">", ">=", "<", "<=", "contains", "not_contains", "exists", "not_exist"]
+
+    right: Optional[str] = None
+    """Right side of the equation.
+
+    The right side of the equation not required when "exists" or "not_exist" are
+    selected.
+    """
+
+
+class NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition(BaseModel):
+    equations: List[NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationConditionEquation]
+
+    operator: Literal["||", "&&"]
+
+    type: Literal["equation"]
+
+
+NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionCondition: TypeAlias = Union[
+    NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionConditionPromptCondition,
+    NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionConditionEquationCondition,
+]
+
+
+class NodeEscalateChatNodeGlobalNodeSettingGoBackCondition(BaseModel):
+    """A connection between conversation-flow nodes.
+
+    When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
+    """
+
+    id: str
+    """Unique identifier for the edge"""
+
+    transition_condition: NodeEscalateChatNodeGlobalNodeSettingGoBackConditionTransitionCondition
+
+    destination_node_id: Optional[str] = None
+    """ID of the destination node"""
+
+
+class NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0(BaseModel):
+    content: str
+
+    role: Literal["agent", "user"]
+
+
+class NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1(BaseModel):
+    arguments: str
+
+    name: str
+
+    role: Literal["tool_call_invocation"]
+
+    tool_call_id: str
+
+
+class NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2(BaseModel):
+    content: str
+
+    role: Literal["tool_call_result"]
+
+    tool_call_id: str
+
+
+NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscript: TypeAlias = Union[
+    NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember0,
+    NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember1,
+    NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExample(BaseModel):
+    transcript: List[NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExampleTranscript]
+    """Find tune the transition condition to this global node"""
+
+
+class NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0(BaseModel):
+    content: str
+
+    role: Literal["agent", "user"]
+
+
+class NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1(BaseModel):
+    arguments: str
+
+    name: str
+
+    role: Literal["tool_call_invocation"]
+
+    tool_call_id: str
+
+
+class NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2(BaseModel):
+    content: str
+
+    role: Literal["tool_call_result"]
+
+    tool_call_id: str
+
+
+NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscript: TypeAlias = Union[
+    NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember0,
+    NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember1,
+    NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscriptUnionMember2,
+]
+
+
+class NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExample(BaseModel):
+    transcript: List[NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExampleTranscript]
+    """Find tune the transition condition to this global node"""
+
+
+class NodeEscalateChatNodeGlobalNodeSetting(BaseModel):
+    condition: NodeEscalateChatNodeGlobalNodeSettingCondition
+    """Condition for global node activation.
+
+    A string is a prompt condition and cannot be empty. Also accepts typed
+    PromptCondition, EquationCondition, or EquationPromptCondition objects.
+    """
+
+    cool_down: Optional[float] = None
+    """
+    The same global node won't be triggered again within the next N node
+    transitions.
+    """
+
+    go_back_conditions: Optional[List[NodeEscalateChatNodeGlobalNodeSettingGoBackCondition]] = None
+    """The conditions for global node go back.
+
+    There would be no destination_node_id for these edges.
+    """
+
+    negative_finetune_examples: Optional[List[NodeEscalateChatNodeGlobalNodeSettingNegativeFinetuneExample]] = None
+    """Don't transition to this node"""
+
+    positive_finetune_examples: Optional[List[NodeEscalateChatNodeGlobalNodeSettingPositiveFinetuneExample]] = None
+    """Transition to this node"""
+
+
+class NodeEscalateChatNodeModelChoice(BaseModel):
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+    """
+
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6.1-terra",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """The LLM model to use"""
+
+    type: Literal["cascading"]
+    """Type of model choice"""
+
+    high_priority: Optional[bool] = None
+    """Whether to use high priority pool with more dedicated resource, default false"""
+
+    ultrafast: Optional[bool] = None
+    """
+    Whether to use the ultrafast tier for much faster response generation, default
+    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
+    precedence over high_priority.
+    """
+
+
+class NodeEscalateChatNodeModelConfigNodeModelConfigPrimary(BaseModel):
+    model: Literal[
+        "gpt-4.1",
+        "gpt-4.1-mini",
+        "gpt-5",
+        "gpt-5-mini",
+        "gpt-5-nano",
+        "gpt-5.1",
+        "gpt-5.2",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.4-nano",
+        "gpt-5.5",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna",
+        "gpt-6-astra",
+        "gpt-6-sol",
+        "gpt-6.1-sol",
+        "gpt-6.1-terra",
+        "gpt-6-luna",
+        "claude-4.6-sonnet",
+        "claude-5-opus",
+        "claude-5.5-opus",
+        "claude-5-sonnet",
+        "claude-5.5-sonnet",
+        "claude-5.5-haiku",
+        "claude-4.5-haiku",
+        "gemini-3.0-flash",
+        "gemini-3.1-flash-lite",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite",
+        "gemini-3.6-flash",
+        "gemini-3.7-flash",
+        "gemini-3.8-flash",
+        "gemini-4-argon",
+    ]
+    """Available LLM models for agents."""
+
+    tier: Optional[Literal["standard", "fast", "ultrafast"]] = None
+    """Capacity tier for a model.
+
+    standard is always available. fast draws from dedicated capacity for lower,
+    steadier latency, and ultrafast is faster still on voice agents; faster tiers
+    cost more. Each model offers its own set of tiers, and a tier the model does not
+    offer is rejected.
+    """
+
+
+class NodeEscalateChatNodeModelConfigNodeModelConfig(BaseModel):
+    """Model override for this node. Only cascading flows use it."""
+
+    primary: NodeEscalateChatNodeModelConfigNodeModelConfigPrimary
+
+
+NodeEscalateChatNodeModelConfig: TypeAlias = Union[NodeEscalateChatNodeModelConfigNodeModelConfig, Optional[object]]
+
+
+class NodeEscalateChatNode(BaseModel):
+    id: str
+    """Unique identifier for the node"""
+
+    destination: NodeEscalateChatNodeDestination
+
+    edge: NodeEscalateChatNodeEdge
+
+    type: Literal["escalate_chat"]
+
+    display_position: Optional[NodeEscalateChatNodeDisplayPosition] = None
+    """Position for frontend display"""
+
+    global_node_setting: Optional[NodeEscalateChatNodeGlobalNodeSetting] = None
+
+    api_model_choice: Optional[NodeEscalateChatNodeModelChoice] = FieldInfo(alias="model_choice", default=None)
+    """Deprecated, use model_config.
+
+    When a request sends both and they differ, the one that differs from the stored
+    node is used, and model_config wins if both changed.
+    """
+
+    api_model_config: Optional[NodeEscalateChatNodeModelConfig] = FieldInfo(alias="model_config", default=None)
+    """Model override for this node. Only cascading flows use it."""
+
+    name: Optional[str] = None
+    """Optional name for display purposes"""
 
 
 class NodeTransferCallNodeEdgeTransitionConditionPromptCondition(BaseModel):
@@ -10787,6 +11331,7 @@ Node: TypeAlias = Union[
     NodeEndNode,
     NodeFunctionNode,
     NodeCodeNode,
+    NodeEscalateChatNode,
     NodeTransferCallNode,
     NodePressDigitNode,
     NodeBranchNode,

@@ -49,6 +49,7 @@ class TestPlayground:
                     "content": "Hi, I'd like to check my appointment.",
                     "role": "user",
                     "created_timestamp": 1703302428855,
+                    "customer_defined_metadata": {"transfer_target_name": "transfer_target_name"},
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
                     "multimedia": [
                         {
@@ -61,6 +62,7 @@ class TestPlayground:
                     "content": "Sure! Could you please provide your name?",
                     "role": "agent",
                     "created_timestamp": 1703302428855,
+                    "customer_defined_metadata": {"transfer_target_name": "transfer_target_name"},
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
                     "multimedia": [
                         {
@@ -73,6 +75,7 @@ class TestPlayground:
                     "content": "My name is John Smith.",
                     "role": "user",
                     "created_timestamp": 1703302428855,
+                    "customer_defined_metadata": {"transfer_target_name": "transfer_target_name"},
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
                     "multimedia": [
                         {
@@ -215,6 +218,7 @@ class TestAsyncPlayground:
                     "content": "Hi, I'd like to check my appointment.",
                     "role": "user",
                     "created_timestamp": 1703302428855,
+                    "customer_defined_metadata": {"transfer_target_name": "transfer_target_name"},
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
                     "multimedia": [
                         {
@@ -227,6 +231,7 @@ class TestAsyncPlayground:
                     "content": "Sure! Could you please provide your name?",
                     "role": "agent",
                     "created_timestamp": 1703302428855,
+                    "customer_defined_metadata": {"transfer_target_name": "transfer_target_name"},
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
                     "multimedia": [
                         {
@@ -239,6 +244,7 @@ class TestAsyncPlayground:
                     "content": "My name is John Smith.",
                     "role": "user",
                     "created_timestamp": 1703302428855,
+                    "customer_defined_metadata": {"transfer_target_name": "transfer_target_name"},
                     "message_id": "Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6",
                     "multimedia": [
                         {

@@ -45,6 +45,7 @@ __all__ = [
     "FilterCriteriaEndTimestamp",
     "FilterCriteriaEndTimestampNumberFilter",
     "FilterCriteriaEndTimestampRangeFilter",
+    "FilterCriteriaIsEscalated",
     "FilterCriteriaStartTimestamp",
     "FilterCriteriaStartTimestampNumberFilter",
     "FilterCriteriaStartTimestampRangeFilter",
@@ -473,6 +474,14 @@ FilterCriteriaEndTimestamp: TypeAlias = Union[
 ]
 
 
+class FilterCriteriaIsEscalated(TypedDict, total=False):
+    op: Required[Literal["eq"]]
+
+    type: Required[Literal["boolean"]]
+
+    value: Required[bool]
+
+
 class FilterCriteriaStartTimestampNumberFilter(TypedDict, total=False):
     op: Required[Literal["eq", "ne", "gt", "ge", "lt", "le"]]
     """
@@ -570,6 +579,8 @@ class FilterCriteria(TypedDict, total=False):
 
     end_timestamp: FilterCriteriaEndTimestamp
     """Filter by chat end timestamp (epoch ms)."""
+
+    is_escalated: FilterCriteriaIsEscalated
 
     start_timestamp: FilterCriteriaStartTimestamp
     """Filter by chat start timestamp (epoch ms)."""

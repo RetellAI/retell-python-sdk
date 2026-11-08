@@ -35,7 +35,12 @@ Methods:
 Types:
 
 ```python
-from retell.types import ChatResponse, ChatListResponse, ChatCreateChatCompletionResponse
+from retell.types import (
+    ChatResponse,
+    ChatListResponse,
+    ChatCreateChatCompletionResponse,
+    ChatRecordMessageResponse,
+)
 ```
 
 Methods:
@@ -48,6 +53,7 @@ Methods:
 - <code title="post /create-chat-completion">client.chat.<a href="./src/retell/resources/chat.py">create_chat_completion</a>(\*\*<a href="src/retell/types/chat_create_chat_completion_params.py">params</a>) -> <a href="./src/retell/types/chat_create_chat_completion_response.py">ChatCreateChatCompletionResponse</a></code>
 - <code title="post /create-sms-chat">client.chat.<a href="./src/retell/resources/chat.py">create_sms_chat</a>(\*\*<a href="src/retell/types/chat_create_sms_chat_params.py">params</a>) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
 - <code title="patch /end-chat/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">end</a>(chat_id) -> None</code>
+- <code title="post /record-chat-message/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">record_message</a>(chat_id, \*\*<a href="src/retell/types/chat_record_message_params.py">params</a>) -> <a href="./src/retell/types/chat_record_message_response.py">ChatRecordMessageResponse</a></code>
 - <code title="put /rerun-chat-analysis/{chat_id}">client.chat.<a href="./src/retell/resources/chat.py">rerun_analysis</a>(chat_id) -> <a href="./src/retell/types/chat_response.py">ChatResponse</a></code>
 
 # PhoneNumber

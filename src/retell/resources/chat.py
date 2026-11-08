@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, Union, Optional
-from typing_extensions import Literal
+from typing_extensions import Literal, overload
 
 import httpx
 
@@ -11,11 +11,12 @@ from ..types import (
     chat_list_params,
     chat_create_params,
     chat_update_params,
+    chat_record_message_params,
     chat_create_sms_chat_params,
     chat_create_chat_completion_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from .._utils import is_given, path_template, maybe_transform, async_maybe_transform
+from .._utils import is_given, path_template, required_args, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -28,6 +29,7 @@ from .._constants import DEFAULT_TIMEOUT
 from .._base_client import make_request_options
 from ..types.chat_response import ChatResponse
 from ..types.chat_list_response import ChatListResponse
+from ..types.chat_record_message_response import ChatRecordMessageResponse
 from ..types.chat_create_chat_completion_response import ChatCreateChatCompletionResponse
 
 __all__ = ["ChatResource", "AsyncChatResource"]
@@ -500,6 +502,127 @@ class ChatResource(SyncAPIResource):
                 max_retries=max_retries,
             ),
             cast_to=NoneType,
+        )
+
+    @overload
+    def record_message(
+        self,
+        chat_id: str,
+        *,
+        idempotency_key: str,
+        message: str,
+        role: Literal["user"],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> ChatRecordMessageResponse:
+        """Record a user or human transfer-target message in an ongoing escalated chat.
+
+        SMS
+        chats accept only transfer_target and send SMS before recording. API chats only
+        record; delivery is the customer's responsibility. Idempotency keys are scoped
+        to the organization. Successful results are retained for 24 hours. Concurrent
+        requests with the same key wait for the lock. Reusing a key after success
+        returns 200 with the original message_id and created_timestamp, without sending
+        again. No duplicate-key error is raised. Failures are not cached and release the
+        lock so the same key can be retried. Each execution makes one SMS send attempt.
+        If delivery is uncertain or processing fails after sending, a retried request
+        can send the SMS again and cause duplicates.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @overload
+    def record_message(
+        self,
+        chat_id: str,
+        *,
+        idempotency_key: str,
+        message: str,
+        role: Literal["transfer_target"],
+        metadata: chat_record_message_params.Variant1Metadata | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> ChatRecordMessageResponse:
+        """Record a user or human transfer-target message in an ongoing escalated chat.
+
+        SMS
+        chats accept only transfer_target and send SMS before recording. API chats only
+        record; delivery is the customer's responsibility. Idempotency keys are scoped
+        to the organization. Successful results are retained for 24 hours. Concurrent
+        requests with the same key wait for the lock. Reusing a key after success
+        returns 200 with the original message_id and created_timestamp, without sending
+        again. No duplicate-key error is raised. Failures are not cached and release the
+        lock so the same key can be retried. Each execution makes one SMS send attempt.
+        If delivery is uncertain or processing fails after sending, a retried request
+        can send the SMS again and cause duplicates.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @required_args(["idempotency_key", "message", "role"])
+    def record_message(
+        self,
+        chat_id: str,
+        *,
+        idempotency_key: str,
+        message: str,
+        role: Literal["user"] | Literal["transfer_target"],
+        metadata: chat_record_message_params.Variant1Metadata | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> ChatRecordMessageResponse:
+        if not chat_id:
+            raise ValueError(f"Expected a non-empty value for `chat_id` but received {chat_id!r}")
+        return self._post(
+            path_template("/record-chat-message/{chat_id}", chat_id=chat_id),
+            body=maybe_transform(
+                {
+                    "idempotency_key": idempotency_key,
+                    "message": message,
+                    "role": role,
+                    "metadata": metadata,
+                },
+                chat_record_message_params.ChatRecordMessageParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+            ),
+            cast_to=ChatRecordMessageResponse,
         )
 
     def rerun_analysis(
@@ -1011,6 +1134,127 @@ class AsyncChatResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    @overload
+    async def record_message(
+        self,
+        chat_id: str,
+        *,
+        idempotency_key: str,
+        message: str,
+        role: Literal["user"],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> ChatRecordMessageResponse:
+        """Record a user or human transfer-target message in an ongoing escalated chat.
+
+        SMS
+        chats accept only transfer_target and send SMS before recording. API chats only
+        record; delivery is the customer's responsibility. Idempotency keys are scoped
+        to the organization. Successful results are retained for 24 hours. Concurrent
+        requests with the same key wait for the lock. Reusing a key after success
+        returns 200 with the original message_id and created_timestamp, without sending
+        again. No duplicate-key error is raised. Failures are not cached and release the
+        lock so the same key can be retried. Each execution makes one SMS send attempt.
+        If delivery is uncertain or processing fails after sending, a retried request
+        can send the SMS again and cause duplicates.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @overload
+    async def record_message(
+        self,
+        chat_id: str,
+        *,
+        idempotency_key: str,
+        message: str,
+        role: Literal["transfer_target"],
+        metadata: chat_record_message_params.Variant1Metadata | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> ChatRecordMessageResponse:
+        """Record a user or human transfer-target message in an ongoing escalated chat.
+
+        SMS
+        chats accept only transfer_target and send SMS before recording. API chats only
+        record; delivery is the customer's responsibility. Idempotency keys are scoped
+        to the organization. Successful results are retained for 24 hours. Concurrent
+        requests with the same key wait for the lock. Reusing a key after success
+        returns 200 with the original message_id and created_timestamp, without sending
+        again. No duplicate-key error is raised. Failures are not cached and release the
+        lock so the same key can be retried. Each execution makes one SMS send attempt.
+        If delivery is uncertain or processing fails after sending, a retried request
+        can send the SMS again and cause duplicates.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @required_args(["idempotency_key", "message", "role"])
+    async def record_message(
+        self,
+        chat_id: str,
+        *,
+        idempotency_key: str,
+        message: str,
+        role: Literal["user"] | Literal["transfer_target"],
+        metadata: chat_record_message_params.Variant1Metadata | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> ChatRecordMessageResponse:
+        if not chat_id:
+            raise ValueError(f"Expected a non-empty value for `chat_id` but received {chat_id!r}")
+        return await self._post(
+            path_template("/record-chat-message/{chat_id}", chat_id=chat_id),
+            body=await async_maybe_transform(
+                {
+                    "idempotency_key": idempotency_key,
+                    "message": message,
+                    "role": role,
+                    "metadata": metadata,
+                },
+                chat_record_message_params.ChatRecordMessageParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+            ),
+            cast_to=ChatRecordMessageResponse,
+        )
+
     async def rerun_analysis(
         self,
         chat_id: str,
@@ -1079,6 +1323,9 @@ class ChatResourceWithRawResponse:
         self.end = to_raw_response_wrapper(
             chat.end,
         )
+        self.record_message = to_raw_response_wrapper(
+            chat.record_message,
+        )
         self.rerun_analysis = to_raw_response_wrapper(
             chat.rerun_analysis,
         )
@@ -1111,6 +1358,9 @@ class AsyncChatResourceWithRawResponse:
         )
         self.end = async_to_raw_response_wrapper(
             chat.end,
+        )
+        self.record_message = async_to_raw_response_wrapper(
+            chat.record_message,
         )
         self.rerun_analysis = async_to_raw_response_wrapper(
             chat.rerun_analysis,
@@ -1145,6 +1395,9 @@ class ChatResourceWithStreamingResponse:
         self.end = to_streamed_response_wrapper(
             chat.end,
         )
+        self.record_message = to_streamed_response_wrapper(
+            chat.record_message,
+        )
         self.rerun_analysis = to_streamed_response_wrapper(
             chat.rerun_analysis,
         )
@@ -1177,6 +1430,9 @@ class AsyncChatResourceWithStreamingResponse:
         )
         self.end = async_to_streamed_response_wrapper(
             chat.end,
+        )
+        self.record_message = async_to_streamed_response_wrapper(
+            chat.record_message,
         )
         self.rerun_analysis = async_to_streamed_response_wrapper(
             chat.rerun_analysis,

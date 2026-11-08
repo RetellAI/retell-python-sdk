@@ -68,6 +68,7 @@ class PlaygroundResource(SyncAPIResource):
         Send the full conversation history (same shape
         as chat completion messages) and receive only the newly generated messages.
         Nothing is persisted server-side — the caller manages conversation state.
+        Payment agents only support audio testing and cannot use this endpoint.
 
         Args:
           messages: Full conversation history, same shape as chat completion messages. message_id
@@ -169,6 +170,7 @@ class AsyncPlaygroundResource(AsyncAPIResource):
         Send the full conversation history (same shape
         as chat completion messages) and receive only the newly generated messages.
         Nothing is persisted server-side — the caller manages conversation state.
+        Payment agents only support audio testing and cannot use this endpoint.
 
         Args:
           messages: Full conversation history, same shape as chat completion messages. message_id
