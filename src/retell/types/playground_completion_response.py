@@ -9,6 +9,7 @@ __all__ = [
     "PlaygroundCompletionResponse",
     "Message",
     "MessageMessageBase",
+    "MessageMessageBaseCustomerDefinedMetadata",
     "MessageMessageBaseMultimedia",
     "MessageToolCallInvocationMessageBase",
     "MessageToolCallResultMessageBase",
@@ -18,6 +19,10 @@ __all__ = [
     "MessageSMSMessageBase",
     "MessageSMSMessageBaseMultimedia",
 ]
+
+
+class MessageMessageBaseCustomerDefinedMetadata(BaseModel):
+    transfer_target_name: Optional[str] = None
 
 
 class MessageMessageBaseMultimedia(BaseModel):
@@ -32,11 +37,13 @@ class MessageMessageBase(BaseModel):
     content: str
     """Content of the message"""
 
-    role: Literal["agent", "user"]
-    """Documents whether this message is sent by agent or user."""
+    role: Literal["agent", "user", "transfer_target"]
+    """Whether this message is sent by the AI agent, user, or human transfer target."""
 
     created_timestamp: Optional[int] = None
     """Create timestamp of the message"""
+
+    customer_defined_metadata: Optional[MessageMessageBaseCustomerDefinedMetadata] = None
 
     message_id: Optional[str] = None
     """Unique id of the message"""

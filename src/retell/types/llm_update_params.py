@@ -13,6 +13,9 @@ __all__ = [
     "BackupModel",
     "BackupModelBackupModelChoice",
     "GeneralTool",
+    "GeneralToolEscalateChatTool",
+    "GeneralToolEscalateChatToolDestination",
+    "GeneralToolEscalateChatToolDestinationDestination",
     "GeneralToolEndCallTool",
     "GeneralToolTransferCallTool",
     "GeneralToolTransferCallToolTransferDestination",
@@ -82,6 +85,9 @@ __all__ = [
     "StateEdge",
     "StateEdgeParameters",
     "StateTool",
+    "StateToolEscalateChatTool",
+    "StateToolEscalateChatToolDestination",
+    "StateToolEscalateChatToolDestinationDestination",
     "StateToolEndCallTool",
     "StateToolTransferCallTool",
     "StateToolTransferCallToolTransferDestination",
@@ -371,6 +377,45 @@ class BackupModelBackupModelChoice(TypedDict, total=False):
 
 
 BackupModel: TypeAlias = Union[BackupModelBackupModelChoice, Optional[object]]
+
+
+class GeneralToolEscalateChatToolDestinationDestination(TypedDict, total=False):
+    method: Required[Literal["POST", "PUT"]]
+
+    url: Required[str]
+    """Customer webhook URL for transfer requests and forwarded SMS messages."""
+
+    body: Dict[str, object]
+    """Customer-defined fields nested in args on chat_transfer_requested events.
+
+    String values support dynamic variables such as {{customer_id}}, including
+    inside nested objects and arrays. Field names and non-string values are
+    preserved.
+    """
+
+    headers: Dict[str, str]
+
+    max_retry: int
+
+    query_params: Dict[str, str]
+
+    timeout_ms: int
+
+
+class GeneralToolEscalateChatToolDestination(TypedDict, total=False):
+    destination: Required[GeneralToolEscalateChatToolDestinationDestination]
+
+    type: Required[Literal["webhook"]]
+
+
+class GeneralToolEscalateChatTool(TypedDict, total=False):
+    destination: Required[GeneralToolEscalateChatToolDestination]
+
+    name: Required[str]
+
+    type: Required[Literal["escalate_chat"]]
+
+    description: str
 
 
 class GeneralToolEndCallTool(TypedDict, total=False):
@@ -1668,6 +1713,7 @@ class GeneralToolAppTool(TypedDict, total=False):
 
 
 GeneralTool: TypeAlias = Union[
+    GeneralToolEscalateChatTool,
     GeneralToolEndCallTool,
     GeneralToolTransferCallTool,
     GeneralToolAgentSwapTool,
@@ -2077,6 +2123,45 @@ class StateEdge(TypedDict, total=False):
     [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for
     documentation about the format.
     """
+
+
+class StateToolEscalateChatToolDestinationDestination(TypedDict, total=False):
+    method: Required[Literal["POST", "PUT"]]
+
+    url: Required[str]
+    """Customer webhook URL for transfer requests and forwarded SMS messages."""
+
+    body: Dict[str, object]
+    """Customer-defined fields nested in args on chat_transfer_requested events.
+
+    String values support dynamic variables such as {{customer_id}}, including
+    inside nested objects and arrays. Field names and non-string values are
+    preserved.
+    """
+
+    headers: Dict[str, str]
+
+    max_retry: int
+
+    query_params: Dict[str, str]
+
+    timeout_ms: int
+
+
+class StateToolEscalateChatToolDestination(TypedDict, total=False):
+    destination: Required[StateToolEscalateChatToolDestinationDestination]
+
+    type: Required[Literal["webhook"]]
+
+
+class StateToolEscalateChatTool(TypedDict, total=False):
+    destination: Required[StateToolEscalateChatToolDestination]
+
+    name: Required[str]
+
+    type: Required[Literal["escalate_chat"]]
+
+    description: str
 
 
 class StateToolEndCallTool(TypedDict, total=False):
@@ -3374,6 +3459,7 @@ class StateToolAppTool(TypedDict, total=False):
 
 
 StateTool: TypeAlias = Union[
+    StateToolEscalateChatTool,
     StateToolEndCallTool,
     StateToolTransferCallTool,
     StateToolAgentSwapTool,

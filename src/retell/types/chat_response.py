@@ -12,6 +12,7 @@ __all__ = [
     "ChatCostProductCost",
     "MessageWithToolCall",
     "MessageWithToolCallMessageBase",
+    "MessageWithToolCallMessageBaseCustomerDefinedMetadata",
     "MessageWithToolCallMessageBaseMultimedia",
     "MessageWithToolCallToolCallInvocationMessageBase",
     "MessageWithToolCallToolCallResultMessageBase",
@@ -22,6 +23,7 @@ __all__ = [
     "MessageWithToolCallSMSMessageBaseMultimedia",
     "PostSessionMessageWithToolCall",
     "PostSessionMessageWithToolCallMessageBase",
+    "PostSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata",
     "PostSessionMessageWithToolCallMessageBaseMultimedia",
     "PostSessionMessageWithToolCallToolCallInvocationMessageBase",
     "PostSessionMessageWithToolCallToolCallResultMessageBase",
@@ -32,6 +34,7 @@ __all__ = [
     "PostSessionMessageWithToolCallSMSMessageBaseMultimedia",
     "PreSessionMessageWithToolCall",
     "PreSessionMessageWithToolCallMessageBase",
+    "PreSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata",
     "PreSessionMessageWithToolCallMessageBaseMultimedia",
     "PreSessionMessageWithToolCallToolCallInvocationMessageBase",
     "PreSessionMessageWithToolCallToolCallResultMessageBase",
@@ -42,6 +45,7 @@ __all__ = [
     "PreSessionMessageWithToolCallSMSMessageBaseMultimedia",
     "ScrubbedPostSessionMessageWithToolCall",
     "ScrubbedPostSessionMessageWithToolCallMessageBase",
+    "ScrubbedPostSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata",
     "ScrubbedPostSessionMessageWithToolCallMessageBaseMultimedia",
     "ScrubbedPostSessionMessageWithToolCallToolCallInvocationMessageBase",
     "ScrubbedPostSessionMessageWithToolCallToolCallResultMessageBase",
@@ -52,6 +56,7 @@ __all__ = [
     "ScrubbedPostSessionMessageWithToolCallSMSMessageBaseMultimedia",
     "ScrubbedPreSessionMessageWithToolCall",
     "ScrubbedPreSessionMessageWithToolCallMessageBase",
+    "ScrubbedPreSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata",
     "ScrubbedPreSessionMessageWithToolCallMessageBaseMultimedia",
     "ScrubbedPreSessionMessageWithToolCallToolCallInvocationMessageBase",
     "ScrubbedPreSessionMessageWithToolCallToolCallResultMessageBase",
@@ -109,6 +114,10 @@ class ChatCost(BaseModel):
     """List of products with their unit prices and costs in cents"""
 
 
+class MessageWithToolCallMessageBaseCustomerDefinedMetadata(BaseModel):
+    transfer_target_name: Optional[str] = None
+
+
 class MessageWithToolCallMessageBaseMultimedia(BaseModel):
     url: str
     """URL of the multimedia attachment."""
@@ -121,11 +130,13 @@ class MessageWithToolCallMessageBase(BaseModel):
     content: str
     """Content of the message"""
 
-    role: Literal["agent", "user"]
-    """Documents whether this message is sent by agent or user."""
+    role: Literal["agent", "user", "transfer_target"]
+    """Whether this message is sent by the AI agent, user, or human transfer target."""
 
     created_timestamp: Optional[int] = None
     """Create timestamp of the message"""
+
+    customer_defined_metadata: Optional[MessageWithToolCallMessageBaseCustomerDefinedMetadata] = None
 
     message_id: Optional[str] = None
     """Unique id of the message"""
@@ -309,6 +320,10 @@ MessageWithToolCall: TypeAlias = Union[
 ]
 
 
+class PostSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata(BaseModel):
+    transfer_target_name: Optional[str] = None
+
+
 class PostSessionMessageWithToolCallMessageBaseMultimedia(BaseModel):
     url: str
     """URL of the multimedia attachment."""
@@ -321,11 +336,13 @@ class PostSessionMessageWithToolCallMessageBase(BaseModel):
     content: str
     """Content of the message"""
 
-    role: Literal["agent", "user"]
-    """Documents whether this message is sent by agent or user."""
+    role: Literal["agent", "user", "transfer_target"]
+    """Whether this message is sent by the AI agent, user, or human transfer target."""
 
     created_timestamp: Optional[int] = None
     """Create timestamp of the message"""
+
+    customer_defined_metadata: Optional[PostSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata] = None
 
     message_id: Optional[str] = None
     """Unique id of the message"""
@@ -509,6 +526,10 @@ PostSessionMessageWithToolCall: TypeAlias = Union[
 ]
 
 
+class PreSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata(BaseModel):
+    transfer_target_name: Optional[str] = None
+
+
 class PreSessionMessageWithToolCallMessageBaseMultimedia(BaseModel):
     url: str
     """URL of the multimedia attachment."""
@@ -521,11 +542,13 @@ class PreSessionMessageWithToolCallMessageBase(BaseModel):
     content: str
     """Content of the message"""
 
-    role: Literal["agent", "user"]
-    """Documents whether this message is sent by agent or user."""
+    role: Literal["agent", "user", "transfer_target"]
+    """Whether this message is sent by the AI agent, user, or human transfer target."""
 
     created_timestamp: Optional[int] = None
     """Create timestamp of the message"""
+
+    customer_defined_metadata: Optional[PreSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata] = None
 
     message_id: Optional[str] = None
     """Unique id of the message"""
@@ -709,6 +732,10 @@ PreSessionMessageWithToolCall: TypeAlias = Union[
 ]
 
 
+class ScrubbedPostSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata(BaseModel):
+    transfer_target_name: Optional[str] = None
+
+
 class ScrubbedPostSessionMessageWithToolCallMessageBaseMultimedia(BaseModel):
     url: str
     """URL of the multimedia attachment."""
@@ -721,11 +748,13 @@ class ScrubbedPostSessionMessageWithToolCallMessageBase(BaseModel):
     content: str
     """Content of the message"""
 
-    role: Literal["agent", "user"]
-    """Documents whether this message is sent by agent or user."""
+    role: Literal["agent", "user", "transfer_target"]
+    """Whether this message is sent by the AI agent, user, or human transfer target."""
 
     created_timestamp: Optional[int] = None
     """Create timestamp of the message"""
+
+    customer_defined_metadata: Optional[ScrubbedPostSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata] = None
 
     message_id: Optional[str] = None
     """Unique id of the message"""
@@ -909,6 +938,10 @@ ScrubbedPostSessionMessageWithToolCall: TypeAlias = Union[
 ]
 
 
+class ScrubbedPreSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata(BaseModel):
+    transfer_target_name: Optional[str] = None
+
+
 class ScrubbedPreSessionMessageWithToolCallMessageBaseMultimedia(BaseModel):
     url: str
     """URL of the multimedia attachment."""
@@ -921,11 +954,13 @@ class ScrubbedPreSessionMessageWithToolCallMessageBase(BaseModel):
     content: str
     """Content of the message"""
 
-    role: Literal["agent", "user"]
-    """Documents whether this message is sent by agent or user."""
+    role: Literal["agent", "user", "transfer_target"]
+    """Whether this message is sent by the AI agent, user, or human transfer target."""
 
     created_timestamp: Optional[int] = None
     """Create timestamp of the message"""
+
+    customer_defined_metadata: Optional[ScrubbedPreSessionMessageWithToolCallMessageBaseCustomerDefinedMetadata] = None
 
     message_id: Optional[str] = None
     """Unique id of the message"""
@@ -1152,6 +1187,9 @@ class ChatResponse(BaseModel):
     Available after chat ends.
     """
 
+    is_escalated: Optional[bool] = None
+    """Whether this chat has been handed to a human."""
+
     message_with_tool_calls: Optional[List[MessageWithToolCall]] = None
     """Transcript of the chat weaved with tool call invocation and results."""
 
@@ -1206,7 +1244,7 @@ class ChatResponse(BaseModel):
     """
 
     transcript: Optional[str] = None
-    """Transcription of the chat."""
+    """Transcription of the chat, including human replies labeled "Transfer Target"."""
 
     version: Optional[int] = None
     """The version of the agent"""

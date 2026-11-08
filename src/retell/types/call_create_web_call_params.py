@@ -117,7 +117,8 @@ class CallCreateWebCallParams(TypedDict, total=False):
     agent_id: Required[str]
     """Unique id of agent used for the call.
 
-    Your agent would contain the LLM Websocket url used for this call.
+    Your agent would contain the LLM Websocket url used for this call. A payment
+    agent starts an isolated PCI test call that ends when payment completes.
     """
 
     agent_override: AgentOverride
@@ -134,8 +135,8 @@ class CallCreateWebCallParams(TypedDict, total=False):
     """Start the call at this conversation flow node (stage).
 
     Must be a valid node id in the agent's conversation flow. Only applicable when
-    the agent uses conversation flow as the response engine. Ignored for retell-llm
-    agents.
+    the agent uses conversation flow as the response engine. For a payment agent,
+    the node belongs to its own conversation flow. Ignored for retell-llm agents.
     """
 
     current_state: Optional[str]

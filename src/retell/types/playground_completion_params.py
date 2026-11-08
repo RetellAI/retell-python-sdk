@@ -9,6 +9,7 @@ __all__ = [
     "PlaygroundCompletionParams",
     "Message",
     "MessageMessageBase",
+    "MessageMessageBaseCustomerDefinedMetadata",
     "MessageMessageBaseMultimedia",
     "MessageToolCallInvocationMessageBase",
     "MessageToolCallResultMessageBase",
@@ -61,6 +62,10 @@ class PlaygroundCompletionParams(TypedDict, total=False):
     """
 
 
+class MessageMessageBaseCustomerDefinedMetadata(TypedDict, total=False):
+    transfer_target_name: str
+
+
 class MessageMessageBaseMultimedia(TypedDict, total=False):
     url: Required[str]
     """URL of the multimedia attachment."""
@@ -73,11 +78,13 @@ class MessageMessageBase(TypedDict, total=False):
     content: Required[str]
     """Content of the message"""
 
-    role: Required[Literal["agent", "user"]]
-    """Documents whether this message is sent by agent or user."""
+    role: Required[Literal["agent", "user", "transfer_target"]]
+    """Whether this message is sent by the AI agent, user, or human transfer target."""
 
     created_timestamp: int
     """Create timestamp of the message"""
+
+    customer_defined_metadata: MessageMessageBaseCustomerDefinedMetadata
 
     message_id: str
     """Unique id of the message"""

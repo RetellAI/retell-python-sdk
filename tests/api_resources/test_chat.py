@@ -12,6 +12,7 @@ from tests.utils import assert_matches_type
 from retell.types import (
     ChatResponse,
     ChatListResponse,
+    ChatRecordMessageResponse,
     ChatCreateChatCompletionResponse,
 )
 
@@ -261,6 +262,11 @@ class TestChat:
                     "type": "number",
                     "value": 0,
                 },
+                "is_escalated": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
                 "start_timestamp": {
                     "op": "eq",
                     "type": "number",
@@ -477,6 +483,126 @@ class TestChat:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
             client.chat.with_raw_response.end(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_record_message_overload_1(self, client: Retell) -> None:
+        chat = client.chat.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="user",
+        )
+        assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_record_message_overload_1(self, client: Retell) -> None:
+        response = client.chat.with_raw_response.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="user",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat = response.parse()
+        assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_record_message_overload_1(self, client: Retell) -> None:
+        with client.chat.with_streaming_response.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="user",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat = response.parse()
+            assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_record_message_overload_1(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
+            client.chat.with_raw_response.record_message(
+                chat_id="",
+                idempotency_key="x",
+                message="x",
+                role="user",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_record_message_overload_2(self, client: Retell) -> None:
+        chat = client.chat.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="transfer_target",
+        )
+        assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_record_message_with_all_params_overload_2(self, client: Retell) -> None:
+        chat = client.chat.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="transfer_target",
+            metadata={"transfer_target_name": "transfer_target_name"},
+        )
+        assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_record_message_overload_2(self, client: Retell) -> None:
+        response = client.chat.with_raw_response.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="transfer_target",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat = response.parse()
+        assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_record_message_overload_2(self, client: Retell) -> None:
+        with client.chat.with_streaming_response.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="transfer_target",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat = response.parse()
+            assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_record_message_overload_2(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
+            client.chat.with_raw_response.record_message(
+                chat_id="",
+                idempotency_key="x",
+                message="x",
+                role="transfer_target",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -767,6 +893,11 @@ class TestAsyncChat:
                     "type": "number",
                     "value": 0,
                 },
+                "is_escalated": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
                 "start_timestamp": {
                     "op": "eq",
                     "type": "number",
@@ -983,6 +1114,126 @@ class TestAsyncChat:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
             await async_client.chat.with_raw_response.end(
                 "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_record_message_overload_1(self, async_client: AsyncRetell) -> None:
+        chat = await async_client.chat.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="user",
+        )
+        assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_record_message_overload_1(self, async_client: AsyncRetell) -> None:
+        response = await async_client.chat.with_raw_response.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="user",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat = await response.parse()
+        assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_record_message_overload_1(self, async_client: AsyncRetell) -> None:
+        async with async_client.chat.with_streaming_response.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="user",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat = await response.parse()
+            assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_record_message_overload_1(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
+            await async_client.chat.with_raw_response.record_message(
+                chat_id="",
+                idempotency_key="x",
+                message="x",
+                role="user",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_record_message_overload_2(self, async_client: AsyncRetell) -> None:
+        chat = await async_client.chat.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="transfer_target",
+        )
+        assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_record_message_with_all_params_overload_2(self, async_client: AsyncRetell) -> None:
+        chat = await async_client.chat.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="transfer_target",
+            metadata={"transfer_target_name": "transfer_target_name"},
+        )
+        assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_record_message_overload_2(self, async_client: AsyncRetell) -> None:
+        response = await async_client.chat.with_raw_response.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="transfer_target",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        chat = await response.parse()
+        assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_record_message_overload_2(self, async_client: AsyncRetell) -> None:
+        async with async_client.chat.with_streaming_response.record_message(
+            chat_id="chat_id",
+            idempotency_key="x",
+            message="x",
+            role="transfer_target",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            chat = await response.parse()
+            assert_matches_type(ChatRecordMessageResponse, chat, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_record_message_overload_2(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `chat_id` but received ''"):
+            await async_client.chat.with_raw_response.record_message(
+                chat_id="",
+                idempotency_key="x",
+                message="x",
+                role="transfer_target",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
