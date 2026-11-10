@@ -97,8 +97,9 @@ class TestPlayground:
                 {
                     "input_match_rule": {"type": "any"},
                     "output": "output",
-                    "tool_name": "tool_name",
+                    "node_id": "node_id",
                     "result": True,
+                    "tool_name": "tool_name",
                 }
             ],
         )
@@ -266,8 +267,9 @@ class TestAsyncPlayground:
                 {
                     "input_match_rule": {"type": "any"},
                     "output": "output",
-                    "tool_name": "tool_name",
+                    "node_id": "node_id",
                     "result": True,
+                    "tool_name": "tool_name",
                 }
             ],
         )

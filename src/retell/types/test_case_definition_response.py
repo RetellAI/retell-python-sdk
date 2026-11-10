@@ -68,7 +68,7 @@ ToolMockInputMatchRule: TypeAlias = Union[ToolMockInputMatchRuleType, ToolMockIn
 class ToolMock(BaseModel):
     """A fake response for one tool.
 
-    During a simulation, when the LLM calls a tool whose name matches `tool_name` and whose arguments satisfy `input_match_rule`, the real tool is not run; `output` is returned to the LLM instead. This keeps runs deterministic and avoids calling live integrations. A tool call that matches no mock falls through to the real tool.
+    During a simulation, when a tool call matches `tool_name`, `node_id` and `input_match_rule`, the real tool is not run; `output` is returned to the LLM instead. This keeps runs deterministic and avoids calling live integrations. A tool call that matches no mock falls through to the real tool.
     """
 
     input_match_rule: ToolMockInputMatchRule
@@ -80,18 +80,27 @@ class ToolMock(BaseModel):
     Should be a JSON string, the same shape the real tool would return.
     """
 
-    tool_name: str
+    node_id: Optional[str] = None
+    """Conversation flow agents only.
+
+    The ID of the node the tool runs in. Leave it out to match every node. To mock
+    an SMS or Call Transfer node, set `node_id` and `result`, and leave out
+    `tool_name`.
+    """
+
+    result: Optional[bool] = None
+    """Whether the call succeeds (`true`) or fails (`false`).
+
+    Required to mock SMS, transfer and escalation calls; for those calls, a mock
+    without `result` is ignored. Not used for other tools.
+    """
+
+    tool_name: Optional[str] = None
     """The tool's function name, not the tool ID, i.e.
 
     the name the LLM uses when it calls the tool (for example
     `check_availability_cal`, `book_appointment_cal`, or the name you gave a custom
-    function).
-    """
-
-    result: Optional[bool] = None
-    """For tool calls like transfer_call that require a boolean result.
-
-    Optional for most tools.
+    function). Leave it out to match every tool.
     """
 
 
