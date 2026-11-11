@@ -1425,6 +1425,7 @@ class NodeConversationNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -1480,6 +1481,7 @@ class NodeConversationNodeModelConfigNodeModelConfigPrimary(TypedDict, total=Fal
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2239,6 +2241,7 @@ class NodeSubagentNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2294,6 +2297,7 @@ class NodeSubagentNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -4153,6 +4157,7 @@ class NodeEndNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -4208,6 +4213,7 @@ class NodeEndNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -4723,6 +4729,7 @@ class NodeFunctionNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -4778,6 +4785,7 @@ class NodeFunctionNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -5307,6 +5315,7 @@ class NodeCodeNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -5362,6 +5371,7 @@ class NodeCodeNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -5820,6 +5830,7 @@ class NodeEscalateChatNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -5875,6 +5886,7 @@ class NodeEscalateChatNodeModelConfigNodeModelConfigPrimary(TypedDict, total=Fal
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -6609,6 +6621,7 @@ class NodeTransferCallNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -6664,6 +6677,7 @@ class NodeTransferCallNodeModelConfigNodeModelConfigPrimary(TypedDict, total=Fal
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -7181,6 +7195,7 @@ class NodePressDigitNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -7236,6 +7251,7 @@ class NodePressDigitNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -7734,6 +7750,7 @@ class NodeBranchNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -7789,6 +7806,7 @@ class NodeBranchNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -8282,6 +8300,7 @@ class NodeSMSNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -8337,6 +8356,7 @@ class NodeSMSNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -9012,6 +9032,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -9067,6 +9088,7 @@ class NodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary(TypedDict
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -9495,6 +9517,7 @@ class NodeAgentSwapNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -9550,6 +9573,7 @@ class NodeAgentSwapNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False)
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -10093,6 +10117,7 @@ class NodeMcpNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -10148,6 +10173,7 @@ class NodeMcpNodeModelConfigNodeModelConfigPrimary(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -10966,6 +10992,7 @@ class NodeBridgeTransferNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -11021,6 +11048,7 @@ class NodeBridgeTransferNodeModelConfigNodeModelConfigPrimary(TypedDict, total=F
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -11384,6 +11412,7 @@ class NodeCancelTransferNodeModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -11439,6 +11468,7 @@ class NodeCancelTransferNodeModelConfigNodeModelConfigPrimary(TypedDict, total=F
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]

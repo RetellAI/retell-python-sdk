@@ -1395,6 +1395,7 @@ class NodeConversationNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -1448,6 +1449,7 @@ class NodeConversationNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -2201,6 +2203,7 @@ class NodeSubagentNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -2254,6 +2257,7 @@ class NodeSubagentNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -4111,6 +4115,7 @@ class NodeEndNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -4164,6 +4169,7 @@ class NodeEndNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -4673,6 +4679,7 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -4726,6 +4733,7 @@ class NodeFunctionNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -5251,6 +5259,7 @@ class NodeCodeNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -5304,6 +5313,7 @@ class NodeCodeNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -5758,6 +5768,7 @@ class NodeEscalateChatNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -5811,6 +5822,7 @@ class NodeEscalateChatNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -6539,6 +6551,7 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -6592,6 +6605,7 @@ class NodeTransferCallNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -7105,6 +7119,7 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -7158,6 +7173,7 @@ class NodePressDigitNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -7650,6 +7666,7 @@ class NodeBranchNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -7703,6 +7720,7 @@ class NodeBranchNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -8192,6 +8210,7 @@ class NodeSMSNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -8245,6 +8264,7 @@ class NodeSMSNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -8902,6 +8922,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -8955,6 +8976,7 @@ class NodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary(BaseModel
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -9381,6 +9403,7 @@ class NodeAgentSwapNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -9434,6 +9457,7 @@ class NodeAgentSwapNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -9973,6 +9997,7 @@ class NodeMcpNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -10026,6 +10051,7 @@ class NodeMcpNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -10834,6 +10860,7 @@ class NodeBridgeTransferNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -10887,6 +10914,7 @@ class NodeBridgeTransferNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -11244,6 +11272,7 @@ class NodeCancelTransferNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -11297,6 +11326,7 @@ class NodeCancelTransferNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""

@@ -238,6 +238,7 @@ class LlmCreateParams(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -349,6 +350,7 @@ class BackupModelBackupModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -1798,6 +1800,7 @@ class ModelConfigCascadingModelConfigBackupBackupModelRef(TypedDict, total=False
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -1860,6 +1863,7 @@ class ModelConfigCascadingModelConfigPrimary(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -1960,6 +1964,7 @@ class ModelConfigDuplexModelConfigBackend(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2016,6 +2021,7 @@ class ModelConfigDuplexModelConfigBackupBackupModelRef(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]

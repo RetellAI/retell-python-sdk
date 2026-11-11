@@ -1683,6 +1683,7 @@ class ChatAgentResponse(BaseModel):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ] = None

@@ -181,6 +181,7 @@ class BackupModelBackupModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """The LLM model to use"""
@@ -1632,6 +1633,7 @@ class ModelConfigCascadingModelConfigBackupBackupModelRef(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -1692,6 +1694,7 @@ class ModelConfigCascadingModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -1788,6 +1791,7 @@ class ModelConfigDuplexModelConfigBackend(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -1842,6 +1846,7 @@ class ModelConfigDuplexModelConfigBackupBackupModelRef(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-carbon",
         "gemini-4-argon",
     ]
     """Available LLM models for agents."""
@@ -3441,6 +3446,7 @@ class LlmResponse(BaseModel):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ] = None
