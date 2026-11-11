@@ -1,5 +1,19 @@
 # Changelog
 
+## [6.2.20](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.19...v6.2.20) (2026-11-11)
+
+
+### Bug Fixes
+
+* **api:** Add escalate_chat tool and flow node that send escalations to a webhook destination. ([cada249](https://github.com/RetellAI/retell-python-sdk/commit/cada2492da3842a4db3b568ff67fdd13e0090d10))
+* **api:** Add gemini-4-carbon as an available LLM model option for agents. ([db83497](https://github.com/RetellAI/retell-python-sdk/commit/db83497515c5c96b3154b83942dcc86a68218b9c))
+* **api:** Add is_escalated to chat responses and chat filters. ([cada249](https://github.com/RetellAI/retell-python-sdk/commit/cada2492da3842a4db3b568ff67fdd13e0090d10))
+* **api:** Add optional node_id to tool mocks for matching conversation flow nodes. ([64daf2a](https://github.com/RetellAI/retell-python-sdk/commit/64daf2a88633dd2d130b804e8dc1fc00b9eeca09))
+* **api:** Add POST /record-chat-message/{chat_id} as the record-message chat method for user and transfer_target messages. ([cada249](https://github.com/RetellAI/retell-python-sdk/commit/cada2492da3842a4db3b568ff67fdd13e0090d10))
+* **api:** Add tell-1 to model options. ([6ac2418](https://github.com/RetellAI/retell-python-sdk/commit/6ac2418ffdbe22f62139298c02bd672d3e0bfe50))
+* **api:** Make tool_name optional in tool mocks, matching every tool when omitted. ([64daf2a](https://github.com/RetellAI/retell-python-sdk/commit/64daf2a88633dd2d130b804e8dc1fc00b9eeca09))
+* **api:** Require result for SMS, transfer, and escalation tool mocks; mocks without it are ignored for those calls. ([64daf2a](https://github.com/RetellAI/retell-python-sdk/commit/64daf2a88633dd2d130b804e8dc1fc00b9eeca09))
+
 ## [6.2.19](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.18...v6.2.19) (2026-11-07)
 
 ### Highlights
