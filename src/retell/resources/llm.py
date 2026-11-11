@@ -93,6 +93,7 @@ class LlmResource(SyncAPIResource):
                 "gemini-3.6-flash",
                 "gemini-3.7-flash",
                 "gemini-3.8-flash",
+                "gemini-4-carbon",
                 "gemini-4-argon",
             ]
         ]
@@ -338,6 +339,7 @@ class LlmResource(SyncAPIResource):
                 "gemini-3.6-flash",
                 "gemini-3.7-flash",
                 "gemini-3.8-flash",
+                "gemini-4-carbon",
                 "gemini-4-argon",
             ]
         ]
@@ -660,6 +662,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gemini-3.6-flash",
                 "gemini-3.7-flash",
                 "gemini-3.8-flash",
+                "gemini-4-carbon",
                 "gemini-4-argon",
             ]
         ]
@@ -905,6 +908,7 @@ class AsyncLlmResource(AsyncAPIResource):
                 "gemini-3.6-flash",
                 "gemini-3.7-flash",
                 "gemini-3.8-flash",
+                "gemini-4-carbon",
                 "gemini-4-argon",
             ]
         ]

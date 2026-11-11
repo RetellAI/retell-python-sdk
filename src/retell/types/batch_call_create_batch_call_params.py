@@ -2127,6 +2127,7 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2375,6 +2376,7 @@ class TaskAgentOverrideConversationFlowBackupModelBackupModelChoice(TypedDict, t
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2452,6 +2454,7 @@ class TaskAgentOverrideConversationFlowModelChoiceModelChoiceCascading(TypedDict
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2536,6 +2539,7 @@ class TaskAgentOverrideConversationFlowModelConfigCascadingModelConfigBackupBack
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2598,6 +2602,7 @@ class TaskAgentOverrideConversationFlowModelConfigCascadingModelConfigPrimary(Ty
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2698,6 +2703,7 @@ class TaskAgentOverrideConversationFlowModelConfigDuplexModelConfigBackend(Typed
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2754,6 +2760,7 @@ class TaskAgentOverrideConversationFlowModelConfigDuplexModelConfigBackupBackupM
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2904,6 +2911,7 @@ class TaskAgentOverrideRetellLlmBackupModelBackupModelChoice(TypedDict, total=Fa
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2986,6 +2994,7 @@ class TaskAgentOverrideRetellLlmModelConfigCascadingModelConfigBackupBackupModel
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -3048,6 +3057,7 @@ class TaskAgentOverrideRetellLlmModelConfigCascadingModelConfigPrimary(TypedDict
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -3148,6 +3158,7 @@ class TaskAgentOverrideRetellLlmModelConfigDuplexModelConfigBackend(TypedDict, t
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -3204,6 +3215,7 @@ class TaskAgentOverrideRetellLlmModelConfigDuplexModelConfigBackupBackupModelRef
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -3335,6 +3347,7 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]

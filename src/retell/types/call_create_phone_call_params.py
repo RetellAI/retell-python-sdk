@@ -2158,6 +2158,7 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2406,6 +2407,7 @@ class AgentOverrideConversationFlowBackupModelBackupModelChoice(TypedDict, total
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2483,6 +2485,7 @@ class AgentOverrideConversationFlowModelChoiceModelChoiceCascading(TypedDict, to
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2566,6 +2569,7 @@ class AgentOverrideConversationFlowModelConfigCascadingModelConfigBackupBackupMo
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2628,6 +2632,7 @@ class AgentOverrideConversationFlowModelConfigCascadingModelConfigPrimary(TypedD
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2728,6 +2733,7 @@ class AgentOverrideConversationFlowModelConfigDuplexModelConfigBackend(TypedDict
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2784,6 +2790,7 @@ class AgentOverrideConversationFlowModelConfigDuplexModelConfigBackupBackupModel
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -2934,6 +2941,7 @@ class AgentOverrideRetellLlmBackupModelBackupModelChoice(TypedDict, total=False)
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -3016,6 +3024,7 @@ class AgentOverrideRetellLlmModelConfigCascadingModelConfigBackupBackupModelRef(
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -3078,6 +3087,7 @@ class AgentOverrideRetellLlmModelConfigCascadingModelConfigPrimary(TypedDict, to
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -3178,6 +3188,7 @@ class AgentOverrideRetellLlmModelConfigDuplexModelConfigBackend(TypedDict, total
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -3234,6 +3245,7 @@ class AgentOverrideRetellLlmModelConfigDuplexModelConfigBackupBackupModelRef(Typ
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
@@ -3365,6 +3377,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-carbon",
             "gemini-4-argon",
         ]
     ]
