@@ -177,6 +177,7 @@ class TestCRM:
                     "options": ["string"],
                 }
             ],
+            opt_out_contact_sync=True,
         )
         assert_matches_type(CRMConfig, crm, path=["response"])
 
@@ -363,6 +364,7 @@ class TestAsyncCRM:
                     "options": ["string"],
                 }
             ],
+            opt_out_contact_sync=True,
         )
         assert_matches_type(CRMConfig, crm, path=["response"])
 

@@ -69,6 +69,13 @@ class CRMConfig(BaseModel):
     default_contact_memory_update_prompt: str
     """Built-in memory rewrite prompt."""
 
+    opt_out_contact_sync: bool
+    """
+    When true, calls and chats do not create or update contacts: no contact memory,
+    analysis data or campaign outcome fields are written, and no conversation
+    activity is pushed to the linked CRM. Existing contacts are kept.
+    """
+
     org_id: str
 
     app_id: Optional[str] = None

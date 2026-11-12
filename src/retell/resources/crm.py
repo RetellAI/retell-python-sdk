@@ -180,6 +180,7 @@ class CRMResource(SyncAPIResource):
         contact_tags: Optional[Iterable[crm_update_config_params.ContactTag]] | Omit = omit,
         crm_analysis_data_mappings: Iterable[crm_update_config_params.CRMAnalysisDataMapping] | Omit = omit,
         custom_fields: Iterable[crm_update_config_params.CustomField] | Omit = omit,
+        opt_out_contact_sync: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -217,6 +218,10 @@ class CRMResource(SyncAPIResource):
               crm_analysis_data_mappings in the same request to retarget or drop those
               mappings.
 
+          opt_out_contact_sync: Set true to stop calls and chats from creating or updating contacts, false to
+              resume. Contacts created through the API, CSV import or the linked CRM's sync
+              are unaffected.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -235,6 +240,7 @@ class CRMResource(SyncAPIResource):
                     "contact_tags": contact_tags,
                     "crm_analysis_data_mappings": crm_analysis_data_mappings,
                     "custom_fields": custom_fields,
+                    "opt_out_contact_sync": opt_out_contact_sync,
                 },
                 crm_update_config_params.CRMUpdateConfigParams,
             ),
@@ -403,6 +409,7 @@ class AsyncCRMResource(AsyncAPIResource):
         contact_tags: Optional[Iterable[crm_update_config_params.ContactTag]] | Omit = omit,
         crm_analysis_data_mappings: Iterable[crm_update_config_params.CRMAnalysisDataMapping] | Omit = omit,
         custom_fields: Iterable[crm_update_config_params.CustomField] | Omit = omit,
+        opt_out_contact_sync: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -440,6 +447,10 @@ class AsyncCRMResource(AsyncAPIResource):
               crm_analysis_data_mappings in the same request to retarget or drop those
               mappings.
 
+          opt_out_contact_sync: Set true to stop calls and chats from creating or updating contacts, false to
+              resume. Contacts created through the API, CSV import or the linked CRM's sync
+              are unaffected.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -458,6 +469,7 @@ class AsyncCRMResource(AsyncAPIResource):
                     "contact_tags": contact_tags,
                     "crm_analysis_data_mappings": crm_analysis_data_mappings,
                     "custom_fields": custom_fields,
+                    "opt_out_contact_sync": opt_out_contact_sync,
                 },
                 crm_update_config_params.CRMUpdateConfigParams,
             ),

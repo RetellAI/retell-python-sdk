@@ -51,6 +51,13 @@ class CRMUpdateConfigParams(TypedDict, total=False):
     to retarget or drop those mappings.
     """
 
+    opt_out_contact_sync: bool
+    """
+    Set true to stop calls and chats from creating or updating contacts, false to
+    resume. Contacts created through the API, CSV import or the linked CRM's sync
+    are unaffected.
+    """
+
 
 class ContactTag(TypedDict, total=False):
     id: Required[str]
