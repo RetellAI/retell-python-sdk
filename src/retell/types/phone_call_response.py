@@ -514,6 +514,13 @@ class PostSessionTranscriptWithToolCallUtteranceMetadata(BaseModel):
     interrupt_id: Optional[int] = None
     """Custom LLM agent interruption identifier, when available."""
 
+    interrupted: Optional[bool] = None
+    """Whether the user cut off this agent utterance before it finished playing.
+
+    Only set for Retell LLM and conversation flow agents; absent when the agent was
+    not interrupted.
+    """
+
     is_backchannel: Optional[bool] = None
     """Whether the utterance is a backchannel acknowledgment."""
 
@@ -787,6 +794,13 @@ class PreSessionTranscriptWithToolCallUtteranceMetadata(BaseModel):
 
     interrupt_id: Optional[int] = None
     """Custom LLM agent interruption identifier, when available."""
+
+    interrupted: Optional[bool] = None
+    """Whether the user cut off this agent utterance before it finished playing.
+
+    Only set for Retell LLM and conversation flow agents; absent when the agent was
+    not interrupted.
+    """
 
     is_backchannel: Optional[bool] = None
     """Whether the utterance is a backchannel acknowledgment."""
@@ -1062,6 +1076,13 @@ class ScrubbedPostSessionTranscriptWithToolCallUtteranceMetadata(BaseModel):
     interrupt_id: Optional[int] = None
     """Custom LLM agent interruption identifier, when available."""
 
+    interrupted: Optional[bool] = None
+    """Whether the user cut off this agent utterance before it finished playing.
+
+    Only set for Retell LLM and conversation flow agents; absent when the agent was
+    not interrupted.
+    """
+
     is_backchannel: Optional[bool] = None
     """Whether the utterance is a backchannel acknowledgment."""
 
@@ -1336,6 +1357,13 @@ class ScrubbedPreSessionTranscriptWithToolCallUtteranceMetadata(BaseModel):
     interrupt_id: Optional[int] = None
     """Custom LLM agent interruption identifier, when available."""
 
+    interrupted: Optional[bool] = None
+    """Whether the user cut off this agent utterance before it finished playing.
+
+    Only set for Retell LLM and conversation flow agents; absent when the agent was
+    not interrupted.
+    """
+
     is_backchannel: Optional[bool] = None
     """Whether the utterance is a backchannel acknowledgment."""
 
@@ -1609,6 +1637,13 @@ class ScrubbedTranscriptWithToolCallUtteranceMetadata(BaseModel):
 
     interrupt_id: Optional[int] = None
     """Custom LLM agent interruption identifier, when available."""
+
+    interrupted: Optional[bool] = None
+    """Whether the user cut off this agent utterance before it finished playing.
+
+    Only set for Retell LLM and conversation flow agents; absent when the agent was
+    not interrupted.
+    """
 
     is_backchannel: Optional[bool] = None
     """Whether the utterance is a backchannel acknowledgment."""
@@ -1892,6 +1927,13 @@ class TranscriptObjectMetadata(BaseModel):
     interrupt_id: Optional[int] = None
     """Custom LLM agent interruption identifier, when available."""
 
+    interrupted: Optional[bool] = None
+    """Whether the user cut off this agent utterance before it finished playing.
+
+    Only set for Retell LLM and conversation flow agents; absent when the agent was
+    not interrupted.
+    """
+
     is_backchannel: Optional[bool] = None
     """Whether the utterance is a backchannel acknowledgment."""
 
@@ -1981,6 +2023,13 @@ class TranscriptWithToolCallUtteranceMetadata(BaseModel):
 
     interrupt_id: Optional[int] = None
     """Custom LLM agent interruption identifier, when available."""
+
+    interrupted: Optional[bool] = None
+    """Whether the user cut off this agent utterance before it finished playing.
+
+    Only set for Retell LLM and conversation flow agents; absent when the agent was
+    not interrupted.
+    """
 
     is_backchannel: Optional[bool] = None
     """Whether the utterance is a backchannel acknowledgment."""
