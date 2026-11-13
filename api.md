@@ -61,7 +61,7 @@ Methods:
 Types:
 
 ```python
-from retell.types import PhoneNumberResponse, PhoneNumberListResponse
+from retell.types import PhoneNumberResponse, PhoneNumberListResponse, PhoneNumberSearchResponse
 ```
 
 Methods:
@@ -72,6 +72,7 @@ Methods:
 - <code title="get /v2/list-phone-numbers">client.phone_number.<a href="./src/retell/resources/phone_number.py">list</a>(\*\*<a href="src/retell/types/phone_number_list_params.py">params</a>) -> <a href="./src/retell/types/phone_number_list_response.py">PhoneNumberListResponse</a></code>
 - <code title="delete /delete-phone-number/{phone_number}">client.phone_number.<a href="./src/retell/resources/phone_number.py">delete</a>(phone_number) -> None</code>
 - <code title="post /import-phone-number">client.phone*number.<a href="./src/retell/resources/phone_number.py">import*</a>(\*\*<a href="src/retell/types/phone_number_import_params.py">params</a>) -> <a href="./src/retell/types/phone_number_response.py">PhoneNumberResponse</a></code>
+- <code title="post /v2/list-phone-numbers">client.phone_number.<a href="./src/retell/resources/phone_number.py">search</a>(\*\*<a href="src/retell/types/phone_number_search_params.py">params</a>) -> <a href="./src/retell/types/phone_number_search_response.py">PhoneNumberSearchResponse</a></code>
 
 # Agent
 

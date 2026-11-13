@@ -1683,6 +1683,7 @@ class BackupModelBackupModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -2306,6 +2307,7 @@ class ComponentNodeConversationNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -2360,6 +2362,7 @@ class ComponentNodeConversationNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -3121,6 +3124,7 @@ class ComponentNodeSubagentNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -3175,6 +3179,7 @@ class ComponentNodeSubagentNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -4170,10 +4175,9 @@ class ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableStringAnaly
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     examples: Optional[List[str]] = None
@@ -4182,7 +4186,9 @@ class ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableStringAnaly
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -4200,16 +4206,17 @@ class ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableEnumAnalysi
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -4224,16 +4231,17 @@ class ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableBooleanAnal
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -4248,16 +4256,17 @@ class ComponentNodeSubagentNodeToolExtractDynamicVariableToolVariableNumberAnaly
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -5038,6 +5047,7 @@ class ComponentNodeEndNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -5092,6 +5102,7 @@ class ComponentNodeEndNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -5608,6 +5619,7 @@ class ComponentNodeFunctionNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -5662,6 +5674,7 @@ class ComponentNodeFunctionNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -6193,6 +6206,7 @@ class ComponentNodeCodeNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -6247,6 +6261,7 @@ class ComponentNodeCodeNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -6710,6 +6725,7 @@ class ComponentNodeEscalateChatNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -6764,6 +6780,7 @@ class ComponentNodeEscalateChatNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -7512,6 +7529,7 @@ class ComponentNodeTransferCallNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -7566,6 +7584,7 @@ class ComponentNodeTransferCallNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -8091,6 +8110,7 @@ class ComponentNodePressDigitNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -8145,6 +8165,7 @@ class ComponentNodePressDigitNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -8643,6 +8664,7 @@ class ComponentNodeBranchNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -8697,6 +8719,7 @@ class ComponentNodeBranchNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -9191,6 +9214,7 @@ class ComponentNodeSMSNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -9245,6 +9269,7 @@ class ComponentNodeSMSNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -9368,10 +9393,9 @@ class ComponentNodeExtractDynamicVariablesNodeVariableStringAnalysisData(BaseMod
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     examples: Optional[List[str]] = None
@@ -9380,7 +9404,9 @@ class ComponentNodeExtractDynamicVariablesNodeVariableStringAnalysisData(BaseMod
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -9398,16 +9424,17 @@ class ComponentNodeExtractDynamicVariablesNodeVariableEnumAnalysisData(BaseModel
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -9422,16 +9449,17 @@ class ComponentNodeExtractDynamicVariablesNodeVariableBooleanAnalysisData(BaseMo
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -9446,16 +9474,17 @@ class ComponentNodeExtractDynamicVariablesNodeVariableNumberAnalysisData(BaseMod
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -9911,6 +9940,7 @@ class ComponentNodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -9965,6 +9995,7 @@ class ComponentNodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary(
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -10403,6 +10434,7 @@ class ComponentNodeAgentSwapNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -10457,6 +10489,7 @@ class ComponentNodeAgentSwapNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -11002,6 +11035,7 @@ class ComponentNodeMcpNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -11056,6 +11090,7 @@ class ComponentNodeMcpNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -11883,6 +11918,7 @@ class ComponentNodeBridgeTransferNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -11937,6 +11973,7 @@ class ComponentNodeBridgeTransferNodeModelConfigNodeModelConfigPrimary(BaseModel
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -12310,6 +12347,7 @@ class ComponentNodeCancelTransferNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -12364,6 +12402,7 @@ class ComponentNodeCancelTransferNodeModelConfigNodeModelConfigPrimary(BaseModel
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -12928,6 +12967,7 @@ class ModelChoiceModelChoiceCascading(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -13006,6 +13046,7 @@ class ModelConfigCascadingModelConfigBackupBackupModelRef(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -13067,6 +13108,7 @@ class ModelConfigCascadingModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -13164,6 +13206,7 @@ class ModelConfigDuplexModelConfigBackend(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -13219,6 +13262,7 @@ class ModelConfigDuplexModelConfigBackupBackupModelRef(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -13853,6 +13897,7 @@ class NodeConversationNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -13907,6 +13952,7 @@ class NodeConversationNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -14661,6 +14707,7 @@ class NodeSubagentNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -14715,6 +14762,7 @@ class NodeSubagentNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -15708,10 +15756,9 @@ class NodeSubagentNodeToolExtractDynamicVariableToolVariableStringAnalysisData(B
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     examples: Optional[List[str]] = None
@@ -15720,7 +15767,9 @@ class NodeSubagentNodeToolExtractDynamicVariableToolVariableStringAnalysisData(B
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -15738,16 +15787,17 @@ class NodeSubagentNodeToolExtractDynamicVariableToolVariableEnumAnalysisData(Bas
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -15762,16 +15812,17 @@ class NodeSubagentNodeToolExtractDynamicVariableToolVariableBooleanAnalysisData(
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -15786,16 +15837,17 @@ class NodeSubagentNodeToolExtractDynamicVariableToolVariableNumberAnalysisData(B
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -16573,6 +16625,7 @@ class NodeEndNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -16627,6 +16680,7 @@ class NodeEndNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -17137,6 +17191,7 @@ class NodeFunctionNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -17191,6 +17246,7 @@ class NodeFunctionNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -17717,6 +17773,7 @@ class NodeCodeNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -17771,6 +17828,7 @@ class NodeCodeNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -18226,6 +18284,7 @@ class NodeEscalateChatNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -18280,6 +18339,7 @@ class NodeEscalateChatNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -19009,6 +19069,7 @@ class NodeTransferCallNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -19063,6 +19124,7 @@ class NodeTransferCallNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -19577,6 +19639,7 @@ class NodePressDigitNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -19631,6 +19694,7 @@ class NodePressDigitNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -20124,6 +20188,7 @@ class NodeBranchNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -20178,6 +20243,7 @@ class NodeBranchNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -20668,6 +20734,7 @@ class NodeSMSNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -20722,6 +20789,7 @@ class NodeSMSNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -20843,10 +20911,9 @@ class NodeExtractDynamicVariablesNodeVariableStringAnalysisData(BaseModel):
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     examples: Optional[List[str]] = None
@@ -20855,7 +20922,9 @@ class NodeExtractDynamicVariablesNodeVariableStringAnalysisData(BaseModel):
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -20873,16 +20942,17 @@ class NodeExtractDynamicVariablesNodeVariableEnumAnalysisData(BaseModel):
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -20897,16 +20967,17 @@ class NodeExtractDynamicVariablesNodeVariableBooleanAnalysisData(BaseModel):
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -20921,16 +20992,17 @@ class NodeExtractDynamicVariablesNodeVariableNumberAnalysisData(BaseModel):
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -21380,6 +21452,7 @@ class NodeExtractDynamicVariablesNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -21434,6 +21507,7 @@ class NodeExtractDynamicVariablesNodeModelConfigNodeModelConfigPrimary(BaseModel
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -21861,6 +21935,7 @@ class NodeAgentSwapNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -21915,6 +21990,7 @@ class NodeAgentSwapNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -22455,6 +22531,7 @@ class NodeMcpNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -22509,6 +22586,7 @@ class NodeMcpNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -23318,6 +23396,7 @@ class NodeBridgeTransferNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -23372,6 +23451,7 @@ class NodeBridgeTransferNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -23730,6 +23810,7 @@ class NodeCancelTransferNodeModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -23784,6 +23865,7 @@ class NodeCancelTransferNodeModelConfigNodeModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
