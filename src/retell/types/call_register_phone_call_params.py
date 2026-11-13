@@ -350,10 +350,9 @@ class AgentOverrideAgentPostCallAnalysisDataStringAnalysisData(TypedDict, total=
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     examples: SequenceNotStr[str]
@@ -362,7 +361,9 @@ class AgentOverrideAgentPostCallAnalysisDataStringAnalysisData(TypedDict, total=
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -380,16 +381,17 @@ class AgentOverrideAgentPostCallAnalysisDataEnumAnalysisData(TypedDict, total=Fa
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -404,16 +406,17 @@ class AgentOverrideAgentPostCallAnalysisDataBooleanAnalysisData(TypedDict, total
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -428,16 +431,17 @@ class AgentOverrideAgentPostCallAnalysisDataNumberAnalysisData(TypedDict, total=
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -454,9 +458,9 @@ class AgentOverrideAgentPostCallAnalysisDataCallPresetAnalysisData(TypedDict, to
     """Identifies this item as a system preset."""
 
     conditional_prompt: str
-    """Optional instruction to help decide whether this field needs to be populated.
+    """Instruction for deciding whether to populate this field.
 
-    If not set, the field is always included.
+    Only used when required is false.
     """
 
     description: str
@@ -2124,6 +2128,7 @@ class AgentOverrideAgent(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -2373,6 +2378,7 @@ class AgentOverrideConversationFlowBackupModelBackupModelChoice(TypedDict, total
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -2451,6 +2457,7 @@ class AgentOverrideConversationFlowModelChoiceModelChoiceCascading(TypedDict, to
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -2535,6 +2542,7 @@ class AgentOverrideConversationFlowModelConfigCascadingModelConfigBackupBackupMo
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -2598,6 +2606,7 @@ class AgentOverrideConversationFlowModelConfigCascadingModelConfigPrimary(TypedD
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -2699,6 +2708,7 @@ class AgentOverrideConversationFlowModelConfigDuplexModelConfigBackend(TypedDict
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -2756,6 +2766,7 @@ class AgentOverrideConversationFlowModelConfigDuplexModelConfigBackupBackupModel
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -2907,6 +2918,7 @@ class AgentOverrideRetellLlmBackupModelBackupModelChoice(TypedDict, total=False)
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -2990,6 +3002,7 @@ class AgentOverrideRetellLlmModelConfigCascadingModelConfigBackupBackupModelRef(
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -3053,6 +3066,7 @@ class AgentOverrideRetellLlmModelConfigCascadingModelConfigPrimary(TypedDict, to
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -3154,6 +3168,7 @@ class AgentOverrideRetellLlmModelConfigDuplexModelConfigBackend(TypedDict, total
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -3211,6 +3226,7 @@ class AgentOverrideRetellLlmModelConfigDuplexModelConfigBackupBackupModelRef(Typ
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -3343,6 +3359,7 @@ class AgentOverrideRetellLlm(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]

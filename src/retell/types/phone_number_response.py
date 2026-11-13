@@ -130,6 +130,9 @@ class SipOutboundTrunkConfig(BaseModel):
 
 
 class PhoneNumberResponse(BaseModel):
+    custom_sms_enabled: bool
+    """Whether the number has a custom SMS configuration."""
+
     last_modification_timestamp: int
     """Last modification timestamp (milliseconds since epoch).
 
@@ -229,3 +232,19 @@ class PhoneNumberResponse(BaseModel):
     """Pretty printed phone number, provided for your reference."""
 
     sip_outbound_trunk_config: Optional[SipOutboundTrunkConfig] = None
+
+    sms_enabled: Optional[bool] = None
+    """
+    Whether the number can send SMS, through a custom SMS configuration or an
+    approved A2P application. Returned only by `GET` and `POST`
+    `/v2/list-phone-numbers`.
+    """
+
+    spam_check_enabled: Optional[bool] = None
+    """Whether this number is enrolled in daily spam testing."""
+
+    spam_status: Optional[Literal["clean", "spam"]] = None
+    """Latest spam test result for this number.
+
+    Absent until the first vendor result arrives.
+    """

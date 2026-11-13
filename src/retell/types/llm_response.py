@@ -181,6 +181,7 @@ class BackupModelBackupModelChoice(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -1117,10 +1118,9 @@ class GeneralToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel)
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     examples: Optional[List[str]] = None
@@ -1129,7 +1129,9 @@ class GeneralToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel)
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -1147,16 +1149,17 @@ class GeneralToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -1171,16 +1174,17 @@ class GeneralToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -1195,16 +1199,17 @@ class GeneralToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel)
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -1633,6 +1638,7 @@ class ModelConfigCascadingModelConfigBackupBackupModelRef(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -1694,6 +1700,7 @@ class ModelConfigCascadingModelConfigPrimary(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -1791,6 +1798,7 @@ class ModelConfigDuplexModelConfigBackend(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -1846,6 +1854,7 @@ class ModelConfigDuplexModelConfigBackupBackupModelRef(BaseModel):
         "gemini-3.6-flash",
         "gemini-3.7-flash",
         "gemini-3.8-flash",
+        "gemini-4-hydrogen",
         "gemini-4-carbon",
         "gemini-4-argon",
     ]
@@ -2863,10 +2872,9 @@ class StateToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel):
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     examples: Optional[List[str]] = None
@@ -2875,7 +2883,9 @@ class StateToolExtractDynamicVariableToolVariableStringAnalysisData(BaseModel):
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -2893,16 +2903,17 @@ class StateToolExtractDynamicVariableToolVariableEnumAnalysisData(BaseModel):
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -2917,16 +2928,17 @@ class StateToolExtractDynamicVariableToolVariableBooleanAnalysisData(BaseModel):
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -2941,16 +2953,17 @@ class StateToolExtractDynamicVariableToolVariableNumberAnalysisData(BaseModel):
     """Type of the variable to extract."""
 
     conditional_prompt: Optional[str] = None
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: Optional[bool] = None
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -3446,6 +3459,7 @@ class LlmResponse(BaseModel):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]

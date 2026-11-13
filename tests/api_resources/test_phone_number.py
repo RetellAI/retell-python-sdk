@@ -12,6 +12,7 @@ from tests.utils import assert_matches_type
 from retell.types import (
     PhoneNumberResponse,
     PhoneNumberListResponse,
+    PhoneNumberSearchResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -361,6 +362,94 @@ class TestPhoneNumber:
 
         assert cast(Any, response.is_closed) is True
 
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_search(self, client: Retell) -> None:
+        phone_number = client.phone_number.search()
+        assert_matches_type(PhoneNumberSearchResponse, phone_number, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_search_with_all_params(self, client: Retell) -> None:
+        phone_number = client.phone_number.search(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+            filter_criteria={
+                "branded_call": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
+                "inbound_agent_tags": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
+                "inbound_agents": [
+                    {
+                        "agent_id": "agent_id",
+                        "version": [0],
+                    }
+                ],
+                "outbound_agent_tags": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
+                "outbound_agents": [
+                    {
+                        "agent_id": "agent_id",
+                        "version": [0],
+                    }
+                ],
+                "phone_number_type": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["retell-twilio"],
+                },
+                "query": "query",
+                "sms": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
+                "spam_status": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["clean"],
+                },
+                "verified_number": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
+            },
+        )
+        assert_matches_type(PhoneNumberSearchResponse, phone_number, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_search(self, client: Retell) -> None:
+        response = client.phone_number.with_raw_response.search()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        phone_number = response.parse()
+        assert_matches_type(PhoneNumberSearchResponse, phone_number, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_search(self, client: Retell) -> None:
+        with client.phone_number.with_streaming_response.search() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            phone_number = response.parse()
+            assert_matches_type(PhoneNumberSearchResponse, phone_number, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncPhoneNumber:
     parametrize = pytest.mark.parametrize(
@@ -705,5 +794,93 @@ class TestAsyncPhoneNumber:
 
             phone_number = await response.parse()
             assert_matches_type(PhoneNumberResponse, phone_number, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_search(self, async_client: AsyncRetell) -> None:
+        phone_number = await async_client.phone_number.search()
+        assert_matches_type(PhoneNumberSearchResponse, phone_number, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_search_with_all_params(self, async_client: AsyncRetell) -> None:
+        phone_number = await async_client.phone_number.search(
+            limit=1000,
+            pagination_key="pagination_key",
+            sort_order="ascending",
+            filter_criteria={
+                "branded_call": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
+                "inbound_agent_tags": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
+                "inbound_agents": [
+                    {
+                        "agent_id": "agent_id",
+                        "version": [0],
+                    }
+                ],
+                "outbound_agent_tags": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["string"],
+                },
+                "outbound_agents": [
+                    {
+                        "agent_id": "agent_id",
+                        "version": [0],
+                    }
+                ],
+                "phone_number_type": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["retell-twilio"],
+                },
+                "query": "query",
+                "sms": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
+                "spam_status": {
+                    "op": "in",
+                    "type": "enum",
+                    "value": ["clean"],
+                },
+                "verified_number": {
+                    "op": "eq",
+                    "type": "boolean",
+                    "value": True,
+                },
+            },
+        )
+        assert_matches_type(PhoneNumberSearchResponse, phone_number, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_search(self, async_client: AsyncRetell) -> None:
+        response = await async_client.phone_number.with_raw_response.search()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        phone_number = await response.parse()
+        assert_matches_type(PhoneNumberSearchResponse, phone_number, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_search(self, async_client: AsyncRetell) -> None:
+        async with async_client.phone_number.with_streaming_response.search() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            phone_number = await response.parse()
+            assert_matches_type(PhoneNumberSearchResponse, phone_number, path=["response"])
 
         assert cast(Any, response.is_closed) is True

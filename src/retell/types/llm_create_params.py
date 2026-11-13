@@ -238,6 +238,7 @@ class LlmCreateParams(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -350,6 +351,7 @@ class BackupModelBackupModelChoice(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -1283,10 +1285,9 @@ class GeneralToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict,
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     examples: SequenceNotStr[str]
@@ -1295,7 +1296,9 @@ class GeneralToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict,
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -1313,16 +1316,17 @@ class GeneralToolExtractDynamicVariableToolVariableEnumAnalysisData(TypedDict, t
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -1337,16 +1341,17 @@ class GeneralToolExtractDynamicVariableToolVariableBooleanAnalysisData(TypedDict
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -1361,16 +1366,17 @@ class GeneralToolExtractDynamicVariableToolVariableNumberAnalysisData(TypedDict,
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -1800,6 +1806,7 @@ class ModelConfigCascadingModelConfigBackupBackupModelRef(TypedDict, total=False
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -1863,6 +1870,7 @@ class ModelConfigCascadingModelConfigPrimary(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -1964,6 +1972,7 @@ class ModelConfigDuplexModelConfigBackend(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -2021,6 +2030,7 @@ class ModelConfigDuplexModelConfigBackupBackupModelRef(TypedDict, total=False):
             "gemini-3.6-flash",
             "gemini-3.7-flash",
             "gemini-3.8-flash",
+            "gemini-4-hydrogen",
             "gemini-4-carbon",
             "gemini-4-argon",
         ]
@@ -3037,10 +3047,9 @@ class StateToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict, t
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     examples: SequenceNotStr[str]
@@ -3049,7 +3058,9 @@ class StateToolExtractDynamicVariableToolVariableStringAnalysisData(TypedDict, t
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -3067,16 +3078,17 @@ class StateToolExtractDynamicVariableToolVariableEnumAnalysisData(TypedDict, tot
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -3091,16 +3103,17 @@ class StateToolExtractDynamicVariableToolVariableBooleanAnalysisData(TypedDict, 
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 
@@ -3115,16 +3128,17 @@ class StateToolExtractDynamicVariableToolVariableNumberAnalysisData(TypedDict, t
     """Type of the variable to extract."""
 
     conditional_prompt: str
-    """
-    Optional instruction to help decide whether this field needs to be populated in
-    the analysis. If not set, the field is always included. If required is true,
-    this is ignored.
+    """Instruction for deciding whether to populate this field.
+
+    Only used when required is false.
     """
 
     required: bool
     """Whether this data is required.
 
-    If true and the data is not extracted, the call will be marked as unsuccessful.
+    Defaults to true. If true and the data is not extracted, the call will be marked
+    as unsuccessful. Set to false to let the field stay empty when the call has no
+    applicable value; this is the "Allow empty value" setting in the dashboard.
     """
 
 

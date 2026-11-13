@@ -11,6 +11,7 @@ from ..types import (
     phone_number_list_params,
     phone_number_create_params,
     phone_number_import_params,
+    phone_number_search_params,
     phone_number_update_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
@@ -26,6 +27,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.phone_number_response import PhoneNumberResponse
 from ..types.phone_number_list_response import PhoneNumberListResponse
+from ..types.phone_number_search_response import PhoneNumberSearchResponse
 
 __all__ = ["PhoneNumberResource", "AsyncPhoneNumberResource"]
 
@@ -539,6 +541,64 @@ class PhoneNumberResource(SyncAPIResource):
             cast_to=PhoneNumberResponse,
         )
 
+    def search(
+        self,
+        *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
+        filter_criteria: phone_number_search_params.FilterCriteria | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> PhoneNumberSearchResponse:
+        """
+        List phone numbers with filters and pagination.
+
+        Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
+          sort_order: Sort order for results.
+
+          filter_criteria: Filters for listing phone numbers. All provided filters are connected with AND.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/v2/list-phone-numbers",
+            body=maybe_transform(
+                {"filter_criteria": filter_criteria}, phone_number_search_params.PhoneNumberSearchParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+                query=maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "sort_order": sort_order,
+                    },
+                    phone_number_search_params.PhoneNumberSearchParams,
+                ),
+            ),
+            cast_to=PhoneNumberSearchResponse,
+        )
+
 
 class AsyncPhoneNumberResource(AsyncAPIResource):
     @cached_property
@@ -1049,6 +1109,64 @@ class AsyncPhoneNumberResource(AsyncAPIResource):
             cast_to=PhoneNumberResponse,
         )
 
+    async def search(
+        self,
+        *,
+        limit: int | Omit = omit,
+        pagination_key: str | Omit = omit,
+        sort_order: Literal["ascending", "descending"] | Omit = omit,
+        filter_criteria: phone_number_search_params.FilterCriteria | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> PhoneNumberSearchResponse:
+        """
+        List phone numbers with filters and pagination.
+
+        Args:
+          limit: Maximum number of items to return.
+
+          pagination_key: Pagination key for fetching the next page.
+
+          sort_order: Sort order for results.
+
+          filter_criteria: Filters for listing phone numbers. All provided filters are connected with AND.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/v2/list-phone-numbers",
+            body=await async_maybe_transform(
+                {"filter_criteria": filter_criteria}, phone_number_search_params.PhoneNumberSearchParams
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+                query=await async_maybe_transform(
+                    {
+                        "limit": limit,
+                        "pagination_key": pagination_key,
+                        "sort_order": sort_order,
+                    },
+                    phone_number_search_params.PhoneNumberSearchParams,
+                ),
+            ),
+            cast_to=PhoneNumberSearchResponse,
+        )
+
 
 class PhoneNumberResourceWithRawResponse:
     def __init__(self, phone_number: PhoneNumberResource) -> None:
@@ -1071,6 +1189,9 @@ class PhoneNumberResourceWithRawResponse:
         )
         self.import_ = to_raw_response_wrapper(
             phone_number.import_,
+        )
+        self.search = to_raw_response_wrapper(
+            phone_number.search,
         )
 
 
@@ -1096,6 +1217,9 @@ class AsyncPhoneNumberResourceWithRawResponse:
         self.import_ = async_to_raw_response_wrapper(
             phone_number.import_,
         )
+        self.search = async_to_raw_response_wrapper(
+            phone_number.search,
+        )
 
 
 class PhoneNumberResourceWithStreamingResponse:
@@ -1120,6 +1244,9 @@ class PhoneNumberResourceWithStreamingResponse:
         self.import_ = to_streamed_response_wrapper(
             phone_number.import_,
         )
+        self.search = to_streamed_response_wrapper(
+            phone_number.search,
+        )
 
 
 class AsyncPhoneNumberResourceWithStreamingResponse:
@@ -1143,4 +1270,7 @@ class AsyncPhoneNumberResourceWithStreamingResponse:
         )
         self.import_ = async_to_streamed_response_wrapper(
             phone_number.import_,
+        )
+        self.search = async_to_streamed_response_wrapper(
+            phone_number.search,
         )
