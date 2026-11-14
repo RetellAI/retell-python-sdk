@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.2.21](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.20...v6.2.21) (2026-11-14)
+
+
+### Bug Fixes
+
+* **api:** Add gemini-4-hydrogen to agent LLM model options. ([87c773d](https://github.com/RetellAI/retell-python-sdk/commit/87c773d750a82e9ab43b3867564af99a4cf90e67))
+* **api:** Add opt_out_contact_sync to CRM configuration and update requests to stop calls and chats from creating or updating contacts. ([609b9bb](https://github.com/RetellAI/retell-python-sdk/commit/609b9bb9a0db2c633f0754bacf1d2bce33a5a998))
+* **api:** Add phone_number search method at POST /v2/list-phone-numbers, with optional filter_criteria for spam, SMS, verification, type, and agents. ([87c773d](https://github.com/RetellAI/retell-python-sdk/commit/87c773d750a82e9ab43b3867564af99a4cf90e67))
+* **api:** Add required custom_sms_enabled and optional sms_enabled, spam_status, and spam_check_enabled to phone number responses. ([87c773d](https://github.com/RetellAI/retell-python-sdk/commit/87c773d750a82e9ab43b3867564af99a4cf90e67))
+* **api:** Add the optional interrupted boolean to utterance metadata, indicating the user cut off the agent utterance; set only for Retell LLM and conversation flow agents. ([f51980d](https://github.com/RetellAI/retell-python-sdk/commit/f51980db3edfcb9f630622e4f09cee5e53a0a985))
+
 ## [6.2.20](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.19...v6.2.20) (2026-11-11)
 
 ### Highlights
