@@ -100,6 +100,13 @@ class CRMConfigOutboundSyncMapping(TypedDict, total=False):
 
 
 class CRMConfig(TypedDict, total=False):
+    contact_board_id: str
+    """Monday.com board used for contact sync.
+
+    Configure after OAuth. Once phone mappings are saved, use a new connection to
+    change the board or primary phone column. Not accepted by other providers.
+    """
+
     inbound_sync_mappings: Iterable[CRMConfigInboundSyncMapping]
     """Field mappings applied when syncing CRM records into Retell contacts.
 

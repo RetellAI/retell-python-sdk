@@ -83,6 +83,13 @@ class CRMConfigOutboundSyncMapping(BaseModel):
 
 
 class CRMConfig(BaseModel):
+    contact_board_id: Optional[str] = None
+    """Monday.com board used for contact sync.
+
+    Configure after OAuth. Once phone mappings are saved, use a new connection to
+    change the board or primary phone column. Not accepted by other providers.
+    """
+
     inbound_sync_mappings: Optional[List[CRMConfigInboundSyncMapping]] = None
     """Field mappings applied when syncing CRM records into Retell contacts.
 
