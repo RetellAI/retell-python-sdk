@@ -45,6 +45,7 @@ class TestApp:
                 "type": "oauth2",
             },
             crm_config={
+                "contact_board_id": "269125115713",
                 "inbound_sync_mappings": [
                     {
                         "external_field_name": "external_field_name",
@@ -113,6 +114,7 @@ class TestApp:
                 "type": "oauth2",
             },
             crm_config={
+                "contact_board_id": "269125115713",
                 "inbound_sync_mappings": [
                     {
                         "external_field_name": "external_field_name",
@@ -523,6 +525,7 @@ class TestAsyncApp:
                 "type": "oauth2",
             },
             crm_config={
+                "contact_board_id": "269125115713",
                 "inbound_sync_mappings": [
                     {
                         "external_field_name": "external_field_name",
@@ -591,6 +594,7 @@ class TestAsyncApp:
                 "type": "oauth2",
             },
             crm_config={
+                "contact_board_id": "269125115713",
                 "inbound_sync_mappings": [
                     {
                         "external_field_name": "external_field_name",
