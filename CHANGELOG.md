@@ -2,11 +2,10 @@
 
 ## [6.2.22](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.21...v6.2.22) (2026-11-18)
 
+### Highlights
 
-### Bug Fixes
-
-* **api:** Add gpt-6.2-astra and gpt-6.2-sol as model options. ([f60577d](https://github.com/RetellAI/retell-python-sdk/commit/f60577d6e059c2083e58062fcdde870020e1e1b2))
-* **api:** Add optional contact_board_id to CRM app configuration for Monday.com contact sync. ([7f36da1](https://github.com/RetellAI/retell-python-sdk/commit/7f36da1d682eb3934a68411d07ae51b33fb34538))
+* Add Monday.com contact board ID to CRM configuration.
+* Add GPT-6.2 Astra and Sol LLM model options.
 
 ## [6.2.21](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.20...v6.2.21) (2026-11-15)
 
