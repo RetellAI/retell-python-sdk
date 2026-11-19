@@ -23650,9 +23650,10 @@ class ComponentMcp(TypedDict, total=False):
     """Query parameters to append to the MCP connection request URL."""
 
     timeout_ms: int
-    """Maximum time to wait for a connection to be established (in milliseconds).
+    """Maximum time to wait for an MCP tool call to return (in milliseconds).
 
-    Default to 120,000 ms (2 minutes).
+    Values below 60,000 are treated as 60,000, and values above 600,000 are treated
+    as 600,000. Default to 60,000 ms (1 minute).
     """
 
 
@@ -24067,9 +24068,10 @@ class Mcp(TypedDict, total=False):
     """Query parameters to append to the MCP connection request URL."""
 
     timeout_ms: int
-    """Maximum time to wait for a connection to be established (in milliseconds).
+    """Maximum time to wait for an MCP tool call to return (in milliseconds).
 
-    Default to 120,000 ms (2 minutes).
+    Values below 60,000 are treated as 60,000, and values above 600,000 are treated
+    as 600,000. Default to 60,000 ms (1 minute).
     """
 
 

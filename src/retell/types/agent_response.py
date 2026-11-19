@@ -18,6 +18,24 @@ __all__ = [
     "CustomSttConfig",
     "GuardrailConfig",
     "HandbookConfig",
+    "HandbookConfigAIDisclosure",
+    "HandbookConfigAIDisclosureHandbookEntryConfig",
+    "HandbookConfigConversational",
+    "HandbookConfigCustomerSupport",
+    "HandbookConfigEchoVerification",
+    "HandbookConfigEchoVerificationHandbookEntryConfig",
+    "HandbookConfigHighEmpathy",
+    "HandbookConfigHighEmpathyHandbookEntryConfig",
+    "HandbookConfigNatoPhoneticAlphabet",
+    "HandbookConfigNatoPhoneticAlphabetHandbookEntryConfig",
+    "HandbookConfigNaturalFillerWords",
+    "HandbookConfigNaturalFillerWordsHandbookEntryConfig",
+    "HandbookConfigScopeBoundaries",
+    "HandbookConfigScopeBoundariesHandbookEntryConfig",
+    "HandbookConfigSmartMatching",
+    "HandbookConfigSmartMatchingHandbookEntryConfig",
+    "HandbookConfigSpeechNormalization",
+    "HandbookConfigSpeechNormalizationHandbookEntryConfig",
     "IvrOption",
     "IvrOptionAction",
     "PiiConfig",
@@ -203,48 +221,167 @@ class GuardrailConfig(BaseModel):
     """
 
 
-class HandbookConfig(BaseModel):
-    """Toggle behavior presets on/off to influence agent response style and behaviors."""
+class HandbookConfigAIDisclosureHandbookEntryConfig(BaseModel):
+    """Configuration for an enabled handbook.
 
-    ai_disclosure: Optional[bool] = None
-    """When asked, acknowledge being a virtual assistant."""
-
-    conversational_personality: Optional[bool] = None
-    """Enables Conversational Personality.
-
-    When true, the agent uses the Conversational Personality handbook preset, skips
-    Professional Rep Personality during prompt assembly, and enables internal
-    colloquial rewrite behavior.
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
     """
 
-    default_personality: Optional[bool] = None
-    """Professional call center rep baseline."""
+    custom_prompt: Optional[str] = None
 
-    echo_verification: Optional[bool] = None
+
+HandbookConfigAIDisclosure: TypeAlias = Union[bool, HandbookConfigAIDisclosureHandbookEntryConfig]
+
+
+class HandbookConfigConversational(BaseModel):
+    """Conversational handbook."""
+
+    custom_prompt: Optional[str] = None
+
+
+class HandbookConfigCustomerSupport(BaseModel):
+    """Customer Support handbook."""
+
+    custom_prompt: Optional[str] = None
+
+
+class HandbookConfigEchoVerificationHandbookEntryConfig(BaseModel):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str] = None
+
+
+HandbookConfigEchoVerification: TypeAlias = Union[bool, HandbookConfigEchoVerificationHandbookEntryConfig]
+
+
+class HandbookConfigHighEmpathyHandbookEntryConfig(BaseModel):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str] = None
+
+
+HandbookConfigHighEmpathy: TypeAlias = Union[bool, HandbookConfigHighEmpathyHandbookEntryConfig]
+
+
+class HandbookConfigNatoPhoneticAlphabetHandbookEntryConfig(BaseModel):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str] = None
+
+
+HandbookConfigNatoPhoneticAlphabet: TypeAlias = Union[bool, HandbookConfigNatoPhoneticAlphabetHandbookEntryConfig]
+
+
+class HandbookConfigNaturalFillerWordsHandbookEntryConfig(BaseModel):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str] = None
+
+
+HandbookConfigNaturalFillerWords: TypeAlias = Union[bool, HandbookConfigNaturalFillerWordsHandbookEntryConfig]
+
+
+class HandbookConfigScopeBoundariesHandbookEntryConfig(BaseModel):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str] = None
+
+
+HandbookConfigScopeBoundaries: TypeAlias = Union[bool, HandbookConfigScopeBoundariesHandbookEntryConfig]
+
+
+class HandbookConfigSmartMatchingHandbookEntryConfig(BaseModel):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str] = None
+
+
+HandbookConfigSmartMatching: TypeAlias = Union[bool, HandbookConfigSmartMatchingHandbookEntryConfig]
+
+
+class HandbookConfigSpeechNormalizationHandbookEntryConfig(BaseModel):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str] = None
+
+
+HandbookConfigSpeechNormalization: TypeAlias = Union[bool, HandbookConfigSpeechNormalizationHandbookEntryConfig]
+
+
+class HandbookConfig(BaseModel):
+    """Enable and customize handbook prompts.
+
+    Sending this field replaces the complete handbook configuration.
+    """
+
+    ai_disclosure: Optional[HandbookConfigAIDisclosure] = None
+    """When asked, acknowledge being a virtual assistant."""
+
+    conversational: Optional[HandbookConfigConversational] = None
+    """Conversational handbook."""
+
+    conversational_personality: Optional[bool] = None
+    """Legacy name for conversational.
+
+    Cannot be sent together with conversational. For compatibility, true also
+    enables enable_colloquial_model when that field is omitted.
+    """
+
+    customer_support: Optional[HandbookConfigCustomerSupport] = None
+    """Customer Support handbook."""
+
+    default_personality: Optional[bool] = None
+    """Legacy name for customer_support.
+
+    Cannot be sent together with customer_support.
+    """
+
+    echo_verification: Optional[HandbookConfigEchoVerification] = None
     """Repeat back and confirm important details (voice only)."""
 
-    high_empathy: Optional[bool] = None
+    high_empathy: Optional[HandbookConfigHighEmpathy] = None
     """Warm acknowledgment of caller concerns."""
 
-    nato_phonetic_alphabet: Optional[bool] = None
+    nato_phonetic_alphabet: Optional[HandbookConfigNatoPhoneticAlphabet] = None
     """Spell using NATO phonetic alphabet style (voice only)."""
 
-    natural_filler_words: Optional[bool] = None
+    natural_filler_words: Optional[HandbookConfigNaturalFillerWords] = None
     """
     Sprinkle natural speech fillers like "um", "you know" for a more human,
     conversational tone.
     """
 
-    scope_boundaries: Optional[bool] = None
+    scope_boundaries: Optional[HandbookConfigScopeBoundaries] = None
     """Stay within prompt/context scope, don't invent details."""
 
-    smart_matching: Optional[bool] = None
+    smart_matching: Optional[HandbookConfigSmartMatching] = None
     """
     Treat near-match similar words as same entity to reduce impact of transcription
     error (voice only).
     """
 
-    speech_normalization: Optional[bool] = None
+    speech_normalization: Optional[HandbookConfigSpeechNormalization] = None
     """Convert numbers/dates/currency to spoken forms (voice only)."""
 
 
@@ -1772,6 +1909,13 @@ class AgentResponse(BaseModel):
     will not backchannel.
     """
 
+    enable_colloquial_model: Optional[bool] = None
+    """
+    Whether to rewrite generated responses with the separately billed colloquial
+    model. This setting is independent of handbook selection and is not supported
+    for speech-to-speech response engines. Defaults to false.
+    """
+
     enable_dnc_detection: Optional[bool] = None
     """
     If set to true, the agent recognizes requests to stop calling or contacting the
@@ -1853,7 +1997,10 @@ class AgentResponse(BaseModel):
     """
 
     handbook_config: Optional[HandbookConfig] = None
-    """Toggle behavior presets on/off to influence agent response style and behaviors."""
+    """Enable and customize handbook prompts.
+
+    Sending this field replaces the complete handbook configuration.
+    """
 
     interruption_sensitivity: Optional[float] = None
     """Controls how sensitive the agent is to user interruptions.

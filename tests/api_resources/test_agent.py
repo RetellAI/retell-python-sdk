@@ -15,6 +15,7 @@ from retell.types import (
     AgentRepairResponse,
     AgentListVersionsResponse,
     AgentCreateVersionResponse,
+    AgentGetHandbookPresetsResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -71,6 +72,7 @@ class TestAgent:
             denoising_enhancement_level=0.8,
             denoising_mode="noise-cancellation",
             enable_backchannel=True,
+            enable_colloquial_model=True,
             enable_dnc_detection=False,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
@@ -85,7 +87,9 @@ class TestAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational": {"custom_prompt": "custom_prompt"},
                 "conversational_personality": True,
+                "customer_support": {"custom_prompt": "custom_prompt"},
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -354,6 +358,7 @@ class TestAgent:
             denoising_enhancement_level=0.8,
             denoising_mode="noise-cancellation",
             enable_backchannel=True,
+            enable_colloquial_model=True,
             enable_dnc_detection=False,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
@@ -368,7 +373,9 @@ class TestAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational": {"custom_prompt": "custom_prompt"},
                 "conversational_personality": True,
+                "customer_support": {"custom_prompt": "custom_prompt"},
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -738,6 +745,34 @@ class TestAgent:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_get_handbook_presets(self, client: Retell) -> None:
+        agent = client.agent.get_handbook_presets()
+        assert_matches_type(AgentGetHandbookPresetsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get_handbook_presets(self, client: Retell) -> None:
+        response = client.agent.with_raw_response.get_handbook_presets()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = response.parse()
+        assert_matches_type(AgentGetHandbookPresetsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get_handbook_presets(self, client: Retell) -> None:
+        with client.agent.with_streaming_response.get_handbook_presets() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = response.parse()
+            assert_matches_type(AgentGetHandbookPresetsResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_method_list_versions(self, client: Retell) -> None:
         agent = client.agent.list_versions(
             agent_id="16b980523634a6dc504898cda492e939",
@@ -951,6 +986,7 @@ class TestAsyncAgent:
             denoising_enhancement_level=0.8,
             denoising_mode="noise-cancellation",
             enable_backchannel=True,
+            enable_colloquial_model=True,
             enable_dnc_detection=False,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
@@ -965,7 +1001,9 @@ class TestAsyncAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational": {"custom_prompt": "custom_prompt"},
                 "conversational_personality": True,
+                "customer_support": {"custom_prompt": "custom_prompt"},
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -1234,6 +1272,7 @@ class TestAsyncAgent:
             denoising_enhancement_level=0.8,
             denoising_mode="noise-cancellation",
             enable_backchannel=True,
+            enable_colloquial_model=True,
             enable_dnc_detection=False,
             enable_dynamic_responsiveness=True,
             enable_dynamic_voice_speed=True,
@@ -1248,7 +1287,9 @@ class TestAsyncAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational": {"custom_prompt": "custom_prompt"},
                 "conversational_personality": True,
+                "customer_support": {"custom_prompt": "custom_prompt"},
                 "default_personality": True,
                 "echo_verification": True,
                 "high_empathy": True,
@@ -1615,6 +1656,34 @@ class TestAsyncAgent:
                 agent_id="",
                 version=1,
             )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_get_handbook_presets(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.get_handbook_presets()
+        assert_matches_type(AgentGetHandbookPresetsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get_handbook_presets(self, async_client: AsyncRetell) -> None:
+        response = await async_client.agent.with_raw_response.get_handbook_presets()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = await response.parse()
+        assert_matches_type(AgentGetHandbookPresetsResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get_handbook_presets(self, async_client: AsyncRetell) -> None:
+        async with async_client.agent.with_streaming_response.get_handbook_presets() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = await response.parse()
+            assert_matches_type(AgentGetHandbookPresetsResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize

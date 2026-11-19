@@ -299,8 +299,8 @@ class ChatAgentResource(SyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
-          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
-              Voice-only presets are not available for chat agents.
+          handbook_config: Enable and customize handbook prompts. Sending this field replaces the complete
+              handbook configuration. Voice-only handbooks are not available for chat agents.
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
@@ -678,8 +678,8 @@ class ChatAgentResource(SyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
-          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
-              Voice-only presets are not available for chat agents.
+          handbook_config: Enable and customize handbook prompts. Sending this field replaces the complete
+              handbook configuration. Voice-only handbooks are not available for chat agents.
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
@@ -1283,8 +1283,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
-          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
-              Voice-only presets are not available for chat agents.
+          handbook_config: Enable and customize handbook prompts. Sending this field replaces the complete
+              handbook configuration. Voice-only handbooks are not available for chat agents.
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.
@@ -1664,8 +1664,8 @@ class AsyncChatAgentResource(AsyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
-          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
-              Voice-only presets are not available for chat agents.
+          handbook_config: Enable and customize handbook prompts. Sending this field replaces the complete
+              handbook configuration. Voice-only handbooks are not available for chat agents.
 
           language: Specifies what language(s) the agent will operate in. Accepts either a single
               locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g.

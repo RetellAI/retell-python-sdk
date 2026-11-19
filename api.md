@@ -83,6 +83,7 @@ from retell.types import (
     AgentResponse,
     AgentListResponse,
     AgentCreateVersionResponse,
+    AgentGetHandbookPresetsResponse,
     AgentListVersionsResponse,
     AgentRepairResponse,
 )
@@ -97,6 +98,7 @@ Methods:
 - <code title="delete /delete-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">delete</a>(agent_id) -> None</code>
 - <code title="post /create-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">create_version</a>(agent_id, \*\*<a href="src/retell/types/agent_create_version_params.py">params</a>) -> <a href="./src/retell/types/agent_create_version_response.py">AgentCreateVersionResponse</a></code>
 - <code title="delete /delete-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">delete_version</a>(agent_id, \*\*<a href="src/retell/types/agent_delete_version_params.py">params</a>) -> None</code>
+- <code title="get /get-handbook-presets">client.agent.<a href="./src/retell/resources/agent.py">get_handbook_presets</a>() -> <a href="./src/retell/types/agent_get_handbook_presets_response.py">AgentGetHandbookPresetsResponse</a></code>
 - <code title="get /list-agent-versions/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">list_versions</a>(agent_id, \*\*<a href="src/retell/types/agent_list_versions_params.py">params</a>) -> <a href="./src/retell/types/agent_list_versions_response.py">AgentListVersionsResponse</a></code>
 - <code title="post /publish-agent-version/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">publish</a>(agent_id, \*\*<a href="src/retell/types/agent_publish_params.py">params</a>) -> None</code>
 - <code title="post /repair-agent/{agent_id}">client.agent.<a href="./src/retell/resources/agent.py">repair</a>(agent_id, \*\*<a href="src/retell/types/agent_repair_params.py">params</a>) -> <a href="./src/retell/types/agent_repair_response.py">AgentRepairResponse</a></code>

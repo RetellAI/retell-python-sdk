@@ -34,6 +34,7 @@ from ..types.agent_list_response import AgentListResponse
 from ..types.agent_repair_response import AgentRepairResponse
 from ..types.agent_list_versions_response import AgentListVersionsResponse
 from ..types.agent_create_version_response import AgentCreateVersionResponse
+from ..types.agent_get_handbook_presets_response import AgentGetHandbookPresetsResponse
 
 __all__ = ["AgentResource", "AsyncAgentResource"]
 
@@ -86,6 +87,7 @@ class AgentResource(SyncAPIResource):
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_colloquial_model: bool | Omit = omit,
         enable_dnc_detection: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
@@ -468,6 +470,10 @@ class AgentResource(SyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_colloquial_model: Whether to rewrite generated responses with the separately billed colloquial
+              model. This setting is independent of handbook selection and is not supported
+              for speech-to-speech response engines. Defaults to false.
+
           enable_dnc_detection: If set to true, the agent recognizes requests to stop calling or contacting the
               user, confirms once, and on a clear yes ends the call with disconnection reason
               user_requested_dnc and sets do_not_call to true on the contact for the user's
@@ -505,7 +511,8 @@ class AgentResource(SyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
-          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+          handbook_config: Enable and customize handbook prompts. Sending this field replaces the complete
+              handbook configuration.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -659,6 +666,7 @@ class AgentResource(SyncAPIResource):
                     "denoising_enhancement_level": denoising_enhancement_level,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_colloquial_model": enable_colloquial_model,
                     "enable_dnc_detection": enable_dnc_detection,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
@@ -784,6 +792,7 @@ class AgentResource(SyncAPIResource):
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_colloquial_model: bool | Omit = omit,
         enable_dnc_detection: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
@@ -1162,6 +1171,10 @@ class AgentResource(SyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_colloquial_model: Whether to rewrite generated responses with the separately billed colloquial
+              model. This setting is independent of handbook selection and is not supported
+              for speech-to-speech response engines. Defaults to false.
+
           enable_dnc_detection: If set to true, the agent recognizes requests to stop calling or contacting the
               user, confirms once, and on a clear yes ends the call with disconnection reason
               user_requested_dnc and sets do_not_call to true on the contact for the user's
@@ -1199,7 +1212,8 @@ class AgentResource(SyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
-          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+          handbook_config: Enable and customize handbook prompts. Sending this field replaces the complete
+              handbook configuration.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -1355,6 +1369,7 @@ class AgentResource(SyncAPIResource):
                     "denoising_enhancement_level": denoising_enhancement_level,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_colloquial_model": enable_colloquial_model,
                     "enable_dnc_detection": enable_dnc_detection,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
@@ -1598,6 +1613,30 @@ class AgentResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def get_handbook_presets(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> AgentGetHandbookPresetsResponse:
+        """Retrieve all Retell-provided handbook prompts."""
+        return self._get(
+            "/get-handbook-presets",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+            ),
+            cast_to=AgentGetHandbookPresetsResponse,
+        )
+
     def list_versions(
         self,
         agent_id: str,
@@ -1808,6 +1847,7 @@ class AsyncAgentResource(AsyncAPIResource):
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_colloquial_model: bool | Omit = omit,
         enable_dnc_detection: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
@@ -2190,6 +2230,10 @@ class AsyncAgentResource(AsyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_colloquial_model: Whether to rewrite generated responses with the separately billed colloquial
+              model. This setting is independent of handbook selection and is not supported
+              for speech-to-speech response engines. Defaults to false.
+
           enable_dnc_detection: If set to true, the agent recognizes requests to stop calling or contacting the
               user, confirms once, and on a clear yes ends the call with disconnection reason
               user_requested_dnc and sets do_not_call to true on the contact for the user's
@@ -2227,7 +2271,8 @@ class AsyncAgentResource(AsyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
-          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+          handbook_config: Enable and customize handbook prompts. Sending this field replaces the complete
+              handbook configuration.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -2381,6 +2426,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "denoising_enhancement_level": denoising_enhancement_level,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_colloquial_model": enable_colloquial_model,
                     "enable_dnc_detection": enable_dnc_detection,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
@@ -2506,6 +2552,7 @@ class AsyncAgentResource(AsyncAPIResource):
         denoising_mode: Literal["no-denoise", "noise-cancellation", "noise-and-background-speech-cancellation"]
         | Omit = omit,
         enable_backchannel: bool | Omit = omit,
+        enable_colloquial_model: bool | Omit = omit,
         enable_dnc_detection: bool | Omit = omit,
         enable_dynamic_responsiveness: bool | Omit = omit,
         enable_dynamic_voice_speed: bool | Omit = omit,
@@ -2884,6 +2931,10 @@ class AsyncAgentResource(AsyncAPIResource):
               when enabled tends to show up more in longer user utterances. If not set, agent
               will not backchannel.
 
+          enable_colloquial_model: Whether to rewrite generated responses with the separately billed colloquial
+              model. This setting is independent of handbook selection and is not supported
+              for speech-to-speech response engines. Defaults to false.
+
           enable_dnc_detection: If set to true, the agent recognizes requests to stop calling or contacting the
               user, confirms once, and on a clear yes ends the call with disconnection reason
               user_requested_dnc and sets do_not_call to true on the contact for the user's
@@ -2921,7 +2972,8 @@ class AsyncAgentResource(AsyncAPIResource):
           guardrail_config: Configuration for guardrail checks to detect and prevent prohibited topics in
               agent output and user input.
 
-          handbook_config: Toggle behavior presets on/off to influence agent response style and behaviors.
+          handbook_config: Enable and customize handbook prompts. Sending this field replaces the complete
+              handbook configuration.
 
           interruption_sensitivity: Controls how sensitive the agent is to user interruptions. Value ranging from
               [0,1]. Lower value means it will take longer / more words for user to interrupt
@@ -3077,6 +3129,7 @@ class AsyncAgentResource(AsyncAPIResource):
                     "denoising_enhancement_level": denoising_enhancement_level,
                     "denoising_mode": denoising_mode,
                     "enable_backchannel": enable_backchannel,
+                    "enable_colloquial_model": enable_colloquial_model,
                     "enable_dnc_detection": enable_dnc_detection,
                     "enable_dynamic_responsiveness": enable_dynamic_responsiveness,
                     "enable_dynamic_voice_speed": enable_dynamic_voice_speed,
@@ -3322,6 +3375,30 @@ class AsyncAgentResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def get_handbook_presets(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> AgentGetHandbookPresetsResponse:
+        """Retrieve all Retell-provided handbook prompts."""
+        return await self._get(
+            "/get-handbook-presets",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+            ),
+            cast_to=AgentGetHandbookPresetsResponse,
+        )
+
     async def list_versions(
         self,
         agent_id: str,
@@ -3509,6 +3586,9 @@ class AgentResourceWithRawResponse:
         self.delete_version = to_raw_response_wrapper(
             agent.delete_version,
         )
+        self.get_handbook_presets = to_raw_response_wrapper(
+            agent.get_handbook_presets,
+        )
         self.list_versions = to_raw_response_wrapper(
             agent.list_versions,
         )
@@ -3544,6 +3624,9 @@ class AsyncAgentResourceWithRawResponse:
         )
         self.delete_version = async_to_raw_response_wrapper(
             agent.delete_version,
+        )
+        self.get_handbook_presets = async_to_raw_response_wrapper(
+            agent.get_handbook_presets,
         )
         self.list_versions = async_to_raw_response_wrapper(
             agent.list_versions,
@@ -3581,6 +3664,9 @@ class AgentResourceWithStreamingResponse:
         self.delete_version = to_streamed_response_wrapper(
             agent.delete_version,
         )
+        self.get_handbook_presets = to_streamed_response_wrapper(
+            agent.get_handbook_presets,
+        )
         self.list_versions = to_streamed_response_wrapper(
             agent.list_versions,
         )
@@ -3616,6 +3702,9 @@ class AsyncAgentResourceWithStreamingResponse:
         )
         self.delete_version = async_to_streamed_response_wrapper(
             agent.delete_version,
+        )
+        self.get_handbook_presets = async_to_streamed_response_wrapper(
+            agent.get_handbook_presets,
         )
         self.list_versions = async_to_streamed_response_wrapper(
             agent.list_versions,
