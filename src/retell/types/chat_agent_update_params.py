@@ -489,7 +489,11 @@ class HandbookConfigScopeBoundariesHandbookEntryConfig(TypedDict, total=False):
 HandbookConfigScopeBoundaries: TypeAlias = Union[bool, HandbookConfigScopeBoundariesHandbookEntryConfig]
 
 
-class HandbookConfig(TypedDict, total=False):
+class HandbookConfig(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=object,  # pyright: ignore[reportGeneralTypeIssues]
+):
     """Enable and customize handbook prompts.
 
     Sending this field replaces the complete handbook configuration. Voice-only handbooks are not available for chat agents.
