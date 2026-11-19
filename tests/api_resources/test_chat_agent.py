@@ -56,6 +56,9 @@ class TestChatAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational": {"custom_prompt": "custom_prompt"},
+                "conversational_personality": True,
+                "customer_support": {"custom_prompt": "custom_prompt"},
                 "default_personality": True,
                 "high_empathy": True,
                 "scope_boundaries": True,
@@ -269,6 +272,9 @@ class TestChatAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational": {"custom_prompt": "custom_prompt"},
+                "conversational_personality": True,
+                "customer_support": {"custom_prompt": "custom_prompt"},
                 "default_personality": True,
                 "high_empathy": True,
                 "scope_boundaries": True,
@@ -692,6 +698,9 @@ class TestAsyncChatAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational": {"custom_prompt": "custom_prompt"},
+                "conversational_personality": True,
+                "customer_support": {"custom_prompt": "custom_prompt"},
                 "default_personality": True,
                 "high_empathy": True,
                 "scope_boundaries": True,
@@ -905,6 +914,9 @@ class TestAsyncChatAgent:
             },
             handbook_config={
                 "ai_disclosure": True,
+                "conversational": {"custom_prompt": "custom_prompt"},
+                "conversational_personality": True,
+                "customer_support": {"custom_prompt": "custom_prompt"},
                 "default_personality": True,
                 "high_empathy": True,
                 "scope_boundaries": True,

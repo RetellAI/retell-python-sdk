@@ -18,6 +18,24 @@ __all__ = [
     "TaskAgentOverrideAgentCustomSttConfig",
     "TaskAgentOverrideAgentGuardrailConfig",
     "TaskAgentOverrideAgentHandbookConfig",
+    "TaskAgentOverrideAgentHandbookConfigAIDisclosure",
+    "TaskAgentOverrideAgentHandbookConfigAIDisclosureHandbookEntryConfig",
+    "TaskAgentOverrideAgentHandbookConfigConversational",
+    "TaskAgentOverrideAgentHandbookConfigCustomerSupport",
+    "TaskAgentOverrideAgentHandbookConfigEchoVerification",
+    "TaskAgentOverrideAgentHandbookConfigEchoVerificationHandbookEntryConfig",
+    "TaskAgentOverrideAgentHandbookConfigHighEmpathy",
+    "TaskAgentOverrideAgentHandbookConfigHighEmpathyHandbookEntryConfig",
+    "TaskAgentOverrideAgentHandbookConfigNatoPhoneticAlphabet",
+    "TaskAgentOverrideAgentHandbookConfigNatoPhoneticAlphabetHandbookEntryConfig",
+    "TaskAgentOverrideAgentHandbookConfigNaturalFillerWords",
+    "TaskAgentOverrideAgentHandbookConfigNaturalFillerWordsHandbookEntryConfig",
+    "TaskAgentOverrideAgentHandbookConfigScopeBoundaries",
+    "TaskAgentOverrideAgentHandbookConfigScopeBoundariesHandbookEntryConfig",
+    "TaskAgentOverrideAgentHandbookConfigSmartMatching",
+    "TaskAgentOverrideAgentHandbookConfigSmartMatchingHandbookEntryConfig",
+    "TaskAgentOverrideAgentHandbookConfigSpeechNormalization",
+    "TaskAgentOverrideAgentHandbookConfigSpeechNormalizationHandbookEntryConfig",
     "TaskAgentOverrideAgentIvrOption",
     "TaskAgentOverrideAgentIvrOptionAction",
     "TaskAgentOverrideAgentPiiConfig",
@@ -246,48 +264,183 @@ class TaskAgentOverrideAgentGuardrailConfig(TypedDict, total=False):
     """
 
 
-class TaskAgentOverrideAgentHandbookConfig(TypedDict, total=False):
-    """Toggle behavior presets on/off to influence agent response style and behaviors."""
+class TaskAgentOverrideAgentHandbookConfigAIDisclosureHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
 
-    ai_disclosure: bool
-    """When asked, acknowledge being a virtual assistant."""
-
-    conversational_personality: bool
-    """Enables Conversational Personality.
-
-    When true, the agent uses the Conversational Personality handbook preset, skips
-    Professional Rep Personality during prompt assembly, and enables internal
-    colloquial rewrite behavior.
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
     """
 
-    default_personality: bool
-    """Professional call center rep baseline."""
+    custom_prompt: Optional[str]
 
-    echo_verification: bool
+
+TaskAgentOverrideAgentHandbookConfigAIDisclosure: TypeAlias = Union[
+    bool, TaskAgentOverrideAgentHandbookConfigAIDisclosureHandbookEntryConfig
+]
+
+
+class TaskAgentOverrideAgentHandbookConfigConversational(TypedDict, total=False):
+    """Conversational handbook."""
+
+    custom_prompt: Optional[str]
+
+
+class TaskAgentOverrideAgentHandbookConfigCustomerSupport(TypedDict, total=False):
+    """Customer Support handbook."""
+
+    custom_prompt: Optional[str]
+
+
+class TaskAgentOverrideAgentHandbookConfigEchoVerificationHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str]
+
+
+TaskAgentOverrideAgentHandbookConfigEchoVerification: TypeAlias = Union[
+    bool, TaskAgentOverrideAgentHandbookConfigEchoVerificationHandbookEntryConfig
+]
+
+
+class TaskAgentOverrideAgentHandbookConfigHighEmpathyHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str]
+
+
+TaskAgentOverrideAgentHandbookConfigHighEmpathy: TypeAlias = Union[
+    bool, TaskAgentOverrideAgentHandbookConfigHighEmpathyHandbookEntryConfig
+]
+
+
+class TaskAgentOverrideAgentHandbookConfigNatoPhoneticAlphabetHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str]
+
+
+TaskAgentOverrideAgentHandbookConfigNatoPhoneticAlphabet: TypeAlias = Union[
+    bool, TaskAgentOverrideAgentHandbookConfigNatoPhoneticAlphabetHandbookEntryConfig
+]
+
+
+class TaskAgentOverrideAgentHandbookConfigNaturalFillerWordsHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str]
+
+
+TaskAgentOverrideAgentHandbookConfigNaturalFillerWords: TypeAlias = Union[
+    bool, TaskAgentOverrideAgentHandbookConfigNaturalFillerWordsHandbookEntryConfig
+]
+
+
+class TaskAgentOverrideAgentHandbookConfigScopeBoundariesHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str]
+
+
+TaskAgentOverrideAgentHandbookConfigScopeBoundaries: TypeAlias = Union[
+    bool, TaskAgentOverrideAgentHandbookConfigScopeBoundariesHandbookEntryConfig
+]
+
+
+class TaskAgentOverrideAgentHandbookConfigSmartMatchingHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str]
+
+
+TaskAgentOverrideAgentHandbookConfigSmartMatching: TypeAlias = Union[
+    bool, TaskAgentOverrideAgentHandbookConfigSmartMatchingHandbookEntryConfig
+]
+
+
+class TaskAgentOverrideAgentHandbookConfigSpeechNormalizationHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str]
+
+
+TaskAgentOverrideAgentHandbookConfigSpeechNormalization: TypeAlias = Union[
+    bool, TaskAgentOverrideAgentHandbookConfigSpeechNormalizationHandbookEntryConfig
+]
+
+
+class TaskAgentOverrideAgentHandbookConfig(TypedDict, total=False):
+    """Enable and customize handbook prompts.
+
+    Sending this field replaces the complete handbook configuration.
+    """
+
+    ai_disclosure: TaskAgentOverrideAgentHandbookConfigAIDisclosure
+    """When asked, acknowledge being a virtual assistant."""
+
+    conversational: TaskAgentOverrideAgentHandbookConfigConversational
+    """Conversational handbook."""
+
+    conversational_personality: bool
+    """Legacy name for conversational.
+
+    Cannot be sent together with conversational. For compatibility, true also
+    enables enable_colloquial_model when that field is omitted.
+    """
+
+    customer_support: TaskAgentOverrideAgentHandbookConfigCustomerSupport
+    """Customer Support handbook."""
+
+    default_personality: bool
+    """Legacy name for customer_support.
+
+    Cannot be sent together with customer_support.
+    """
+
+    echo_verification: TaskAgentOverrideAgentHandbookConfigEchoVerification
     """Repeat back and confirm important details (voice only)."""
 
-    high_empathy: bool
+    high_empathy: TaskAgentOverrideAgentHandbookConfigHighEmpathy
     """Warm acknowledgment of caller concerns."""
 
-    nato_phonetic_alphabet: bool
+    nato_phonetic_alphabet: TaskAgentOverrideAgentHandbookConfigNatoPhoneticAlphabet
     """Spell using NATO phonetic alphabet style (voice only)."""
 
-    natural_filler_words: bool
+    natural_filler_words: TaskAgentOverrideAgentHandbookConfigNaturalFillerWords
     """
     Sprinkle natural speech fillers like "um", "you know" for a more human,
     conversational tone.
     """
 
-    scope_boundaries: bool
+    scope_boundaries: TaskAgentOverrideAgentHandbookConfigScopeBoundaries
     """Stay within prompt/context scope, don't invent details."""
 
-    smart_matching: bool
+    smart_matching: TaskAgentOverrideAgentHandbookConfigSmartMatching
     """
     Treat near-match similar words as same entity to reduce impact of transcription
     error (voice only).
     """
 
-    speech_normalization: bool
+    speech_normalization: TaskAgentOverrideAgentHandbookConfigSpeechNormalization
     """Convert numbers/dates/currency to spoken forms (voice only)."""
 
 
@@ -1835,6 +1988,13 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     will not backchannel.
     """
 
+    enable_colloquial_model: bool
+    """
+    Whether to rewrite generated responses with the separately billed colloquial
+    model. This setting is independent of handbook selection and is not supported
+    for speech-to-speech response engines. Defaults to false.
+    """
+
     enable_dnc_detection: bool
     """
     If set to true, the agent recognizes requests to stop calling or contacting the
@@ -1914,7 +2074,10 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     """
 
     handbook_config: TaskAgentOverrideAgentHandbookConfig
-    """Toggle behavior presets on/off to influence agent response style and behaviors."""
+    """Enable and customize handbook prompts.
+
+    Sending this field replaces the complete handbook configuration.
+    """
 
     interruption_sensitivity: float
     """Controls how sensitive the agent is to user interruptions.
