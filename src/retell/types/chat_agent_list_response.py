@@ -10,8 +10,10 @@ __all__ = ["ChatAgentListResponse", "Item", "ItemTags"]
 
 class ItemTags(BaseModel):
     dynamic_variables: Optional[Dict[str, str]] = None
+    """Dynamic variable values supplied when a call uses this tag."""
 
     version: Optional[int] = None
+    """Version that the tag points to. Absent when the tag follows the latest version."""
 
 
 class Item(BaseModel):
@@ -27,7 +29,7 @@ class Item(BaseModel):
     """Whether the agent is currently suspended."""
 
     tags: Dict[str, ItemTags]
-    """Authoritative root tags for this agent, keyed by tag name."""
+    """Environment tags for this agent, keyed by tag name."""
 
     user_modified_timestamp: int
     """User modification timestamp (milliseconds since epoch).

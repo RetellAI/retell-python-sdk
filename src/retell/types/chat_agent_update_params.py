@@ -14,10 +14,13 @@ __all__ = [
     "GuardrailConfig",
     "HandbookConfig",
     "HandbookConfigAIDisclosure",
+    "HandbookConfigAIDisclosureHandbookEntryConfig",
     "HandbookConfigConversational",
     "HandbookConfigCustomerSupport",
     "HandbookConfigHighEmpathy",
+    "HandbookConfigHighEmpathyHandbookEntryConfig",
     "HandbookConfigScopeBoundaries",
+    "HandbookConfigScopeBoundariesHandbookEntryConfig",
     "PiiConfig",
     "PostChatAnalysisData",
     "PostChatAnalysisDataStringAnalysisData",
@@ -439,10 +442,16 @@ class GuardrailConfig(TypedDict, total=False):
     """
 
 
-class HandbookConfigAIDisclosure(TypedDict, total=False):
-    """When asked, acknowledge being a virtual assistant."""
+class HandbookConfigAIDisclosureHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
 
     custom_prompt: Optional[str]
+
+
+HandbookConfigAIDisclosure: TypeAlias = Union[bool, HandbookConfigAIDisclosureHandbookEntryConfig]
 
 
 class HandbookConfigConversational(TypedDict, total=False):
@@ -457,16 +466,28 @@ class HandbookConfigCustomerSupport(TypedDict, total=False):
     custom_prompt: Optional[str]
 
 
-class HandbookConfigHighEmpathy(TypedDict, total=False):
-    """Warm acknowledgment of caller concerns."""
+class HandbookConfigHighEmpathyHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
 
     custom_prompt: Optional[str]
 
 
-class HandbookConfigScopeBoundaries(TypedDict, total=False):
-    """Stay within prompt/context scope, don't invent details."""
+HandbookConfigHighEmpathy: TypeAlias = Union[bool, HandbookConfigHighEmpathyHandbookEntryConfig]
+
+
+class HandbookConfigScopeBoundariesHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
 
     custom_prompt: Optional[str]
+
+
+HandbookConfigScopeBoundaries: TypeAlias = Union[bool, HandbookConfigScopeBoundariesHandbookEntryConfig]
 
 
 class HandbookConfig(TypedDict, total=False):
@@ -481,8 +502,21 @@ class HandbookConfig(TypedDict, total=False):
     conversational: HandbookConfigConversational
     """Conversational handbook."""
 
+    conversational_personality: bool
+    """Legacy name for conversational.
+
+    Cannot be sent together with conversational. Colloquial rewriting is not
+    available for chat.
+    """
+
     customer_support: HandbookConfigCustomerSupport
     """Customer Support handbook."""
+
+    default_personality: bool
+    """Legacy name for customer_support.
+
+    Cannot be sent together with customer_support.
+    """
 
     high_empathy: HandbookConfigHighEmpathy
     """Warm acknowledgment of caller concerns."""
