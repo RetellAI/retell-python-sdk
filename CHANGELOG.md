@@ -1,5 +1,24 @@
 # Changelog
 
+## [6.2.23](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.22...v6.2.23) (2026-11-21)
+
+
+### nit
+
+* **api:** Polish API documentation ([22f255b](https://github.com/RetellAI/retell-python-sdk/commit/22f255b17e8abb1f3596b57225a6fd5f3f396065))
+
+
+### Bug Fixes
+
+* **api:** Accept unsupported fields in chat handbook configurations and ignore them. ([5739d87](https://github.com/RetellAI/retell-python-sdk/commit/5739d87c98a7ebcddf42f4b7ab69867ac2b33805))
+* **api:** Add gemini-4-neon as an available LLM model option. ([d2f2903](https://github.com/RetellAI/retell-python-sdk/commit/d2f29032d4aef098f616c4573bcb83d7618b5d95))
+* **api:** Add get-handbook-presets agent method for GET /get-handbook-presets, returning Retell-provided handbook prompts. ([503a619](https://github.com/RetellAI/retell-python-sdk/commit/503a619d3a770cb6a0914c690dd04ee3401c9049))
+* **api:** Add independently selectable handbook prompts with optional custom_prompt; legacy boolean toggles remain accepted in requests. ([503a619](https://github.com/RetellAI/retell-python-sdk/commit/503a619d3a770cb6a0914c690dd04ee3401c9049))
+* **api:** Add optional enable_colloquial_model boolean to voice agents, defaulting to false and unsupported for speech-to-speech engines. ([503a619](https://github.com/RetellAI/retell-python-sdk/commit/503a619d3a770cb6a0914c690dd04ee3401c9049))
+* **api:** Reject unsupported handbook fields in chat agent configurations instead of accepting and ignoring them. ([bc69426](https://github.com/RetellAI/retell-python-sdk/commit/bc69426935fc699cc6e83895a2f2720be7370e03))
+* **api:** Remove default_personality and conversational_personality from voice and chat handbook configs. ([ec53786](https://github.com/RetellAI/retell-python-sdk/commit/ec53786eca7545192118b146b429fed878179f2d))
+* **api:** Remove the LegacyBooleanOrHandbookEntryConfig schema; handbook options now accept only handbook entry objects. ([ec53786](https://github.com/RetellAI/retell-python-sdk/commit/ec53786eca7545192118b146b429fed878179f2d))
+
 ## [6.2.22](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.21...v6.2.22) (2026-11-18)
 
 ### Highlights
