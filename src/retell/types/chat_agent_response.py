@@ -17,13 +17,10 @@ __all__ = [
     "GuardrailConfig",
     "HandbookConfig",
     "HandbookConfigAIDisclosure",
-    "HandbookConfigAIDisclosureHandbookEntryConfig",
     "HandbookConfigConversational",
     "HandbookConfigCustomerSupport",
     "HandbookConfigHighEmpathy",
-    "HandbookConfigHighEmpathyHandbookEntryConfig",
     "HandbookConfigScopeBoundaries",
-    "HandbookConfigScopeBoundariesHandbookEntryConfig",
     "PiiConfig",
     "PostChatAnalysisData",
     "PostChatAnalysisDataStringAnalysisData",
@@ -164,16 +161,10 @@ class GuardrailConfig(BaseModel):
     """
 
 
-class HandbookConfigAIDisclosureHandbookEntryConfig(BaseModel):
-    """Configuration for an enabled handbook.
-
-    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
-    """
+class HandbookConfigAIDisclosure(BaseModel):
+    """When asked, acknowledge being a virtual assistant."""
 
     custom_prompt: Optional[str] = None
-
-
-HandbookConfigAIDisclosure: TypeAlias = Union[bool, HandbookConfigAIDisclosureHandbookEntryConfig]
 
 
 class HandbookConfigConversational(BaseModel):
@@ -188,28 +179,16 @@ class HandbookConfigCustomerSupport(BaseModel):
     custom_prompt: Optional[str] = None
 
 
-class HandbookConfigHighEmpathyHandbookEntryConfig(BaseModel):
-    """Configuration for an enabled handbook.
-
-    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
-    """
+class HandbookConfigHighEmpathy(BaseModel):
+    """Warm acknowledgment of caller concerns."""
 
     custom_prompt: Optional[str] = None
 
 
-HandbookConfigHighEmpathy: TypeAlias = Union[bool, HandbookConfigHighEmpathyHandbookEntryConfig]
-
-
-class HandbookConfigScopeBoundariesHandbookEntryConfig(BaseModel):
-    """Configuration for an enabled handbook.
-
-    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
-    """
+class HandbookConfigScopeBoundaries(BaseModel):
+    """Stay within prompt/context scope, don't invent details."""
 
     custom_prompt: Optional[str] = None
-
-
-HandbookConfigScopeBoundaries: TypeAlias = Union[bool, HandbookConfigScopeBoundariesHandbookEntryConfig]
 
 
 class HandbookConfig(BaseModel):
@@ -224,21 +203,8 @@ class HandbookConfig(BaseModel):
     conversational: Optional[HandbookConfigConversational] = None
     """Conversational handbook."""
 
-    conversational_personality: Optional[bool] = None
-    """Legacy name for conversational.
-
-    Cannot be sent together with conversational. Colloquial rewriting is not
-    available for chat.
-    """
-
     customer_support: Optional[HandbookConfigCustomerSupport] = None
     """Customer Support handbook."""
-
-    default_personality: Optional[bool] = None
-    """Legacy name for customer_support.
-
-    Cannot be sent together with customer_support.
-    """
 
     high_empathy: Optional[HandbookConfigHighEmpathy] = None
     """Warm acknowledgment of caller concerns."""
