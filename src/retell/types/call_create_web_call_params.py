@@ -18,15 +18,23 @@ __all__ = [
     "AgentOverrideAgentGuardrailConfig",
     "AgentOverrideAgentHandbookConfig",
     "AgentOverrideAgentHandbookConfigAIDisclosure",
+    "AgentOverrideAgentHandbookConfigAIDisclosureHandbookEntryConfig",
     "AgentOverrideAgentHandbookConfigConversational",
     "AgentOverrideAgentHandbookConfigCustomerSupport",
     "AgentOverrideAgentHandbookConfigEchoVerification",
+    "AgentOverrideAgentHandbookConfigEchoVerificationHandbookEntryConfig",
     "AgentOverrideAgentHandbookConfigHighEmpathy",
+    "AgentOverrideAgentHandbookConfigHighEmpathyHandbookEntryConfig",
     "AgentOverrideAgentHandbookConfigNatoPhoneticAlphabet",
+    "AgentOverrideAgentHandbookConfigNatoPhoneticAlphabetHandbookEntryConfig",
     "AgentOverrideAgentHandbookConfigNaturalFillerWords",
+    "AgentOverrideAgentHandbookConfigNaturalFillerWordsHandbookEntryConfig",
     "AgentOverrideAgentHandbookConfigScopeBoundaries",
+    "AgentOverrideAgentHandbookConfigScopeBoundariesHandbookEntryConfig",
     "AgentOverrideAgentHandbookConfigSmartMatching",
+    "AgentOverrideAgentHandbookConfigSmartMatchingHandbookEntryConfig",
     "AgentOverrideAgentHandbookConfigSpeechNormalization",
+    "AgentOverrideAgentHandbookConfigSpeechNormalizationHandbookEntryConfig",
     "AgentOverrideAgentIvrOption",
     "AgentOverrideAgentIvrOptionAction",
     "AgentOverrideAgentPiiConfig",
@@ -263,10 +271,18 @@ class AgentOverrideAgentGuardrailConfig(TypedDict, total=False):
     """
 
 
-class AgentOverrideAgentHandbookConfigAIDisclosure(TypedDict, total=False):
-    """When asked, acknowledge being a virtual assistant."""
+class AgentOverrideAgentHandbookConfigAIDisclosureHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
 
     custom_prompt: Optional[str]
+
+
+AgentOverrideAgentHandbookConfigAIDisclosure: TypeAlias = Union[
+    bool, AgentOverrideAgentHandbookConfigAIDisclosureHandbookEntryConfig
+]
 
 
 class AgentOverrideAgentHandbookConfigConversational(TypedDict, total=False):
@@ -281,50 +297,102 @@ class AgentOverrideAgentHandbookConfigCustomerSupport(TypedDict, total=False):
     custom_prompt: Optional[str]
 
 
-class AgentOverrideAgentHandbookConfigEchoVerification(TypedDict, total=False):
-    """Repeat back and confirm important details (voice only)."""
+class AgentOverrideAgentHandbookConfigEchoVerificationHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
 
-    custom_prompt: Optional[str]
-
-
-class AgentOverrideAgentHandbookConfigHighEmpathy(TypedDict, total=False):
-    """Warm acknowledgment of caller concerns."""
-
-    custom_prompt: Optional[str]
-
-
-class AgentOverrideAgentHandbookConfigNatoPhoneticAlphabet(TypedDict, total=False):
-    """Spell using NATO phonetic alphabet style (voice only)."""
-
-    custom_prompt: Optional[str]
-
-
-class AgentOverrideAgentHandbookConfigNaturalFillerWords(TypedDict, total=False):
-    """
-    Sprinkle natural speech fillers like "um", "you know" for a more human, conversational tone.
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
     """
 
     custom_prompt: Optional[str]
 
 
-class AgentOverrideAgentHandbookConfigScopeBoundaries(TypedDict, total=False):
-    """Stay within prompt/context scope, don't invent details."""
+AgentOverrideAgentHandbookConfigEchoVerification: TypeAlias = Union[
+    bool, AgentOverrideAgentHandbookConfigEchoVerificationHandbookEntryConfig
+]
 
-    custom_prompt: Optional[str]
 
+class AgentOverrideAgentHandbookConfigHighEmpathyHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
 
-class AgentOverrideAgentHandbookConfigSmartMatching(TypedDict, total=False):
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
     """
-    Treat near-match similar words as same entity to reduce impact of transcription error (voice only).
+
+    custom_prompt: Optional[str]
+
+
+AgentOverrideAgentHandbookConfigHighEmpathy: TypeAlias = Union[
+    bool, AgentOverrideAgentHandbookConfigHighEmpathyHandbookEntryConfig
+]
+
+
+class AgentOverrideAgentHandbookConfigNatoPhoneticAlphabetHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
     """
 
     custom_prompt: Optional[str]
 
 
-class AgentOverrideAgentHandbookConfigSpeechNormalization(TypedDict, total=False):
-    """Convert numbers/dates/currency to spoken forms (voice only)."""
+AgentOverrideAgentHandbookConfigNatoPhoneticAlphabet: TypeAlias = Union[
+    bool, AgentOverrideAgentHandbookConfigNatoPhoneticAlphabetHandbookEntryConfig
+]
+
+
+class AgentOverrideAgentHandbookConfigNaturalFillerWordsHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
 
     custom_prompt: Optional[str]
+
+
+AgentOverrideAgentHandbookConfigNaturalFillerWords: TypeAlias = Union[
+    bool, AgentOverrideAgentHandbookConfigNaturalFillerWordsHandbookEntryConfig
+]
+
+
+class AgentOverrideAgentHandbookConfigScopeBoundariesHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str]
+
+
+AgentOverrideAgentHandbookConfigScopeBoundaries: TypeAlias = Union[
+    bool, AgentOverrideAgentHandbookConfigScopeBoundariesHandbookEntryConfig
+]
+
+
+class AgentOverrideAgentHandbookConfigSmartMatchingHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str]
+
+
+AgentOverrideAgentHandbookConfigSmartMatching: TypeAlias = Union[
+    bool, AgentOverrideAgentHandbookConfigSmartMatchingHandbookEntryConfig
+]
+
+
+class AgentOverrideAgentHandbookConfigSpeechNormalizationHandbookEntryConfig(TypedDict, total=False):
+    """Configuration for an enabled handbook.
+
+    Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+    """
+
+    custom_prompt: Optional[str]
+
+
+AgentOverrideAgentHandbookConfigSpeechNormalization: TypeAlias = Union[
+    bool, AgentOverrideAgentHandbookConfigSpeechNormalizationHandbookEntryConfig
+]
 
 
 class AgentOverrideAgentHandbookConfig(TypedDict, total=False):
@@ -339,8 +407,21 @@ class AgentOverrideAgentHandbookConfig(TypedDict, total=False):
     conversational: AgentOverrideAgentHandbookConfigConversational
     """Conversational handbook."""
 
+    conversational_personality: bool
+    """Legacy name for conversational.
+
+    Cannot be sent together with conversational. For compatibility, true also
+    enables enable_colloquial_model when that field is omitted.
+    """
+
     customer_support: AgentOverrideAgentHandbookConfigCustomerSupport
     """Customer Support handbook."""
+
+    default_personality: bool
+    """Legacy name for customer_support.
+
+    Cannot be sent together with customer_support.
+    """
 
     echo_verification: AgentOverrideAgentHandbookConfigEchoVerification
     """Repeat back and confirm important details (voice only)."""
