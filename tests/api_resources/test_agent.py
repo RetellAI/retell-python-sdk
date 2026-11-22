@@ -13,6 +13,8 @@ from retell.types import (
     AgentResponse,
     AgentListResponse,
     AgentRepairResponse,
+    AgentGetRootResponse,
+    AgentUpdateRootResponse,
     AgentListVersionsResponse,
     AgentCreateVersionResponse,
     AgentGetHandbookPresetsResponse,
@@ -773,6 +775,48 @@ class TestAgent:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_get_root(self, client: Retell) -> None:
+        agent = client.agent.get_root(
+            "agent_xxx",
+        )
+        assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_get_root(self, client: Retell) -> None:
+        response = client.agent.with_raw_response.get_root(
+            "agent_xxx",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = response.parse()
+        assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_get_root(self, client: Retell) -> None:
+        with client.agent.with_streaming_response.get_root(
+            "agent_xxx",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = response.parse()
+            assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_get_root(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            client.agent.with_raw_response.get_root(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_method_list_versions(self, client: Retell) -> None:
         agent = client.agent.list_versions(
             agent_id="16b980523634a6dc504898cda492e939",
@@ -929,6 +973,67 @@ class TestAgent:
     def test_path_params_repair(self, client: Retell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             client.agent.with_raw_response.repair(
+                agent_id="",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_root(self, client: Retell) -> None:
+        agent = client.agent.update_root(
+            agent_id="agent_xxx",
+        )
+        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_update_root_with_all_params(self, client: Retell) -> None:
+        agent = client.agent.update_root(
+            agent_id="agent_xxx",
+            tags={
+                "prod": {
+                    "dynamic_variables": {"foo": "string"},
+                    "version": 3,
+                },
+                "staging": {
+                    "dynamic_variables": {"foo": "string"},
+                    "version": 15,
+                },
+            },
+            if_match='"1744761835123"',
+        )
+        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_raw_response_update_root(self, client: Retell) -> None:
+        response = client.agent.with_raw_response.update_root(
+            agent_id="agent_xxx",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = response.parse()
+        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_streaming_response_update_root(self, client: Retell) -> None:
+        with client.agent.with_streaming_response.update_root(
+            agent_id="agent_xxx",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = response.parse()
+            assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_path_params_update_root(self, client: Retell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            client.agent.with_raw_response.update_root(
                 agent_id="",
             )
 
@@ -1687,6 +1792,48 @@ class TestAsyncAgent:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    async def test_method_get_root(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.get_root(
+            "agent_xxx",
+        )
+        assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_get_root(self, async_client: AsyncRetell) -> None:
+        response = await async_client.agent.with_raw_response.get_root(
+            "agent_xxx",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = await response.parse()
+        assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_get_root(self, async_client: AsyncRetell) -> None:
+        async with async_client.agent.with_streaming_response.get_root(
+            "agent_xxx",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = await response.parse()
+            assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_get_root(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            await async_client.agent.with_raw_response.get_root(
+                "",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     async def test_method_list_versions(self, async_client: AsyncRetell) -> None:
         agent = await async_client.agent.list_versions(
             agent_id="16b980523634a6dc504898cda492e939",
@@ -1843,5 +1990,66 @@ class TestAsyncAgent:
     async def test_path_params_repair(self, async_client: AsyncRetell) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
             await async_client.agent.with_raw_response.repair(
+                agent_id="",
+            )
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_root(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.update_root(
+            agent_id="agent_xxx",
+        )
+        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_update_root_with_all_params(self, async_client: AsyncRetell) -> None:
+        agent = await async_client.agent.update_root(
+            agent_id="agent_xxx",
+            tags={
+                "prod": {
+                    "dynamic_variables": {"foo": "string"},
+                    "version": 3,
+                },
+                "staging": {
+                    "dynamic_variables": {"foo": "string"},
+                    "version": 15,
+                },
+            },
+            if_match='"1744761835123"',
+        )
+        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_raw_response_update_root(self, async_client: AsyncRetell) -> None:
+        response = await async_client.agent.with_raw_response.update_root(
+            agent_id="agent_xxx",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        agent = await response.parse()
+        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_streaming_response_update_root(self, async_client: AsyncRetell) -> None:
+        async with async_client.agent.with_streaming_response.update_root(
+            agent_id="agent_xxx",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            agent = await response.parse()
+            assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_path_params_update_root(self, async_client: AsyncRetell) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `agent_id` but received ''"):
+            await async_client.agent.with_raw_response.update_root(
                 agent_id="",
             )
