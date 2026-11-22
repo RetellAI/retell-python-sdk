@@ -14,12 +14,13 @@ from ..types import (
     agent_update_params,
     agent_publish_params,
     agent_retrieve_params,
+    agent_update_root_params,
     agent_list_versions_params,
     agent_create_version_params,
     agent_delete_version_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import path_template, maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, strip_not_given, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -32,6 +33,8 @@ from .._base_client import make_request_options
 from ..types.agent_response import AgentResponse
 from ..types.agent_list_response import AgentListResponse
 from ..types.agent_repair_response import AgentRepairResponse
+from ..types.agent_get_root_response import AgentGetRootResponse
+from ..types.agent_update_root_response import AgentUpdateRootResponse
 from ..types.agent_list_versions_response import AgentListVersionsResponse
 from ..types.agent_create_version_response import AgentCreateVersionResponse
 from ..types.agent_get_handbook_presets_response import AgentGetHandbookPresetsResponse
@@ -1639,6 +1642,45 @@ class AgentResource(SyncAPIResource):
             cast_to=AgentGetHandbookPresetsResponse,
         )
 
+    def get_root(
+        self,
+        agent_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> AgentGetRootResponse:
+        """
+        Get the settings and status that apply to all versions of an agent, such as its
+        environment tags.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        return self._get(
+            path_template("/get-agent-root/{agent_id}", agent_id=agent_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+            ),
+            cast_to=AgentGetRootResponse,
+        )
+
     def list_versions(
         self,
         agent_id: str,
@@ -1798,6 +1840,56 @@ class AgentResource(SyncAPIResource):
                     Any, AgentRepairResponse
                 ),  # Union types cannot be passed in as arguments in the type system
             ),
+        )
+
+    def update_root(
+        self,
+        agent_id: str,
+        *,
+        tags: agent_update_root_params.Tags | Omit = omit,
+        if_match: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> AgentUpdateRootResponse:
+        """
+        Change settings that apply to all versions of an agent, such as its environment
+        tags.
+
+        Args:
+          tags: Environment tags to add, change, or delete, keyed by tag name. Set a tag to an
+              object to add or change it, or to null to delete it. Tags you leave out stay as
+              they are. The prod and staging tags cannot be deleted. An agent can have up to
+              10 tags. Tag names must be 1-20 characters, start with a lowercase letter, use
+              only lowercase letters, digits, underscores, or hyphens, and cannot be "latest",
+              "latest_published", or "v" followed only by digits, such as "v2".
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        extra_headers = {**strip_not_given({"If-Match": if_match}), **(extra_headers or {})}
+        return self._patch(
+            path_template("/update-agent-root/{agent_id}", agent_id=agent_id),
+            body=maybe_transform({"tags": tags}, agent_update_root_params.AgentUpdateRootParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+            ),
+            cast_to=AgentUpdateRootResponse,
         )
 
 
@@ -3403,6 +3495,45 @@ class AsyncAgentResource(AsyncAPIResource):
             cast_to=AgentGetHandbookPresetsResponse,
         )
 
+    async def get_root(
+        self,
+        agent_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> AgentGetRootResponse:
+        """
+        Get the settings and status that apply to all versions of an agent, such as its
+        environment tags.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        return await self._get(
+            path_template("/get-agent-root/{agent_id}", agent_id=agent_id),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+            ),
+            cast_to=AgentGetRootResponse,
+        )
+
     async def list_versions(
         self,
         agent_id: str,
@@ -3564,6 +3695,56 @@ class AsyncAgentResource(AsyncAPIResource):
             ),
         )
 
+    async def update_root(
+        self,
+        agent_id: str,
+        *,
+        tags: agent_update_root_params.Tags | Omit = omit,
+        if_match: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+        max_retries: int | NotGiven = not_given,
+    ) -> AgentUpdateRootResponse:
+        """
+        Change settings that apply to all versions of an agent, such as its environment
+        tags.
+
+        Args:
+          tags: Environment tags to add, change, or delete, keyed by tag name. Set a tag to an
+              object to add or change it, or to null to delete it. Tags you leave out stay as
+              they are. The prod and staging tags cannot be deleted. An agent can have up to
+              10 tags. Tag names must be 1-20 characters, start with a lowercase letter, use
+              only lowercase letters, digits, underscores, or hyphens, and cannot be "latest",
+              "latest_published", or "v" followed only by digits, such as "v2".
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not agent_id:
+            raise ValueError(f"Expected a non-empty value for `agent_id` but received {agent_id!r}")
+        extra_headers = {**strip_not_given({"If-Match": if_match}), **(extra_headers or {})}
+        return await self._patch(
+            path_template("/update-agent-root/{agent_id}", agent_id=agent_id),
+            body=await async_maybe_transform({"tags": tags}, agent_update_root_params.AgentUpdateRootParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                max_retries=max_retries,
+            ),
+            cast_to=AgentUpdateRootResponse,
+        )
+
 
 class AgentResourceWithRawResponse:
     def __init__(self, agent: AgentResource) -> None:
@@ -3593,6 +3774,9 @@ class AgentResourceWithRawResponse:
         self.get_handbook_presets = to_raw_response_wrapper(
             agent.get_handbook_presets,
         )
+        self.get_root = to_raw_response_wrapper(
+            agent.get_root,
+        )
         self.list_versions = to_raw_response_wrapper(
             agent.list_versions,
         )
@@ -3601,6 +3785,9 @@ class AgentResourceWithRawResponse:
         )
         self.repair = to_raw_response_wrapper(
             agent.repair,
+        )
+        self.update_root = to_raw_response_wrapper(
+            agent.update_root,
         )
 
 
@@ -3632,6 +3819,9 @@ class AsyncAgentResourceWithRawResponse:
         self.get_handbook_presets = async_to_raw_response_wrapper(
             agent.get_handbook_presets,
         )
+        self.get_root = async_to_raw_response_wrapper(
+            agent.get_root,
+        )
         self.list_versions = async_to_raw_response_wrapper(
             agent.list_versions,
         )
@@ -3640,6 +3830,9 @@ class AsyncAgentResourceWithRawResponse:
         )
         self.repair = async_to_raw_response_wrapper(
             agent.repair,
+        )
+        self.update_root = async_to_raw_response_wrapper(
+            agent.update_root,
         )
 
 
@@ -3671,6 +3864,9 @@ class AgentResourceWithStreamingResponse:
         self.get_handbook_presets = to_streamed_response_wrapper(
             agent.get_handbook_presets,
         )
+        self.get_root = to_streamed_response_wrapper(
+            agent.get_root,
+        )
         self.list_versions = to_streamed_response_wrapper(
             agent.list_versions,
         )
@@ -3679,6 +3875,9 @@ class AgentResourceWithStreamingResponse:
         )
         self.repair = to_streamed_response_wrapper(
             agent.repair,
+        )
+        self.update_root = to_streamed_response_wrapper(
+            agent.update_root,
         )
 
 
@@ -3710,6 +3909,9 @@ class AsyncAgentResourceWithStreamingResponse:
         self.get_handbook_presets = async_to_streamed_response_wrapper(
             agent.get_handbook_presets,
         )
+        self.get_root = async_to_streamed_response_wrapper(
+            agent.get_root,
+        )
         self.list_versions = async_to_streamed_response_wrapper(
             agent.list_versions,
         )
@@ -3718,4 +3920,7 @@ class AsyncAgentResourceWithStreamingResponse:
         )
         self.repair = async_to_streamed_response_wrapper(
             agent.repair,
+        )
+        self.update_root = async_to_streamed_response_wrapper(
+            agent.update_root,
         )
