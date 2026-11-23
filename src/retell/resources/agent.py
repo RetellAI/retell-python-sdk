@@ -32,9 +32,8 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.agent_response import AgentResponse
 from ..types.agent_list_response import AgentListResponse
+from ..types.agent_root_response import AgentRootResponse
 from ..types.agent_repair_response import AgentRepairResponse
-from ..types.agent_get_root_response import AgentGetRootResponse
-from ..types.agent_update_root_response import AgentUpdateRootResponse
 from ..types.agent_list_versions_response import AgentListVersionsResponse
 from ..types.agent_create_version_response import AgentCreateVersionResponse
 from ..types.agent_get_handbook_presets_response import AgentGetHandbookPresetsResponse
@@ -1653,7 +1652,7 @@ class AgentResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         max_retries: int | NotGiven = not_given,
-    ) -> AgentGetRootResponse:
+    ) -> AgentRootResponse:
         """
         Get the settings and status that apply to all versions of an agent, such as its
         environment tags.
@@ -1678,7 +1677,7 @@ class AgentResource(SyncAPIResource):
                 timeout=timeout,
                 max_retries=max_retries,
             ),
-            cast_to=AgentGetRootResponse,
+            cast_to=AgentRootResponse,
         )
 
     def list_versions(
@@ -1855,7 +1854,7 @@ class AgentResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         max_retries: int | NotGiven = not_given,
-    ) -> AgentUpdateRootResponse:
+    ) -> AgentRootResponse:
         """
         Change settings that apply to all versions of an agent, such as its environment
         tags.
@@ -1889,7 +1888,7 @@ class AgentResource(SyncAPIResource):
                 timeout=timeout,
                 max_retries=max_retries,
             ),
-            cast_to=AgentUpdateRootResponse,
+            cast_to=AgentRootResponse,
         )
 
 
@@ -3506,7 +3505,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         max_retries: int | NotGiven = not_given,
-    ) -> AgentGetRootResponse:
+    ) -> AgentRootResponse:
         """
         Get the settings and status that apply to all versions of an agent, such as its
         environment tags.
@@ -3531,7 +3530,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 timeout=timeout,
                 max_retries=max_retries,
             ),
-            cast_to=AgentGetRootResponse,
+            cast_to=AgentRootResponse,
         )
 
     async def list_versions(
@@ -3708,7 +3707,7 @@ class AsyncAgentResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         max_retries: int | NotGiven = not_given,
-    ) -> AgentUpdateRootResponse:
+    ) -> AgentRootResponse:
         """
         Change settings that apply to all versions of an agent, such as its environment
         tags.
@@ -3742,7 +3741,7 @@ class AsyncAgentResource(AsyncAPIResource):
                 timeout=timeout,
                 max_retries=max_retries,
             ),
-            cast_to=AgentUpdateRootResponse,
+            cast_to=AgentRootResponse,
         )
 
 

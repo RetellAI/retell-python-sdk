@@ -12,9 +12,8 @@ from tests.utils import assert_matches_type
 from retell.types import (
     AgentResponse,
     AgentListResponse,
+    AgentRootResponse,
     AgentRepairResponse,
-    AgentGetRootResponse,
-    AgentUpdateRootResponse,
     AgentListVersionsResponse,
     AgentCreateVersionResponse,
     AgentGetHandbookPresetsResponse,
@@ -779,7 +778,7 @@ class TestAgent:
         agent = client.agent.get_root(
             "agent_xxx",
         )
-        assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+        assert_matches_type(AgentRootResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -791,7 +790,7 @@ class TestAgent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = response.parse()
-        assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+        assert_matches_type(AgentRootResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -803,7 +802,7 @@ class TestAgent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = response.parse()
-            assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+            assert_matches_type(AgentRootResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -982,7 +981,7 @@ class TestAgent:
         agent = client.agent.update_root(
             agent_id="agent_xxx",
         )
-        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+        assert_matches_type(AgentRootResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1001,7 +1000,7 @@ class TestAgent:
             },
             if_match='"1744761835123"',
         )
-        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+        assert_matches_type(AgentRootResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1013,7 +1012,7 @@ class TestAgent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = response.parse()
-        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+        assert_matches_type(AgentRootResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1025,7 +1024,7 @@ class TestAgent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = response.parse()
-            assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+            assert_matches_type(AgentRootResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1796,7 +1795,7 @@ class TestAsyncAgent:
         agent = await async_client.agent.get_root(
             "agent_xxx",
         )
-        assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+        assert_matches_type(AgentRootResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1808,7 +1807,7 @@ class TestAsyncAgent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = await response.parse()
-        assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+        assert_matches_type(AgentRootResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1820,7 +1819,7 @@ class TestAsyncAgent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = await response.parse()
-            assert_matches_type(AgentGetRootResponse, agent, path=["response"])
+            assert_matches_type(AgentRootResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1999,7 +1998,7 @@ class TestAsyncAgent:
         agent = await async_client.agent.update_root(
             agent_id="agent_xxx",
         )
-        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+        assert_matches_type(AgentRootResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2018,7 +2017,7 @@ class TestAsyncAgent:
             },
             if_match='"1744761835123"',
         )
-        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+        assert_matches_type(AgentRootResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2030,7 +2029,7 @@ class TestAsyncAgent:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         agent = await response.parse()
-        assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+        assert_matches_type(AgentRootResponse, agent, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -2042,7 +2041,7 @@ class TestAsyncAgent:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             agent = await response.parse()
-            assert_matches_type(AgentUpdateRootResponse, agent, path=["response"])
+            assert_matches_type(AgentRootResponse, agent, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

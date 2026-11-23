@@ -4,7 +4,7 @@ from typing import Dict, Optional
 
 from .._models import BaseModel
 
-__all__ = ["AgentUpdateRootResponse", "Tags"]
+__all__ = ["AgentRootResponse", "Tags"]
 
 
 class Tags(BaseModel):
@@ -15,7 +15,7 @@ class Tags(BaseModel):
     """Version that the tag points to. Absent when the tag follows the latest version."""
 
 
-class AgentUpdateRootResponse(BaseModel):
+class AgentRootResponse(BaseModel):
     agent_id: str
     """Unique id of the agent."""
 
