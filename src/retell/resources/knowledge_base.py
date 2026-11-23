@@ -346,8 +346,11 @@ class KnowledgeBaseResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         max_retries: int | NotGiven = not_given,
     ) -> None:
-        """
-        Manually refresh a knowledge base
+        """Manually refresh a knowledge base.
+
+        Refreshes do not consume ingestion quota,
+        including URLs discovered through auto-crawling paths. Refreshes the refreshable
+        sources present when background processing begins.
 
         Args:
           extra_headers: Send extra headers
@@ -695,8 +698,11 @@ class AsyncKnowledgeBaseResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
         max_retries: int | NotGiven = not_given,
     ) -> None:
-        """
-        Manually refresh a knowledge base
+        """Manually refresh a knowledge base.
+
+        Refreshes do not consume ingestion quota,
+        including URLs discovered through auto-crawling paths. Refreshes the refreshable
+        sources present when background processing begins.
 
         Args:
           extra_headers: Send extra headers
