@@ -33,6 +33,7 @@ from .voice_clone_params import VoiceCloneParams as VoiceCloneParams
 from .agent_create_params import AgentCreateParams as AgentCreateParams
 from .agent_list_response import AgentListResponse as AgentListResponse
 from .agent_repair_params import AgentRepairParams as AgentRepairParams
+from .agent_root_response import AgentRootResponse as AgentRootResponse
 from .agent_update_params import AgentUpdateParams as AgentUpdateParams
 from .asset_create_params import AssetCreateParams as AssetCreateParams
 from .batch_call_response import BatchCallResponse as BatchCallResponse
@@ -58,7 +59,6 @@ from .app_list_usages_params import AppListUsagesParams as AppListUsagesParams
 from .app_test_auth_response import AppTestAuthResponse as AppTestAuthResponse
 from .chat_agent_list_params import ChatAgentListParams as ChatAgentListParams
 from .test_case_job_response import TestCaseJobResponse as TestCaseJobResponse
-from .agent_get_root_response import AgentGetRootResponse as AgentGetRootResponse
 from .call_update_live_params import CallUpdateLiveParams as CallUpdateLiveParams
 from .crm_get_schema_response import CRMGetSchemaResponse as CRMGetSchemaResponse
 from .knowledge_base_response import KnowledgeBaseResponse as KnowledgeBaseResponse
@@ -77,7 +77,6 @@ from .chat_agent_publish_params import ChatAgentPublishParams as ChatAgentPublis
 from .crm_run_sync_job_response import CRMRunSyncJobResponse as CRMRunSyncJobResponse
 from .voice_add_resource_params import VoiceAddResourceParams as VoiceAddResourceParams
 from .agent_list_versions_params import AgentListVersionsParams as AgentListVersionsParams
-from .agent_update_root_response import AgentUpdateRootResponse as AgentUpdateRootResponse
 from .app_get_tool_schema_params import AppGetToolSchemaParams as AppGetToolSchemaParams
 from .call_take_over_live_params import CallTakeOverLiveParams as CallTakeOverLiveParams
 from .chat_agent_retrieve_params import ChatAgentRetrieveParams as ChatAgentRetrieveParams
