@@ -150,12 +150,6 @@ class TestConversationFlowComponent:
                         "top_k": 3,
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
-                    "model_choice": {
-                        "model": "gpt-4.1",
-                        "type": "cascading",
-                        "high_priority": True,
-                        "ultrafast": True,
-                    },
                     "model_config": {
                         "primary": {
                             "model": "gpt-4.1",
@@ -474,12 +468,6 @@ class TestConversationFlowComponent:
                         "top_k": 3,
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
-                    "model_choice": {
-                        "model": "gpt-4.1",
-                        "type": "cascading",
-                        "high_priority": True,
-                        "ultrafast": True,
-                    },
                     "model_config": {
                         "primary": {
                             "model": "gpt-4.1",
@@ -807,12 +795,6 @@ class TestAsyncConversationFlowComponent:
                         "top_k": 3,
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
-                    "model_choice": {
-                        "model": "gpt-4.1",
-                        "type": "cascading",
-                        "high_priority": True,
-                        "ultrafast": True,
-                    },
                     "model_config": {
                         "primary": {
                             "model": "gpt-4.1",
@@ -1131,12 +1113,6 @@ class TestAsyncConversationFlowComponent:
                         "top_k": 3,
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
-                    "model_choice": {
-                        "model": "gpt-4.1",
-                        "type": "cascading",
-                        "high_priority": True,
-                        "ultrafast": True,
-                    },
                     "model_config": {
                         "primary": {
                             "model": "gpt-4.1",

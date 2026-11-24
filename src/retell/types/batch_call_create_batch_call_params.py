@@ -95,12 +95,7 @@ __all__ = [
     "TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionHangup",
     "TaskAgentOverrideAgentVoicemailOptionActionVoicemailActionBridgeTransfer",
     "TaskAgentOverrideConversationFlow",
-    "TaskAgentOverrideConversationFlowBackupModel",
-    "TaskAgentOverrideConversationFlowBackupModelBackupModelChoice",
     "TaskAgentOverrideConversationFlowKBConfig",
-    "TaskAgentOverrideConversationFlowModelChoice",
-    "TaskAgentOverrideConversationFlowModelChoiceModelChoiceCascading",
-    "TaskAgentOverrideConversationFlowModelChoiceModelChoiceS2S",
     "TaskAgentOverrideConversationFlowModelConfig",
     "TaskAgentOverrideConversationFlowModelConfigCascadingModelConfig",
     "TaskAgentOverrideConversationFlowModelConfigCascadingModelConfigBackup",
@@ -114,8 +109,6 @@ __all__ = [
     "TaskAgentOverrideConversationFlowModelConfigDuplexModelConfigBackupBackupModelRef",
     "TaskAgentOverrideConversationFlowModelConfigDuplexModelConfigPrimary",
     "TaskAgentOverrideRetellLlm",
-    "TaskAgentOverrideRetellLlmBackupModel",
-    "TaskAgentOverrideRetellLlmBackupModelBackupModelChoice",
     "TaskAgentOverrideRetellLlmKBConfig",
     "TaskAgentOverrideRetellLlmModelConfig",
     "TaskAgentOverrideRetellLlmModelConfigCascadingModelConfig",
@@ -2506,83 +2499,6 @@ class TaskAgentOverrideAgent(TypedDict, total=False):
     """
 
 
-class TaskAgentOverrideConversationFlowBackupModelBackupModelChoice(TypedDict, total=False):
-    """Backup models are supported only for call agents.
-
-    Response engines with a backup model cannot be used by chat agents.
-    """
-
-    model: Required[
-        Literal[
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-5.1",
-            "gpt-5.2",
-            "gpt-5.4",
-            "gpt-5.4-mini",
-            "gpt-5.4-nano",
-            "gpt-5.5",
-            "gpt-5.6-terra",
-            "gpt-5.6-luna",
-            "gpt-6.2-astra",
-            "gpt-6.2-sol",
-            "gpt-6-astra",
-            "gpt-6-sol",
-            "gpt-6.1-sol",
-            "gpt-6.1-terra",
-            "gpt-6-luna",
-            "tell-1",
-            "claude-4.6-sonnet",
-            "claude-5-opus",
-            "claude-5.5-opus",
-            "claude-5-sonnet",
-            "claude-5.5-sonnet",
-            "claude-5.5-haiku",
-            "claude-4.5-haiku",
-            "gemini-3.0-flash",
-            "gemini-3.1-flash-lite",
-            "gemini-3.5-flash",
-            "gemini-3.5-flash-lite",
-            "gemini-3.6-flash",
-            "gemini-3.7-flash",
-            "gemini-3.8-flash",
-            "gemini-4-neon",
-            "gemini-4-hydrogen",
-            "gemini-4-carbon",
-            "gemini-4-argon",
-        ]
-    ]
-    """The LLM model to use"""
-
-    type: Required[Literal["cascading"]]
-    """Type of model choice"""
-
-    backup_kick_in_timeout: int
-    """
-    Duration in milliseconds to prefer primary model output while both models run
-    concurrently. Must be between 300 and 60000 milliseconds, inclusive. Defaults to
-    1500 when omitted.
-    """
-
-    high_priority: bool
-    """Whether to use high priority pool with more dedicated resource, default false"""
-
-    ultrafast: bool
-    """
-    Whether to use the ultrafast tier for much faster response generation, default
-    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
-    precedence over high_priority.
-    """
-
-
-TaskAgentOverrideConversationFlowBackupModel: TypeAlias = Union[
-    TaskAgentOverrideConversationFlowBackupModelBackupModelChoice, Optional[object]
-]
-
-
 class TaskAgentOverrideConversationFlowKBConfig(TypedDict, total=False):
     """Knowledge base configuration for RAG retrieval."""
 
@@ -2591,90 +2507,6 @@ class TaskAgentOverrideConversationFlowKBConfig(TypedDict, total=False):
 
     top_k: int
     """Max number of knowledge base chunks to retrieve"""
-
-
-class TaskAgentOverrideConversationFlowModelChoiceModelChoiceCascading(TypedDict, total=False):
-    model: Required[
-        Literal[
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-5.1",
-            "gpt-5.2",
-            "gpt-5.4",
-            "gpt-5.4-mini",
-            "gpt-5.4-nano",
-            "gpt-5.5",
-            "gpt-5.6-terra",
-            "gpt-5.6-luna",
-            "gpt-6.2-astra",
-            "gpt-6.2-sol",
-            "gpt-6-astra",
-            "gpt-6-sol",
-            "gpt-6.1-sol",
-            "gpt-6.1-terra",
-            "gpt-6-luna",
-            "tell-1",
-            "claude-4.6-sonnet",
-            "claude-5-opus",
-            "claude-5.5-opus",
-            "claude-5-sonnet",
-            "claude-5.5-sonnet",
-            "claude-5.5-haiku",
-            "claude-4.5-haiku",
-            "gemini-3.0-flash",
-            "gemini-3.1-flash-lite",
-            "gemini-3.5-flash",
-            "gemini-3.5-flash-lite",
-            "gemini-3.6-flash",
-            "gemini-3.7-flash",
-            "gemini-3.8-flash",
-            "gemini-4-neon",
-            "gemini-4-hydrogen",
-            "gemini-4-carbon",
-            "gemini-4-argon",
-        ]
-    ]
-    """The LLM model to use"""
-
-    type: Required[Literal["cascading"]]
-    """Type of model choice"""
-
-    high_priority: bool
-    """Whether to use high priority pool with more dedicated resource, default false"""
-
-    ultrafast: bool
-    """
-    Whether to use the ultrafast tier for much faster response generation, default
-    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
-    precedence over high_priority.
-    """
-
-
-class TaskAgentOverrideConversationFlowModelChoiceModelChoiceS2S(TypedDict, total=False):
-    model: Required[
-        Literal[
-            "gpt-realtime-2.1",
-            "gpt-realtime-2.1-mini",
-            "gpt-realtime-2",
-            "gpt-realtime-1.5",
-            "gpt-realtime",
-            "gpt-realtime-mini",
-            "grok-voice-3.0",
-        ]
-    ]
-    """The speech-to-speech model to use"""
-
-    type: Required[Literal["s2s"]]
-    """Type of model choice"""
-
-
-TaskAgentOverrideConversationFlowModelChoice: TypeAlias = Union[
-    TaskAgentOverrideConversationFlowModelChoiceModelChoiceCascading,
-    TaskAgentOverrideConversationFlowModelChoiceModelChoiceS2S,
-]
 
 
 class TaskAgentOverrideConversationFlowModelConfigCascadingModelConfigBackupBackupModelRef(TypedDict, total=False):
@@ -3023,14 +2855,6 @@ class TaskAgentOverrideConversationFlow(TypedDict, total=False):
     Only applicable when using conversation flow as the response engine. Supported attributes - model_config, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms. A model_config override can set backup to null to remove it for this call.
     """
 
-    backup_model: TaskAgentOverrideConversationFlowBackupModel
-    """Replace backup model configuration for this call only.
-
-    Omit to inherit the saved configuration, or set null to disable backup. An
-    omitted backup_kick_in_timeout in a supplied configuration defaults to 1500
-    milliseconds.
-    """
-
     begin_after_user_silence_ms: Optional[int]
     """
     If set, the AI will begin the conversation after waiting for the user for the
@@ -3045,9 +2869,6 @@ class TaskAgentOverrideConversationFlow(TypedDict, total=False):
     knowledge_base_ids: Optional[SequenceNotStr[str]]
     """Knowledge base IDs for RAG (Retrieval-Augmented Generation)."""
 
-    model_choice: TaskAgentOverrideConversationFlowModelChoice
-    """Deprecated, use model_config. Ignored when model_config is set."""
-
     model_config: TaskAgentOverrideConversationFlowModelConfig
     """Model settings for the response engine.
 
@@ -3058,88 +2879,8 @@ class TaskAgentOverrideConversationFlow(TypedDict, total=False):
     setting backup to null disables it for that call only.
     """
 
-    model_temperature: Optional[float]
-    """Deprecated, use model_config.temperature. Ignored when model_config is set."""
-
     start_speaker: Literal["user", "agent"]
     """Who starts the conversation - user or agent."""
-
-
-class TaskAgentOverrideRetellLlmBackupModelBackupModelChoice(TypedDict, total=False):
-    """Backup models are supported only for call agents.
-
-    Response engines with a backup model cannot be used by chat agents.
-    """
-
-    model: Required[
-        Literal[
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-5.1",
-            "gpt-5.2",
-            "gpt-5.4",
-            "gpt-5.4-mini",
-            "gpt-5.4-nano",
-            "gpt-5.5",
-            "gpt-5.6-terra",
-            "gpt-5.6-luna",
-            "gpt-6.2-astra",
-            "gpt-6.2-sol",
-            "gpt-6-astra",
-            "gpt-6-sol",
-            "gpt-6.1-sol",
-            "gpt-6.1-terra",
-            "gpt-6-luna",
-            "tell-1",
-            "claude-4.6-sonnet",
-            "claude-5-opus",
-            "claude-5.5-opus",
-            "claude-5-sonnet",
-            "claude-5.5-sonnet",
-            "claude-5.5-haiku",
-            "claude-4.5-haiku",
-            "gemini-3.0-flash",
-            "gemini-3.1-flash-lite",
-            "gemini-3.5-flash",
-            "gemini-3.5-flash-lite",
-            "gemini-3.6-flash",
-            "gemini-3.7-flash",
-            "gemini-3.8-flash",
-            "gemini-4-neon",
-            "gemini-4-hydrogen",
-            "gemini-4-carbon",
-            "gemini-4-argon",
-        ]
-    ]
-    """The LLM model to use"""
-
-    type: Required[Literal["cascading"]]
-    """Type of model choice"""
-
-    backup_kick_in_timeout: int
-    """
-    Duration in milliseconds to prefer primary model output while both models run
-    concurrently. Must be between 300 and 60000 milliseconds, inclusive. Defaults to
-    1500 when omitted.
-    """
-
-    high_priority: bool
-    """Whether to use high priority pool with more dedicated resource, default false"""
-
-    ultrafast: bool
-    """
-    Whether to use the ultrafast tier for much faster response generation, default
-    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
-    precedence over high_priority.
-    """
-
-
-TaskAgentOverrideRetellLlmBackupModel: TypeAlias = Union[
-    TaskAgentOverrideRetellLlmBackupModelBackupModelChoice, Optional[object]
-]
 
 
 class TaskAgentOverrideRetellLlmKBConfig(TypedDict, total=False):
@@ -3498,14 +3239,6 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
     Only applicable when using Retell LLM as the response engine. Supported attributes - model_config, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message. A model_config override can set backup to null to remove it for this call, but cannot switch a speech-to-speech LLM to a cascading model.
     """
 
-    backup_model: TaskAgentOverrideRetellLlmBackupModel
-    """Replace backup model configuration for this call only.
-
-    Omit to inherit the saved configuration, or set null to disable backup. An
-    omitted backup_kick_in_timeout in a supplied configuration defaults to 1500
-    milliseconds.
-    """
-
     begin_after_user_silence_ms: Optional[int]
     """
     If set, the AI will begin the conversation after waiting for the user for the
@@ -3527,51 +3260,6 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
     knowledge_base_ids: Optional[SequenceNotStr[str]]
     """A list of knowledge base ids to use for this resource."""
 
-    model: Optional[
-        Literal[
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-5.1",
-            "gpt-5.2",
-            "gpt-5.4",
-            "gpt-5.4-mini",
-            "gpt-5.4-nano",
-            "gpt-5.5",
-            "gpt-5.6-terra",
-            "gpt-5.6-luna",
-            "gpt-6.2-astra",
-            "gpt-6.2-sol",
-            "gpt-6-astra",
-            "gpt-6-sol",
-            "gpt-6.1-sol",
-            "gpt-6.1-terra",
-            "gpt-6-luna",
-            "tell-1",
-            "claude-4.6-sonnet",
-            "claude-5-opus",
-            "claude-5.5-opus",
-            "claude-5-sonnet",
-            "claude-5.5-sonnet",
-            "claude-5.5-haiku",
-            "claude-4.5-haiku",
-            "gemini-3.0-flash",
-            "gemini-3.1-flash-lite",
-            "gemini-3.5-flash",
-            "gemini-3.5-flash-lite",
-            "gemini-3.6-flash",
-            "gemini-3.7-flash",
-            "gemini-3.8-flash",
-            "gemini-4-neon",
-            "gemini-4-hydrogen",
-            "gemini-4-carbon",
-            "gemini-4-argon",
-        ]
-    ]
-    """Available LLM models for agents."""
-
     model_config: TaskAgentOverrideRetellLlmModelConfig
     """Model settings for the response engine.
 
@@ -3581,34 +3269,6 @@ class TaskAgentOverrideRetellLlm(TypedDict, total=False):
     carries over. In agent_override, type is required whenever primary is set;
     setting backup to null disables it for that call only.
     """
-
-    model_high_priority: Optional[bool]
-    """Deprecated, use model_config.primary.tier fast.
-
-    Ignored when model_config is set.
-    """
-
-    model_temperature: float
-    """Deprecated, use model_config.temperature. Ignored when model_config is set."""
-
-    model_ultrafast: Optional[bool]
-    """Deprecated, use model_config.primary.tier ultrafast.
-
-    Ignored when model_config is set.
-    """
-
-    s2s_model: Optional[
-        Literal[
-            "gpt-realtime-2.1",
-            "gpt-realtime-2.1-mini",
-            "gpt-realtime-2",
-            "gpt-realtime-1.5",
-            "gpt-realtime",
-            "gpt-realtime-mini",
-            "grok-voice-3.0",
-        ]
-    ]
-    """The speech-to-speech model to use"""
 
     start_speaker: Literal["user", "agent"]
     """The speaker who starts the conversation.
