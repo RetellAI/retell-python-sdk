@@ -10,8 +10,6 @@ from .._utils import PropertyInfo
 
 __all__ = [
     "LlmCreateParams",
-    "BackupModel",
-    "BackupModelBackupModelChoice",
     "GeneralTool",
     "GeneralToolEscalateChatTool",
     "GeneralToolEscalateChatToolDestination",
@@ -149,12 +147,6 @@ __all__ = [
 
 
 class LlmCreateParams(TypedDict, total=False):
-    backup_model: BackupModel
-    """Backup models are supported only for call agents.
-
-    Response engines with a backup model cannot be used by chat agents.
-    """
-
     begin_after_user_silence_ms: Optional[int]
     """
     If set, the AI will begin the conversation after waiting for the user for the
@@ -209,51 +201,6 @@ class LlmCreateParams(TypedDict, total=False):
     mcps: Optional[Iterable[Mcp]]
     """A list of MCPs to use for this LLM."""
 
-    model: Optional[
-        Literal[
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-5.1",
-            "gpt-5.2",
-            "gpt-5.4",
-            "gpt-5.4-mini",
-            "gpt-5.4-nano",
-            "gpt-5.5",
-            "gpt-5.6-terra",
-            "gpt-5.6-luna",
-            "gpt-6.2-astra",
-            "gpt-6.2-sol",
-            "gpt-6-astra",
-            "gpt-6-sol",
-            "gpt-6.1-sol",
-            "gpt-6.1-terra",
-            "gpt-6-luna",
-            "tell-1",
-            "claude-4.6-sonnet",
-            "claude-5-opus",
-            "claude-5.5-opus",
-            "claude-5-sonnet",
-            "claude-5.5-sonnet",
-            "claude-5.5-haiku",
-            "claude-4.5-haiku",
-            "gemini-3.0-flash",
-            "gemini-3.1-flash-lite",
-            "gemini-3.5-flash",
-            "gemini-3.5-flash-lite",
-            "gemini-3.6-flash",
-            "gemini-3.7-flash",
-            "gemini-3.8-flash",
-            "gemini-4-neon",
-            "gemini-4-hydrogen",
-            "gemini-4-carbon",
-            "gemini-4-argon",
-        ]
-    ]
-    """Available LLM models for agents."""
-
     model_config: ModelConfig
     """Model settings for the response engine.
 
@@ -263,34 +210,6 @@ class LlmCreateParams(TypedDict, total=False):
     carries over. In agent_override, type is required whenever primary is set;
     setting backup to null disables it for that call only.
     """
-
-    model_high_priority: Optional[bool]
-    """Deprecated, use model_config.primary.tier fast.
-
-    Ignored when model_config is set.
-    """
-
-    model_temperature: float
-    """Deprecated, use model_config.temperature. Ignored when model_config is set."""
-
-    model_ultrafast: Optional[bool]
-    """Deprecated, use model_config.primary.tier ultrafast.
-
-    Ignored when model_config is set.
-    """
-
-    s2s_model: Optional[
-        Literal[
-            "gpt-realtime-2.1",
-            "gpt-realtime-2.1-mini",
-            "gpt-realtime-2",
-            "gpt-realtime-1.5",
-            "gpt-realtime",
-            "gpt-realtime-mini",
-            "grok-voice-3.0",
-        ]
-    ]
-    """The speech-to-speech model to use"""
 
     start_speaker: Literal["user", "agent"]
     """The speaker who starts the conversation.
@@ -317,81 +236,6 @@ class LlmCreateParams(TypedDict, total=False):
     tokens. Required for duplex, where general_prompt is the backend's prompt. Kept
     when you switch models.
     """
-
-
-class BackupModelBackupModelChoice(TypedDict, total=False):
-    """Backup models are supported only for call agents.
-
-    Response engines with a backup model cannot be used by chat agents.
-    """
-
-    model: Required[
-        Literal[
-            "gpt-4.1",
-            "gpt-4.1-mini",
-            "gpt-5",
-            "gpt-5-mini",
-            "gpt-5-nano",
-            "gpt-5.1",
-            "gpt-5.2",
-            "gpt-5.4",
-            "gpt-5.4-mini",
-            "gpt-5.4-nano",
-            "gpt-5.5",
-            "gpt-5.6-terra",
-            "gpt-5.6-luna",
-            "gpt-6.2-astra",
-            "gpt-6.2-sol",
-            "gpt-6-astra",
-            "gpt-6-sol",
-            "gpt-6.1-sol",
-            "gpt-6.1-terra",
-            "gpt-6-luna",
-            "tell-1",
-            "claude-4.6-sonnet",
-            "claude-5-opus",
-            "claude-5.5-opus",
-            "claude-5-sonnet",
-            "claude-5.5-sonnet",
-            "claude-5.5-haiku",
-            "claude-4.5-haiku",
-            "gemini-3.0-flash",
-            "gemini-3.1-flash-lite",
-            "gemini-3.5-flash",
-            "gemini-3.5-flash-lite",
-            "gemini-3.6-flash",
-            "gemini-3.7-flash",
-            "gemini-3.8-flash",
-            "gemini-4-neon",
-            "gemini-4-hydrogen",
-            "gemini-4-carbon",
-            "gemini-4-argon",
-        ]
-    ]
-    """The LLM model to use"""
-
-    type: Required[Literal["cascading"]]
-    """Type of model choice"""
-
-    backup_kick_in_timeout: int
-    """
-    Duration in milliseconds to prefer primary model output while both models run
-    concurrently. Must be between 300 and 60000 milliseconds, inclusive. Defaults to
-    1500 when omitted.
-    """
-
-    high_priority: bool
-    """Whether to use high priority pool with more dedicated resource, default false"""
-
-    ultrafast: bool
-    """
-    Whether to use the ultrafast tier for much faster response generation, default
-    false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes
-    precedence over high_priority.
-    """
-
-
-BackupModel: TypeAlias = Union[BackupModelBackupModelChoice, Optional[object]]
 
 
 class GeneralToolEscalateChatToolDestinationDestination(TypedDict, total=False):

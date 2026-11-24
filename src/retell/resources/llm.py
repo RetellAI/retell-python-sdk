@@ -48,7 +48,6 @@ class LlmResource(SyncAPIResource):
     def create(
         self,
         *,
-        backup_model: llm_create_params.BackupModel | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -58,66 +57,7 @@ class LlmResource(SyncAPIResource):
         kb_config: Optional[llm_create_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[llm_create_params.Mcp]] | Omit = omit,
-        model: Optional[
-            Literal[
-                "gpt-4.1",
-                "gpt-4.1-mini",
-                "gpt-5",
-                "gpt-5-mini",
-                "gpt-5-nano",
-                "gpt-5.1",
-                "gpt-5.2",
-                "gpt-5.4",
-                "gpt-5.4-mini",
-                "gpt-5.4-nano",
-                "gpt-5.5",
-                "gpt-5.6-terra",
-                "gpt-5.6-luna",
-                "gpt-6.2-astra",
-                "gpt-6.2-sol",
-                "gpt-6-astra",
-                "gpt-6-sol",
-                "gpt-6.1-sol",
-                "gpt-6.1-terra",
-                "gpt-6-luna",
-                "tell-1",
-                "claude-4.6-sonnet",
-                "claude-5-opus",
-                "claude-5.5-opus",
-                "claude-5-sonnet",
-                "claude-5.5-sonnet",
-                "claude-5.5-haiku",
-                "claude-4.5-haiku",
-                "gemini-3.0-flash",
-                "gemini-3.1-flash-lite",
-                "gemini-3.5-flash",
-                "gemini-3.5-flash-lite",
-                "gemini-3.6-flash",
-                "gemini-3.7-flash",
-                "gemini-3.8-flash",
-                "gemini-4-neon",
-                "gemini-4-hydrogen",
-                "gemini-4-carbon",
-                "gemini-4-argon",
-            ]
-        ]
-        | Omit = omit,
         model_config: llm_create_params.ModelConfig | Omit = omit,
-        model_high_priority: Optional[bool] | Omit = omit,
-        model_temperature: float | Omit = omit,
-        model_ultrafast: Optional[bool] | Omit = omit,
-        s2s_model: Optional[
-            Literal[
-                "gpt-realtime-2.1",
-                "gpt-realtime-2.1-mini",
-                "gpt-realtime-2",
-                "gpt-realtime-1.5",
-                "gpt-realtime",
-                "gpt-realtime-mini",
-                "grok-voice-3.0",
-            ]
-        ]
-        | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
@@ -136,9 +76,6 @@ class LlmResource(SyncAPIResource):
         is used to generate response output for the agent.
 
         Args:
-          backup_model: Backup models are supported only for call agents. Response engines with a backup
-              model cannot be used by chat agents.
-
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
               agent is configured to wait for the user to speak first. If not set, the agent
@@ -172,24 +109,12 @@ class LlmResource(SyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Available LLM models for agents.
-
           model_config: Model settings for the response engine. type decides which models primary and
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
               type is required whenever primary is set; setting backup to null disables it for
               that call only.
-
-          model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
-              set.
-
-          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
-
-          model_ultrafast: Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config
-              is set.
-
-          s2s_model: The speech-to-speech model to use
 
           start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
               'agent'.
@@ -218,7 +143,6 @@ class LlmResource(SyncAPIResource):
             "/create-retell-llm",
             body=maybe_transform(
                 {
-                    "backup_model": backup_model,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -228,12 +152,7 @@ class LlmResource(SyncAPIResource):
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
-                    "model": model,
                     "model_config": model_config,
-                    "model_high_priority": model_high_priority,
-                    "model_temperature": model_temperature,
-                    "model_ultrafast": model_ultrafast,
-                    "s2s_model": s2s_model,
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
@@ -298,7 +217,6 @@ class LlmResource(SyncAPIResource):
         llm_id: str,
         *,
         version: int | Omit = omit,
-        backup_model: llm_update_params.BackupModel | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -308,66 +226,7 @@ class LlmResource(SyncAPIResource):
         kb_config: Optional[llm_update_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[llm_update_params.Mcp]] | Omit = omit,
-        model: Optional[
-            Literal[
-                "gpt-4.1",
-                "gpt-4.1-mini",
-                "gpt-5",
-                "gpt-5-mini",
-                "gpt-5-nano",
-                "gpt-5.1",
-                "gpt-5.2",
-                "gpt-5.4",
-                "gpt-5.4-mini",
-                "gpt-5.4-nano",
-                "gpt-5.5",
-                "gpt-5.6-terra",
-                "gpt-5.6-luna",
-                "gpt-6.2-astra",
-                "gpt-6.2-sol",
-                "gpt-6-astra",
-                "gpt-6-sol",
-                "gpt-6.1-sol",
-                "gpt-6.1-terra",
-                "gpt-6-luna",
-                "tell-1",
-                "claude-4.6-sonnet",
-                "claude-5-opus",
-                "claude-5.5-opus",
-                "claude-5-sonnet",
-                "claude-5.5-sonnet",
-                "claude-5.5-haiku",
-                "claude-4.5-haiku",
-                "gemini-3.0-flash",
-                "gemini-3.1-flash-lite",
-                "gemini-3.5-flash",
-                "gemini-3.5-flash-lite",
-                "gemini-3.6-flash",
-                "gemini-3.7-flash",
-                "gemini-3.8-flash",
-                "gemini-4-neon",
-                "gemini-4-hydrogen",
-                "gemini-4-carbon",
-                "gemini-4-argon",
-            ]
-        ]
-        | Omit = omit,
         model_config: llm_update_params.ModelConfig | Omit = omit,
-        model_high_priority: Optional[bool] | Omit = omit,
-        model_temperature: float | Omit = omit,
-        model_ultrafast: Optional[bool] | Omit = omit,
-        s2s_model: Optional[
-            Literal[
-                "gpt-realtime-2.1",
-                "gpt-realtime-2.1-mini",
-                "gpt-realtime-2",
-                "gpt-realtime-1.5",
-                "gpt-realtime",
-                "gpt-realtime-mini",
-                "grok-voice-3.0",
-            ]
-        ]
-        | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
@@ -385,9 +244,6 @@ class LlmResource(SyncAPIResource):
 
         Args:
           version: Optional version of the API to use for this request. Default to latest version.
-
-          backup_model: Backup models are supported only for call agents. Response engines with a backup
-              model cannot be used by chat agents.
 
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
@@ -422,24 +278,12 @@ class LlmResource(SyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Available LLM models for agents.
-
           model_config: Model settings for the response engine. type decides which models primary and
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
               type is required whenever primary is set; setting backup to null disables it for
               that call only.
-
-          model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
-              set.
-
-          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
-
-          model_ultrafast: Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config
-              is set.
-
-          s2s_model: The speech-to-speech model to use
 
           start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
               'agent'.
@@ -470,7 +314,6 @@ class LlmResource(SyncAPIResource):
             path_template("/update-retell-llm/{llm_id}", llm_id=llm_id),
             body=maybe_transform(
                 {
-                    "backup_model": backup_model,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -480,12 +323,7 @@ class LlmResource(SyncAPIResource):
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
-                    "model": model,
                     "model_config": model_config,
-                    "model_high_priority": model_high_priority,
-                    "model_temperature": model_temperature,
-                    "model_ultrafast": model_ultrafast,
-                    "s2s_model": s2s_model,
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
@@ -625,7 +463,6 @@ class AsyncLlmResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        backup_model: llm_create_params.BackupModel | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -635,66 +472,7 @@ class AsyncLlmResource(AsyncAPIResource):
         kb_config: Optional[llm_create_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[llm_create_params.Mcp]] | Omit = omit,
-        model: Optional[
-            Literal[
-                "gpt-4.1",
-                "gpt-4.1-mini",
-                "gpt-5",
-                "gpt-5-mini",
-                "gpt-5-nano",
-                "gpt-5.1",
-                "gpt-5.2",
-                "gpt-5.4",
-                "gpt-5.4-mini",
-                "gpt-5.4-nano",
-                "gpt-5.5",
-                "gpt-5.6-terra",
-                "gpt-5.6-luna",
-                "gpt-6.2-astra",
-                "gpt-6.2-sol",
-                "gpt-6-astra",
-                "gpt-6-sol",
-                "gpt-6.1-sol",
-                "gpt-6.1-terra",
-                "gpt-6-luna",
-                "tell-1",
-                "claude-4.6-sonnet",
-                "claude-5-opus",
-                "claude-5.5-opus",
-                "claude-5-sonnet",
-                "claude-5.5-sonnet",
-                "claude-5.5-haiku",
-                "claude-4.5-haiku",
-                "gemini-3.0-flash",
-                "gemini-3.1-flash-lite",
-                "gemini-3.5-flash",
-                "gemini-3.5-flash-lite",
-                "gemini-3.6-flash",
-                "gemini-3.7-flash",
-                "gemini-3.8-flash",
-                "gemini-4-neon",
-                "gemini-4-hydrogen",
-                "gemini-4-carbon",
-                "gemini-4-argon",
-            ]
-        ]
-        | Omit = omit,
         model_config: llm_create_params.ModelConfig | Omit = omit,
-        model_high_priority: Optional[bool] | Omit = omit,
-        model_temperature: float | Omit = omit,
-        model_ultrafast: Optional[bool] | Omit = omit,
-        s2s_model: Optional[
-            Literal[
-                "gpt-realtime-2.1",
-                "gpt-realtime-2.1-mini",
-                "gpt-realtime-2",
-                "gpt-realtime-1.5",
-                "gpt-realtime",
-                "gpt-realtime-mini",
-                "grok-voice-3.0",
-            ]
-        ]
-        | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_create_params.State]] | Omit = omit,
@@ -713,9 +491,6 @@ class AsyncLlmResource(AsyncAPIResource):
         is used to generate response output for the agent.
 
         Args:
-          backup_model: Backup models are supported only for call agents. Response engines with a backup
-              model cannot be used by chat agents.
-
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
               agent is configured to wait for the user to speak first. If not set, the agent
@@ -749,24 +524,12 @@ class AsyncLlmResource(AsyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Available LLM models for agents.
-
           model_config: Model settings for the response engine. type decides which models primary and
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
               type is required whenever primary is set; setting backup to null disables it for
               that call only.
-
-          model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
-              set.
-
-          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
-
-          model_ultrafast: Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config
-              is set.
-
-          s2s_model: The speech-to-speech model to use
 
           start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
               'agent'.
@@ -795,7 +558,6 @@ class AsyncLlmResource(AsyncAPIResource):
             "/create-retell-llm",
             body=await async_maybe_transform(
                 {
-                    "backup_model": backup_model,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -805,12 +567,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
-                    "model": model,
                     "model_config": model_config,
-                    "model_high_priority": model_high_priority,
-                    "model_temperature": model_temperature,
-                    "model_ultrafast": model_ultrafast,
-                    "s2s_model": s2s_model,
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,
@@ -875,7 +632,6 @@ class AsyncLlmResource(AsyncAPIResource):
         llm_id: str,
         *,
         version: int | Omit = omit,
-        backup_model: llm_update_params.BackupModel | Omit = omit,
         begin_after_user_silence_ms: Optional[int] | Omit = omit,
         begin_message: Optional[str] | Omit = omit,
         default_dynamic_variables: Optional[Dict[str, str]] | Omit = omit,
@@ -885,66 +641,7 @@ class AsyncLlmResource(AsyncAPIResource):
         kb_config: Optional[llm_update_params.KBConfig] | Omit = omit,
         knowledge_base_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         mcps: Optional[Iterable[llm_update_params.Mcp]] | Omit = omit,
-        model: Optional[
-            Literal[
-                "gpt-4.1",
-                "gpt-4.1-mini",
-                "gpt-5",
-                "gpt-5-mini",
-                "gpt-5-nano",
-                "gpt-5.1",
-                "gpt-5.2",
-                "gpt-5.4",
-                "gpt-5.4-mini",
-                "gpt-5.4-nano",
-                "gpt-5.5",
-                "gpt-5.6-terra",
-                "gpt-5.6-luna",
-                "gpt-6.2-astra",
-                "gpt-6.2-sol",
-                "gpt-6-astra",
-                "gpt-6-sol",
-                "gpt-6.1-sol",
-                "gpt-6.1-terra",
-                "gpt-6-luna",
-                "tell-1",
-                "claude-4.6-sonnet",
-                "claude-5-opus",
-                "claude-5.5-opus",
-                "claude-5-sonnet",
-                "claude-5.5-sonnet",
-                "claude-5.5-haiku",
-                "claude-4.5-haiku",
-                "gemini-3.0-flash",
-                "gemini-3.1-flash-lite",
-                "gemini-3.5-flash",
-                "gemini-3.5-flash-lite",
-                "gemini-3.6-flash",
-                "gemini-3.7-flash",
-                "gemini-3.8-flash",
-                "gemini-4-neon",
-                "gemini-4-hydrogen",
-                "gemini-4-carbon",
-                "gemini-4-argon",
-            ]
-        ]
-        | Omit = omit,
         model_config: llm_update_params.ModelConfig | Omit = omit,
-        model_high_priority: Optional[bool] | Omit = omit,
-        model_temperature: float | Omit = omit,
-        model_ultrafast: Optional[bool] | Omit = omit,
-        s2s_model: Optional[
-            Literal[
-                "gpt-realtime-2.1",
-                "gpt-realtime-2.1-mini",
-                "gpt-realtime-2",
-                "gpt-realtime-1.5",
-                "gpt-realtime",
-                "gpt-realtime-mini",
-                "grok-voice-3.0",
-            ]
-        ]
-        | Omit = omit,
         start_speaker: Literal["user", "agent"] | Omit = omit,
         starting_state: Optional[str] | Omit = omit,
         states: Optional[Iterable[llm_update_params.State]] | Omit = omit,
@@ -962,9 +659,6 @@ class AsyncLlmResource(AsyncAPIResource):
 
         Args:
           version: Optional version of the API to use for this request. Default to latest version.
-
-          backup_model: Backup models are supported only for call agents. Response engines with a backup
-              model cannot be used by chat agents.
 
           begin_after_user_silence_ms: If set, the AI will begin the conversation after waiting for the user for the
               duration (in milliseconds) specified by this attribute. This only applies if the
@@ -999,24 +693,12 @@ class AsyncLlmResource(AsyncAPIResource):
 
           mcps: A list of MCPs to use for this LLM.
 
-          model: Available LLM models for agents.
-
           model_config: Model settings for the response engine. type decides which models primary and
               backup accept. On update, each top-level key replaces the current one and
               omitted keys are kept; set backup to null to remove it. Changing type requires
               primary and clears backup, while temperature carries over. In agent_override,
               type is required whenever primary is set; setting backup to null disables it for
               that call only.
-
-          model_high_priority: Deprecated, use model_config.primary.tier fast. Ignored when model_config is
-              set.
-
-          model_temperature: Deprecated, use model_config.temperature. Ignored when model_config is set.
-
-          model_ultrafast: Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config
-              is set.
-
-          s2s_model: The speech-to-speech model to use
 
           start_speaker: The speaker who starts the conversation. Required. Must be either 'user' or
               'agent'.
@@ -1047,7 +729,6 @@ class AsyncLlmResource(AsyncAPIResource):
             path_template("/update-retell-llm/{llm_id}", llm_id=llm_id),
             body=await async_maybe_transform(
                 {
-                    "backup_model": backup_model,
                     "begin_after_user_silence_ms": begin_after_user_silence_ms,
                     "begin_message": begin_message,
                     "default_dynamic_variables": default_dynamic_variables,
@@ -1057,12 +738,7 @@ class AsyncLlmResource(AsyncAPIResource):
                     "kb_config": kb_config,
                     "knowledge_base_ids": knowledge_base_ids,
                     "mcps": mcps,
-                    "model": model,
                     "model_config": model_config,
-                    "model_high_priority": model_high_priority,
-                    "model_temperature": model_temperature,
-                    "model_ultrafast": model_ultrafast,
-                    "s2s_model": s2s_model,
                     "start_speaker": start_speaker,
                     "starting_state": starting_state,
                     "states": states,

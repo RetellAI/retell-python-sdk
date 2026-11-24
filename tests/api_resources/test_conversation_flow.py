@@ -149,12 +149,6 @@ class TestConversationFlow:
                         "top_k": 3,
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
-                    "model_choice": {
-                        "model": "gpt-4.1",
-                        "type": "cascading",
-                        "high_priority": True,
-                        "ultrafast": True,
-                    },
                     "model_config": {
                         "primary": {
                             "model": "gpt-4.1",
@@ -179,13 +173,6 @@ class TestConversationFlow:
                 }
             ],
             start_speaker="agent",
-            backup_model={
-                "model": "gpt-4.1",
-                "type": "cascading",
-                "backup_kick_in_timeout": 300,
-                "high_priority": True,
-                "ultrafast": True,
-            },
             begin_after_user_silence_ms=2000,
             begin_tag_display_position={
                 "x": 100,
@@ -301,12 +288,6 @@ class TestConversationFlow:
                                 "top_k": 3,
                             },
                             "knowledge_base_ids": ["kb_001", "kb_002"],
-                            "model_choice": {
-                                "model": "gpt-4.1",
-                                "type": "cascading",
-                                "high_priority": True,
-                                "ultrafast": True,
-                            },
                             "model_config": {
                                 "primary": {
                                     "model": "gpt-4.1",
@@ -420,12 +401,6 @@ class TestConversationFlow:
                     "timeout_ms": 0,
                 }
             ],
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-                "high_priority": True,
-                "ultrafast": True,
-            },
             model_config={
                 "backup": {
                     "model": "gpt-4.1",
@@ -439,7 +414,6 @@ class TestConversationFlow:
                 "temperature": 0,
                 "type": "cascading",
             },
-            model_temperature=0.7,
             notes=[
                 {
                     "id": "note_abc123",
@@ -601,13 +575,6 @@ class TestConversationFlow:
         conversation_flow = client.conversation_flow.update(
             conversation_flow_id="conversation_flow_id",
             version=1,
-            backup_model={
-                "model": "gpt-4.1",
-                "type": "cascading",
-                "backup_kick_in_timeout": 300,
-                "high_priority": True,
-                "ultrafast": True,
-            },
             begin_after_user_silence_ms=2000,
             begin_tag_display_position={
                 "x": 100,
@@ -723,12 +690,6 @@ class TestConversationFlow:
                                 "top_k": 3,
                             },
                             "knowledge_base_ids": ["kb_001", "kb_002"],
-                            "model_choice": {
-                                "model": "gpt-4.1",
-                                "type": "cascading",
-                                "high_priority": True,
-                                "ultrafast": True,
-                            },
                             "model_config": {
                                 "primary": {
                                     "model": "gpt-4.1",
@@ -842,12 +803,6 @@ class TestConversationFlow:
                     "timeout_ms": 0,
                 }
             ],
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-                "high_priority": True,
-                "ultrafast": True,
-            },
             model_config={
                 "backup": {
                     "model": "gpt-4.1",
@@ -861,7 +816,6 @@ class TestConversationFlow:
                 "temperature": 0,
                 "type": "cascading",
             },
-            model_temperature=0.7,
             nodes=[
                 {
                     "id": "start",
@@ -969,12 +923,6 @@ class TestConversationFlow:
                         "top_k": 3,
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
-                    "model_choice": {
-                        "model": "gpt-4.1",
-                        "type": "cascading",
-                        "high_priority": True,
-                        "ultrafast": True,
-                    },
                     "model_config": {
                         "primary": {
                             "model": "gpt-4.1",
@@ -1307,12 +1255,6 @@ class TestAsyncConversationFlow:
                         "top_k": 3,
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
-                    "model_choice": {
-                        "model": "gpt-4.1",
-                        "type": "cascading",
-                        "high_priority": True,
-                        "ultrafast": True,
-                    },
                     "model_config": {
                         "primary": {
                             "model": "gpt-4.1",
@@ -1337,13 +1279,6 @@ class TestAsyncConversationFlow:
                 }
             ],
             start_speaker="agent",
-            backup_model={
-                "model": "gpt-4.1",
-                "type": "cascading",
-                "backup_kick_in_timeout": 300,
-                "high_priority": True,
-                "ultrafast": True,
-            },
             begin_after_user_silence_ms=2000,
             begin_tag_display_position={
                 "x": 100,
@@ -1459,12 +1394,6 @@ class TestAsyncConversationFlow:
                                 "top_k": 3,
                             },
                             "knowledge_base_ids": ["kb_001", "kb_002"],
-                            "model_choice": {
-                                "model": "gpt-4.1",
-                                "type": "cascading",
-                                "high_priority": True,
-                                "ultrafast": True,
-                            },
                             "model_config": {
                                 "primary": {
                                     "model": "gpt-4.1",
@@ -1578,12 +1507,6 @@ class TestAsyncConversationFlow:
                     "timeout_ms": 0,
                 }
             ],
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-                "high_priority": True,
-                "ultrafast": True,
-            },
             model_config={
                 "backup": {
                     "model": "gpt-4.1",
@@ -1597,7 +1520,6 @@ class TestAsyncConversationFlow:
                 "temperature": 0,
                 "type": "cascading",
             },
-            model_temperature=0.7,
             notes=[
                 {
                     "id": "note_abc123",
@@ -1759,13 +1681,6 @@ class TestAsyncConversationFlow:
         conversation_flow = await async_client.conversation_flow.update(
             conversation_flow_id="conversation_flow_id",
             version=1,
-            backup_model={
-                "model": "gpt-4.1",
-                "type": "cascading",
-                "backup_kick_in_timeout": 300,
-                "high_priority": True,
-                "ultrafast": True,
-            },
             begin_after_user_silence_ms=2000,
             begin_tag_display_position={
                 "x": 100,
@@ -1881,12 +1796,6 @@ class TestAsyncConversationFlow:
                                 "top_k": 3,
                             },
                             "knowledge_base_ids": ["kb_001", "kb_002"],
-                            "model_choice": {
-                                "model": "gpt-4.1",
-                                "type": "cascading",
-                                "high_priority": True,
-                                "ultrafast": True,
-                            },
                             "model_config": {
                                 "primary": {
                                     "model": "gpt-4.1",
@@ -2000,12 +1909,6 @@ class TestAsyncConversationFlow:
                     "timeout_ms": 0,
                 }
             ],
-            model_choice={
-                "model": "gpt-4.1",
-                "type": "cascading",
-                "high_priority": True,
-                "ultrafast": True,
-            },
             model_config={
                 "backup": {
                     "model": "gpt-4.1",
@@ -2019,7 +1922,6 @@ class TestAsyncConversationFlow:
                 "temperature": 0,
                 "type": "cascading",
             },
-            model_temperature=0.7,
             nodes=[
                 {
                     "id": "start",
@@ -2127,12 +2029,6 @@ class TestAsyncConversationFlow:
                         "top_k": 3,
                     },
                     "knowledge_base_ids": ["kb_001", "kb_002"],
-                    "model_choice": {
-                        "model": "gpt-4.1",
-                        "type": "cascading",
-                        "high_priority": True,
-                        "ultrafast": True,
-                    },
                     "model_config": {
                         "primary": {
                             "model": "gpt-4.1",
