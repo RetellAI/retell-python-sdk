@@ -158,12 +158,11 @@ class AppResponse(BaseModel):
     """
 
     tenant_type: Optional[Literal["business", "personal"]] = None
-    """Microsoft OneDrive account type discovered during OAuth."""
+    """Account type discovered during OAuth."""
 
     tenant_url: Optional[str] = None
     """Per-tenant API base URL.
 
     Set by providers with per-org hosts; omitted by providers on a single global
-    host. For OneDrive for Business, this is the tenant's -my.sharepoint.com origin
-    used by File Picker v8; personal OneDrive omits it.
+    host.
     """
