@@ -16,6 +16,9 @@ __all__ = [
     "GeneralToolEscalateChatTool",
     "GeneralToolEscalateChatToolDestination",
     "GeneralToolEscalateChatToolDestinationDestination",
+    "GeneralToolEscalateChatToolHandoffMessage",
+    "GeneralToolEscalateChatToolHandoffMessageNodeInstructionPrompt",
+    "GeneralToolEscalateChatToolHandoffMessageNodeInstructionStaticText",
     "GeneralToolEndCallTool",
     "GeneralToolTransferCallTool",
     "GeneralToolTransferCallToolTransferDestination",
@@ -88,6 +91,9 @@ __all__ = [
     "StateToolEscalateChatTool",
     "StateToolEscalateChatToolDestination",
     "StateToolEscalateChatToolDestinationDestination",
+    "StateToolEscalateChatToolHandoffMessage",
+    "StateToolEscalateChatToolHandoffMessageNodeInstructionPrompt",
+    "StateToolEscalateChatToolHandoffMessageNodeInstructionStaticText",
     "StateToolEndCallTool",
     "StateToolTransferCallTool",
     "StateToolTransferCallToolTransferDestination",
@@ -420,8 +426,36 @@ class GeneralToolEscalateChatToolDestination(TypedDict, total=False):
     type: Required[Literal["webhook"]]
 
 
+class GeneralToolEscalateChatToolHandoffMessageNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class GeneralToolEscalateChatToolHandoffMessageNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+GeneralToolEscalateChatToolHandoffMessage: TypeAlias = Union[
+    GeneralToolEscalateChatToolHandoffMessageNodeInstructionPrompt,
+    GeneralToolEscalateChatToolHandoffMessageNodeInstructionStaticText,
+]
+
+
 class GeneralToolEscalateChatTool(TypedDict, total=False):
     destination: Required[GeneralToolEscalateChatToolDestination]
+
+    handoff_message: Required[GeneralToolEscalateChatToolHandoffMessage]
+    """
+    What the agent says once the destination webhook returns a 2xx response, right
+    before the human takes over.
+    """
 
     name: Required[str]
 
@@ -2195,8 +2229,36 @@ class StateToolEscalateChatToolDestination(TypedDict, total=False):
     type: Required[Literal["webhook"]]
 
 
+class StateToolEscalateChatToolHandoffMessageNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class StateToolEscalateChatToolHandoffMessageNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+StateToolEscalateChatToolHandoffMessage: TypeAlias = Union[
+    StateToolEscalateChatToolHandoffMessageNodeInstructionPrompt,
+    StateToolEscalateChatToolHandoffMessageNodeInstructionStaticText,
+]
+
+
 class StateToolEscalateChatTool(TypedDict, total=False):
     destination: Required[StateToolEscalateChatToolDestination]
+
+    handoff_message: Required[StateToolEscalateChatToolHandoffMessage]
+    """
+    What the agent says once the destination webhook returns a 2xx response, right
+    before the human takes over.
+    """
 
     name: Required[str]
 
