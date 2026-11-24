@@ -151,6 +151,9 @@ __all__ = [
     "ComponentNodeSubagentNodeToolEscalateChatTool",
     "ComponentNodeSubagentNodeToolEscalateChatToolDestination",
     "ComponentNodeSubagentNodeToolEscalateChatToolDestinationDestination",
+    "ComponentNodeSubagentNodeToolEscalateChatToolHandoffMessage",
+    "ComponentNodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionPrompt",
+    "ComponentNodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionStaticText",
     "ComponentNodeSubagentNodeToolEndCallTool",
     "ComponentNodeSubagentNodeToolTransferCallTool",
     "ComponentNodeSubagentNodeToolTransferCallToolTransferDestination",
@@ -339,6 +342,9 @@ __all__ = [
     "ComponentNodeEscalateChatNodeEdgeTransitionConditionEquationCondition",
     "ComponentNodeEscalateChatNodeEdgeTransitionConditionEquationConditionEquation",
     "ComponentNodeEscalateChatNodeEdgeTransitionConditionUnionMember2",
+    "ComponentNodeEscalateChatNodeHandoffMessage",
+    "ComponentNodeEscalateChatNodeHandoffMessageNodeInstructionPrompt",
+    "ComponentNodeEscalateChatNodeHandoffMessageNodeInstructionStaticText",
     "ComponentNodeEscalateChatNodeDisplayPosition",
     "ComponentNodeEscalateChatNodeGlobalNodeSetting",
     "ComponentNodeEscalateChatNodeGlobalNodeSettingCondition",
@@ -974,6 +980,9 @@ __all__ = [
     "NodeSubagentNodeToolEscalateChatTool",
     "NodeSubagentNodeToolEscalateChatToolDestination",
     "NodeSubagentNodeToolEscalateChatToolDestinationDestination",
+    "NodeSubagentNodeToolEscalateChatToolHandoffMessage",
+    "NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionPrompt",
+    "NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionStaticText",
     "NodeSubagentNodeToolEndCallTool",
     "NodeSubagentNodeToolTransferCallTool",
     "NodeSubagentNodeToolTransferCallToolTransferDestination",
@@ -1162,6 +1171,9 @@ __all__ = [
     "NodeEscalateChatNodeEdgeTransitionConditionEquationCondition",
     "NodeEscalateChatNodeEdgeTransitionConditionEquationConditionEquation",
     "NodeEscalateChatNodeEdgeTransitionConditionUnionMember2",
+    "NodeEscalateChatNodeHandoffMessage",
+    "NodeEscalateChatNodeHandoffMessageNodeInstructionPrompt",
+    "NodeEscalateChatNodeHandoffMessageNodeInstructionStaticText",
     "NodeEscalateChatNodeDisplayPosition",
     "NodeEscalateChatNodeGlobalNodeSetting",
     "NodeEscalateChatNodeGlobalNodeSettingCondition",
@@ -3429,8 +3441,36 @@ class ComponentNodeSubagentNodeToolEscalateChatToolDestination(TypedDict, total=
     type: Required[Literal["webhook"]]
 
 
+class ComponentNodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class ComponentNodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+ComponentNodeSubagentNodeToolEscalateChatToolHandoffMessage: TypeAlias = Union[
+    ComponentNodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionPrompt,
+    ComponentNodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionStaticText,
+]
+
+
 class ComponentNodeSubagentNodeToolEscalateChatTool(TypedDict, total=False):
     destination: Required[ComponentNodeSubagentNodeToolEscalateChatToolDestination]
+
+    handoff_message: Required[ComponentNodeSubagentNodeToolEscalateChatToolHandoffMessage]
+    """
+    What the agent says once the destination webhook returns a 2xx response, right
+    before the human takes over.
+    """
 
     name: Required[str]
 
@@ -6617,6 +6657,28 @@ class ComponentNodeEscalateChatNodeEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class ComponentNodeEscalateChatNodeHandoffMessageNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class ComponentNodeEscalateChatNodeHandoffMessageNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+ComponentNodeEscalateChatNodeHandoffMessage: TypeAlias = Union[
+    ComponentNodeEscalateChatNodeHandoffMessageNodeInstructionPrompt,
+    ComponentNodeEscalateChatNodeHandoffMessageNodeInstructionStaticText,
+]
+
+
 class ComponentNodeEscalateChatNodeDisplayPosition(TypedDict, total=False):
     """Position for frontend display"""
 
@@ -7018,6 +7080,12 @@ class ComponentNodeEscalateChatNode(TypedDict, total=False):
     destination: Required[ComponentNodeEscalateChatNodeDestination]
 
     edge: Required[ComponentNodeEscalateChatNodeEdge]
+
+    handoff_message: Required[ComponentNodeEscalateChatNodeHandoffMessage]
+    """
+    The last message the AI agent sends to the end user after a successful
+    escalation.
+    """
 
     type: Required[Literal["escalate_chat"]]
 
@@ -15307,8 +15375,36 @@ class NodeSubagentNodeToolEscalateChatToolDestination(TypedDict, total=False):
     type: Required[Literal["webhook"]]
 
 
+class NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+NodeSubagentNodeToolEscalateChatToolHandoffMessage: TypeAlias = Union[
+    NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionPrompt,
+    NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionStaticText,
+]
+
+
 class NodeSubagentNodeToolEscalateChatTool(TypedDict, total=False):
     destination: Required[NodeSubagentNodeToolEscalateChatToolDestination]
+
+    handoff_message: Required[NodeSubagentNodeToolEscalateChatToolHandoffMessage]
+    """
+    What the agent says once the destination webhook returns a 2xx response, right
+    before the human takes over.
+    """
 
     name: Required[str]
 
@@ -18473,6 +18569,27 @@ class NodeEscalateChatNodeEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class NodeEscalateChatNodeHandoffMessageNodeInstructionPrompt(TypedDict, total=False):
+    text: Required[str]
+    """The prompt text for the instruction"""
+
+    type: Required[Literal["prompt"]]
+    """Type of instruction"""
+
+
+class NodeEscalateChatNodeHandoffMessageNodeInstructionStaticText(TypedDict, total=False):
+    text: Required[str]
+    """The static text for the instruction"""
+
+    type: Required[Literal["static_text"]]
+    """Type of instruction"""
+
+
+NodeEscalateChatNodeHandoffMessage: TypeAlias = Union[
+    NodeEscalateChatNodeHandoffMessageNodeInstructionPrompt, NodeEscalateChatNodeHandoffMessageNodeInstructionStaticText
+]
+
+
 class NodeEscalateChatNodeDisplayPosition(TypedDict, total=False):
     """Position for frontend display"""
 
@@ -18850,6 +18967,12 @@ class NodeEscalateChatNode(TypedDict, total=False):
     destination: Required[NodeEscalateChatNodeDestination]
 
     edge: Required[NodeEscalateChatNodeEdge]
+
+    handoff_message: Required[NodeEscalateChatNodeHandoffMessage]
+    """
+    The last message the AI agent sends to the end user after a successful
+    escalation.
+    """
 
     type: Required[Literal["escalate_chat"]]
 

@@ -146,6 +146,9 @@ __all__ = [
     "NodeSubagentNodeToolEscalateChatTool",
     "NodeSubagentNodeToolEscalateChatToolDestination",
     "NodeSubagentNodeToolEscalateChatToolDestinationDestination",
+    "NodeSubagentNodeToolEscalateChatToolHandoffMessage",
+    "NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionPrompt",
+    "NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionStaticText",
     "NodeSubagentNodeToolEndCallTool",
     "NodeSubagentNodeToolTransferCallTool",
     "NodeSubagentNodeToolTransferCallToolTransferDestination",
@@ -334,6 +337,9 @@ __all__ = [
     "NodeEscalateChatNodeEdgeTransitionConditionEquationCondition",
     "NodeEscalateChatNodeEdgeTransitionConditionEquationConditionEquation",
     "NodeEscalateChatNodeEdgeTransitionConditionUnionMember2",
+    "NodeEscalateChatNodeHandoffMessage",
+    "NodeEscalateChatNodeHandoffMessageNodeInstructionPrompt",
+    "NodeEscalateChatNodeHandoffMessageNodeInstructionStaticText",
     "NodeEscalateChatNodeDisplayPosition",
     "NodeEscalateChatNodeGlobalNodeSetting",
     "NodeEscalateChatNodeGlobalNodeSettingCondition",
@@ -2386,8 +2392,36 @@ class NodeSubagentNodeToolEscalateChatToolDestination(BaseModel):
     type: Literal["webhook"]
 
 
+class NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionPrompt(BaseModel):
+    text: str
+    """The prompt text for the instruction"""
+
+    type: Literal["prompt"]
+    """Type of instruction"""
+
+
+class NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionStaticText(BaseModel):
+    text: str
+    """The static text for the instruction"""
+
+    type: Literal["static_text"]
+    """Type of instruction"""
+
+
+NodeSubagentNodeToolEscalateChatToolHandoffMessage: TypeAlias = Union[
+    NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionPrompt,
+    NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionStaticText,
+]
+
+
 class NodeSubagentNodeToolEscalateChatTool(BaseModel):
     destination: NodeSubagentNodeToolEscalateChatToolDestination
+
+    handoff_message: NodeSubagentNodeToolEscalateChatToolHandoffMessage
+    """
+    What the agent says once the destination webhook returns a 2xx response, right
+    before the human takes over.
+    """
 
     name: str
 
@@ -5534,6 +5568,27 @@ class NodeEscalateChatNodeEdge(BaseModel):
     """ID of the destination node"""
 
 
+class NodeEscalateChatNodeHandoffMessageNodeInstructionPrompt(BaseModel):
+    text: str
+    """The prompt text for the instruction"""
+
+    type: Literal["prompt"]
+    """Type of instruction"""
+
+
+class NodeEscalateChatNodeHandoffMessageNodeInstructionStaticText(BaseModel):
+    text: str
+    """The static text for the instruction"""
+
+    type: Literal["static_text"]
+    """Type of instruction"""
+
+
+NodeEscalateChatNodeHandoffMessage: TypeAlias = Union[
+    NodeEscalateChatNodeHandoffMessageNodeInstructionPrompt, NodeEscalateChatNodeHandoffMessageNodeInstructionStaticText
+]
+
+
 class NodeEscalateChatNodeDisplayPosition(BaseModel):
     """Position for frontend display"""
 
@@ -5905,6 +5960,12 @@ class NodeEscalateChatNode(BaseModel):
     destination: NodeEscalateChatNodeDestination
 
     edge: NodeEscalateChatNodeEdge
+
+    handoff_message: NodeEscalateChatNodeHandoffMessage
+    """
+    The last message the AI agent sends to the end user after a successful
+    escalation.
+    """
 
     type: Literal["escalate_chat"]
 

@@ -15,6 +15,9 @@ __all__ = [
     "GeneralToolEscalateChatTool",
     "GeneralToolEscalateChatToolDestination",
     "GeneralToolEscalateChatToolDestinationDestination",
+    "GeneralToolEscalateChatToolHandoffMessage",
+    "GeneralToolEscalateChatToolHandoffMessageNodeInstructionPrompt",
+    "GeneralToolEscalateChatToolHandoffMessageNodeInstructionStaticText",
     "GeneralToolEndCallTool",
     "GeneralToolTransferCallTool",
     "GeneralToolTransferCallToolTransferDestination",
@@ -87,6 +90,9 @@ __all__ = [
     "StateToolEscalateChatTool",
     "StateToolEscalateChatToolDestination",
     "StateToolEscalateChatToolDestinationDestination",
+    "StateToolEscalateChatToolHandoffMessage",
+    "StateToolEscalateChatToolHandoffMessageNodeInstructionPrompt",
+    "StateToolEscalateChatToolHandoffMessageNodeInstructionStaticText",
     "StateToolEndCallTool",
     "StateToolTransferCallTool",
     "StateToolTransferCallToolTransferDestination",
@@ -243,8 +249,36 @@ class GeneralToolEscalateChatToolDestination(BaseModel):
     type: Literal["webhook"]
 
 
+class GeneralToolEscalateChatToolHandoffMessageNodeInstructionPrompt(BaseModel):
+    text: str
+    """The prompt text for the instruction"""
+
+    type: Literal["prompt"]
+    """Type of instruction"""
+
+
+class GeneralToolEscalateChatToolHandoffMessageNodeInstructionStaticText(BaseModel):
+    text: str
+    """The static text for the instruction"""
+
+    type: Literal["static_text"]
+    """Type of instruction"""
+
+
+GeneralToolEscalateChatToolHandoffMessage: TypeAlias = Union[
+    GeneralToolEscalateChatToolHandoffMessageNodeInstructionPrompt,
+    GeneralToolEscalateChatToolHandoffMessageNodeInstructionStaticText,
+]
+
+
 class GeneralToolEscalateChatTool(BaseModel):
     destination: GeneralToolEscalateChatToolDestination
+
+    handoff_message: GeneralToolEscalateChatToolHandoffMessage
+    """
+    What the agent says once the destination webhook returns a 2xx response, right
+    before the human takes over.
+    """
 
     name: str
 
@@ -2012,8 +2046,36 @@ class StateToolEscalateChatToolDestination(BaseModel):
     type: Literal["webhook"]
 
 
+class StateToolEscalateChatToolHandoffMessageNodeInstructionPrompt(BaseModel):
+    text: str
+    """The prompt text for the instruction"""
+
+    type: Literal["prompt"]
+    """Type of instruction"""
+
+
+class StateToolEscalateChatToolHandoffMessageNodeInstructionStaticText(BaseModel):
+    text: str
+    """The static text for the instruction"""
+
+    type: Literal["static_text"]
+    """Type of instruction"""
+
+
+StateToolEscalateChatToolHandoffMessage: TypeAlias = Union[
+    StateToolEscalateChatToolHandoffMessageNodeInstructionPrompt,
+    StateToolEscalateChatToolHandoffMessageNodeInstructionStaticText,
+]
+
+
 class StateToolEscalateChatTool(BaseModel):
     destination: StateToolEscalateChatToolDestination
+
+    handoff_message: StateToolEscalateChatToolHandoffMessage
+    """
+    What the agent says once the destination webhook returns a 2xx response, right
+    before the human takes over.
+    """
 
     name: str
 
