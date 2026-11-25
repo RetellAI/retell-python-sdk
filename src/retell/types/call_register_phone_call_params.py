@@ -2812,7 +2812,7 @@ AgentOverrideConversationFlowModelConfigDuplexModelConfigBackup: TypeAlias = Uni
 
 
 class AgentOverrideConversationFlowModelConfigDuplexModelConfigPrimary(TypedDict, total=False):
-    model: Required[Literal["gpt-live-1"]]
+    model: Required[Literal["gpt-live-1.1", "gpt-live-1"]]
 
 
 class AgentOverrideConversationFlowModelConfigDuplexModelConfig(TypedDict, total=False):
@@ -3196,7 +3196,7 @@ AgentOverrideRetellLlmModelConfigDuplexModelConfigBackup: TypeAlias = Union[
 
 
 class AgentOverrideRetellLlmModelConfigDuplexModelConfigPrimary(TypedDict, total=False):
-    model: Required[Literal["gpt-live-1"]]
+    model: Required[Literal["gpt-live-1.1", "gpt-live-1"]]
 
 
 class AgentOverrideRetellLlmModelConfigDuplexModelConfig(TypedDict, total=False):

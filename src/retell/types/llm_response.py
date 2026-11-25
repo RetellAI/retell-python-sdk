@@ -1887,7 +1887,7 @@ ModelConfigDuplexModelConfigBackup: TypeAlias = Union[
 
 
 class ModelConfigDuplexModelConfigPrimary(BaseModel):
-    model: Literal["gpt-live-1"]
+    model: Literal["gpt-live-1.1", "gpt-live-1"]
 
 
 class ModelConfigDuplexModelConfig(BaseModel):
