@@ -22399,7 +22399,7 @@ ModelConfigDuplexModelConfigBackup: TypeAlias = Union[
 
 
 class ModelConfigDuplexModelConfigPrimary(TypedDict, total=False):
-    model: Required[Literal["gpt-live-1"]]
+    model: Required[Literal["gpt-live-1.1", "gpt-live-1"]]
 
 
 class ModelConfigDuplexModelConfig(TypedDict, total=False):

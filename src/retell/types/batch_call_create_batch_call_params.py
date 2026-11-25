@@ -2815,7 +2815,7 @@ TaskAgentOverrideConversationFlowModelConfigDuplexModelConfigBackup: TypeAlias =
 
 
 class TaskAgentOverrideConversationFlowModelConfigDuplexModelConfigPrimary(TypedDict, total=False):
-    model: Required[Literal["gpt-live-1"]]
+    model: Required[Literal["gpt-live-1.1", "gpt-live-1"]]
 
 
 class TaskAgentOverrideConversationFlowModelConfigDuplexModelConfig(TypedDict, total=False):
@@ -3199,7 +3199,7 @@ TaskAgentOverrideRetellLlmModelConfigDuplexModelConfigBackup: TypeAlias = Union[
 
 
 class TaskAgentOverrideRetellLlmModelConfigDuplexModelConfigPrimary(TypedDict, total=False):
-    model: Required[Literal["gpt-live-1"]]
+    model: Required[Literal["gpt-live-1.1", "gpt-live-1"]]
 
 
 class TaskAgentOverrideRetellLlmModelConfigDuplexModelConfig(TypedDict, total=False):
