@@ -13,6 +13,7 @@ __all__ = [
     "GeneralToolEscalateChatTool",
     "GeneralToolEscalateChatToolDestination",
     "GeneralToolEscalateChatToolDestinationDestination",
+    "GeneralToolEscalateChatToolDestinationDestinationParameters",
     "GeneralToolEscalateChatToolHandoffMessage",
     "GeneralToolEscalateChatToolHandoffMessageNodeInstructionPrompt",
     "GeneralToolEscalateChatToolHandoffMessageNodeInstructionStaticText",
@@ -88,6 +89,7 @@ __all__ = [
     "StateToolEscalateChatTool",
     "StateToolEscalateChatToolDestination",
     "StateToolEscalateChatToolDestinationDestination",
+    "StateToolEscalateChatToolDestinationDestinationParameters",
     "StateToolEscalateChatToolHandoffMessage",
     "StateToolEscalateChatToolHandoffMessageNodeInstructionPrompt",
     "StateToolEscalateChatToolHandoffMessageNodeInstructionStaticText",
@@ -145,23 +147,51 @@ __all__ = [
 ]
 
 
+class GeneralToolEscalateChatToolDestinationDestinationParameters(BaseModel):
+    """
+    Customer-defined fields nested in args on chat_transfer_requested events, in the same format as custom function parameters. A property with const is sent as that fixed value, with dynamic variables such as {{customer_id}} resolved. Any other property is inferred by the LLM from its description.
+    """
+
+    properties: object
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Literal["object"]
+    """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
+    required: Optional[List[str]] = None
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
 class GeneralToolEscalateChatToolDestinationDestination(BaseModel):
     method: Literal["POST", "PUT"]
 
     url: str
     """Customer webhook URL for transfer requests and forwarded SMS messages."""
 
-    body: Optional[Dict[str, object]] = None
-    """Customer-defined fields nested in args on chat_transfer_requested events.
-
-    String values support dynamic variables such as {{customer_id}}, including
-    inside nested objects and arrays. Field names and non-string values are
-    preserved.
-    """
-
     headers: Optional[Dict[str, str]] = None
 
     max_retry: Optional[int] = None
+
+    parameters: Optional[GeneralToolEscalateChatToolDestinationDestinationParameters] = None
+    """
+    Customer-defined fields nested in args on chat_transfer_requested events, in the
+    same format as custom function parameters. A property with const is sent as that
+    fixed value, with dynamic variables such as {{customer_id}} resolved. Any other
+    property is inferred by the LLM from its description.
+    """
 
     query_params: Optional[Dict[str, str]] = None
 
@@ -1942,23 +1972,51 @@ class StateEdge(BaseModel):
     """
 
 
+class StateToolEscalateChatToolDestinationDestinationParameters(BaseModel):
+    """
+    Customer-defined fields nested in args on chat_transfer_requested events, in the same format as custom function parameters. A property with const is sent as that fixed value, with dynamic variables such as {{customer_id}} resolved. Any other property is inferred by the LLM from its description.
+    """
+
+    properties: object
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Literal["object"]
+    """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Optional[bool] = FieldInfo(alias="additionalProperties", default=None)
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
+    required: Optional[List[str]] = None
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
 class StateToolEscalateChatToolDestinationDestination(BaseModel):
     method: Literal["POST", "PUT"]
 
     url: str
     """Customer webhook URL for transfer requests and forwarded SMS messages."""
 
-    body: Optional[Dict[str, object]] = None
-    """Customer-defined fields nested in args on chat_transfer_requested events.
-
-    String values support dynamic variables such as {{customer_id}}, including
-    inside nested objects and arrays. Field names and non-string values are
-    preserved.
-    """
-
     headers: Optional[Dict[str, str]] = None
 
     max_retry: Optional[int] = None
+
+    parameters: Optional[StateToolEscalateChatToolDestinationDestinationParameters] = None
+    """
+    Customer-defined fields nested in args on chat_transfer_requested events, in the
+    same format as custom function parameters. A property with const is sent as that
+    fixed value, with dynamic variables such as {{customer_id}} resolved. Any other
+    property is inferred by the LLM from its description.
+    """
 
     query_params: Optional[Dict[str, str]] = None
 
