@@ -145,6 +145,7 @@ __all__ = [
     "NodeSubagentNodeToolEscalateChatTool",
     "NodeSubagentNodeToolEscalateChatToolDestination",
     "NodeSubagentNodeToolEscalateChatToolDestinationDestination",
+    "NodeSubagentNodeToolEscalateChatToolDestinationDestinationParameters",
     "NodeSubagentNodeToolEscalateChatToolHandoffMessage",
     "NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionPrompt",
     "NodeSubagentNodeToolEscalateChatToolHandoffMessageNodeInstructionStaticText",
@@ -327,6 +328,7 @@ __all__ = [
     "NodeEscalateChatNode",
     "NodeEscalateChatNodeDestination",
     "NodeEscalateChatNodeDestinationDestination",
+    "NodeEscalateChatNodeDestinationDestinationParameters",
     "NodeEscalateChatNodeEdge",
     "NodeEscalateChatNodeEdgeTransitionCondition",
     "NodeEscalateChatNodeEdgeTransitionConditionPromptCondition",
@@ -2252,23 +2254,51 @@ class NodeSubagentNodeSkipResponseEdge(TypedDict, total=False):
     """ID of the destination node"""
 
 
+class NodeSubagentNodeToolEscalateChatToolDestinationDestinationParameters(TypedDict, total=False):
+    """
+    Customer-defined fields nested in args on chat_transfer_requested events, in the same format as custom function parameters. A property with const is sent as that fixed value, with dynamic variables such as {{customer_id}} resolved. Any other property is inferred by the LLM from its description.
+    """
+
+    properties: Required[object]
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Required[Literal["object"]]
+    """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Annotated[bool, PropertyInfo(alias="additionalProperties")]
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
+    required: SequenceNotStr[str]
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
 class NodeSubagentNodeToolEscalateChatToolDestinationDestination(TypedDict, total=False):
     method: Required[Literal["POST", "PUT"]]
 
     url: Required[str]
     """Customer webhook URL for transfer requests and forwarded SMS messages."""
 
-    body: Dict[str, object]
-    """Customer-defined fields nested in args on chat_transfer_requested events.
-
-    String values support dynamic variables such as {{customer_id}}, including
-    inside nested objects and arrays. Field names and non-string values are
-    preserved.
-    """
-
     headers: Dict[str, str]
 
     max_retry: int
+
+    parameters: NodeSubagentNodeToolEscalateChatToolDestinationDestinationParameters
+    """
+    Customer-defined fields nested in args on chat_transfer_requested events, in the
+    same format as custom function parameters. A property with const is sent as that
+    fixed value, with dynamic variables such as {{customer_id}} resolved. Any other
+    property is inferred by the LLM from its description.
+    """
 
     query_params: Dict[str, str]
 
@@ -5169,23 +5199,51 @@ class NodeCodeNode(TypedDict, total=False):
     """
 
 
+class NodeEscalateChatNodeDestinationDestinationParameters(TypedDict, total=False):
+    """
+    Customer-defined fields nested in args on chat_transfer_requested events, in the same format as custom function parameters. A property with const is sent as that fixed value, with dynamic variables such as {{customer_id}} resolved. Any other property is inferred by the LLM from its description.
+    """
+
+    properties: Required[object]
+    """
+    The value of properties is an object, where each key is the name of a property
+    and each value is a schema used to validate that property.
+    """
+
+    type: Required[Literal["object"]]
+    """Type must be "object" for a JSON Schema object."""
+
+    additional_properties: Annotated[bool, PropertyInfo(alias="additionalProperties")]
+    """
+    On an integration function's response schema, false means the output fields are
+    fixed to properties and no others can be added.
+    """
+
+    required: SequenceNotStr[str]
+    """List of names of required property when generating this parameter.
+
+    LLM will do its best to generate the required properties in its function
+    arguments. Property must exist in properties.
+    """
+
+
 class NodeEscalateChatNodeDestinationDestination(TypedDict, total=False):
     method: Required[Literal["POST", "PUT"]]
 
     url: Required[str]
     """Customer webhook URL for transfer requests and forwarded SMS messages."""
 
-    body: Dict[str, object]
-    """Customer-defined fields nested in args on chat_transfer_requested events.
-
-    String values support dynamic variables such as {{customer_id}}, including
-    inside nested objects and arrays. Field names and non-string values are
-    preserved.
-    """
-
     headers: Dict[str, str]
 
     max_retry: int
+
+    parameters: NodeEscalateChatNodeDestinationDestinationParameters
+    """
+    Customer-defined fields nested in args on chat_transfer_requested events, in the
+    same format as custom function parameters. A property with const is sent as that
+    fixed value, with dynamic variables such as {{customer_id}} resolved. Any other
+    property is inferred by the LLM from its description.
+    """
 
     query_params: Dict[str, str]
 
