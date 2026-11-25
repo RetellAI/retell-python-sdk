@@ -2,25 +2,13 @@
 
 ## [6.2.24](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.23...v6.2.24) (2026-11-25)
 
+### Highlights
 
-### Bug Fixes
-
-* **api:** Add an optional If-Match header to update-root that returns 412 and changes nothing if the agent changed since the ETag was issued. ([1f20b91](https://github.com/RetellAI/retell-python-sdk/commit/1f20b915d110864484f1c24d9297c4de2294ce56))
-* **api:** Add busy-street, subway, car-interior, crowded-bar, construction, airport, crackling-static, wind, and tv-in-restaurant as simulated caller background sound options. ([6ee5c01](https://github.com/RetellAI/retell-python-sdk/commit/6ee5c01eeee4d12f93a6dd66ae298c863d7bd38d))
-* **api:** Add get-root (GET /get-agent-root/{agent_id}) and update-root (PATCH /update-agent-root/{agent_id}) agent methods for environment tags. ([1f20b91](https://github.com/RetellAI/retell-python-sdk/commit/1f20b915d110864484f1c24d9297c4de2294ce56))
-* **api:** Add gpt-live-1.1 as a value for the duplex model reference model field. ([a2ac206](https://github.com/RetellAI/retell-python-sdk/commit/a2ac20602270e4dfea42be11617f03552ea1c6ac))
-* **api:** Add parameters to chat_transfer_requested event args, using the custom function parameter format. ([f4a771e](https://github.com/RetellAI/retell-python-sdk/commit/f4a771e16948da320bd7b37fa8a2c3970b23a167))
-* **api:** Add required handoff_message to chat escalation tools and nodes, which the agent says after a successful escalation. ([6bb519f](https://github.com/RetellAI/retell-python-sdk/commit/6bb519f447dc5037d5fa2845553b709d388a92ff))
-* **api:** Change the 429 response of the refreshKnowledgeBase operation to the generic too-many-requests error. ([511d1c4](https://github.com/RetellAI/retell-python-sdk/commit/511d1c482fa76a5b8cd0ea097931b6c97a914e1f))
-* **api:** Remove backup_model from agent override requests, conversation flows, and Retell LLM requests. ([b7a5aa3](https://github.com/RetellAI/retell-python-sdk/commit/b7a5aa32f07606307e5d1a3eafec1f4784fb93d1))
-* **api:** Remove body from chat_transfer_requested event args. ([f4a771e](https://github.com/RetellAI/retell-python-sdk/commit/f4a771e16948da320bd7b37fa8a2c3970b23a167))
-* **api:** Remove coffee-shop, convention-hall, summer-outdoor, mountain-outdoor, static-noise, and call-center as simulated caller background sound options. ([6ee5c01](https://github.com/RetellAI/retell-python-sdk/commit/6ee5c01eeee4d12f93a6dd66ae298c863d7bd38d))
-* **api:** Remove deprecated model, s2s_model, model_temperature, model_high_priority, model_ultrafast, and node model_choice fields; use model_config instead. ([b7a5aa3](https://github.com/RetellAI/retell-python-sdk/commit/b7a5aa32f07606307e5d1a3eafec1f4784fb93d1))
-
-
-### Documentation
-
-* add agent root API reference pages ([78e384e](https://github.com/RetellAI/retell-python-sdk/commit/78e384e67f71d1ec601f67a1848a9ec04fd2f855))
+* Add agent root get and update methods with ETag concurrency.
+* Require handoff_message for chat escalation nodes and tools.
+* Add customer-defined parameters to chat transfer escalation destinations.
+* Add gpt-live-1.1 duplex model option.
+* Deprecate legacy model settings; remove them from create and update requests.
 
 ## [6.2.23](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.22...v6.2.23) (2026-11-22)
 
