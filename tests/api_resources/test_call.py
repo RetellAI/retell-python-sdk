@@ -391,6 +391,7 @@ class TestCall:
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
+                        "model": "nova-3",
                     },
                     "data_storage_retention_days": 30,
                     "data_storage_setting": "everything",
@@ -681,6 +682,7 @@ class TestCall:
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
+                        "model": "nova-3",
                     },
                     "data_storage_retention_days": 30,
                     "data_storage_setting": "everything",
@@ -1008,6 +1010,7 @@ class TestCall:
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
+                        "model": "nova-3",
                     },
                     "data_storage_retention_days": 30,
                     "data_storage_setting": "everything",
@@ -1823,6 +1826,7 @@ class TestAsyncCall:
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
+                        "model": "nova-3",
                     },
                     "data_storage_retention_days": 30,
                     "data_storage_setting": "everything",
@@ -2113,6 +2117,7 @@ class TestAsyncCall:
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
+                        "model": "nova-3",
                     },
                     "data_storage_retention_days": 30,
                     "data_storage_setting": "everything",
@@ -2440,6 +2445,7 @@ class TestAsyncCall:
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
+                        "model": "nova-3",
                     },
                     "data_storage_retention_days": 30,
                     "data_storage_setting": "everything",

@@ -64,6 +64,7 @@ class TestConversationFlowComponent:
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
+                        "model": "nova-3",
                     },
                     "display_position": {
                         "x": 0,
@@ -382,6 +383,7 @@ class TestConversationFlowComponent:
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
+                        "model": "nova-3",
                     },
                     "display_position": {
                         "x": 0,
@@ -709,6 +711,7 @@ class TestAsyncConversationFlowComponent:
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
+                        "model": "nova-3",
                     },
                     "display_position": {
                         "x": 0,
@@ -1027,6 +1030,7 @@ class TestAsyncConversationFlowComponent:
                     "custom_stt_config": {
                         "endpointing_ms": 0,
                         "provider": "azure",
+                        "model": "nova-3",
                     },
                     "display_position": {
                         "x": 0,
