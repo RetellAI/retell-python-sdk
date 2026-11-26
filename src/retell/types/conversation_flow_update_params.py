@@ -1802,6 +1802,18 @@ class ComponentNodeConversationNodeCustomSttConfig(TypedDict, total=False):
     provider: Required[Literal["azure", "deepgram", "soniox", "assemblyai", "muse"]]
     """ASR provider name."""
 
+    model: Literal[
+        "nova-3", "stt-rt-v6", "stt-rt-v5", "universal-3-6-pro", "assemblyai-stt-3-7-realtime-agent", "azure-speech"
+    ]
+    """STT model to pin for the custom provider.
+
+    Deepgram offers nova-3 (Nova 3); vocab_specialization medical still selects
+    Deepgram's medical model for English. Soniox offers stt-rt-v6 (Soniox v6) and
+    stt-rt-v5 (Soniox v5). AssemblyAI offers universal-3-6-pro (Universal 3.6 Pro)
+    and assemblyai-stt-3-7-realtime-agent (AssemblyAI 3.7 Agent). Azure offers
+    azure-speech (Azure AI Speech). Omit to use the provider's default model.
+    """
+
 
 class ComponentNodeConversationNodeDisplayPosition(TypedDict, total=False):
     """Position for frontend display"""
@@ -2580,6 +2592,18 @@ class ComponentNodeSubagentNodeCustomSttConfig(TypedDict, total=False):
 
     provider: Required[Literal["azure", "deepgram", "soniox", "assemblyai", "muse"]]
     """ASR provider name."""
+
+    model: Literal[
+        "nova-3", "stt-rt-v6", "stt-rt-v5", "universal-3-6-pro", "assemblyai-stt-3-7-realtime-agent", "azure-speech"
+    ]
+    """STT model to pin for the custom provider.
+
+    Deepgram offers nova-3 (Nova 3); vocab_specialization medical still selects
+    Deepgram's medical model for English. Soniox offers stt-rt-v6 (Soniox v6) and
+    stt-rt-v5 (Soniox v5). AssemblyAI offers universal-3-6-pro (Universal 3.6 Pro)
+    and assemblyai-stt-3-7-realtime-agent (AssemblyAI 3.7 Agent). Azure offers
+    azure-speech (Azure AI Speech). Omit to use the provider's default model.
+    """
 
 
 class ComponentNodeSubagentNodeDisplayPosition(TypedDict, total=False):
@@ -12664,6 +12688,18 @@ class NodeConversationNodeCustomSttConfig(TypedDict, total=False):
     provider: Required[Literal["azure", "deepgram", "soniox", "assemblyai", "muse"]]
     """ASR provider name."""
 
+    model: Literal[
+        "nova-3", "stt-rt-v6", "stt-rt-v5", "universal-3-6-pro", "assemblyai-stt-3-7-realtime-agent", "azure-speech"
+    ]
+    """STT model to pin for the custom provider.
+
+    Deepgram offers nova-3 (Nova 3); vocab_specialization medical still selects
+    Deepgram's medical model for English. Soniox offers stt-rt-v6 (Soniox v6) and
+    stt-rt-v5 (Soniox v5). AssemblyAI offers universal-3-6-pro (Universal 3.6 Pro)
+    and assemblyai-stt-3-7-realtime-agent (AssemblyAI 3.7 Agent). Azure offers
+    azure-speech (Azure AI Speech). Omit to use the provider's default model.
+    """
+
 
 class NodeConversationNodeDisplayPosition(TypedDict, total=False):
     """Position for frontend display"""
@@ -13416,6 +13452,18 @@ class NodeSubagentNodeCustomSttConfig(TypedDict, total=False):
 
     provider: Required[Literal["azure", "deepgram", "soniox", "assemblyai", "muse"]]
     """ASR provider name."""
+
+    model: Literal[
+        "nova-3", "stt-rt-v6", "stt-rt-v5", "universal-3-6-pro", "assemblyai-stt-3-7-realtime-agent", "azure-speech"
+    ]
+    """STT model to pin for the custom provider.
+
+    Deepgram offers nova-3 (Nova 3); vocab_specialization medical still selects
+    Deepgram's medical model for English. Soniox offers stt-rt-v6 (Soniox v6) and
+    stt-rt-v5 (Soniox v5). AssemblyAI offers universal-3-6-pro (Universal 3.6 Pro)
+    and assemblyai-stt-3-7-realtime-agent (AssemblyAI 3.7 Agent). Azure offers
+    azure-speech (Azure AI Speech). Omit to use the provider's default model.
+    """
 
 
 class NodeSubagentNodeDisplayPosition(TypedDict, total=False):

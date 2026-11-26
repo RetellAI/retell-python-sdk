@@ -67,6 +67,7 @@ class TestAgent:
             custom_stt_config={
                 "endpointing_ms": 0,
                 "provider": "azure",
+                "model": "nova-3",
             },
             data_storage_retention_days=30,
             data_storage_setting="everything",
@@ -353,6 +354,7 @@ class TestAgent:
             custom_stt_config={
                 "endpointing_ms": 0,
                 "provider": "azure",
+                "model": "nova-3",
             },
             data_storage_retention_days=30,
             data_storage_setting="everything",
@@ -1084,6 +1086,7 @@ class TestAsyncAgent:
             custom_stt_config={
                 "endpointing_ms": 0,
                 "provider": "azure",
+                "model": "nova-3",
             },
             data_storage_retention_days=30,
             data_storage_setting="everything",
@@ -1370,6 +1373,7 @@ class TestAsyncAgent:
             custom_stt_config={
                 "endpointing_ms": 0,
                 "provider": "azure",
+                "model": "nova-3",
             },
             data_storage_retention_days=30,
             data_storage_setting="everything",
