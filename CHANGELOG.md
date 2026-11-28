@@ -1,5 +1,13 @@
 # Changelog
 
+## [6.2.25](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.24...v6.2.25) (2026-11-28)
+
+
+### Bug Fixes
+
+* **api:** Add optional model to custom_stt_config for agents and conversation flow nodes, with values such as nova-3, stt-rt-v6, universal-3-6-pro, and azure-speech. ([5cd593b](https://github.com/RetellAI/retell-python-sdk/commit/5cd593bfc3857a483bd82b57677b8e96a572b1b5))
+* **api:** Remove opt_out_contact_sync from CRM config responses and CRM config update requests. ([60f293f](https://github.com/RetellAI/retell-python-sdk/commit/60f293f0461ab06e4238de91bf63cf6c88b2ab11))
+
 ## [6.2.24](https://github.com/RetellAI/retell-python-sdk/compare/v6.2.23...v6.2.24) (2026-11-25)
 
 ### Highlights
